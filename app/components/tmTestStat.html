@@ -1,0 +1,83 @@
+<!--考试统计-->
+<div class="examStat tmBorder-green">
+  <ol class="breadcrumb">
+    <li class="currentPosition">您的当前位置:</li>
+    <li><a ui-sref="main">首页</a></li>
+    <li><a ui-sref="personalCenter">个人中心</a></li>
+    <li class="active">{{examStatData.TitleNav}}</li>
+  </ol>
+  <form class="form-inline formCourse">
+    <span>查询时间：</span>
+    <div class="form-group">
+      <!--<div datetimepicker  dateID="timepicker1" ng-model="startTime" class="form-control" start-time="startTime"></div>-->
+      <input class="datebg" datepicker ng-model="startTime"/>
+    </div>
+    <span>至</span>
+    <div class="form-group">
+      <!--<datetimepicker dateID="timepicker2" ng-model="endTime" class="form-control"></datetimepicker>-->
+      <input class="datebg" datepicker ng-model="endTime"/>
+    </div>
+    <button type="submit" class="btn btn-danger" ng-click="requestMyStudyStat({StartDate:startTime,EndDate:endTime})">查询</button>
+    <!--<a class="btn btn-danger" ng-click="printTestStat()" target="_blank">打印</a>
+    <input type="text" value="1" style="width: 24px;">份-->
+  </form>
+  <p>
+    尊敬的 <b>{{examStatData.Account}}</b>, 截止 <b>{{examStatData.StartDate}} 至 {{examStatData.EndDate}} </b>, 您目前顺利通过 <b>{{examStatData.FinishExam}}</b> 门考试 , 有 <b>{{examStatData.UnFinishExam}}</b> 门考试未通过。总共获得 <b>{{examStatData.ExamCreditSum}}</b> 学时
+  </p>
+  <div class="myTab" dw-loading="examStat">
+    <div class="tab-content" dw-loading="myCenter">
+      <div class="tab-panel perlist">
+        <div class="title_bar clearfix">
+          <span class="list1">用户名</span>
+          <span class="list2">姓名</span>
+          <span class="list3">考试名称</span>
+          <span class="list3">考试成绩</span>
+          <span class="list4">获得学时</span>
+        </div>
+        <div class="list" ng-repeat="examList in examStatData.ListData">
+          <p class="clearfix">
+            <span class="list1 cur_name">{{examStatData.Account}}</span>
+            <span class="list2">{{examList.UserName}}</span>
+            <span class="list3">{{examList.Name}}</span>
+            <span class="list3">{{examList.ExamScore}}</span>
+            <span class="list4">{{examList.Credit}}</span>
+          </p>
+        </div>
+        <div ng-transclude="pagation"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .examStat .btn.btn-danger{
+    padding: 2px 14px;
+    margin-left: 10px;
+  }
+  .myTab .perlist .list1 {
+    width: 20%;
+    height: 37px;
+  }
+  .myTab .perlist .list .list1 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .myTab .perlist .list2 {
+    width: 20%;
+  }
+  .myTab .perlist .list .list2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .myTab .perlist .list3 {
+    width: 20%;
+  }
+  .myTab .perlist .list4 {
+    width: 20%;
+  }
+  .examStat .form-group input{
+    width: 200px;
+  }
+</style>
+
+

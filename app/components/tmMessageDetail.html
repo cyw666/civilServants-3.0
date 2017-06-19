@@ -1,0 +1,113 @@
+<!--留言板详情-->
+<div class="messageListDetail tmBorder-green">
+    <ol class="breadcrumb">
+        <li class="currentPosition">您的当前位置:</li>
+        <li><a ui-sref="main">首页</a></li>
+        <li><a ui-sref="personalCenter">个人中心</a></li>
+        <li><a ui-sref="messageList">留言板</a></li>
+        <li class="active">{{messageDetailData.TitleNav}}</li>
+    </ol>
+    <div class="myTab" dw-loading="studyPlan">
+        <div class="tab-content" dw-loading="messageListDetail">
+            <div class="tab-panel perlist">
+                <div class="title_bar clearfix">
+                    <h3>{{messageDetailData.TitleNav}}</h3>
+                </div>
+                <div class="message-body grid_20">
+                    <div class="grid_2 mar_top_15 text-right">
+                        {{messageDetailData.Model.UserName}}：
+                    </div>
+                    <div class="message grid_17 mar_top_5">
+                        <div class="panel panel-warning">
+                            <div class="panel-heading">
+                                <div class="panel-title">
+                                    <p>{{messageDetailData.Model.Name}}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="panel-body well" style="margin-bottom:0px;">
+                                <div class="message-info">
+                                    <div class="message-content grid_10">
+                                        {{messageDetailData.Model.Content}}
+                                    </div>
+                                    <div class="message-time grid_6 text-right">
+                                        <span>{{messageDetailData.Model.Class}}</span><br><br>
+                                        <span>{{messageDetailData.Model.CreateDate | dateFilter | date:'yyyy-MM-dd hh:mm:ss'}}</span>
+                                    </div>
+                                </div>
+                                <div ng-repeat="item in messageDetailData.Model.ReplyMessageList">
+                                    <div class="grid_2 mar_top_15 text-right">
+                                        {{item.UserName}}：
+                                    </div>
+                                    <div class="message grid_14 mar_top_5">
+                                        <div class="panel panel-success">
+                                            <div class="panel-heading">
+                                                <div class="panel-title">
+                                                    <p>{{item.Name}}</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="message-info">
+                                                    <div class="message-content grid_8">
+                                                        {{item.Content}}
+                                                    </div>
+                                                    <div class="message-time grid_5 text-right">
+                                                        <span>{{item.Class}}</span><br><br>
+                                                        <span>{{item.CreateDate | dateFilter | date:'yyyy-MM-dd hh:mm:ss'}}</span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<style>
+    .message {
+        text-align: left;
+        white-space: normal;
+    }
+    .message-body{
+        margin-left: 80px;
+    }
+    .message-content {
+        display: inline-block;
+        word-wrap: break-word;
+    }
+
+    .message-time {
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+
+    .messageListDetail .myTab h3 {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .myTab .perlist .list1 {
+        width: 100%;
+        height: 37px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .myTab .perlist .list .list1 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+</style>

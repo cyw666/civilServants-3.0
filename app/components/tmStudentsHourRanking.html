@@ -1,0 +1,65 @@
+<!--单位排行-->
+<div class="studentsHourRanking tmBorder-cyan"  dw-loading="studentsHourRanking">
+  <div class="titlebg2">
+    <div class="txt">
+      {{studentHourRanking.ViewBag.TitleNav}}
+    </div>
+  </div>
+  <p class="title">
+    <span class="rank1">排行</span>
+    <span class="rank2">姓名</span>
+    <span class="rank3">学时</span>
+    <span class="rank4">学次</span>
+  </p>
+  <ul class="rankingList" ng-repeat="rankingData in studentHourRanking.ListData">
+    <li class="list1">{{$index+1}}</li>
+    <li class="list2">{{rankingData.UserName}}</li>
+    <li class="list3">{{rankingData.Credit}}</li>
+    <li class="list4">{{rankingData.LearnTime}}</li>
+  </ul>
+</div>
+<style>
+  .studentsHourRanking h4 {
+    line-height: 52px;
+    text-align: center;
+  }
+  .studentsHourRanking .rankingList{
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+  }
+  .studentsHourRanking .title {
+    border:1px solid #dadada;
+    border-radius: 3px;
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+  }
+  .studentsHourRanking .title span ,.studentsHourRanking .rankingList li{
+    float: left;
+  }
+  .studentsHourRanking .title .rank1,.studentsHourRanking .rankingList .list1{
+    width: 60px;
+    text-align: left;
+    padding-left: 10px;
+  }
+  .studentsHourRanking .rankingList .list1{
+    padding-left: 15px;
+  }
+  .studentsHourRanking .title .rank2,.studentsHourRanking .rankingList .list2{
+    width: 100px;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .studentsHourRanking .title .rank3,.studentsHourRanking .rankingList .list3{
+    width: 65px;
+    text-align: left;
+  }
+  .studentsHourRanking .title .rank4,.studentsHourRanking .rankingList .list4{
+    width: 65px;
+    text-align: left;
+  }
+</style>
+

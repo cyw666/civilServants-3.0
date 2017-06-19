@@ -1,0 +1,75 @@
+<div class="container_24 location-container">
+    <!--专题培训班中的论文话题内容的路径导航-->
+    <ol ng-show="isshow" class="breadcrumb">
+        <li class="currentPosition">您的当前位置:</li>
+        <li><a ui-sref="main">首页</a></li>
+        <li><a ui-sref="specialTrainingCourse">专题培训班</a></li>
+        <li><a ui-sref="classDetail({Id:Data.TrainingId})">{{Data.TrainingName}}</a></li>
+        <li class="active">{{Data.Name}}</li>
+    </ol>
+    <!--搜索结果-->
+    <ol ng-show="isResult" class="breadcrumb">
+        <li class="currentPosition">您的当前位置:</li>
+        <li><a ui-sref="guide">首页</a></li>
+        <li ng-show="Data.CategoryName">
+            <a ng-show="Data.CategoryName=='公务员培训'" ui-sref="csTrainingNews">{{Data.CategoryName}}</a>
+            <a ng-show="Data.CategoryName=='专业技术人员培训'" ui-sref="patpTrainingNews">{{Data.CategoryName}}</a>
+            <a ng-show="Data.CategoryName=='新闻资讯'" ui-sref="newsinfo">{{Data.CategoryName}}</a>
+            <a ng-show="Data.CategoryName!=='新闻资讯'&&Data.CategoryName!=='专业技术人员培训'&&Data.CategoryName!=='公务员培训'">{{Data.CategoryName}}</a>
+        </li>
+        <li class="active">搜索结果</li>
+    </ol>
+
+    <!--新闻中的路径导航-->
+    <div ng-show="isNews">
+        <div class="grid_15 pull_left">
+            <ol ng-hide="isNewsInfo" class="breadcrumb" style="height: 42px;">
+                <li class="currentPosition">您的当前位置:</li>
+                <li><a ui-sref="guide">首页</a></li>
+                <li class="active">{{location}}</li>
+            </ol>
+            <ol ng-show="isNewsInfo" class="breadcrumb" style="height: 42px;">
+                <li class="currentPosition">您的当前位置:</li>
+                <li><a ui-sref="guide">首页</a></li>
+                <li ng-show="titleName=='公务员培训'"><a ui-sref="csTrainingNews">{{titleName}}</a></li>
+                <li ng-show="titleName=='专业技术人员培训'"><a ui-sref="patpTrainingNews">{{titleName}}</a></li>
+
+                <li class="active">{{newsData.CategoryName}}</li>
+            </ol>
+        </div>
+        <div class="pull_right" ng-hide="reg.test(location)">
+            <form class="clearfix">
+                <a ng-click="findNews()" class="search-input mar_left_10 pull-right"><img src="../images/icon_search.png"></a>
+                <input type="text" id="search" ng-model="searchNewsField" class="search-btn form-control pull-right " type="text" my-placeholder placeholder="请输入关键字">
+            </form>
+        </div>
+    </div>
+
+    <!--通知中的路径导航-->
+    <ol ng-show="isNotice" class="breadcrumb">
+        <li class="currentPosition">您的当前位置:</li>
+        <li><a ui-sref="guide">首页</a></li>
+        <li class="active">通知内容</li>
+    </ol>
+
+</div>
+<style>
+    .breadcrumb{
+        background: #FFF;
+        margin-bottom: 0px;
+        height: 42px;
+        padding: 11px 15px;
+    }
+    .location-container{
+        padding: 0 5px;
+      margin-top: 15px;
+    }
+    #search{
+        width:305px;
+        height: 30px;
+      margin-top: 6px;
+    }
+    .search-input,.search-btn{
+        margin-top: 6px;
+    }
+</style>

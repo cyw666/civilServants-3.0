@@ -1,0 +1,47 @@
+<!--设置密保-->
+<div class="securitySetting tmBorder-green">
+    <ol class="breadcrumb">
+        <li class="currentPosition">您的当前位置:</li>
+        <li><a ui-sref="main">首页</a></li>
+        <li><a ui-sref="personalCenter">个人中心</a></li>
+        <li class="active">设置密保</li>
+    </ol>
+    <div ng-if="isVisible">
+        <form role="form">
+            <ul>
+                <li class="form-group form-inline">
+                    <label class="control-label pull-left" style="line-height: 30px">请输入密码：</label>
+                    <input type="password" class="myPwd form-control pull-left" ng-model="$parent.myPwd" />
+                </li>
+                <li>
+                    <input type="submit" class="btn btn-primary mar_left_10" ng-click="validatePwd()"/>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <div ng-if="!isVisible">
+        <form role="form" class="form-group form-inline">
+            <ul>
+                <li ng-repeat="data in questionData" class="mar_top_15" >
+                    <div class="input-group">
+                        <label class="control-label">问题：</label>
+                        <input type="text" class="form-control" ng-model="data.Question"/>
+                    </div>
+                    <div class="input-group mar_left_10">
+                        <label>答案：</label>
+                        <input type="text" class="form-control" ng-model="data.Answer">
+                    </div>
+                </li>
+                <li>
+                    <button class="mar_top_15 mar_left_10 btn btn-success" ng-click="addQuestion()">提交</button>
+                </li>
+            </ul>
+            <!--<div class="preventorgery"></div>-->
+        </form>
+    </div>
+</div>
+<style>
+    .securitySetting{
+        min-height: 399px;
+    }
+</style>

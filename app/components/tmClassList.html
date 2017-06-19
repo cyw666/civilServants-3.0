@@ -1,0 +1,71 @@
+<div class="classList">
+  <ol class="breadcrumb">
+    <li class="currentPosition">您的当前位置:</li>
+    <li><a ui-sref="main">首页</a></li>
+    <li class="active">{{classListData.Nav}}</li>
+  </ol>
+  <form class="form-inline formCourse">
+    <div class="form-group">
+      <input ng-model="searchTitle" type="text" class="form-control"
+             style="width: 400px;"
+             my-placeholder
+             placeholder="请输入要搜索的班级">
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="getClassList({'title':searchTitle})">搜索</button>
+  </form>
+  <div class="tmBorder-green mar_top_20">
+    <div class="titlebg2">
+      <div class="txt">
+        {{classListData.Nav}}
+      </div>
+    </div>
+    <div class="myTab" dw-loading="trainingCenter">
+      <div class="tab-content">
+        <div class="tab-panel perlist">
+          <div class="title_bar clearfix">
+            <span class="list1">培训班名称</span>
+            <span class="list2">班级分数</span>
+            <span class="list1">开班日期</span>
+            <span class="list2">状态</span>
+            <span class="list2">活跃度</span>
+          </div>
+          <div class="list" ng-repeat="classList in classListData.ListData">
+            <p class="clearfix">
+              <span class="list1" title="{{classList.Name}}"><a ng-click="checkUserClass(classList.Id)">{{classList.Name}}</a></span>
+              <span class="list2">{{classList.Score}}</span>
+              <span class="list1">{{classList.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{classList.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+
+              <span class="list2" ng-if="!classList.ApplyStatus"><a ng-click="addClass(classList.Id)">点击报名</a></span>
+              <span class="list2" ng-if="classList.ApplyStatus">{{JudgeStatus(classList.ApplyStatus)}}</span>
+
+              <span class="list2">{{classList.ArticleCount}}</span>
+            </p>
+          </div>
+
+        </div>
+      </div>
+      <div ng-show="paginationConf.totalItems>0" tm-pagation conf="paginationConf" style="margin-left: 20%"></div>
+      <div class="noData" ng-show="paginationConf.totalItems <=0">暂无数据</div>
+    </div>
+  </div>
+</div>
+<style>
+  .myTab .perlist .list1 {
+    width: 35%;
+    height: 37px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .myTab .perlist .list2 {
+    width: 10%;
+    height: 37px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .myTab .perlist .list .list1 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+</style>

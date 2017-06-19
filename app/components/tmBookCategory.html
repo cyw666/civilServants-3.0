@@ -1,0 +1,102 @@
+<!--@*图书分类*@-->
+<div class="bookCategory panel1-group tmBorder-blue"  dw-loading="bookCategory">
+  <div class="titlebg2">
+    <div class="txt">
+      图书分类
+    </div>
+  </div>
+  <div class="panel1 panel1-default">
+    <div class="panel1-heading">
+      <p class="panel1-title" title="全部图书">
+        <a href="javascript:;" ng-click="searchCategory({categoryId:0,ptitle:'全部',title: '',page: 1})">
+          <span class="category2">-</span>
+          全部图书
+        </a>
+      </p>
+    </div>
+  </div>
+  <div class="panel1 panel1-default" ng-repeat="courseList in bookCategory.DataList" repeat-finish="repeatDone()">
+    <div class="panel1-heading">
+      <p class="panel1-title" title="{{courseList.Name}}"  ng-show="courseList.Nodes">
+        <a ng-click="searchCategory({categoryId:courseList.Id,ptitle:courseList.Name,title: '',page: 1})">
+          <span class="category">+</span>
+          {{courseList.Name}}
+        </a>
+      </p>
+      <p class="panel1-title" title="{{courseList.Name}}"  ng-hide="courseList.Nodes">
+        <a ng-click="searchCategory({categoryId:courseList.Id,ptitle:courseList.Name,title: '',page: 1})">
+          <span class="category2">-</span>
+          {{courseList.Name}}
+        </a>
+      </p>
+    </div>
+    <div class="panel1-collapse collapse">
+      <div class="panel1-body">
+        <ul>
+          <li  title="{{list.Name}}" ng-repeat="list in courseList.Nodes">
+            <a ng-click="searchCategory({categoryId:list.Id,ptitle:list.Name,title: '',page: 1})">{{list.Name}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .bookCategory {
+    min-height: 525px;
+  }
+  .bookCategory .panel1{
+    border:0;
+  }
+  .bookCategory .panel1 .panel1-heading{
+    background-color: #fff;
+    padding:0 20px;
+  }
+  .bookCategory .panel1 .panel1-heading .category,.bookCategory .panel1 .panel1-heading .category2{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid #0f0f0f;
+    font-size: 15px;
+    position: relative;
+    top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .bookCategory .panel1 .panel1-heading a{
+    display: inline-block;
+    text-align: left;
+    font-size:15px;
+    color: #0f0f0f;
+    width: 200px;
+    min-height: 34px;
+    line-height: 34px;
+  }
+  .bookCategory .panel1 a:hover{
+    background-color: #f1f1f1;
+    color: #0f0f0f;
+  }
+
+  .bookCategory .panel1 .panel1-body {
+    padding:0;
+  }
+  .bookCategory.panel1-group .panel1-heading + .panel1-collapse > .panel1-body, .panel1-group .panel1-heading + .panel1-collapse > .list-group {
+    border-top: none;
+  }
+  .bookCategory .panel1 .panel1-body li {
+    margin-left: 35px;
+  }
+  .bookCategory .panel1 .panel1-body li a{
+    display: inline-block;
+    padding:7px;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>
+

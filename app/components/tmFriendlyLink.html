@@ -1,0 +1,51 @@
+<div class="friendlyLink">
+  <h4>{{firenlyLinkData.TitleNav}}</h4>
+  <ul dw-loading="friendlyLink">
+    <li ng-repeat="firenlyLink in firenlyLinkData.ListData">
+      <a target="_blank" href={{firenlyLink.Url}} class="clearfix" title="{{firenlyLink.Name}}">
+        <span class="pull-left">{{firenlyLink.Name}}</span>
+        <span  class="pull-right"> > </span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<style>
+  .friendlyLink {
+    height: 215px;
+    padding-left: 20px;
+  }
+  .friendlyLink h4{
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    background-color: #f6f9fe;
+    margin-right: 10px;
+    font-weight: 600;
+  }
+  .friendlyLink ul li{
+    float: left;
+    width: 180px;
+    height: 28px;
+    background-color: #f6f9fe;
+    margin: 5px 5px 0 0;
+    padding: 0 5px;
+  }
+  .friendlyLink ul li a{
+    line-height: 28px;
+    color: #484848;
+    text-align: left;
+  }
+  .friendlyLink ul li a span.pull-left{
+    width: 145px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .friendlyLink ul li a:hover{
+    text-decoration: none;
+    color: #3a7fb6;
+  }
+</style>
+

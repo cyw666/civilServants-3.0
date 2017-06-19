@@ -1,0 +1,14 @@
+<div class="container_24">
+      <p ng-show="!paginationConf.totalItems" class="result">暂无数据</p>
+      <div ng-show="paginationConf.totalItems" class="mar_top_15" dw-loading="tmsearchresult">
+          <ul class="col-md-offset-1">
+              <li class="news" ng-repeat="newsData in newsData">
+                  <a ui-sref="articleDetail({ID:newsData.Id})" target="_blank">[{{Data.CategoryName}}]:{{newsData.Name}}</a></li>
+          </ul>
+      </div>
+</div>
+<style>
+    ul li.news a{
+        font-size: larger;
+    }
+</style>

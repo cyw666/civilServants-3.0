@@ -1,0 +1,100 @@
+<!--@*课程分类*@-->
+<div class="courseClassify panel1-group tmBorder-blue"  dw-loading="courseClassify">
+  <div class="titlebg2">
+    <div class="txt">
+      {{courseClassify.TitleNav}}
+    </div>
+  </div>
+  <div class="panel1 panel1-default">
+    <div class="panel1-heading">
+      <p class="panel1-title" title="全部课程">
+        <a href="javascript:;" ng-click="searchCourse({channelId:'',title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
+          <span class="category2">-</span>
+          全部课程
+        </a>
+      </p>
+    </div>
+  </div>
+  <div class="panel1 panel1-default" ng-repeat="courseList in courseClassify.ListData" repeat-finish="repeatDone()">
+    <div class="panel1-heading">
+      <p class="panel1-title" title="{{courseList.Name}}"  ng-show="courseList.Nodes">
+        <a href="javascript:;" ng-click="searchCourse({channelId:courseList.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
+          <span class="category">+</span>
+          {{courseList.Name}}
+        </a>
+      </p>
+      <p class="panel1-title" title="{{courseList.Name}}"  ng-hide="courseList.Nodes">
+        <a href="javascript:;" ng-click="searchCourse({channelId:courseList.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
+          <span class="category2">-</span>
+          {{courseList.Name}}
+        </a>
+      </p>
+    </div>
+    <div class="panel1-collapse collapse">
+      <div class="panel1-body">
+        <ul>
+          <li  title="{{list.Name}}" ng-repeat="list in courseList.Nodes"><a href="javascript:;" ng-click="searchCourse({channelId:list.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">{{list.Name}}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .courseClassify {
+    min-height: 525px;
+  }
+.courseClassify .panel1{
+  border:0;
+}
+.courseClassify .panel1 .panel1-heading{
+  background-color: #fff;
+  padding:0 20px;
+}
+.courseClassify .panel1 .panel1-heading .category,.courseClassify .panel1 .panel1-heading .category2{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #0f0f0f;
+  font-size: 15px;
+  position: relative;
+  top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.courseClassify .panel1 .panel1-heading a{
+  display: inline-block;
+  text-align: left;
+  font-size:15px;
+  color: #0f0f0f;
+  width: 200px;
+  min-height: 34px;
+  line-height: 34px;
+}
+.courseClassify .panel1 a:hover{
+  background-color: #f1f1f1;
+  color: #0f0f0f;
+}
+
+.courseClassify .panel1 .panel1-body {
+  padding:0;
+}
+.courseClassify.panel1-group .panel1-heading + .panel1-collapse > .panel1-body, .panel1-group .panel1-heading + .panel1-collapse > .list-group {
+  border-top: none;
+}
+.courseClassify .panel1 .panel1-body li {
+  margin-left: 35px;
+}
+.courseClassify .panel1 .panel1-body li a{
+  display: inline-block;
+  padding:7px;
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+</style>
+

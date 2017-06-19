@@ -1,0 +1,23 @@
+<!--教学计划-->
+<div class="trainingCenter tmBorder-green">
+    <ol class="breadcrumb">
+        <li class="currentPosition">您的当前位置:</li>
+        <li><a ui-sref="main">首页</a></li>
+        <li><a ui-sref="specialTrainingCourse">专题培训班</a></li>
+        <li><a ui-sref="classDetail({Id:Id})">{{classPlanData.TrainingName}}</a></li>
+        <li class="active">教学计划</li>
+    </ol>
+
+    <div class="trclasstitle text-center tmBorder-blue" dw-loading="classPlan">
+        <h2>教学计划</h2>
+        <div ng-bind-html="classPlanData.TeachingPlan | trustHtml">
+
+        </div>
+    </div>
+</div>
+<style>
+    h2{
+        margin: 10px 0;
+    }
+</style>
+

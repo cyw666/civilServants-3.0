@@ -1,0 +1,50 @@
+<!--用户排行列表（more）-->
+<div class="userRankingList tmBorder-blue">
+  <ol class="breadcrumb">
+    <li class="currentPosition">您的当前位置:</li>
+    <li><a ui-sref="main">首页</a></li>
+    <li class="active">{{userRankingData.ViewBag.TitleNav}}</li>
+  </ol>
+  <div class="rankTitle">
+    <div class="txt">{{userRankingData.ViewBag.TitleNav}}</div>
+  </div>
+  <div class="myTab" dw-loading="userRankingList">
+    <div class="tab-content">
+      <div class="tab-panel perlist">
+        <div class="title_bar clearfix">
+          <span class="list1">排名</span>
+          <span class="list1">姓名</span>
+          <span class="list1">学时</span>
+          <span class="list1">学次</span>
+          <span class="list1">单位名称</span>
+        </div>
+        <div class="list" ng-repeat="userRankingDataList in userRankingData.ListData">
+          <p class="clearfix">
+            <span class="list1">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
+            <span class="list1">{{userRankingDataList.UserName}}</span>
+            <span class="list1">{{userRankingDataList.Credit}}</span>
+            <span class="list1">0</span>
+            <span class="list1">{{userRankingDataList.DepartmentName}}</span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+    <div ng-show="paginationConf.totalItems>0" tm-pagation conf="paginationConf" style="margin-left: 20%"></div>
+    <div class="noData" ng-show="paginationConf.totalItems <=0">暂无数据</div>
+  </div>
+</div>
+
+<style>
+  .myTab .perlist .list1 {
+    width: 20%;
+    height: 37px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .myTab .perlist .list .list1 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+</style>

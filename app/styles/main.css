@@ -1,0 +1,577 @@
+/*cssreset*/
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  font-size: 14px;
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  color: #62a3db;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* `XHTML, HTML4, HTML5 Reset
+----------------------------------------------------------------------------------------------------*/
+
+a,
+abbr,
+acronym,
+address,
+applet,
+article,
+aside,
+audio,
+b,
+big,
+blockquote,
+body,
+canvas,
+caption,
+center,
+cite,
+code,
+dd,
+del,
+details,
+dfn,
+dialog,
+div,
+dl,
+dt,
+em,
+embed,
+fieldset,
+figcaption,
+figure,
+font,
+footer,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+hr,
+html,
+i,
+iframe,
+img,
+ins,
+kbd,
+label,
+legend,
+li,
+main,
+mark,
+menu,
+meter,
+nav,
+object,
+ol,
+output,
+p,
+pre,
+progress,
+q,
+rp,
+rt,
+ruby,
+s,
+samp,
+section,
+small,
+span,
+strike,
+strong,
+sub,
+summary,
+sup,
+table,
+tbody,
+td,
+tfoot,
+th,
+thead,
+time,
+tr,
+tt,
+u,
+ul,
+var,
+video,
+xmp {
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  height: 100%;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  /*
+    Override the default (display: inline) for
+    browsers that do not recognize HTML5 tags.
+
+    IE8 (and lower) requires a shiv:
+    http://ejohn.org/blog/html5-shiv
+  */
+  display: block;
+}
+
+b,
+strong {
+  /*
+    Makes browsers agree.
+    IE + Opera = font-weight: bold.
+    Gecko + WebKit = font-weight: bolder.
+  */
+  font-weight: bold;
+}
+
+img {
+  color: transparent;
+  font-size: 0;
+  vertical-align: middle;
+  border:0px;
+  /*
+    For IE.
+    http://css-tricks.com/ie-fix-bicubic-scaling-for-images
+  */
+  -ms-interpolation-mode: bicubic;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+li {
+  /*
+    For IE6 + IE7:
+
+    "display: list-item" keeps bullets from
+    disappearing if hasLayout is triggered.
+  */
+  display: list-item;
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+th,
+td,
+caption {
+  font-weight: normal;
+}
+
+q {
+  quotes: none;
+}
+
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+sub,
+sup,
+small {
+  font-size: 75%;
+}
+
+sub,
+sup {
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+svg {
+  /*
+    For IE9. Without, occasionally draws shapes
+    outside the boundaries of <svg> rectangle.
+  */
+  overflow: hidden;
+}
+
+/*公共样式*/
+body {
+  background: url("../images/big_bg.png") center top;
+  font-family: "Microsoft YaHei","宋体";
+}
+.container_24{background-color: #fff}
+a.btn {
+  color: #fff;
+}
+h4 {
+  font-size: 16px;
+  /*font-weight: bold;*/
+}
+/*页面最外部容器*/
+.bigOuter {
+  width:1080px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+/*颜色*/
+.blue {  color: #3a7fb6;  }
+.green {  color: #6d9d85;  }
+.cyan {  color: #b4ca41;  }
+.red {color: #EA4646}
+/*模块头部公用样式*/
+.com-header {
+  height: 40px;
+  border-radius: 8px 0 0 0;
+  margin-left: 10px;
+}
+.com-header h4{
+  color: #fff;
+  line-height: 40px;
+  padding-left: 20px;
+  font-size: 16px;
+}
+.com-header a.pull-right {
+  line-height: 40px;
+  color: #fff;
+  font-size: 16px;
+  padding-right: 10px;
+}
+.com-header-green {
+  background-color: #6d9d85;
+}
+.com-header-blue {
+  background-color: #3a7fb6;
+}
+.com-header-cyan {
+  background-color: #b4ca41;
+}
+
+/*课程分类头部1*/
+.titlebg .txt {
+  width: 100%;
+  line-height: 49px;
+  text-indent: 49px;
+  font-size: 20px;
+  color: #000;
+}
+.tag {
+  margin-left: 30px;
+  float: left;
+  padding: 10px 5px 10px 0;
+}
+.tag span {
+  padding-left: 10px;
+}
+.tag a {
+  margin-left: 5px;
+}
+/*课程分类头部2*/
+.titlebg2 .txt {
+  line-height: 65px;
+  color: #666;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+/*排行榜内页头部*/
+.rankTitle .txt {
+  font-size: 17px;
+  color: #666;
+  font-weight: bold;
+  text-align: center;
+}
+/*路径导航通用样式*/
+.breadcrumb {
+}
+.datebg {
+  background: url(../images/datePicker.gif) no-repeat right;
+}
+.breadcrumb .currentPosition{
+  color: #000;
+  padding-left: 25px;
+  background: url("../images/link.gif") 0 2px no-repeat;
+}
+.formCourse{
+  margin-left: 40px;
+}
+.formCourse .form-control ,.formCourse .btn.btn-default{
+  height: 26px;
+}
+.formCourse select.form-control{
+  padding: 0;
+}
+.formCourse .btn.btn-default{
+  padding:2px 15px;
+}
+
+/*模板通用边框*/
+.tmBorder-green {
+  border:1px solid #ddd;
+  border-top:6px  solid #6d9d85;
+}
+.tmBorder-blue {
+  border:1px solid #ddd;
+  border-top:6px  solid #3a7fb6;
+}
+.tmBorder-cyan {
+  border:1px solid #ddd;
+  border-top:6px  solid #b4ca41;
+}
+h4.title-h4{
+  line-height: 52px;
+  text-align: center;
+}
+/*圆点*/
+.dian {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #000;
+}
+/*星星*/
+.star {
+  overflow: hidden;
+  cursor: pointer;
+  width: 121px;
+  height: 18px;
+  margin-right: 14px;
+  /*float: left;*/
+  background: url(../images/star_all.gif) 0 0 no-repeat;
+}
+/*
+ *星级评论
+ */
+.my-stars-list{
+  height: 34px;
+  line-height: 34px;
+  float: left;
+}
+.my-stars-items{
+  float: left;
+  cursor:pointer;
+  font-size:0;
+  width: 25px;
+  line-height: 25px;
+  height:25px;
+  background-image: url(../images/star_all_02.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.myStarHover.my-stars-items{
+  background-image: url(../images/star_all_04.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.myStarsSel.my-stars-items{
+  background-image: url(../images/star_all_04.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+/*播放进度*/
+.progress {
+  height: 18px;
+  margin-top: 9px;
+  margin-bottom: 0;
+}
+/*标签页*/
+.myTab {
+  margin-top: 25px;
+  text-align: center;
+}
+.myTab ul.nav-tabs>li a {
+  color: #000;
+  width: auto;
+  padding: 10px 15px;
+  margin:0;
+  font-size: 16px;
+  font-weight: 500;
+  border:2px solid #eee;
+}
+.myTab ul.nav-tabs>li.active a {
+  color: #fff;
+  background-color: #6d9d85;
+  border: 1px solid #6d9d85;
+  border-bottom-color: transparent;
+  text-align: center;
+}
+.myTab .perlist {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.myTab .perlist .title_bar span {
+  float: left;
+  display: inline-block;
+  text-align: center;
+  line-height: 37px;
+}
+.myTab .perlist span a{
+  color: #666;
+}
+.myTab .perlist span a:hover{
+  color:#7abc1d;
+}
+.myTab .perlist .title_bar {
+  line-height: 30px;
+  font-weight: bold;
+  background: #EDF3FC;
+  color: #666;
+  border-bottom: 1px dashed #ccc;
+}
+.myTab .perlist .list{
+  border-bottom: 1px dashed #ccc;
+}
+.myTab .perlist .list:hover{
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+}
+.myTab .perlist .list span{
+  line-height: 37px;
+  float: left;
+}
+.myTab .perlist span a.fav{
+  margin-left: 10px;
+}
+
+.form-group input {
+  width: 400px;
+  padding: 0 0 0 12px;
+  height: 26px;
+  line-height: 26px;
+}
+/*placeholder*/
+.placeholder {
+  position: absolute;
+  /*float: right;*/
+  color: #aaa;
+  cursor: text;
+  z-index: 1;
+  /*left: 40px;*/
+}
+/*暂无数据*/
+.result{
+  color: #000;
+  font-weight: bold;
+  font-size: 40px;
+  font-family: 黑体;
+  text-align: center;
+  line-height: 250px;
+  /*margin-left: -250px;*/
+}
+
+/*排行前三背景*/
+.rankFirstBg {
+  background: url("../images/first_bg.png") center;
+}
+.rankSecondBg {
+  background: url("../images/second_bg.png") center;
+}
+.rankThirdBg {
+  background: url("../images/third_bg.png") center;
+}
+/*margin*/
+.mar_top_5 {
+  margin-top: 5px;
+}
+.mar_top_10 {
+  margin-top: 10px;
+}
+.mar_top_12 {
+  margin-top: 12px;
+}
+.mar_top_15 {
+  margin-top: 15px;
+}
+.mar_top_20 {
+   margin-top: 20px;
+ }
+.mar_top_34 {
+  margin-top: 34px;
+}
+.mar_left_10 {
+  margin-left:10px;
+}
+.mar_left_20 {
+  margin-left:20px;
+}
+.mar_left_24 {
+   margin-left:24px;
+ }
+.mar_left_30 {
+  margin-left:30px;
+}
+.mar_right_10 {
+  margin-right:10px;
+}
+.mar_right_12 {
+  margin-right:12px;
+}
+.mar_bottom_20 {
+  margin-bottom:20px;
+}
+/*paddingleft*/
+.pad_left_10 {
+  padding-left: 10px;
+}
+.pad_left_15 {
+  padding-left: 15px;
+}
+.pad_left_16 {
+  padding-left: 16px;
+}
+.pad_left_20 {
+  padding-left: 20px;
+}
+.pad_left_35 {
+  padding-left: 35px;
+}
+.pad_right_10 {
+  padding-right: 10px;
+}
+.pad_right_15 {
+  padding-right: 15px;
+}
+.pad_right_20 {
+  padding-right: 20px;
+}
+.pad_right_30 {
+  padding-right: 30px;
+}
+
+
+.ajax-error{
+  background: url("../images/modulebaseload.gif") 50% 50% no-repeat;
+}

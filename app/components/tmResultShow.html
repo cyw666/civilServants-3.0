@@ -1,0 +1,33 @@
+
+<div class="resultShow tmBorder-green">
+  <ol class="breadcrumb">
+    <li class="currentPosition">您的当前位置:</li>
+    <li><a ui-sref="main" href="#/main">首页</a></li>
+    <li class="active">{{resultShowData.TitleNav}}</li>
+  </ol>
+  <ul class="resultContent" dw-loading="resultShow">
+    <li class="pull-left" ng-repeat="list in resultShowData.ListData">
+      <a ui-sref="articleDetail({ID:list.Id})" target="_blank"><img ng-src="{{resultShowData.Path+'/'+list.Img}}" alt="{{list.Name}}"></a>
+      <p><a ui-sref="articleDetail({ID:list.Id})" target="_blank">{{list.Name}}</a></p>
+    </li>
+  </ul>
+</div>
+<style>
+  .resultContent li{
+    width: 200px;
+    height:260px;
+    border: 1px solid #eaeaea;
+    margin-left: 50px;
+    margin-top: 20px;
+    text-align: center;
+  }
+ .resultContent li img{
+   display: inline-block;
+   width: 200px;
+   height:200px;
+ }
+  .resultContent li p{
+    height:30px;
+    line-height: 30px;
+  }
+</style>

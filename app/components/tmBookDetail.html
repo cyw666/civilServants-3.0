@@ -1,0 +1,184 @@
+<!--图书详情-->
+<div class="bookDetail tmBorder-cyan">
+  <ol class="breadcrumb">
+    <li class="currentPosition">您的当前位置:</li>
+    <li><a ui-sref="main">首页</a></li>
+    <li><a ui-sref="library">图书馆</a></li>
+    <li class="active">{{bookContentData.Name}}</li>
+  </ol>
+
+  <div class="booktitle">
+    <h2 class="titlename">{{bookContentData.Name}}</h2>
+    <p>作者: &nbsp;<strong>{{bookContentData.Author}}</strong> &nbsp;出版时间: &nbsp;{{bookContentData.Time}}&nbsp;</p>
+  </div>
+
+  <div class="bookcontent clearfix">
+    <img ng-src="{{bookContentData.ImagePath+'/'+bookContentData.Icon}}">
+    <div class="booktxt">
+      <h4 class="bookkey">图书关键字:&nbsp;<span>{{bookContentData.BookKey?bookContentData.BookKey:'无'}}</span></h4>
+      <h4 class="booksum">作品简介:</h4>
+      <p ng-bind-html="bookContentData.Content| trustHtml"></p>
+      <div class="count">
+        <span>总点击: &nbsp;{{bookContentData.ClickCount}}</span>
+        <span>总字数: &nbsp;{{bookContentData.ByteCount}}</span>
+        <span>总鲜花: &nbsp;{{bookContentData.FlowerCount}}</span>
+      </div>
+
+      <a class="btn btn-danger" ui-sref="bookchapter({bookId:bookContentData.Id})">阅读本书</a>
+      <a class="btn btn-danger" data-toggle="modal" data-target=".notemodal">发表评论</a>
+      <a ng-if="bookContentData.FavoriteId==0" class="btn btn-danger" ng-click="favoriteAdd({mainId:bookContentData.Id,type:'Book',title:bookContentData.Name,remark:'0'},token)">收藏</a>
+      <a ng-if="bookContentData.FavoriteId!=0" class="btn btn-danger" ng-click="favoriteDelete({id:bookContentData.FavoriteId},token)">取消收藏</a>
+      <!-- 图书评论 -->
+      <div class="modal fade notemodal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">图书评论</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table table-bordered">
+                <tbody>
+                <tr>
+                  <td>图书名称：</td>
+                  <td>{{bookContentData.Name}}</td>
+                </tr>
+                <!--<tr>
+                  <td>笔记名称：</td>
+                  <td>
+                    <input id="txtName" name="Name" class="txt" type="text" ng-model="noteName">
+                  </td>
+                </tr>-->
+                <tr>
+                  <td>评    论：</td>
+                  <td>
+                    <textarea ng-model="bookContent" id="txtContent" name="Content" cols="50" rows="5" type="text" class="txt2"></textarea>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button  ng-click="postComment({bookId:bookContentData.Id,content:bookContent})" type="button" class="btn btn-primary">提交</button>
+            </div>
+          </div>
+        </div>
+        <!--<div class="preventorgery"></div>-->
+      </div>
+
+    </div>
+  </div>
+  <!--评论列表-->
+  <div class="bookComment">
+    <ul class="comment_bord">
+      <li ng-repeat="list in commentData.ListData" class="clearfix">
+        <div class="bookCommentLeft pull-left">
+          <h4>{{list.UserName}}:</h4>
+          <p>{{list.Comment}}</p>
+        </div>
+        <div class="bookCommentRight pull-right">
+          <span>{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}楼</span>
+        </div>
+      </li>
+      <div tm-pagation conf="paginationConf"></div>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .bookDetail .titlename {
+    line-height: 3.1em;
+    text-align: center;
+    color: #666;
+    margin-top: 10px;
+  }
+  .bookDetail .booktitle p {
+    text-align: right;
+    padding-right: 40px;
+  }
+  .bookDetail .bookcontent img {
+    float: left;
+    width: 187px;
+    height: 247px;
+    margin: 20px 0 0 20px;
+  }
+  .bookDetail .bookcontent .booktxt {
+    float: left;
+    padding-left: 11px;
+    margin-top: 20px;
+  }
+  .bookDetail .bookcontent h4 {
+    height: 30px;
+    line-height: 30px;
+    font-weight: 600;
+  }
+  .bookDetail .bookcontent h4 span{
+    font-weight: normal;
+  }
+  .bookDetail .booktxt>p {
+    color: #333;
+    text-indent: 2em;
+    width: 700px;
+    height: 108px;
+    overflow: hidden;
+    line-height: 1.5em;
+  }
+  .bookDetail .bookcontent .count {
+    text-align: center;
+    width: 726px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #666;
+  }
+  .bookDetail .bookcontent span {
+    width: 25%;
+    margin-bottom: 10px;
+    display: inline-block;
+    color: #666;
+  }
+  .bookDetail .booktxt>a.btn {
+    margin-top: 10px;
+    width: 130px;
+    padding: 4px 20px;
+    margin-right: 10px;
+  }
+  .bookDetail .modal-footer {
+    text-align: center;
+  }
+  .bookDetail .comment_bord {
+    border: 3px solid #eee;
+    border-right-width: 1px;
+    border-left-width: 5px;
+    border-top: none;
+    margin-bottom: 20px;
+  }
+  .bookDetail .bookComment{
+    margin-top: 20px;
+  }
+  .bookDetail .bookCommentLeft{
+    width: 80%;
+  }
+  .bookDetail .bookCommentLeft h4,.bookDetail .bookCommentLeft p{
+    padding-left: 15px;
+    margin-top: 5px;
+  }
+  .bookDetail .bookCommentLeft p{
+    min-height: 40px;
+  }
+  .bookDetail .bookComment li{
+    border-bottom: dashed #333 1px;
+  }
+  .bookDetail .bookCommentRight span{
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background-color: #d9534f;
+    color: #fff;
+    line-height: 45px;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 40px;
+    margin-top: 10px;
+    border:1px solid #d43f3a;
+    border-radius: 3px;
+  }
+</style>

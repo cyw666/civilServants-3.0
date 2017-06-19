@@ -1,0 +1,455 @@
+﻿body { font-family: 微软雅黑; font-size: 12px; background: #f0f0f0; }
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+ul { white-space: nowrap; }
+li { display: inline-block; float: left; }
+/**********导航***********/
+#nav { background: url(images/nav_bg.jpg); width: 100%; height: 60px; position: fixed; left: 0; z-index: 999; }
+#nav .nav_box { margin-left: auto; margin-right: auto; width: 950px; }
+#nav img { float: left; }
+#nav .navlist { float: left; width: 405px; }
+#nav .navlist li { width: 80px; line-height: 60px; text-align: center; margin: 0 10px 0 10px; }
+#nav .navlist .list { color: #fff; background: #5c5530; display: block; }
+#nav .navlist li a { color: #fff; display: block; font-size: 16px; }
+#nav .navlist li a:hover { color: #fff; background: #5c5530; display: block; text-decoration: none; }
+#nav .top_search { float: left; margin-top: 16px; }
+#nav .top_search .search_txt { width: 165px; height: 25px; line-height: 25px; background: #dcdcdc; border: 0px; float: left; }
+#nav .login_register { float: right; width: 115px; color: #fff; font-family: 宋体; line-height: 60px; }
+#nav .login_register a { color: #fff; padding: 0 8px; display: block; }
+#nav .login_register .userinfo { position: relative; width: 100%; }
+#nav .login_register .userinfo a { padding: 0px; }
+#nav .login_register .userinfo .username { max-width: 70px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; float: right; margin-right: 10px; }
+#nav .login_register .userinfo .myphoto { width: 30px; height: 30px; margin-top: 15px; float: right; }
+#nav .login_register .userinfo .infolist { width: 150px; min-height: 30px; padding: 10px; display: none; background-color: #FFFFFF; position: absolute; top: 60px; left: -55px; box-shadow: 0px 0px 10px 0px #666; overflow: hidden; }
+#nav .login_register .userinfo .infolist li { margin: 0px; height: 35px; line-height: 35px; }
+#nav .login_register .userinfo .infolist a { color: #333; border-bottom: 1px solid #dedede; padding-left: 10px; }
+#nav .login_register .userinfo .infolist a:hover { background: #dedede; text-decoration: none; }
+#nav .login_register .userlogin { position: relative; margin-left: 20px; }
+#nav .login_register ul { }
+#nav .login_register ul li { float: left; }
+#nav .login_register ul li ul { padding: 10px; display: none; background-color: #FFFFFF; position: absolute; left: -145px; box-shadow: 0px 0px 10px 0px #666; width: 225px; min-height: 130px; margin: 0px; }
+#nav .login_register ul li ul li { margin: 10px 0 0 9px; width: 100%; color: #333; height: 30px; line-height: 30px; }
+#nav .login_register ul li ul li .ipt-txt { height: 25px; line-height: 25px; width: 200px; color: #999; }
+#nav .login_register ul li ul li .ipt-btn { background: #3b7f1a; cursor: pointer; background-image: -moz-linear-gradient(top, #559e31, #3b7f1a); /* Firefox */ background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #559e31), color-stop(1, #3b7f1a)); /* Saf4+, Chrome */ width: 205px; height: 30px; line-height: 30px; border-radius: 5px; float: left; border: 0px; font-size: 18px; text-align: center; color: #fff; margin-top: -8px; }
+#nav .login_register ul li ul li .ipt-btn:hover { background: #549e30; }
+#nav .login_register ul li ul li .jzmm { float: left; }
+#nav .login_register ul li ul li .jzmm .Checkbox { float: left; margin-top: 5px; }
+#nav .login_register ul li ul li .wjmp a { color: #333; margin-left: 72px; _margin-left: 36px; float: left; }
+
+/**********登录页面***********/
+#login { position: relative; width: 100%; height: 100%; }
+.logintop { width: 100%; height: 295px; background: #3b7f1a; }
+.logintop .logintopimg { margin: 0 auto; width: 1000px; }
+.login_content { width: 360px; margin: 0 auto; height:330px;}
+.login_content .user_txt { width: 360px; height: 38px; border: 1px solid #b4b4b4; border-radius: 5px; text-indent: 10px; color: #999; line-height: 38px; float: left; }
+.login_content .ValidateCode { width: 160px; height: 38px; border: 1px solid #b4b4b4; border-radius: 5px; text-indent: 10px; color: #999; line-height: 38px; float: left; }
+.login_content .loginbutton { background: #3b7f1a; background-image: -moz-linear-gradient(top, #559e31, #3b7f1a); /* Firefox */ background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #559e31), color-stop(1, #3b7f1a)); /* Saf4+, Chrome */ width: 362px; height: 38px; line-height: 38px; border-radius: 5px; float: left; border: 0px; font-size: 18px; text-align: center; color: #fff; }
+.login_content .loginbutton:hover { background: #549e30; text-decoration: none; }
+
+/**********顶部大焦点图***********/
+#scroll { width: 100%; height: 350px; margin-top: 60px; _margin-top: 0px; }
+#scroll .mod_focus_show { width: 950px; height: 350px; position: relative; overflow: hidden; margin: 0 auto; z-index: 997; }
+.mod_focus_show .mod_focus_pic { display: block; width: 950px; height: 350px; }
+.mod_focus_show .mod_focus_pic li, .mod_focus_show .mod_focus_pic a, .mod_focus_show .mod_focus_pic img { display: block; width: 950px; height: 350px; }
+.mod_focus_show .mod_focus_pic li { position: absolute; left: 0; top: 0; }
+
+.mod_focus_show .mod_focus_list { padding-left: 50px; overflow: hidden; height: 60px; position: absolute; bottom: 0; }
+.mod_focus_show .mod_focus_list li { width: 70px; height: 45px; float: left; margin: 0 8px 0 8px; position: relative; *display: inline; }
+.mod_focus_show .mod_focus_list li a { display: block; width: 70px; height: 45px; }
+.mod_focus_show .mod_focus_list li img { display: block; width: 70px; height: 45px; border: 2px solid #ccc; }
+.mod_focus_show .mod_focus_list li a:hover { _background: none; }
+.mod_focus_show .mod_focus_list li a:hover .mask, .mod_focus_show .mod_focus_list .current .mask { display: none; }
+.mod_focus_show .mod_focus_list li .mask { display: block; width: 70px; height: 45px; position: relative; top: -47px; left: 2px; bottom: 0; background: #000; opacity: .5; filter: alpha(opacity=50); }
+.mod_focus_show .mod_focus_list li .border { display: none; }
+.mod_focus_show .mod_focus_list .current .border { display: block; height: 45px; width: 70px; font-size: 0; overflow: hidden; position: absolute; left: 0; top: 0; border: 2px solid #7abc1d; }
+
+
+/**********顶部排行通知切换***********/
+#Top_tab { width: 280px; height: 350px; overflow: hidden; position: absolute; right: 0px; top: 60px; _top: 0px; font-family: 宋体; z-index: 998; }
+#Top_tab .tab-title { background-color: #404040; float: left; width: 100%; height: 32px; }
+#Top_tab .tab-title span { cursor: pointer; width: 65px; margin: 0 13px 0 13px; padding: 8px 0 7px 0; text-align: center; float: left; text-shadow: none; color: #999999; }
+#Top_tab .tab-title .selected { color: #fff; border-bottom: 3px solid #09924b; }
+#Top_tab .tab-content { float: left; width: 100%; height: 318px; background: url(images/tab-contentbg.png); }
+#Top_tab .tab-content li { line-height: 20px; margin: 7px 0px; }
+#Top_tab .tab-content .number { width: 18px; line-height: 18px; text-align: center; border: 1px solid #657b77; float: left; color: #cccccc; margin: 0 8px 0 12px; font-family: 微软雅黑; }
+#Top_tab .tab-content .number1 { width: 20px; line-height: 20px; text-align: center; background: #ef9632; float: left; color: #fff; margin: 0 8px 0 12px; font-family: 微软雅黑; }
+#Top_tab .tab-content .list a { width: 190px; float: left; color: #ccc; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+#Top_tab .tab-content .list a:hover { text-decoration: none; color: #7abc1d; }
+#Top_tab .tab-content .sum { float: left; color: #888888; width: 35px; text-align: right; }
+#Top_tab .tab-content .hide { display: none; }
+#Top_tab .tab-title2 { padding-left: 20px; margin: 6px 0 8px 0; float: left; color: #999; }
+#Top_tab .tab-title2 span { cursor: pointer; color: #999999; }
+#Top_tab .tab-title2 .selected2 { color: #fff; }
+#Top_tab .tab-content2 { float: left; width: 100%; }
+#Top_tab .tab-content2 .hide { display: none; }
+
+/**********数据和分类标签***********/
+#type_tag { width: 100%; height: 160px; background: #fff; border-bottom: 1px solid #dedede; float: left; padding-top: 20px; }
+#type_tag .data_box { width: 170px; height: 150px; background: url(images/data_bg.jpg) no-repeat; margin-left: 10px; margin-right: 35px; _margin-right: 18px; float: left; }
+#type_tag .data_box ul { float: left; margin: 10px 0 0 30px; _margin-left: 15px; }
+#type_tag .data_box ul li { line-height: 28px; width: 100%; color: #fff; }
+#type_tag .type { float: left; width: 170px; overflow: hidden; margin: 0 5px 0 5px; }
+#type_tag .type .type_title { font-size: 16px; margin-bottom: 10px; }
+#type_tag .type .type_title a { color: #333333; }
+#type_tag .type .type_title .sum { font-size: 14px; color: red; }
+#type_tag .type li { float: left; line-height: 35px; font-size: 14px; max-width: 70px; min-width: 50px; overflow: hidden; white-space: nowrap; margin-right: 20px; }
+#type_tag .type li a { color: #666; }
+
+/*****************热门专题,课程，猜你喜欢******************/
+#special_course { width: 100%; background: #fff; border-bottom: 1px solid #dedede; float: left; margin-top: 20px; padding-bottom: 20px; }
+/**********专题title***********/
+#special_course .special_title { background: #970700; width: 372px; height: 150px; float: left; color: #fff; margin-top: 20px; margin-right: 12px; }
+#special_course .special_title a { color: #fff; }
+#special_course .special_title .title_box { float: left; margin: 23px 0 0 20px; _margin-left: 10px; }
+#special_course .special_title .title_box .title { font-size: 30px; margin-bottom: 5px; }
+#special_course .special_title .title_box .title a { font-size: 12px; font-family: 宋体; margin-left: 10px; }
+#special_course .special_title .title_box li { margin-right: 10px; line-height: 25px; }
+
+/**********课程title***********/
+#special_course .course_title { width: 100%; float: left; color: #fff; position: relative; height: 60px; line-height: 60px; margin-bottom: -20px; }
+#special_course .course_title .title { color: #333; margin-left: 5px; }
+#special_course .course_title .title span { float: left; font-size: 30px; }
+#special_course .course_title .title a { font-size: 14px; margin-left: 10px; color: #666; float: left; }
+#special_course .course_title .title .more { border: 1px solid #2ac876; height: 20px; line-height: 20px; padding: 0 10px; margin-top: 20px; margin-right: 10px; font-size: 12px; text-align: center; border-radius: 5px; float: right; text-decoration: none; }
+
+/**********列表***********/
+#special_course .special_list { width: 180px; height: 150px; overflow: hidden; float: left; margin: 0px; margin-right: 12px; margin-top: 20px; position: relative; }
+#special_course .list_title a { color: #333; line-height: 32px; font-size: 14px; width: 180px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; float: left; }
+#special_course .comment { color: #999; float: left; }
+#special_course .comment img { float: left; margin-top: 3px; margin-right: 5px; }
+#special_course .comment span { float: left; margin-right: 5px; }
+#special_course .special_list .img { width: 180px; height: 100px; overflow: hidden; float: left; position: relative; }
+#special_course .special_list .img img { width: 180px; height: 100px; position: absolute; }
+#special_course .special_list2 { width: 180px; float: right; overflow: hidden; height: 320px; margin-top: 20px; position: relative; }
+#special_course .special_list2 .img { width: 180px; height: 270px; overflow: hidden; float: left; position: relative; }
+#special_course .special_list2 .img img { width: 180px; height: 270px; position: absolute; }
+#special_course .special_list3 { width: 180px; height: 150px; overflow: hidden; float: right; margin-top: 20px; position: relative; }
+#special_course .special_list3 .img { width: 180px; height: 100px; overflow: hidden; float: left; position: relative; }
+#special_course .special_list3 .img img { width: 180px; height: 100px; position: absolute; }
+
+/*****************个人中心左边******************/
+#myleft { background: #fff; width: 100%; border-right: 1px solid #dedede; margin-top: 80px; _margin-top: 20px; float: left; }
+#myleft .myphoto { width: 120px; margin: 20px 0 0 55px; _margin-left: 28px; float: left; text-align: center; }
+#myleft .myphoto img { width: 120px; height: 120px; border: 1px solid #ccc; }
+#myleft .myphoto p { line-height: 35px; font-size: 14px; }
+#myleft .myinfo { border-top: 1px solid #dedede; width: 100%; min-height: 100px; float: left; padding: 5px 0; }
+#myleft .myinfo ul { float: left; padding-left: 30px; }
+#myleft .myinfo ul li { line-height: 30px; width: 100%; }
+#myleft .myinfo ul li a { color: #000; }
+#myleft .myinfo .score { color: red; }
+#myleft .mylist { border-top: 1px solid #dedede; width: 100%; min-height: 100px; float: left; }
+#myleft .mylist ul { float: left; width: 100%; overflow: hidden; }
+#myleft .mylist ul li { width: 100%; line-height: 35px; border-bottom: 1px solid #eeeeee; }
+#myleft .mylist ul li .listbg { background: #13a654; color: #fff; }
+#myleft .mylist ul li a { color: #000; font-size: 14px; float: left; display: block; width: 100%; margin: 5px 0; }
+#myleft .mylist ul li a:hover { color: #fff; text-decoration: none; background: #13a654; }
+#myleft .mylist ul li .list1 { background: url(images/my_icon.png) no-repeat 0 -1px; width: 15px; height: 15px; margin: 10px 0 0 30px; float: left; }
+#myleft .mylist ul li .list2 { background: url(images/my_icon.png) no-repeat 0 -43px; width: 15px; height: 15px; margin: 10px 0 0 30px; float: left; }
+#myleft .mylist ul li .list3 { background: url(images/my_icon.png) no-repeat 0 -90px; width: 15px; height: 15px; margin: 10px 0 0 30px; float: left; }
+#myleft .mylist ul li .list4 { background: url(images/my_icon.png) no-repeat 0 -137px; width: 15px; height: 15px; margin: 10px 0 0 30px; float: left; }
+#myleft .mylist ul li .list5 { background: url(images/my_icon.png) no-repeat 0 -181px; width: 15px; height: 15px; margin: 10px 0 0 30px; float: left; }
+#myleft .mylist ul li .list6 { background: url(images/my_icon.png) no-repeat 0 -229px; width: 15px; height: 15px; margin: 10px 0 0 30px; float: left; }
+#myleft .mylist ul li .list7 { background: url(images/my_icon.png) no-repeat 0 -273px; width: 15px; height: 15px; margin: 10px 0 0 30px; float: left; }
+#myleft .mylist ul li .listtxt { margin-left: 20px; float: left; }
+
+/*****************个人中心右边******************/
+#myright { width: 100%; margin-top: 80px; _margin-top: 20px; float: left; }
+#myright .mycourse { width: 100%; float: left; }
+.myknow, .special { margin-top: 20px; }
+.mycourse .title { float: left; width: 100%; height: 32px; line-height: 32px; }
+.mycourse .title a { color: #666; }
+.mycourse .title a:hover { text-decoration: none; }
+.mycourse .title .txt { float: left; font-size: 18px; color: #333; margin-left: 5px; }
+.mycourse .title .add { float: left; font-size: 14px; margin-left: 20px; }
+.mycourse .title .more { border: 1px solid #2ac876; height: 20px; line-height: 20px; padding: 0 10px; margin-top: 5px; margin-right: 10px; font-size: 12px; text-align: center; border-radius: 5px; float: right; }
+.mycourse .content { width: 100%; background: #fff; border-left: 1px solid #dedede; border-bottom: 1px solid #dedede; min-height: 194px; float: left; }
+.mycourse .content ul li { margin: 20px 0 0 20px; _margin-left: 13px; width: 210px; height: 165px; overflow: hidden; position: relative; }
+.mycourse .content ul li .img { width: 210px; height: 110px; overflow: hidden; float: left; position: relative; }
+.mycourse .content ul li .img img { width: 210px; height: 110px; position: absolute; }
+.mycourse .content ul li p { color: #000; font-size: 14px; line-height: 28px; text-align: center; }
+.mycourse .content ul li a:hover { text-decoration: none; }
+.mycourse .content ul li .coursetitle { color: #666; width: 210px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+/*****************课程中心topbg******************/
+.coursebg { background: url(images/kczx.jpg); float: left; margin-top: 60px; _margin-top: 0px; height: 195px; width: 100%; border-bottom: 1px solid #ccc; position: relative; }
+.specialbg { background: url(images/ztzx.jpg); border-bottom: 1px solid #fff; position: relative; }
+.coursebg .info { margin-left: 20px; margin-top: 20px; }
+.coursebg .info .title { font-size: 36px; }
+.coursebg .info .title_special { color: #fff; }
+.coursebg .info .jianjie { font-size: 14px; color: #666; margin-top: 10px; }
+.coursebg .info .jianjie_special { color: #fff; }
+.coursebg .titletab { height: 40px; position: absolute; bottom: 0; }
+.coursebg .titletab .txt { background: #00a750; color: #fff; }
+.coursebg .titletab a { width: 100px; height: 40px; line-height: 40px; display: block; font-size: 16px; text-align: center; float: left; color: #333; }
+.coursebg .titletab a:hover { background: #00a750; color: #fff; text-decoration: none; }
+
+/*****************课程中心left******************/
+.course_list { width: 100%; background: #fff; margin-top: 20px; min-height: 200px; border-right: 1px solid #dedede; float: left; }
+.course_list ul { float: left; overflow: hidden; }
+.course_list ul li { line-height: 40px; width: 100%; overflow: hidden; border-bottom: 1px solid #ccc; }
+.course_list ul li .cur_selected { background: #00a750; color: #fff; }
+.course_list ul li a { font-size: 14px; color: #333333; display: block; padding-left: 20px; }
+.course_list ul li a:hover { background: #00a750; color: #fff; text-decoration: none; }
+
+/*****************课程中心right******************/
+#courseright { width: 100%; margin-top: 20px; float: left; }
+.courselist .content { width: 100%; background: #fff; border-left: 1px solid #dedede; border-bottom: 1px solid #dedede; min-height: 500px; float: left; }
+.courselist .content ul li { margin: 20px 0 0 20px; _margin-left: 13px; width: 210px; height: 160px; overflow: hidden; position: relative; }
+.courselist .content ul li .img { width: 210px; height: 110px; overflow: hidden; float: left; position: relative; }
+.courselist .content ul li .img img { width: 210px; height: 110px; position: absolute; }
+.courselist .content ul li p { color: #000; line-height: 25px; }
+.courselist .content ul li a:hover { text-decoration: none; }
+.courselist .content ul li .coursetitle { color: #666; font-size: 14px; width: 210px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.courselist .content .comment { color: #999; float: left; }
+.courselist .content .comment img { float: left; margin-top: 7px; margin-right: 5px; }
+.courselist .content .comment span { float: left; margin-right: 5px; }
+
+/*****************专题中心列表******************/
+.Speciallist .content { width: 100%; background: #fff; border-top: 1px solid #dedede; min-height: 500px; float: left; }
+.Speciallist .content ul li { margin: 20px 0 0 22px; _margin-left: 13px; width: 210px; height: 160px; overflow: hidden; position: relative; }
+.Speciallist .content ul li .img { width: 210px; height: 110px; overflow: hidden; float: left; position: relative; }
+.Speciallist .content ul li .img img { width: 210px; height: 110px; position: absolute; }
+.Speciallist .content ul li p { color: #000; line-height: 25px; }
+.Speciallist .content ul li a:hover { text-decoration: none; }
+.Speciallist .content ul li .coursetitle { color: #666; font-size: 14px; width: 210px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.Speciallist .content .comment { color: #999; float: left; }
+.Speciallist .content .comment img { float: left; margin-top: 7px; margin-right: 5px; }
+.Speciallist .content .comment span { float: left; margin-right: 5px; }
+
+
+/*****************分页******************/
+.content_page { height: 30px; line-height: 30px; display: block; text-align: center; margin-top: 10px; width: 100%; color: #333; float: left; }
+.mycenterpage { display: none; }
+.content_page a { color: #333; }
+.content_page span { margin: 0 5px; }
+.content_page .p_num { border: 1px solid #ccc; padding: 0 5px; }
+.content_page .p_num2 { border: 1px solid #999; padding: 0 5px; }
+.content_page .current { color: #666; }
+
+
+/*****************课程详细******************/
+.course { width: 100%; margin-top: 60px; _margin-top: 0px; }
+
+/*****************课程信息******************/
+.courseinfo { margin-top: 20px; width: 100%; min-height: 100px; background: #fff; border-bottom: 1px solid #dedede; float: left; }
+.course .courseinfo .img { float: left; margin: 20px 30px 20px 20px; width: 210px; height: 110px; }
+.course .courseinfo .info { float: left; width: 575px; margin-top: 20px; color: #666; line-height: 25px; }
+.course .courseinfo .info p { width: 575px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.course .courseinfo .info .title { font-size: 18px; color: #333; width: 575px; }
+.course .courseinfo .btn_sc { float: left; margin-top: 20px; width: 100px; text-align: center; }
+.course .courseinfo .btn_sc .btn { background: url(images/study_btn.jpg); width: 100px; height: 41px; border: 0; cursor: pointer; font-size: 20px; color: #fff; }
+.course .courseinfo .btn_sc .btn1 { background: url(images/study_btngray.jpg); width: 100px; height: 41px; border: 0; cursor: pointer; font-size: 20px; color: #fff; }
+.course .courseinfo .btn_sc p a { line-height: 30px; font-size: 14px; color: #666; }
+.course .courseinfo .jianjie { margin-bottom: 15px; }
+.course .courseinfo .jianjie .title { height: 50px; border-bottom: 1px solid #dedede; line-height: 50px; font-size: 16px; padding-left: 20px; }
+.course .courseinfo .jianjie .content { line-height: 25px; font-size: 14px; padding: 0 20px; word-break: break-all; word-wrap: break-word; color: #666; }
+
+/*****************课程进度******************/
+.courseinfo .jindu { position: relative; }
+.courseinfo .jindu .line { height: 1px; background: #14C160; width: 100%; position: absolute; top: 33px; z-index: 995; }
+.courseinfo .jindu .zhezhao1 { background: #fff; height: 20px; margin-top: 20px; position: absolute; z-index: 996; left: 0px; }
+.courseinfo .jindu .zhezhao2 { background: #fff; height: 20px; margin-top: 20px; position: absolute; z-index: 996; right: 0px; }
+.courseinfo .jindu .jindubox { width: auto; float: left; margin-top: 15px; }
+.courseinfo .jindu .jindu_gray { background: url(images/jindu_gray.png) no-repeat; float: left; width: 36px; height: 36px; left: 50%; margin-left: -18px; position: relative; z-index: 997; }
+.courseinfo .jindu .jindu_green { background: url(images/jindu_green.png) no-repeat; float: left; position: absolute; height: 36px; z-index: 998; }
+.courseinfo .jindu .tab-title2 { float: left; color: #999; }
+.courseinfo .jindu .tab-title2 p { position: absolute; left: 0px; top: 15px; z-index: 999; float: left; }
+.courseinfo .jindu .tab-title2 span { cursor: pointer; color: #999999; width: auto; float: left; text-align: center; padding-top: 45px; }
+.courseinfo .jindu .tab-title2 .selected2 { color: #FA7800; }
+.courseinfo .jindu .tab-title2 .tishi { margin-top: 100px; }
+
+/*****************课程列表******************/
+.courseview_list { margin-top: 20px; width: 100%; min-height: 500px; background: #fff; border-bottom: 1px solid #dedede; border-right: 1px solid #dedede; float: left; }
+.courseview_list .tab-content2 { width: 100%; float: left; }
+.courseview_list .tab-content2 li { width: 100%; }
+.courseview_list .tab-content2 .hide { display: none; }
+.courseview_list .tab-content2 .title { font-size: 18px; padding-left: 20px; border-bottom: 1px solid #dedede; height: 50px; line-height: 50px; overflow: hidden; }
+.courseview_list .tab-content2 .content { float: left; font-size: 14px; width: 100%; }
+.courseview_list .tab-content2 .content li { line-height: 35px; }
+.courseview_list .tab-content2 .content .keshi { float: left; margin-left: 15px; width: 80px; border-right: 1px solid #dedede; }
+.courseview_list .content .keshi .keshitxt { color: #999; float: left; width: 55px; }
+.courseview_list .content .keshi .listjindu { position: relative; width: 21px; height: 21px; float: left; top: 7px; right: -15px; }
+.courseview_list .content .listjindu .listjindu_gray { background: url(images/listjindu_gray.jpg) no-repeat; float: left; width: 21px; position: absolute; height: 21px; z-index: 997; }
+.courseview_list .content .listjindu .listjindu_green { background: url(images/listjindu_green.jpg) no-repeat; float: left; position: absolute; height: 21px; z-index: 998; }
+
+.courseview_list .tab-content2 .content .listtitle { float: left; margin-left: 20px; width: 500px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.courseview_list .tab-content2 .content .listtitle a { color: #666; }
+.courseview_list .tab-content2 .content .listtitle a:hover { color: #069c48; text-decoration: none; }
+.courseview_list .tab-content2 .content .shichang { float: right; color: #999; width: 80px; text-align: left; }
+
+/*****************专题详细课程评论******************/
+.spe_comment { margin-top: 20px; width: 100%; min-height: 500px; background: #fff; border-bottom: 1px solid #dedede; border-left: 1px solid #dedede; float: left; }
+.spe_comment .comment_title { font-size: 18px; padding-left: 20px; border-bottom: 1px solid #dedede; height: 50px; line-height: 50px; overflow: hidden; }
+.spe_comment .comment_content { padding-left: 20px; }
+.spe_comment .comment_content div { margin-top: 10px; color: #666; float: left; width: 100%; }
+.spe_comment .comment_content .comment_btn { float: right; margin-right: 30px; background: #00a750; border: 0px; width: 60px; height: 25px; cursor: pointer; color: #fff; }
+.spe_comment .comment_content .cpmment_list { float: left; width: 100%; overflow-y: auto; }
+.spe_comment .comment_content .cpmment_list ul { float: left; width: 100%; white-space: inherit; }
+.spe_comment .comment_content .cpmment_list li { width: 100%; margin-top: 10px; }
+.spe_comment .comment_content .cpmment_list .p_photo { float: left; width: 28px; height: 28px; }
+.spe_comment .comment_content .cpmment_list .p_photo img { float: left; width: 28px; height: 28px; }
+.spe_comment .comment_content .cpmment_list .star_time { float: left; width: 165px; margin-left: 5px; }
+.spe_comment .comment_content .cpmment_list .star_time .name { color: #7abc1d; }
+.spe_comment .comment_content .cpmment_list .comment_txt { word-break: break-all; word-wrap: break-word; width: 200px; }
+
+.txtSeriesComment,{ width: 176px; }
+.txtcourseComment { width: 790px; }
+.txtComment { width: 230px; }
+
+
+/*****************课程详细课程评论******************/
+.cur_comment { margin-top: 20px; width: 100%; min-height: 300px; background: #fff; border-bottom: 1px solid #dedede; float: left; overflow: hidden; }
+.cur_comment .comment_title { font-size: 18px; padding-left: 20px; border-bottom: 1px solid #dedede; height: 50px; line-height: 50px; overflow: hidden; }
+.cur_comment .comment_content { padding-left: 20px; width: 100%; }
+.cur_comment .comment_content div { margin-top: 10px; color: #666; float: left; width: 100%; }
+.cur_comment .comment_content .comment_btn { float: right; margin-right: 80px; margin-top: 55px; background: #00a750; border: 0px; width: 60px; height: 25px; cursor: pointer; color: #fff; }
+.cur_comment .comment_content .cpmment_list { float: left; width: 100%; }
+.cur_comment .comment_content .cpmment_list ul { float: left; width: 100%; white-space: inherit; }
+.cur_comment .comment_content .cpmment_list li { width: 100%; margin: 5px 0; }
+.cur_comment .comment_content .cpmment_list .p_photo { float: left; width: 28px; height: 28px; }
+.cur_comment .comment_content .cpmment_list .p_photo img { float: left; width: 28px; height: 28px; }
+.cur_comment .comment_content .cpmment_list .star_time { float: left; width: 165px; margin-left: 5px; }
+.cur_comment .comment_content .cpmment_list .star_time .name { color: #7abc1d; }
+.cur_comment .comment_content .cpmment_list .comment_txt { word-break: break-all; word-wrap: break-word; width: 700px; }
+
+
+/*****************多少人学习该课程******************/
+.sum_study { margin-top: 20px; width: 100%; min-height: 300px; background: #fff; border-bottom: 1px solid #dedede; border-left: 1px solid #dedede; float: left; }
+.sum_study .sum_title { font-size: 18px; padding-left: 20px; border-bottom: 1px solid #dedede; height: 50px; line-height: 50px; overflow: hidden; }
+.sum_study .sum_content img { float: left; width: 48px; height: 48px; }
+.sum_study .sum_content ul li { float: left; margin-left: 20px; margin-top: 10px; width: 48px; }
+.sum_study .sum_content ul li p { color: #666; line-height: 20px; float: left; width: 48px; text-align: center; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+/*****************相关课程******************/
+.relevant_cur { margin-top: 20px; width: 100%; min-height: 300px; background: #fff; border-bottom: 1px solid #dedede; border-right: 1px solid #dedede; float: left; overflow: hidden; }
+.relevant_cur .relevant_title { font-size: 18px; padding-left: 20px; border-bottom: 1px solid #dedede; height: 50px; line-height: 50px; overflow: hidden; }
+.relevant_cur .relevant_content li { border-bottom: 1px solid #dedede; width: 100%; }
+.relevant_cur .relevant_content .cur_img { float: left; margin: 20px 0 20px 20px; }
+.relevant_cur .relevant_content .cur_img img { float: left; width: 120px; height: 65px; }
+.relevant_cur .relevant_content .cur_info { float: left; margin: 20px 0 20px 15px; width: 550px; }
+
+.relevant_cur .relevant_content .cur_info .title { font-size: 18px; color: #333; }
+.relevant_cur .relevant_content .cur_info p { color: #666; line-height: 23px; width: 550px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+
+
+/*****************播放******************/
+#openmain { background: url(images/play_bg.jpg); width: 100%; float: left; position: absolute; left: 0; }
+.maincenter { float: left; width: 100%; }
+.maincenter .playleft { float: left; }
+.maincenter .playleft .maintop { float: left; width: 100%; height: 66px; }
+.maincenter .playleft .maintop p { margin-top: 20px; }
+.maincenter .playleft .player { background: #000; width: 100%; float: left; margin-left: 20px; }
+.maincenter .playleft .player .iframe_play { border: 0px; width: 100%; height: 100%; }
+.maincenter .playleft .playinfo { height: 35px; width: 100%; margin-left: 20px; float: left; background: #333; }
+.maincenter .playleft .playinfo a { color: #000; }
+.maincenter .playleft .playinfo a:hover { text-decoration: none; }
+.maincenter .playleft .playinfo .ksjs { float: left; background: #9E9E9E; padding: 5px 10px; margin: 5px 0 0 5px; }
+.maincenter .playleft .playinfo .wxgl { float: right; background: #9E9E9E; padding: 5px 10px; margin: 5px 5px 0 0; }
+.maincenter .playleft .playinfo .wxgl:hover { background: #7abc1d; }
+.maincenter .playlist { background: #fff; width: 300px; position: fixed; right: 0px; }
+.maincenter .playlist .close { width: 12px; float: left; background: #393D49; }
+.maincenter .playlist .close .closebtn { display: block; vertical-align: middle; cursor: pointer; }
+.maincenter .playlist .close .openbtn { display: block; vertical-align: middle; cursor: pointer; }
+.maincenter .playlist .listtab { width: 288px; float: left; }
+.maincenter .playlist .listtab .play_title { background: #aaacaf; float: left; height: 85px; width: 100%; color: #666; padding-top: 15px; }
+.maincenter .playlist .listtab .play_title .title { line-height: 20px; width: 150px; float: left; margin-left: 10px; }
+.maincenter .playlist .listtab .play_title .title .course_title { font-size: 16px; color: #333; }
+.maincenter .playlist .listtab .play_curimg { float: left; }
+.maincenter .playlist .listtab .play_curimg img { float: left; width: 120px; height: 65px; }
+
+
+#tab-title3 { float: left; width: 100%; height: 45px; background: #d2d5da; line-height: 45px; }
+#tab-title3 span { cursor: pointer; width: 25%; text-align: center; float: left; font-size: 14px; line-height: 45px; }
+#tab-title3 .selected3 { color: #f26407; }
+#tab-content3 { float: left; background: #fff; overflow-y: auto; scrollbar-face-color: #999; scrollbar-shadow-color: #dedede; scrollbar-highlight-color: #dedede; scrollbar-3dlight-color: #dedede; scrollbar-darkshadow-color: #dedede; scrollbar-track-color: #dedede; scrollbar-arrow-color: #dedede; width: 100%; }
+#tab-content3 .hide { display: none; }
+
+
+/*****************播放列表******************/
+#tab-content3 .content { float: left; font-size: 12px; width: 100%; height: 35px; line-height: 35px; }
+#tab-content3 .content .keshi { float: left; margin-left: 10px; width: 65px; border-right: 1px solid #dedede; }
+#tab-content3 .content .keshi .keshitxt { color: #999; float: left; width: 43px; }
+#tab-content3 .content .keshi .listjindu { position: relative; width: 21px; height: 21px; float: left; top: 7px; left: 12px; }
+#tab-content3 .content .listjindu .listjindu_gray { background: url(images/listjindu_gray.jpg) no-repeat; float: left; width: 21px; position: absolute; height: 21px; z-index: 997; }
+#tab-content3 .content .listjindu .listjindu_green { background: url(images/listjindu_green.jpg) no-repeat; float: left; position: absolute; height: 21px; z-index: 998; }
+
+#tab-content3 .content .listtitle { float: left; margin-left: 20px; width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#tab-content3 .content .listtitle a { color: #666; }
+#tab-content3 .content .listtitle a:hover { color: #069c48; text-decoration: none; }
+#tab-content3 .content .shichang { float: right; color: #999; width: 60px; text-align: left; }
+#tab-content3 .content .shichang img { float: left; margin-top: 11px; }
+
+
+/*****************播放页评论******************/
+.play_comment { width: 100%; background: #fff; overflow: hidden; }
+.play_comment .comment_content { padding-left: 20px; overflow: hidden; }
+.play_comment .comment_content div { margin-top: 10px; color: #666; float: left; width: 100%; }
+.play_comment .comment_content .comment_btn { float: left; margin-left: 175px; background: #00a750; border: 0px; width: 60px; height: 25px; cursor: pointer; color: #fff; }
+.play_comment .comment_content .cpmment_list { float: left; width: 100%; }
+.play_comment .comment_content .cpmment_list ul { float: left; width: 100%; white-space: inherit; }
+.play_comment .comment_content .cpmment_list li { width: 100%; margin-top: 10px; }
+.play_comment .comment_content .cpmment_list .p_photo { float: left; width: 28px; height: 28px; }
+.play_comment .comment_content .cpmment_list .p_photo img { float: left; width: 28px; height: 28px; }
+.play_comment .comment_content .cpmment_list .star_time { float: left; width: 165px; margin-left: 5px; }
+.play_comment .comment_content .cpmment_list .star_time .name { color: #7abc1d; }
+.play_comment .comment_content .cpmment_list .comment_txt { word-break: break-all; word-wrap: break-word; width: 250px; }
+
+/*****************播放页笔记******************/
+.play_notes { width: 100%; background: #fff; overflow: hidden; }
+.play_notes .notes_box { margin-left: 20px; float: left; }
+.play_notes .notes_box div { margin-top: 10px; color: #666; float: left; width: 100%; }
+.play_notes .notes_box .notes_btn { float: left; margin-left: 175px; background: #00a750; border: 0px; width: 60px; height: 25px; cursor: pointer; color: #fff; overflow: hidden; }
+.play_notes .notes_box .notes_list { float: left; width: 100%; }
+.play_notes .notes_box .notes_list ul { float: left; width: 100%; white-space: inherit; }
+.play_notes .notes_box .notes_list li { width: 100%; margin-top: 10px; }
+.play_notes .notes_box .notes_list .p_photo { float: left; width: 28px; height: 28px; }
+.play_notes .notes_box .notes_list .p_photo img { float: left; width: 28px; height: 28px; }
+.play_notes .notes_box .notes_list .star_time { float: left; width: 165px; margin-left: 5px; }
+.play_notes .notes_box .notes_list .star_time .name { color: #666; font-size: 14px; line-height: 28px; }
+.play_notes .notes_box .notes_list .notes_txt { word-break: break-all; word-wrap: break-word; width: 250px; }
+
+/*****************播放页交流******************/
+.play_exchange { width: 100%; background: #fff; overflow: hidden; }
+.play_exchange .exchange_box { margin-left: 20px; float: left; }
+.play_exchange .exchange_box div { margin-top: 10px; color: #666; float: left; width: 100%; }
+.play_exchange .exchange_box .exchange_btn { float: left; margin-left: 165px; background: #00a750; border: 0px; width: 70px; text-align: center; height: 25px; cursor: pointer; color: #fff; overflow: hidden; }
+.play_exchange .exchange_box .exchange_list { float: left; width: 100%; }
+.play_exchange .exchange_box .exchange_list ul { float: left; width: 100%; white-space: inherit; }
+.play_exchange .exchange_box .exchange_list li { width: 100%; margin-top: 10px; border-bottom: 1px solid #dedede; padding-bottom: 10px; }
+.play_exchange .exchange_box .exchange_list .p_photo { float: left; width: 28px; height: 28px; }
+.play_exchange .exchange_box .exchange_list .p_photo img { float: left; width: 28px; height: 28px; }
+.play_exchange .exchange_box .exchange_list .star_time { float: left; width: 165px; margin-left: 5px; }
+.play_exchange .exchange_box .exchange_list .star_time .name { color: #7abc1d; line-height: 28px; }
+.play_exchange .exchange_box .exchange_list .exchange_txt { word-break: break-all; word-wrap: break-word; width: 250px; }
+.play_exchange .exchange_box .exchange_list .exchange { float: left; margin-top: 10px; }
+.play_exchange .exchange_box .exchange_list .exchange a { color: red; }
+
+
+/*****************搜索页面******************/
+.searchpage { width: 100%; margin-top: 80px; _margin-top: 20px; float: left; background: #fff; }
+.searchpage .search_input { float: left;   margin-top: 50px; margin-left: 220px; }
+.searchpage .search_input .search_txt { width: 400px; height: 30px; float: left; }
+.searchpage .search_input .search_btn { width: 100px; height: 35px; border: 0px; background: #14C141; font-size: 22px; cursor: pointer; color: #fff;   margin-left: 5px; }
+.searchpage .search_tag { float: left; width: 80%; margin: 30px 0 0 100px; }
+.searchpage .search_tag a { margin: 0 5px; line-height: 40px; display: inline-block; color:red; font-size:16px;}
+.searchpage .search_tag .black { font-size:16px;}
+.searchpage .search_list { float: left; width: 98%; margin: 30px 0 0 10px; border-top: 1px dashed #dedede; }
+.searchpage .search_list p { line-height: 30px; }
+.searchpage .search_list .no_result { text-align: center; line-height: 30px; }
+.searchpage .search_list .result_list { width: 100%; line-height: 30px; background: #f1f1f1; min-height: 300px; }
+.searchpage .search_list .result_list .title { background: #dedede; height: 35px; line-height:35px; font-size: 14px; color:#333}
+.searchpage .search_list .result_list .title .name { width: 75%; float: left; border-right: 1px solid #fff; text-align: center; }
+.searchpage .search_list .result_list .title .time { width: 24%; float: left; text-align: center; }
+.searchpage .search_list .result_list .list { height: 30px; font-size: 14px; }
+.searchpage .search_list .result_list .list a { color: #333; }
+.searchpage .search_list .result_list .list .type { color: #666; }
+.searchpage .search_list .result_list .list .name { width: 75%; float: left; border-right: 1px solid #fff; text-align: left; text-indent: 10px; }
+.searchpage .search_list .result_list .list .time { width: 24%; float: left; text-align: center; color: #666; font-size: 12px; }
+
+/*****************标签位置******************/
+.cur_tag { position: absolute; width: 47px; height: 47px; z-index: 998; top: 0px; left: 0px; }
+
+/*****************页面底部******************/
+#footer_bg { background: #e4e4e4; width: 100%; height: 100px; position: absolute; left: 0; _left: auto; }
+#footer_bg .footer_box { margin-left: auto; margin-right: auto; width: 950px; padding-top: 20px; }
+#footer_bg .footer_box p { text-align: center; line-height: 30px; }

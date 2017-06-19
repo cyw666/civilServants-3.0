@@ -1,0 +1,136 @@
+<div class="register">
+  <h3>注册</h3>
+  <form class="form-signup" name="myForm" novalidate>
+    <div class="form-group">
+      <label for="exampleInputUser">用户名：</label>
+      <input ng-blur="verifyAccount()" ng-change="verifyAccount()" ng-model="register.account"
+             type="text" class="form-control" my-placeholder id="exampleInputUser" placeholder="请输入用户名">
+      <span class="error" ng-show="accountError">用户名不能为空！</span>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">登录密码：</label>
+      <input ng-blur="verifyPassword()" ng-change="verifyPassword()" ng-model="register.password"
+             type="password" class="form-control" my-placeholder id="exampleInputPassword1" placeholder="请输入登录密码">
+      <span class="error" ng-show="passwordError">登录密码不能为空！</span>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword2">确认密码：</label>
+      <input ng-blur="verifyConfirm()" ng-change="verifyConfirm()" ng-model="confirmPassword"
+             type="password" class="form-control" my-placeholder id="exampleInputPassword2" placeholder="请输入确认密码">
+      <span class="error" ng-show="confirmError">确认密码不能为空！</span>
+      <span class="error" ng-show="confirmError2">两次密码输入不一致！</span>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputName">姓名：</label>
+      <input ng-blur="verifyName()" ng-change="verifyName()" ng-model="register.name"
+             type="text" class="form-control" my-placeholder id="exampleInputName" placeholder="请输入姓名">
+      <span class="error" ng-show="nameError">姓名不能为空！</span>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputCard">身份证号：</label>
+      <input ng-blur="verifyIdCard()" ng-change="verifyIdCard()" ng-model="register.idcard"
+             type="text" class="form-control" my-placeholder id="exampleInputCard" placeholder="请输入身份证号">
+      <span class="error" ng-show="idcardError">身份证号不能为空！</span>
+      <span class="error" ng-show="idcardError2">身份证格式有误！</span>
+    </div>
+    <div class="form-group" style="position: relative">
+      <label>单位：</label>
+      <span my-tree class="myTree" ng-model="register.groupid"></span>
+      <span class="error" ng-show="groupidError">单位不能为空！</span>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail">电子邮箱：</label>
+      <input ng-blur="verifyEmail()" ng-change="verifyEmail()" ng-model="register.email"
+             type="text" class="form-control" my-placeholder id="exampleInputEmail" placeholder="例：example@email.com">
+      <span class="error" ng-show="emailError">电子邮箱不能为空！</span>
+      <span class="error" ng-show="emailError2">邮箱格式有误！</span>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPhone">手机号码：</label>
+      <input ng-blur="verifyMobile()" ng-change="verifyMobile()" ng-model="register.mobile"
+             type="text" class="form-control" my-placeholder id="exampleInputPhone" placeholder="请输入手机号码">
+      <span class="error" ng-show="mobileError">手机号码不能为空！</span>
+      <span class="error" ng-show="mobileError2">手机号码格式有误！</span>
+    </div>
+    <div class="form-group">
+      <label for="verificationCode">验证码：</label>
+      <input ng-blur="verifySmgCode()" ng-change="verifySmgCode()" ng-model="register.smgcode"
+             type="text" class="form-control" my-placeholder id="verificationCode" placeholder="请输入验证码">
+      <span verification-code mobile="register.mobile"></span>
+      <span class="error" ng-show="smgcodeError">验证码不能为空！</span>
+    </div>
+
+    <button ng-click="clickRegister()" type="submit" class="btn btn-success">注册</button>
+    <!--<div class="agree">
+      <p>点击上面的注册按钮</p>
+      <p>即表示同意 <a href="">《泸州市公务员培训协议》</a></p>
+    </div>-->
+  </form>
+
+</div>
+<style>
+  .register {
+    margin: 40px auto;
+    width: 700px;
+  }
+  .register h3{
+    padding: 0 0 15px 20px;
+    text-align: center;
+  }
+  .form-signup {
+    padding: 40px 70px;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 13px rgba(255, 0, 0, 0.4);
+    position: relative;
+  }
+  .form-signup .form-group input,.form-signup .form-group select{
+    display: inline-block;
+    width: 240px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 0 0 6px;
+  }
+  #verificationCode{
+    width:110px;
+  }
+  .form-signup .form-group label{
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    text-align: right;
+  }
+  .register .btn-success {
+    width: 50%;
+    height: 40px;
+    margin-left: 50px;
+  }
+  .register .verificationCode {
+    width: 110px;
+    height: 30px;
+    margin-left: 10px;
+  }
+  .register .form-group .myTree {
+    position: relative;
+  }
+  .register span.error {
+    display: inline-block;
+    line-height: 30px;
+    color: #c33;
+    margin-left: 10px;
+  }
+  .register .agree {
+    width: 340px;
+    text-align: center;
+    color: #8f8f8f;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  .register .agree p{
+    margin-top: 5px;
+  }
+  .register .agree  a {
+    color: #62a3db;
+    font-size: 12px;
+  }
+</style>

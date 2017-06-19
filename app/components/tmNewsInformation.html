@@ -1,0 +1,127 @@
+<!--新闻资讯-->
+<div class="tmNewsInformation">
+  <div class="com-header com-header-blue">
+    <h4  class="pull-left">新闻资讯</h4>
+    <a ui-sref="newsinfo({ID:83})" class="pull-right" target="_blank">更多&nbsp;&nbsp;+</a>
+  </div>
+  <div class="mar_top_12 clearfix" dw-loading="tmNewsInformation">
+    <div class="leftInfor mar_left_10">
+      <a ui-sref="articleDetail({ID:topNews.Id})" target="_blank">
+        <img ng-src={{allNews.Path}}/{{topNews.Img}} err-Src="images/notFound.jpeg">
+      </a>
+      <h5><a ui-sref="articleDetail({ID:topNews.Id})" target="_blank" title="{{topNews.Name}}">{{topNews.Name}}</a></h5>
+      <a ui-sref="articleDetail({ID:topNews.Id})" target="_blank">
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{topNews.Description | timeLimit :"60"}}</p>
+      </a>
+      <a href="javascript:;" class="newsTime pull-right ">{{topNews.CreateDate | dateFilter | date:'yyyy-MM-dd'}}</a>
+    </div>
+    <div class="rightInfor">
+      <ul>
+        <li  ng-repeat="newsData in newsData">
+          <a ui-sref="articleDetail({ID:newsData.Id})" target="_blank" title="{{newsData.Name}}" class="clearfix">
+            <h5 class="pull-left">{{newsData.Name}}</h5>
+            <p class="newsTime pull-right">{{newsData.CreateDate | dateFilter | date:'yyyy-MM-dd'}}</p>
+          </a>
+          <a ui-sref="articleDetail({ID:newsData.Id})" class="des">
+            <p>{{newsData.Description}}</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .tmNewsInformation .com-header a.pull-right{
+    line-height: 40px;
+    color: #fff;
+    font-size: 12px;
+    padding-right: 10px;
+  }
+  .tmNewsInformation .com-header a.pull-right:hover{
+    text-decoration: none;
+  }
+.newsTime {
+  color: #4f88bd;
+  line-height: 30px;
+}
+.tmNewsInformation {
+  height: 352px;
+}
+.tmNewsInformation .leftInfor{
+  width: 280px;
+  float: left;
+}
+.tmNewsInformation .leftInfor img{
+  width: 270px;
+  height: 170px;
+}
+.tmNewsInformation .leftInfor .newsTime{
+    margin: 0px 10px 0 0;
+}
+.tmNewsInformation .leftInfor h5 a{
+  display: block;
+  width: 270px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #000;
+  margin-top: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+  .tmNewsInformation .leftInfor h5 a:hover{
+    color: #62a3db;
+  }
+  .tmNewsInformation a:focus{
+    text-decoration: none;
+  }
+
+.tmNewsInformation .leftInfor p{
+  font-size: 13px;
+  color: #7f7f7f;
+  line-height: 23px;
+  margin-top: 12px;
+  min-height: 60px;
+  cursor: pointer;
+  padding-right: 5px;
+}
+
+  .tmNewsInformation .rightInfor{
+    float: left;
+    width: 350px;
+  }
+  .tmNewsInformation .rightInfor .des{
+    color: #7f7f7f;
+  }
+  .tmNewsInformation .rightInfor .des:hover{
+    color: #7f7f7f;
+  }
+  .tmNewsInformation .rightInfor li>a{
+    display: block;
+  }
+  .tmNewsInformation .rightInfor h5{
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+    line-height: 30px;
+    max-width:255px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .tmNewsInformation .rightInfor h5:hover{
+    color: #62a3db;
+  }
+  .tmNewsInformation .rightInfor .des p{
+    font-size: 13px;
+    color: #7f7f7f;
+    height: 24px;
+    line-height: 24px;
+    margin-bottom: 7px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+</style>

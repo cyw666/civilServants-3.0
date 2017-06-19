@@ -1,0 +1,56 @@
+<!--公务员培训-->
+<div class="civilServiceTrainingLink">
+  <div class="com-header com-header-blue">
+    <h4 class="pull-left">公务员培训</h4>
+    <a ui-sref="csTrainingNews" class="pull-right" target="_blank">更多&nbsp;&nbsp;+</a>
+  </div>
+  <div class="civil-body" dw-loading="civilServiceTrainingLink">
+    <ul>
+      <li ng-repeat="linkDate in civilServiceTrainingLink.ListData">
+        <a ui-sref="articleDetail({ID:linkDate.Id})" title="{{linkDate.Name}}" target="_blank"><span class="dian"></span><span class="content">{{linkDate.Name}}</span></a></li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .civilServiceTrainingLink .com-header a.pull-right{
+    line-height: 40px;
+    color: #fff;
+    font-size: 12px;
+    padding-right: 10px;
+  }
+  .civilServiceTrainingLink .com-header a.pull-right:hover{
+    text-decoration: none;
+  }
+  .civilServiceTrainingLink .civil-body {
+     height: 175px;
+    margin-left: 10px;
+  }
+  .civilServiceTrainingLink .civil-body li{
+    height: 35px;
+  }
+  .civilServiceTrainingLink .civil-body li a{
+    display: inline-block;
+    padding: 7px 5px;
+    font-size: 14px;
+    color: #484848;
+    max-width: 316px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .civilServiceTrainingLink .civil-body li a:hover{
+    color: #3a7fb6;
+    text-decoration: none;
+  }
+  .civilServiceTrainingLink .civil-body li a .content{
+    margin-left: 10px;
+  }
+  .civilServiceTrainingLink .civil-body li a:hover .dian{
+    background-color: #3a7fb6;
+  }
+  .dian{
+    vertical-align: middle;
+  }
+</style>
+

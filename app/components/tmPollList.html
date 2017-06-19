@@ -1,0 +1,65 @@
+<div class="pollList">
+  <ol class="breadcrumb">
+    <li class="currentPosition">您的当前位置:</li>
+    <li><a ui-sref="main">首页</a></li>
+    <li class="active">{{pollListData.TitleNav}}</li>
+  </ol>
+  <form class="form-inline formCourse">
+    <div class="form-group">
+      <input ng-model="searchTitle" type="text" class="form-control"
+             style="width: 400px;"
+             my-placeholder
+             placeholder="请输入要搜索的问卷">
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="getClassList({'title':searchTitle})">搜索</button>
+  </form>
+  <div class="tmBorder-green mar_top_20">
+    <div class="titlebg2">
+      <div class="txt">
+        {{pollListData.TitleNav}}
+      </div>
+    </div>
+    <div class="myTab" dw-loading="pollList">
+      <div class="tab-content">
+        <div class="tab-panel perlist">
+          <div class="title_bar clearfix">
+            <span class="list1">问卷名称</span>
+            <span class="list1">参加</span>
+            <span class="list1">详情</span>
+          </div>
+          <div class="list" ng-repeat="pollList in pollListData.Model.UnfinishModel">
+            <p class="clearfix">
+              <span class="list1" title="{{pollList.Name}}"><a ui-sref="poll({Id:pollList.Id})" target="_blank">{{pollList.Name}}</a></span>
+              <span class="list1"><a ui-sref="poll({Id:pollList.Id})" target="_blank">参加</a></span>
+              <span class="list1"><a ui-sref="pollreview({parameter1:pollList.Id,parameter2:0})" target="_blank">查看详情</a></span>
+            </p>
+          </div>
+
+        </div>
+      </div>
+      <div ng-show="paginationConf.totalItems>0" tm-pagation conf="paginationConf" style="margin-left: 20%"></div>
+      <div class="noData" ng-show="paginationConf.totalItems <=0">暂无数据</div>
+    </div>
+  </div>
+</div>
+<style>
+  .myTab .perlist .list1 {
+    width: 30%;
+    height: 37px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .myTab .perlist .list2 {
+    width: 10%;
+    height: 37px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .myTab .perlist .list .list1 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+</style>
+

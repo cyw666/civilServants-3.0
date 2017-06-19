@@ -1,0 +1,53 @@
+<div class="originalArgicleList tmBorder-green">
+  <ol class="breadcrumb">
+    <li class="currentPosition">您的当前位置:</li>
+    <li><a ui-sref="main">首页</a></li>
+    <li class="active">原创文章</li>
+  </ol>
+  <div class="clearfix">
+    <h4 class="pull-left">{{originalArgicleListData.TitleNav}}</h4>
+    <a ui-sref="originalarticle" target="_blank" class="btn btn-danger pull-right add">发表原创文章</a>
+  </div>
+  <div class="myTab" dw-loading="studyPlan">
+    <div class="tab-content" dw-loading="originalArgicleList">
+      <div class="tab-panel perlist">
+        <div class="title_bar clearfix">
+          <span class="list1">文章名称</span>
+          <span class="list2">发布时间</span>
+        </div>
+        <div class="list" ng-repeat="originalArgicleList in originalArgicleListData.ListData">
+          <p class="clearfix">
+            <span class="list1" title="{{originalArgicleList.Name}}"><a ui-sref="articleDetail({ID:originalArgicleList.Id})" target="_blank">{{originalArgicleList.Name}}</a></span>
+            <span class="list2">{{originalArgicleList.CreateDate | dateFilter | date:'yyyy-MM-dd hh:mm:ss'}}</span>
+          </p>
+        </div>
+        <div tm-pagation conf="paginationConf"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .originalArgicleList .clearfix h4 {
+    text-align: center;
+    margin-left: 40%;
+  }
+  .originalArgicleList .add {
+    text-align: center;
+    margin-right: 10px;
+  }
+  .myTab .perlist .list1 {
+    width: 60%;
+    height: 37px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .myTab .perlist .list2 {
+    width: 20%;
+  }
+  .myTab .perlist .list .list2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>

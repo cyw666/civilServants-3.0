@@ -1,0 +1,64 @@
+<!--实时数据-->
+<div class="realTimeData mar_top_20">
+  <h4>{{realTimeData.TitleNav}}</h4>
+  <div class="realTimeList clearfix" dw-loading="realTimeList">
+    <ul>
+      <li>
+        <span>{{realTimeData.Model.OnlineUsersCount}}</span>
+        <p>在线学员人数</p>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <span>{{realTimeData.Model.UsersCount}}</span>
+        <p>平台学员人数</p>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <span>{{realTimeData.Model.CourseCount}}</span>
+        <p>现有课程数量</p>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <span>{{realTimeData.Model.UserVisitCount}}</span>
+        <p>访问学习次数</p>
+      </li>
+    </ul>
+  </div>
+</div>
+<style>
+  .realTimeData {
+    height: 250px;
+    background-color: #f3f3f3;
+  }
+  .realTimeData h4 {
+    line-height: 67px;
+    text-align: center;
+    font-weight: bold;
+  }
+  .realTimeData .realTimeList{
+    padding: 0 15px;
+  }
+  .realTimeData .realTimeList ul{
+    float: left;
+    width: 134px;
+    height: 76px;
+    text-align: center;
+    background-color: #fff;
+    margin-left: 11px;
+    margin-bottom: 11px;
+    border-radius: 4px;
+  }
+  .realTimeData .realTimeList span,.realTimeData .realTimeList p{
+    display: block;
+    line-height: 15px;
+    font-size: 17px;
+    padding: 15px 0 0 0;
+
+  }
+  .realTimeData .realTimeList span {
+    color: #5d86a4;
+  }
+</style>

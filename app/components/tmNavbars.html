@@ -1,0 +1,39 @@
+<div class="navbg">
+  <ul class="nav nav-tabs">
+    <li role="presentation" ui-sref-active="active"><a ui-sref="main">首页</a></li>
+    <li role="presentation" ui-sref-active="active"><a ui-sref="courseCenter">课程中心</a></li>
+    <li role="presentation" ui-sref-active="active"><a ui-sref="personalCenter">个人中心</a></li>
+    <li role="presentation" ui-sref-active="active"><a ui-sref="testCenter">考试中心</a></li>
+    <li role="presentation" ui-sref-active="active"><a ui-sref="specialTrainingCourse">专题培训班</a></li>
+  </ul>
+</div>
+<style>
+  .navbg {
+    margin: 0 auto;
+    text-align: center;
+    background: url("../images/notice.png") no-repeat;
+  }
+  .navbg .nav{
+    height: 48px;
+    margin:0 auto;
+  }
+  .nav-tabs > li > a {
+    color: #fff;
+    width: 100px;
+    padding: 11px 0px;
+    margin:0 40px 0 48px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .nav > li > a:hover, .nav > li > a:focus {
+    border-color: transparent;
+    background-color: transparent;
+  }
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    border-bottom: 4px solid #eee;
+  }
+</style>
+

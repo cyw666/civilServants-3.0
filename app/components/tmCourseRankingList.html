@@ -1,0 +1,71 @@
+<!--课程点击排行-->
+<div class="courseRankingList tmBorder-cyan"  dw-loading="courseRankingList">
+  <div class="titlebg2">
+    <div class="txt">
+      课程排行
+    </div>
+  </div>
+  <p class="title clearfix">
+    <span class="rank1">排行</span>
+    <span class="rank2">课程名称</span>
+    <span class="rank3">点击数</span>
+  </p>
+  <ul class="rankingList" ng-repeat="rankingData in courseRankingList.ListData">
+    <li class="list1">{{$index+1}}</li>
+    <li class="list2" title="{{rankingData.Name}}"><a ui-sref="courseDetails({Id:rankingData.Id})" target="_blank">{{rankingData.Name}}</a></li>
+    <li class="list3">{{rankingData.Total}}</li>
+  </ul>
+</div>
+<style>
+  .courseRankingList {
+    background-color: #f5f8fd;
+  }
+  .courseRankingList h4 {
+    line-height: 52px;
+    text-align: center;
+  }
+  .courseRankingList .rankingList{
+    width: 265px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    margin-left: 10px;
+  }
+  .courseRankingList .title {
+    border:1px solid #dadada;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+  }
+  .courseRankingList .title span ,.courseRankingList .rankingList li{
+    float: left;
+  }
+  .courseRankingList .title .rank1,.courseRankingList .rankingList .list1{
+    width: 60px;
+    text-align: left;
+    padding-left: 10px;
+  }
+  .courseRankingList .title .rank2,.courseRankingList .rankingList .list2{
+    width: 130px;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .courseRankingList .title .rank3,.courseRankingList .rankingList .list3{
+    width: 60px;
+    text-align: right;
+  }
+
+  .courseRankingList .rankingList .list2{
+    text-align: left;
+  }
+  .courseRankingList .rankingList .list3{
+    text-align: center;
+  }
+  .courseRankingList .title .rank2{
+    padding-right: 60px;
+  }
+</style>

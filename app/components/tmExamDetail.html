@@ -1,0 +1,55 @@
+<!--考试记录-->
+<div class="examDetail tmBorder-green">
+  <ol class="breadcrumb">
+    <li class="currentPosition">您的当前位置:</li>
+    <li><a ui-sref="main">首页</a></li>
+    <li><a ui-sref="testCenter">考试中心</a></li>
+    <li class="active">考试记录</li>
+  </ol>
+  <div class="myTab" dw-loading="examDetail">
+    <div class="tab-content" dw-loading="myCenter">
+      <div class="tab-panel perlist">
+        <div class="title_bar clearfix">
+          <span class="list1">分数</span>
+          <span class="list2">考试时间</span>
+          <span class="list3">答题情况</span>
+        </div>
+        <div class="list" ng-repeat="examList in examDetailData.Model">
+          <p class="clearfix">
+            <span class="list1">{{examList.Score}}</span>
+            <span class="list2">{{examList.CreateDate | dateFilter | date:'yyyy-MM-dd'}}</span>
+            <span class="list3" ng-if="examDetailData.ViewFlag"><a target="_blank" ui-sref="examReview({examId:Id,recordId:examList.Id})">查看</a>&nbsp;&nbsp;</span>
+            <span class="list3" ng-if="!examDetailData.ViewFlag">不允许被查看</span>
+          </p>
+        </div>
+        <div tm-pagation conf="paginationConf"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .myTab .perlist .list1 {
+    width: 30%;
+    height: 37px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .myTab .perlist .list .list1 {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .myTab .perlist .list2 {
+    width: 35%;
+  }
+  .myTab .perlist .list .list2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .myTab .perlist .list3 {
+    width: 35%;
+  }
+</style>
+

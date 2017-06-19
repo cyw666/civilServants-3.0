@@ -1,0 +1,53 @@
+
+<!--热门文章-->
+<div class="articleHot tmBorder-cyan"  >
+  <div class="titlebg2">
+    <div class="txt">
+      {{hotArticleData.TitleNav}}
+    </div>
+  </div>
+  <div dw-loading="articleHot">
+    <ul class="rankingList clearfix" ng-repeat="rankingData in hotArticleData.ListData">
+      <li class="list1">
+        <span ng-if="$index<3" ng-class="{'rankFirstBg':$index==0,'rankSecondBg':$index==1,'rankThirdBg':$index==2}"></span>
+        <span ng-if="$index>=3">{{$index+1}}</span>
+      </li>
+      <li class="list2" title="{{rankingData.Name}}">
+        <a target="_blank" ui-sref="articleDetail({ID:rankingData.Id})">{{rankingData.Name}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<style>
+  .articleHot .rankingList{
+    text-align: center;
+  }
+  .articleHot .rankingList li{
+    float: left;
+    height: 35px;
+    line-height: 35px;
+  }
+  .articleHot .rankingList span{
+    display: inline-block;
+    width: 24px;
+    height: 22px;
+  }
+  .articleHot .rankingList .list1{
+    width: 20%;
+  }
+  .articleHot .rankingList .list2{
+    width: 75%;
+    text-align: left;
+  }
+  .articleHot .rankingList .list2 a{
+    display: inline-block;
+    width: 190px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+</style>
+
+

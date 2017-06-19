@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>播放页</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100%;
+            background-color: transparent;
+        }
+
+        #bg {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.7;
+            opacity: .90;
+            filter: alpha(opacity=70);
+        }
+
+        .ValidateCode {
+            position: relative;
+            height: 16px;
+            padding: 12px 10px 12px 10px;
+            border: 1px solid #ddd;
+            transition: .3s;
+            -moz-transition: .3s;
+            -o-transition: .3s;
+            -webkit-transition: .3s;
+            font-size: 14px;
+            color: #666;
+            width: 20%;
+            margin-right: 20px;
+        }
+
+        #thisPage {
+            height: 100%;
+        }
+
+        #show {
+            display: none;
+            position: absolute;
+            top: 20%;
+            left: 35%;
+            width: 40%;
+            height: 178px;
+            padding: 8px;
+            border: 1px solid #E8E9F7;
+            border-radius: 4px;
+            background-color: #fff;
+            z-index: 1002;
+            overflow: auto;
+        }
+
+        #ValidateCode {
+            height: inherit;
+        }
+
+        #codeInput {
+            margin-top: 8%;
+            text-align: center;
+        }
+
+        #submitCode {
+            margin: 24px auto;
+            width: 72%;
+            display: block;
+            height: 48px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #fff;
+            background: #BC0F13;
+            border-radius: 3px;
+            border: none;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            transition: .3s;
+            -moz-transition: .3s;
+            -o-transition: .3s;
+            -webkit-transition: .3s;
+        }
+
+        #codeImg {
+            vertical-align: middle;
+        }
+
+        #codeChange {
+            margin-top: 15px;
+            font-size: 10px;
+        }
+
+        .videoOut {
+            width: 100%;
+            background-color: #000;
+            box-shadow: 5px 5px 5px #000;
+        }
+
+        #div-video {
+            margin-left: 10%;
+        }
+
+        .timeInfo {
+            background: url(../V3/images/log.png) no-repeat;
+            background-size: contain;
+            width: 180px;
+            padding: 64px 47px 194px 77px;
+            color: #3f89ec;
+            font: 14px/1.5 "微软雅黑";
+        }
+
+        .jwgroup .jwrail .jwwarning {
+            display: none;
+            position: relative;
+            line-height: 30px;
+            border-radius: 5px;
+            margin-top: -35px;
+            margin-left: 30px;
+            padding: 0px 5px;
+            z-index: 1007;
+            left: 0;
+            color: yellow;
+            background-color: rgba(62,62, 64, 0.8);
+            border: 1px solid #111;
+        }
+
+        .jwgroup .jwrail .jwwarningbuffer {
+            height: 30px;
+            width: 5px;
+            border-radius: 5px;
+            background-color: yellow;
+        }
+    </style>
+    <script src="js/globalConfig.js"></script>
+</head>
+<body>
+    <div id="thisPage">
+        <div id="bg"></div><!--遮罩层-->
+        <div id="show">
+            <div id="codeInput">
+                <div style="margin:10px 0;">
+                    <input type="text" class="ValidateCode" name="ValidateCode" id="ValidateCode" value="请输入验证码" onfocus="if(this.value=='请输入验证码'){this.value=''}" onblur="if(this.value==''){this.value='请输入验证码'}" />
+                    <img id="codeImg" alt="刷新验证码！" onclick="generateCode()" src="" />
+                    <!--<img id="codeImg" alt="刷新验证码！" style="cursor: pointer; float: left; margin-top: 12px" src=API_URL + "/CodeHandler.ashx" onclick="this.src = this.src + '?'" />-->
+                    <a id="codeChange" href="javascript:void(0);" onclick="generateCode()">看不清？换一组</a>
+                </div>
+                <div>
+                    <button id="submitCode" type="button">提交</button>
+                </div>
+            </div>
+        </div>
+        <!--         <div class="logInfo"><span class="closeInfo" onclick="closeInfo()"></span><span class="showInfo" onclick="showInfo()"><i class="icon iconfont">&#xe604;</i></span><p class="timeInfo"></p></div>
+         -->
+        <input id="portalId" type="hidden" value="{{PortalId}}" />
+        <input id="userId" type="hidden" value="{{UserId}}" />
+        <input id="courseId" type="hidden" value="{{CourseId}}" />
+        <input id="lastpostion" type="hidden" value="{{LastPostion}}" />
+        <input id="location" type="hidden" value="{{Location}}" />
+        <input id="url" type="hidden" value="{{Url}}" />
+        <input class="forgerytoken" type="hidden" />
+        <div class="videoOut">
+            <div id="div-video"></div>
+        </div>
+        <!--<div>
+            <input type="button" class="player-play" value="播放" />
+            <input type="button" class="player-stop" value="停止" />
+            <input type="button" class="player-status" value="取得状态" />
+            <input type="button" class="player-current" value="当前播放秒数" />
+            <input type="button" class="player-goto" value="转到第30秒播放" />
+            <input type="button" class="player-length" value="视频时长(秒)" />
+        </div>-->
+    </div>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jwplayer.js"></script>
+    <script src='js/jsencrypt.min.js'></script>
+    <script src="js/frontTpl.js"></script>
+    <script src="js/playJwplay.js"></script>
+    <script>
+        Tmpt(function () {
+            Tmpt.loadJs(["js/antityforgery.js"]);
+        });
+        Tmpt("thisPage", "Home", "PlayJwplay", "courseid={GetQueryString(\"courseid\")}");
+    </script>
+</body>
+</html>

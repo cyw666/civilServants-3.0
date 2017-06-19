@@ -1,0 +1,24 @@
+/*分页*/
+.page-list .pagination {float:left; margin: 10px 0 10px 10px;}
+.page-list .pagination span {cursor: pointer;  color: #333;}
+.page-list .pagination .separate span{cursor: default; border-top:none;border-bottom:none;}
+.page-list .pagination .separate span:hover {background: none;}
+.page-list .page-total {float:left; margin: 14px 10px;}
+.page-list .page-total input, .page-list .page-total select{height: 26px; border: 1px solid #ddd;}
+.page-list .page-total input {width: 40px; padding-left:3px;}
+.page-list .page-total select {width: 50px;}
+.pagination>.active>span {background-color: #6d9d85; border-color: #55836b;color:#fff;}
+.pagination>.active>span:hover {background-color: #6d9d85; border-color: #55836b;color:#fff;}
+.pagination>li>span:hover {
+  color: #333;
+}
+.pagination li.disabled span {
+  color: #777;
+}
+.page-list .pagination > li > span {
+  padding: 4px 10px;
+}
+.pagination > .active > span:focus {
+  background-color: #6d9d85;
+  border-color: #55836b;
+}

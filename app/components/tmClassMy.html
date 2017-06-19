@@ -1,0 +1,50 @@
+<!--班级模块-->
+<div class="classMy tmBorder-cyan">
+  <div class="titlebg2">
+    <div class="txt">
+      {{classMyData.TitleNav}}
+    </div>
+  </div>
+  <div class="content myclass" dw-loading="classMy">
+    <ul>
+      <li class="listtitle clearfix">
+        <span class="list1">班级名称</span>
+        <span class="list2">学员</span>
+      </li>
+      <li class="clearfix" title="{{classList.Name}}" ng-repeat="classList in classMyData.ListData">
+        <span class="list1">
+          <a ui-sref="classDetail({Id:classList.Id})">{{classList.Name}}</a>
+        </span>
+        <span class="list2">{{classList.CurrentUser}}</span>
+      </li>
+    </ul>
+  </div>
+</div>
+<style>
+  .classMy {
+    min-height: 300px;
+  }
+  .classMy .listtitle{
+    color: #000;
+    font-size: 15px;
+    text-align: center;
+    border: 1px solid #dadada;
+    border-radius: 3px;
+  }
+  .classMy  span{
+    float: left;
+    line-height: 25px;
+    height: 25px;
+  }
+  .classMy .list1{
+    text-align: center;
+    width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .classMy .list2{
+    width: 100px;
+    text-align: center;
+  }
+</style>

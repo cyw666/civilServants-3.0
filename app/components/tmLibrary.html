@@ -1,0 +1,62 @@
+<div class="library tmBorder-green">
+  <ol class="breadcrumb">
+    <li class="currentPosition">您的当前位置:</li>
+    <li><a ui-sref="main">首页</a></li>
+    <li class="active">数字图书馆</li>
+  </ol>
+  <form class="form-inline formCourse">
+    <div class="form-group">
+      <input ng-model="searchTitle" type="text" class="form-control" style="width: 400px;" my-placeholder placeholder="请输入要搜索的图书">
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="searchCategory({'title':searchTitle,page:1})">搜索</button>
+  </form>
+  <div class="libraryList mar_top_15">
+    <div class="titlebg">
+      <div class="txt" ng-if="booksData.Ptitle==''">{{booksData.TitleNav}}&nbsp;&nbsp;&nbsp;&nbsp;({{booksData.Count}})</div>
+      <div class="txt" ng-if="booksData.Ptitle!=''">{{booksData.Ptitle}}&nbsp;&nbsp;&nbsp;&nbsp;({{booksData.Count}})</div>
+    </div>
+    <ul class="libraryContent clearfix">
+      <li ng-repeat="list in booksData.ListData" class="pull-left">
+        <a ui-sref="bookdetail({Id:list.Id})" target="_blank"><img ng-src="{{imgPath+'/'+list.Icon}}" alt="{{list.Name}}"></a>
+        <p class="list1">{{list.Name}}</p>
+        <p class="list2">作者:{{list.Author}}</p>
+        <p class="list2">点击数:{{list.ClickCount}}</p>
+        <p class="list3"><a ui-sref="bookdetail({Id:list.Id})" class="btn btn-danger" target="_blank">阅读本书</a></p>
+      </li>
+    </ul>
+    <div tm-pagation conf="paginationConf"></div>
+  </div>
+</div>
+<style>
+  .library .libraryContent {
+    text-align: center;
+  }
+  .library .libraryContent img {
+    width: 190px;
+    height: 230px;
+    margin: 5px 0 0 5px;
+  }
+  .library .libraryContent li {
+    padding: 10px 20px;
+  }
+  .library .libraryContent li .list1{
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    color: #337ab7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .library .libraryContent li .list2 {
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    color: #666;
+  }
+  .library .libraryContent li .list3 a.btn {
+    width: 130px;
+    padding: 4px 20px;
+  }
+</style>
+
