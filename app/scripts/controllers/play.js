@@ -220,9 +220,8 @@ angular.module('luZhouApp')
             $scope.Url=response.Data.Url;
             $scope.UserId=response.Data.UserId;
 
-            $scope.jyIframeSrc =$sce.trustAsResourceUrl( $scope.Url+'?url=192.168.1.25/api/CourseProcess/JYProcess?batchId='+$scope.BatchId+'&portalId='+$scope.PortalId+'&UserId='+$scope.UserId+'&courseId='+$scope.CourseId);
-            // console.log($scope.jyIframeSrc);
-            // $scope.jyIframeSrc = $scope.Url+'?url='+$scope.PortalURL+'/api/CourseProcess/JYProcess?batchId='+$scope.BatchId+'&portalId='+$scope.PortalId+'&UserId='+$scope.UserId+'&courseId='+$scope.CourseId;
+            // $scope.jyIframeSrc =$sce.trustAsResourceUrl( $scope.Url+'?url=192.168.1.25/api/CourseProcess/JYProcess?batchId='+$scope.BatchId+'&portalId='+$scope.PortalId+'&UserId='+$scope.UserId+'&courseId='+$scope.CourseId);
+            $scope.jyIframeSrc = $sce.trustAsResourceUrl($scope.Url+'?url='+$scope.PortalURL+'/api/CourseProcess/JYProcess?batchId='+$scope.BatchId+'&portalId='+$scope.PortalId+'&UserId='+$scope.UserId+'&courseId='+$scope.CourseId);
             if (!$scope.PortalId || !$scope.UserId || !$scope.CourseId) {
               alert("数据无效，请检查api");
               window.close();
@@ -247,8 +246,8 @@ angular.module('luZhouApp')
             var Url2=response.Data.Url;
             var userId=response.Data.UserId;
 
-            $scope.scormIframeSrc = $scope.Url2;
-            if (!$scope.PortalId2 || !$scope.UserId2 || !$scope.CourseId2) {
+            $scope.scormIframeSrc = $sce.trustAsResourceUrl(Url2);
+            if (!portalId || !userId || !courseId) {
               alert("数据无效，请检查api");
               window.close();
             }
@@ -351,7 +350,7 @@ angular.module('luZhouApp')
                   break;
                 case "cmi.core.lesson_location":
                   reCode = "get.cmi.core.lesson_location";
-                  return lastPostion;
+                  return LastPostion2;
                   //$.ajax({
                   //    type: "post",
                   //    asnyc: false,
@@ -451,7 +450,101 @@ angular.module('luZhouApp')
       };
       //播放single视频
       var playSingle = function () {
+        var params = $.extend({}, ALL_PORT.PlaySingle.data, { courseId: $scope.allPlayInfo.CourseId })
+        $scope.playSingleData={};
+        var _timePool = {
+          startTime: 0,
+          increaseTime: 0,
+          totalTime: 0
+        };
+        commonService.getData(ALL_PORT.PlaySingle.url, 'POST', params)
+          .then(function(response) {
+            $scope.playSingleData = response.Data;
+            var _portalId = response.Data.PortalId;
+            var _userId = response.Data.UserId;
+            var _courseId = response.Data.CourseId;
+            var _lastPosition = response.Data.LastPostion;
+            var _lastLocation = response.Data.Location;
+            var url = response.Data.Url;
+            var authcode = "";
+            if (!_portalId || !_userId || !_courseId) {
+              alert("数据无效，请检查api");
+              window.close();
+            }
+            var MediaPlayer;
+            // var au = "47$67$111$117$114$115$101$80$114$111$99$101$115$115$47$83$105$110$103$108$101$80$114$111$99$101$115$115$".toCharString("$");
+            // console.log(au);
+            function sendProcess() {
+              var data = $.extend({},{ "PortalId": _portalId, "userid": _userId, "courseid": _courseId, "positionen": MediaPlayer.currentPosition},$scope.token);
+              commonService.getData(ALL_PORT.SingleProcess.url, 'POST', data)
+                .then(function (data) {
+                  console.log(data);
+                  $scope.loadPlayInfo();
+                },function () {
+                  alert("网路异常，将刷新!");
+                  window.location.reload();
+                });
 
+              setTimeout(sendProcess, 30000); //送进度间隔时间 30秒传一次;
+            };
+            MediaPlayer = document.MediaPlayer;
+            MediaPlayer.Filename = url;
+            MediaPlayer.currentPosition = _lastPosition;
+
+            _timePool.startTime = parseFloat(_lastPosition)+1;
+            // MediaPlayer.stop();
+            // $interval.cancel(timePromise);
+            var timePromise = $interval(function(){
+              _timePool.increaseTime+=1;
+              _timePool.totalTime = _timePool.startTime+_timePool.increaseTime;
+              if (MediaPlayer.currentPosition>_timePool.totalTime){
+                alert('请不要在未播放区域拖动，否则可能丢失进度!');
+                MediaPlayer.currentPosition = _timePool.totalTime-3;
+              }
+            },1000);
+            $("#btncurrentPosition").click(function () {
+              MediaPlayer.currentPosition = MediaPlayer.currentPosition;
+            });
+
+            $("#btnduration").click(function () {
+              alert(MediaPlayer.duration);
+            });
+
+            $("#btnURL").click(function () {
+              alert(MediaPlayer.URL);
+            });
+
+            $("#btnplay").click(function () {
+              MediaPlayer.play();
+            });
+
+            $("#btnstop").click(function () {
+              MediaPlayer.stop();
+            });
+
+            $("#btnpause").click(function () {
+              MediaPlayer.pause();
+            });
+
+            $("#btnmute").click(function () {
+              MediaPlayer.settings.mute = true;
+            });
+
+            $("#btnfullScreen").click(function () {
+              MediaPlayer.fullScreen = true;
+            });
+
+            $("#btnplayState").click(function () {
+              alert(MediaPlayer.playState);
+            });
+
+            setTimeout(sendProcess, 2000);//第一次送进度时间
+
+
+
+          },function () {
+            window.close();
+          });
       }
       //多拽滑块完成回调
       $scope.showPlayMp4 = false;

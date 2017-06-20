@@ -870,9 +870,6 @@ angular
         type: "POST",
         async: false,
         contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-        xhrFields: {
-          withCredentials: true
-        },
         url:ALL_PORT.Authorization.url,
         data: $.extend({},ALL_PORT.Authorization.data),
         success:function (data) {

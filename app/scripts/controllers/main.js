@@ -80,7 +80,6 @@
             var encryptUserName;
             var encryptPassWorld;
             $scope.clickLogin = function(rememberMe) {
-              console.log(rememberMe)
               encryptUserName = $scope.login.Account.rsaEnscrypt();
               encryptPassWorld = $scope.login.PassWord.rsaEnscrypt();
 

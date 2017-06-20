@@ -115,9 +115,9 @@ angular.module('luZhouApp')
 
       commonService.getData(API_URL + "/Page/" + urlShort, 'POST', $.extend({},loginParam, token))
         .then(function(data) {
-          $scope.getVerifyCode();
           if (data.Type == 0) {
             $scope.showError = true;
+            $scope.getVerifyCode();
           } else if (data.Type == 1) {
             /*$location.path($rootScope.rememberUrl);*/
             // window.location.reload();
@@ -131,25 +131,33 @@ angular.module('luZhouApp')
               kickOut(data.Message);
               return true;
             } else {
+              $scope.getVerifyCode();
               return false;
             }
           } else if (data.Type == 4) {
             commonService.alertMs("此电脑已经有用户登录，您不能用其他帐号再次登录！");
+            $scope.getVerifyCode();
           } else if (data.Type == 5) {
             commonService.alertMs("平台当前在线人数到达上限，请稍后再试！");
+            $scope.getVerifyCode();
           } else if (data.Type == 6) {
             commonService.alertMs(data.Message);
+            $scope.getVerifyCode();
           } else if (data.Type == 7) {
             $scope.showValidateCodeError=true;
+            $scope.getVerifyCode();
           } else if (data.Type == 10) {
             commonService.alertMs("您还不是本平台成员，将为您转向您所在的平台：" + data.Message, 2);
+            $scope.getVerifyCode();
             return;
           } else if (data.Type == 11) {
             commonService.alertMs(data.Message);
+            $scope.getVerifyCode();
           } else if (data.Type == 12 || data.Type == 13) {
             commonService.alertMs(data.Message);
+            $scope.getVerifyCode();
           } else {
-
+            $scope.getVerifyCode();
           }
         }, function(data) {
           alert("登陆异常！");

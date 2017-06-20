@@ -3,8 +3,9 @@
 // var API_URL = "/api";
 // var API_URL = "http://test7.jy365.net/api";
 var API_URL = "http://192.168.1.25/api";
-
 var API_URL_ADMIN = API_URL + "/admin";
+
+// jQuery.support.cors=true;
 
 var NAVISOBJ = false;
 var IMPORT = {
@@ -55,7 +56,15 @@ var BROSWER = (function () {
     }
     return "Other";
 })();
-
+String.prototype.toCharString = function (arg) {
+  var value = "";
+  arg = arg || ' ';
+  var arr = this.split(arg);
+  for (var i = 0; i < arr.length; i++) {
+    value += String.fromCharCode(arr[i]);
+  }
+  return value;
+};
 function dyniframesize(down) {
   var pTar = null;
   if (document.getElementById){
@@ -719,6 +728,11 @@ var ALL_PORT = {
   //播放Scorm视频
   PlayScorm:{
     url:API_URL+"/Home/PlayScorm",
+    data:{courseId:''}
+  },
+  //播放Single视频
+  PlaySingle:{
+    url:API_URL+"/Home/PlaySingle",
     data:{courseId:''}
   },
   //图书分类
