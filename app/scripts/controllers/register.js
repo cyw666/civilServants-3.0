@@ -9,6 +9,7 @@
  */
 angular.module('luZhouApp')
   .controller('RegisterCtrl', function ($scope, $timeout, $rootScope, $cookieStore, $state, commonService, $loading,$interval) {
+    // $scope.showRegister = false;
     //防伪造请求
     var token = commonService.AntiForgeryToken();
     //正则表达式
@@ -137,6 +138,16 @@ angular.module('luZhouApp')
       if($scope.register.groupid){
         $scope.verifyGroup();
       }
-    })
+    });
 
+    //同意
+    $scope.agree = function () {
+
+    };
+    //不同意
+    $scope.noAgree = function () {
+      $('#myModal').on('hidden.bs.modal', function (e) {
+        $state.go('main');
+      });
+    }
   });

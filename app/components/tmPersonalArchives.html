@@ -36,9 +36,9 @@
         <br />
         <fieldset style="visibility: visible;">
           <legend class="legend_60"><strong>基本信息</strong></legend><br />
-          <input  type="text" class="date txt" datepicker ng-model="startDate"/>
+          <input type="text" ng-model="startDate" date-time-picker class="datebg">
           <span class="zhi">至</span>
-          <input class="date"  type="text" datepicker ng-model="endDate"/>
+          <input type="text" ng-model="endDate" date-time-picker class="datebg">
           <input id="btnDataSearch" type="button" value="时间查询" class="searchBtn btn" ng-click="refresh({startDate:startDate,endDate:endDate})" />
 
           <table style="width:96%;margin:0 auto;margin-top: 10px;" border="0" align="center" cellpadding="0" cellspacing="0">

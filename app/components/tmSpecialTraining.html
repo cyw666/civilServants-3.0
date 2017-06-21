@@ -18,7 +18,7 @@
         <div class="pad_left_16 pull-left">
           <h4 title="{{specialList.Name}}"><a href="" ng-click="checkUserClass(specialList.Id)">{{specialList.Name}}</a></h4>
           <p>课程数量：{{specialList.CourseCount}}</p>
-          <p class="description">培训简介：{{specialList.TrainingDescription | timeLimit:"75"}}</p>
+          <p class="description">培训简介：{{specialList.TrainingDescription | wordLimit:"75"}}</p>
           <button ng-if="!specialList.ApplyStatus" ng-click="addClass(specialList.Id)" class="btn">点击报名</button>
           <button ng-if="specialList.ApplyStatus" class="btn disabled" disabled="disabled">{{JudgeStatus(specialList.ApplyStatus)}}</button>
         </div>

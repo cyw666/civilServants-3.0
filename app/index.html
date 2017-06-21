@@ -25,7 +25,8 @@
     <link rel="stylesheet" type="text/css" href="../bower_components/angular-loading/angular-loading.css"/>
     <link rel="stylesheet" href="../bower_components/jquery-ui/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="styles/drag.css">
-    <link rel="stylesheet" href="styles/easyui.css">
+    <link rel="stylesheet" href="styles/tree.css">
+    <link rel="stylesheet" href="styles/bootstrap-datetimepicker.css">
     <!-- endbuild -->
     <!--[if lte IE 8]>
     <script src="http://apps.bdimg.com/libs/html5shiv/3.6/html5shiv.min.js"></script>
@@ -81,9 +82,8 @@
     <!--<script src="laydate/laydate.js"></script>-->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-        <script src="../bower_components/jquery-ui/jquery-ui.js"></script>
-        <script src="../bower_components/jquery-ui/ui/i18n/datepicker-zh-CN.js"></script>
+        <script src="scripts/plugins/bootstrap-datetimepicker.min.js"></script>
+        <script src="scripts/plugins/bootstrap-datetimepicker.zh-CN.js"></script>
         <script src="scripts/plugins/jquery.easyui.min.js"></script>
         <script src="scripts/globalConfig.js"></script>
         <script src="scripts/plugins/jsencrypt.js"></script>
@@ -99,7 +99,7 @@
         <script src="scripts/controllers/personalcenter.js"></script>
         <script src="scripts/controllers/testcenter.js"></script>
         <script src="scripts/controllers/specialtrainingcourse.js"></script>
-        <script src="scripts/filters/datefilter.js"></script>
+        <script src="scripts/filters/filters.js"></script>
         <script src="scripts/services/commonservice.js"></script>
         <script src="scripts/directives/tmpagation.js"></script>
         <script src="scripts/directives/tmheader.js"></script>
@@ -138,7 +138,6 @@
         <script src="scripts/directives/tmnewswithphoto.js"></script>
         <script src="scripts/directives/tmshowarticledetail.js"></script>
         <script src="scripts/controllers/articledetail.js"></script>
-        <script src="scripts/filters/trusthtml.js"></script>
         <script src="scripts/directives/tmexamlist.js"></script>
         <script src="scripts/directives/tmtrainingcenter.js"></script>
         <script src="scripts/directives/tmclassmy.js"></script>
@@ -182,7 +181,7 @@
         <script src="scripts/controllers/classexam.js"></script>
         <script src="scripts/directives/tmclassexam.js"></script>
         <script src="scripts/controllers/classarticledetail.js"></script>
-        <script src="scripts/directives/datepicker.js"></script>
+        <script src="scripts/directives/datetimepicker.js"></script>
         <script src="scripts/controllers/messagelist.js"></script>
         <script src="scripts/directives/tmmessagelist.js"></script>
         <script src="scripts/controllers/messagedetail.js"></script>
@@ -208,7 +207,6 @@
         <script src="scripts/controllers/forgetpassword.js"></script>
         <script src="scripts/directives/tmforgetpassword.js"></script>
         <script src="scripts/directives/tmtip.js"></script>
-        <script src="scripts/filters/timelimit.js"></script>
 
         <script src="scripts/controllers/photopreview.js"></script>
         <script src="scripts/directives/tmphotopreview.js"></script>
@@ -226,7 +224,6 @@
         <script src="scripts/directives/tmplayscorm.js"></script>
         <script src="scripts/services/antiforgerytoken.js"></script>
         <script src="scripts/directives/tmfooter2.js"></script>
-        <script src="scripts/directives/mylaydate.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/directives/tmlogin.js"></script>
         <script src="scripts/controllers/rankgroup.js"></script>

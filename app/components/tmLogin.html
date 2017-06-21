@@ -3,29 +3,32 @@
     <div class="form-group mar_top_20">
       <label for="exampleInputEmail1">用户名</label>
       <input id="txtAccount" ng-focus="inputFocus()" ng-change="inputChange()" ng-model="login.Account"
-        type="text" class="form-control" my-placeholder id="exampleInputEmail1" placeholder="请输入用户名">
+             type="text" class="form-control" my-placeholder id="exampleInputEmail1" placeholder="请输入用户名">
       <span class="error" ng-class="showError?'is-visible':''">帐号或密码错误！</span>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">密码</label>
       <input id="txtPwd" ng-focus="inputFocus()" ng-change="inputChange()" ng-model="login.PassWord"
-        type="password" class="form-control" my-placeholder id="exampleInputPassword1" placeholder="请输入密码">
+             type="password" class="form-control" my-placeholder id="exampleInputPassword1" placeholder="请输入密码">
     </div>
     <div class="form-group ValidateCodeform clearfix" ng-show="showVerifyCode">
       <img id="codeImg" alt="刷新验证码！" class="control-label" ng-click="getVerifyCode()"
            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAWCAYAAABXEBvcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALpSURBVFhH3Vi7ccMwDNU8LjJAJtAYGUIDpE+Vyo1b165Sq3E2SOHS59pNJmAIkKAoCiAhivlcfKfLxyQIPjw8AOrMls+xq9593O3W7e3yZ3XM96vPKHjUPS99qEPAOss5vA6R/7G6CGDrKLaEreteWpqrslUEULJayCjcxlEe/t8yKK0yAezEjxZNNYAtL611rrROClBpX+57AlFrYwHg5NRoBiua8Lf47A/mqjrJrnqzR0HRsQ+yF38fwu6/kI6YNZG+a9jNMhDZdj+YvhmAhBMB2RvzqUL+xxdtZmDw2AOIjAEgT2PVZebMIgAn5lUZlTYRuzcYnTOwbEjWwJSBHkBN8YjyMvGgHsDv0OC4aJD97wPQQj2enH45TezN4V6OEK1w2loPINq5DHh2f7Z2/O9BU/Wu4Mo0VdtXYUEDIVJTURkMJraaljoAlwXlag77qZj1Jwvk02i6R/tTXcgmhCWd07QxqW92j9CMLgB0YCELo+IyXNaEXgegaNGzDuKlq/68pVyhaF5EAlgUaSoqHkRMJ/+BYOS1Sg9gHFiUDWgvgHGUwhw2ytmc7HEmtgFYcgAukbQ2MYBlLuoBJGWYqUOsgeXDxBVbGRiTRD2JkDfXcz8DsSmA2MQ6SWVlVQtgRpMDm4U12xgYx4z0hhjnUxgBDJXYV8RoX3684hmIhQkGE+4VV3zREoBMBrGvoKJpI6WpFkCSGJmBAoDzKrwEcJE3N9s0w8Vu8I0H8B1rt2Oy4AE4uChwJQCTwykgaWBqUlgqtqsBDJMJU0RY0fmwY5sF0F3CtiOvtn98WNH5cFmRTEU1TTYHoqqNwX52+ugnkTiFKa29ZuX13LLNv0Qwx3UzMKUfXAz7wFkR8z1oZTFx7I8fYLyDQwMkrMNslM/3zWvQO64PLE8jcUEovnHJdAGaNyOVWM4ZJWkxYxzvlj001cGkhal9wdDior9hg5MKRRszH6OoD1w3gSyvyzqj8KYlcDXamZ7/BTEJVLcVbV7gAAAAAElFTkSuQmCC" />
-        <input type="text" ng-focus="inputFocus()" ng-model="login.ValidateCode" class="ValidateCode form-control" name="ValidateCode" id="ValidateCode"
-               my-placeholder placeholder="请输入验证码"/>
+      <input type="text" ng-focus="inputFocus()" ng-model="login.ValidateCode" class="ValidateCode form-control" name="ValidateCode" id="ValidateCode"
+             my-placeholder placeholder="请输入验证码"/>
       <span class="error error2" ng-class="showValidateCodeError?'is-visible':''">验证码输入错误！</span>
       <a ng-click="getVerifyCode()">看不清？换一组</a>
     </div>
     <div class="checkbox clearfix">
-      <label class="pull-left">
+      <label>
         <input ng-model="login.RememberMe" type="checkbox"> 记住密码
       </label>
-      <a class="pull-right" ui-sref="userRegister">立即注册</a>
     </div>
     <button ng-click="clickLogin(userMessage.RememberMe)" type="submit" class="btn btn-success">登录</button>
+    <div class="forgetPassword">
+      <a ui-sref="forgetPassword">忘记密码？</a> |
+      <a ui-sref="userRegister">立即注册</a>
+    </div>
   </form>
 </div>
 <style>
@@ -72,7 +75,7 @@
     border-color: #c8df44;
   }
   .login .checkbox {
-    margin: 15px 0 25px 0;
+    margin: 15px 0 25px 20px;
   }
   .login span.error.is-visible {
     visibility: visible;
@@ -102,7 +105,7 @@
   }
   .login span.error2.is-visible {
     right: 55px;
-    top: 44%;
+    top: 42%;
   }
   .login span.error2 {
     top: 44%;
@@ -114,5 +117,18 @@
   }
   .login .checkbox a:hover{
     color: #000;
+  }
+  .login .forgetPassword {
+    text-align: center;
+    color: #777;
+    margin-top: 15px;
+  }
+  .login .forgetPassword a{
+    color: #777;
+    padding: 0 5px;
+  }
+  .login .forgetPassword a:hover{
+    color: #545454;
+    text-decoration: underline;
   }
 </style>

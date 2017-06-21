@@ -33,7 +33,6 @@ module.exports = function(config) {
       'bower_components/angular-ueditor/dist/angular-ueditor.min.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'bower_components/jquery-ui/jquery-ui.js',
       // endbower
       'app/scripts/**/*.js',
       'test/mock/**/*.js',

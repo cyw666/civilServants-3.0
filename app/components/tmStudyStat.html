@@ -9,14 +9,11 @@
   <form class="form-inline formCourse">
     <span>查询时间：</span>
     <div class="form-group">
-      <input id="startTime" class="datebg" datepicker ng-model="startTime" select="updateMyText(date)"/>
-      <!--<input my-laydate type="text" id="startTime" ng-model="startTime">-->
+      <input type="text" id="startTime" ng-model="startTime" date-time-picker class="datebg">
     </div>
     <span>至</span>
     <div class="form-group">
-      <input id="endTime" class="datebg" datepicker ng-model="endTime" select="updateMyText(date)"/>
-      <!--<input my-laydate type="text" id="endTime" ng-model="endTime">-->
-
+      <input type="text" id="endTime" ng-model="endTime" date-time-picker class="datebg">
     </div>
     <button type="submit" class="btn btn-danger" ng-click="requestMyStudyStat({StartDate:startTime,EndDate:endTime})">查询</button>
   </form>

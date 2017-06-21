@@ -7,11 +7,17 @@
  * # tmRegister
  */
 angular.module('luZhouApp')
-  .directive('tmRegister', function ($http) {
+  .directive('tmRegister', function ($state) {
     return {
       templateUrl: 'components/tmRegister.html',
       restrict: 'EA',
       link: function postLink(scope, element, attrs) {
+        //协议
+        $('#myModal').modal({
+          show:true,
+          backdrop: 'static',
+          keyboard: false
+        });
       }
     };
   });

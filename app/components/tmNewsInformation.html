@@ -11,7 +11,7 @@
       </a>
       <h5><a ui-sref="articleDetail({ID:topNews.Id})" target="_blank" title="{{topNews.Name}}">{{topNews.Name}}</a></h5>
       <a ui-sref="articleDetail({ID:topNews.Id})" target="_blank">
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{topNews.Description | timeLimit :"60"}}</p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{topNews.Description | wordLimit :"60"}}</p>
       </a>
       <a href="javascript:;" class="newsTime pull-right ">{{topNews.CreateDate | dateFilter | date:'yyyy-MM-dd'}}</a>
     </div>
