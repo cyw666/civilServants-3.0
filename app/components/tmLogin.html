@@ -1,4 +1,4 @@
-<div class="login">
+<div class="login" dw-loading="login">
   <form class="form-signin">
     <div class="form-group mar_top_20">
       <label for="exampleInputEmail1">用户名</label>
@@ -9,7 +9,7 @@
     <div class="form-group">
       <label for="exampleInputPassword1">密码</label>
       <input id="txtPwd" ng-focus="inputFocus()" ng-change="inputChange()" ng-model="login.PassWord"
-             type="password" class="form-control" my-placeholder id="exampleInputPassword1" placeholder="请输入密码">
+             type="password" autocomplete="off" class="form-control" my-placeholder id="exampleInputPassword1" placeholder="请输入密码">
     </div>
     <div class="form-group ValidateCodeform clearfix" ng-show="showVerifyCode">
       <img id="codeImg" alt="刷新验证码！" class="control-label" ng-click="getVerifyCode()"
@@ -24,7 +24,7 @@
         <input ng-model="login.RememberMe" type="checkbox"> 记住密码
       </label>
     </div>
-    <button ng-click="clickLogin(userMessage.RememberMe)" type="submit" class="btn btn-success">登录</button>
+    <button ng-click="clickLogin()" type="submit" class="btn btn-success">登录</button>
     <div class="forgetPassword">
       <a ui-sref="forgetPassword">忘记密码？</a> |
       <a ui-sref="userRegister">立即注册</a>

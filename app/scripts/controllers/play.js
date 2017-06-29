@@ -271,6 +271,7 @@ angular.module('luZhouApp')
                   paraName = "cmi.core.lesson_location";
                   $.ajax({
                     type: "post",
+                    async: false,
                     url: API_URL + "/CourseProcess/ScormProcess?m=" + paraName + "&v=" + value,
                     data: { "PortalId": portalId, "userid": userId, "courseid": courseId, "position": value },
                     success: function (result) {
@@ -310,6 +311,7 @@ angular.module('luZhouApp')
                   paraName = "cmi.core.session_time";
                   $.ajax({
                     type: "post",
+                    async: false,
                     url: API_URL + "/CourseProcess/ScormProcess?m=" + paraName + "&v=" + value,
                     data: { "PortalId": portalId, "userid": userId, "courseid": courseId, "position": value },
                     success: function (result) {
@@ -437,7 +439,7 @@ angular.module('luZhouApp')
             }
 
 
-            function API() { }
+            window.API = new Object();
 
             API.LMSInitialize = LMSInitialize;
             API.LMSSetValue = LMSSetValue;
