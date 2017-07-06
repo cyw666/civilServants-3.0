@@ -18,7 +18,7 @@
         <div class="list" ng-repeat="originalArgicleList in originalArgicleListData.ListData">
           <p class="clearfix">
             <span class="list1" title="{{originalArgicleList.Name}}"><a ui-sref="articleDetail({ID:originalArgicleList.Id})" target="_blank">{{originalArgicleList.Name}}</a></span>
-            <span class="list2">{{originalArgicleList.CreateDate | dateFilter | date:'yyyy-MM-dd hh:mm:ss'}}</span>
+            <span class="list2">{{originalArgicleList.CreateDate | dateFilter | date:'yyyy-MM-dd HH:mm:ss'}}</span>
           </p>
         </div>
         <div tm-pagation conf="paginationConf"></div>

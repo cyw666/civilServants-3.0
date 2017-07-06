@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="message-time grid_6 text-right">
                                         <span>{{messageDetailData.Model.Class}}</span><br><br>
-                                        <span>{{messageDetailData.Model.CreateDate | dateFilter | date:'yyyy-MM-dd hh:mm:ss'}}</span>
+                                        <span>{{messageDetailData.Model.CreateDate | dateFilter | date:'yyyy-MM-dd HH:mm:ss'}}</span>
                                     </div>
                                 </div>
                                 <div ng-repeat="item in messageDetailData.Model.ReplyMessageList">
@@ -54,7 +54,7 @@
                                                     </div>
                                                     <div class="message-time grid_5 text-right">
                                                         <span>{{item.Class}}</span><br><br>
-                                                        <span>{{item.CreateDate | dateFilter | date:'yyyy-MM-dd hh:mm:ss'}}</span>
+                                                        <span>{{item.CreateDate | dateFilter | date:'yyyy-MM-dd HH:mm:ss'}}</span>
                                                     </div>
                                                 </div>
 

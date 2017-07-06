@@ -1,0 +1,153 @@
+<div class="classGarden mar_top_20">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      班级园地
+    </p>
+    <p class="more pull-right"><img src="../images/more.png" alt="更多"></p>
+  </div>
+  <div class="borderNews">
+    <div class="myTab">
+      <ul class="nav nav-tabs" ng-init="vm2.activeTab=1">
+        <li ng-class="{active: vm2.activeTab == 1}"><a href="javascript:;" ng-click="vm2.activeTab = 1;">省级培训班</a></li>
+        <li ng-class="{active: vm2.activeTab == 2}"><a href="javascript:;" ng-click="vm2.activeTab = 2;">党校培训班</a></li>
+        <li ng-class="{active: vm2.activeTab == 3}"><a href="javascript:;" ng-click="vm2.activeTab = 3;">其他培训班</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-panel perlist">
+          <table class="table">
+            <tbody>
+              <tr>
+              <td>班级名称</td>
+              <td>培训时间</td>
+              <td>培训地点</td>
+              <td>状态</td>
+            </tr>
+
+              <tr>
+                <td class="list1 clearfix">
+                  <p class="pull-left">
+                    <img src="../images/bookLog.png" alt="">
+                  </p>
+                  <span class="ellipsis pull-left">班级名称1班级名称1班级名称1班级名称1班级名称1班级名称1</span>
+                </td>
+                <td class="list2">2017-05-24 - 2017-05-58</td>
+                <td class="list3">政府办公室</td>
+                <td class="list4"><a href="" disabled class="btn btn-info">已报名</a></td>
+              </tr>
+              <tr>
+                <td class="list1 clearfix">
+                  <p class="pull-left">
+                    <img src="../images/bookLog.png" alt="">
+                  </p>
+                  <span class="ellipsis pull-left">班级名称1班级名称1班级名称1班级名称1班级名称1班级名称1</span>
+                </td>
+                <td class="list2">2017-05-24 - 2017-05-58</td>
+                <td class="list3">政府办公室</td>
+                <td class="list4"><a href="" disabled class="btn btn-default">已结束</a></td>
+              </tr>
+              <tr>
+                <td class="list1 clearfix">
+                  <p class="pull-left">
+                    <img src="../images/bookLog.png" alt="">
+                  </p>
+                  <span class="ellipsis pull-left">班级名称1班级名称1班级名称1班级名称1班级名称1班级名称1</span>
+                </td>
+                <td class="list2">2017-05-24 - 2017-05-58</td>
+                <td class="list3">政府办公室</td>
+                <td class="list4"><a href="" disabled class="btn btn-info">已报名</a></td>
+              </tr>
+              <tr>
+                <td class="list1 clearfix">
+                  <p class="pull-left">
+                    <img src="../images/bookLog.png" alt="">
+                  </p>
+                  <span class="ellipsis pull-left">班级名称1班级名称1班级名称1班级名称1班级名称1班级名称1</span>
+                </td>
+                <td class="list2">2017-05-24 - 2017-05-58</td>
+                <td class="list3">政府办公室</td>
+                <td class="list4"><a href="" disabled class="btn btn-default">已结束</a></td>
+              </tr>
+              <tr>
+                <td class="list1 clearfix">
+                  <p class="pull-left">
+                    <img src="../images/bookLog.png" alt="">
+                  </p>
+                  <span class="ellipsis pull-left">班级名称1班级名称1班级名称1班级名称1班级名称1班级名称1</span>
+                </td>
+                <td class="list2">2017-05-24 - 2017-05-58</td>
+                <td class="list3">政府办公室</td>
+                <td class="list4"><a href="" disabled class="btn btn-info">已报名</a></td>
+              </tr>
+              <tr>
+                <td class="list1 clearfix">
+                  <p class="pull-left">
+                    <img src="../images/bookLog.png" alt="">
+                  </p>
+                  <span class="ellipsis pull-left">班级名称1班级名称1班级名称1班级名称1班级名称1班级名称1</span>
+                </td>
+                <td class="list2">2017-05-24 - 2017-05-58</td>
+                <td class="list3">政府办公室</td>
+                <td class="list4"><a href="" disabled class="btn btn-default">已结束</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .classGarden {
+
+  }
+  .classGarden .borderNews{
+
+  }
+  .classGarden .borderNews .tab-content{
+    border: 1px solid #eee;
+    border-top: none;
+  }
+  .classGarden .btn-info[disabled]:hover,.classGarden .btn-info[disabled]:focus,.classGarden .btn-info[disabled]{
+    background-color: #00b4ff;
+    border-color: #00b4ff;
+  }
+  .classGarden .borderNews .tab-content .btn-default{
+    background-color: #d7d7d7;
+  }
+  .classGarden .borderNews .tab-content .btn-default:hover,.classGarden .borderNews .tab-content .btn-default:focus{
+    background-color: #d7d7d7;
+    color: #fff;
+  }
+  .perlist >.table > thead > tr > td, .perlist>.table > tbody > tr > td, .perlist>.table > tfoot > tr > td{
+    border-bottom: 1px solid #ddd;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
+    border-top: none;
+  }
+  .perlist >.table .list1 {
+    width: 35%;
+    text-align: left;
+    font-weight: 600;
+  }
+  .perlist >.table .list1 img{
+    margin: 0 20px;
+  }
+  .perlist >.table .list1 span{
+    width: 230px;
+    display: inline-block;
+  }
+  .perlist >.table .list2 {
+    width: 25%;
+
+  }
+  .perlist >.table .list3 {
+    width: 20%;
+
+  }
+  .perlist >.table .list4 {
+    width: 20%;
+
+  }
+</style>

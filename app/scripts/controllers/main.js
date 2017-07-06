@@ -11,6 +11,9 @@ angular.module('luZhouApp')
   .controller('MainCtrl', function($scope, $timeout, $rootScope, $cookieStore, $state, commonService, $loading, $location, $stateParams) {
     //防伪造请求
     var token = commonService.AntiForgeryToken();
+    $scope.vm={};
+    $scope.vm2={};
+    $scope.vm3={};
     //登录
     $scope.showLogin = false;
     $scope.showError = false;

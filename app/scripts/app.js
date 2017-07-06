@@ -22,26 +22,26 @@ angular
   ])
   .config(function ($routeProvider,$httpProvider,$stateProvider, $urlRouterProvider,$locationProvider) {
     $stateProvider
-      .state('guide', {
+      .state('main', {
         url: '/',
-        templateUrl : 'views/guideview.html',
-        controller: 'GuideviewCtrl',
-        controllerAs: 'guideView',
-        data:{title:"泸州市人事人才培训网"}
+        templateUrl : 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main',
+        data:{title:"干部教育网络学院-基准3.0"}
       })
-      .state('guide2', {
+      /*.state('guide2', {
         url: '',
         templateUrl : 'views/guideview.html',
         controller: 'GuideviewCtrl',
         controllerAs: 'guideView',
-        data:{title:"泸州市人事人才培训网"}
-      })
-      .state('main', {
+        data:{title:"干部教育网络学院-基准3.0"}
+      })*/
+      .state('main2', {
         url: '/main',
         templateUrl : 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main',
-        data:{title:"泸州市人事人才培训网-首页"}
+        data:{title:"干部教育网络学院-基准3.0"}
       })
       .state('courseCenter', {
         url: '/courseCenter',

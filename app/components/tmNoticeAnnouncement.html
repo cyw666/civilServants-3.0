@@ -1,49 +1,113 @@
 <!--@*通知公告*@-->
 
-<div class="noticeAnnouncement mar_left_20 mar_top_10 mar_right_12">
-  <div class="notice">
-    <div class="notice-heading clearfix">
-      <h4>{{noticeData.TitleNav}}</h4>
+<div class="noticeAnnouncement">
+  <div class="notice"  dw-loading="noticeAnnouncement">
+    <div class="notice-heading">
+      <div id="carousel-special-training" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-special-training" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-special-training" data-slide-to="1"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item clearfix active">
+            <div>
+              <!--<img ng-src="{{specialList.Img}}" err-Src="images/notFound.jpeg">-->
+              <img src="../images/noticeImg.png" alt="">
+            </div>
+          </div>
+          <div class="item clearfix">
+            <div>
+              <!--<img ng-src="{{specialList.Img}}" err-Src="images/notFound.jpeg">-->
+              <img src="../images/noticeImg.png" alt="">
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left" href="#carousel-special-training" role="button" data-slide="prev">
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right" href="#carousel-special-training" role="button" data-slide="next">
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
     </div>
-    <div class="notice-body" dw-loading="noticeAnnouncement">
-      <ul>
-        <li ng-repeat="noticeData in noticeData.ListData">
-          <a ui-sref="noticeDetail({ID:noticeData.Id})" title="{{noticeData.Name}}" target="_blank">{{noticeData.Name}}</a>
-        </li>
-      </ul>
+    <div class="notice-body clearfix">
+      <div class="notice-body-left pull-left">通知公告</div>
+      <div class="notice-body-right pull-left">
+        <ul class="clearfix">
+          <li class="pull-left">
+            <span class="triangleRight"></span>
+            <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
+            <span class="time">2017-05-30</span>
+          </li>
+          <li class="pull-left">
+            <span class="triangleRight"></span>
+            <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
+            <span class="time">2017-05-30</span>
+          </li>
+          <li class="pull-left">
+            <span class="triangleRight"></span>
+            <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
+            <span class="time">2017-05-30</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
 
 <style>
 .noticeAnnouncement {
-  background-color: #f8f8ec;
-  height: 182px;
+  /*background-color: #f3f3f3;*/
+  height: 482px;
+  width: 590px;
+  border: 1px solid #eee;
+  padding: 10px;
 }
 .noticeAnnouncement .notice-heading {
   text-align: center;
-  margin: 0 auto;
-  width: 284px;
-  height: 44px;
-  line-height: 44px;
-  border-bottom: 1px solid #e3e4ba;
+  width: 568px;
+  height: 350px;
 }
-.noticeAnnouncement .notice-heading h4{
-  line-height: 44px;
-  font-weight: 600;
+.noticeAnnouncement .notice-body {
+  background-color: #f3f3f3;
+  margin-top: 10px;
 }
-.noticeAnnouncement .notice-body li {
-  line-height: 30px;
-  width: 284px;
-  margin: 3px auto;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+.noticeAnnouncement .notice-body .notice-body-left{
+  height: 80px;
+  padding: 0 19px;
+  border-right: 1px solid #ddd;
+  font-size: 14px;
+  font-weight: bold;
+  color: #db1011;
+  margin: 10px auto;
+  text-align: center;
+  writing-mode: vertical-lr;/*从左向右 从右向左是 writing-mode: vertical-rl;*/
+  writing-mode: tb-lr;/*IE浏览器的从左向右 从右向左是 writing-mode: tb-rl；*/
 }
-.noticeAnnouncement .notice-body li a{
-  color: #7f7f7f;
+.noticeAnnouncement .notice-body .notice-body-right{
+  width: 500px;
 }
-.noticeAnnouncement .notice-body li a:hover{
-  color: #62a3db;
+.noticeAnnouncement .notice-body .notice-body-right li{
+  height: 33px;
+  line-height: 33px;
+}
+.noticeAnnouncement .notice-body .notice-body-right span{
+  display: inline-block;
+  float: left;
+}
+.noticeAnnouncement .notice-body .notice-body-right .triangleRight{
+  margin: 12px 10px;
+}
+.noticeAnnouncement .notice-body .notice-body-right .title{
+  width: 320px;
+}
+.noticeAnnouncement .notice-body .notice-body-right .time{
+  margin-left: 50px;
 }
 </style>

@@ -1,22 +1,16 @@
 <div class="courselCenter">
-  <div class="com-header com-header-blue">
-    <h4>课程中心</h4>
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      课程中心
+    </p>
+    <p class="more pull-right"><img src="../images/more.png" alt="更多"></p>
   </div>
-  <div class="btn-group courselLink mar_top_12" role="group">
+  <div class="btn-group courselLink" role="group">
     <a class="btn btn-default active" ng-click="searchCourseList(courselassificationList0.Id)" repeat-finish="renderFinish()">{{courselassificationList0.Name}}</a>
     <a class="btn btn-default" ng-repeat="courseName in courselassification" ng-click="searchCourseList(courseName.Id)" repeat-finish="renderFinish()">{{courseName.Name}}</a>
   </div>
-  <div class="searchCourse clearfix">
-    <div class="btn-group courselLink mar_top_15" role="group">
-      <a class="btn btn-default one" ng-click="searchCourseList('-3')">推荐课程</a>
-      <a class="btn btn-default two" ng-click="searchCourseList('-1')">最新课程</a>
-    </div>
-    <div class="searchInput mar_top_15">
-      <input type="text" my-placeholder ng-model="params.title" placeholder="输入课程关键字">
-      <a class="btn btn-default" ng-click="searchCourseList('','','',params.title)"></a>
-    </div>
-  </div>
-  <div class="courseList mar_top_10 clearfix" dw-loading="courseList">
+  <div class="courseList mar_top_20 clearfix" dw-loading="courseList">
     <ul class="clearfix">
       <li ng-repeat="courseCenterData in courseCenterData.ListData">
         <a ui-sref="courseDetails({Id:courseCenterData.Id})" title="{{courseCenterData.Name}}" target="_blank">
@@ -24,8 +18,8 @@
         </a>
         <div class="mar_top_15">
           <p><a ui-sref="courseDetails({Id:courseCenterData.Id})" title="{{courseCenterData.Name}}" target="_blank">{{courseCenterData.Name}}</a></p>
-          <p>主讲：{{courseCenterData.Teacher}}</p>
-          <p><span>学时：{{courseCenterData.Credit}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>时长：{{courseCenterData.Time}}小时</span></p>
+          <p class="clearfix"> <span class="pull-left">讲师：{{courseCenterData.Teacher}}</span><span class="red pull-right">学分：{{courseCenterData.Credit}}</span></p>
+          <p>时长：{{courseCenterData.Time}}小时</p>
         </div>
       </li>
     </ul>
@@ -33,90 +27,47 @@
 </div>
 
 <style>
+  .courselCenter {
+    border-bottom: 6px solid #db1011;
+  }
   .courselLink {
-
+    width: 100%;
+    background: #f8f8f8;
   }
   .courselLink.btn-group > .btn {
-    color: #333;
-    width:132px;
-    height: 38px;
-    border: 1px solid #eee;
-    border-bottom: 2px solid #ddd;
-    margin-left: 10px;
-    margin-bottom: 5px;
-    background: #f4f4f4;
+    color: #666;
+    width:169px;
+    height: 44px;
+    line-height: 44px;
+    background: #f8f8f8;
+    padding: 0;
+    border:none;
+    font-size: 18px;
   }
   .courselLink.btn-group > .btn.active {
     color: #fff;
-    border: 1px solid #3472a3;
-    border-bottom: 2px solid #235880;
-    background: url("images/coutsCenterBg_03.png");
-  }
-  .searchCourse {
-    background-color: #f6f6f6;
-    height: 60px;
-    line-height: 60px;
-    margin-left: 10px;
+    background-color: #db1011;
   }
 
-  .searchCourse .courselLink,.searchCourse .searchInput {
-    float: left;
+  .courseList {
+    min-height: 440px;
   }
-  .searchCourse .searchInput {
-    width: 350px;
-  }
-  .searchCourse .courselLink {
-    width: 340px;
-  }
-  .searchCourse .courselLink>.btn {
-    width: 100px;
-    height: 30px;
-    margin-left: 0;
-    font-size: 16px;
-    padding: 0;
-    line-height: 30px;
-  }
-  .searchCourse .courselLink>.btn.one {
-    margin-left: 22px;
-    background-color: #fff;
-  }
-  .searchCourse .courselLink>.btn.two {
-    background-color: #fff;
-  }
-
-  .searchCourse .searchInput input {
-    float: left;
-    width: 305px;
-    height: 30px;
-    line-height: 30px;
-    border: 1px solid #dadada;
-    border-radius: 3px;
-    padding-left: 10px;
-  }
-  .searchCourse .searchInput a {
-    float: left;
-    width: 30px;
-    height: 30px;
-    margin-left: 15px;
-    background: url("images/icon_search.png");
-    border: none;
-  }
-
   .courseList ul li {
     float: left;
-    margin-left: 13px;
-    height: 240px;
-    width: 220px;
+    margin-left: 10px;
+    height: 200px;
+    width: 200px;
+    margin-bottom: 20px;
   }
   .courseList ul li p{
     line-height: 23px;
-    max-width: 220px;
+    max-width: 190px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
   .courseList ul li a img{
-    width: 220px;
-    height: 134px;
+    width: 200px;
+    height: 127px;
   }
 </style>

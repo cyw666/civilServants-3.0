@@ -1,0 +1,27 @@
+<div class="rankingTab mar_left_20 mar_top_20">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      排行榜
+    </p>
+    <p class="more pull-right"><img src="../images/more.png" alt="更多"></p>
+  </div>
+  <div class="rankTab">
+    <ul class="nav nav-tabs" ng-init="vm3.activeTab=1">
+      <li ng-class="{active: vm3.activeTab == 1}"><a href="javascript:;" ng-click="vm3.activeTab = 1;">单位</a></li>
+      <li ng-class="{active: vm3.activeTab == 2}"><a href="javascript:;" ng-click="vm3.activeTab = 2;">个人</a></li>
+      <li ng-class="{active: vm3.activeTab == 3}"><a href="javascript:;" ng-click="vm3.activeTab = 3;">课程</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-panel perlist" ng-show="vm3.activeTab == 1">
+        1
+      </div>
+      <div class="tab-panel perlist" ng-show="vm3.activeTab == 2">
+        222
+      </div>
+      <div class="tab-panel perlist" ng-show="vm3.activeTab == 3">
+        333
+      </div>
+    </div>
+  </div>
+</div>

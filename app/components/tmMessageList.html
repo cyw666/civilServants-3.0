@@ -24,7 +24,7 @@
             <span class="list1">{{$index+1}}</span>
             <span class="list2" title="{{messageList.Name}}"><a ui-sref="messageDetail({Id:messageList.Id})">{{messageList.Name}}</a></span>
             <span class="list1">{{messageList.Class}}</span>
-            <span class="list2">{{messageList.CreateDate | dateFilter | date:'yyyy-MM-dd hh:mm:ss'}}</span>
+            <span class="list2">{{messageList.CreateDate | dateFilter | date:'yyyy-MM-dd HH:mm:ss'}}</span>
           </p>
         </div>
         <div tm-pagation conf="paginationConf"></div>

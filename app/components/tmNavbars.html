@@ -1,29 +1,36 @@
 <div class="navbg">
-  <ul class="nav nav-tabs">
-    <li role="presentation" ui-sref-active="active"><a ui-sref="main">首页</a></li>
-    <li role="presentation" ui-sref-active="active"><a ui-sref="courseCenter">课程中心</a></li>
-    <li role="presentation" ui-sref-active="active"><a ui-sref="personalCenter">个人中心</a></li>
-    <li role="presentation" ui-sref-active="active"><a ui-sref="testCenter">考试中心</a></li>
-    <li role="presentation" ui-sref-active="active"><a ui-sref="specialTrainingCourse">专题培训班</a></li>
-  </ul>
+  <div class="container_24">
+    <ul class="nav nav-tabs">
+      <li role="presentation" ui-sref-active="active"><a ui-sref="main">首页</a></li>
+      <li role="presentation" ui-sref-active="active"><a ui-sref="article">通知公告</a></li>
+      <li role="presentation" ui-sref-active="active"><a ui-sref="specialTrainingCourse">班级园地</a></li>
+      <li role="presentation" ui-sref-active="active"><a ui-sref="courseCenter">课程中心</a></li>
+      <li role="presentation" ui-sref-active="active"><a ui-sref="personalCenter">个人中心</a></li>
+      <li role="presentation" ui-sref-active="active"><a ui-sref="testCenter">在线考试</a></li>
+      <li role="presentation" ui-sref-active="active"><a ui-sref="specialTrainingCourse">在线帮助</a></li>
+    </ul>
+  </div>
 </div>
 <style>
   .navbg {
-    margin: 0 auto;
     text-align: center;
-    background: url("../images/notice.png") no-repeat;
+    background: #db1011;
   }
   .navbg .nav{
-    height: 48px;
+    height: 40px;
     margin:0 auto;
+    background: #db1011;
+  }
+  .navbg .nav-tabs {
+    border-bottom: none;
   }
   .nav-tabs > li > a {
     color: #fff;
-    width: 100px;
-    padding: 11px 0px;
-    margin:0 40px 0 48px;
+    padding: 8.5px 54px;
+    /*margin:0 30px 0 38px;*/
     font-size: 16px;
     font-weight: 500;
+    margin-right: 0;
   }
   .nav > li > a:hover, .nav > li > a:focus {
     border-color: transparent;
@@ -31,9 +38,8 @@
   }
   .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     color: #fff;
-    background-color: transparent;
+    background-color: #f50001;
     border: none;
-    border-bottom: 4px solid #eee;
   }
 </style>
 

@@ -20,7 +20,7 @@ angular.module('luZhouApp')
             .then(function(response) {
                 $loading.finish('exam');
                 if (response.Data.Exam.TimeLimit != 0) {
-                    $scope.seconds = parseInt(response.Data.Exam.TimeLimit) * 60 * 1000;
+                    $scope.seconds = parseInt(response.Data.Exam.TimeLimit) * 60;
                 }
                 // $scope.seconds = 5*1000;
                 //考试题目数量
@@ -40,7 +40,7 @@ angular.module('luZhouApp')
             });
         //倒计时
         $interval(function() {
-            $scope.seconds -= 1000;
+            $scope.seconds -= 1;
             if ($scope.seconds == 0) {
                 alert('考试时间到,系统将自动提交！');
                 $scope.submitForm(1);

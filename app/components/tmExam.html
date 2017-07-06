@@ -17,7 +17,7 @@
               <li ng-if="examData.Exam.TimeLimit==0" class="red">不限时</li>
 
               <li>剩余时间：</li>
-              <li ng-if="examData.Exam.TimeLimit!=0" class="red">{{seconds | date:'mm分ss秒'}}</li>
+              <li ng-if="examData.Exam.TimeLimit!=0" class="red">{{seconds | formatSeconds}}</li>
               <li ng-if="examData.Exam.TimeLimit==0" class="red">不限时</li>
 
               <li>总分：</li>

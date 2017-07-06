@@ -229,8 +229,8 @@ svg {
 
 /*公共样式*/
 body {
-  background: url("../images/big_bg.png") center top;
   font-family: "Microsoft YaHei","宋体";
+  background-color: #fff;
 }
 .container_24{background-color: #fff}
 a.btn {
@@ -240,43 +240,49 @@ h4 {
   font-size: 16px;
   /*font-weight: bold;*/
 }
-/*页面最外部容器*/
-.bigOuter {
-  width:1080px;
-  margin: 0 auto;
-  background-color: #fff;
-}
 /*颜色*/
 .blue {  color: #3a7fb6;  }
 .green {  color: #6d9d85;  }
 .cyan {  color: #b4ca41;  }
-.red {color: #EA4646}
+.red {color: #db1011}
+    /*深*/
+.red2 {color: #f50001;}
+.gray {color: #444548;}
+.gray2 {color: #666;}
+.gray2 {color: #333;}
+.orange {  color: #ff9842;}
+
+/*超出显示...*/
+.ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.triangleRight {
+  font-size: 0;
+  line-height: 0;
+  border-width: 5px;
+  border-color: #db1011;
+  border-right-width: 0;
+  border-style: dashed;
+  border-left-style: solid;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
 /*模块头部公用样式*/
 .com-header {
-  height: 40px;
-  border-radius: 8px 0 0 0;
-  margin-left: 10px;
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid #db1011;
 }
-.com-header h4{
-  color: #fff;
-  line-height: 40px;
-  padding-left: 20px;
-  font-size: 16px;
+.com-header .more{
+  height: 50px;
+  line-height: 50px;
 }
-.com-header a.pull-right {
-  line-height: 40px;
-  color: #fff;
-  font-size: 16px;
-  padding-right: 10px;
-}
-.com-header-green {
-  background-color: #6d9d85;
-}
-.com-header-blue {
-  background-color: #3a7fb6;
-}
-.com-header-cyan {
-  background-color: #b4ca41;
+.com-header .title{
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 /*课程分类头部1*/
@@ -409,29 +415,26 @@ h4.title-h4{
 }
 /*标签页*/
 .myTab {
-  margin-top: 25px;
   text-align: center;
+}
+.myTab ul.nav-tabs {
+  background-color: #f3f3f3;
 }
 .myTab ul.nav-tabs>li a {
   color: #000;
   width: auto;
-  padding: 10px 15px;
+  padding: 13px 27px;
   margin:0;
   font-size: 16px;
-  font-weight: 500;
-  border:2px solid #eee;
+  font-weight: 600;
 }
 .myTab ul.nav-tabs>li.active a {
-  color: #fff;
-  background-color: #6d9d85;
-  border: 1px solid #6d9d85;
+  color: #db1011;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-top:3px solid #db1011;
   border-bottom-color: transparent;
   text-align: center;
-}
-.myTab .perlist {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 .myTab .perlist .title_bar span {
   float: left;
@@ -466,6 +469,33 @@ h4.title-h4{
   margin-left: 10px;
 }
 
+/*排行标签页*/
+.rankTab {
+  text-align: center;
+}
+.rankTab ul.nav-tabs {
+  background-color: #fff;
+  border-bottom: none;
+}
+.rankTab ul.nav-tabs>li {
+  width: 33.33%;
+  height: 45px;
+}
+.rankTab ul.nav-tabs>li a {
+  color: #000;
+  height: 45px;
+  line-height: 45px;
+  padding: 0;
+  margin: 0 30px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.rankTab ul.nav-tabs>li.active a {
+  color: #db1011;
+  border-bottom:3px solid #db1011;
+  text-align: center;
+  background-color: #fff;
+}
 .form-group input {
   width: 400px;
   padding: 0 0 0 12px;
@@ -524,6 +554,9 @@ h4.title-h4{
 .mar_left_10 {
   margin-left:10px;
 }
+.mar_left_15 {
+  margin-left:15px;
+}
 .mar_left_20 {
   margin-left:20px;
 }
@@ -532,6 +565,9 @@ h4.title-h4{
  }
 .mar_left_30 {
   margin-left:30px;
+}
+.mar_left_45 {
+  margin-left:45px;
 }
 .mar_right_10 {
   margin-right:10px;
@@ -557,6 +593,9 @@ h4.title-h4{
 }
 .pad_left_35 {
   padding-left: 35px;
+}
+pad_left_45 {
+  padding-left: 45px;
 }
 .pad_right_10 {
   padding-right: 10px;
