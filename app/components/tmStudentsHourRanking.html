@@ -1,65 +1,83 @@
-<!--单位排行-->
-<div class="studentsHourRanking tmBorder-cyan"  dw-loading="studentsHourRanking">
-  <div class="titlebg2">
-    <div class="txt">
+<!--个人排行-->
+<div class="studentsHourRanking">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
       {{studentHourRanking.ViewBag.TitleNav}}
-    </div>
+    </p>
+    <p class="more pull-right">
+      <a ui-sref="userRankingList" target="_blank" href="#/courseCenter"><img src="../images/more.png" alt="更多"></a>
+    </p>
   </div>
-  <p class="title">
-    <span class="rank1">排行</span>
-    <span class="rank2">姓名</span>
-    <span class="rank3">学时</span>
-    <span class="rank4">学次</span>
-  </p>
-  <ul class="rankingList" ng-repeat="rankingData in studentHourRanking.ListData">
-    <li class="list1">{{$index+1}}</li>
-    <li class="list2">{{rankingData.UserName}}</li>
-    <li class="list3">{{rankingData.Credit}}</li>
-    <li class="list4">{{rankingData.LearnTime}}</li>
-  </ul>
+  <div class="tmBorder"   dw-loading="studentsHourRanking">
+    <!--<div class="titlebg2">
+      <div class="txt">
+        {{studentHourRanking.ViewBag.TitleNav}}
+      </div>
+    </div>-->
+    <p class="rankTitle clearfix">
+      <span class="list1">排行</span>
+      <span class="list2">姓名</span>
+      <span class="list3">学时</span>
+      <span class="list4">学次</span>
+    </p>
+    <ul class="rankingList clearfix" ng-repeat="rankingData in studentHourRanking.ListData">
+      <li class="list1">
+        <span ng-if="$index<3" ng-class="{'rankFirstBg':$index==0,'rankSecondBg':$index==1,'rankThirdBg':$index==2}"></span>
+        <span ng-if="$index>=3">{{$index+1}}</span>
+      </li>
+      <li class="list2">{{rankingData.UserName}}</li>
+      <li class="list3">{{rankingData.Credit}}</li>
+      <li class="list4">{{rankingData.LearnTime}}</li>
+    </ul>
+  </div>
+
 </div>
 <style>
-  .studentsHourRanking h4 {
-    line-height: 52px;
+  .studentsHourRanking{
     text-align: center;
   }
   .studentsHourRanking .rankingList{
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
+    height: 44px;
+    line-height: 44px;
   }
-  .studentsHourRanking .title {
-    border:1px solid #dadada;
-    border-radius: 3px;
+  .studentsHourRanking .rankTitle {
     width: auto;
-    height: 30px;
-    line-height: 30px;
+    background-color: #f8f8f8;
   }
-  .studentsHourRanking .title span ,.studentsHourRanking .rankingList li{
+  .studentsHourRanking .rankingList li{
+    height: 44px;
+    line-height: 44px;
+  }
+  .studentsHourRanking .rankTitle span{
+    height: 48px;
+    line-height: 48px;
+  }
+  .studentsHourRanking .rankTitle span ,.studentsHourRanking .rankingList li{
     float: left;
   }
-  .studentsHourRanking .title .rank1,.studentsHourRanking .rankingList .list1{
-    width: 60px;
-    text-align: left;
-    padding-left: 10px;
+  .studentsHourRanking .list1{
+    width: 20%;
   }
-  .studentsHourRanking .rankingList .list1{
-    padding-left: 15px;
+  .studentsHourRanking .rankingList .list1 span{
+    display: inline-block;
+    width: 100%;
+    height: 44px;
   }
-  .studentsHourRanking .title .rank2,.studentsHourRanking .rankingList .list2{
-    width: 100px;
-    text-align: left;
+  .studentsHourRanking .list1{
+    /*padding-left: 15px;*/
+  }
+  .studentsHourRanking .list2{
+    width: 30%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-  .studentsHourRanking .title .rank3,.studentsHourRanking .rankingList .list3{
-    width: 65px;
-    text-align: left;
+  .studentsHourRanking .list3{
+    width: 25%;
   }
-  .studentsHourRanking .title .rank4,.studentsHourRanking .rankingList .list4{
-    width: 65px;
-    text-align: left;
+  .studentsHourRanking .list4{
+    width: 25%;
   }
 </style>
 

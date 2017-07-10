@@ -14,7 +14,7 @@ angular.module('luZhouApp')
       if (!date) {
         return "";
       }
-      var date = date.replace(/[^0-9-]/ig, "");
+      date = date.match(/\d+/ig)[0];
       return date;
     };
   })

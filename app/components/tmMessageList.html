@@ -1,72 +1,80 @@
-<!--留言版-->
-<div class="messageList tmBorder-green">
-  <ol class="breadcrumb">
-    <li class="currentPosition">您的当前位置:</li>
-    <li><a ui-sref="main">首页</a></li>
-    <li><a ui-sref="personalCenter">个人中心</a></li>
-    <li class="active">{{messageListData.TitleNav}}</li>
-  </ol>
-  <div class="clearfix">
-    <h4 class="pull-left">{{messageListData.TitleNav}}</h4>
-    <a href="" class="btn btn-danger pull-right add" data-toggle="modal" data-target=".notemodal">添加留言</a>
+<!--留言板-->
+<div class="messageList">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      留言板
+    </p>
   </div>
-  <div class="myTab" dw-loading="studyPlan">
-    <div class="tab-content" dw-loading="messageList">
-      <div class="tab-panel perlist">
-        <div class="title_bar clearfix">
-          <span class="list1">序号</span>
-          <span class="list2">标题</span>
-          <span class="list1">分类</span>
-          <span class="list2">日期</span>
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li><a ui-sref="personalCenter">个人中心</a></li>
+      <li class="active">{{messageListData.TitleNav}}</li>
+    </ol>
+    <div class="clearfix">
+      <h4 class="pull-left">{{messageListData.TitleNav}}</h4>
+      <a href="" class="btn btn-danger pull-right add" data-toggle="modal" data-target=".notemodal">添加留言</a>
+    </div>
+    <div class="myTab" dw-loading="studyPlan">
+      <div class="tab-content" dw-loading="messageList">
+        <div class="tab-panel perlist">
+          <div class="title_bar clearfix">
+            <span class="list1">序号</span>
+            <span class="list2">标题</span>
+            <span class="list1">分类</span>
+            <span class="list2">日期</span>
+          </div>
+          <div class="list" ng-repeat="messageList in messageListData.ListData">
+            <p class="clearfix">
+              <span class="list1">{{$index+1}}</span>
+              <span class="list2" title="{{messageList.Name}}"><a ui-sref="messageDetail({Id:messageList.Id})">{{messageList.Name}}</a></span>
+              <span class="list1">{{messageList.Class}}</span>
+              <span class="list2">{{messageList.CreateDate | dateFilter | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+            </p>
+          </div>
+          <div tm-pagation conf="paginationConf"></div>
         </div>
-        <div class="list" ng-repeat="messageList in messageListData.ListData">
-          <p class="clearfix">
-            <span class="list1">{{$index+1}}</span>
-            <span class="list2" title="{{messageList.Name}}"><a ui-sref="messageDetail({Id:messageList.Id})">{{messageList.Name}}</a></span>
-            <span class="list1">{{messageList.Class}}</span>
-            <span class="list2">{{messageList.CreateDate | dateFilter | date:'yyyy-MM-dd HH:mm:ss'}}</span>
-          </p>
-        </div>
-        <div tm-pagation conf="paginationConf"></div>
       </div>
     </div>
-  </div>
-  <!--添加留言-->
-  <div class="modal fade notemodal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">添加留言</h4>
-        </div>
-        <div class="modal-body">
-          <table class="table table-bordered">
-            <tbody>
-            <tr>
-              <td>标题</td>
-              <td><input type="text" ng-model="messageName"></td>
-            </tr>
-            <tr>
-              <td>分类</td>
-              <td>
-                <select ng-model="messageClass" ng-options="x for x in allClass"></select>
-              </td>
-            </tr>
-            <tr>
-              <td>说明</td>
-              <td>
-                <textarea ng-model="messageContent" cols="50" rows="5" type="text"></textarea>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-          <div class="addMessage">
-            <a href="" ng-click="addMessage({Name:messageName,Class:messageClass,Content:messageContent})" class="btn btn-danger">提交</a>
+    <!--添加留言-->
+    <div class="modal fade notemodal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">添加留言</h4>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered">
+              <tbody>
+              <tr>
+                <td>标题</td>
+                <td><input type="text" ng-model="messageName"></td>
+              </tr>
+              <tr>
+                <td>分类</td>
+                <td>
+                  <select ng-model="messageClass" ng-options="x for x in allClass"></select>
+                </td>
+              </tr>
+              <tr>
+                <td>说明</td>
+                <td>
+                  <textarea ng-model="messageContent" cols="50" rows="5" type="text"></textarea>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="addMessage">
+              <a href="" ng-click="addMessage({Name:messageName,Class:messageClass,Content:messageContent})" class="btn btn-danger">提交</a>
+            </div>
           </div>
         </div>
       </div>
+      <!--<div class="preventorgery"></div>-->
     </div>
-    <!--<div class="preventorgery"></div>-->
   </div>
 </div>
 <style>

@@ -1,42 +1,45 @@
 <!--@*图书分类*@-->
-<div class="bookCategory panel1-group tmBorder-blue"  dw-loading="bookCategory">
-  <div class="titlebg2">
-    <div class="txt">
+<div class="bookCategory panel1-group"  dw-loading="bookCategory">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
       图书分类
-    </div>
+    </p>
   </div>
-  <div class="panel1 panel1-default">
-    <div class="panel1-heading">
-      <p class="panel1-title" title="全部图书">
-        <a href="javascript:;" ng-click="searchCategory({categoryId:0,ptitle:'全部',title: '',page: 1})">
-          <span class="category2">-</span>
-          全部图书
-        </a>
-      </p>
+  <div class="tmBorder">
+    <div class="panel1 panel1-default">
+      <div class="panel1-heading">
+        <p class="panel1-title" title="全部图书">
+          <a href="javascript:;" ng-click="searchCategory({categoryId:0,ptitle:'全部',title: '',page: 1})">
+            <span class="category2">-</span>
+            全部图书
+          </a>
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="panel1 panel1-default" ng-repeat="courseList in bookCategory.DataList" repeat-finish="repeatDone()">
-    <div class="panel1-heading">
-      <p class="panel1-title" title="{{courseList.Name}}"  ng-show="courseList.Nodes">
-        <a ng-click="searchCategory({categoryId:courseList.Id,ptitle:courseList.Name,title: '',page: 1})">
-          <span class="category">+</span>
-          {{courseList.Name}}
-        </a>
-      </p>
-      <p class="panel1-title" title="{{courseList.Name}}"  ng-hide="courseList.Nodes">
-        <a ng-click="searchCategory({categoryId:courseList.Id,ptitle:courseList.Name,title: '',page: 1})">
-          <span class="category2">-</span>
-          {{courseList.Name}}
-        </a>
-      </p>
-    </div>
-    <div class="panel1-collapse collapse">
-      <div class="panel1-body">
-        <ul>
-          <li  title="{{list.Name}}" ng-repeat="list in courseList.Nodes">
-            <a ng-click="searchCategory({categoryId:list.Id,ptitle:list.Name,title: '',page: 1})">{{list.Name}}</a>
-          </li>
-        </ul>
+    <div class="panel1 panel1-default" ng-repeat="courseList in bookCategory.DataList" repeat-finish="repeatDone()">
+      <div class="panel1-heading">
+        <p class="panel1-title" title="{{courseList.Name}}"  ng-show="courseList.Nodes">
+          <a ng-click="searchCategory({categoryId:courseList.Id,ptitle:courseList.Name,title: '',page: 1})">
+            <span class="category">+</span>
+            {{courseList.Name}}
+          </a>
+        </p>
+        <p class="panel1-title" title="{{courseList.Name}}"  ng-hide="courseList.Nodes">
+          <a ng-click="searchCategory({categoryId:courseList.Id,ptitle:courseList.Name,title: '',page: 1})">
+            <span class="category2">-</span>
+            {{courseList.Name}}
+          </a>
+        </p>
+      </div>
+      <div class="panel1-collapse collapse">
+        <div class="panel1-body">
+          <ul>
+            <li  title="{{list.Name}}" ng-repeat="list in courseList.Nodes">
+              <a ng-click="searchCategory({categoryId:list.Id,ptitle:list.Name,title: '',page: 1})">{{list.Name}}</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

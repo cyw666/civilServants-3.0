@@ -12,7 +12,8 @@ angular.module('luZhouApp')
             templateUrl: 'components/tmClassMy.html',
             restrict: 'EA',
             scope: {
-                classMyData: "="
+                classMyData: "=",
+                classType: "="
             },
             link: function postLink(scope, element, attrs) {
 

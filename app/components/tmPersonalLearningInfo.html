@@ -1,50 +1,61 @@
 <!--个人学习信息-->
-<div class="personalLearningInfo-leftTime tmBorder-green">
-   <p ng-show="classInfoData.Model.RemainingTime" class="text-center">班级还有<span>【{{classInfoData.Model.RemainingTime}}】</span>结束</p>
-   <p ng-show="!classInfoData.Model.RemainingTime" class="text-center">班级<span>【已结束】</span></p>
-</div>
-<div class="personalLearningInfo tmBorder-green">
-    <div class="titlebg2">
-        <div class="txt">
-            个人学习信息
-        </div>
+
+<div class="personalLearningInfo ">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      个人学习信息
+    </p>
+  </div>
+  <div class="content mystudyinfo tmBorder" dw-loading="personalLearningInfo">
+    <div class="personalLearningInfo-leftTime">
+      <p ng-show="classInfoData.Model.RemainingTime" class="text-center">班级还有<span>【{{classInfoData.Model.RemainingTime}}】</span>结束
+      </p>
+      <p ng-show="!classInfoData.Model.RemainingTime" class="text-center">班级<span>【已结束】</span></p>
     </div>
-    <div class="content mystudyinfo" dw-loading="personalLearningInfo">
-        <ul>
-            <li>必修课(已学|总课数): {{classInfoData.Model.FinishRequiredCount}}|{{classInfoData.Model.RequiredCount}}</li>
-            <li>选修课(已学|总课数|必学课数): {{classInfoData.Model.FinishElectiveCount}}|{{classInfoData.Model.ElectiveCount}}|{{classInfoData.Model.ElectivePassCount}} </li>
-            <li>考试:<span ng-show="classInfoData.Model.ExamCount>0">(已完成|考试数|必考数):{{classInfoData.Model.FinishExamCount}}|{{classInfoData.Model.ExamCount}}|{{classInfoData.Model.ExamPassCount}} </span> <span ng-show="classInfoData.Model.ExamCount==0">未安排</span></li>
-            <li><span>培训班考核状态：</span>
-                <span ng-show="classInfoData.ViewBag.PassStatus=='Pass'" style="color:red">通过</span>
-                <span ng-show="classInfoData.ViewBag.PassStatus=='UnPass'" style="color:red">未通过</span>
-                <span ng-show="classInfoData.ViewBag.PassStatus=='UnFinish'">未结业</span>
-            </li>
-        </ul>
-    </div>
+    <ul>
+      <li>必修课(已学|总课数): {{classInfoData.Model.FinishRequiredCount}}|{{classInfoData.Model.RequiredCount}}</li>
+      <li>选修课(已学|总课数|必学课数):
+        {{classInfoData.Model.FinishElectiveCount}}|{{classInfoData.Model.ElectiveCount}}|{{classInfoData.Model.ElectivePassCount}}
+      </li>
+      <li>考试:<span ng-show="classInfoData.Model.ExamCount>0">(已完成|考试数|必考数):{{classInfoData.Model.FinishExamCount}}|{{classInfoData.Model.ExamCount}}|{{classInfoData.Model.ExamPassCount}} </span>
+        <span ng-show="classInfoData.Model.ExamCount==0">未安排</span></li>
+      <li><span>培训班考核状态：</span>
+        <span ng-show="classInfoData.ViewBag.PassStatus=='Pass'" style="color:red">通过</span>
+        <span ng-show="classInfoData.ViewBag.PassStatus=='UnPass'" style="color:red">未通过</span>
+        <span ng-show="classInfoData.ViewBag.PassStatus=='UnFinish'">未结业</span>
+      </li>
+    </ul>
+  </div>
 </div>
 <style>
-    .personalLearningInfo-leftTime{
-        min-height: 30px;
-    }
-    .personalLearningInfo-leftTime p{
-        line-height: 30px;
-    }
-    .personalLearningInfo-leftTime span{
-        color: red;
-    }
-    .personalLearningInfo {
-        min-height: 200px;
-    }
-    .personalLearningInfo .content{
-        color: #000;
-        font-size: 15px;
-        text-align: left;
-        /*border: 1px solid #dadada;*/
-        /*border-radius: 3px;*/
-    }
-    .personalLearningInfo li{
-        padding-left: 5px;
-        line-height: 30px;
-        height: 30px;
-    }
+  .personalLearningInfo-leftTime {
+    min-height: 30px;
+  }
+
+  .personalLearningInfo-leftTime p {
+    line-height: 30px;
+  }
+
+  .personalLearningInfo-leftTime span {
+    color: red;
+  }
+
+  .personalLearningInfo {
+    min-height: 200px;
+  }
+
+  .personalLearningInfo .content {
+    color: #000;
+    font-size: 15px;
+    text-align: left;
+    /*border: 1px solid #dadada;*/
+    /*border-radius: 3px;*/
+  }
+
+  .personalLearningInfo li {
+    padding-left: 5px;
+    line-height: 30px;
+    height: 30px;
+  }
 </style>

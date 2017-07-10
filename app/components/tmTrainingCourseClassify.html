@@ -1,9 +1,13 @@
 <!--@*培训班分类*@-->
-<div class="courseClassify panel1-group tmBorder-blue">
-  <div class="titlebg2">
-    <div class="txt">
+<div class="courseClassify panel1-group">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
       {{courseClassify.TitleNav}}
-    </div>
+    </p>
+    <!--<p class="more pull-right">
+      <a ui-sref="library" target="_blank"><img src="../images/more.png" alt="更多"></a>
+    </p>-->
   </div>
   <div class="panel1 panel1-default" dw-loading="courseClassify" ng-repeat="courseList in courseClassify.ListData" repeat-finish="repeatDone()">
     <div class="panel1-heading">

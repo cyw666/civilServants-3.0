@@ -14,6 +14,9 @@ angular.module('luZhouApp')
     $scope.vm={};
     $scope.vm2={};
     $scope.vm3={};
+    $scope.showNoClass = false;
+    $scope.showNoCourse = false;
+    $scope.showNoSpecialClass = false;
     //登录
     $scope.showLogin = false;
     $scope.showError = false;
@@ -182,62 +185,66 @@ angular.module('luZhouApp')
     //单位排行
     $loading.start('rankingList');
     commonService.getData(ALL_PORT.LeftGroupRank.url, 'POST',
-      ALL_PORT.LeftGroupRank.data)
+      $.extend({},ALL_PORT.LeftGroupRank.data,{rows:6}))
       .then(function(response) {
         $loading.finish('rankingList');
         $scope.govermentRanking = response.Data;
       });
-    //实时数据
-    $loading.start('realTimeList');
-    commonService.getData(ALL_PORT.LeftRealTimeData.url, 'POST',
-      ALL_PORT.LeftRealTimeData.data)
+    //个人学时排行
+    commonService.getData(ALL_PORT.RankUserList.url, 'POST',
+      $.extend({},ALL_PORT.RankUserList.data,{rows:6}) )
       .then(function(response) {
-        $loading.finish('realTimeList');
-        $scope.realTimeData = response.Data;
+        $scope.userRankingData = response.Data;
       });
-    //课程中心
-    //课程分类
-    commonService.getData(ALL_PORT.CourseCategory.url, 'POST',
-      $.extend({}, ALL_PORT.CourseCategory.data, { page: '1', rows: '5' }))
+    //课程排行
+    commonService.getData(ALL_PORT.CourseClickRank.url, 'POST',
+      $.extend({},ALL_PORT.CourseClickRank.data,{rows:6}) )
       .then(function(response) {
-        $scope.courselassification = response.Data.ListData;
-        $scope.courselassificationList0 = response.Data.ListData[0];
-        $scope.courselassification.shift();
+        $scope.courseRankingData = response.Data;
       });
-    //课程列表
-    var params = {
-      page: '1',
-      rows: '6',
-      sort: 'Sort',
-      order: 'desc',
-      flag: 'All',
-      courseType: 'All',
-      wordLimt: '35',
-      channelId: '',
-      title: ''
+    //专题学习
+    commonService.getData(ALL_PORT.StudySpecial.url, 'POST',
+      $.extend({},ALL_PORT.StudySpecial.data,{rows:3}) )
+      .then(function(response) {
+        $scope.studySpecialData = response.Data;
+        $scope.showNoSpecialClass = response.Data.ListData.length == 0?true:false;
+      });
+    //培训班分类
+    var defaultClassId;
+    commonService.getData(ALL_PORT.GetTrainingClassTypeList.url, 'POST',
+      $.extend({},ALL_PORT.GetTrainingClassTypeList.data,{rows:3}) )
+      .then(function(response) {
+        $scope.trainingClassType = response.Data;
+        defaultClassId = response.Data.ListData[0].Id
+        $scope.getClassList(defaultClassId);
+      });
+    $scope.JudgeStatus = commonService.JudgeStatus;
+    //培训班列表
+    $scope.getClassList = function (Id) {
+      commonService.getData( ALL_PORT.GetClassList.url, 'POST',
+        $.extend({},ALL_PORT.GetClassList.data,{rows:6,type:"All",categoryId:Id}))
+        .then(function (response) {
+          $scope.classListData = response.Data;
+          $scope.showNoClass = response.Data.ListData.length == 0?true:false;
+        })
     };
-    $scope.searchCourseList = function(id, Sort, flag, title) {
-      $loading.start('courseList');
-      params.channelId = id || 250;
-      params.Sort = Sort || 'Sort';
-      params.flag = flag || 'All';
-      params.title = title || '';
-      commonService.getData(ALL_PORT.CourseList.url, 'POST', params)
-        .then(function(response) {
-          $loading.finish('courseList');
-          $scope.courseCenterData = response.Data;
-          $scope.imageCourse = response.Data.ImageCourse;
+    //培训班报名 先判断是否有权限
+    $scope.JudgeStatus = commonService.JudgeStatus;
+    $scope.addClass = function (id) {
+      commonService.getData(ALL_PORT.Authorization.url,'POST',$.extend({},ALL_PORT.CourseCategory.data))
+        .then(function (response) {
+          if(response.isauth==true){
+            commonService.getData(ALL_PORT.ApplyClass.url, 'POST', $.extend({}, ALL_PORT.ApplyClass.data, { trainingId: id }))
+              .then(function(response) {
+                alert(response.Message);
+                // $scope.getClassNews();
+                $state.reload();
+              });
+          }else {
+            alert("请先登录！");
+          }
         });
     };
-    $scope.searchCourseList();
-
-    $scope.renderFinish = function() {
-      $('.courselLink>.btn').on('click', function() {
-        $(this).addClass('active').siblings('a').removeClass('active');
-      });
-
-    };
-
     //进入培训班 用户权限
     $scope.checkUserClass = function(id) {
       commonService.getData(ALL_PORT.Authorization.url,'POST',$.extend({},ALL_PORT.CourseCategory.data))
@@ -258,24 +265,56 @@ angular.module('luZhouApp')
 
 
     };
-
-    //培训班报名 先判断是否有权限
-    $scope.JudgeStatus = commonService.JudgeStatus;
-    $scope.addClass = function (id) {
-      commonService.getData(ALL_PORT.Authorization.url,'POST',$.extend({},ALL_PORT.CourseCategory.data))
-        .then(function (response) {
-          if(response.isauth==true){
-            commonService.getData(ALL_PORT.ApplyClass.url, 'POST', $.extend({}, ALL_PORT.ApplyClass.data, { trainingId: id }))
-              .then(function(response) {
-                alert(response.Message);
-                // $scope.getClassNews();
-                $state.reload();
-              });
-          }else {
-            alert("请先登录！");
-          }
+    /*//实时数据
+    $loading.start('realTimeList');
+    commonService.getData(ALL_PORT.LeftRealTimeData.url, 'POST',
+      ALL_PORT.LeftRealTimeData.data)
+      .then(function(response) {
+        $loading.finish('realTimeList');
+        $scope.realTimeData = response.Data;
+      });*/
+    //课程中心
+    //课程分类
+    commonService.getData(ALL_PORT.CourseCategory.url, 'POST',
+      $.extend({}, ALL_PORT.CourseCategory.data, { page: '1', rows: '5' }))
+      .then(function(response) {
+        $scope.courselassification = response.Data.ListData;
+      });
+    //课程列表
+    var params = {
+      page: '1',
+      rows: '8',
+      sort: 'Sort',
+      order: 'desc',
+      flag: 'All',
+      courseType: 'All',
+      wordLimt: '35',
+      channelId: '',
+      title: ''
+    };
+    $scope.searchCourseList = function(id, Sort, flag, title) {
+      $loading.start('courseList');
+      params.channelId = id || 250;
+      params.Sort = Sort || 'Sort';
+      params.flag = flag || 'All';
+      params.title = title || '';
+      commonService.getData(ALL_PORT.CourseList.url, 'POST', params)
+        .then(function(response) {
+          $loading.finish('courseList');
+          $scope.courseCenterData = response.Data;
+          $scope.imageCourse = response.Data.ImageCourse;
+          $scope.showNoCourse = response.Data.ListData.length == 0?true:false;
         });
-    }
+    };
+    $scope.searchCourseList();
+
+    $scope.renderFinish = function() {
+      $('.courselLink>.btn').on('click', function() {
+        $(this).addClass('active').siblings('a').removeClass('active');
+      });
+
+    };
+
 
     //未读通知小提示
     $scope.showTip = false;
@@ -291,4 +330,41 @@ angular.module('luZhouApp')
       $scope.showTip = false;
     };
 
+
+    //通知公告
+    $loading.start('noticeAnnouncement');
+    commonService.getData(ALL_PORT.noticeAnnouncement.url, 'POST',
+      $.extend({},ALL_PORT.noticeAnnouncement.data,{rows:3}))
+      .then(function(response) {
+        $loading.finish('noticeAnnouncement');
+        $scope.noticeData = response.Data;
+      });
+
+    //新闻资讯
+    $scope.getNewsContent = function (id) {
+      $loading.start('articleList');
+      commonService.getData(ALL_PORT.ArticleList.url,'POST',
+        $.extend({}, ALL_PORT.ArticleList.data,{rows:9,categoryId:id}))
+        .then(function(response) {
+          $loading.finish('articleList');
+          $scope.articleListData = response.Data;
+          $scope.articleTop = response.Data.ListData[0];
+        });
+    };
+    //获取文章分类
+    commonService.getData(ALL_PORT.ArticleCategory.url,'POST',
+      $.extend({}, ALL_PORT.ArticleCategory.data,{rows:3}))
+      .then(function(response) {
+        $scope.categoryData = response.Data;
+        $scope.getNewsContent(response.Data.ListData[0].Id);
+      });
+
+    //电子图书
+    $loading.start('bookList');
+    commonService.getData(ALL_PORT.BookList.url,'POST',ALL_PORT.BookList.data)
+      .then(function(response) {
+        $loading.finish('bookList');
+        $scope.booksData = response.Data;
+        $scope.imgPath = response.Data.Path;
+      });
   });

@@ -2,12 +2,12 @@
   <div class="container_24">
     <ul class="nav nav-tabs">
       <li role="presentation" ui-sref-active="active"><a ui-sref="main">首页</a></li>
-      <li role="presentation" ui-sref-active="active"><a ui-sref="article">通知公告</a></li>
+      <li role="presentation" ui-sref-active="active"><a ui-sref="article({categoryId:'87'})">通知公告</a></li>
       <li role="presentation" ui-sref-active="active"><a ui-sref="specialTrainingCourse">班级园地</a></li>
       <li role="presentation" ui-sref-active="active"><a ui-sref="courseCenter">课程中心</a></li>
       <li role="presentation" ui-sref-active="active"><a ui-sref="personalCenter">个人中心</a></li>
       <li role="presentation" ui-sref-active="active"><a ui-sref="testCenter">在线考试</a></li>
-      <li role="presentation" ui-sref-active="active"><a ui-sref="specialTrainingCourse">在线帮助</a></li>
+      <li role="presentation" ui-sref-active="active"><a ui-sref="article({categoryId:'88'})">在线帮助</a></li>
     </ul>
   </div>
 </div>
@@ -17,7 +17,7 @@
     background: #db1011;
   }
   .navbg .nav{
-    height: 40px;
+    height: 42px;
     margin:0 auto;
     background: #db1011;
   }
@@ -26,11 +26,13 @@
   }
   .nav-tabs > li > a {
     color: #fff;
-    padding: 8.5px 54px;
+    /*padding: 8.5px 54px;*/
     /*margin:0 30px 0 38px;*/
     font-size: 16px;
     font-weight: 500;
     margin-right: 0;
+    border: none;
+    width: 170px;
   }
   .nav > li > a:hover, .nav > li > a:focus {
     border-color: transparent;

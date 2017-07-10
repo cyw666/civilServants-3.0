@@ -1,16 +1,24 @@
 
-<div class="resultShow tmBorder-green">
-  <ol class="breadcrumb">
-    <li class="currentPosition">您的当前位置:</li>
-    <li><a ui-sref="main" href="#/main">首页</a></li>
-    <li class="active">{{resultShowData.TitleNav}}</li>
-  </ol>
-  <ul class="resultContent" dw-loading="resultShow">
-    <li class="pull-left" ng-repeat="list in resultShowData.ListData">
-      <a ui-sref="articleDetail({ID:list.Id})" target="_blank"><img ng-src="{{resultShowData.Path+'/'+list.Img}}" alt="{{list.Name}}"></a>
-      <p><a ui-sref="articleDetail({ID:list.Id})" target="_blank">{{list.Name}}</a></p>
-    </li>
-  </ul>
+<div class="resultShow">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      {{resultShowData.TitleNav}}
+    </p>
+  </div>
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main" href="#/main">首页</a></li>
+      <li class="active">{{resultShowData.TitleNav}}</li>
+    </ol>
+    <ul class="resultContent clearfix" dw-loading="resultShow">
+      <li class="pull-left" ng-repeat="list in resultShowData.ListData">
+        <a ui-sref="articleDetail({ID:list.Id})" target="_blank"><img ng-src="{{resultShowData.Path+'/'+list.Img}}" alt="{{list.Name}}"></a>
+        <p><a ui-sref="articleDetail({ID:list.Id})" target="_blank">{{list.Name}}</a></p>
+      </li>
+    </ul>
+  </div>
 </div>
 <style>
   .resultContent li{

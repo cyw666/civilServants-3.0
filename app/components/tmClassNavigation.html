@@ -1,47 +1,49 @@
 <!--班级导航-->
-<div class="classNavigation tmBorder-blue">
-    <div class="titlebg2">
-        <div class="txt">
-            班级导航
-        </div>
-    </div>
-    <div class="content classdh">
-        <ul class="text-center">
-            <li><span class="dian1"></span><a ui-sref="classDetail({Id:Id})">班级首页</a></li>
-            <li><span class="dian1"></span><a ui-sref="classPlan({Id:Id})">教学计划</a></li>
-            <li><span class="dian1"></span><a ui-sref="classStudent({Id:Id})">同学名录</a></li>
-            <li><span class="dian1"></span><a ui-sref="classPaperList({Id:Id})">班级论文</a></li>
-            <li><span class="dian1"></span><a ui-sref="photoAlbumList({Id:Id})">班级相册</a></li>
-            <li><span class="dian1"></span><a ui-sref="classTopicList({Id:Id})">班级话题</a></li>
-            <li><span class="dian1"></span><a ui-sref="classNotice({Id:Id})">班级公告</a></li>
-            <li><span class="dian1"></span><a ui-sref="classCourse({Id:Id,Type:'required'})">必修课程</a></li>
-            <li><span class="dian1"></span><a ui-sref="classCourse({Id:Id,Type:'electives'})">选修课程</a></li>
-            <li><span class="dian1"></span><a ui-sref="classExam({Id:Id})">班级考试</a></li>
-        </ul>
-    </div>
+<div class="classNavigation">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      班级导航
+    </p>
+  </div>
+  <div class="content classdh tmBorder">
+    <ul class="text-center clearfix">
+      <li><span class="dian1"></span><a ui-sref="classDetail({Id:Id})">班级首页</a></li>
+      <li><span class="dian1"></span><a ui-sref="classPlan({Id:Id})">教学计划</a></li>
+      <li><span class="dian1"></span><a ui-sref="classStudent({Id:Id})">同学名录</a></li>
+      <li><span class="dian1"></span><a ui-sref="classPaperList({Id:Id})">班级论文</a></li>
+      <li><span class="dian1"></span><a ui-sref="photoAlbumList({Id:Id})">班级相册</a></li>
+      <li><span class="dian1"></span><a ui-sref="classTopicList({Id:Id})">班级话题</a></li>
+      <li><span class="dian1"></span><a ui-sref="classNotice({Id:Id})">班级公告</a></li>
+      <li><span class="dian1"></span><a ui-sref="classCourse({Id:Id,Type:'required'})">必修课程</a></li>
+      <li><span class="dian1"></span><a ui-sref="classCourse({Id:Id,Type:'electives'})">选修课程</a></li>
+      <li><span class="dian1"></span><a ui-sref="classExam({Id:Id})">班级考试</a></li>
+    </ul>
+  </div>
 </div>
 <style>
-    .dian1 {
-        width: 2px;
-        height: 2px;
-        background: #e12929;
-        float: left;
-        margin: 16px 0 0 8px;
-        overflow: hidden;
-    }
-    .classdh {
-        border-top:1px solid #ccc ;
-        min-height: 166px;
-    }
+  .dian1 {
+    width: 2px;
+    height: 2px;
+    background: #e12929;
+    float: left;
+    margin: 16px 0 0 8px;
+    overflow: hidden;
+  }
 
-    .classdh li {
-        float: left;
-        line-height: 32px;
-        font-size: 15px;
-        color: #494949;
-        margin-left: 15px;
-        padding-left: 15px;
-        width: 40%;
-        border-bottom: 1px dashed #ccc;
-    }
+  .classdh {
+    border-top: 1px solid #ccc;
+    min-height: 166px;
+  }
+
+  .classdh li {
+    float: left;
+    line-height: 32px;
+    font-size: 15px;
+    color: #494949;
+    margin-left: 15px;
+    padding-left: 15px;
+    width: 40%;
+    border-bottom: 1px dashed #ccc;
+  }
 </style>

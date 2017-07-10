@@ -1,10 +1,14 @@
 
 <!--热门文章-->
-<div class="articleHot tmBorder-cyan"  >
-  <div class="titlebg2">
-    <div class="txt">
-      {{hotArticleData.TitleNav}}
-    </div>
+<div class="articleHot"  >
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      热门文章
+    </p>
+    <!--<p class="more pull-right">
+      <a ui-sref="library" target="_blank"><img src="../images/more.png" alt="更多"></a>
+    </p>-->
   </div>
   <div dw-loading="articleHot">
     <ul class="rankingList clearfix" ng-repeat="rankingData in hotArticleData.ListData">

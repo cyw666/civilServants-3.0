@@ -1,39 +1,46 @@
 <!--班级话题-->
-<div class="trainingCenter tmBorder-green">
+<div class="trainingCenter">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      {{Data.TitleNav}}
+    </p>
+  </div>
+  <div class="tmBorder">
     <ol class="breadcrumb">
-        <li class="currentPosition">您的当前位置:</li>
-        <li><a ui-sref="main">首页</a></li>
-        <li><a ui-sref="specialTrainingCourse">专题培训班</a></li>
-        <li><a ui-sref="classDetail({Id:Id})">{{Data.TrainingName}}</a></li>
-        <li class="active">{{Data.TitleNav}}</li>
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li><a ui-sref="specialTrainingCourse">专题培训班</a></li>
+      <li><a ui-sref="classDetail({Id:Id})">{{Data.TrainingName}}</a></li>
+      <li class="active">{{Data.TitleNav}}</li>
     </ol>
-
-    <div class="trclasstitle text-center tmBorder-blue" dw-loading="classTopicList">
-        <h2>{{Data.TitleNav}}</h2>
-        <div class="myTab">
-            <div class="tab-content">
-                <div class="tab-panel perlist">
-                    <div class="title_bar clearfix">
-                        <span class="list1">话题名称</span>
-                        <span class="list2">话题分类</span>
-                        <span class="list2">时间</span>
-                        <span class="list2">作者</span>
-                    </div>
-                    <span ng-show="Data.ListData.length==0"
-                          class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
-                    <div class="list" ng-repeat="list in Data.ListData">
-                        <p class="clearfix">
-                            <span class="list1 cur_name"><a ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a></span>
-                            <span class="list2">{{list.Type}}</span>
-                            <span class="list2">{{list.CreatedDate |dateFilter | date:'yy-MM-dd'}}</span>
-                            <span class="list2">{{list.Author}}</span>
-                        </p>
-                    </div>
-                    <div ng-show="Data.ListData.length!==0" ng-transclude="pagation"></div>
-                </div>
+    <div class="trclasstitle text-center tmBorder-red" dw-loading="classTopicList">
+      <h2>{{Data.TitleNav}}</h2>
+      <div class="myTab">
+        <div class="tab-content">
+          <div class="tab-panel perlist">
+            <div class="title_bar clearfix">
+              <span class="list1">话题名称</span>
+              <span class="list2">话题分类</span>
+              <span class="list2">时间</span>
+              <span class="list2">作者</span>
             </div>
+            <span ng-show="Data.ListData.length==0"
+                  class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
+            <div class="list" ng-repeat="list in Data.ListData">
+              <p class="clearfix">
+                <span class="list1 cur_name"><a ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a></span>
+                <span class="list2">{{list.Type}}</span>
+                <span class="list2">{{list.CreatedDate |dateFilter | date:'yy-MM-dd'}}</span>
+                <span class="list2">{{list.Author}}</span>
+              </p>
+            </div>
+            <div ng-show="Data.ListData.length!==0" ng-transclude="pagation"></div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <style>
     h2{

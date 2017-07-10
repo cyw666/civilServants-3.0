@@ -7,7 +7,7 @@
 a {
   font-size: 14px;
   text-decoration: none;
-  color: #000;
+  color: #333;
 }
 
 a:hover {
@@ -332,6 +332,7 @@ h4 {
 }
 .formCourse{
   margin-left: 40px;
+  margin-bottom: 10px;
 }
 .formCourse .form-control ,.formCourse .btn.btn-default{
   height: 26px;
@@ -344,6 +345,9 @@ h4 {
 }
 
 /*模板通用边框*/
+.tmBorder {
+  border:1px solid #ddd;
+}
 .tmBorder-green {
   border:1px solid #ddd;
   border-top:6px  solid #6d9d85;
@@ -355,6 +359,9 @@ h4 {
 .tmBorder-cyan {
   border:1px solid #ddd;
   border-top:6px  solid #b4ca41;
+}
+.tmBorder-red {
+  border-top:6px  solid #db1011;
 }
 h4.title-h4{
   line-height: 52px;
@@ -413,6 +420,9 @@ h4.title-h4{
   margin-top: 9px;
   margin-bottom: 0;
 }
+.progress .progress-bar{
+  color: #333;
+}
 /*标签页*/
 .myTab {
   text-align: center;
@@ -443,10 +453,10 @@ h4.title-h4{
   line-height: 37px;
 }
 .myTab .perlist span a{
-  color: #666;
+  color: #333;
 }
 .myTab .perlist span a:hover{
-  color:#7abc1d;
+  color:#62a3db;
 }
 .myTab .perlist .title_bar {
   line-height: 30px;
@@ -489,6 +499,7 @@ h4.title-h4{
   margin: 0 30px;
   font-size: 16px;
   font-weight: 600;
+  width: 33.33%;
 }
 .rankTab ul.nav-tabs>li.active a {
   color: #db1011;
@@ -524,13 +535,13 @@ h4.title-h4{
 
 /*排行前三背景*/
 .rankFirstBg {
-  background: url("../images/first_bg.png") center;
+  background: url("../images/rankOne.png") center no-repeat;
 }
 .rankSecondBg {
-  background: url("../images/second_bg.png") center;
+  background: url("../images/rankTwo.png") center no-repeat;
 }
 .rankThirdBg {
-  background: url("../images/third_bg.png") center;
+  background: url("../images/rankThree.png") center no-repeat;
 }
 /*margin*/
 .mar_top_5 {
@@ -608,6 +619,9 @@ pad_left_45 {
 }
 .pad_right_30 {
   padding-right: 30px;
+}
+.pad_top_20 {
+  padding-top: 20px;
 }
 
 

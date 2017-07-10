@@ -2,10 +2,10 @@
   <div class="headerContent container_24">
     <p class="grid_16">欢迎来到干部教育网络学院！</p>
     <p class="grid_8 pad_left_45">
-      <a href="">收藏本站</a> |
-      <a href="">在线留言</a> |
-      <a href="">设为首页</a> |
-      <a href="">联系我们</a>
+      <a ng-click="addFavorite()">收藏本站</a> |
+      <a ui-sref="messageList">在线留言</a> |
+      <a ng-click="setHome($event.target)">设为首页</a> |
+      <a ui-sref="articleDetail({ID:'31'})">联系我们</a>
       <span class="phone">
         <img src="../images/phone.png" alt="">
         400-222-666
@@ -26,9 +26,9 @@
     </li>
     <li class="grid_9 searchInput">
       <div class="input-group">
-        <input type="text" class="form-control" my-placeholder placeholder="请输入搜索内容...">
+        <input ng-model="searchNewsField" type="text" class="form-control" my-placeholder placeholder="请输入搜索内容...">
         <div class="input-group-btn">
-          <button class="btn">搜索</button>
+          <button class="btn" ng-click="findNews()">搜索</button>
         </div>
       </div>
     </li>

@@ -2,65 +2,37 @@
 <div class="tmNewsInformation">
   <div class="borderNews">
     <div class="myTab">
-      <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
-        <li ng-class="{active: vm.activeTab == 1}"><a href="javascript:;" ng-click="vm.activeTab = 1;">新闻资讯</a></li>
-        <li ng-class="{active: vm.activeTab == 2}"><a href="javascript:;" ng-click="vm.activeTab = 2;">干教资讯</a></li>
-        <li ng-class="{active: vm.activeTab == 3}"><a href="javascript:;" ng-click="vm.activeTab = 3;">时政热点</a></li>
+      <ul class="nav nav-tabs" ng-init="vm.activeTab=0">
+        <!--<li ng-repeat="newsCategory in categoryData.ListData" ng-class="{active: vm.activeTab == $index}" >
+          <a ng-click="vm.activeTab = $index;getNewsContent(newsCategory.Id)">{{newsCategory.Name}}</a>
+        </li>-->
+        <li ng-class="{active: vm.activeTab == 0}" >
+          <a ng-click="vm.activeTab = 0;getNewsContent('83')">新闻资讯</a>
+        </li>
+        <li ng-class="{active: vm.activeTab == 1}" >
+          <a ng-click="vm.activeTab = 1;getNewsContent('82')">干教资讯</a>
+        </li>
+        <li ng-class="{active: vm.activeTab == 2}" >
+          <a ng-click="vm.activeTab = 2;getNewsContent('74')">时政热点</a>
+        </li>
       </ul>
-      <div class="tab-content">
-        <div class="tab-panel perlist" ng-show="vm.activeTab == 1">
+      <div class="tab-content" dw-loading="articleList">
+        <div class="tab-panel perlist">
           <div class="top">
-            <h4 class="title">习近平：朝着全面深该总目标聚焦发东</h4>
-            <p class="description">  朝着全面深该总目标聚焦发东朝着全面深该总目标聚焦发东朝着全面深该总目标聚焦发东朝着全面深该总目标聚焦发东朝着全面深该总目标聚焦发东</p>
+            <h4>
+              <a class="title" ui-sref="articleDetail({ID:articleList.Id})" target="_blank">{{articleTop.Name}}</a>
+            </h4>
+            <p class="description"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{articleTop.Description}}</p>
           </div>
           <ul class="bottom clearfix">
-            <li class="pull-left">
+            <li class="pull-left" ng-repeat="articleList in articleListData.ListData" ng-if="$index>0">
               <span class="arrow"><img src="../images/arrowRight.png" alt=""></span>
-              <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
-              <span class="time">2017-05-30</span>
-            </li>
-            <li class="pull-left">
-              <span class="arrow"><img src="../images/arrowRight.png" alt=""></span>
-              <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
-              <span class="time">2017-05-30</span>
-            </li>
-            <li class="pull-left">
-              <span class="arrow"><img src="../images/arrowRight.png" alt=""></span>
-              <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
-              <span class="time">2017-05-30</span>
-            </li>
-            <li class="pull-left">
-              <span class="arrow"><img src="../images/arrowRight.png" alt=""></span>
-              <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
-              <span class="time">2017-05-30</span>
-            </li>
-            <li class="pull-left">
-              <span class="arrow"><img src="../images/arrowRight.png" alt=""></span>
-              <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
-              <span class="time">2017-05-30</span>
-            </li>
-            <li class="pull-left">
-              <span class="arrow"><img src="../images/arrowRight.png" alt=""></span>
-              <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
-              <span class="time">2017-05-30</span>
-            </li>
-            <li class="pull-left">
-              <span class="arrow"><img src="../images/arrowRight.png" alt=""></span>
-              <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
-              <span class="time">2017-05-30</span>
-            </li>
-            <li class="pull-left">
-              <span class="arrow"><img src="../images/arrowRight.png" alt=""></span>
-              <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
-              <span class="time">2017-05-30</span>
+              <span class="title ellipsis">
+                <a ui-sref="articleDetail({ID:articleList.Id})" target="_blank">{{articleList.Name}}</a>
+              </span>
+              <span class="time">{{articleList.CreateDate | dateFilter |date :'yyyy-MM-dd'}}</span>
             </li>
           </ul>
-        </div>
-        <div class="tab-panel perlist" ng-show="vm.activeTab == 2">
-          222
-        </div>
-        <div class="tab-panel perlist" ng-show="vm.activeTab == 3">
-          333
         </div>
       </div>
     </div>
@@ -92,12 +64,10 @@
     font-weight: 600;
   }
   .tmNewsInformation .perlist  .top .description{
-    height: 25px;
     line-height: 25px;
     font-size: 16px;
-    /*width: 90%;*/
     text-align: left;
-    padding: 0 10px;
+    padding: 0 20px;
     color: #666;
   }
   .tmNewsInformation .perlist  .bottom{
@@ -106,6 +76,7 @@
   .tmNewsInformation .perlist  .bottom li{
     height: 36px;
     line-height: 36px;
+    width: 100%;
   }
   .tmNewsInformation .perlist  .bottom li span{
     display: inline-block;
@@ -116,9 +87,11 @@
   }
   .tmNewsInformation .perlist  .bottom .title{
     width: 70%;
+    text-align: left;
   }
   .tmNewsInformation .perlist  .bottom .time{
     float: right;
     margin-right: 20px;
+    color: #666;
   }
 </style>

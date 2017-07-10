@@ -1,37 +1,45 @@
 
 <!--班级课程-->
-<div class="trainingCenter tmBorder-green">
+<div class="trainingCenter">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      {{Data.TitleNav}}
+    </p>
+  </div>
+  <div class="tmBorder">
     <ol class="breadcrumb">
-        <li class="currentPosition">您的当前位置:</li>
-        <li><a ui-sref="main">首页</a></li>
-        <li><a ui-sref="specialTrainingCourse">专题培训班</a></li>
-        <li><a ui-sref="classDetail({Id:Id})">{{Data.TrainingName}}</a></li>
-        <li class="active">{{Data.TitleNav}}</li>
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li><a ui-sref="specialTrainingCourse">专题培训班</a></li>
+      <li><a ui-sref="classDetail({Id:Id})">{{Data.TrainingName}}</a></li>
+      <li class="active">{{Data.TitleNav}}</li>
     </ol>
-    <div class="trclasstitle text-center tmBorder-blue" dw-loading="classCourse">
-        <h2>{{Data.TitleNav}}</h2>
-        <div class="myTab">
-            <div class="tab-content">
-                <div class="tab-panel perlist">
-                    <div class="title_bar clearfix">
-                        <span class="list1">课程名称</span>
-                        <span class="list2">进度</span>
-                        <span class="list2">播放</span>
-                    </div>
-                    <span ng-show="Data.ListData.length==0"
-                          class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
-                    <div class="list" ng-repeat="list in Data.ListData">
-                        <p class="clearfix">
-                            <span class="list1 cur_name">{{list.Name}}</span>
-                            <span class="list2">{{list.BrowseScore}}%</span>
-                            <span class="list2"><a ui-sref="play({Id:list.Id})" target="_blank">点击进入</a></span>
-                        </p>
-                    </div>
-                    <div ng-show="Data.ListData.length!==0" ng-transclude="pagation"></div>
-                </div>
+    <div class="trclasstitle text-center tmBorder-red" dw-loading="classCourse">
+      <h2>{{Data.TitleNav}}</h2>
+      <div class="myTab">
+        <div class="tab-content">
+          <div class="tab-panel perlist">
+            <div class="title_bar clearfix">
+              <span class="list1">课程名称</span>
+              <span class="list2">进度</span>
+              <span class="list2">播放</span>
             </div>
+            <span ng-show="Data.ListData.length==0"
+                  class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
+            <div class="list" ng-repeat="list in Data.ListData">
+              <p class="clearfix">
+                <span class="list1 cur_name">{{list.Name}}</span>
+                <span class="list2">{{list.BrowseScore}}%</span>
+                <span class="list2"><a ui-sref="play({Id:list.Id})" target="_blank">点击进入</a></span>
+              </p>
+            </div>
+            <div ng-show="Data.ListData.length!==0" ng-transclude="pagation"></div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <style>
     h2{

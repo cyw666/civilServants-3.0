@@ -1,76 +1,89 @@
 <!--同学名录-->
-<div class="trainingCenter tmBorder-green">
+<div class="trainingCenter">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      同学名录
+    </p>
+  </div>
+  <div class="tmBorder">
     <ol class="breadcrumb">
-        <li class="currentPosition">您的当前位置:</li>
-        <li><a ui-sref="main">首页</a></li>
-        <li><a ui-sref="specialTrainingCourse">专题培训班</a></li>
-        <li><a ui-sref="classDetail({Id:Id})">{{classStudentData.TrainingName}}</a></li>
-        <li class="active">同学名录</li>
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li><a ui-sref="specialTrainingCourse">专题培训班</a></li>
+      <li><a ui-sref="classDetail({Id:Id})">{{classStudentData.TrainingName}}</a></li>
+      <li class="active">同学名录</li>
     </ol>
-
-    <div class="trclasstitle text-center tmBorder-blue" dw-loading="classStudent">
-        <h2>同学名录</h2>
-        <div class="myTab">
-            <div class="tab-content">
-                <div class="tab-panel perlist">
-                    <div class="list clearfix">
-                        <span class="list1">总报名数：{{classStudentData.Apply}}</span>
-                        <span class="list1">审核通过：{{classStudentData.Pass}}</span>
-                    </div>
-                    <div class="list clearfix " style="text-align: center">
-                        <span class="list1">通过审核名单：</span>
-                    </div>
-                    <div class="title_bar clearfix">
-                        <span class="list2">姓名</span>
-                        <span class="list2">电话</span>
-                        <span class="list1">单位</span>
-                    </div>
-                    <span ng-show="classStudentData.ListData.length==0"
-                          class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
-                    <div class="list" ng-repeat="list in classStudentData.ListData">
-                        <p class="clearfix">
-                            <span class="list2 cur_name">{{list.UserName}}</span>
-                            <span class="list2" ng-if="list.Tel">{{list.Tel}}</span>
-                            <span class="list2" ng-if="!list.Tel">暂无数据</span>
-                            <span class="list1">{{list.GroupName}}</span>
-                        </p>
-                    </div>
-                    <div ng-show="classStudentData.ListData.length!==0" ng-transclude="pagation"></div>
-                </div>
+    <div class="trclasstitle text-center tmBorder-red" dw-loading="classStudent">
+      <h2>同学名录</h2>
+      <div class="myTab">
+        <div class="tab-content">
+          <div class="tab-panel perlist">
+            <div class="list clearfix">
+              <span class="list1">总报名数：{{classStudentData.Apply}}</span>
+              <span class="list1">审核通过：{{classStudentData.Pass}}</span>
             </div>
+            <div class="list clearfix " style="text-align: center">
+              <span class="list1">通过审核名单：</span>
+            </div>
+            <div class="title_bar clearfix">
+              <span class="list2">姓名</span>
+              <span class="list2">电话</span>
+              <span class="list1">单位</span>
+            </div>
+            <span ng-show="classStudentData.ListData.length==0"
+                  class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
+            <div class="list" ng-repeat="list in classStudentData.ListData">
+              <p class="clearfix">
+                <span class="list2 cur_name">{{list.UserName}}</span>
+                <span class="list2" ng-if="list.Tel">{{list.Tel}}</span>
+                <span class="list2" ng-if="!list.Tel">暂无数据</span>
+                <span class="list1">{{list.GroupName}}</span>
+              </p>
+            </div>
+            <div ng-show="classStudentData.ListData.length!==0" ng-transclude="pagation"></div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-<style>
-    h2{
-        margin: 10px 0;
+  </div>
+  <style>
+    h2 {
+      margin: 10px 0;
     }
+
     .myTab .perlist .list1 {
-        width: 40%;
-        height: 37px;
+      width: 40%;
+      height: 37px;
     }
+
     .myTab .perlist .list .list1 {
-        text-align: center;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        padding-left: 10px;
-        padding-right: 10px;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding-left: 10px;
+      padding-right: 10px;
     }
+
     .myTab .perlist .list2 {
-        width: 20%;
+      width: 20%;
     }
+
     .myTab .perlist .list3 {
-        width: 26%;
-        float: left;
-        margin: 5px 20px;
+      width: 26%;
+      float: left;
+      margin: 5px 20px;
     }
+
     .myTab .perlist .list3 img {
-        width: 80%;
-        border-radius: 3px;
+      width: 80%;
+      border-radius: 3px;
 
     }
+
     .myTab .perlist .list3 span {
-        display: block;
+      display: block;
     }
-</style>
+  </style>
 

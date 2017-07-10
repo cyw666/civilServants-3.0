@@ -183,11 +183,11 @@ angular.module('luZhouApp')
 		};
 
 
-       /*//课程点击排行(误删除)
+       //课程点击排行(误删除)
         $loading.start('courseRankingList');
         commonService.getData(ALL_PORT.CourseClickRank.url, 'POST', ALL_PORT.CourseClickRank.data)
             .then(function(response) {
                 $loading.finish('courseRankingList');
                 $scope.courseRankingList = response.Data;
-            });*/
+            });
     });

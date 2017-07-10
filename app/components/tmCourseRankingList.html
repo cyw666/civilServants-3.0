@@ -1,11 +1,15 @@
 <!--课程点击排行-->
-<div class="courseRankingList tmBorder-cyan"  dw-loading="courseRankingList">
-  <div class="titlebg2">
-    <div class="txt">
+<div class="courseRankingList"  dw-loading="courseRankingList">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
       课程排行
-    </div>
+    </p>
+    <p class="more pull-right">
+      <a ui-sref="rankcourseclick" target="_blank"><img src="../images/more.png" alt="更多"></a>
+    </p>
   </div>
-  <p class="title clearfix">
+  <p class="courseRankingtitle clearfix">
     <span class="rank1">排行</span>
     <span class="rank2">课程名称</span>
     <span class="rank3">点击数</span>
@@ -18,7 +22,6 @@
 </div>
 <style>
   .courseRankingList {
-    background-color: #f5f8fd;
   }
   .courseRankingList h4 {
     line-height: 52px;
@@ -31,30 +34,31 @@
     line-height: 30px;
     margin-left: 10px;
   }
-  .courseRankingList .title {
-    border:1px solid #dadada;
-    border-radius: 3px;
+  .courseRankingList .courseRankingtitle {
     margin-bottom: 10px;
     width: auto;
-    height: 30px;
-    line-height: 30px;
+    background-color: #f8f8f8;
   }
-  .courseRankingList .title span ,.courseRankingList .rankingList li{
+  .courseRankingList .courseRankingtitle span{
+    height: 48px;
+    line-height: 48px;
+  }
+  .courseRankingList .courseRankingtitle span ,.courseRankingList .rankingList li{
     float: left;
   }
-  .courseRankingList .title .rank1,.courseRankingList .rankingList .list1{
+  .courseRankingList .courseRankingtitle .rank1,.courseRankingList .rankingList .list1{
     width: 60px;
     text-align: left;
     padding-left: 10px;
   }
-  .courseRankingList .title .rank2,.courseRankingList .rankingList .list2{
+  .courseRankingList .courseRankingtitle .rank2,.courseRankingList .rankingList .list2{
     width: 130px;
     text-align: center;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-  .courseRankingList .title .rank3,.courseRankingList .rankingList .list3{
+  .courseRankingList .courseRankingtitle .rank3,.courseRankingList .rankingList .list3{
     width: 60px;
     text-align: right;
   }
@@ -65,7 +69,7 @@
   .courseRankingList .rankingList .list3{
     text-align: center;
   }
-  .courseRankingList .title .rank2{
+  .courseRankingList .courseRankingtitle .rank2{
     padding-right: 60px;
   }
 </style>

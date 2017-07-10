@@ -8,32 +8,29 @@
  * Controller of the luZhouApp
  */
 angular.module('luZhouApp')
-    .controller('searchResultCtrl', function($scope, $location, $loading, $stateParams, commonService) {
+  .controller('searchResultCtrl', function ($scope, $location, $loading, $stateParams, commonService) {
+    $loading.start('tmsearchresult');
 
-        $loading.start('tmsearchresult');
+    $scope.isResult = true;
 
-
-        $scope.newsData = [];
-        $scope.isResult = true;
-
-
-      $scope.paginationConf = $.extend({},paginationConf,{itemsPerPage: 20});
-        $scope.$watch('paginationConf.currentPage', function() {
-
-            // 发送给后台的请求数据
-
-            commonService.getData(ALL_PORT.ArticleList.url, 'POST',
-                    $.extend({}, ALL_PORT.ArticleList.data, { page: $scope.paginationConf.currentPage, rows: $scope.paginationConf.itemsPerPage, categoryId: $stateParams.ID, search: $stateParams.text }))
-                .then(function(response) {
-                    $loading.finish('tmsearchresult');
-                    $scope.Data=response.Data;
-                    $scope.newsData = response.Data.ListData;
-                    $scope.paginationConf.totalItems = response.Data.ListData.length;
-
-                });
+    $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: 20});
+    $scope.$watch('paginationConf.currentPage', function () {
+      // 发送给后台的请求数据
+      commonService.getData(ALL_PORT.SearchAll.url, 'POST',
+        $.extend({}, ALL_PORT.SearchAll.data, {
+          page: $scope.paginationConf.currentPage,
+          rows: $scope.paginationConf.itemsPerPage,
+          key: $stateParams.text
+        }))
+        .then(function (response) {
+          $loading.finish('tmsearchresult');
+          $scope.Data = response.Data;
+          $scope.newsData = response.Data.ListData;
+          $scope.paginationConf.totalItems = response.Data.ListData.length;
 
         });
 
-
-
     });
+
+
+  });

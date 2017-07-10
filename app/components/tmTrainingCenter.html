@@ -1,5 +1,14 @@
 <!--专题培训班-->
-<div class="trainingCenter tmBorder-green">
+<div class="trainingCenter">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      专题培训班
+    </p>
+    <!--<p class="more pull-right">
+      <a ui-sref="library" target="_blank"><img src="../images/more.png" alt="更多"></a>
+    </p>-->
+  </div>
   <ol class="breadcrumb">
     <li class="currentPosition">您的当前位置:</li>
     <li><a ui-sref="main">首页</a></li>
@@ -26,7 +35,7 @@
           <span class="list1">班级名称</span>
           <span class="list2">班级简介</span>
           <span class="list2">状态</span>
-          <span class="list2">举办时间</span>
+          <span class="list1">举办时间</span>
         </div>
         <div class="list" ng-repeat="justata in justListData.ListData">
           <p class="clearfix">
@@ -38,7 +47,7 @@
             <span class="list2" ng-if="!justata.ApplyStatus"><a ng-click="addClass(justata.Id,'just')">点击报名</a></span>
 
             <span class="list2" ng-if="justata.ApplyStatus">{{JudgeStatus(justata.ApplyStatus)}}</span>
-            <span class="list2">{{justata.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{justata.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+            <span class="list1">{{justata.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{justata.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
           </p>
         </div>
         <div ng-transclude="pagation"></div>
@@ -48,7 +57,7 @@
           <span class="list1">班级名称</span>
           <span class="list2">班级简介</span>
           <span class="list2">状态</span>
-          <span class="list2">举办时间</span>
+          <span class="list1">举办时间</span>
         </div>
         <div class="list" ng-repeat="immediatelyData in immediatelyListData.ListData">
           <p class="clearfix">
@@ -59,7 +68,7 @@
             <span class="list2" ng-if="!immediatelyData.ApplyStatus"><a ng-click="addClass(immediatelyData.Id,'immediately')">点击报名</a></span>
 
             <span class="list2" ng-if="immediatelyData.ApplyStatus">{{JudgeStatus(immediatelyData.ApplyStatus)}}</span>
-            <span class="list2">{{immediatelyData.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{immediatelyData.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+            <span class="list1">{{immediatelyData.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{immediatelyData.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
           </p>
         </div>
         <div ng-transclude="pagation"></div>
@@ -69,7 +78,7 @@
           <span class="list1">班级名称</span>
           <span class="list2">班级简介</span>
           <span class="list2">状态</span>
-          <span class="list2">举办时间</span>
+          <span class="list1">举办时间</span>
         </div>
         <div class="list" ng-repeat="alreadyData in alreadyListData.ListData">
           <p class="clearfix">
@@ -81,7 +90,7 @@
             <span class="list2" ng-if="!alreadyData.ApplyStatus">已举办</span>
             <span class="list2" ng-if="alreadyData.ApplyStatus">{{JudgeStatus(alreadyData.ApplyStatus)}}</span>
 
-            <span class="list2">{{alreadyData.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{alreadyData.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+            <span class="list1">{{alreadyData.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{alreadyData.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
           </p>
         </div>
         <div ng-transclude="pagation"></div>
@@ -103,6 +112,9 @@
   }
   .myTab .perlist .list2 {
     width: 150px;
+  }
+  .trainingCenter .formCourse {
+    margin-bottom: 10px;
   }
 </style>
 

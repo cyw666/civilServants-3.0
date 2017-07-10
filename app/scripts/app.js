@@ -69,7 +69,7 @@ angular
         templateUrl : 'views/testcenter.html',
         controller: 'TestcenterCtrl',
         controllerAs: 'testCenter',
-        data:{title:"考试中心"}
+        data:{title:"在线考试"}
       })
       .state('specialTrainingCourse', {
         url: '/specialTrainingCourse',
@@ -114,7 +114,7 @@ angular
         controllerAs: 'noticeDetail'
       })
       .state('search',{
-        url: '/search/:ID/:text',
+        url: '/search/:text',
         data:{title:"搜索结果"},
         templateUrl:'views/news/searchresult.html',
         controller:'searchResultCtrl',
@@ -339,7 +339,7 @@ angular
       })
       .state('userRankingList', {
         url: '/rankingList/userRankingList',
-        data:{title:"用户排行"},
+        data:{title:"个人排行"},
         templateUrl: 'views/rankingList/userrankinglist.html',
         controller: 'UserrankinglistCtrl',
         controllerAs: 'userRankingList'
@@ -388,7 +388,7 @@ angular
       })
       .state('originalarticle', {
         url: '/news/originalarticle',
-        data:{title:"原创文章"},
+        data:{title:"发表文章"},
         templateUrl: 'views/news/originalarticle.html',
         controller: 'OriginalarticleCtrl',
         controllerAs: 'originalArticle'
@@ -856,6 +856,7 @@ angular
       if(toState.name=='guide')return;// 如果是进入引导界面则允许
       if(toState.name=='guide2')return;// 引导界面
       if(toState.name=='main')return;// 首页
+      if(toState.name=='main2')return;// 首页
       if(toState.name=='userLogin')return;// 登录界面
       if(toState.name=='userRegister')return;// 注册界面
       if(toState.name=='newsinfo')return;

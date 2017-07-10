@@ -1,8 +1,9 @@
 ﻿"user strict"
 //请求后台数据入口
 // var API_URL = "/api";
-var API_URL = "http://test7.jy365.net/api";
+// var API_URL = "http://test7.jy365.net/api";
 // var API_URL = "http://192.168.1.25/api";
+var API_URL = "http://122.225.101.117:9090//api";
 var API_URL_ADMIN = API_URL + "/admin";
 
 // jQuery.support.cors=true;
@@ -163,7 +164,11 @@ var ALL_PORT = {
     url:API_URL+"/Page/ArticleContent",
     data:{}
   },
-
+  //搜索全部新闻
+  SearchAll:{
+    url:API_URL+"/Page/SearchAll",
+    data:{page:1,rows:15,key:''}
+  },
   //通知公告
   noticeAnnouncement:{
     url:API_URL+"/Page/LeftNotice",
@@ -294,10 +299,10 @@ var ALL_PORT = {
     url:API_URL+"/Page/LeftUserRank",
     data:{page:1,rows:10,sort:'TotalCredit',order:'desc',titleNav:"学员学时排行",wordLimt:6}
   },
-  //用户排行
+  //个人排行
   RankUserList:{
     url:API_URL+"/Page/RankUserList",
-    data:{page:1,rows:15,sort:'TotalCredit',order:'desc',titleNav:"用户排行"}
+    data:{page:1,rows:15,sort:'TotalCredit',order:'desc',titleNav:"个人排行"}
   },
   //学完课程排行
   CourseFinishList:{
@@ -312,7 +317,7 @@ var ALL_PORT = {
   //考试中心列表
   ExamList:{
     url:API_URL+"/Page/ExamList",
-    data:{page:1,rows:5,sort:'Id',order:'desc',titleNav:"考试中心",examType:"All",title:""}
+    data:{page:1,rows:5,sort:'Id',order:'desc',titleNav:"在线考试",examType:"All",title:""}
   },
   //问卷列表
   PollList:{
@@ -329,10 +334,15 @@ var ALL_PORT = {
     url:API_URL+"/Exam/PollReview",
     data:{parameter1:'',parameter2:''}
   },
-  //专题培训班分类
+  //培训班分类
   GetTrainingClassTypeList:{
     url:API_URL+"/Page/GetTrainingClassTypeList",
     data:{titleNav:"培训班分类",sort:'Sort',order:'Desc'}
+  },
+  //专题学习
+  StudySpecial:{
+    url:API_URL+"/Page/StudySpecial",
+    data:{titleNav:"专题学习",sort:'Sort',order:'Desc'}
   },
   //我的班级
   ClassMy:{

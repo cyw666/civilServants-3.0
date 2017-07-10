@@ -1,9 +1,12 @@
 <!--文章分类-->
-<div class="articleCategory tmBorder-blue">
-  <div class="articleCategoryTitle" >
-    <h1>{{categoryData.TitleNav}}</h1>
+<div class="articleCategory">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      {{categoryData.TitleNav}}
+    </p>
   </div>
-  <ul>
+  <ul class="mar_top_20">
     <li ng-repeat="categoryData in categoryData.ListData" title="{{categoryData.Name}}">
       <a class="btn" ng-click="refreshList({categoryId:categoryData.Id})">{{categoryData.Name}}</a>
     </li>

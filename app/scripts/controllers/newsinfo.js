@@ -19,7 +19,6 @@ angular.module('luZhouApp')
 
         $scope.findNews = function() {
           $state.go('search',{ID:$stateParams.ID,text:$scope.searchNewsField});
-
         };
 
 

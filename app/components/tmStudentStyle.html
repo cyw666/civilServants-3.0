@@ -1,26 +1,35 @@
-<div class="studyStyle tmBorder-green">
-  <ol class="breadcrumb">
-    <li class="currentPosition">您的当前位置:</li>
-    <li><a ui-sref="main">首页</a></li>
-    <li class="active">学员风采</li>
-  </ol>
-  <div class="styleContent" dw-loading="studyStyle">
-    <div class="titlebg2">
-      <div class="txt">
-        学员风采
-      </div>
-    </div>
-    <ul class="clearfix">
-      <li class="courseList pull-left" ng-repeat="list in studyStyleData.ListData">
-        <a ui-sref="studentstyledetail({Id:list.Id})">
-          <img ng-src="{{list.Img}}">
-        </a>
-        <p><a ui-sref="studentstyledetail({Id:list.Id})" class="title">{{list.Name}}</a></p>
-        <p class="list title2">{{list.Source}}</p>
-      </li>
-    </ul>
-    <div tm-pagation conf="paginationConf"></div>
+<div class="studyStyle">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      学员风采
+    </p>
   </div>
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li class="active">学员风采</li>
+    </ol>
+    <div class="styleContent" dw-loading="studyStyle">
+      <!--<div class="titlebg2">
+        <div class="txt">
+          学员风采
+        </div>
+      </div>-->
+      <ul class="clearfix">
+        <li class="courseList pull-left" ng-repeat="list in studyStyleData.ListData">
+          <a ui-sref="studentstyledetail({Id:list.Id})">
+            <img ng-src="{{list.Img}}">
+          </a>
+          <p><a ui-sref="studentstyledetail({Id:list.Id})" class="title">{{list.Name}}</a></p>
+          <p class="list title2">{{list.Source}}</p>
+        </li>
+      </ul>
+      <div tm-pagation conf="paginationConf"></div>
+    </div>
+  </div>
+
 </div>
 
 <style>

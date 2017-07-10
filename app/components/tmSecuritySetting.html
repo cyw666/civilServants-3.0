@@ -1,47 +1,65 @@
 <!--设置密保-->
-<div class="securitySetting tmBorder-green">
+<div class="securitySetting">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      设置密保
+    </p>
+  </div>
+  <div class="tmBorder">
     <ol class="breadcrumb">
-        <li class="currentPosition">您的当前位置:</li>
-        <li><a ui-sref="main">首页</a></li>
-        <li><a ui-sref="personalCenter">个人中心</a></li>
-        <li class="active">设置密保</li>
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li><a ui-sref="personalCenter">个人中心</a></li>
+      <li class="active">设置密保</li>
     </ol>
     <div ng-if="isVisible">
-        <form role="form">
-            <ul>
-                <li class="form-group form-inline">
-                    <label class="control-label pull-left" style="line-height: 30px">请输入密码：</label>
-                    <input type="password" autocomplete="off" class="myPwd form-control pull-left" ng-model="$parent.myPwd" />
-                </li>
-                <li>
-                    <input type="submit" class="btn btn-primary mar_left_10" ng-click="validatePwd()"/>
-                </li>
-            </ul>
-        </form>
+      <form role="form">
+        <ul class="clearfix mar_left_10">
+          <li class="form-group form-inline pull-left">
+            <label class="control-label pull-left" style="line-height: 30px">请输入密码：</label>
+            <input type="password" autocomplete="off" class="myPwd form-control pull-left" ng-model="$parent.myPwd" />
+          </li>
+          <li class="pull-left">
+            <input type="submit" class="btn btn-danger mar_left_10" ng-click="validatePwd()"/>
+          </li>
+        </ul>
+      </form>
     </div>
     <div ng-if="!isVisible">
-        <form role="form" class="form-group form-inline">
-            <ul>
-                <li ng-repeat="data in questionData" class="mar_top_15" >
-                    <div class="input-group">
-                        <label class="control-label">问题：</label>
-                        <input type="text" class="form-control" ng-model="data.Question"/>
-                    </div>
-                    <div class="input-group mar_left_10">
-                        <label>答案：</label>
-                        <input type="text" class="form-control" ng-model="data.Answer">
-                    </div>
-                </li>
-                <li>
-                    <button class="mar_top_15 mar_left_10 btn btn-success" ng-click="addQuestion()">提交</button>
-                </li>
-            </ul>
-            <!--<div class="preventorgery"></div>-->
-        </form>
+      <form role="form" class="form-group form-inline">
+        <ul>
+          <li ng-repeat="data in questionData" class="mar_top_15" >
+            <div class="input-group">
+              <label class="control-label">问题：</label>
+              <input type="text" class="form-control" ng-model="data.Question"/>
+            </div>
+            <div class="input-group mar_left_10">
+              <label>答案：</label>
+              <input type="text" class="form-control" ng-model="data.Answer">
+            </div>
+          </li>
+          <li>
+            <button class="mar_top_15 mar_left_10 btn btn-danger" ng-click="addQuestion()">提交</button>
+          </li>
+        </ul>
+        <!--<div class="preventorgery"></div>-->
+      </form>
     </div>
+  </div>
 </div>
 <style>
     .securitySetting{
         min-height: 399px;
+    }
+  .securitySetting .btn-danger {
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    padding: 0;
+  }
+    .securitySetting input.form-control {
+      height: 30px;
+      line-height: 30px;
     }
 </style>

@@ -4,96 +4,50 @@
       <img src="../images/headerLeftIcon.png" alt="图标">
       班级园地
     </p>
-    <p class="more pull-right"><img src="../images/more.png" alt="更多"></p>
+    <p class="more pull-right">
+      <a ui-sref="specialTrainingCourse" target="_blank"><img src="../images/more.png" alt="更多"></a>
+    </p>
   </div>
   <div class="borderNews">
     <div class="myTab">
-      <ul class="nav nav-tabs" ng-init="vm2.activeTab=1">
-        <li ng-class="{active: vm2.activeTab == 1}"><a href="javascript:;" ng-click="vm2.activeTab = 1;">省级培训班</a></li>
-        <li ng-class="{active: vm2.activeTab == 2}"><a href="javascript:;" ng-click="vm2.activeTab = 2;">党校培训班</a></li>
-        <li ng-class="{active: vm2.activeTab == 3}"><a href="javascript:;" ng-click="vm2.activeTab = 3;">其他培训班</a></li>
+      <ul class="nav nav-tabs" ng-init="vm2.activeTab=0">
+        <!--<li ng-class="{active: vm2.activeTab == 1}"><a href="javascript:;" ng-click="vm2.activeTab = 1;">省级培训班</a></li>-->
+        <li ng-repeat="list in trainingClassType.ListData" ng-class="{active: vm2.activeTab == $index}" >
+          <a ng-click="vm2.activeTab = $index;getClassList(list.Id)">{{list.Name}}</a>
+        </li>
       </ul>
       <div class="tab-content">
         <div class="tab-panel perlist">
           <table class="table">
             <tbody>
-              <tr>
-              <td>班级名称</td>
-              <td>培训时间</td>
-              <td>培训地点</td>
-              <td>状态</td>
-            </tr>
+              <tr class="title">
+                <td>班级名称</td>
+                <td>培训时间</td>
+                <td>培训地点</td>
+                <td>状态</td>
+              </tr>
 
-              <tr>
+              <tr ng-repeat="list in classListData.ListData">
                 <td class="list1 clearfix">
                   <p class="pull-left">
                     <img src="../images/bookLog.png" alt="">
                   </p>
-                  <span class="ellipsis pull-left">班级名称1班级名称1班级名称1班级名称1班级名称1班级名称1</span>
+                  <span class="ellipsis pull-left">
+                    <a ng-click="checkUserClass(list.Id)">{{list.Name}}</a>
+                  </span>
                 </td>
-                <td class="list2">2017-05-24 - 2017-05-58</td>
-                <td class="list3">政府办公室</td>
-                <td class="list4"><a href="" disabled class="btn btn-info">已报名</a></td>
-              </tr>
-              <tr>
-                <td class="list1 clearfix">
-                  <p class="pull-left">
-                    <img src="../images/bookLog.png" alt="">
-                  </p>
-                  <span class="ellipsis pull-left">班级名称1班级名称1班级名称1班级名称1班级名称1班级名称1</span>
-                </td>
-                <td class="list2">2017-05-24 - 2017-05-58</td>
-                <td class="list3">政府办公室</td>
-                <td class="list4"><a href="" disabled class="btn btn-default">已结束</a></td>
-              </tr>
-              <tr>
-                <td class="list1 clearfix">
-                  <p class="pull-left">
-                    <img src="../images/bookLog.png" alt="">
-                  </p>
-                  <span class="ellipsis pull-left">班级名称1班级名称1班级名称1班级名称1班级名称1班级名称1</span>
-                </td>
-                <td class="list2">2017-05-24 - 2017-05-58</td>
-                <td class="list3">政府办公室</td>
-                <td class="list4"><a href="" disabled class="btn btn-info">已报名</a></td>
-              </tr>
-              <tr>
-                <td class="list1 clearfix">
-                  <p class="pull-left">
-                    <img src="../images/bookLog.png" alt="">
-                  </p>
-                  <span class="ellipsis pull-left">班级名称1班级名称1班级名称1班级名称1班级名称1班级名称1</span>
-                </td>
-                <td class="list2">2017-05-24 - 2017-05-58</td>
-                <td class="list3">政府办公室</td>
-                <td class="list4"><a href="" disabled class="btn btn-default">已结束</a></td>
-              </tr>
-              <tr>
-                <td class="list1 clearfix">
-                  <p class="pull-left">
-                    <img src="../images/bookLog.png" alt="">
-                  </p>
-                  <span class="ellipsis pull-left">班级名称1班级名称1班级名称1班级名称1班级名称1班级名称1</span>
-                </td>
-                <td class="list2">2017-05-24 - 2017-05-58</td>
-                <td class="list3">政府办公室</td>
-                <td class="list4"><a href="" disabled class="btn btn-info">已报名</a></td>
-              </tr>
-              <tr>
-                <td class="list1 clearfix">
-                  <p class="pull-left">
-                    <img src="../images/bookLog.png" alt="">
-                  </p>
-                  <span class="ellipsis pull-left">班级名称1班级名称1班级名称1班级名称1班级名称1班级名称1</span>
-                </td>
-                <td class="list2">2017-05-24 - 2017-05-58</td>
-                <td class="list3">政府办公室</td>
-                <td class="list4"><a href="" disabled class="btn btn-default">已结束</a></td>
+                <td class="list2">{{list.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{list.EndTime | dateFilter | date:'yyyy-MM-dd'}}</td>
+                <td class="list3">{{list.Address}}</td>
+
+                <td class="list4" ng-if="!list.ApplyStatus"><a class="btn btn-info" ng-click="addClass(list.Id)">点击报名</a></td>
+                <td class="list4" ng-if="list.ApplyStatus=='Normal'"><a disabled class="btn btn-success">{{JudgeStatus(list.ApplyStatus)}}</a></td>
+                <td class="list4" ng-if="list.ApplyStatus=='UnAudit'||list.ApplyStatus=='UnApprove'"><a disabled class="btn btn-default">{{JudgeStatus(list.ApplyStatus)}}</a></td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+      <div ng-show="showNoClass" class="result">暂无培训班</div>
     </div>
   </div>
 </div>
@@ -102,11 +56,15 @@
 
   }
   .classGarden .borderNews{
-
+    min-height: 398px;
   }
   .classGarden .borderNews .tab-content{
     border: 1px solid #eee;
     border-top: none;
+  }
+  .classGarden a.btn {
+    width: 75px;
+    padding: 2px 0;
   }
   .classGarden .btn-info[disabled]:hover,.classGarden .btn-info[disabled]:focus,.classGarden .btn-info[disabled]{
     background-color: #00b4ff;
@@ -121,10 +79,14 @@
   }
   .perlist >.table > thead > tr > td, .perlist>.table > tbody > tr > td, .perlist>.table > tfoot > tr > td{
     border-bottom: 1px solid #ddd;
-    height: 50px;
-    line-height: 50px;
+    height: 48px;
+    line-height: 48px;
     padding: 0;
     border-top: none;
+  }
+  .perlist>.table > tbody > tr.title > td {
+    height: 30px;
+    line-height: 30px;
   }
   .perlist >.table .list1 {
     width: 35%;

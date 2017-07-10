@@ -22,7 +22,7 @@
     <div id="setFont" class="article-detail article-detail-content" ng-bind-html="articleData.Content| trustHtml">
 
     </div>
-    <div class="article-detail article-detail-changeBar" >
+    <div class="article-detail article-detail-changeBar clearfix" >
         <p class="grid_11 article-detail article-detail-changeBar-anhor pull-left" ng-show="articleData.UpName">
             <a ui-sref="articleDetail({ID:articleData.UpId})">上一篇：{{articleData.UpName}}</a>
         </p>
@@ -72,7 +72,13 @@
     .article-detail-content{
         min-height: 500px;
     }
+    .article-detail .article-detail-changeBar {
+      margin-bottom: 20px;
+    }
     #setFont{
         word-wrap: break-word;
+    }
+    .article-detail-changeBar {
+      margin-bottom: 20px;
     }
 </style>

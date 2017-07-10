@@ -1,87 +1,96 @@
 <!--图书详情-->
-<div class="bookDetail tmBorder-cyan">
-  <ol class="breadcrumb">
-    <li class="currentPosition">您的当前位置:</li>
-    <li><a ui-sref="main">首页</a></li>
-    <li><a ui-sref="library">图书馆</a></li>
-    <li class="active">{{bookContentData.Name}}</li>
-  </ol>
-
-  <div class="booktitle">
-    <h2 class="titlename">{{bookContentData.Name}}</h2>
-    <p>作者: &nbsp;<strong>{{bookContentData.Author}}</strong> &nbsp;出版时间: &nbsp;{{bookContentData.Time}}&nbsp;</p>
+<div class="bookDetail">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      {{bookContentData.Name}}
+    </p>
   </div>
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li><a ui-sref="library">图书馆</a></li>
+      <li class="active">{{bookContentData.Name}}</li>
+    </ol>
 
-  <div class="bookcontent clearfix">
-    <img ng-src="{{bookContentData.ImagePath+'/'+bookContentData.Icon}}">
-    <div class="booktxt">
-      <h4 class="bookkey">图书关键字:&nbsp;<span>{{bookContentData.BookKey?bookContentData.BookKey:'无'}}</span></h4>
-      <h4 class="booksum">作品简介:</h4>
-      <p ng-bind-html="bookContentData.Content| trustHtml"></p>
-      <div class="count">
-        <span>总点击: &nbsp;{{bookContentData.ClickCount}}</span>
-        <span>总字数: &nbsp;{{bookContentData.ByteCount}}</span>
-        <span>总鲜花: &nbsp;{{bookContentData.FlowerCount}}</span>
-      </div>
+    <div class="booktitle">
+      <h2 class="titlename">{{bookContentData.Name}}</h2>
+      <p>作者: &nbsp;<strong>{{bookContentData.Author}}</strong> &nbsp;出版时间: &nbsp;{{bookContentData.Time}}&nbsp;</p>
+    </div>
 
-      <a class="btn btn-danger" ui-sref="bookchapter({bookId:bookContentData.Id})">阅读本书</a>
-      <a class="btn btn-danger" data-toggle="modal" data-target=".notemodal">发表评论</a>
-      <a ng-if="bookContentData.FavoriteId==0" class="btn btn-danger" ng-click="favoriteAdd({mainId:bookContentData.Id,type:'Book',title:bookContentData.Name,remark:'0'},token)">收藏</a>
-      <a ng-if="bookContentData.FavoriteId!=0" class="btn btn-danger" ng-click="favoriteDelete({id:bookContentData.FavoriteId},token)">取消收藏</a>
-      <!-- 图书评论 -->
-      <div class="modal fade notemodal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">图书评论</h4>
-            </div>
-            <div class="modal-body">
-              <table class="table table-bordered">
-                <tbody>
-                <tr>
-                  <td>图书名称：</td>
-                  <td>{{bookContentData.Name}}</td>
-                </tr>
-                <!--<tr>
-                  <td>笔记名称：</td>
-                  <td>
-                    <input id="txtName" name="Name" class="txt" type="text" ng-model="noteName">
-                  </td>
-                </tr>-->
-                <tr>
-                  <td>评    论：</td>
-                  <td>
-                    <textarea ng-model="bookContent" id="txtContent" name="Content" cols="50" rows="5" type="text" class="txt2"></textarea>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="modal-footer">
-              <button  ng-click="postComment({bookId:bookContentData.Id,content:bookContent})" type="button" class="btn btn-primary">提交</button>
+    <div class="bookcontent clearfix">
+      <img ng-src="{{bookContentData.ImagePath+'/'+bookContentData.Icon}}">
+      <div class="booktxt">
+        <h4 class="bookkey">图书关键字:&nbsp;<span>{{bookContentData.BookKey?bookContentData.BookKey:'无'}}</span></h4>
+        <h4 class="booksum">作品简介:</h4>
+        <p ng-bind-html="bookContentData.Content| trustHtml"></p>
+        <div class="count">
+          <span>总点击: &nbsp;{{bookContentData.ClickCount}}</span>
+          <span>总字数: &nbsp;{{bookContentData.ByteCount}}</span>
+          <span>总鲜花: &nbsp;{{bookContentData.FlowerCount}}</span>
+        </div>
+
+        <a class="btn btn-danger" ui-sref="bookchapter({bookId:bookContentData.Id})">阅读本书</a>
+        <a class="btn btn-danger" data-toggle="modal" data-target=".notemodal">发表评论</a>
+        <a ng-if="bookContentData.FavoriteId==0" class="btn btn-danger" ng-click="favoriteAdd({mainId:bookContentData.Id,type:'Book',title:bookContentData.Name,remark:'0'},token)">收藏</a>
+        <a ng-if="bookContentData.FavoriteId!=0" class="btn btn-danger" ng-click="favoriteDelete({id:bookContentData.FavoriteId},token)">取消收藏</a>
+        <!-- 图书评论 -->
+        <div class="modal fade notemodal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">图书评论</h4>
+              </div>
+              <div class="modal-body">
+                <table class="table table-bordered">
+                  <tbody>
+                  <tr>
+                    <td>图书名称：</td>
+                    <td>{{bookContentData.Name}}</td>
+                  </tr>
+                  <!--<tr>
+                    <td>笔记名称：</td>
+                    <td>
+                      <input id="txtName" name="Name" class="txt" type="text" ng-model="noteName">
+                    </td>
+                  </tr>-->
+                  <tr>
+                    <td>评    论：</td>
+                    <td>
+                      <textarea ng-model="bookContent" id="txtContent" name="Content" cols="50" rows="5" type="text" class="txt2"></textarea>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="modal-footer">
+                <button  ng-click="postComment({bookId:bookContentData.Id,content:bookContent})" type="button" class="btn btn-primary">提交</button>
+              </div>
             </div>
           </div>
+          <!--<div class="preventorgery"></div>-->
         </div>
-        <!--<div class="preventorgery"></div>-->
-      </div>
 
+      </div>
     </div>
-  </div>
-  <!--评论列表-->
-  <div class="bookComment">
-    <ul class="comment_bord">
-      <li ng-repeat="list in commentData.ListData" class="clearfix">
-        <div class="bookCommentLeft pull-left">
-          <h4>{{list.UserName}}:</h4>
-          <p>{{list.Comment}}</p>
-        </div>
-        <div class="bookCommentRight pull-right">
-          <span>{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}楼</span>
-        </div>
-      </li>
-      <div tm-pagation conf="paginationConf"></div>
-    </ul>
+    <!--评论列表-->
+    <div class="bookComment">
+      <ul class="comment_bord">
+        <li ng-repeat="list in commentData.ListData" class="clearfix">
+          <div class="bookCommentLeft pull-left">
+            <h4>{{list.UserName}}:</h4>
+            <p>{{list.Comment}}</p>
+          </div>
+          <div class="bookCommentRight pull-right">
+            <span>{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}楼</span>
+          </div>
+        </li>
+        <div ng-show="paginationConf.totalItems" class="mar_top_5" tm-pagation conf="paginationConf"></div>
+        <p ng-show="!paginationConf.totalItems" class="result">暂无评论</p>
+      </ul>
+    </div>
   </div>
 </div>
 
@@ -145,10 +154,8 @@
     text-align: center;
   }
   .bookDetail .comment_bord {
-    border: 3px solid #eee;
-    border-right-width: 1px;
-    border-left-width: 5px;
-    border-top: none;
+    border-left: 5px solid #eee;
+    border-bottom: 3px solid #eee;
     margin-bottom: 20px;
   }
   .bookDetail .bookComment{

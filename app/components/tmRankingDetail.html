@@ -1,38 +1,47 @@
 <!--单位排行列表（more）-->
-<div class="rankingDetail tmBorder-blue" dw-loading="rankingDetail">
-  <ol class="breadcrumb">
-    <li class="currentPosition">您的当前位置:</li>
-    <li><a ui-sref="main">首页</a></li>
-    <li class="active">{{govermentRanking.ViewBag.TitleNav}}</li>
-  </ol>
-  <div class="rankTitle">
-    <div class="txt">{{govermentRanking.ViewBag.TitleNav}}</div>
+<div class="rankingDetail" dw-loading="rankingDetail">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      {{govermentRanking.ViewBag.TitleNav}}
+    </p>
   </div>
-  <div class="myTab" dw-loading="userRankingList">
-    <div class="tab-content">
-      <div class="tab-panel perlist">
-        <div class="title_bar clearfix">
-          <span class="list1">排名</span>
-          <span class="list1">单位名称</span>
-          <span class="list1">平均学分</span>
-          <span class="list1">总学分</span>
-          <span class="list1">总人数</span>
-        </div>
-        <div class="list" ng-repeat="govermentRankingList in govermentRanking.ListData">
-          <p class="clearfix">
-            <span class="list1">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
-            <span class="list1">{{govermentRankingList.DepartmentName}}</span>
-            <span class="list1">{{govermentRankingList.Average}}</span>
-            <span class="list1">{{govermentRankingList.Credit}}</span>
-            <span class="list1">{{govermentRankingList.UserCount}}</span>
-          </p>
-        </div>
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li class="active">{{govermentRanking.ViewBag.TitleNav}}</li>
+    </ol>
+    <!--<div class="rankTitle">
+      <div class="txt">{{govermentRanking.ViewBag.TitleNav}}</div>
+    </div>-->
+    <div class="myTab" dw-loading="userRankingList">
+      <div class="tab-content">
+        <div class="tab-panel perlist">
+          <div class="title_bar clearfix">
+            <span class="list1">排名</span>
+            <span class="list1">单位名称</span>
+            <span class="list1">平均学分</span>
+            <span class="list1">总学分</span>
+            <span class="list1">总人数</span>
+          </div>
+          <div class="list" ng-repeat="govermentRankingList in govermentRanking.ListData">
+            <p class="clearfix">
+              <span class="list1">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
+              <span class="list1" title="{{govermentRankingList.DepartmentName}}">{{govermentRankingList.DepartmentName}}</span>
+              <span class="list1">{{govermentRankingList.Average}}</span>
+              <span class="list1">{{govermentRankingList.Credit}}</span>
+              <span class="list1">{{govermentRankingList.UserCount}}</span>
+            </p>
+          </div>
 
+        </div>
       </div>
+      <div ng-show="paginationConf.totalItems>0" tm-pagation conf="paginationConf" style="margin-left: 20%"></div>
+      <div class="noData" ng-show="paginationConf.totalItems <=0">暂无数据</div>
     </div>
-    <div ng-show="paginationConf.totalItems>0" tm-pagation conf="paginationConf" style="margin-left: 20%"></div>
-    <div class="noData" ng-show="paginationConf.totalItems <=0">暂无数据</div>
   </div>
+
 </div>
 
 <style>

@@ -7,12 +7,12 @@
  * # tmCivilServiceTrainingLink
  */
 angular.module('luZhouApp')
-    .directive('tmCivilServiceTrainingLink', function() {
-        return {
-            templateUrl: 'components/tmCivilServiceTrainingLink.html',
-            restrict: 'EA',
-            link: function postLink(scope, element, attrs) {
+  .directive('tmCivilServiceTrainingLink', function () {
+    return {
+      templateUrl: 'components/tmCivilServiceTrainingLink.html',
+      restrict: 'EA',
+      link: function postLink(scope, element, attrs) {
 
-            }
-        };
-    });
+      }
+    };
+  });

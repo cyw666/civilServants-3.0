@@ -6,22 +6,16 @@
       <div id="carousel-special-training" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
-          <li data-target="#carousel-special-training" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-special-training" data-slide-to="1"></li>
+          <li ng-repeat="noticeList in noticeData.ListData" ng-class="{'active':$index==0}" data-target="#carousel-special-training" data-slide-to="{{$index}}"></li>
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-          <div class="item clearfix active">
+          <div class="item clearfix"  ng-repeat="noticeList in noticeData.ListData" ng-class="{'active':$index==0}">
             <div>
-              <!--<img ng-src="{{specialList.Img}}" err-Src="images/notFound.jpeg">-->
-              <img src="../images/noticeImg.png" alt="">
-            </div>
-          </div>
-          <div class="item clearfix">
-            <div>
-              <!--<img ng-src="{{specialList.Img}}" err-Src="images/notFound.jpeg">-->
-              <img src="../images/noticeImg.png" alt="">
+              <a ui-sref="noticeDetail({ID:noticeList.Id})" title="{{noticeList.Name}}" target="_blank">
+                <img ng-src="{{noticeData.Path+noticeList.Img}}" err-Src="images/notFound.jpeg">
+              </a>
             </div>
           </div>
         </div>
@@ -40,20 +34,10 @@
       <div class="notice-body-left pull-left">通知公告</div>
       <div class="notice-body-right pull-left">
         <ul class="clearfix">
-          <li class="pull-left">
+          <li class="pull-left" ng-repeat="noticeList in noticeData.ListData">
             <span class="triangleRight"></span>
-            <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
-            <span class="time">2017-05-30</span>
-          </li>
-          <li class="pull-left">
-            <span class="triangleRight"></span>
-            <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
-            <span class="time">2017-05-30</span>
-          </li>
-          <li class="pull-left">
-            <span class="triangleRight"></span>
-            <span class="title ellipsis">关于组织开展关于组关于组织关于组织织开展关于组织开展关于组织开展关于组织开展</span>
-            <span class="time">2017-05-30</span>
+            <a  class="title ellipsis" ui-sref="noticeDetail({ID:noticeList.Id})" title="{{noticeList.Name}}" target="_blank">{{noticeList.Name}}</a>
+            <span class="time">{{noticeList.CreateDate | dateFilter |date :'yyyy-MM-dd'}}</span>
           </li>
         </ul>
       </div>
@@ -68,6 +52,10 @@
   width: 590px;
   border: 1px solid #eee;
   padding: 10px;
+}
+.noticeAnnouncement .carousel-inner img {
+  width: 568px;
+  height: 350px;
 }
 .noticeAnnouncement .notice-heading {
   text-align: center;
@@ -105,9 +93,11 @@
   margin: 12px 10px;
 }
 .noticeAnnouncement .notice-body .notice-body-right .title{
+  float: left;
   width: 320px;
 }
 .noticeAnnouncement .notice-body .notice-body-right .time{
   margin-left: 50px;
+  color: #666;
 }
 </style>

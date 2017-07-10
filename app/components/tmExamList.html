@@ -1,65 +1,73 @@
 <!--考试中心-->
-<div class="examList tmBorder-green">
-  <ol class="breadcrumb">
-    <li class="currentPosition">您的当前位置:</li>
-    <li><a ui-sref="main">首页</a></li>
-    <li class="active">考试中心</li>
-  </ol>
-  <form class="form-inline formCourse">
-    <select class="form-control" ng-init="selectedName = courseStatus[0]" ng-model="selectedName" ng-options="x.name for x in courseStatus" ng-change="selectChangeFun(selectedName.id)">
-    </select>
-    <div class="form-group">
-      <input ng-model="searchTitle" type="text" class="form-control" style="width: 400px;" my-placeholder placeholder="请输入要搜索的考试">
-    </div>
-    <button type="submit" class="btn btn-default" ng-click="searchMyCenterCourse({'examType':selectedName.id,'title':searchTitle},1)">搜索</button>
-  </form>
-  <div class="myTab">
-    <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
-      <li ng-class="{active: vm.activeTab == 1}"><a href="javascript:;" ng-click="vm.activeTab = 1;searchMyCenterCourse({'examType':'UnFinish','title':searchTitle})">未完成的考试</a></li>
-      <li ng-class="{active: vm.activeTab == 3}"><a href="javascript:;" ng-click="vm.activeTab = 3;searchMyCenterCourse({'examType':'Finish','title':searchTitle})">已完成的考试</a></li>
-    </ul>
-    <div class="tab-content" dw-loading="examList">
-      <div class="tab-panel perlist" ng-show="vm.activeTab == 1">
-        <div class="title_bar clearfix">
-          <span class="list1">考试名称</span>
-          <span class="list2">考试学时</span>
-          <span class="list6">时限</span>
-          <span class="list5">参加测试</span>
-          <span class="list4">考试时间</span>
-        </div>
-        <div class="list" ng-repeat="unFinish in TotalData.UnfinishModel">
-          <p class="clearfix">
-            <span class="list1 cur_name" title="{{unFinish.Name}}"><a target="_blank" ng-click="havTest(unFinish.Id)">{{unFinish.Name}}</a></span>
-            <span class="list2">{{unFinish.CreditHour}}</span>
-            <span class="list6">{{unFinish.TimeLimit}}</span>
-            <span class="list5"><a target="_blank" ng-click="havTest(unFinish.Id)">参加测试</a></span>
-            <span class="list4">{{unFinish.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{unFinish.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
-          </p>
-        </div>
-        <div ng-transclude="pagation"></div>
+<div class="examList ">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      {{TotalData.TitleNav}}
+    </p>
+  </div>
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li class="active">{{TotalData.TitleNav}}</li>
+    </ol>
+    <form class="form-inline formCourse">
+      <select class="form-control" ng-init="selectedName = courseStatus[0]" ng-model="selectedName" ng-options="x.name for x in courseStatus" ng-change="selectChangeFun(selectedName.id)">
+      </select>
+      <div class="form-group">
+        <input ng-model="searchTitle" type="text" class="form-control" style="width: 400px;" my-placeholder placeholder="请输入要搜索的考试">
       </div>
-      <div class="tab-panel perlist" ng-show="vm.activeTab == 3">
-        <div class="title_bar clearfix">
-          <span class="list1">考试名称</span>
-          <span class="list2">考试学时</span>
-          <span class="list6">时限</span>
-          <span class="list3">通过状态</span>
-          <span class="list3">参加测试</span>
-          <span class="list3">查看详细记录</span>
+      <button type="submit" class="btn btn-default" ng-click="searchMyCenterCourse({'examType':selectedName.id,'title':searchTitle},1)">搜索</button>
+    </form>
+    <div class="myTab">
+      <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
+        <li ng-class="{active: vm.activeTab == 1}"><a href="javascript:;" ng-click="vm.activeTab = 1;searchMyCenterCourse({'examType':'UnFinish','title':searchTitle})">未完成的考试</a></li>
+        <li ng-class="{active: vm.activeTab == 3}"><a href="javascript:;" ng-click="vm.activeTab = 3;searchMyCenterCourse({'examType':'Finish','title':searchTitle})">已完成的考试</a></li>
+      </ul>
+      <div class="tab-content" dw-loading="examList">
+        <div class="tab-panel perlist" ng-show="vm.activeTab == 1">
+          <div class="title_bar clearfix">
+            <span class="list1">考试名称</span>
+            <span class="list2">考试学时</span>
+            <span class="list6">时限</span>
+            <span class="list5">参加测试</span>
+            <span class="list4">考试时间</span>
+          </div>
+          <div class="list" ng-repeat="unFinish in TotalData.UnfinishModel">
+            <p class="clearfix">
+              <span class="list1 cur_name" title="{{unFinish.Name}}"><a target="_blank" ng-click="havTest(unFinish.Id)">{{unFinish.Name}}</a></span>
+              <span class="list2">{{unFinish.CreditHour}}</span>
+              <span class="list6">{{unFinish.TimeLimit}}</span>
+              <span class="list5"><a target="_blank" ng-click="havTest(unFinish.Id)">参加测试</a></span>
+              <span class="list4">{{unFinish.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{unFinish.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+            </p>
+          </div>
+          <div ng-transclude="pagation"></div>
         </div>
-        <div class="list" ng-repeat="Finish in TotalData.FinishModel">
-          <p class="clearfix">
-            <span class="list1 cur_name" title="{{Finish.Name}}"><a ng-click="havTest(Finish.Id)" target="_blank">{{Finish.Name}}</a></span>
-            <span class="list2">{{Finish.CreditHour}}</span>
-            <span class="list6">{{Finish.TimeLimit}}</span>
-            <span class="list3 red" ng-show="Finish.PassFlag">通过</span>
-            <span class="list3" ng-hide="Finish.PassFlag">未通过</span>
+        <div class="tab-panel perlist" ng-show="vm.activeTab == 3">
+          <div class="title_bar clearfix">
+            <span class="list1">考试名称</span>
+            <span class="list2">考试学时</span>
+            <span class="list6">时限</span>
+            <span class="list3">通过状态</span>
+            <span class="list3">参加测试</span>
+            <span class="list3">查看详细记录</span>
+          </div>
+          <div class="list" ng-repeat="Finish in TotalData.FinishModel">
+            <p class="clearfix">
+              <span class="list1 cur_name" title="{{Finish.Name}}"><a ng-click="havTest(Finish.Id)" target="_blank">{{Finish.Name}}</a></span>
+              <span class="list2">{{Finish.CreditHour}}</span>
+              <span class="list6">{{Finish.TimeLimit}}</span>
+              <span class="list3 red" ng-show="Finish.PassFlag">通过</span>
+              <span class="list3" ng-hide="Finish.PassFlag">未通过</span>
 
-            <span class="list3"><a ng-click="havTest(Finish.Id)" target="_blank">参加测试</a></span>
-            <span class="list3"><a ui-sref="examDetailList({Id:Finish.Id})">查看详细记录</a></span>
-          </p>
+              <span class="list3"><a ng-click="havTest(Finish.Id)" target="_blank">参加测试</a></span>
+              <span class="list3"><a ui-sref="examDetailList({Id:Finish.Id})">查看详细记录</a></span>
+            </p>
+          </div>
+          <div ng-transclude="pagation"></div>
         </div>
-        <div ng-transclude="pagation"></div>
       </div>
     </div>
   </div>

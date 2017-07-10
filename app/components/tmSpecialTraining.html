@@ -1,33 +1,36 @@
 <!--专题培训-->
-<div class="specialTraining mar_top_20">
+<div class="specialTraining">
   <div class="com-header clearfix">
     <p class="title pull-left">
       <img src="../images/headerLeftIcon.png" alt="图标">
       专题学习
     </p>
-    <p class="more pull-right"><img src="../images/more.png" alt="更多"></p>
+    <p class="more pull-right">
+      <a ui-sref="courseCenter" target="_blank" href="#/courseCenter"><img src="../images/more.png" alt="更多"></a>
+    </p>
   </div>
   <ul class="specialContent">
-    <li>
-      <p><img  class="specialImg" src="../images/specialCourse1.png" alt=""></p>
-      <p class="title ellipsis">"一带一路"国际合作高峰论坛</p>
+    <li ng-repeat="list in studySpecialData.ListData">
+      <p>
+        <a ng-href="{{list.Url}}" target="_blank">
+          <img class="specialImg" ng-src="{{studySpecialData.ImagePath+list.Icon}}" err-Src="images/notFound.jpeg" alt="">
+        </a>
+      </p>
+      <p class="title ellipsis" >
+        <a ng-href="{{list.Url}}" target="_blank">{{list.SeriesName}}</a>
+      </p>
     </li>
-    <li>
-      <p><img src="../images/specialCourse1.png" alt=""></p>
-      <p class="title ellipsis">"一带一路"国际合作高峰论坛</p>
-    </li>
-    <li>
-      <p><img src="../images/specialCourse1.png" alt=""></p>
-      <p class="title ellipsis">"一带一路"国际合作高峰论坛</p>
-    </li>
+    <p ng-show="showNoSpecialClass" class="result">暂无专题学习</p>
   </ul>
 </div>
 <style>
   .specialTraining {
     margin-left: 16px;
+    margin-top: 25px;
   }
   .specialTraining .specialContent{
     margin-top: 20px;
+    min-height: 464px;
   }
   .specialTraining .specialContent li{
     margin-top: 10px;
@@ -37,6 +40,7 @@
     line-height: 33px;
     font-size: 16px;
     color: #333;
+    padding: 0 10px;
   }
   .specialTraining .specialContent li .specialImg{
     width:334px;

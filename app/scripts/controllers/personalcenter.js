@@ -21,13 +21,13 @@ angular.module('luZhouApp')
         });
 
         //学院学时排行（请勿删除）
-        /*$loading.start('studentsHourRanking');
+        $loading.start('studentsHourRanking');
         commonService.getData(ALL_PORT.LeftUserRank.url, 'POST',
                 ALL_PORT.LeftUserRank.data)
             .then(function(response) {
                 $loading.finish('studentsHourRanking');
                 $scope.userRankingData = response.Data;
-            });*/
+            });
 
 
         //个人中心

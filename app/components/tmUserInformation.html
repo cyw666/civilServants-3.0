@@ -1,27 +1,30 @@
-<div class="UserInformation tmBorder-blue">
-  <div class="titlebg2">
-    <div class="txt">个人信息</div>
+<div class="UserInformation">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      个人信息
+    </p>
   </div>
-  <div class="content login_info" dw-loading="loginOut">
+  <div class="content login_info tmBorder" dw-loading="loginOut">
     <ul class="loginAfter_ul">
-      <li class="welcom">欢迎您:<b class="blue">{{info.Model.Name}}</b>({{info.Model.Account}})</li>
+      <li class="welcom">欢迎您:<b class="red">{{info.Model.Name}}</b>({{info.Model.Account}})</li>
       <li>
-        <span  class="hours">课程学时：<span class="blue">{{info.Model.PcCredit+info.Model.MobileCredit}}</span></span>
-        <span>考试学时：<span class="blue">{{info.Model.ExamCredit}}</span></span>
+        <span  class="hours">课程学时：<span class="red">{{info.Model.PcCredit+info.Model.MobileCredit}}</span></span>
+        <span>考试学时：<span class="red">{{info.Model.ExamCredit}}</span></span>
       </li>
       <li>
-        <span  class="hours">当前学时：<span class="blue">{{info.Model.SumCredit}}</span></span>
-        <span  class="hours">规定学时：<span class="blue">{{info.Model.BatchTotalCredit}}</span></span>
+        <span  class="hours">当前学时：<span class="red">{{info.Model.SumCredit}}</span></span>
+        <span  class="hours">规定学时：<span class="red">{{info.Model.BatchTotalCredit}}</span></span>
       </li>
       <li>
-        <span>考核状态：<span class="blue">{{info.Model.PassStatus?"通过":"未通过"}}</span></span>
+        <span>考核状态：<span class="red">{{info.Model.PassStatus?"通过":"未通过"}}</span></span>
       </li>
       <li>
         <span>个人学习档案</span>
         <span class="list2 grey"><a ui-sref="personaLearningArchives" target="_blank">详细&gt;&gt;</a></span>
       </li>
       <li>
-        <span class="list1">您有<span class="blue"> {{info.Model.UnRead}} </span>条新通知！</span>
+        <span class="list1">您有<span class="red"> {{info.Model.UnRead}} </span>条新通知！</span>
         <span class="list2 grey"><a ui-sref="unReadNotice">详细&gt;&gt;</a></span>
       </li>
       <li class="lastChild fontSize12 grey">
@@ -84,14 +87,14 @@
     margin: 7px auto;
     width: 80px;
     height: 26px;
-    background-color: #3a7fb6;
+    background-color: #db1011;
     text-align: center;
     line-height: 26px;
     color: #fff;
     border-radius: 6px;
   }
   .UserInformation .loginAfter_ul .lastChild .list2 a {
-    color: #076fc7;
+    color: #db1011;
   }
   .UserInformation .loginAfter_ul .lastChild .list2 a:hover {
     color: #333;

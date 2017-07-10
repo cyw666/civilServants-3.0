@@ -39,6 +39,7 @@ angular.module('luZhouApp')
 
 
     //我的班级
+    $scope.classMyType = 'my';
     commonService.getData(ALL_PORT.ClassMy.url, 'POST',
       $.extend({}, ALL_PORT.ClassMy.data))
       .then(function(response) {
@@ -46,13 +47,15 @@ angular.module('luZhouApp')
         $scope.classMyData = response.Data;
       });
     //活跃班级
-     commonService.getData(ALL_PORT.ClassActive.url, 'POST',
+    $scope.classActiveType = 'active';
+    commonService.getData(ALL_PORT.ClassActive.url, 'POST',
       $.extend({}, ALL_PORT.ClassActive.data))
       .then(function(response) {
         $loading.finish('classMy');
         $scope.ClassActiveData = response.Data;
      });
      //近期班级
+    $scope.classRecentType = 'recent';
      commonService.getData(ALL_PORT.ClassRecent.url, 'POST',
       $.extend({}, ALL_PORT.ClassRecent.data))
       .then(function(response) {

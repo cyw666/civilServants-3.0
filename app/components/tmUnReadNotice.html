@@ -1,31 +1,39 @@
 <!--未读通知-->
-<div class="myFavorite tmBorder-green">
+<div class="myFavorite">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      {{noticeData.TitleNav}}
+    </p>
+  </div>
+  <div class="tmBorder">
     <ol class="breadcrumb">
-        <li class="currentPosition">您的当前位置:</li>
-        <li><a ui-sref="main">首页</a></li>
-        <li><a ui-sref="personalCenter">个人中心</a></li>
-        <li class="active">{{noticeData.TitleNav}}</li>
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li><a ui-sref="personalCenter">个人中心</a></li>
+      <li class="active">{{noticeData.TitleNav}}</li>
     </ol>
     <div class="myTab" dw-loading="myFavorite">
-        <div class="tab-content" dw-loading="myCenter">
-            <div class="tab-panel perlist">
-                <div class="title_bar clearfix">
-                    <span class="list1">通知标题</span>
-                    <span class="list2">阅读状态</span>
-                    <span class="list3">发布日期</span>
-                </div>
-                <div class="list" ng-repeat="List in noticeData.AllList">
-                    <p class="clearfix">
-                        <span class="list1 cur_name"><a ui-sref="noticeDetail({ID:List.Id})" target="_blank">{{List.Name}}</a></span>
-                        <span ng-if="!List.Read" class="list2 unread">未读</span>
-                        <span ng-if="List.Read" class="list2 read">已读</span>
-                        <span class="list3">{{List.CreateDate | dateFilter | date:'yy-MM-dd'}}</span>
-                    </p>
-                </div>
-                <div ng-transclude="pagation"></div>
-            </div>
+      <div class="tab-content" dw-loading="myCenter">
+        <div class="tab-panel perlist">
+          <div class="title_bar clearfix">
+            <span class="list1">通知标题</span>
+            <span class="list2">阅读状态</span>
+            <span class="list3">发布日期</span>
+          </div>
+          <div class="list" ng-repeat="List in noticeData.AllList">
+            <p class="clearfix">
+              <span class="list1 cur_name"><a ui-sref="noticeDetail({ID:List.Id})" target="_blank">{{List.Name}}</a></span>
+              <span ng-if="!List.Read" class="list2 unread">未读</span>
+              <span ng-if="List.Read" class="list2 read">已读</span>
+              <span class="list3">{{List.CreateDate | dateFilter | date:'yy-MM-dd'}}</span>
+            </p>
+          </div>
+          <div ng-transclude="pagation"></div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <style>
     .myTab .perlist .list1 {

@@ -4,17 +4,18 @@
       <img src="../images/headerLeftIcon.png" alt="图标">
       课程中心
     </p>
-    <p class="more pull-right"><img src="../images/more.png" alt="更多"></p>
+    <p class="more pull-right">
+      <a ui-sref="courseCenter" target="_blank"><img src="../images/more.png" alt="更多"></a>
+    </p>
   </div>
   <div class="btn-group courselLink" role="group">
-    <a class="btn btn-default active" ng-click="searchCourseList(courselassificationList0.Id)" repeat-finish="renderFinish()">{{courselassificationList0.Name}}</a>
-    <a class="btn btn-default" ng-repeat="courseName in courselassification" ng-click="searchCourseList(courseName.Id)" repeat-finish="renderFinish()">{{courseName.Name}}</a>
+    <a class="btn btn-default" ng-repeat="courseName in courselassification" ng-class="{'active':$index==0}" ng-click="searchCourseList(courseName.Id)" repeat-finish="renderFinish()">{{courseName.Name}}</a>
   </div>
   <div class="courseList mar_top_20 clearfix" dw-loading="courseList">
     <ul class="clearfix">
       <li ng-repeat="courseCenterData in courseCenterData.ListData">
         <a ui-sref="courseDetails({Id:courseCenterData.Id})" title="{{courseCenterData.Name}}" target="_blank">
-          <img ng-src="{{imageCourse}}/{{courseCenterData.Img}}" err-Src="images/notFound.jpeg" alt="">
+          <img ng-src="{{imageCourse+courseCenterData.Img}}" err-Src="images/notFound.jpeg" alt="">
         </a>
         <div class="mar_top_15">
           <p><a ui-sref="courseDetails({Id:courseCenterData.Id})" title="{{courseCenterData.Name}}" target="_blank">{{courseCenterData.Name}}</a></p>
@@ -23,6 +24,7 @@
         </div>
       </li>
     </ul>
+    <p ng-show="showNoCourse" class="result">暂无课程</p>
   </div>
 </div>
 

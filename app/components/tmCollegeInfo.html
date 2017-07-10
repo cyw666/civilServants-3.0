@@ -1,23 +1,27 @@
 <!--学院概况-->
-<div class="collegeInfo tmBorder-green">
-  <ol class="breadcrumb">
-    <li class="currentPosition">您的当前位置:</li>
-    <li><a ui-sref="main">首页</a></li>
-    <li class="active">学院概况</li>
-  </ol>
-
-  <div class="myTab">
-    <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
-      <li ng-repeat="list in collegeInfoData.ListData" ng-class="{active: vm.activeTab == $index+1}"><a ng-click="vm.activeTab = $index+1;">{{list.Name}}</a></li>
-      <!--<li ng-class="{active: vm.activeTab == 2}"><a ng-click="vm.activeTab = 2;">学院大事记</a></li>-->
-    </ul>
-    <div class="tab-content" dw-loading="collegeInfo">
-      <div ng-repeat="list2 in collegeInfoData.ListData" class="tab-panel perlist" ng-show="vm.activeTab == $index+1">
-        <p ng-bind-html="list2.Content| trustHtml"></p>
+<div class="collegeInfo">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      学院概况
+    </p>
+  </div>
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li class="active">学院概况</li>
+    </ol>
+    <div class="myTab">
+      <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
+        <li ng-repeat="list in collegeInfoData.ListData" ng-class="{active: vm.activeTab == $index+1}"><a ng-click="vm.activeTab = $index+1;">{{list.Name}}</a></li>
+      </ul>
+      <div class="tab-content" dw-loading="collegeInfo">
+        <div ng-repeat="list2 in collegeInfoData.ListData" class="tab-panel perlist" ng-show="vm.activeTab == $index+1">
+          <p ng-bind-html="list2.Content| trustHtml"></p>
+        </div>
       </div>
-      <!--<div class="tab-panel perlist" ng-show="vm.activeTab == 2">
-        <p ng-bind-html="collegeInfoData2.Content| trustHtml"></p>
-      </div>-->
     </div>
   </div>
+
 </div>

@@ -1,48 +1,56 @@
 <div class="trainingCenter">
-	<ol class="breadcrumb">
-		<li class="currentPosition">您的当前位置:</li>
-		<li><a ui-sref="main">首页</a></li>
-		<li><a ui-sref="specialTrainingCourse">专题培训班</a></li>
-		<li><a ui-sref="classDetail({Id:Id})">{{data.TrainingName}}</a></li>
-		<li class="active">{{location}}</li>
-	</ol>
-	<div class="photo-album-add mar_bottom_20">
-		<form>
-			<div class="photo-album-add-title">
-				<h4 class="text-center">添加相册</h4>
-			</div>
-			<div class="photo-album-add-body mar_top_10">
-				<div class="form-group clearfix">
-					<span class="grid_8 text-right">相册标题：</span>
-					<div>
-						<input class="form-control grid_6" type="text" ng-model="name">
-					</div>
-				</div>
-				<div class="form-group clearfix">
-					<span class="grid_8 text-right">相册说明：</span>
-					<div>
-						<textarea class="form-control grid_10" ng-model="description" id="txtContent" name="Content" cols="50" rows="5" type="text"></textarea>
-					</div>
-				</div>
-				<div class="form-group clearfix">
-					<span class="grid_8 text-right">相册封面：</span>
-					<div class="clearfix grid_4">
-						<input  type="file" name="ImageToUpload" id="ImageToUpload"
-						       multiple="multiple" onchange="fileSelected('ImageToUpload', 'ImageTraining', 1);">
-						<!--<input class="form-control grid_4" type="file" name="ImageToUpload" id="ImageToUpload" multiple="multiple"-->
-						       <!--onchange="angular.element(this).scope().fileChanged(this);-->
-						       <!--angular.element(this).scope().upload(this,'ImageTraining')" />-->
-						<div id="ImageMessage" style="display:none;padding: 10px;height: 34px"></div>
-						<input type="hidden" id="hidValueImage" name="ImgUrl" ng-model="ImgUrl" />
-					</div>
-				</div>
-			</div>
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      {{location}}
+    </p>
+  </div>
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li><a ui-sref="specialTrainingCourse">专题培训班</a></li>
+      <li><a ui-sref="classDetail({Id:Id})">{{data.TrainingName}}</a></li>
+      <li class="active">{{location}}</li>
+    </ol>
+    <div class="photo-album-add mar_bottom_20">
+      <form>
+        <div class="photo-album-add-title">
+          <h4 class="text-center">添加相册</h4>
+        </div>
+        <div class="photo-album-add-body mar_top_10">
+          <div class="form-group clearfix">
+            <span class="grid_8 text-right">相册标题：</span>
+            <div>
+              <input class="form-control grid_6" type="text" ng-model="name">
+            </div>
+          </div>
+          <div class="form-group clearfix">
+            <span class="grid_8 text-right">相册说明：</span>
+            <div>
+              <textarea class="form-control grid_10" ng-model="description" id="txtContent" name="Content" cols="50" rows="5" type="text"></textarea>
+            </div>
+          </div>
+          <div class="form-group clearfix">
+            <span class="grid_8 text-right">相册封面：</span>
+            <div class="clearfix grid_4">
+              <input  type="file" name="ImageToUpload" id="ImageToUpload"
+                      multiple="multiple" onchange="fileSelected('ImageToUpload', 'ImageTraining', 1);">
+              <!--<input class="form-control grid_4" type="file" name="ImageToUpload" id="ImageToUpload" multiple="multiple"-->
+              <!--onchange="angular.element(this).scope().fileChanged(this);-->
+              <!--angular.element(this).scope().upload(this,'ImageTraining')" />-->
+              <div id="ImageMessage" style="display:none;padding: 10px;height: 34px"></div>
+              <input type="hidden" id="hidValueImage" name="ImgUrl" ng-model="ImgUrl" />
+            </div>
+          </div>
+        </div>
 
-			<div class="photo-album-add-submit text-center">
-				<input ng-click="getPhotoAlbumAdd(Id)" type="submit" class="btn btn-primary"/>
-			</div>
-		</form>
-	</div>
+        <div class="photo-album-add-submit text-center">
+          <input ng-click="getPhotoAlbumAdd(Id)" type="submit" class="btn btn-primary"/>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
 <style>
 	.photo-album-add-body span{

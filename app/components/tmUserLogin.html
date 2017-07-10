@@ -46,10 +46,10 @@
     <div class="content login_info">
       <!--@*个人中心的登陆后详细和首页不同，个人中心更为具体详细，具体看 Mycenter.cshtml*@-->
       <ul class="loginAfter_ul">
-        <li class="welcom">欢迎您:<b class="blue">{{userMessage.Name}}</b>({{userMessage.Account}})</li>
+        <li class="welcom">欢迎您:<b class="red">{{userMessage.Name}}</b>({{userMessage.Account}})</li>
         <li>
-          <span>年度学时：<span class="blue">{{userMessage.BatchTotalCredit}}</span></span>
-          <span>当前学时：<span class="blue">{{userMessage.SumCredit}}</span></span>
+          <span>年度学时：<span class="red">{{userMessage.BatchTotalCredit}}</span></span>
+          <span>当前学时：<span class="red">{{userMessage.SumCredit}}</span></span>
         </li>
         <li>
           <span>个人学习档案</span>
@@ -60,7 +60,7 @@
           <span class="list2 grey"><a ui-sref="personaLearningArchives" target="_blank">我的订单&gt;&gt;</a></span>
         </li>-->
         <li>
-          <span class="list1">您有<span class="blue">{{userMessage.UnRead}} </span>条新通知！</span>
+          <span class="list1">您有<span class="red">{{userMessage.UnRead}} </span>条新通知！</span>
           <span class="list2 grey"><a ui-sref="unReadNotice">查看详情&gt;</a></span>
         </li>
         <li class="lastChild fontSize12 grey">
@@ -237,14 +237,14 @@
     margin: 7px auto;
     width: 80px;
     height: 26px;
-    background-color: #3a7fb6;
+    background-color: #db1011;
     text-align: center;
     line-height: 26px;
     color: #fff;
     border-radius: 6px;
   }
   #loginAfter .loginAfter_ul .lastChild .list2 a {
-    color: #076fc7;
+    color: #db1011;
   }
   #loginAfter .loginAfter_ul .lastChild .list2 a:hover {
     color: #333;

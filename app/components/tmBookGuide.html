@@ -1,0 +1,67 @@
+<div class="bookGuide">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      电子书
+    </p>
+    <p class="more pull-right">
+      <a ui-sref="library" target="_blank"><img src="../images/more.png" alt="更多"></a>
+    </p>
+  </div>
+  <div class="bookList" dw-loading="bookList">
+    <ul class="clearfix">
+      <li class="pull-left" ng-repeat="list in booksData.ListData">
+        <p class="pull-left">
+          <a ui-sref="bookdetail({Id:list.Id})" target="_blank">
+            <img ng-src="{{imgPath+'/'+list.Icon}}" err-src="images/notFound.jpeg" alt="{{list.Name}}">
+          </a>
+        </p>
+        <div class="content pull-left">
+          <h4 class="title">{{list.Name | wordLimit:19}}</h4>
+          <p class="desc">简介：{{list.Content|wordLimit:18}}</p>
+          <p class="author">作者：{{list.Author}}</p>
+          <p class="clickCount">点击数：{{list.ClickCount}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<style>
+  .bookGuide {
+
+  }
+  .bookGuide .bookList{
+    height: 210px;
+    width: 100%;
+    padding-top: 20px;
+  }
+  .bookGuide .bookList li{
+    width: 283px;
+  }
+  .bookGuide .bookList li img{
+    width: 114px;
+    height: 162px;
+  }
+  .bookGuide .bookList .content{
+    width: 169px;
+    padding: 5px 15px 0 15px;
+  }
+  .bookGuide .bookList .title{
+    color: #333;
+    font-size: 14px;
+    line-height: 17px;
+    max-height: 34px;
+  }
+  .bookGuide .bookList .desc{
+    color: #666;
+    margin: 10px 0;
+    height: 60px;
+  }
+  .bookGuide .bookList .author{
+    color: #666;
+  }
+  .bookGuide .bookList .clickCount{
+    color: #ff9842;
+    margin-top: 5px;
+  }
+</style>

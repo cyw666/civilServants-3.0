@@ -1,9 +1,13 @@
 <!--班级模块-->
-<div class="classMy tmBorder-cyan">
-  <div class="titlebg2">
-    <div class="txt">
+<div class="classMy mar_top_20">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
       {{classMyData.TitleNav}}
-    </div>
+    </p>
+    <p class="more pull-right">
+      <a ui-sref="classlist({type:classType})" target="_blank"><img src="../images/more.png" alt="更多"></a>
+    </p>
   </div>
   <div class="content myclass" dw-loading="classMy">
     <ul>
@@ -25,11 +29,14 @@
     min-height: 300px;
   }
   .classMy .listtitle{
-    color: #000;
-    font-size: 15px;
-    text-align: center;
-    border: 1px solid #dadada;
-    border-radius: 3px;
+    width: auto;
+    background-color: #f8f8f8;
+  }
+  .classMy .listtitle span{
+    height: 48px;
+    line-height: 48px;
+    font-size: 16px;
+    font-weight: 600;
   }
   .classMy  span{
     float: left;

@@ -1,44 +1,53 @@
 
 <!--学院风采-->
-<ol class="breadcrumb mar_top_15">
-  <li class="currentPosition">您的当前位置:</li>
-  <li><a ui-sref="main">首页</a></li>
-  <li class="active">我的风采</li>
-</ol>
-<div class="article-detail article-detail-container container_24" dw-loading="tmshowarticledetail">
-  <div class="article-detail article-detail-title-bar">
-    <p class="article-detail article-detail-title text-center grid_24">{{articleData.Name}}</p>
-    <p class="article-detail article-detail-info">
-      <span ng-if="articleData.CreatedDate">发布时间：{{articleData.CreatedDate | dateFilter | date:'yyyy-MM-dd'}}</span>
-      <span ng-if="!articleData.CreatedDate">发布时间：{{articleData.CreateDate | dateFilter | date:'yyyy-MM-dd'}}</span>
-      <span ng-if="articleData.Author">作者：{{articleData.Author}}</span>
-      <span ng-if="!articleData.Author">作者：{{articleData.Creator}}</span>
-      <span>来源：{{articleData.Source}}</span>
-      <span ng-show="articleData.ClickCount">浏览次数：{{articleData.ClickCount}}</span>
-    </p>
-    <p class="article-detail article-detail-info" ng-show="articleData.Id">
-      <a class="favoriteadd"
-         ng-click="favoriteAdd({mainId:articleData.Id,type:articleData.Type,title:articleData.Name,remark:'0'},token);" ng-show="!articleData.FavoriteId">[收藏]</a>
-      <a class="favoritedel"  ng-click="favoriteDelete({id:articleData.FavoriteId},token);" ng-show="articleData.FavoriteId">[取消收藏]</a>
-      <a href="/Content/Upload/Attachment/{{articleData.AttachmentName}}" target="_blank" ng-show="articleData.AttachmentName">[附件下载]</a>
-      <a href="javascript:window.print();">[打印]</a>
-      <a  ng-click="reduceFont()">[缩小字体]</a>
-      <a ng-click="increaseFont()">[放大字体]</a>
+<div class="studentStyleDetail">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      我的风采
     </p>
   </div>
-  <div id="setFont" class="article-detail article-detail-content" ng-bind-html="articleData.Content| trustHtml">
+  <ol class="breadcrumb mar_top_15">
+    <li class="currentPosition">您的当前位置:</li>
+    <li><a ui-sref="main">首页</a></li>
+    <li class="active">我的风采</li>
+  </ol>
+  <div class="article-detail article-detail-container container_24" dw-loading="tmshowarticledetail">
+    <div class="article-detail article-detail-title-bar">
+      <p class="article-detail article-detail-title text-center grid_24">{{articleData.Name}}</p>
+      <p class="article-detail article-detail-info">
+        <span ng-if="articleData.CreatedDate">发布时间：{{articleData.CreatedDate | dateFilter | date:'yyyy-MM-dd'}}</span>
+        <span ng-if="!articleData.CreatedDate">发布时间：{{articleData.CreateDate | dateFilter | date:'yyyy-MM-dd'}}</span>
+        <span ng-if="articleData.Author">作者：{{articleData.Author}}</span>
+        <span ng-if="!articleData.Author">作者：{{articleData.Creator}}</span>
+        <span>来源：{{articleData.Source}}</span>
+        <span ng-show="articleData.ClickCount">浏览次数：{{articleData.ClickCount}}</span>
+      </p>
+      <p class="article-detail article-detail-info" ng-show="articleData.Id">
+        <a class="favoriteadd"
+           ng-click="favoriteAdd({mainId:articleData.Id,type:articleData.Type,title:articleData.Name,remark:'0'},token);" ng-show="!articleData.FavoriteId">[收藏]</a>
+        <a class="favoritedel"  ng-click="favoriteDelete({id:articleData.FavoriteId},token);" ng-show="articleData.FavoriteId">[取消收藏]</a>
+        <a href="/Content/Upload/Attachment/{{articleData.AttachmentName}}" target="_blank" ng-show="articleData.AttachmentName">[附件下载]</a>
+        <a href="javascript:window.print();">[打印]</a>
+        <a  ng-click="reduceFont()">[缩小字体]</a>
+        <a ng-click="increaseFont()">[放大字体]</a>
+      </p>
+    </div>
+    <div id="setFont" class="article-detail article-detail-content" ng-bind-html="articleData.Content| trustHtml">
+
+    </div>
+    <!--<div class="article-detail article-detail-changeBar" >
+      <p class="grid_11 article-detail article-detail-changeBar-anhor pull-left" ng-show="articleData.UpName">
+        <a ui-sref="articleDetail({ID:articleData.UpId})">上一篇：{{articleData.UpName}}</a>
+      </p>
+      <p class="grid_11 article-detail article-detail-changeBar-anhor pull-right" ng-show="articleData.DownName">
+        <a ui-sref="articleDetail({ID:articleData.DownId})">下一篇：{{articleData.DownName}}</a>
+      </p>
+    </div>-->
 
   </div>
-  <!--<div class="article-detail article-detail-changeBar" >
-    <p class="grid_11 article-detail article-detail-changeBar-anhor pull-left" ng-show="articleData.UpName">
-      <a ui-sref="articleDetail({ID:articleData.UpId})">上一篇：{{articleData.UpName}}</a>
-    </p>
-    <p class="grid_11 article-detail article-detail-changeBar-anhor pull-right" ng-show="articleData.DownName">
-      <a ui-sref="articleDetail({ID:articleData.DownId})">下一篇：{{articleData.DownName}}</a>
-    </p>
-  </div>-->
-
 </div>
+
 <style>
   .article-detail-container{
     padding: 0 5px;

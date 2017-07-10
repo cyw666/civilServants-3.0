@@ -7,8 +7,8 @@
 .page-list .page-total input, .page-list .page-total select{height: 26px; border: 1px solid #ddd;}
 .page-list .page-total input {width: 40px; padding-left:3px;}
 .page-list .page-total select {width: 50px;}
-.pagination>.active>span {background-color: #6d9d85; border-color: #55836b;color:#fff;}
-.pagination>.active>span:hover {background-color: #6d9d85; border-color: #55836b;color:#fff;}
+.pagination>.active>span {background-color: #db1011; border-color: #f50001;color:#fff;}
+.pagination>.active>span:hover {background-color: #db1011; border-color: #f50001;color:#fff;}
 .pagination>li>span:hover {
   color: #333;
 }
@@ -19,6 +19,6 @@
   padding: 4px 10px;
 }
 .pagination > .active > span:focus {
-  background-color: #6d9d85;
-  border-color: #55836b;
+  background-color: #db1011;
+  border-color: #f50001;
 }

@@ -13,19 +13,20 @@ angular.module('luZhouApp')
             restrict: 'EA',
             transclude: true,
             scope: {},
-            controller: function($scope, $http, $rootScope, $element, $attrs) {
+            controller: function($scope, $http,$loading, commonService, $element, $attrs) {
                 // 控制器逻辑放在这里
                 //友情链接
-                $http({
-                    method: 'POST',
-                    url: API_URL + "/Page/Blogroll",
-                    params: {},
-                }).success(function(response) {
-                    $scope.firenlyLinkData = response.Data.ListData;
-                }).error(function(error, status) {
-
-                });
+              commonService.getData(ALL_PORT.Blogroll.url,'POST',ALL_PORT.Blogroll.data)
+                .then(function (response) {
+                  $scope.firenlyLinkData = response.Data.ListData;
+                })
             },
-            link: function postLink(scope, element, attrs) {}
+            link: function postLink(scope, element, attrs) {
+              scope.$watch('linkNode',function () {
+                if (scope.linkNode){
+                  window.open(scope.linkNode.Url);
+                }
+              },true);
+            }
         };
     });

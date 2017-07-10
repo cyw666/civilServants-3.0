@@ -1,92 +1,100 @@
 <!--我的学习计划-->
-<div class="stydyPlan tmBorder-green">
-  <ol class="breadcrumb">
-    <li class="currentPosition">您的当前位置:</li>
-    <li><a ui-sref="main">首页</a></li>
-    <li><a ui-sref="personalCenter">个人中心</a></li>
-    <li class="active">{{stydyPlanData.TitleNav}}</li>
-  </ol>
-  <div class="myTab" dw-loading="studyPlan">
-    <div class="tab-content">
-      <div class="tab-panel perlist">
-        <div class="title_bar clearfix">
-          <span class="list1">课程名称</span>
-          <span class="list2">课程进度</span>
-          <span class="list2">计划状态</span>
-          <span class="list2">计划完成日期</span>
-          <span class="list2">操作</span>
-        </div>
-        <div class="list" ng-repeat="studyList in stydyPlanData.ListData">
-          <p class="clearfix">
-            <span class="list1" title="{{studyList.CourseName}}"><a ui-sref="courseDetails({Id:studyList.CourseId})">{{studyList.CourseName}}</a></span>
-            <span class="list2">{{studyList.BrowseScore}}</span>
-            <span class="list2">课程未完成</span>
-            <span class="list2">{{studyList.PlanFinishDate | dateFilter | date:'yyyy-MM-dd'}}</span>
-            <span class="list2">
+<div class="stydyPlan">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      {{stydyPlanData.TitleNav}}
+    </p>
+  </div>
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li><a ui-sref="personalCenter">个人中心</a></li>
+      <li class="active">{{stydyPlanData.TitleNav}}</li>
+    </ol>
+    <div class="myTab" dw-loading="studyPlan">
+      <div class="tab-content">
+        <div class="tab-panel perlist clearfix">
+          <div class="title_bar clearfix">
+            <span class="list1">课程名称</span>
+            <span class="list2">课程进度</span>
+            <span class="list2">计划状态</span>
+            <span class="list2">计划完成日期</span>
+            <span class="list2">操作</span>
+          </div>
+          <div class="list" ng-repeat="studyList in stydyPlanData.ListData">
+            <p class="clearfix">
+              <span class="list1" title="{{studyList.CourseName}}"><a ui-sref="courseDetails({Id:studyList.CourseId})">{{studyList.CourseName}}</a></span>
+              <span class="list2">{{studyList.BrowseScore}}</span>
+              <span class="list2">课程未完成</span>
+              <span class="list2">{{studyList.PlanFinishDate | dateFilter | date:'yyyy-MM-dd'}}</span>
+              <span class="list2">
               <a href="" ng-click="planAdd(studyList.CourseId)" data-toggle="modal" data-target=".stydyPlanModal">更新</a>&nbsp;&nbsp;
               <a href="" ng-click="delStudyPlan(studyList.Id)">删除</a>
             </span>
-          </p>
+            </p>
+          </div>
+          <div ng-transclude="pagation"></div>
         </div>
-        <div ng-transclude="pagation"></div>
       </div>
-    </div>
 
-    <!-- modal学习计划 -->
-    <div class="modal fade stydyPlanModal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">修改计划</h4>
-          </div>
-          <div class="modal-body">
-            <table class="table table-bordered">
-              <tbody>
-              <tr>
-                <td>课程名称：</td>
-                <td style="text-align: left">{{planAddData.CourseName}}</td>
-              </tr>
-              <tr>
-                <td>计划完成日期：</td>
-                <td>
-                  <input type="text" ng-model="PlanFinishDate" date-time-picker class="datebg">
-                </td>
-              </tr>
-              <tr>
-                <td>开始提醒日期：</td>
-                <td>
-                  <input type="text" ng-model="RemindDate" date-time-picker class="datebg">
-                </td>
-              </tr>
-              <tr>
-                <td>提醒周期：</td>
-                <td style="text-align: left">
-                  <select ng-model="selectCycle" ng-options="x for x in remindCycle">
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td>提醒方式：</td>
-                <td style="text-align: left">
-                  站内通知
-                </td>
-              </tr>
-              <tr>
-                <td>计划说明：</td>
-                <td>
-                  <textarea ng-model="planAddData.Remark" id="txtContent3" name="Content" cols="50" rows="5" type="text" class="txt2"></textarea>
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="modal-footer">
-            <button ng-click="addPlanUpdate({PlanFinishDate:PlanFinishDate,RemindDate:RemindDate,RemindCycle:selectCycle,Remark:planAddData.Remark,CourseId:planAddData.CourseId,Id:planAddData.Id})" type="button" class="btn btn-primary">提交</button>
+      <!-- modal学习计划 -->
+      <div class="modal fade stydyPlanModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">修改计划</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table table-bordered">
+                <tbody>
+                <tr>
+                  <td>课程名称：</td>
+                  <td style="text-align: left">{{planAddData.CourseName}}</td>
+                </tr>
+                <tr>
+                  <td>计划完成日期：</td>
+                  <td>
+                    <input type="text" ng-model="PlanFinishDate" date-time-picker class="datebg">
+                  </td>
+                </tr>
+                <tr>
+                  <td>开始提醒日期：</td>
+                  <td>
+                    <input type="text" ng-model="RemindDate" date-time-picker class="datebg">
+                  </td>
+                </tr>
+                <tr>
+                  <td>提醒周期：</td>
+                  <td style="text-align: left">
+                    <select ng-model="selectCycle" ng-options="x for x in remindCycle">
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>提醒方式：</td>
+                  <td style="text-align: left">
+                    站内通知
+                  </td>
+                </tr>
+                <tr>
+                  <td>计划说明：</td>
+                  <td>
+                    <textarea ng-model="planAddData.Remark" id="txtContent3" name="Content" cols="50" rows="5" type="text" class="txt2"></textarea>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button ng-click="addPlanUpdate({PlanFinishDate:PlanFinishDate,RemindDate:RemindDate,RemindCycle:selectCycle,Remark:planAddData.Remark,CourseId:planAddData.CourseId,Id:planAddData.Id})" type="button" class="btn btn-primary">提交</button>
+            </div>
           </div>
         </div>
+        <!--<div class="preventorgery"></div>-->
       </div>
-      <!--<div class="preventorgery"></div>-->
     </div>
   </div>
 </div>
