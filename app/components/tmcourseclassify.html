@@ -9,36 +9,38 @@
       <a ui-sref="library" target="_blank"><img src="../images/more.png" alt="更多"></a>
     </p>-->
   </div>
-  <div class="panel1 panel1-default">
-    <div class="panel1-heading">
-      <p class="panel1-title" title="全部课程">
-        <a href="javascript:;" ng-click="searchCourse({channelId:'',title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
-          <span class="category2">-</span>
-          全部课程
-        </a>
-      </p>
+  <div class="tmBorder">
+    <div class="panel1 panel1-default">
+      <div class="panel1-heading">
+        <p class="panel1-title" title="全部课程">
+          <a href="javascript:;" ng-click="searchCourse({channelId:'',title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
+            <span class="category2">-</span>
+            全部课程
+          </a>
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="panel1 panel1-default" ng-repeat="courseList in courseClassify.ListData" repeat-finish="repeatDone()">
-    <div class="panel1-heading">
-      <p class="panel1-title" title="{{courseList.Name}}"  ng-show="courseList.Nodes">
-        <a href="javascript:;" ng-click="searchCourse({channelId:courseList.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
-          <span class="category">+</span>
-          {{courseList.Name}}
-        </a>
-      </p>
-      <p class="panel1-title" title="{{courseList.Name}}"  ng-hide="courseList.Nodes">
-        <a href="javascript:;" ng-click="searchCourse({channelId:courseList.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
-          <span class="category2">-</span>
-          {{courseList.Name}}
-        </a>
-      </p>
-    </div>
-    <div class="panel1-collapse collapse">
-      <div class="panel1-body">
-        <ul>
-          <li  title="{{list.Name}}" ng-repeat="list in courseList.Nodes"><a href="javascript:;" ng-click="searchCourse({channelId:list.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">{{list.Name}}</a></li>
-        </ul>
+    <div class="panel1 panel1-default" ng-repeat="courseList in courseClassify.ListData" repeat-finish="repeatDone()">
+      <div class="panel1-heading">
+        <p class="panel1-title" title="{{courseList.Name}}"  ng-show="courseList.Nodes">
+          <a href="javascript:;" ng-click="searchCourse({channelId:courseList.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
+            <span class="category">+</span>
+            {{courseList.Name}}
+          </a>
+        </p>
+        <p class="panel1-title" title="{{courseList.Name}}"  ng-hide="courseList.Nodes">
+          <a href="javascript:;" ng-click="searchCourse({channelId:courseList.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
+            <span class="category2">-</span>
+            {{courseList.Name}}
+          </a>
+        </p>
+      </div>
+      <div class="panel1-collapse collapse">
+        <div class="panel1-body">
+          <ul>
+            <li  title="{{list.Name}}" ng-repeat="list in courseList.Nodes"><a href="javascript:;" ng-click="searchCourse({channelId:list.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">{{list.Name}}</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

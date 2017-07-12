@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: tmFooter2', function () {
+describe('Directive: tmPayConfirm', function () {
 
   // load the directive's module
   beforeEach(module('luZhouApp'));
@@ -13,8 +13,8 @@ describe('Directive: tmFooter2', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<tm-footer2></tm-footer2>');
+    element = angular.element('<tm-pay-confirm></tm-pay-confirm>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the tmFooter2 directive');
+    expect(element.text()).toBe('this is the tmPayConfirm directive');
   }));
 });

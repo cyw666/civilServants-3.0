@@ -1,10 +1,10 @@
 ﻿"user strict"
 //请求后台数据入口
-// var API_URL = "/api";
+var API_URL = "/api";
+// var API_URL = "http://122.225.101.117:9090//api";
 // var API_URL = "http://test7.jy365.net/api";
 // var API_URL = "http://192.168.1.25/api";
-var API_URL = "http://122.225.101.117:9090//api";
-var API_URL_ADMIN = API_URL + "/admin";
+// var API_URL_ADMIN = API_URL + "/admin";
 
 // jQuery.support.cors=true;
 
@@ -753,7 +753,7 @@ var ALL_PORT = {
   //图书分类搜索
   BookList:{
     url:API_URL+"/Page/BookList",
-    data:{page:1,rows:8,sort:'Sort',order:'asc',categoryId:'',titleNav:'数字图书馆',wordLimt:35,ptitle:'',title:''}
+    data:{page:1,rows:8,sort:'Sort',order:'asc',categoryId:'',titleNav:'电子书',wordLimt:35,ptitle:'',title:''}
   },
   //图书详情内容
   BookContent:{
@@ -789,5 +789,70 @@ var ALL_PORT = {
   StudentStyle:{
     url:API_URL+"/Page/StudentStyle",
     data:{page:1,rows:9,sort:'Sort',order:'desc',titleNav:'学员风采'}
+  },
+  //查看购物车
+  GetMyShoppingCart:{
+    url:API_URL+"/shop/GetMyShoppingCart",
+    data:{}
+  },
+  //添加课程到购物车
+  AddCourseToCart:{
+    url:API_URL+"/shop/AddCourseToCart",
+    data:{courseid:''}
+  },
+  //购物车中删除
+  DelCourseFromCart:{
+    url:API_URL+"/shop/DelCourseFromCart",
+    data:{courseid:''}
+  },
+  //生成订单
+  AddOrder:{
+    url:API_URL+"/shop/AddOrder",
+    data:{}
+  },
+  //删除订单
+  DelOrder:{
+    url:API_URL+"/shop/DelOrder",
+    data:{orderId:''}
+  },
+  //取消订单
+  CancelOrder:{
+    url:API_URL+"/shop/CancelOrder",
+    data:{orderId:''}
+  },
+  //再次购买
+  RestoreOrder:{
+    url:API_URL+"/shop/RestoreOrder",
+    data:{orderId:''}
+  },
+  //订单列表
+  GetMyOrder:{
+    url:API_URL+"/shop/GetMyOrder",
+    data:{page:1,rows:4,sort:'CreateTime',order:'desc',titleNav:'我的订单'}
+  },
+  //订单详细
+  GetOrderDetail:{
+    url:API_URL+"/shop/GetOrderDetail",
+    data:{page:1,rows:5,sort:'Sort',order:'desc',titleNav:'订单详细',orderId:''}
+  },
+  //确认支付（用于生成票据）
+  InvoiceBeginPay:{
+    url:API_URL+"/shop/InvoiceBeginPay",
+    data:{orderId:'',payType:''}
+  },
+  //获取票据
+  GetInvoice:{
+    url:API_URL+"/shop/GetInvoice",
+    data:{invoiceId:''}
+  },
+  //最终确认支付
+  InvoiceFinishPay:{
+    url:API_URL+"/shop/InvoiceFinishPay",
+    data:{invoiceId:'',payCode:''}
+  },
+  //支付宝支付接口
+  PayForInvoice:{
+    url:API_URL+"/shop/PayForInvoice",
+    data:{invoiceId:''}
   },
 };

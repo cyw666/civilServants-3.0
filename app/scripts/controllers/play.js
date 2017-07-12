@@ -34,6 +34,7 @@ angular.module('luZhouApp')
         }).success(function(response) {
           $scope.userId=response.Data.UserId;
           $scope.allPlayInfo = response.Data;
+          commonService.beforeUnload($scope.userId);
           if (response.Data && response.Data.Content == null) {
             if ((response.Data.PortalId) && (response.Data.UserId) && (response.Data.CourseId)) {
               //refresh
@@ -57,7 +58,6 @@ angular.module('luZhouApp')
         });
       };
 
-      commonService.beforeUnload($scope.userId);
       //获取评论信息
       $scope.getComment = function () {
         $http({

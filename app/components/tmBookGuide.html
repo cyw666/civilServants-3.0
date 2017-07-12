@@ -17,8 +17,10 @@
           </a>
         </p>
         <div class="content pull-left">
-          <h4 class="title">{{list.Name | wordLimit:19}}</h4>
-          <p class="desc">简介：{{list.Content|wordLimit:18}}</p>
+          <h4 class="title">
+            <a ui-sref="bookdetail({Id:list.Id})" target="_blank">{{list.Name | wordLimit:19}}</a>
+          </h4>
+          <p class="desc">简介：{{list.Content|delHtmlTag | wordLimit:23}}</p>
           <p class="author">作者：{{list.Author}}</p>
           <p class="clickCount">点击数：{{list.ClickCount}}</p>
         </div>

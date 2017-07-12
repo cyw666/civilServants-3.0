@@ -15,7 +15,7 @@
     <ul class="clearfix">
       <li ng-repeat="courseCenterData in courseCenterData.ListData">
         <a ui-sref="courseDetails({Id:courseCenterData.Id})" title="{{courseCenterData.Name}}" target="_blank">
-          <img ng-src="{{imageCourse+courseCenterData.Img}}" err-Src="images/notFound.jpeg" alt="">
+          <img ng-src="{{imageCourse+'/'+courseCenterData.Img}}" err-Src="images/notFound.jpeg" alt="">
         </a>
         <div class="mar_top_15">
           <p><a ui-sref="courseDetails({Id:courseCenterData.Id})" title="{{courseCenterData.Name}}" target="_blank">{{courseCenterData.Name}}</a></p>
@@ -43,7 +43,7 @@
     line-height: 44px;
     background: #f8f8f8;
     padding: 0;
-    border:none;
+    border-color:#fff;
     font-size: 18px;
   }
   .courselLink.btn-group > .btn.active {

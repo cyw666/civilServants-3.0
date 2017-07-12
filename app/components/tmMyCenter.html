@@ -45,13 +45,13 @@
           <div class="list" ng-repeat="unFinish in TotalData.ListData.UnfinishModel">
             <div class="clearfix">
             <span class="list1 cur_name" title="{{unFinish.Name}}">
-              <a ui-sref="courseDetails({Id:unFinish.Id})">{{unFinish.Name}}</a>
+              <a ui-sref="courseDetails({Id:unFinish.Id})" target="_blank">{{unFinish.Name}}</a>
             </span>
 
               <span class="list2">
               <div class="progress">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{unFinish.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':unFinish.BrowseScore+'%'};">
-                  {{unFinish.BrowseScore}}%
+                  {{unFinish.BrowseScore.toFixed(1)}}%
                 </div>
               </div>
             </span>
@@ -89,11 +89,11 @@
           </div>
           <div class="list" ng-repeat="Appointed in TotalData.ListData.AppointedModel">
             <div class="clearfix">
-              <span class="list1 cur_name" title="{{Appointed.Name}}"><a ui-sref="courseDetails({Id:Appointed.Id})">{{Appointed.Name}}</a></span>
+              <span class="list1 cur_name" title="{{Appointed.Name}}"><a ui-sref="courseDetails({Id:Appointed.Id})"  target="_blank">{{Appointed.Name}}</a></span>
               <span class="list2">
               <div class="progress">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{Appointed.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':Appointed.BrowseScore+'%'};">
-                  {{Appointed.BrowseScore}}%
+                  {{Appointed.BrowseScore.toFixed(1)}}%
                 </div>
               </div>
             </span>
@@ -130,11 +130,11 @@
           </div>
           <div class="list" ng-repeat="Finish in TotalData.ListData.FinishModel">
             <div class="clearfix">
-              <span class="list1 cur_name" title="{{Finish.Name}}"><a ui-sref="courseDetails({Id:Finish.Id})">{{Finish.Name}}</a></span>
+              <span class="list1 cur_name" title="{{Finish.Name}}"><a ui-sref="courseDetails({Id:Finish.Id})"  target="_blank">{{Finish.Name}}</a></span>
               <span class="list2">
               <div class="progress">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{Finish.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':Finish.BrowseScore+'%'};">
-                  {{Finish.BrowseScore}}%
+                  {{Finish.BrowseScore.toFixed(1)}}%
                 </div>
               </div>
             </span>

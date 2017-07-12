@@ -9,9 +9,6 @@
  */
 angular.module('luZhouApp')
   .controller('ClasslistCtrl', function ($scope, $location, $rootScope, $cookieStore, commonService, $timeout, $loading,$stateParams) {
-    console.log($stateParams);
-    //保持在线
-    //commonService.keepOnline();
     //loading
     $loading.start('courseClassify');
     $loading.start('classMy');

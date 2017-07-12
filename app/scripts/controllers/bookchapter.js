@@ -12,9 +12,11 @@ angular.module('luZhouApp')
     $scope.bookId = $stateParams.bookId;
     //获取图书章节
     $scope.getBookChapter = function (options) {
+      $loading.start('bookChapter');
       var params = $.extend({}, ALL_PORT.BookChapterList.data, {bookId:$scope.bookId},options);
       commonService.getData(ALL_PORT.BookChapterList.url,'POST',params)
         .then(function(response) {
+          $loading.finish('bookChapter');
           $scope.bookChapterData = response.Data;
           $scope.paginationConf.totalItems = response.Data.Count;
         });

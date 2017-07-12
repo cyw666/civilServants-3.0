@@ -18,24 +18,26 @@ angular.module('luZhouApp')
       PassWord: '',
       RememberMe: true
     };
-    // $cookieStore.put("Account",$scope.login.Account);
-    var RememberMe = $cookieStore.get("RememberMe");
+    var getCookie = commonService.getCookie;
+    var setCookie = commonService.setCookie;
+    var delCookie = commonService.delCookie;
+    var RM = getCookie("RM");
     var Account,PassWord;
-    if($cookieStore.get("Account")&&$cookieStore.get("PassWord")){
-      Account = TBase64.decode($cookieStore.get("Account"));
-      PassWord = TBase64.decode($cookieStore.get("PassWord"));
+    if(getCookie("Account")&&getCookie("PassWord")){
+      Account = TBase64.decode(getCookie("Account"));
+      PassWord = TBase64.decode(getCookie("PassWord"));
     }
-    if(RememberMe === true){
+    if(RM == 'true'){
       $scope.login.Account=Account;
       $scope.login.PassWord=PassWord;
-      $scope.login.RememberMe=RememberMe;
-    }else if(RememberMe === false){
+      $scope.login.RememberMe=true;
+    }else if(RM == 'false'){
       $scope.login = {
         Account: '',
         PassWord: '',
         RememberMe: false
       };
-    }else if (RememberMe === undefined){
+    }else if (RM === null){
       $scope.login = {
         Account: '',
         PassWord: '',
@@ -87,15 +89,15 @@ angular.module('luZhouApp')
         });
     }
     //设置cookie
-    function setCookie() {
-      $cookieStore.put("RememberMe",$scope.login.RememberMe);
+    function setUserCookie() {
+      setCookie("RM",$scope.login.RememberMe.toString(),7);
       if(!Account&&!PassWord&&$scope.login.RememberMe){
-        $cookieStore.put("Account",TBase64.encode($scope.login.Account));
-        $cookieStore.put("PassWord",TBase64.encode($scope.login.PassWord));
+        setCookie("Account",TBase64.encode($scope.login.Account),7);
+        setCookie("PassWord",TBase64.encode($scope.login.PassWord),7);
       }
       if(!$scope.login.RememberMe){
-        $cookieStore.remove("Account");
-        $cookieStore.remove("PassWord");
+        delCookie("Account");
+        delCookie("PassWord");
       }
     };
     //点击登陆
@@ -127,10 +129,10 @@ angular.module('luZhouApp')
             $scope.getVerifyCode();
             $scope.showError = true;
           } else if (data.Type == 1) {
-            setCookie();
+            setUserCookie();
             $state.go($stateParams.name,JSON.parse($stateParams.params));
           } else if (data.Type == 2) {
-            setCookie();
+            setUserCookie();
             commonService.alertMs("首次登录，请修改密码！");
             $state.go('modifyPassword');
 
@@ -164,31 +166,11 @@ angular.module('luZhouApp')
             commonService.alertMs(data.Message);
             $scope.getVerifyCode();
           } else {
-
+            alert(data.Message);
           }
         }, function(data) {
           alert("登陆异常！");
           window.location.reload();
         });
     }
-    /* //记住密码
-     function rememberPW() {
-     var userid = commonService.getCookie2('rememberMe', "userid");
-     var pwd = commonService.getCookie2('rememberMe', 'pwd');
-     // var rememberMe = $cookieStore.get("rememberMe");
-     // console.log(userid, pwd);
-     commonService.getData(API_URL + "/Page/GetLoginName", 'POST', { name: userid })
-     .then(function(response) {
-     if (response.Type == 1) {
-     //console.log(response.Message);
-     $scope.login.Account = response.Message;
-     $scope.login.PassWord = pwd;
-     $("#txtAccount,#txtPwd").change(function () {
-     // $("#ValidateCode").parents(".ValidateCodeform").show();
-     $scope.showVerifyCode = true;
-     $scope.login.ValidateCode = '';
-     });
-     }
-     });
-     };*/
   });

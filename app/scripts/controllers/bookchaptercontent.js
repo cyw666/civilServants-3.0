@@ -13,9 +13,11 @@ angular.module('luZhouApp')
     $scope.token = commonService.AntiForgeryToken();
     //获取图书章节
     $scope.getBookChapter = function (Id) {
+      $loading.start('tmshowarticledetail');
       var params = $.extend({}, ALL_PORT.BookChapterContent.data, {Id:Id});
       commonService.getData(ALL_PORT.BookChapterContent.url,'POST',params)
         .then(function(response) {
+          $loading.finish('tmshowarticledetail');
           $scope.articleData = response.Data;
           $scope.content = response.Data.Content;
           $scope.articleData.Type = 'BookChapter';

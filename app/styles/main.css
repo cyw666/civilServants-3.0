@@ -294,9 +294,7 @@ h4 {
   color: #000;
 }
 .tag {
-  margin-left: 30px;
-  float: left;
-  padding: 10px 5px 10px 0;
+  padding: 10px 20px 10px 30px;
 }
 .tag span {
   padding-left: 10px;
@@ -318,6 +316,26 @@ h4 {
   color: #666;
   font-weight: bold;
   text-align: center;
+}
+/*文章分类，个人中心导航*/
+.categoryGuide{
+  padding:20px 20px 0 20px;
+}
+.categoryGuide  li{
+  width: 50%;
+  float: left;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.categoryGuide  li  a.btn{
+  display: inline-block;
+  width: 100px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  color: #fff;
+  background: #db1011;
+  padding: 0;
 }
 /*路径导航通用样式*/
 .breadcrumb {
@@ -385,6 +403,12 @@ h4.title-h4{
   /*float: left;*/
   background: url(../images/star_all.gif) 0 0 no-repeat;
 }
+/*验证码*/
+.verificationCode {
+  width: 110px;
+  height: 30px;
+  margin-left: 10px;
+}
 /*
  *星级评论
  */
@@ -422,6 +446,22 @@ h4.title-h4{
 }
 .progress .progress-bar{
   color: #333;
+}
+/*购物车头部*/
+.shoppingTitle{
+  text-align: left;
+  margin-top: 20px;
+  font-size: 20px;
+}
+.shoppingTitle .verticalLine{
+  display: inline-block;
+  position: relative;
+  top:3px;
+  left: 0px;
+  margin-left: 10px;
+  width: 30px;
+  height: 20px;
+  border-left: 2px solid #df9f2c;
 }
 /*标签页*/
 .myTab {
@@ -585,6 +625,9 @@ h4.title-h4{
 }
 .mar_right_12 {
   margin-right:12px;
+}
+.mar_right_20 {
+  margin-right:20px;
 }
 .mar_bottom_20 {
   margin-bottom:20px;

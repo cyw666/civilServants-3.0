@@ -8,7 +8,7 @@
  * Controller of the luZhouApp
  */
 angular.module('luZhouApp')
-  .controller('MainCtrl', function($scope, $timeout, $rootScope, $cookieStore, $state, commonService, $loading, $location, $stateParams) {
+  .controller('MainCtrl', function($scope, $timeout, $interval,$rootScope, $cookieStore, $state, commonService, $loading, $location, $stateParams) {
     //防伪造请求
     var token = commonService.AntiForgeryToken();
     $scope.vm={};
@@ -26,24 +26,27 @@ angular.module('luZhouApp')
       PassWord: '',
       RememberMe: true
     };
-    // $cookieStore.put("Account",$scope.login.Account);
-    var RememberMe = $cookieStore.get("RememberMe");
+    var getCookie = commonService.getCookie;
+    var setCookie = commonService.setCookie;
+    var delCookie = commonService.delCookie;
+    var RM = getCookie("RM");
     var Account,PassWord;
-    if($cookieStore.get("Account")&&$cookieStore.get("PassWord")){
-      Account = TBase64.decode($cookieStore.get("Account"));
-      PassWord = TBase64.decode($cookieStore.get("PassWord"));
+    if(getCookie("Account")&&getCookie("PassWord")){
+      Account = TBase64.decode(getCookie("Account"));
+      PassWord = TBase64.decode(getCookie("PassWord"));
     }
-    if(RememberMe === true){
+    // console.log(RM,Account,PassWord)
+    if(RM == 'true'){
       $scope.login.Account=Account;
       $scope.login.PassWord=PassWord;
-      $scope.login.RememberMe=RememberMe;
-    }else if(RememberMe === false){
+      $scope.login.RememberMe=true;
+    }else if(RM == 'false'){
       $scope.login = {
         Account: '',
         PassWord: '',
         RememberMe: false
       };
-    }else if (RememberMe === undefined){
+    }else if (RM === null){
       $scope.login = {
         Account: '',
         PassWord: '',
@@ -88,15 +91,15 @@ angular.module('luZhouApp')
         });
     }
     //设置cookie
-    function setCookie() {
-      $cookieStore.put("RememberMe",$scope.login.RememberMe);
+    function setUserCookie() {
+      setCookie("RM",$scope.login.RememberMe.toString(),7);
       if(!Account&&!PassWord&&$scope.login.RememberMe){
-        $cookieStore.put("Account",TBase64.encode($scope.login.Account));
-        $cookieStore.put("PassWord",TBase64.encode($scope.login.PassWord));
+        setCookie("Account",TBase64.encode($scope.login.Account),7);
+        setCookie("PassWord",TBase64.encode($scope.login.PassWord),7);
       }
       if(!$scope.login.RememberMe){
-        $cookieStore.remove("Account");
-        $cookieStore.remove("PassWord");
+        delCookie("Account");
+        delCookie("PassWord");
       }
     };
     //点击登陆
@@ -117,10 +120,10 @@ angular.module('luZhouApp')
             $scope.showError2 = false;
           } else if (data.Type == 1) {
             $scope.showLogin = false;
-            setCookie();
+            setUserCookie();
             window.location.reload();
           } else if (data.Type == 2) {
-            setCookie();
+            setUserCookie();
             commonService.alertMs("首次登录，请修改密码！");
             $state.go('modifyPassword');
 
@@ -152,19 +155,6 @@ angular.module('luZhouApp')
           window.location.reload();
         });
     }
-    /*    //记住密码
-     function rememberPW() {
-     var userid = commonService.getCookie2('rememberMe', "userid");
-     var pwd = commonService.getCookie2('rememberMe', 'pwd');
-
-     commonService.getData(API_URL + "/Page/GetLoginName", 'POST', { name: userid })
-     .then(function(response) {
-     if (response.Type == 1) {
-     $scope.login.Account = response.Message;
-     $scope.login.PassWord = pwd;
-     }
-     });
-     };*/
     //专题培训轮播新闻
     $scope.getClassNews = function () {
       $loading.start('specialTraining');
@@ -174,10 +164,6 @@ angular.module('luZhouApp')
           $loading.finish('specialTraining');
           $scope.allTrainingData=response.Data;
           $scope.specialTraining = response.Data.ListData;
-          /*$scope.activeData = response.Data.ListData[0];
-           var specialTraining = response.Data.ListData;
-           specialTraining.shift();
-           $scope.specialTraining = specialTraining;*/
         });
     };
     $scope.getClassNews();
@@ -212,7 +198,7 @@ angular.module('luZhouApp')
     //培训班分类
     var defaultClassId;
     commonService.getData(ALL_PORT.GetTrainingClassTypeList.url, 'POST',
-      $.extend({},ALL_PORT.GetTrainingClassTypeList.data,{rows:3}) )
+      $.extend({},ALL_PORT.GetTrainingClassTypeList.data,{rows:3,sort:'Group'}) )
       .then(function(response) {
         $scope.trainingClassType = response.Data;
         defaultClassId = response.Data.ListData[0].Id
@@ -351,12 +337,12 @@ angular.module('luZhouApp')
           $scope.articleTop = response.Data.ListData[0];
         });
     };
+    $scope.getNewsContent(83);
     //获取文章分类
     commonService.getData(ALL_PORT.ArticleCategory.url,'POST',
       $.extend({}, ALL_PORT.ArticleCategory.data,{rows:3}))
       .then(function(response) {
         $scope.categoryData = response.Data;
-        $scope.getNewsContent(response.Data.ListData[0].Id);
       });
 
     //电子图书

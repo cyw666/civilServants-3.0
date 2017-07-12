@@ -10,7 +10,7 @@
     <!--搜索结果-->
     <ol ng-show="isResult" class="breadcrumb">
         <li class="currentPosition">您的当前位置:</li>
-        <li><a ui-sref="guide">首页</a></li>
+        <li><a ui-sref="main">首页</a></li>
         <li ng-show="Data.CategoryName">
             <a ng-show="Data.CategoryName=='公务员培训'" ui-sref="csTrainingNews">{{Data.CategoryName}}</a>
             <a ng-show="Data.CategoryName=='专业技术人员培训'" ui-sref="patpTrainingNews">{{Data.CategoryName}}</a>
@@ -25,12 +25,12 @@
         <div class="grid_15 pull_left">
             <ol ng-hide="isNewsInfo" class="breadcrumb" style="height: 42px;">
                 <li class="currentPosition">您的当前位置:</li>
-                <li><a ui-sref="guide">首页</a></li>
+                <li><a ui-sref="main">首页</a></li>
                 <li class="active">{{location}}</li>
             </ol>
             <ol ng-show="isNewsInfo" class="breadcrumb" style="height: 42px;">
                 <li class="currentPosition">您的当前位置:</li>
-                <li><a ui-sref="guide">首页</a></li>
+                <li><a ui-sref="main">首页</a></li>
                 <li ng-show="titleName=='公务员培训'"><a ui-sref="csTrainingNews">{{titleName}}</a></li>
                 <li ng-show="titleName=='专业技术人员培训'"><a ui-sref="patpTrainingNews">{{titleName}}</a></li>
 
@@ -48,7 +48,7 @@
     <!--通知中的路径导航-->
     <ol ng-show="isNotice" class="breadcrumb">
         <li class="currentPosition">您的当前位置:</li>
-        <li><a ui-sref="guide">首页</a></li>
+        <li><a ui-sref="main">首页</a></li>
         <li class="active">通知内容</li>
     </ol>
 

@@ -83,9 +83,11 @@
               <span>进度：</span>
             </td>
             <td class="listtb2">
-              <div class="jindu"><span class="jindubg" ng-style="{'width':courseDetailsData.CourseModel.BrowseScore+'%'};"></span></div>
-              <span ng-if="courseDetailsData.CourseModel.BrowseScore<=0">0</span>
-              <span ng-if="courseDetailsData.CourseModel.BrowseScore>0">{{courseDetailsData.CourseModel.BrowseScore}}%</span>
+              <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{courseDetailsData.CourseModel.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':courseDetailsData.CourseModel.BrowseScore+'%'};">
+                  {{courseDetailsData.CourseModel.BrowseScore>0?courseDetailsData.CourseModel.BrowseScore.toFixed(1):0.0}}%
+                </div>
+              </div>
             </td>
             <td class="listtb3">
               <span>播放：</span>
@@ -132,17 +134,8 @@
 </div>
 
 <style>
-  .cur_detail .jindu {
-    width: 100px;
-    border: 1px solid #7abc1d;
-    overflow: hidden;
-    float: left;
-    margin-right: 10px;
-  }
-  .cur_detail .jindubg {
-    float: left;
-    background: #7abc1d;
-    height: 15px;
+  .listtb2 .progress {
+    width: 150px;
   }
   .listtb3 a{
     color: #3490f8;

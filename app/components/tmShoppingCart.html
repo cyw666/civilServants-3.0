@@ -1,0 +1,107 @@
+
+<div class="shoppingCart">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      购物车
+    </p>
+  </div>
+  <div class="tmBorder">
+    <div class="myTab">
+      <div class="tab-content" dw-loading="shoppingCart">
+        <div class="tab-panel perlist">
+          <div class="title_bar clearfix">
+            <span class="list1">商品名称</span>
+            <span class="list3">商品类别</span>
+            <span class="list3">数量</span>
+            <span class="list2">单价</span>
+            <span class="list2">总价</span>
+            <span class="list2">操作</span>
+          </div>
+          <!--<span ng-show="classPaperListData.ListData.length==0" class="list1 cur_name" style="line-height: 32px">暂无数据！</span>-->
+          <div class="list" ng-repeat="list in shoppingCartData.ListData">
+            <p class="clearfix">
+              <span class="list1 cur_name"><a href="">{{list.ProductName}}</a></span>
+              <span class="list3">{{list.ProductType=='Course'?'课程':'图书'}}</span>
+              <span class="list3"><input type="text" disabled ng-value="list.Count"></span>
+              <span class="list2">￥{{list.Price.toFixed(2)}}</span>
+              <span class="list2">￥{{list.TotalPrice.toFixed(2)}}</span>
+              <span class="list2"><a ng-click="delCourseFromCart(list.ProductId)" class="btn btn-default">删除</a></span>
+            </p>
+          </div>
+        </div>
+        <div class="shooingCartFooter clearfix">
+          <p class="pull-left">
+            <a ui-sref="courseCenterBuy" class="btn btn-danger">继续选课</a>
+            <a ui-sref="personalCenter" class="btn btn-danger">返回学习中心</a>
+          </p>
+          <p class="pull-right mar_right_20">
+            <span> 总价：￥{{shoppingCartData.TotalPrice.toFixed(2)}}</span>
+            <a ng-click="addOrder()" class="btn btn-danger">下单</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .myTab .perlist .list1 {
+    width: 30%;
+  }
+  .myTab .perlist .list .list1 {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .myTab .perlist .list2 {
+    width: 15%;
+  }
+  .myTab .perlist .list3 {
+    width: 10%;
+  }
+  .myTab .perlist .list3 input{
+    width: 50%;
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+  }
+  .shoppingCart .myTab {
+    margin-top: 10px;
+  }
+  .shoppingCart .myTab .perlist span a.btn {
+    padding: 2px 12px;
+  }
+  .shoppingCart .myTab .perlist span a.btn:hover {
+    color: #0f0f0f;
+  }
+  .shoppingCart .myTab .list{
+    margin: 10px 0;
+    border-top: 1px dashed #ccc;
+    border-bottom: 1px dashed #ccc;
+    background-color: #f2f7ff;
+  }
+  .shoppingCart .myTab .perlist .list:hover {
+    box-shadow: none;
+  }
+  .shoppingCart .myTab .perlist .title_bar {
+    border-bottom: none;
+  }
+  .shooingCartFooter {
+    text-align: left;
+    margin: 20px 0 10px 10px;
+  }
+  .shooingCartFooter span{
+    margin-right: 20px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .shooingCartFooter .pull-right .btn-danger {
+    width: 80px;
+  }
+</style>
+
+

@@ -1,0 +1,69 @@
+<div class="specialLearning">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      专题学习
+    </p>
+  </div>
+  <div class="tmBorder">
+    <ul class="specialLearningList">
+      <li ng-repeat="list in studySpecialData.ListData" class="clearfix">
+        <div class="left pull-left">
+          <a ng-href="{{list.Url}}" target="_blank">
+            <img class="specialImg" ng-src="{{studySpecialData.ImagePath+'/'+list.Icon}}" err-Src="images/notFound.jpeg" alt="">
+          </a>
+        </div>
+        <div class="right pull-left">
+          <p class="title ellipsis" >
+            <a ng-href="{{list.Url}}" target="_blank">{{list.SeriesName}}</a>
+          </p>
+          <p class="desc">{{list.SeriesDescription|wordLimit:45}}</p>
+          <p class="userCount">用户量：{{list.UserCount}}</p>
+        </div>
+      </li>
+    </ul>
+    <p ng-show="showNoSpecialClass" class="result">暂无专题学习</p>
+  </div>
+</div>
+
+<style>
+  .specialLearning {
+
+  }
+  .specialLearningList {
+
+  }
+  .specialLearningList li{
+    width: 100%;
+    margin: 10px;
+  }
+  .specialLearningList li .specialImg {
+    width: 334px;
+    height: 115px;
+  }
+  .specialLearningList li .right {
+    padding: 5px 10px;
+    width: 50%;
+  }
+  .specialLearningList li .right .title a{
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    height: 25px;
+    line-height: 25px;
+  }
+  .specialLearningList li .right .title a:hover{
+    color: #000;
+  }
+  .specialLearning li .right .desc {
+    color: #666;
+    margin-top: 5px;
+    height: 40px;
+  }
+  .specialLearning li .right .userCount {
+    color: #ff9842;
+    margin-top: 10px;
+    height: 25px;
+    line-height: 25px;
+  }
+</style>

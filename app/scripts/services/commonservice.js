@@ -8,7 +8,7 @@
  * Service in the luZhouApp.
  */
 angular.module('luZhouApp')
-  .service('commonService', function ($http,$cookies,$cookieStore,$timeout,$location,$loading,$q,$interval,antiForgeryToken,$state) {
+  .service('commonService', function ($http, $cookies, $cookieStore, $timeout, $location, $loading, $q, $interval, antiForgeryToken, $state) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     //警告功能 - start
     /**
@@ -44,7 +44,7 @@ angular.module('luZhouApp')
           this.CSS(option);
         },
         CSS: function (option) {
-          var themes = { "red": "#CC3300", "blue": "#99CCFF", "green": "#8bb166", "yellow": "#FFFF66" };
+          var themes = {"red": "#CC3300", "blue": "#99CCFF", "green": "#8bb166", "yellow": "#FFFF66"};
           var themeColor = themes[option.theme];
           for (var color in themes) {
             if (color == option.theme) {
@@ -52,14 +52,81 @@ angular.module('luZhouApp')
               break;
             }
           }
-          $("#msOut").css({ "width": '100%', "height": '100%', "zIndex": '99999', "position": 'fixed', "top": '0', "left": '0' });
-          $(".msLayer").css({ "width": '100%', "height": '100%', "filter": 'Alpha(opacity=40)', "backgroundColor": '#000', "opacity": '0.4' });
-          $("#msBox").css({ "width": '500px', "height": '300px', "zIndex": '99999', "position": 'absolute', "opacity": "0" });
-          $(".msTitle").css({ "display": 'block', "fontSize": '14px', "color": '#444', "padding": '10px 15px', "backgroundColor": '#f0f4f7', "borderRadius": '15px 15px 0 0', "borderBottom": '3px solid ' + themeColor, "fontWeight": 'bold' });
-          $(".msMessage").css({ "padding": " 50px", "line-height": " 22px", "background-color": "#393D49", "color": "#fff", "font-weight": "300", "overflow": "hidden", "text-overflow": "ellipsis" });
-          $(".msBtn").css({ "padding": '15px 0 10px 0', "borderRadius": '0 0 15px 15px', "textAlign": 'center', "background-color": "#f0f4f7" });
-          $(".msConfirm").css({ "display": "inline-block", "height": "28px", "line-height": "28px", "margin": "0 6px", "padding": "0 15px", "border": "1px solid" + themeColor, "background-color": themeColor, "color": " #fff", "border-radius": "2px", "font-weight": "400", "cursor": "pointer", "text-decoration": "none" });
-          $(".msReject").css({ "display": "inline-block", "height": "28px", "line-height": "28px", "margin": "0 6px", "padding": "0 15px", "border": "1px solid #dedede", "background-color": "#f1f1f1", "color": "#333", "border-radius": "2px", "font-weight": "400", "cursor": "pointer", "text-decoration": "none" });
+          $("#msOut").css({
+            "width": '100%',
+            "height": '100%',
+            "zIndex": '99999',
+            "position": 'fixed',
+            "top": '0',
+            "left": '0'
+          });
+          $(".msLayer").css({
+            "width": '100%',
+            "height": '100%',
+            "filter": 'Alpha(opacity=40)',
+            "backgroundColor": '#000',
+            "opacity": '0.4'
+          });
+          $("#msBox").css({
+            "width": '500px',
+            "height": '300px',
+            "zIndex": '99999',
+            "position": 'absolute',
+            "opacity": "0"
+          });
+          $(".msTitle").css({
+            "display": 'block',
+            "fontSize": '14px',
+            "color": '#444',
+            "padding": '10px 15px',
+            "backgroundColor": '#f0f4f7',
+            "borderRadius": '15px 15px 0 0',
+            "borderBottom": '3px solid ' + themeColor,
+            "fontWeight": 'bold'
+          });
+          $(".msMessage").css({
+            "padding": " 50px",
+            "line-height": " 22px",
+            "background-color": "#393D49",
+            "color": "#fff",
+            "font-weight": "300",
+            "overflow": "hidden",
+            "text-overflow": "ellipsis"
+          });
+          $(".msBtn").css({
+            "padding": '15px 0 10px 0',
+            "borderRadius": '0 0 15px 15px',
+            "textAlign": 'center',
+            "background-color": "#f0f4f7"
+          });
+          $(".msConfirm").css({
+            "display": "inline-block",
+            "height": "28px",
+            "line-height": "28px",
+            "margin": "0 6px",
+            "padding": "0 15px",
+            "border": "1px solid" + themeColor,
+            "background-color": themeColor,
+            "color": " #fff",
+            "border-radius": "2px",
+            "font-weight": "400",
+            "cursor": "pointer",
+            "text-decoration": "none"
+          });
+          $(".msReject").css({
+            "display": "inline-block",
+            "height": "28px",
+            "line-height": "28px",
+            "margin": "0 6px",
+            "padding": "0 15px",
+            "border": "1px solid #dedede",
+            "background-color": "#f1f1f1",
+            "color": "#333",
+            "border-radius": "2px",
+            "font-weight": "400",
+            "cursor": "pointer",
+            "text-decoration": "none"
+          });
           this.Event(opt_callback1, opt_callback2);
         },
         Event: function (opt_callback1, opt_callback2) {
@@ -67,17 +134,25 @@ angular.module('luZhouApp')
           var $height = document.documentElement.clientHeight; //屏幕高
           var boxWidth = $("#msBox").width();
           var boxHeight = $("#msBox").height();
-          $("#msBox").css({ "left": ($width - boxWidth) / 2 + "px" });
-          $("#msBox").stop().animate({ "top": ($height - boxHeight) / 2 + "px", "left": ($width - boxWidth) / 2 + "px", "opacity": "1" }, 300);
+          $("#msBox").css({"left": ($width - boxWidth) / 2 + "px"});
+          $("#msBox").stop().animate({
+            "top": ($height - boxHeight) / 2 + "px",
+            "left": ($width - boxWidth) / 2 + "px",
+            "opacity": "1"
+          }, 300);
           $(".msConfirm").click(function () {
-            $("#msBox").stop().animate({ "top": "0", "opacity": "0.2" }, 300, function () { $("#msOut").remove(); });
+            $("#msBox").stop().animate({"top": "0", "opacity": "0.2"}, 300, function () {
+              $("#msOut").remove();
+            });
             if (typeof opt_callback1 === "function") {
               opt_callback1();
               $('.msOut').remove()
             }
           });
           $(".msReject").click(function () {
-            $("#msBox").stop().animate({ "top": "0", "opacity": "0.2" }, 300, function () { $("#msOut").remove(); });
+            $("#msBox").stop().animate({"top": "0", "opacity": "0.2"}, 300, function () {
+              $("#msOut").remove();
+            });
             if (typeof opt_callback2 === "function") {
               opt_callback2();
               $('.msOut').remove()
@@ -89,7 +164,7 @@ angular.module('luZhouApp')
         option.Message = options;
         if (typeof opt_warntype === "number") {
           if (opt_warntype != 3) {
-            option = $.extend(option, { warnType: opt_warntype });
+            option = $.extend(option, {warnType: opt_warntype});
             generate.HTML(option);
           } else {
             alert(option.Message);
@@ -104,7 +179,7 @@ angular.module('luZhouApp')
         option = $.extend(option, options);
         if (typeof opt_warntype === "number") {
           if (opt_warntype != 3) {
-            option = $.extend(option, { warnType: opt_warntype });
+            option = $.extend(option, {warnType: opt_warntype});
             generate.HTML(option);
           } else {
             alert(option.Message);
@@ -120,52 +195,37 @@ angular.module('luZhouApp')
 
     };
     //获取cookie
-    this.getCookie = function (name, pro) {
-      function GetQueryString(name,value) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r = value.match(reg);
-        if (r !== null) {
-          return unescape(r[2]);
-        }
+    this.getCookie = function (name) {
+      var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+      if (arr = document.cookie.match(reg)) {
+        return unescape(arr[2]);
+      } else {
         return null;
       }
-
-      if($cookieStore.get(name)){
-        var cookie = $cookieStore.get(name);
-        if(pro){
-          return GetQueryString(pro,cookie);
-        }else {
-          return cookie;
-        }
-
-      }else if(document.location.protocol + "//" + document.location.host != API_URL.substring(0, API_URL.lastIndexOf('/'))){
-        $http({
-          method:'POST',
-          url:API_URL+"/Page/RememberMe",
-          data:null,
-          headers:{
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-          }
-        }).success(function(response){
-          if (response.Type == 1) {
-            $cookieStore.put(name,response.Message);
-            cookie =  $cookieStore.get(name);
-            //console.log(cookies);
-            if(pro){
-              return GetQueryString(pro,cookie);
-            }else {
-              return cookie;
-            }
-          }
-          else {
-          }
-        }).error(function (error, status) {
-        });
-      }else {
-
-      }
     };
-    this.getCookie2 = function(name, pro, cookies) {
+    //设置cookie
+    this.setCookie = function (name, value, expiredays) {
+      var exdate=new Date();
+      exdate.setDate(exdate.getDate() + expiredays);
+      document.cookie=name+ "=" + escape(value) + ((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
+    }
+    //删除cookie
+    this.delCookie = function (name) {
+      function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg)) {
+          return unescape(arr[2]);
+        } else {
+          return null;
+        }
+      }
+      var exp = new Date();
+      exp.setTime(exp.getTime() - 1);
+      var cval=this.getCookie(name);
+      if(cval!=null)
+        document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    }
+    this.getCookie2 = function (name, pro, cookies) {
       cookies = cookies || document.cookie;
       var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");  // (^| )longguid=([^;]*)(;|$)
       arr = cookies.match(reg);
@@ -194,24 +254,25 @@ angular.module('luZhouApp')
     this.keepOnline = function () {
       setInterval(function () {
         $http({
-          method:'GET',
-          url:ALL_PORT.KeepOnline.url
-        }).success(function(response){
+          method: 'GET',
+          url: ALL_PORT.KeepOnline.url
+        }).success(function (response) {
         });
-      },60000);
+      }, 60000);
     }
     //判断能否访问
     this.isVisit = function () {
 
       $http({
-        method:'POST',
-        url:ALL_PORT.Authorization.url,
-        data:$.param($.extend({},ALL_PORT.Authorization.data))
-      }).success(function(response){
-        if(response.isauth==true){
-        }else {
+        method: 'POST',
+        url: ALL_PORT.Authorization.url,
+        data: $.param($.extend({}, ALL_PORT.Authorization.data))
+      }).success(function (response) {
+        if (response.isauth == true) {
+        } else {
           alert("请先登录！");
-          $location.path('main');
+          $state.go('main');
+          window.location.reload();
         }
       }).error(function (error, status) {
 
@@ -222,13 +283,13 @@ angular.module('luZhouApp')
       // console.log(antiForgeryToken.AntiForgeryToken());
       $loading.start('loginOut');
       $http({
-        method:'POST',
-        url:ALL_PORT.LoginOut.url,
-        data:$.param($.extend({},ALL_PORT.LoginOut.data,antiForgeryToken.AntiForgeryToken())),
-        headers:{
+        method: 'POST',
+        url: ALL_PORT.LoginOut.url,
+        data: $.param($.extend({}, ALL_PORT.LoginOut.data, antiForgeryToken.AntiForgeryToken())),
+        headers: {
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
         }
-      }).success(function(response){
+      }).success(function (response) {
         $loading.finish('loginOut');
         $state.go('main');
         window.location.reload();
@@ -239,20 +300,20 @@ angular.module('luZhouApp')
     this.AntiForgeryToken = function () {
       var token = new Object();
       $http({
-        method:'POST',
-        url:ALL_PORT.AntiForgeryToken.url,
-        data:ALL_PORT.AntiForgeryToken.data,
-        headers:{
+        method: 'POST',
+        url: ALL_PORT.AntiForgeryToken.url,
+        data: ALL_PORT.AntiForgeryToken.data,
+        headers: {
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
         }
-      }).success(function(response){
+      }).success(function (response) {
         /*return $timeout(function () {
-          $('.preventorgery').html(response.html);
-          var value = $('.preventorgery input').val();
-          var name = $('.preventorgery input').attr('name');
-          token[name] = value;
-          return token;
-        },1000);*/
+         $('.preventorgery').html(response.html);
+         var value = $('.preventorgery input').val();
+         var name = $('.preventorgery input').attr('name');
+         token[name] = value;
+         return token;
+         },1000);*/
         $('body').append('<div class="preventorgery"></div>');
         $('.preventorgery').html(response.html);
         var value = $('.preventorgery input').val();
@@ -264,13 +325,16 @@ angular.module('luZhouApp')
       return token;
     }
     //过滤日期
-    this.dateFilter = function (str,value) {
-      function dFormat(i) { return i < 10 ? "0" + i.toString() : i; }
+    this.dateFilter = function (str, value) {
+      function dFormat(i) {
+        return i < 10 ? "0" + i.toString() : i;
+      }
+
       if (value == "yyyy-MM-dd hh:mm:ss") {
         var d = eval('new ' + str.substr(1, str.length - 2));
         var ar_date = [d.getFullYear(), d.getMonth() + 1, d.getDate(), d.getHours(), d.getMinutes(), d.getSeconds()];
         for (var i = 0; i < ar_date.length; i++) ar_date[i] = dFormat(ar_date[i]);
-                return ar_date.slice(0, 3).join('-') + ' ' + ar_date.slice(3).join(':');
+        return ar_date.slice(0, 3).join('-') + ' ' + ar_date.slice(3).join(':');
       } else if (value == "yyyy-MM-dd") {
         var d = eval('new ' + str.substr(1, str.length - 2));
         var ar_date = [d.getFullYear(), d.getMonth() + 1, d.getDate()];
@@ -284,16 +348,16 @@ angular.module('luZhouApp')
     };
     //考试总分
     this.examAllScore = function (arr) {
-      var sum =0;
-      for (var i = 0;i<arr.length;i++) {
+      var sum = 0;
+      for (var i = 0; i < arr.length; i++) {
         sum += arr[i].Score;
       }
       return sum;
     };
     //考试总分2
     this.examAllScore2 = function (arr) {
-      var sum =0;
-      for (var i = 0;i<arr.length;i++) {
+      var sum = 0;
+      for (var i = 0; i < arr.length; i++) {
         sum += arr[i].Question.Score;
       }
       // debugger
@@ -302,8 +366,8 @@ angular.module('luZhouApp')
     //答对题目总数
     this.countIf = function (arr) {
       var count = 0;
-      for (var i = 0;i<arr.length;i++) {
-        if (arr[i].UserAnswer==arr[i].Question.Answer) {
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i].UserAnswer == arr[i].Question.Answer) {
           count++;
         }
       }
@@ -312,8 +376,8 @@ angular.module('luZhouApp')
     //正确得分
     this.rightScore = function (arr) {
       var sum = 0;
-      for (var i = 0;i<arr.length;i++) {
-        sum+=arr[i].UserScore;
+      for (var i = 0; i < arr.length; i++) {
+        sum += arr[i].UserScore;
       }
       return sum;
     };
@@ -340,13 +404,13 @@ angular.module('luZhouApp')
     };
 
     //播放refresh
-    this.refresh = function (PortalId,userId,courseid) {
+    this.refresh = function (PortalId, userId, courseid) {
       var fresh = function () {
         $http({
           method: 'POST',
           url: ALL_PORT.Refresh.url,
-          data: $.param($.extend({},ALL_PORT.Refresh.data,{PortalId:PortalId, userId:userId, courseid: courseid })),
-        }).success(function(data) {
+          data: $.param($.extend({}, ALL_PORT.Refresh.data, {PortalId: PortalId, userId: userId, courseid: courseid})),
+        }).success(function (data) {
           if (!!data) {
             if ((data + '').indexOf("ok") > -1) {
               // setTimeout(fresh, 2000);
@@ -386,133 +450,133 @@ angular.module('luZhouApp')
           window.location.reload();
         });
       }
-      var timer = setInterval(fresh,3000);
+      var timer = setInterval(fresh, 3000);
       // clearInterval(timer);
     }
     // 视频播放页面当页面卸载（关闭）或刷新时调用
     this.beforeUnload = function (userid) {
       $(window).bind('beforeunload', function (e) {
         /*var confirmationMessage = '确定离开此页吗？本页不需要刷新或后退';
-        (e || window.event).returnValue = confirmationMessage;     // Gecko and Trident
-        return confirmationMessage;*/
+         (e || window.event).returnValue = confirmationMessage;     // Gecko and Trident
+         return confirmationMessage;*/
         $http({
           method: 'POST',
-          url: ALL_PORT.ClearPlayingCourse.url+ Math.round(Math.random() * 10000),
-          data: $.param($.extend({},ALL_PORT.ClearPlayingCourse.data,{userid:userid})),
-        }).success(function(response) {
+          url: ALL_PORT.ClearPlayingCourse.url+'?'+Math.round(Math.random() * 10000),
+          data: $.param($.extend({}, ALL_PORT.ClearPlayingCourse.data, {userid: userid})),
+        }).success(function (response) {
           // console.log(response);
         });
       });
     };
 
     //获取数据
-    this.getData = function(endpoint, method, params){
-        var defer = $q.defer();
-        $http({
-            url: endpoint,
-            method: method,
-            headers: {
-	            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-            },
-            data: $.param(params)
-        }).success(function (data) {
-            defer.resolve(data);
-        }).error(function (data, status, headers, config) {
-            // defer.resolve(data);
-            defer.reject(data);
-        });
-        return defer.promise;
+    this.getData = function (endpoint, method, params) {
+      var defer = $q.defer();
+      $http({
+        url: endpoint,
+        method: method,
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+        },
+        data: $.param(params)
+      }).success(function (data) {
+        defer.resolve(data);
+      }).error(function (data, status, headers, config) {
+        // defer.resolve(data);
+        defer.reject(data);
+      });
+      return defer.promise;
 
     };
 
     //上传文件
-	  this.upload=function(event,types){
+    this.upload = function (event, types) {
 
-		var typeConfig = "";
-		switch (types) {
-		  case "Image":
-		    typeConfig = "jpeg,jpg,png,gif,bmp";
-                break;
-            case "ImageTraining":
-                typeConfig = "jpeg,jpg,png,gif,bmp";
-                break;
-            case "Attachment":
-                typeConfig = "zip,rar,txt,doc,docx,xls,xlsx,ppt,pptx";
-                break;
-            default:
-                typeConfig = "jpeg,jpg,png,gif,bmp,zip,rar,txt,doc,docx,xls,xlsx,ppt,pptx";
-                break;
+      var typeConfig = "";
+      switch (types) {
+        case "Image":
+          typeConfig = "jpeg,jpg,png,gif,bmp";
+          break;
+        case "ImageTraining":
+          typeConfig = "jpeg,jpg,png,gif,bmp";
+          break;
+        case "Attachment":
+          typeConfig = "zip,rar,txt,doc,docx,xls,xlsx,ppt,pptx";
+          break;
+        default:
+          typeConfig = "jpeg,jpg,png,gif,bmp,zip,rar,txt,doc,docx,xls,xlsx,ppt,pptx";
+          break;
+      }
+
+      var file = event.files[0];
+      var fileName = file.name;
+      var file_typename = fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length);
+
+
+      if (typeConfig.indexOf(file_typename) > -1) {//这里限定上传文件文件类型
+        if (file) {
+          var fileSize = 0;
+          if (file.size > 1024 * 1024)
+            fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + "MB";
+          else
+            fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + "KB";
         }
-
-        var file = event.files[0];
-        var fileName = file.name;
-        var file_typename = fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length);
-
-
-        if (typeConfig.indexOf(file_typename) > -1) {//这里限定上传文件文件类型
-            if (file) {
-                var fileSize = 0;
-                if (file.size > 1024 * 1024)
-                    fileSize = (Math.round(file.size * 100 / (1024 * 1024)) / 100).toString() + "MB";
-                else
-                    fileSize = (Math.round(file.size * 100 / 1024) / 100).toString() + "KB";
-            }
-        }else{
-            alert("文件后缀应为以下类型" + typeConfig + ",而不是" + file_typename + ",请重新选择文件");
-        }
+      } else {
+        alert("文件后缀应为以下类型" + typeConfig + ",而不是" + file_typename + ",请重新选择文件");
+      }
 
 
-        if (window.FormData){
-            var fd = new FormData();
-            fd.append('fileType',types);
-            fd.append('file',file);
-            $http({
-                url:API_URL_ADMIN+"/Common/ToLead",
-                method:"POST",
-                data:fd,
-                transformRequest: angular.identity,
-                headers:{
-                    'Content-Type':undefined
-                }
-            }).success(function (response) {
-                // alert(response);
-                $('#hidValueImage').val(response);
-                console.log($('#hidValueImage').val());
-            }).error(function (error,status) {
+      if (window.FormData) {
+        var fd = new FormData();
+        fd.append('fileType', types);
+        fd.append('file', file);
+        $http({
+          url: API_URL_ADMIN + "/Common/ToLead",
+          method: "POST",
+          data: fd,
+          transformRequest: angular.identity,
+          headers: {
+            'Content-Type': undefined
+          }
+        }).success(function (response) {
+          // alert(response);
+          $('#hidValueImage').val(response);
+          // console.log($('#hidValueImage').val());
+        }).error(function (error, status) {
 
-            });
-        }
-		console.log(event.type,event.name);
-        console.log(file, typeConfig);
+        });
+      }
+      // console.log(event.type,event.name);
+      // console.log(file, typeConfig);
 
     };
 
-	  //获取文章分类
-    this.getArticleCategory=function () {
-        var arr=[];
-	    $.ajax({
-		    type: "POST",
-		    async: false,
-		    contentType: "application/x-www-form-urlencoded;charset=UTF-8",
-		    xhrFields: {
-			    withCredentials: true
-		    },
-		    url:ALL_PORT.ArticleCategory.url,
-		    data: $.extend({},ALL_PORT.ArticleCategory.data),
-		    success:function (response) {
-			    arr = response.Data.ListData;
-			    return arr;
-		    }
-	    });
-	    return arr;
+    //获取文章分类
+    this.getArticleCategory = function () {
+      var arr = [];
+      $.ajax({
+        type: "POST",
+        async: false,
+        contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+        xhrFields: {
+          withCredentials: true
+        },
+        url: ALL_PORT.ArticleCategory.url,
+        data: $.extend({}, ALL_PORT.ArticleCategory.data),
+        success: function (response) {
+          arr = response.Data.ListData;
+          return arr;
+        }
+      });
+      return arr;
     };
     //获取验证码
-    this.getVerifyCode=function () {
+    this.getVerifyCode = function () {
       $http({
         method: 'GET',
         url: ALL_PORT.GetVerifyCode.url,
-        params : Math.random() * 10,
-      }).success(function(response) {
+        params: Math.random() * 10,
+      }).success(function (response) {
         if ($("#codeImg")[0]) {
           $("#codeImg")[0].src = "data:image/png;base64," + response.img;
         }
@@ -520,9 +584,9 @@ angular.module('luZhouApp')
     }
 
     //收藏本站
-    this.AddFavorite = function(title, url) {
-      var title = title||document.title;
-      var url = url||location.href;
+    this.AddFavorite = function (title, url) {
+      var title = title || document.title;
+      var url = url || location.href;
       try {
         window.external.addFavorite(url, title);
       }
@@ -537,21 +601,45 @@ angular.module('luZhouApp')
     }
 
     //设为首页
-    this.SetHome = function(obj, url) {
+    this.SetHome = function (obj, url) {
       var url = url || location.href;
-      try{
-        obj.style.behavior='url(#default#homepage)';
+      try {
+        obj.style.behavior = 'url(#default#homepage)';
         obj.setHomePage(url);
-      }catch(e){
-        if(window.netscape){
-          try{
+      } catch (e) {
+        if (window.netscape) {
+          try {
             netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
-          }catch(e){
+          } catch (e) {
             alert("抱歉，此操作被浏览器拒绝！\n\n请在浏览器地址栏输入“about:config”并回车然后将[signed.applets.codebase_principal_support]设置为'true'");
           }
-        }else{
-          alert("抱歉，您所使用的浏览器无法完成此操作。\n\n您需要手动将【"+url+"】设置为首页。");
+        } else {
+          alert("抱歉，您所使用的浏览器无法完成此操作。\n\n您需要手动将【" + url + "】设置为首页。");
         }
+      }
+    };
+    //关闭当前窗口
+    this.closeWindow = function () {
+      if (navigator.userAgent.indexOf("MSIE") > 0) {
+        if (navigator.userAgent.indexOf("MSIE 6.0") > 0) {
+          window.opener = null;
+          window.close();
+        } else {
+          window.open('', '_top');
+          window.top.close();
+        }
+      }
+      else if (navigator.userAgent.indexOf("Chrome") > 0) {
+        window.location.href = "about:blank";
+        window.close();
+      }
+      else if (navigator.userAgent.indexOf("Firefox") > 0) {
+        window.location.href = 'about:blank ';
+        window.close();
+      } else {
+        window.opener = null;
+        window.open('', '_self', '');
+        window.close();
       }
     }
   });

@@ -35,10 +35,11 @@ angular.module('luZhouApp')
     var courseListParams = $.extend({}, ALL_PORT.BookList.data);
     $scope.paginationConf = $.extend({},paginationConf,{itemsPerPage: courseListParams.rows});
     $scope.searchCategory = function (options) {
+      $loading.start('library');
       $.extend(courseListParams, options);
       commonService.getData(ALL_PORT.BookList.url, 'POST', courseListParams)
         .then(function(response) {
-          $loading.finish('courseSupermarket');
+          $loading.finish('library');
           $scope.booksData = response.Data;
           $scope.imgPath = response.Data.Path;
           $scope.paginationConf.totalItems = response.Data.Count;

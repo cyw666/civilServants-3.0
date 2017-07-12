@@ -23,7 +23,7 @@
             <span class="list2 pull-left">
               <div class="progress">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{resultCourseDetail.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':resultCourseDetail.BrowseScore+'%'};">
-                  {{resultCourseDetail.BrowseScore}}%
+                  {{resultCourseDetail.BrowseScore.toFixed(1)}}%
                 </div>
               </div>
             </span>

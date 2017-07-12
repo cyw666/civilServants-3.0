@@ -6,33 +6,16 @@
       {{categoryData.TitleNav}}
     </p>
   </div>
-  <ul class="mar_top_20">
-    <li ng-repeat="categoryData in categoryData.ListData" title="{{categoryData.Name}}">
-      <a class="btn" ng-click="refreshList({categoryId:categoryData.Id})">{{categoryData.Name}}</a>
-    </li>
-  </ul>
+  <div class="tmBorder">
+    <ul class="categoryGuide clearfix">
+      <li ng-repeat="categoryData in categoryData.ListData" title="{{categoryData.Name}}">
+        <a class="btn" ng-click="refreshList({categoryId:categoryData.Id})">{{categoryData.Name}}</a>
+      </li>
+    </ul>
+  </div>
 </div>
 <style>
-  .articleCategory > ul{
-    overflow: hidden;
-    padding-left:23px;
-  }
-  .articleCategory > ul > li{
-    width: 82px;
-    height: 38px;
-    float: left;
-    margin-right: 36px;
-    margin-bottom: 20px;
-  }
-  .articleCategory > ul > li > a.btn{
-    display: inline-block;
-    width: 82px;
-    height: 38px;
-    text-align: center;
-    color: #333;
-    background: rgb(221,221,221);
-  }
-  .articleCategoryTitle > h1{
+  .articleCategoryTitle  h1{
     font-size: 22px;
     line-height: 49px;
     text-align: center;

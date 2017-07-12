@@ -6,44 +6,47 @@
     </p>
     <!--<p class="more pull-right"><img src="../images/more.png" alt="更多"></p>-->
   </div>
-  <ul class="guideContent clearfix">
-    <li>
-      <a target="_blank" ui-sref="personalCenter" class="professionals">
-        <img src="../images/entrance1.png" alt=""> <br>
-        <p>我的课程</p>
-      </a>
-    </li>
-    <li>
-      <a target="_blank" ui-sref="rankcoursefinish" class="professionals">
-        <img src="../images/entrance2.png" alt=""> <br>
-        <p>学习排行</p>
-      </a>
-    </li>
-    <li>
-      <a target="_blank" class="professionals">
-        <img src="../images/entrance3.png" alt=""> <br>
-        <p>离线学习</p>
-      </a>
-    </li>
-    <li>
-      <a target="_blank" ui-sref="testCenter" class="professionals">
-        <img src="../images/entrance4.png" alt=""> <br>
-        <p>在线考试</p>
-      </a>
-    </li>
-    <li>
-      <a target="_blank" ui-sref="specialTrainingCourse" class="professionals">
-        <img src="../images/entrance5.png" alt=""> <br>
-        <p>班级园地</p>
-      </a>
-    </li>
-    <li>
-      <a target="_blank" ui-sref="article({categoryId:'82'})" class="professionals">
-        <img src="../images/entrance6.png" alt=""> <br>
-        <p>干教资讯</p>
-      </a>
-    </li>
-  </ul>
+  <div class="guideContent">
+    <ul class="clearfix">
+      <li>
+        <a target="_blank" ui-sref="personalCenter" class="professionals">
+          <img src="../images/entrance1.png" alt=""> <br>
+          <p>我的课程</p>
+        </a>
+      </li>
+      <li>
+        <a target="_blank" ui-sref="rankcoursefinish" class="professionals">
+          <img src="../images/entrance2.png" alt=""> <br>
+          <p>学习排行</p>
+        </a>
+      </li>
+      <li>
+        <a target="_blank" ui-sref="library" class="professionals">
+          <img src="../images/entrance3.png" alt=""> <br>
+          <p>电子图书</p>
+        </a>
+      </li>
+      <li>
+        <a target="_blank" ui-sref="testCenter" class="professionals">
+          <img src="../images/entrance4.png" alt=""> <br>
+          <p>在线考试</p>
+        </a>
+      </li>
+      <li>
+        <a target="_blank" ui-sref="specialTrainingCourse" class="professionals">
+          <img src="../images/entrance5.png" alt=""> <br>
+          <p>班级园地</p>
+        </a>
+      </li>
+      <li>
+        <a target="_blank" ui-sref="article({categoryId:'82'})" class="professionals">
+          <img src="../images/entrance6.png" alt=""> <br>
+          <p>干教资讯</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+
 </div>
 
 <style>
@@ -61,13 +64,17 @@
     border:1px solid #eee;
     text-align: center;
   }
+  .guideEntry .guideContent ul {
+    margin-top: 15px;
+  }
   .guideEntry .guideContent li{
-    /*height: px;*/
     width: 109px;
     float: left;
   }
   .guideEntry .guideContent .professionals {
     display: inline-block;
-    padding: 16px 0;
+  }
+  .guideEntry .guideContent .professionals p{
+    padding: 12px 0;
   }
 </style>

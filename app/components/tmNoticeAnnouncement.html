@@ -14,7 +14,7 @@
           <div class="item clearfix"  ng-repeat="noticeList in noticeData.ListData" ng-class="{'active':$index==0}">
             <div>
               <a ui-sref="noticeDetail({ID:noticeList.Id})" title="{{noticeList.Name}}" target="_blank">
-                <img ng-src="{{noticeData.Path+noticeList.Img}}" err-Src="images/notFound.jpeg">
+                <img ng-src="{{noticeData.Path+'/'+noticeList.Img}}" err-Src="images/notFound.jpeg">
               </a>
             </div>
           </div>

@@ -3,97 +3,101 @@
   <div class="com-header clearfix">
     <p class="title pull-left">
       <img src="../images/headerLeftIcon.png" alt="图标">
-      专题培训班
+      班级园地
     </p>
     <!--<p class="more pull-right">
       <a ui-sref="library" target="_blank"><img src="../images/more.png" alt="更多"></a>
     </p>-->
   </div>
-  <ol class="breadcrumb">
-    <li class="currentPosition">您的当前位置:</li>
-    <li><a ui-sref="main">首页</a></li>
-    <li class="active">专题培训班</li>
-  </ol>
-  <form class="form-inline formCourse">
-    <div class="form-group">
-      <input ng-model="searchTitle" type="text" class="form-control"
-             style="width: 400px;"
-             my-placeholder
-             placeholder="请输入要搜索的培训班">
-    </div>
-    <button type="submit" class="btn btn-default" ng-click="getClassList({'title':searchTitle})">搜索</button>
-  </form>
-  <div class="myTab">
-    <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
-      <li ng-class="{active: vm.activeTab == 1}"><a href="javascript:;" ng-click="vm.activeTab = 1;getClassList({'type':'just','title':searchTitle,'page':1})">正在举办</a></li>
-      <li ng-class="{active: vm.activeTab == 2}"><a href="javascript:;" ng-click="vm.activeTab = 2;getClassList({'type':'immediately','title':searchTitle})">即将举办</a></li>
-      <li ng-class="{active: vm.activeTab == 3}"><a href="javascript:;" ng-click="vm.activeTab = 3;getClassList({'type':'already','title':searchTitle})">已经举办</a></li>
-    </ul>
-    <div class="tab-content" dw-loading="trainingCenter">
-      <div class="tab-panel perlist" ng-show="vm.activeTab == 1">
-        <div class="title_bar clearfix">
-          <span class="list1">班级名称</span>
-          <span class="list2">班级简介</span>
-          <span class="list2">状态</span>
-          <span class="list1">举办时间</span>
-        </div>
-        <div class="list" ng-repeat="justata in justListData.ListData">
-          <p class="clearfix">
-
-            <span class="list1 cur_name" title="{{justata.Name}}">{{justata.Name}}</span>
-            <span class="list2"><a ng-click="checkUserClass(justata.Id)">详情</a></span>
-
-
-            <span class="list2" ng-if="!justata.ApplyStatus"><a ng-click="addClass(justata.Id,'just')">点击报名</a></span>
-
-            <span class="list2" ng-if="justata.ApplyStatus">{{JudgeStatus(justata.ApplyStatus)}}</span>
-            <span class="list1">{{justata.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{justata.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
-          </p>
-        </div>
-        <div ng-transclude="pagation"></div>
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li class="active">班级园地</li>
+    </ol>
+    <form class="form-inline formCourse">
+      <div class="form-group">
+        <input ng-model="searchTitle" type="text" class="form-control"
+               style="width: 400px;"
+               my-placeholder
+               placeholder="请输入要搜索的培训班">
       </div>
-      <div class="tab-panel perlist" ng-show="vm.activeTab == 2">
-        <div class="title_bar clearfix">
-          <span class="list1">班级名称</span>
-          <span class="list2">班级简介</span>
-          <span class="list2">状态</span>
-          <span class="list1">举办时间</span>
+      <button type="submit" class="btn btn-default" ng-click="getClassList({'title':searchTitle})">搜索</button>
+    </form>
+    <div class="myTab">
+      <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
+        <li ng-class="{active: vm.activeTab == 1}"><a href="javascript:;" ng-click="vm.activeTab = 1;getClassList({'type':'just','title':searchTitle,'page':1})">正在举办</a></li>
+        <li ng-class="{active: vm.activeTab == 2}"><a href="javascript:;" ng-click="vm.activeTab = 2;getClassList({'type':'immediately','title':searchTitle})">即将举办</a></li>
+        <li ng-class="{active: vm.activeTab == 3}"><a href="javascript:;" ng-click="vm.activeTab = 3;getClassList({'type':'already','title':searchTitle})">已经举办</a></li>
+      </ul>
+      <div class="tab-content clearfix" dw-loading="trainingCenter">
+        <div class="tab-panel perlist" ng-show="vm.activeTab == 1">
+          <div class="title_bar clearfix">
+            <span class="list1">班级名称</span>
+            <span class="list2">班级简介</span>
+            <span class="list2">状态</span>
+            <span class="list1">举办时间</span>
+          </div>
+          <div class="list" ng-repeat="justata in justListData.ListData">
+            <p class="clearfix">
+
+              <span class="list1 cur_name" title="{{justata.Name}}">{{justata.Name}}</span>
+              <span class="list2"><a ng-click="checkUserClass(justata.Id)">详情</a></span>
+
+
+              <span class="list2" ng-if="!justata.ApplyStatus"><a ng-click="addClass(justata.Id,'just')">点击报名</a></span>
+
+              <span class="list2" ng-if="justata.ApplyStatus">{{JudgeStatus(justata.ApplyStatus)}}</span>
+              <span class="list1">{{justata.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{justata.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+            </p>
+          </div>
+          <div ng-transclude="pagation"></div>
         </div>
-        <div class="list" ng-repeat="immediatelyData in immediatelyListData.ListData">
-          <p class="clearfix">
+        <div class="tab-panel perlist" ng-show="vm.activeTab == 2">
+          <div class="title_bar clearfix">
+            <span class="list1">班级名称</span>
+            <span class="list2">班级简介</span>
+            <span class="list2">状态</span>
+            <span class="list1">举办时间</span>
+          </div>
+          <div class="list" ng-repeat="immediatelyData in immediatelyListData.ListData">
+            <p class="clearfix">
 
-            <span class="list1 cur_name" title="{{immediatelyData.Name}}">{{immediatelyData.Name}}</span>
-            <span class="list2"><a ng-click="checkUserClass(immediatelyData.Id)">详情</a></span>
+              <span class="list1 cur_name" title="{{immediatelyData.Name}}">{{immediatelyData.Name}}</span>
+              <span class="list2"><a ng-click="checkUserClass(immediatelyData.Id)">详情</a></span>
 
-            <span class="list2" ng-if="!immediatelyData.ApplyStatus"><a ng-click="addClass(immediatelyData.Id,'immediately')">点击报名</a></span>
+              <span class="list2" ng-if="!immediatelyData.ApplyStatus"><a
+                ng-click="addClass(immediatelyData.Id,'immediately')">点击报名</a></span>
 
-            <span class="list2" ng-if="immediatelyData.ApplyStatus">{{JudgeStatus(immediatelyData.ApplyStatus)}}</span>
-            <span class="list1">{{immediatelyData.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{immediatelyData.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
-          </p>
+              <span class="list2"
+                    ng-if="immediatelyData.ApplyStatus">{{JudgeStatus(immediatelyData.ApplyStatus)}}</span>
+              <span class="list1">{{immediatelyData.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{immediatelyData.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+            </p>
+          </div>
+          <div ng-transclude="pagation"></div>
         </div>
-        <div ng-transclude="pagation"></div>
-      </div>
-      <div class="tab-panel perlist" ng-show="vm.activeTab == 3">
-        <div class="title_bar clearfix">
-          <span class="list1">班级名称</span>
-          <span class="list2">班级简介</span>
-          <span class="list2">状态</span>
-          <span class="list1">举办时间</span>
+        <div class="tab-panel perlist" ng-show="vm.activeTab == 3">
+          <div class="title_bar clearfix">
+            <span class="list1">班级名称</span>
+            <span class="list2">班级简介</span>
+            <span class="list2">状态</span>
+            <span class="list1">举办时间</span>
+          </div>
+          <div class="list" ng-repeat="alreadyData in alreadyListData.ListData">
+            <p class="clearfix">
+
+              <span class="list1 cur_name" title="{{alreadyData.Name}}">{{alreadyData.Name}}</span>
+              <span class="list2"><a ng-click="checkUserClass(alreadyData.Id)">详情</a></span>
+
+              <!--<span class="list2" ng-if="!alreadyData.ApplyStatus"><a ng-click="addClass(alreadyData.Id,'already')">点击报名</a></span>-->
+              <span class="list2" ng-if="!alreadyData.ApplyStatus">已举办</span>
+              <span class="list2" ng-if="alreadyData.ApplyStatus">{{JudgeStatus(alreadyData.ApplyStatus)}}</span>
+
+              <span class="list1">{{alreadyData.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{alreadyData.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+            </p>
+          </div>
+          <div ng-transclude="pagation"></div>
         </div>
-        <div class="list" ng-repeat="alreadyData in alreadyListData.ListData">
-          <p class="clearfix">
-
-            <span class="list1 cur_name" title="{{alreadyData.Name}}">{{alreadyData.Name}}</span>
-            <span class="list2"><a ng-click="checkUserClass(alreadyData.Id)">详情</a></span>
-
-            <!--<span class="list2" ng-if="!alreadyData.ApplyStatus"><a ng-click="addClass(alreadyData.Id,'already')">点击报名</a></span>-->
-            <span class="list2" ng-if="!alreadyData.ApplyStatus">已举办</span>
-            <span class="list2" ng-if="alreadyData.ApplyStatus">{{JudgeStatus(alreadyData.ApplyStatus)}}</span>
-
-            <span class="list1">{{alreadyData.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{alreadyData.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
-          </p>
-        </div>
-        <div ng-transclude="pagation"></div>
       </div>
     </div>
   </div>
@@ -103,6 +107,7 @@
     width: 200px;
     height: 37px;
   }
+
   .myTab .perlist .list .list1 {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -110,9 +115,11 @@
     padding-left: 10px;
     padding-right: 10px;
   }
+
   .myTab .perlist .list2 {
     width: 150px;
   }
+
   .trainingCenter .formCourse {
     margin-bottom: 10px;
   }

@@ -7,6 +7,7 @@
 .page-list .page-total input, .page-list .page-total select{height: 26px; border: 1px solid #ddd;}
 .page-list .page-total input {width: 40px; padding-left:3px;}
 .page-list .page-total select {width: 50px;}
+.page-list .no-items {text-align: center;height: 30px;line-height: 30px;font-size: 18px;font-weight: 600;margin: 20px 0;}
 .pagination>.active>span {background-color: #db1011; border-color: #f50001;color:#fff;}
 .pagination>.active>span:hover {background-color: #db1011; border-color: #f50001;color:#fff;}
 .pagination>li>span:hover {

@@ -60,7 +60,7 @@ angular.module('luZhouApp')
         .then(function(response) {
           $('.modal').modal('hide');
           if (response.Type == 1) {
-            alert(response.Message);
+            alert('评论成功！');
           }else {
             alert(response.Message);
           }

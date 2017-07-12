@@ -9,20 +9,22 @@
       <a ui-sref="library" target="_blank"><img src="../images/more.png" alt="更多"></a>
     </p>-->
   </div>
-  <div class="panel1 panel1-default" dw-loading="courseClassify" ng-repeat="courseList in courseClassify.ListData" repeat-finish="repeatDone()">
-    <div class="panel1-heading">
-      <p class="panel1-title" title="{{courseList.Name}}">
-        <a href="javascript:;" ng-click="getClassList({categoryId:courseList.Id})">
-          <span ng-show="courseList.Nodes" class="category">+</span>
-          {{courseList.Name}}
-        </a>
-      </p>
-    </div>
-    <div class="panel1-collapse collapse">
-      <div class="panel1-body">
-        <ul>
-          <li title="{{list.Name}}" ng-repeat="list in courseList.Nodes"><a href="javascript:;" ng-click="getClassList({categoryId:list.Id})">{{list.Name}}</a></li>
-        </ul>
+  <div class="tmBorder">
+    <div class="panel1 panel1-default" dw-loading="courseClassify" ng-repeat="courseList in courseClassify.ListData" repeat-finish="repeatDone()">
+      <div class="panel1-heading">
+        <p class="panel1-title" title="{{courseList.Name}}">
+          <a href="javascript:;" ng-click="getClassList({categoryId:courseList.Id})">
+            <span ng-show="courseList.Nodes" class="category">+</span>
+            {{courseList.Name}}
+          </a>
+        </p>
+      </div>
+      <div class="panel1-collapse collapse">
+        <div class="panel1-body">
+          <ul>
+            <li title="{{list.Name}}" ng-repeat="list in courseList.Nodes"><a href="javascript:;" ng-click="getClassList({categoryId:list.Id})">{{list.Name}}</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

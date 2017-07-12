@@ -34,11 +34,10 @@
     </div>
     <div class="article-detail article-detail-changeBar clearfix" >
       <p class="grid_11 article-detail article-detail-changeBar-anhor pull-left" ng-show="articleData.UpId>0">
-        <a ui-sref="bookchaptercontent({Id:articleData.UpId})">上一章</a>
+        <a class="btn btn-danger" ui-sref="bookchaptercontent({Id:articleData.UpId})">上一章</a>
       </p>
       <p class="grid_11 article-detail article-detail-changeBar-anhor pull-right">
-        <a ui-sref="bookchaptercontent({Id:articleData.DownId})">下一章</a>
-
+        <a class="btn btn-danger" ui-sref="bookchaptercontent({Id:articleData.DownId})">下一章</a>
       </p>
     </div>
 
@@ -92,5 +91,9 @@
   .article-detail-changeBar {
     margin-bottom: 20px;
     text-align: center;
+    margin-top: 20px;
+  }
+  .article-detail-changeBar  a{
+    width: 200px;
   }
 </style>

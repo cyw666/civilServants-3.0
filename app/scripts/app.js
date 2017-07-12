@@ -50,6 +50,13 @@ angular
         controllerAs: 'courseCenter',
         data:{title:"课程中心"}
       })
+      .state('courseCenterBuy', {
+          url: '/courseCenterBuy',
+        data:{title:"课程中心"},
+        templateUrl: 'views/coursecenterbuy.html',
+        controller: 'CoursecenterbuyCtrl',
+        controllerAs: 'courseCenterBuy'
+      })
       .state('courseCenterId', {
         url: '/courseCenter/:channelId',
         templateUrl : 'views/coursecenter.html',
@@ -76,7 +83,7 @@ angular
         templateUrl : 'views/specialtrainingcourse.html',
         controller: 'SpecialtrainingcourseCtrl',
         controllerAs: 'specialTrainingCourse',
-        data:{title:"专题培训班"}
+        data:{title:"班级园地"}
       })
       .state('csTrainingNews', {
         url: '/csTrainingNews',
@@ -330,6 +337,13 @@ angular
         controller: 'PlayCtrl',
         controllerAs: 'play'
       })
+      .state('tryplay', {
+        url: '/play/tryplay/:Id',
+        data:{title:"课程试看"},
+        templateUrl: 'views/play/tryplay.html',
+        controller: 'TryplayCtrl',
+        controllerAs: 'tryPlay'
+      })
       .state('forgetPassword', {
         url: '/personalCenter/forgetPassword',
         data:{title:"忘记密码"},
@@ -437,7 +451,7 @@ angular
       })
       .state('library', {
         url: '/library',
-        data:{title:"数字图书馆"},
+        data:{title:"电子书"},
         templateUrl: 'views/library/library.html',
         controller: 'LibraryCtrl',
         controllerAs: 'library'
@@ -497,6 +511,62 @@ angular
         templateUrl: 'views/Do/resultshow.html',
         controller: 'ResultshowCtrl',
         controllerAs: 'resultShow'
+      })
+      .state('speciallearning', {
+        url: '/specialtrainingcourse/speciallearning',
+        data:{title:"专题学习"},
+        templateUrl: 'views/specialtrainingcourse/speciallearning.html',
+        controller: 'SpeciallearningCtrl',
+        controllerAs: 'specialLearning'
+      })
+      .state('shoppingcart', {
+        url: '/shopping/shoppingcart',
+        data:{title:"购物车"},
+        templateUrl: 'views/shopping/shoppingcart.html',
+        controller: 'ShoppingcartCtrl',
+        controllerAs: 'ShoppingCart'
+      })
+      .state('orderdetaillist', {
+        url: '/shopping/orderdetaillist?orderId',
+        data:{title:"订单详细"},
+        templateUrl: 'views/shopping/orderdetaillist.html',
+        controller: 'OrderdetaillistCtrl',
+        controllerAs: 'orderDetailList'
+      })
+      .state('payconfirm', {
+        url: '/shopping/payconfirm?orderId',
+        data:{title:"支付确认"},
+        templateUrl: 'views/shopping/payconfirm.html',
+        controller: 'PayconfirmCtrl',
+        controllerAs: 'payConfirm'
+      })
+      .state('orderconfirm', {
+        url: '/shopping/orderconfirm?invoiceId',
+        data:{title:"订单确认"},
+        templateUrl: 'views/shopping/orderconfirm.html',
+        controller: 'OrderconfirmCtrl',
+        controllerAs: 'orderConfirm'
+      })
+      .state('orderlist', {
+        url: '/shopping/orderlist',
+        data:{title:"我的订单"},
+        templateUrl: 'views/shopping/orderlist.html',
+        controller: 'OrderlistCtrl',
+        controllerAs: 'orderList'
+      })
+      .state('invoicelist', {
+        url: '/shopping/invoicelist',
+        data:{title:"我的发票"},
+        templateUrl: 'views/shopping/invoicelist.html',
+        controller: 'InvoicelistCtrl',
+        controllerAs: 'invoiceList'
+      })
+      .state('applyinvoice', {
+        url: '/shopping/applyinvoice',
+        data:{title:"申请发票"},
+        templateUrl: 'views/shopping/applyinvoice.html',
+        controller: 'ApplyinvoiceCtrl',
+        controllerAs: 'applyInvoice'
       })
     $urlRouterProvider.otherwise('/main');
     // $locationProvider.html5Mode(true);
@@ -837,6 +907,56 @@ angular
         controller: 'BookchaptercontentCtrl',
         controllerAs: 'bookChapterContent'
       })
+      .when('/specialLearning', {
+        templateUrl: 'views/speciallearning.html',
+        controller: 'SpeciallearningCtrl',
+        controllerAs: 'specialLearning'
+      })
+      .when('/courseCenterBuy', {
+        templateUrl: 'views/coursecenterbuy.html',
+        controller: 'CoursecenterbuyCtrl',
+        controllerAs: 'courseCenterBuy'
+      })
+      .when('/shoppingCart', {
+        templateUrl: 'views/shoppingcart.html',
+        controller: 'ShoppingcartCtrl',
+        controllerAs: 'shoppingCart'
+      })
+      .when('/orderDetailList', {
+        templateUrl: 'views/orderdetaillist.html',
+        controller: 'OrderdetaillistCtrl',
+        controllerAs: 'orderDetailList'
+      })
+      .when('/payConfirm', {
+        templateUrl: 'views/payconfirm.html',
+        controller: 'PayconfirmCtrl',
+        controllerAs: 'payConfirm'
+      })
+      .when('/orderConfirm', {
+        templateUrl: 'views/orderconfirm.html',
+        controller: 'OrderconfirmCtrl',
+        controllerAs: 'orderConfirm'
+      })
+      .when('/orderList', {
+        templateUrl: 'views/orderlist.html',
+        controller: 'OrderlistCtrl',
+        controllerAs: 'orderList'
+      })
+      .when('/invoiceList', {
+        templateUrl: 'views/invoicelist.html',
+        controller: 'InvoicelistCtrl',
+        controllerAs: 'invoiceList'
+      })
+      .when('/applyInvoice', {
+        templateUrl: 'views/applyinvoice.html',
+        controller: 'ApplyinvoiceCtrl',
+        controllerAs: 'applyInvoice'
+      })
+      .when('/tryPlay', {
+        templateUrl: 'views/tryplay.html',
+        controller: 'TryplayCtrl',
+        controllerAs: 'tryPlay'
+      })
       .otherwise({
         redirectTo: '/main'
       });*/
@@ -852,19 +972,11 @@ angular
 
       $rootScope.rememberName = toState.name;
       $rootScope.rememberParams = JSON.stringify(toParams);
-      // console.log(toState.name);
-      if(toState.name=='guide')return;// 如果是进入引导界面则允许
-      if(toState.name=='guide2')return;// 引导界面
+      // console.log(toState);
       if(toState.name=='main')return;// 首页
       if(toState.name=='main2')return;// 首页
       if(toState.name=='userLogin')return;// 登录界面
       if(toState.name=='userRegister')return;// 注册界面
-      if(toState.name=='newsinfo')return;
-      if(toState.name=='articleDetail')return;
-      if(toState.name=='search')return;
-      if(toState.name=='csTrainingNews')return;
-      if(toState.name=='patpTrainingNews')return;
-      if(toState.name=='noticeDetail')return;
       if(toState.name=='forgetPassword')return;
 
       $.ajax({
@@ -883,7 +995,6 @@ angular
             }
             else if (data.Type == 9) {
               alert("在其他平台登录或被其他人登录");
-              // $location.path('main');
               event.preventDefault();
               $state.go('userLogin',{name:$rootScope.rememberName,params:$rootScope.rememberParams});
             }
@@ -893,7 +1004,6 @@ angular
             }
             else if (data.Type == 11) {
               alert("过期了");
-              // $location.path('main');
               event.preventDefault();
               $state.go('userLogin',{name:$rootScope.rememberName,params:$rootScope.rememberParams});
             }
@@ -901,14 +1011,12 @@ angular
               event.preventDefault();
               alert(data.Message);
               $state.go('userLogin',{name:$rootScope.rememberName,params:$rootScope.rememberParams});
-              // $location.path('main');
             }
             else if (data.Type == 15) {
               alert(data.Type + ":" + data.Message);
             }
             else {
               alert("请登录！");
-              // $location.path('main');
               event.preventDefault();
               $state.go('userLogin',{name:$rootScope.rememberName,params:$rootScope.rememberParams});
             }
@@ -945,7 +1053,7 @@ angular
       if (!!$state.current.data) {
         $rootScope.pageTitle=$state.current.data.title;
       }else {
-        $rootScope.pageTitle='泸州市人事人才培训网';
+        $rootScope.pageTitle='干部教育网络学院';
       }
     });
 

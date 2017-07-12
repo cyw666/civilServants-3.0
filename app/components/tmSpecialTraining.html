@@ -6,14 +6,14 @@
       专题学习
     </p>
     <p class="more pull-right">
-      <a ui-sref="courseCenter" target="_blank" href="#/courseCenter"><img src="../images/more.png" alt="更多"></a>
+      <a ui-sref="speciallearning" target="_blank" href="#/courseCenter"><img src="../images/more.png" alt="更多"></a>
     </p>
   </div>
   <ul class="specialContent">
     <li ng-repeat="list in studySpecialData.ListData">
       <p>
         <a ng-href="{{list.Url}}" target="_blank">
-          <img class="specialImg" ng-src="{{studySpecialData.ImagePath+list.Icon}}" err-Src="images/notFound.jpeg" alt="">
+          <img class="specialImg" ng-src="{{studySpecialData.ImagePath+'/'+list.Icon}}" err-Src="images/notFound.jpeg" alt="">
         </a>
       </p>
       <p class="title ellipsis" >

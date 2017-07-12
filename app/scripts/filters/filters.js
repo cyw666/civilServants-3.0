@@ -60,4 +60,11 @@ angular.module('luZhouApp')
       return result;
     }
 
+  })
+  .filter('delHtmlTag', function () {
+    return function (value) {
+      if (!value) return
+      var result = value.replace(/<[^>]+>|&nbsp;| /ig,"");//去掉所有的html标记
+      return result;
+    }
   });
