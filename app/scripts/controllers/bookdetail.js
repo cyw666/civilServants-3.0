@@ -48,23 +48,26 @@ angular.module('luZhouApp')
     };
     //发表评论
     $scope.postComment = function(options) {
-      if ($scope.bookContent.length < 7) {
-        alert('评论内容字数不能少于7个字！');
-        return;
-      } else if ($scope.bookContent.length >= 249) {
-        alert('评论内容字数不能超过249个字！');
-        return;
-      }
-      var params = $.extend({}, ALL_PORT.BookCommentAdd.data, options, $scope.token)
-      commonService.getData(ALL_PORT.BookCommentAdd.url, 'POST', params)
-        .then(function(response) {
-          $('.modal').modal('hide');
-          if (response.Type == 1) {
-            alert('评论成功！');
-          }else {
-            alert(response.Message);
-          }
-        });
+      commonService.limitSubmit(function () {
+        if ($scope.bookContent.length < 7) {
+          alert('评论内容字数不能少于7个字！');
+          return;
+        } else if ($scope.bookContent.length >= 249) {
+          alert('评论内容字数不能超过249个字！');
+          return;
+        }
+        var params = $.extend({}, ALL_PORT.BookCommentAdd.data, options, $scope.token)
+        commonService.getData(ALL_PORT.BookCommentAdd.url, 'POST', params)
+          .then(function(response) {
+            $('.modal').modal('hide');
+            if (response.Type == 1) {
+              alert('评论成功！');
+            }else {
+              alert(response.Message);
+            }
+          });
+      });
+
     };
 
 

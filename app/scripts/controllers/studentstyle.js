@@ -9,8 +9,6 @@
  */
 angular.module('luZhouApp')
   .controller('StudentstyleCtrl', function ($scope, $http,$timeout, $rootScope, $cookieStore, commonService, $location, $loading) {
-    //防伪造请求
-    $scope.token = commonService.AntiForgeryToken();
     //退出
     $scope.loginOut = commonService.loginOut;
     //请求用户信息

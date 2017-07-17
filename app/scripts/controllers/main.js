@@ -29,24 +29,16 @@ angular.module('luZhouApp')
     var getCookie = commonService.getCookie;
     var setCookie = commonService.setCookie;
     var delCookie = commonService.delCookie;
-    var RM = getCookie("RM");
-    var Account,PassWord;
-    if(getCookie("Account")&&getCookie("PassWord")){
-      Account = TBase64.decode(getCookie("Account"));
-      PassWord = TBase64.decode(getCookie("PassWord"));
-    }
-    // console.log(RM,Account,PassWord)
-    if(RM == 'true'){
+
+    if(getCookie("RM")){
+      var userCookies = TBase64.decode(getCookie("RM")).split('|');
+      var RM = userCookies[0];
+      var Account = userCookies[1];
+      var PassWord = userCookies[2];
       $scope.login.Account=Account;
       $scope.login.PassWord=PassWord;
       $scope.login.RememberMe=true;
-    }else if(RM == 'false'){
-      $scope.login = {
-        Account: '',
-        PassWord: '',
-        RememberMe: false
-      };
-    }else if (RM === null){
+    }else {
       $scope.login = {
         Account: '',
         PassWord: '',
@@ -92,69 +84,70 @@ angular.module('luZhouApp')
     }
     //设置cookie
     function setUserCookie() {
-      setCookie("RM",$scope.login.RememberMe.toString(),7);
-      if(!Account&&!PassWord&&$scope.login.RememberMe){
-        setCookie("Account",TBase64.encode($scope.login.Account),7);
-        setCookie("PassWord",TBase64.encode($scope.login.PassWord),7);
-      }
-      if(!$scope.login.RememberMe){
-        delCookie("Account");
-        delCookie("PassWord");
+      if($scope.login.RememberMe){
+        var rmString = $scope.login.RememberMe+'|'+$scope.login.Account+'|'+$scope.login.PassWord;
+        setCookie("RM",TBase64.encode(rmString),7);
+      }else{
+        delCookie("RM");
       }
     };
     //点击登陆
     $scope.clickLogin = function() {
-      var loginParam = $.extend({},$scope.login);
-      var urlShort = "LoginCode";
-      if (!$scope.login.Account||!$scope.login.PassWord) {
-        $scope.showError2 = true;
-        $scope.showError = false;
-        return;
-      }
-      $loading.start('userLogin');
-      commonService.getData(API_URL + "/Page/" + urlShort, 'POST', $.extend({},loginParam, token))
-        .then(function(data) {
-          $loading.finish('userLogin');
-          if (data.Type == 0) {
-            $scope.showError = true;
-            $scope.showError2 = false;
-          } else if (data.Type == 1) {
-            $scope.showLogin = false;
-            setUserCookie();
-            window.location.reload();
-          } else if (data.Type == 2) {
-            setUserCookie();
-            commonService.alertMs("首次登录，请修改密码！");
-            $state.go('modifyPassword');
+      var clickLogin = function () {
+        var loginParam = $.extend({},$scope.login);
+        var urlShort = "LoginCode";
+        if (!$scope.login.Account||!$scope.login.PassWord) {
+          $scope.showError2 = true;
+          $scope.showError = false;
+          return;
+        }
+        $loading.start('userLogin');
+        commonService.getData(API_URL + "/Page/" + urlShort, 'POST', $.extend({},loginParam, token))
+          .then(function(data) {
+            $loading.finish('userLogin');
+            if (data.Type == 0) {
+              $scope.showError = true;
+              $scope.showError2 = false;
+            } else if (data.Type == 1) {
+              setUserCookie();
+              $scope.showLogin = false;
+              window.location.reload();
+            } else if (data.Type == 2) {
+              setUserCookie();
+              commonService.alertMs("首次登录，请修改密码！");
+              $state.go('modifyPassword');
 
-          } else if (data.Type == 3) {
-            if (window.confirm("帐号在别的地方登录，是否踢出？")) {
-              kickOut(data.Message);
-              return true;
+            } else if (data.Type == 3) {
+              if (window.confirm("帐号在别的地方登录，是否踢出？")) {
+                kickOut(data.Message);
+                return true;
+              } else {
+                return false;
+              }
+            } else if (data.Type == 4) {
+              commonService.alertMs("此电脑已经有用户登录，您不能用其他帐号再次登录！");
+            } else if (data.Type == 5) {
+              commonService.alertMs("平台当前在线人数到达上限，请稍后再试！");
+            } else if (data.Type == 6) {
+              commonService.alertMs(data.Message);
+            } else if (data.Type == 7) {} else if (data.Type == 10) {
+              commonService.alertMs("您还不是本平台成员，将为您转向您所在的平台：" + data.Message, 2);
+              return;
+            } else if (data.Type == 11) {
+              commonService.alertMs(data.Message);
+            } else if (data.Type == 12 || data.Type == 13) {
+              commonService.alertMs(data.Message);
             } else {
-              return false;
+              alert(data.Message);
             }
-          } else if (data.Type == 4) {
-            commonService.alertMs("此电脑已经有用户登录，您不能用其他帐号再次登录！");
-          } else if (data.Type == 5) {
-            commonService.alertMs("平台当前在线人数到达上限，请稍后再试！");
-          } else if (data.Type == 6) {
-            commonService.alertMs(data.Message);
-          } else if (data.Type == 7) {} else if (data.Type == 10) {
-            commonService.alertMs("您还不是本平台成员，将为您转向您所在的平台：" + data.Message, 2);
-            return;
-          } else if (data.Type == 11) {
-            commonService.alertMs(data.Message);
-          } else if (data.Type == 12 || data.Type == 13) {
-            commonService.alertMs(data.Message);
-          } else {
-            alert(data.Message);
-          }
-        }, function() {
-          alert("登陆异常！");
-          window.location.reload();
-        });
+          }, function() {
+            alert("登陆异常！");
+            window.location.reload();
+          });
+      };
+      commonService.limitSubmit(clickLogin);
     }
+
     //专题培训轮播新闻
     $scope.getClassNews = function () {
       $loading.start('specialTraining');
@@ -197,6 +190,7 @@ angular.module('luZhouApp')
       });
     //培训班分类
     var defaultClassId;
+    $loading.start('classGarden');
     commonService.getData(ALL_PORT.GetTrainingClassTypeList.url, 'POST',
       $.extend({},ALL_PORT.GetTrainingClassTypeList.data,{rows:3,sort:'Group'}) )
       .then(function(response) {
@@ -210,6 +204,7 @@ angular.module('luZhouApp')
       commonService.getData( ALL_PORT.GetClassList.url, 'POST',
         $.extend({},ALL_PORT.GetClassList.data,{rows:6,type:"All",categoryId:Id}))
         .then(function (response) {
+          $loading.finish('classGarden');
           $scope.classListData = response.Data;
           $scope.showNoClass = response.Data.ListData.length == 0?true:false;
         })
@@ -223,8 +218,8 @@ angular.module('luZhouApp')
             commonService.getData(ALL_PORT.ApplyClass.url, 'POST', $.extend({}, ALL_PORT.ApplyClass.data, { trainingId: id }))
               .then(function(response) {
                 alert(response.Message);
-                // $scope.getClassNews();
-                $state.reload();
+                $scope.getClassNews();
+                // $state.reload();
               });
           }else {
             alert("请先登录！");
@@ -325,6 +320,15 @@ angular.module('luZhouApp')
         $loading.finish('noticeAnnouncement');
         $scope.noticeData = response.Data;
       });
+    $scope.startSlide = function () {
+      $('#noticeSlide').slideBox({
+        duration : 0.5,//滚动持续时间，单位：秒
+        easing : 'linear',//swing,linear//滚动特效
+        delay : 4,//滚动延迟时间，单位：秒
+        hideClickBar : false,//不自动隐藏点选按键
+        clickBarRadius : 5
+      });
+    }
 
     //新闻资讯
     $scope.getNewsContent = function (id) {

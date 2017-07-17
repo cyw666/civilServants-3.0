@@ -9,11 +9,6 @@
  */
 angular.module('luZhouApp')
     .controller('MessagedetailCtrl', function($scope, $timeout, $rootScope, $cookieStore, commonService, $location, $loading, $stateParams) {
-        //判断能否访问
-        // commonService.isVisit();
-        //保持在线
-        //commonService.keepOnline();
-        $scope.token = commonService.AntiForgeryToken();
 
         $loading.start('messageListDetail');
         var Id = $stateParams.Id;

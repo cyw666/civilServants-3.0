@@ -19,7 +19,7 @@
     </ol>
     <div class="articleListSearch">
       <input type="text" ng-model="searchTitle" my-placeholder placeholder="请输入搜索关键词">
-      <input type="button" value="搜索" ng-click="refreshList({page:1,search:searchTitle})">
+      <button class="btn btn-default" ng-click="refreshList({page:1,search:searchTitle})">搜索</button>
     </div>
     <div dw-loading="articleList">
       <div class="articleListHeader">
@@ -69,15 +69,14 @@
     line-height: 26px;
   }
   .articleListSearch input[type="text"]{
-    width: 300px;
+    width: 400px;
     padding-left: 10px;
   }
-  .articleListSearch input[type="button"]{
-    padding: 0 10px;
+  .articleListSearch .btn-default{
+    padding: 2px 15px;
 
   }
-  .articleListSearch input[type="text"],
-  .articleListSearch input[type="button"]{
+  .articleListSearch input[type="text"]{
     border-radius: 5px;
     outline: none;
     border:1px solid #e5e5e5;

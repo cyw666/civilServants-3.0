@@ -11,8 +11,6 @@ angular.module('luZhouApp')
     return {
       templateUrl: 'components/tmNoticeAnnouncement.html',
       restrict: 'EA',
-      transclude: true,
-      scope:true,
       link: function postLink(scope, element, attrs) {
       }
     };

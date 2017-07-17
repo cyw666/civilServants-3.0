@@ -53,20 +53,22 @@ angular.module('luZhouApp')
 
     //下单
     $scope.addOrder = function () {
-      if(totalCount>0){
-        commonService.getData(ALL_PORT.AddOrder.url, 'POST',
-          $.extend({}, ALL_PORT.AddOrder.data))
-          .then(function(response) {
-            if(response.Type==1){
-              // alert(response.Message);response.OrderId
-              $state.go('orderdetaillist',{orderId:response.Data.OrderId});
-            }else {
-              alert(response.Message);
-            }
-          });
-      }else {
-        alert('购物车为空，请添加商品到购物车！')
-      }
-
+      var addOrder = function () {
+        if(totalCount>0){
+          commonService.getData(ALL_PORT.AddOrder.url, 'POST',
+            $.extend({}, ALL_PORT.AddOrder.data))
+            .then(function(response) {
+              if(response.Type==1){
+                // alert(response.Message);response.OrderId
+                $state.go('orderdetaillist',{orderId:response.Data.OrderId});
+              }else {
+                alert(response.Message);
+              }
+            });
+        }else {
+          alert('购物车为空，请添加商品到购物车！')
+        }
+      };
+      commonService.limitSubmit(addOrder);
     }
   });

@@ -9,8 +9,6 @@
  */
 angular.module('luZhouApp')
   .controller('OrderlistCtrl', function ($scope, $stateParams, $state, $cookieStore, commonService, $loading) {
-    //防伪造请求
-    $scope.token = commonService.AntiForgeryToken();
     //退出
     $scope.loginOut = commonService.loginOut;
     //请求用户信息

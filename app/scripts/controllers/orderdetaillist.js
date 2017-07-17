@@ -10,8 +10,6 @@
 angular.module('luZhouApp')
   .controller('OrderdetaillistCtrl', function ($scope, $state,$location, $stateParams,$rootScope, $cookieStore, commonService, $timeout, $loading) {
     $scope.orderId = $stateParams.orderId;
-    //防伪造请求
-    $scope.token = commonService.AntiForgeryToken();
     //退出
     $scope.loginOut = commonService.loginOut;
     //请求用户信息

@@ -50,21 +50,25 @@ angular.module('luZhouApp')
         $scope.messageName = '';
         $scope.messageContent = '';
         $scope.addMessage = function(options) {
+          var addMessage = function () {
             if (options.Name.length < 2) {
-                alert("标题字数不能少于2个字！");
+              alert("标题字数不能少于2个字！");
             } else if (options.Content.length >= 249) {
-                alert('留言说明字数不能超过249个字');
+              alert('留言说明字数不能超过249个字');
             } else if (options.Content.length < 7) {
-                alert('留言说明字数不能少于7个字');
+              alert('留言说明字数不能少于7个字');
             } else {
-                commonService.getData(ALL_PORT.GetMessageAdd.url, 'POST',
-                    $.extend({}, ALL_PORT.GetMessageAdd.data, $scope.token, options))
-
+              commonService.getData(ALL_PORT.GetMessageAdd.url, 'POST',
+                $.extend({}, ALL_PORT.GetMessageAdd.data, $scope.token, options))
                 .then(function(response) {
-                    $('.notemodal').modal('hide');
-                    alert(response.Message);
+                  $('.notemodal').modal('hide');
+                  alert(response.Message);
                 });
             }
+          };
+
+          commonService.limitSubmit(addMessage);
+
         };
 
     });

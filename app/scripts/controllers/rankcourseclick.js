@@ -9,8 +9,7 @@
  */
 angular.module('luZhouApp')
   .controller('RankcourseclickCtrl', function ($scope, $rootScope, $cookieStore, commonService, $timeout, $loading, $stateParams) {
-    //防伪造请求
-    $scope.token = commonService.AntiForgeryToken();
+
     //退出
     $scope.loginOut = commonService.loginOut;
     //请求用户信息

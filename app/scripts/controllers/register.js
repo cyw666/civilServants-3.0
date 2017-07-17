@@ -120,19 +120,22 @@ angular.module('luZhouApp')
     };
 
     //注册
-    $scope.clickRegister =function () {
-      // console.log($scope.register);
-      if(!$scope.accountError && !$scope.passwordError && !$scope.confirmError && !$scope.confirmError2 && !$scope.emailError && !$scope.emailError2 && !$scope.nameError && !$scope.idcardError && !$scope.idcardError2 && !$scope.groupidError && !$scope.mobileError && !$scope.mobileError2 && !$scope.smgcodeError){
-        commonService.getData(ALL_PORT.Register.url, 'POST',$scope.register,token)
-          .then(function(response) {
-            if(response.Type==1){
-              alert(response.Message);
-              $state.go('main');
-            }else {
-              alert(response.Message);
-            }
-          });
-      }
+    $scope.clickRegister = function () {
+      var clickRegister = function () {
+        if(!$scope.accountError && !$scope.passwordError && !$scope.confirmError && !$scope.confirmError2 && !$scope.emailError && !$scope.emailError2 && !$scope.nameError && !$scope.idcardError && !$scope.idcardError2 && !$scope.groupidError && !$scope.mobileError && !$scope.mobileError2 && !$scope.smgcodeError){
+          commonService.getData(ALL_PORT.Register.url, 'POST',$scope.register,token)
+            .then(function(response) {
+              if(response.Type==1){
+                alert(response.Message);
+                $state.go('main');
+              }else {
+                alert(response.Message);
+              }
+            });
+        }
+      };
+      commonService.limitSubmit(clickRegister);
+
     };
     $scope.$watch('register.groupid',function () {
       if($scope.register.groupid){

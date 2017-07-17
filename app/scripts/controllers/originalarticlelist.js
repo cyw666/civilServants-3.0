@@ -9,10 +9,6 @@
  */
 angular.module('luZhouApp')
   .controller('OriginalarticlelistCtrl', function ($scope, $http,$timeout, $rootScope, $cookieStore, commonService, $location, $loading) {
-    //保持在线
-    //commonService.keepOnline();
-    //防伪造请求
-    $scope.token = commonService.AntiForgeryToken();
     //退出
     $scope.loginOut = commonService.loginOut;
     //请求用户信息

@@ -31,16 +31,16 @@
             <span class="list1">考试名称</span>
             <span class="list2">考试学时</span>
             <span class="list6">时限</span>
-            <span class="list5">参加测试</span>
-            <span class="list4">考试时间</span>
+            <span class="list4">参加测试</span>
+            <span class="list5">考试时间</span>
           </div>
           <div class="list" ng-repeat="unFinish in TotalData.UnfinishModel">
             <p class="clearfix">
               <span class="list1 cur_name" title="{{unFinish.Name}}"><a target="_blank" ng-click="havTest(unFinish.Id)">{{unFinish.Name}}</a></span>
               <span class="list2">{{unFinish.CreditHour}}</span>
               <span class="list6">{{unFinish.TimeLimit}}</span>
-              <span class="list5"><a target="_blank" ng-click="havTest(unFinish.Id)">参加测试</a></span>
-              <span class="list4">{{unFinish.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{unFinish.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+              <span class="list4"><a target="_blank" ng-click="havTest(unFinish.Id)">参加测试</a></span>
+              <span class="list5">{{unFinish.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{unFinish.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
             </p>
           </div>
           <div ng-transclude="pagation"></div>
@@ -74,29 +74,29 @@
 </div>
 <style>
   .myTab .perlist .list1 {
-    width: 260px;
+    width: 25%;
     height: 37px;
   }
   .myTab .perlist .list .list1 {
-    text-align: left;
+    /*text-align: left;*/
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     padding-left: 10px;
   }
   .myTab .perlist .list2 {
-    width: 100px;
+    width: 10%;
   }
   .myTab .perlist .list3 {
-    width: 95px;
+    width: 15%;
   }
   .myTab .perlist .list4 {
-    width: 170px;
+    width: 15%;
   }
   .myTab .perlist .list5 {
-    width: 110px;
+    width: 25%;
   }
   .myTab .perlist .list6 {
-    width: 90px;
+    width: 10%;
   }
 </style>

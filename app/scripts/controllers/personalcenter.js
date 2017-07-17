@@ -116,30 +116,32 @@ angular.module('luZhouApp')
 
     //编辑笔记后提交请求
     $scope.editNote = function (options) {
-      var editNoteParams = $.extend({}, ALL_PORT.AddNote.data, $scope.token, options);
-      if (editNoteParams.Name.length < 2) {
-        alert('笔记名称字数不能少于2个字！');
-      } else if (editNoteParams.Content.length < 7) {
-        alert('笔记内容字数不能少于7个字');
-      } else if (editNoteParams.Content.length >= 249) {
-        alert('笔记内容字数不能超过249个字');
-      } else if (editNoteParams.Name.length >= 2 && editNoteParams.Content.length < 249) {
-        commonService.getData(ALL_PORT.AddNote.url, 'POST',
-          editNoteParams)
-          .then(function (response) {
-            $('.modal').modal('hide');
-            alert('添加完成！')
-            if ($scope.vm.activeTab == 1) {
-              $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
-            } else if ($scope.vm.activeTab == 2) {
-              $scope.searchMyCenterCourse({'courseType': 'Appointed', 'title': $scope.searchTitle});
-            } else {
-              $scope.searchMyCenterCourse({'courseType': 'Finish', 'title': $scope.searchTitle});
+      var editNote = function () {
+        var editNoteParams = $.extend({}, ALL_PORT.AddNote.data, $scope.token, options);
+        if (editNoteParams.Name.length < 2) {
+          alert('笔记名称字数不能少于2个字！');
+        } else if (editNoteParams.Content.length < 7) {
+          alert('笔记内容字数不能少于7个字');
+        } else if (editNoteParams.Content.length >= 249) {
+          alert('笔记内容字数不能超过249个字');
+        } else if (editNoteParams.Name.length >= 2 && editNoteParams.Content.length < 249) {
+          commonService.getData(ALL_PORT.AddNote.url, 'POST',
+            editNoteParams)
+            .then(function (response) {
+              $('.modal').modal('hide');
+              alert('添加完成！')
+              if ($scope.vm.activeTab == 1) {
+                $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
+              } else if ($scope.vm.activeTab == 2) {
+                $scope.searchMyCenterCourse({'courseType': 'Appointed', 'title': $scope.searchTitle});
+              } else {
+                $scope.searchMyCenterCourse({'courseType': 'Finish', 'title': $scope.searchTitle});
 
-            }
-          });
-      }
-
+              }
+            });
+        }
+      };
+      commonService.limitSubmit(editNote);
     }
 
     //查看笔记
@@ -178,36 +180,42 @@ angular.module('luZhouApp')
 
     //提交编辑
     $scope.addNoteUpdate = function (options) {
-      commonService.getData(ALL_PORT.NoteUpdate.url, 'POST',
-        $.extend({}, ALL_PORT.NoteUpdate.data, $scope.token, options, {Id: $scope.noteid}))
+      var addNoteUpdate = function () {
+        commonService.getData(ALL_PORT.NoteUpdate.url, 'POST',
+          $.extend({}, ALL_PORT.NoteUpdate.data, $scope.token, options, {Id: $scope.noteid}))
+          .then(function (response) {
+            if (response.Type == 1) {
+              alert('更新成功');
+              $('.modal').modal('hide');
+            }
+          });
+      };
+      commonService.limitSubmit(addNoteUpdate);
 
-        .then(function (response) {
-          if (response.Type == 1) {
-            alert('更新成功');
-            $('.modal').modal('hide');
-          }
-        });
     }
 
     //删除笔记
     $scope.delNote = function (id) {
-      commonService.getData(ALL_PORT.DelNote.url, 'POST',
-        $.extend({}, ALL_PORT.DelNote.data, $scope.token, {Id: id}))
+      var delNote = function () {
+        commonService.getData(ALL_PORT.DelNote.url, 'POST',
+          $.extend({}, ALL_PORT.DelNote.data, $scope.token, {Id: id}))
+          .then(function (response) {
+            if (response.Type == 1) {
+              alert("删除成功！");
+              $scope.seeNote($scope.courseId, $scope.courseName);
+              if ($scope.vm.activeTab == 1) {
+                $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
+              } else if ($scope.vm.activeTab == 2) {
+                $scope.searchMyCenterCourse({'courseType': 'Appointed', 'title': $scope.searchTitle});
+              } else {
+                $scope.searchMyCenterCourse({'courseType': 'Finish', 'title': $scope.searchTitle});
 
-        .then(function (response) {
-          if (response.Type == 1) {
-            alert("删除成功！");
-            $scope.seeNote($scope.courseId, $scope.courseName);
-            if ($scope.vm.activeTab == 1) {
-              $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
-            } else if ($scope.vm.activeTab == 2) {
-              $scope.searchMyCenterCourse({'courseType': 'Appointed', 'title': $scope.searchTitle});
-            } else {
-              $scope.searchMyCenterCourse({'courseType': 'Finish', 'title': $scope.searchTitle});
-
+              }
             }
-          }
-        });
+          });
+      };
+      commonService.limitSubmit(delNote);
+
     }
 
     //添加计划
@@ -228,29 +236,32 @@ angular.module('luZhouApp')
 
     //提交计划
     $scope.addPlan = function (options) {
-      var editPlanParams = $.extend({}, ALL_PORT.AddStudyPlan.data, $scope.token, options);
-      // console.log(editPlanParams);
-      if (editPlanParams.Remark.length < 7) {
-        alert("计划内容字数不能少于7个字！");
-      } else if (editPlanParams.Remark.length >= 249) {
-        alert('计划内容字数不能超过249个字');
-      } else {
-        commonService.getData(ALL_PORT.AddStudyPlan.url, 'POST',
-          editPlanParams)
+      var addPlan = function () {
+        var editPlanParams = $.extend({}, ALL_PORT.AddStudyPlan.data, $scope.token, options);
+        // console.log(editPlanParams);
+        if (editPlanParams.Remark.length < 7) {
+          alert("计划内容字数不能少于7个字！");
+        } else if (editPlanParams.Remark.length >= 249) {
+          alert('计划内容字数不能超过249个字');
+        } else {
+          commonService.getData(ALL_PORT.AddStudyPlan.url, 'POST',
+            editPlanParams)
 
-          .then(function (response) {
-            $('.modal').modal('hide');
-            alert('添加完成！')
-            if ($scope.vm.activeTab == 1) {
-              $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
-            } else if ($scope.vm.activeTab == 2) {
-              $scope.searchMyCenterCourse({'courseType': 'Appointed', 'title': $scope.searchTitle});
-            } else {
-              $scope.searchMyCenterCourse({'courseType': 'Finish', 'title': $scope.searchTitle});
-            }
-          });
-      }
+            .then(function (response) {
+              $('.modal').modal('hide');
+              alert('添加完成！')
+              if ($scope.vm.activeTab == 1) {
+                $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
+              } else if ($scope.vm.activeTab == 2) {
+                $scope.searchMyCenterCourse({'courseType': 'Appointed', 'title': $scope.searchTitle});
+              } else {
+                $scope.searchMyCenterCourse({'courseType': 'Finish', 'title': $scope.searchTitle});
+              }
+            });
+        }
 
+      };
+      commonService.limitSubmit(addPlan);
     }
 
 
@@ -274,49 +285,55 @@ angular.module('luZhouApp')
 
     //提交编辑计划
     $scope.addPlanUpdate = function (options) {
-      var addPlanUpdateParams = $.extend({}, ALL_PORT.EditStudyPlanUpdate.data, $scope.token, options);
-      if (addPlanUpdateParams.Remark.length < 7) {
-        alert("计划内容字数不能少于7个字！");
-      } else if (addPlanUpdateParams.Remark.length >= 249) {
-        alert('计划内容字数不能超过249个字');
-      } else {
-        commonService.getData(ALL_PORT.EditStudyPlanUpdate.url, 'POST',
-          addPlanUpdateParams)
+      var addPlanUpdate = function () {
+        var addPlanUpdateParams = $.extend({}, ALL_PORT.EditStudyPlanUpdate.data, $scope.token, options);
+        if (addPlanUpdateParams.Remark.length < 7) {
+          alert("计划内容字数不能少于7个字！");
+        } else if (addPlanUpdateParams.Remark.length >= 249) {
+          alert('计划内容字数不能超过249个字');
+        } else {
+          commonService.getData(ALL_PORT.EditStudyPlanUpdate.url, 'POST',
+            addPlanUpdateParams)
 
-          .then(function (response) {
-            $('.modal').modal('hide');
-            alert(response.Message)
-            if ($scope.vm.activeTab == 1) {
-              $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
-            } else if ($scope.vm.activeTab == 2) {
-              $scope.searchMyCenterCourse({'courseType': 'Appointed', 'title': $scope.searchTitle});
-            } else {
-              $scope.searchMyCenterCourse({'courseType': 'Finish', 'title': $scope.searchTitle});
-            }
-          });
-      }
+            .then(function (response) {
+              $('.modal').modal('hide');
+              alert(response.Message)
+              if ($scope.vm.activeTab == 1) {
+                $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
+              } else if ($scope.vm.activeTab == 2) {
+                $scope.searchMyCenterCourse({'courseType': 'Appointed', 'title': $scope.searchTitle});
+              } else {
+                $scope.searchMyCenterCourse({'courseType': 'Finish', 'title': $scope.searchTitle});
+              }
+            });
+        }
+      };
+      commonService.limitSubmit(addPlanUpdate);
+
     }
 
     //删除课程
     $scope.deleatUserCourse = function (id) {
-      commonService.getData(ALL_PORT.DelUserCourseReg.url, 'POST',
-        $.extend({}, ALL_PORT.DelUserCourseReg.data, $scope.token, {courseId: id}))
-
-        .then(function (response) {
-          if (response.Type == 1) {
-            alert(response.Message)
-            if ($scope.vm.activeTab == 1) {
-              $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
-            } else if ($scope.vm.activeTab == 2) {
-              $scope.searchMyCenterCourse({'courseType': 'Appointed', 'title': $scope.searchTitle});
-            } else {
-              $scope.searchMyCenterCourse({'courseType': 'Finish', 'title': $scope.searchTitle});
+      var deleatUserCourse = function () {
+        commonService.getData(ALL_PORT.DelUserCourseReg.url, 'POST',
+          $.extend({}, ALL_PORT.DelUserCourseReg.data, $scope.token, {courseId: id}))
+          .then(function (response) {
+            if (response.Type == 1) {
+              alert(response.Message)
+              if ($scope.vm.activeTab == 1) {
+                $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
+              } else if ($scope.vm.activeTab == 2) {
+                $scope.searchMyCenterCourse({'courseType': 'Appointed', 'title': $scope.searchTitle});
+              } else {
+                $scope.searchMyCenterCourse({'courseType': 'Finish', 'title': $scope.searchTitle});
+              }
+            } else if (response.Type == 0) {
+              alert(response.Message);
             }
-          } else if (response.Type == 0) {
-            alert(response.Message);
-          }
+          });
+      };
+      commonService.limitSubmit(deleatUserCourse);
 
-        });
     };
 
     //查看考试列表

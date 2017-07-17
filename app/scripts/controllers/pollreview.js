@@ -9,9 +9,6 @@
  */
 angular.module('luZhouApp')
   .controller('PollreviewCtrl', function ($scope, $timeout, $rootScope, $cookieStore, commonService, $location, $loading, $stateParams) {
-    //保持在线
-    //commonService.keepOnline();
-    $scope.token = commonService.AntiForgeryToken();
 
     var parameter1 = $stateParams.parameter1;
     var parameter2 = $stateParams.parameter2;
@@ -34,7 +31,7 @@ angular.module('luZhouApp')
 
     $scope.getRatePoll = function (AnstCount,allData) {
       var allPoll = parseInt(allData.Ans1stCount)+parseInt(allData.Ans2ndCount)+parseInt(allData.Ans3rdCount)+parseInt(allData.Ans4thCount);
-      var val = (AnstCount/allPoll).toFixed(2)*100;
+      var val = (AnstCount*100/allPoll).toFixed(2);
       return val;
     }
   });

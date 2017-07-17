@@ -23,7 +23,7 @@
             <span class="list2">课程</span>
             <span class="list1">点击次数</span>
           </div>
-          <div class="list" ng-repeat="rankCourseClickList in rankCourseClick.ListData">
+          <div class="list" ng-repeat="rankCourseClickList in rankCourseClick.ListData"  ng-class="{'rankListBg':$index%2!=0}">
             <p class="clearfix">
               <span class="list1">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
               <span class="list2" title="{{rankCourseClickList.Name}}"><a ui-sref="courseDetails({Id:rankCourseClickList.Id})" target="_blank">{{rankCourseClickList.Name}}</a></span>

@@ -25,7 +25,7 @@
             <span class="list1">学次</span>
             <span class="list1">单位名称</span>
           </div>
-          <div class="list" ng-repeat="userRankingDataList in userRankingData.ListData">
+          <div class="list" ng-repeat="userRankingDataList in userRankingData.ListData"  ng-class="{'rankListBg':$index%2!=0}">
             <p class="clearfix">
               <span class="list1">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
               <span class="list1">{{userRankingDataList.UserName}}</span>

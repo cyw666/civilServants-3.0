@@ -15,7 +15,7 @@
       <span class="list2">课程名称</span>
       <span class="list3">点击数</span>
     </p>
-    <ul class="rankingList clearfix" ng-repeat="rankingData in courseRankingList.ListData">
+    <ul class="rankingList clearfix" ng-repeat="rankingData in courseRankingList.ListData"  ng-class="{'rankListBg':$index%2!=0}">
       <li class="list1">
         <span ng-if="$index<3" ng-class="{'rankFirstBg':$index==0,'rankSecondBg':$index==1,'rankThirdBg':$index==2}"></span>
         <span ng-if="$index>=3">{{$index+1}}</span>

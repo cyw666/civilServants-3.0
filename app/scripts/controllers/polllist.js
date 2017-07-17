@@ -9,10 +9,6 @@
  */
 angular.module('luZhouApp')
   .controller('PolllistCtrl', function ($scope, $location, $rootScope, $cookieStore, commonService, $timeout, $loading,$stateParams) {
-    //保持在线
-    //commonService.keepOnline();
-    //防伪造请求
-    $scope.token = commonService.AntiForgeryToken();
     //退出
     $scope.loginOut = commonService.loginOut;
     //请求用户信息
@@ -21,7 +17,6 @@ angular.module('luZhouApp')
       $loading.finish('loginOut');
       $scope.userMessage = response.Data;
     });
-
 
     //报名状态
     $scope.JudgeStatus = commonService.JudgeStatus;

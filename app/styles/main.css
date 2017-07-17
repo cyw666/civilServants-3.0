@@ -291,7 +291,7 @@ h4 {
   line-height: 49px;
   text-indent: 49px;
   font-size: 20px;
-  color: #000;
+  color: #333;
 }
 .tag {
   padding: 10px 20px 10px 30px;
@@ -337,6 +337,9 @@ h4 {
   background: #db1011;
   padding: 0;
 }
+.categoryGuide li a.btn:hover {
+  background-color: #f50001;
+}
 /*路径导航通用样式*/
 .breadcrumb {
 }
@@ -344,7 +347,7 @@ h4 {
   background: url(../images/datePicker.gif) no-repeat right;
 }
 .breadcrumb .currentPosition{
-  color: #000;
+  color: #333;
   padding-left: 25px;
   background: url("../images/link.gif") 0 2px no-repeat;
 }
@@ -391,7 +394,7 @@ h4.title-h4{
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background-color: #000;
+  background-color: #333;
 }
 /*星星*/
 .star {
@@ -471,9 +474,10 @@ h4.title-h4{
   background-color: #f3f3f3;
 }
 .myTab ul.nav-tabs>li a {
-  color: #000;
+  color: #333;
   width: auto;
   padding: 13px 27px;
+  border-top:3px solid #f3f3f3;
   margin:0;
   font-size: 16px;
   font-weight: 600;
@@ -523,29 +527,36 @@ h4.title-h4{
 .rankTab {
   text-align: center;
 }
+  /*偶数行背景*/
+.rankListBg {
+  background-color: #f8f8f8;
+}
 .rankTab ul.nav-tabs {
   background-color: #fff;
   border-bottom: none;
+  height: 45px;
 }
 .rankTab ul.nav-tabs>li {
   width: 33.33%;
-  height: 45px;
+  text-align: center;
 }
 .rankTab ul.nav-tabs>li a {
-  color: #000;
+  display: inline-block;
+  color: #333;
   height: 45px;
   line-height: 45px;
   padding: 0;
   margin: 0 30px;
   font-size: 16px;
-  font-weight: 600;
   width: 33.33%;
+  border-bottom:3px solid transparent;
 }
 .rankTab ul.nav-tabs>li.active a {
   color: #db1011;
   border-bottom:3px solid #db1011;
   text-align: center;
   background-color: #fff;
+  font-weight: 600;
 }
 .form-group input {
   width: 400px;
@@ -564,7 +575,7 @@ h4.title-h4{
 }
 /*暂无数据*/
 .result{
-  color: #000;
+  color: #333;
   font-weight: bold;
   font-size: 40px;
   font-family: 黑体;

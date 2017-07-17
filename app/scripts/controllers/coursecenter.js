@@ -9,10 +9,6 @@
  */
 angular.module('luZhouApp')
 	.controller('CoursecenterCtrl', function($scope, $rootScope, $cookieStore, commonService, $timeout, $loading, $stateParams) {
-		//判断能否访问
-    // commonService.isVisit();
-		//保持在线
-		//commonService.keepOnline();
 		$scope.showInput1 = true;
 		$scope.showInput2 = false;
 		$scope.showInput3 = false;

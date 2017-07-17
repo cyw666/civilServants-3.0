@@ -21,23 +21,15 @@ angular.module('luZhouApp')
     var getCookie = commonService.getCookie;
     var setCookie = commonService.setCookie;
     var delCookie = commonService.delCookie;
-    var RM = getCookie("RM");
-    var Account,PassWord;
-    if(getCookie("Account")&&getCookie("PassWord")){
-      Account = TBase64.decode(getCookie("Account"));
-      PassWord = TBase64.decode(getCookie("PassWord"));
-    }
-    if(RM == 'true'){
+    if(getCookie("RM")){
+      var userCookies = TBase64.decode(getCookie("RM")).split('|');
+      var RM = userCookies[0];
+      var Account = userCookies[1];
+      var PassWord = userCookies[2];
       $scope.login.Account=Account;
       $scope.login.PassWord=PassWord;
       $scope.login.RememberMe=true;
-    }else if(RM == 'false'){
-      $scope.login = {
-        Account: '',
-        PassWord: '',
-        RememberMe: false
-      };
-    }else if (RM === null){
+    }else {
       $scope.login = {
         Account: '',
         PassWord: '',
@@ -90,87 +82,87 @@ angular.module('luZhouApp')
     }
     //设置cookie
     function setUserCookie() {
-      setCookie("RM",$scope.login.RememberMe.toString(),7);
-      if(!Account&&!PassWord&&$scope.login.RememberMe){
-        setCookie("Account",TBase64.encode($scope.login.Account),7);
-        setCookie("PassWord",TBase64.encode($scope.login.PassWord),7);
-      }
-      if(!$scope.login.RememberMe){
-        delCookie("Account");
-        delCookie("PassWord");
+      if($scope.login.RememberMe){
+        var rmString = $scope.login.RememberMe+'|'+$scope.login.Account+'|'+$scope.login.PassWord;
+        setCookie("RM",TBase64.encode(rmString),7);
+      }else{
+        delCookie("RM");
       }
     };
     //点击登陆
     $scope.clickLogin = function() {
-      var loginParam = $.extend({},$scope.login);
-      var urlShort = "LoginCode";
-      if ($scope.login.ValidateCode) {
-        urlShort = "Login";
-      }else {
-        urlShort = "LoginCode";
-      }
-      if (!$scope.login.Account) {
-        alert('用户名不能为空！');
-        return;
-      }
-      if (!$scope.login.PassWord) {
-        alert('密码不能为空！');
-        return;
-      }
-      if (!$scope.login.ValidateCode&&$scope.showVerifyCode) {
-        alert('验证码不能为空！');
-        return;
-      }
-      $loading.start('login');
-      commonService.getData(API_URL + "/Page/" + urlShort, 'POST', $.extend({},loginParam, token))
-        .then(function(data) {
-          $loading.finish('login');
-          if (data.Type == 0) {
-            $scope.getVerifyCode();
-            $scope.showError = true;
-          } else if (data.Type == 1) {
-            setUserCookie();
-            $state.go($stateParams.name,JSON.parse($stateParams.params));
-          } else if (data.Type == 2) {
-            setUserCookie();
-            commonService.alertMs("首次登录，请修改密码！");
-            $state.go('modifyPassword');
+      var clickLogin = function () {
+        var loginParam = $.extend({},$scope.login);
+        var urlShort = "LoginCode";
+        if ($scope.login.ValidateCode) {
+          urlShort = "Login";
+        }else {
+          urlShort = "LoginCode";
+        }
+        if (!$scope.login.Account) {
+          alert('用户名不能为空！');
+          return;
+        }
+        if (!$scope.login.PassWord) {
+          alert('密码不能为空！');
+          return;
+        }
+        if (!$scope.login.ValidateCode&&$scope.showVerifyCode) {
+          alert('验证码不能为空！');
+          return;
+        }
+        $loading.start('login');
+        commonService.getData(API_URL + "/Page/" + urlShort, 'POST', $.extend({},loginParam, token))
+          .then(function(data) {
+            $loading.finish('login');
+            if (data.Type == 0) {
+              $scope.getVerifyCode();
+              $scope.showError = true;
+            } else if (data.Type == 1) {
+              setUserCookie();
+              $state.go($stateParams.name,JSON.parse($stateParams.params));
+            } else if (data.Type == 2) {
+              setUserCookie();
+              commonService.alertMs("首次登录，请修改密码！");
+              $state.go('modifyPassword');
 
-          } else if (data.Type == 3) {
-            if (window.confirm("帐号在别的地方登录，是否踢出？")) {
-              kickOut(data.Message);
-              return true;
+            } else if (data.Type == 3) {
+              if (window.confirm("帐号在别的地方登录，是否踢出？")) {
+                kickOut(data.Message);
+                return true;
+              } else {
+                return false;
+              }
+            } else if (data.Type == 4) {
+              commonService.alertMs("此电脑已经有用户登录，您不能用其他帐号再次登录！");
+              $scope.getVerifyCode();
+            } else if (data.Type == 5) {
+              commonService.alertMs("平台当前在线人数到达上限，请稍后再试！");
+              $scope.getVerifyCode();
+            } else if (data.Type == 6) {
+              commonService.alertMs(data.Message);
+              $scope.getVerifyCode();
+            } else if (data.Type == 7) {
+              $scope.showValidateCodeError=true;
+              $scope.getVerifyCode();
+            } else if (data.Type == 10) {
+              commonService.alertMs("您还不是本平台成员，将为您转向您所在的平台：" + data.Message, 2);
+              $scope.getVerifyCode();
+              return;
+            } else if (data.Type == 11) {
+              commonService.alertMs(data.Message);
+              $scope.getVerifyCode();
+            } else if (data.Type == 12 || data.Type == 13) {
+              commonService.alertMs(data.Message);
+              $scope.getVerifyCode();
             } else {
-              return false;
+              alert(data.Message);
             }
-          } else if (data.Type == 4) {
-            commonService.alertMs("此电脑已经有用户登录，您不能用其他帐号再次登录！");
-            $scope.getVerifyCode();
-          } else if (data.Type == 5) {
-            commonService.alertMs("平台当前在线人数到达上限，请稍后再试！");
-            $scope.getVerifyCode();
-          } else if (data.Type == 6) {
-            commonService.alertMs(data.Message);
-            $scope.getVerifyCode();
-          } else if (data.Type == 7) {
-            $scope.showValidateCodeError=true;
-            $scope.getVerifyCode();
-          } else if (data.Type == 10) {
-            commonService.alertMs("您还不是本平台成员，将为您转向您所在的平台：" + data.Message, 2);
-            $scope.getVerifyCode();
-            return;
-          } else if (data.Type == 11) {
-            commonService.alertMs(data.Message);
-            $scope.getVerifyCode();
-          } else if (data.Type == 12 || data.Type == 13) {
-            commonService.alertMs(data.Message);
-            $scope.getVerifyCode();
-          } else {
-            alert(data.Message);
-          }
-        }, function(data) {
-          alert("登陆异常！");
-          window.location.reload();
-        });
+          }, function(data) {
+            alert("登陆异常！");
+            window.location.reload();
+          });
+      }
+      commonService.limitSubmit(clickLogin);
     }
   });

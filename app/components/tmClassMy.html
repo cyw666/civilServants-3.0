@@ -6,7 +6,7 @@
       {{classMyData.TitleNav}}
     </p>
     <p class="more pull-right">
-      <a ui-sref="classlist({type:classType})" target="_blank"><img src="../images/more.png" alt="更多"></a>
+      <a ui-sref="classlist({type:classType})" target="_self"><img src="../images/more.png" alt="更多"></a>
     </p>
   </div>
   <div class="tmBorder">
@@ -17,9 +17,7 @@
           <span class="list2">学员</span>
         </li>
         <li class="clearfix" title="{{classList.Name}}" ng-repeat="classList in classMyData.ListData">
-        <span class="list1">
-          <a ui-sref="classDetail({Id:classList.Id})">{{classList.Name}}</a>
-        </span>
+          <span class="list1"><a ui-sref="classDetail({Id:classList.Id})">{{classList.Name}}</a></span>
           <span class="list2">{{classList.CurrentUser}}</span>
         </li>
       </ul>
@@ -30,30 +28,44 @@
   .classMy {
     min-height: 180px;
   }
-  .classMy .listtitle{
+
+  .classMy .listtitle {
     width: auto;
     background-color: #f8f8f8;
   }
-  .classMy .listtitle span{
+
+  .classMy .listtitle span {
     height: 48px;
     line-height: 48px;
     font-size: 16px;
     font-weight: 600;
   }
-  .classMy  span{
+
+  .classMy span {
     float: left;
     line-height: 25px;
     height: 25px;
   }
-  .classMy .list1{
+
+  .classMy .list1 {
     text-align: center;
     width: 160px;
+    padding: 0 20px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .classMy .list2{
+
+  .classMy .list2 {
     width: 100px;
     text-align: center;
+  }
+  .classMy .myclass {
+    padding-bottom: 10px;
+  }
+  .classMy .myclass span {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
   }
 </style>

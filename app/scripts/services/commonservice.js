@@ -221,7 +221,7 @@ angular.module('luZhouApp')
       }
       var exp = new Date();
       exp.setTime(exp.getTime() - 1);
-      var cval=this.getCookie(name);
+      var cval=getCookie(name);
       if(cval!=null)
         document.cookie= name + "="+cval+";expires="+exp.toGMTString();
     }
@@ -280,7 +280,6 @@ angular.module('luZhouApp')
     }
     //退出
     this.loginOut = function (str) {
-      // console.log(antiForgeryToken.AntiForgeryToken());
       $loading.start('loginOut');
       $http({
         method: 'POST',
@@ -640,6 +639,32 @@ angular.module('luZhouApp')
         window.opener = null;
         window.open('', '_self', '');
         window.close();
+      }
+    };
+    //限制多次提交
+    this.limitSubmit = function (callback) {
+      if(!limitTime){
+        limitTime = 3;
+        $timeout(function () {
+          limitTime = 0;
+        },3000);
+
+        /*var timePromise;
+        timePromise = $interval(function(){
+          if(limitTime==0){
+            limitTime=0;
+            $interval.cancel(timePromise);
+            timePromise = null;
+            debugger
+            return;
+          }else{
+            limitTime--;
+          }
+        },1000,100);*/
+
+        callback();
+      }else {
+        alert("提交过于频繁，请5秒后再试！");
       }
     }
   });

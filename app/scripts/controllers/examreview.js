@@ -9,13 +9,8 @@
  */
 angular.module('luZhouApp')
     .controller('ExamreviewCtrl', function($scope, $timeout, $rootScope, $cookieStore, commonService, $location, $loading, $stateParams) {
-        //判断能否访问
-        // commonService.isVisit();
-        //保持在线
-        //commonService.keepOnline();
         //退出
         $scope.loginOut = commonService.loginOut;
-        $scope.token = commonService.AntiForgeryToken();
         //请求用户信息
         $loading.start('loginOut');
         commonService.getData(ALL_PORT.LoginLong.url, 'POST', ALL_PORT.LoginLong.data)

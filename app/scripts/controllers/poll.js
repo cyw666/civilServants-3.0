@@ -9,8 +9,7 @@
  */
 angular.module('luZhouApp')
   .controller('PollCtrl', function ($scope, $http, $rootScope, $cookieStore, commonService, $state,$location, $loading, $stateParams, $interval) {
-    //保持在线
-    //commonService.keepOnline();
+
     $scope.token = commonService.AntiForgeryToken();
     $loading.start('exam');
     var Id = $stateParams.Id;
@@ -81,25 +80,19 @@ angular.module('luZhouApp')
 
       if (e == "1"||((str0 + str1 + str2) === "" || ((str0 + str1 + str2) !== "" && confirm(str0 + str1 + str2 + "未答,是否提交?")))) {
         var params = $("#editForm").serialize();
-        $http({
-          method: 'POST',
-          url: ALL_PORT.PostExam.url,
-          data: params,
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-          }
-        }).success(function(response) {
-          if (response.Type == 1) {
-            alert(response.Message);
-            $state.go('pollreview',{parameter1:Id,parameter2:response.Value});
+        commonService.getData(ALL_PORT.PostExam.url, 'POST', params)
+          .then(function (response) {
+            if (response.Type == 1) {
+              alert(response.Message);
+              $state.go('pollreview',{parameter1:Id,parameter2:response.Value});
 
-          } else {
-            alert(response.Message);
-          }
-        }).error(function(error, status) {
-          alert("提交失败！");
-          window.close();
-        });
+            } else {
+              alert(response.Message);
+            }
+          },function (error) {
+            alert("提交失败！");
+            window.close();
+          });
 
       }
     };

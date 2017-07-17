@@ -1,15 +1,15 @@
 <!--@*通知公告*@-->
 
-<div class="noticeAnnouncement">
+<!--<div class="noticeAnnouncement">
   <div class="notice"  dw-loading="noticeAnnouncement">
     <div class="notice-heading">
       <div id="carousel-special-training" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
+        &lt;!&ndash; Indicators &ndash;&gt;
         <ol class="carousel-indicators">
           <li ng-repeat="noticeList in noticeData.ListData" ng-class="{'active':$index==0}" data-target="#carousel-special-training" data-slide-to="{{$index}}"></li>
         </ol>
 
-        <!-- Wrapper for slides -->
+        &lt;!&ndash; Wrapper for slides &ndash;&gt;
         <div class="carousel-inner" role="listbox">
           <div class="item clearfix"  ng-repeat="noticeList in noticeData.ListData" ng-class="{'active':$index==0}">
             <div>
@@ -20,7 +20,7 @@
           </div>
         </div>
 
-        <!-- Controls -->
+        &lt;!&ndash; Controls &ndash;&gt;
         <a class="left" href="#carousel-special-training" role="button" data-slide="prev">
           <span class="sr-only">Previous</span>
         </a>
@@ -43,61 +43,88 @@
       </div>
     </div>
   </div>
+</div>-->
+<div class="noticeAnnouncement">
+  <div class="notice" dw-loading="noticeAnnouncement">
+    <div id="noticeSlide" class="slideBox">
+      <ul class="items">
+        <li ng-repeat="noticeList in noticeData.ListData" repeat-finish="startSlide()">
+          <a ui-sref="noticeDetail({ID:noticeList.Id})" title="{{noticeList.Name}}" target="_blank">
+            <img ng-src="{{noticeData.Path+'/'+noticeList.Img}}" err-Src="images/notFound.jpeg">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="notice-body clearfix">
+      <div class="notice-body-left pull-left">通知公告</div>
+      <div class="notice-body-right pull-left">
+        <ul class="clearfix">
+          <li class="pull-left" ng-repeat="noticeList in noticeData.ListData">
+            <span class="triangleRight"></span>
+            <a class="title ellipsis" ui-sref="noticeDetail({ID:noticeList.Id})" title="{{noticeList.Name}}"
+               target="_blank">{{noticeList.Name}}</a>
+            <span class="time">{{noticeList.CreateDate | dateFilter |date :'yyyy-MM-dd'}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
-
 <style>
-.noticeAnnouncement {
-  /*background-color: #f3f3f3;*/
-  height: 482px;
-  width: 590px;
-  border: 1px solid #eee;
-  padding: 10px;
-}
-.noticeAnnouncement .carousel-inner img {
-  width: 568px;
-  height: 350px;
-}
-.noticeAnnouncement .notice-heading {
-  text-align: center;
-  width: 568px;
-  height: 350px;
-}
-.noticeAnnouncement .notice-body {
-  background-color: #f3f3f3;
-  margin-top: 10px;
-}
-.noticeAnnouncement .notice-body .notice-body-left{
-  height: 80px;
-  padding: 0 19px;
-  border-right: 1px solid #ddd;
-  font-size: 14px;
-  font-weight: bold;
-  color: #db1011;
-  margin: 10px auto;
-  text-align: center;
-  writing-mode: vertical-lr;/*从左向右 从右向左是 writing-mode: vertical-rl;*/
-  writing-mode: tb-lr;/*IE浏览器的从左向右 从右向左是 writing-mode: tb-rl；*/
-}
-.noticeAnnouncement .notice-body .notice-body-right{
-  width: 500px;
-}
-.noticeAnnouncement .notice-body .notice-body-right li{
-  height: 33px;
-  line-height: 33px;
-}
-.noticeAnnouncement .notice-body .notice-body-right span{
-  display: inline-block;
-  float: left;
-}
-.noticeAnnouncement .notice-body .notice-body-right .triangleRight{
-  margin: 12px 10px;
-}
-.noticeAnnouncement .notice-body .notice-body-right .title{
-  float: left;
-  width: 320px;
-}
-.noticeAnnouncement .notice-body .notice-body-right .time{
-  margin-left: 50px;
-  color: #666;
-}
+  .noticeAnnouncement {
+    height: 482px;
+    width: 590px;
+    border: 1px solid #eee;
+    padding: 10px;
+  }
+  .noticeAnnouncement .notice-body {
+    background-color: #f3f3f3;
+    margin-top: 10px;
+  }
+
+  .noticeAnnouncement .notice-body .notice-body-left {
+    height: 80px;
+    padding: 0 19px;
+    border-right: 1px solid #ddd;
+    font-size: 14px;
+    font-weight: bold;
+    color: #db1011;
+    margin: 10px auto;
+    text-align: center;
+    writing-mode: vertical-lr; /*从左向右 从右向左是 writing-mode: vertical-rl;*/
+    writing-mode: tb-lr; /*IE浏览器的从左向右 从右向左是 writing-mode: tb-rl；*/
+  }
+
+  .noticeAnnouncement .notice-body .notice-body-right {
+    width: 500px;
+  }
+
+  .noticeAnnouncement .notice-body .notice-body-right li {
+    height: 33px;
+    line-height: 33px;
+  }
+
+  .noticeAnnouncement .notice-body .notice-body-right span {
+    display: inline-block;
+    float: left;
+  }
+
+  .noticeAnnouncement .notice-body .notice-body-right .triangleRight {
+    margin: 12px 10px;
+  }
+
+  .noticeAnnouncement .notice-body .notice-body-right .title {
+    float: left;
+    width: 320px;
+  }
+
+  .noticeAnnouncement .notice-body .notice-body-right .time {
+    margin-left: 50px;
+    color: #666;
+  }
+
+  #noticeSlide img {
+    width: 568px;
+    height: 350px;
+  }
 </style>

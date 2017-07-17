@@ -57,54 +57,58 @@ angular.module('luZhouApp')
         business: /^[a-zA-Z\u4e00-\u9fa5]+$/
       };
 	    $scope.changeUser = function () {
-	    	if ($scope.sex == 1){
-	    	    $scope.sex='男';
-		    }else if ($scope.sex == 0){
-	    		$scope.sex='女';
-		    }
-		    if ($scope.Grade == $scope.initGrade){
-	    		$scope.Grade = $scope.initId;
-		    }
-		    var options = {Grade: $scope.Grade,Business: $scope.Business,Sex: $scope.sex, Email: $scope.Email, Mobile: $scope.Mobile, Tel: $scope.Tel};
+	      var changeUser = function () {
+          if ($scope.sex == 1){
+            $scope.sex='男';
+          }else if ($scope.sex == 0){
+            $scope.sex='女';
+          }
+          if ($scope.Grade == $scope.initGrade){
+            $scope.Grade = $scope.initId;
+          }
+          var options = {Grade: $scope.Grade,Business: $scope.Business,Sex: $scope.sex, Email: $scope.Email, Mobile: $scope.Mobile, Tel: $scope.Tel};
 
-		    var telTest = false, mobileTest = false, emailTest = false ,businessTest = false;
-		    if (options.Tel) {
-			    telTest = reg.tel.test(options.Tel);
-		    } else {
-			    telTest = true;
-		    }
-		    if (options.Mobile) {
-			    mobileTest = reg.mobile.test(options.Mobile);
-		    } else {
-			    mobileTest = true;
-		    }
-		    if (options.Email) {
-			    emailTest = reg.email.test(options.Email);
-		    } else {
-			    emailTest = true;
-		    }
-		    if (options.Business) {
-			    businessTest = reg.business.test(options.Business);
-		    } else {
-			    businessTest = true;
-		    }
+          var telTest = false, mobileTest = false, emailTest = false ,businessTest = false;
+          if (options.Tel) {
+            telTest = reg.tel.test(options.Tel);
+          } else {
+            telTest = true;
+          }
+          if (options.Mobile) {
+            mobileTest = reg.mobile.test(options.Mobile);
+          } else {
+            mobileTest = true;
+          }
+          if (options.Email) {
+            emailTest = reg.email.test(options.Email);
+          } else {
+            emailTest = true;
+          }
+          if (options.Business) {
+            businessTest = reg.business.test(options.Business);
+          } else {
+            businessTest = true;
+          }
 
 
-		    if (telTest && mobileTest && emailTest && businessTest) {
-			    var updateUserInfo = commonService.getData(ALL_PORT.UpdateUserInfo.url, 'POST', $.extend({}, ALL_PORT.UpdateUserInfo.data, options, token));
-			    updateUserInfo.then(function (response) {
-				    alert(response.Message);
-				    window.location.reload();
-			    });
-		    } else if (!mobileTest) {
-			    alert('请输入正确格式的手机号');
-		    } else if (!telTest) {
-			    alert('请输入正确格式的电话');
-		    } else if (!emailTest) {
-			    alert('请输入正确格式的邮箱');
-		    } else if (!businessTest){
-			    alert('请输入正确格式的职务名称');
-		    }
+          if (telTest && mobileTest && emailTest && businessTest) {
+            var updateUserInfo = commonService.getData(ALL_PORT.UpdateUserInfo.url, 'POST',
+              $.extend({}, ALL_PORT.UpdateUserInfo.data, options, token));
+            updateUserInfo.then(function (response) {
+              alert(response.Message);
+              window.location.reload();
+            });
+          } else if (!mobileTest) {
+            alert('请输入正确格式的手机号');
+          } else if (!telTest) {
+            alert('请输入正确格式的电话');
+          } else if (!emailTest) {
+            alert('请输入正确格式的邮箱');
+          } else if (!businessTest){
+            alert('请输入正确格式的职务名称');
+          }
+        };
+	    	commonService.limitSubmit(changeUser);
 
 	    };
 

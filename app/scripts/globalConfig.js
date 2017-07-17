@@ -1,11 +1,11 @@
 ﻿"user strict"
 //请求后台数据入口
-var API_URL = "/api";
-// var API_URL = "http://122.225.101.117:9090//api";
+// var API_URL = "/api";
+var API_URL = "http://122.225.101.117:9090/api";
 // var API_URL = "http://test7.jy365.net/api";
 // var API_URL = "http://192.168.1.25/api";
 // var API_URL_ADMIN = API_URL + "/admin";
-
+var limitTime = 0;
 // jQuery.support.cors=true;
 
 var NAVISOBJ = false;
@@ -66,6 +66,18 @@ String.prototype.toCharString = function (arg) {
   }
   return value;
 };
+/**
+ 加密
+ */
+String.prototype.rsaEnscrypt = function (publicKey) {
+  if (!publicKey) {
+    publicKey = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCa4KHNwDX44gGmmIAtRu4gjVYtGWZzcm4t+1wjUD4dn7fMLPvuK7ai4UrfDeEJE1RPwudJw+lJ6crql8wSIg7/DbTlG3ihsCT6dT9H5B9OoeR7K9VWUesaW/iyVL6HXiYOANabW14pvJATDmdq91Tfgp6PSQyvdfiRdV4r07crpQIDAQAB";
+  }
+  var rsaProvider = new JSEncrypt();
+  rsaProvider.setPublicKey(publicKey);
+  var strEncrypt = rsaProvider.encrypt(this.replace(/\+/g, '%2B'));
+  return strEncrypt;
+}
 function dyniframesize(down) {
   var pTar = null;
   if (document.getElementById){
@@ -304,10 +316,10 @@ var ALL_PORT = {
     url:API_URL+"/Page/RankUserList",
     data:{page:1,rows:15,sort:'TotalCredit',order:'desc',titleNav:"个人排行"}
   },
-  //学完课程排行
+  //课程完成排行
   CourseFinishList:{
     url:API_URL+"/Page/CourseFinishList",
-    data:{page:1,rows:15,sort:'FinishCourseCount',order:'desc',titleNav:"学完课程排行",wordLimt:8}
+    data:{page:1,rows:15,sort:'FinishCourseCount',order:'desc',titleNav:"课程完成排行",wordLimt:8}
   },
   //个人中心课程
   MyCenter:{

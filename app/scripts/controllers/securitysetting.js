@@ -9,10 +9,6 @@
  */
 angular.module('luZhouApp')
     .controller('securitySettingCtrl', function($scope, commonService,$loading) {
-        //判断能否访问
-        // commonService.isVisit();
-        //保持在线
-        //commonService.keepOnline();
         //退出
         $scope.loginOut = commonService.loginOut;
         //请求用户信息

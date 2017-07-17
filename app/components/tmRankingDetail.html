@@ -25,7 +25,7 @@
             <span class="list1">总学分</span>
             <span class="list1">总人数</span>
           </div>
-          <div class="list" ng-repeat="govermentRankingList in govermentRanking.ListData">
+          <div class="list" ng-repeat="govermentRankingList in govermentRanking.ListData"  ng-class="{'rankListBg':$index%2!=0}">
             <p class="clearfix">
               <span class="list1">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
               <span class="list1" title="{{govermentRankingList.DepartmentName}}">{{govermentRankingList.DepartmentName}}</span>

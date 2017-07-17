@@ -21,7 +21,7 @@
       <span class="list3">学时</span>
       <span class="list4">学次</span>
     </p>
-    <ul class="rankingList clearfix" ng-repeat="rankingData in studentHourRanking.ListData">
+    <ul class="rankingList clearfix" ng-repeat="rankingData in studentHourRanking.ListData"  ng-class="{'rankListBg':$index%2!=0}">
       <li class="list1">
         <span ng-if="$index<3" ng-class="{'rankFirstBg':$index==0,'rankSecondBg':$index==1,'rankThirdBg':$index==2}"></span>
         <span ng-if="$index>=3">{{$index+1}}</span>
