@@ -465,7 +465,7 @@ angular
       })
       .state('collegeinfo', {
         url: '/Do/collegeinfo',
-        data: {title: "学院概况"},
+        data: {title: "平台介绍"},
         templateUrl: 'views/Do/collegeinfo.html',
         controller: 'CollegeinfoCtrl',
         controllerAs: 'collegeInfo'

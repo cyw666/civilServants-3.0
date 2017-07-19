@@ -246,14 +246,14 @@ angular.module('luZhouApp')
 
 
     };
-    /*//实时数据
+    //实时数据
     $loading.start('realTimeList');
     commonService.getData(ALL_PORT.LeftRealTimeData.url, 'POST',
       ALL_PORT.LeftRealTimeData.data)
       .then(function(response) {
         $loading.finish('realTimeList');
         $scope.realTimeData = response.Data;
-      });*/
+      });
     //课程中心
     //课程分类
     commonService.getData(ALL_PORT.CourseCategory.url, 'POST',
@@ -334,7 +334,7 @@ angular.module('luZhouApp')
     $scope.getNewsContent = function (id) {
       $loading.start('articleList');
       commonService.getData(ALL_PORT.ArticleList.url,'POST',
-        $.extend({}, ALL_PORT.ArticleList.data,{rows:9,categoryId:id}))
+        $.extend({}, ALL_PORT.ArticleList.data,{rows:6,categoryId:id}))
         .then(function(response) {
           $loading.finish('articleList');
           $scope.articleListData = response.Data;

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  var promise = new Promise(function (resolver, reject) {
+    /*var a = [{
+      name: 'cyw',
+      phone: '13656631764'
+    }];*/
+    var a = {name: 'cyw', phone: '13656631764'};
+    var errorText = "must be Array"
+    if(a instanceof Array){
+        resolver(a);
+    }else {
+        reject(errorText);
+    }
+  });
+  promise.then(function (response) {
+    console.log(response);
+  }).catch(function (error) {
+    throw new Error(error);
+  });
+</script>
+</body>
+</html>

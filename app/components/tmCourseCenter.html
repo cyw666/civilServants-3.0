@@ -9,7 +9,8 @@
     </p>
   </div>
   <div class="btn-group courselLink" role="group">
-    <a class="btn btn-default" ng-repeat="courseName in courselassification" ng-class="{'active':$index==0}" ng-click="searchCourseList(courseName.Id)" repeat-finish="renderFinish()">{{courseName.Name}}</a>
+    <a class="btn btn-default" ng-repeat="courseName in courselassification" ng-class="{'active':$index==0}"
+       ng-click="searchCourseList(courseName.Id)" repeat-finish="renderFinish()">{{courseName.Name}}</a>
   </div>
   <div class="courseList mar_top_20 clearfix" dw-loading="courseList">
     <ul class="clearfix">
@@ -17,9 +18,18 @@
         <a ui-sref="courseDetails({Id:courseCenterData.Id})" title="{{courseCenterData.Name}}" target="_blank">
           <img ng-src="{{imageCourse+'/'+courseCenterData.Img}}" err-Src="images/notFound.jpeg" alt="">
         </a>
-        <div class="mar_top_15">
-          <p><a ui-sref="courseDetails({Id:courseCenterData.Id})" title="{{courseCenterData.Name}}" target="_blank">{{courseCenterData.Name}}</a></p>
-          <p class="clearfix"> <span class="pull-left">讲师：{{courseCenterData.Teacher}}</span><span class="red pull-right">学分：{{courseCenterData.Credit}}</span></p>
+        <div ng-if="$index<2" class="hotCourse">
+          <p class="bg"></p>
+          <p class="content">
+            <img src="../images/hotIcon.png" alt="">
+            <span>{{courseCenterData.ClickCount}}次</span>
+          </p>
+        </div>
+        <div class="mar_top_10 desc">
+          <p><a ui-sref="courseDetails({Id:courseCenterData.Id})" title="{{courseCenterData.Name}}" target="_blank">{{courseCenterData.Name}}</a>
+          </p>
+          <p class="clearfix"><span class="pull-left">讲师：{{courseCenterData.Teacher}}</span><span
+            class="red pull-right">学分：{{courseCenterData.Credit.toFixed(1)}}分</span></p>
           <p>时长：{{courseCenterData.Time}}小时</p>
         </div>
       </li>
@@ -32,24 +42,28 @@
   .courselCenter {
     border-bottom: 6px solid #db1011;
   }
+
   .courselLink {
     width: 100%;
     background: #f8f8f8;
   }
+
   .courselLink.btn-group > .btn {
     color: #666;
-    width:169px;
+    width: 169px;
     height: 44px;
     line-height: 44px;
     background: #f8f8f8;
     padding: 0;
-    border-color:#fff;
+    border-color: #fff;
     font-size: 18px;
   }
-  .courselLink.btn-group > .btn:hover{
+
+  .courselLink.btn-group > .btn:hover {
     background-color: #f50001;
     color: #fff;
   }
+
   .courselLink.btn-group > .btn.active {
     color: #fff;
     background-color: #db1011;
@@ -58,21 +72,56 @@
   .courseList {
     min-height: 440px;
   }
+
   .courseList ul li {
     float: left;
     margin-left: 10px;
-    height: 200px;
+    min-height: 200px;
     width: 200px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    position: relative;
   }
-  .courseList ul li p{
+
+  .courseList ul li .desc p {
     line-height: 23px;
     max-width: 190px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: #999;
   }
-  .courseList ul li a img{
+  .courseList ul li .desc p a{
+    font-size: 16px;
+    color: #003333;
+  }
+
+  .courseList ul li .hotCourse {
+    position: absolute;
+    left: 10px;
+    top: 100px;
+    color: #fff;
+    font-size: 12px;
+  }
+  .courseList ul li .hotCourse .bg{
+    width: 66px;
+    height: 20px;
+    background-color: #000;
+    filter:alpha(opacity=40);
+    -moz-opacity:0.4;
+    -khtml-opacity: 0.4;
+    opacity: 0.4;
+  }
+  .courseList ul li .hotCourse .content{
+    position: absolute;
+    top:3px;
+    left: 5px;
+  }
+  .courseList ul li .hotCourse img{
+    position: relative;
+    top: -1px;
+  }
+
+  .courseList ul li a img {
     width: 200px;
     height: 127px;
   }
