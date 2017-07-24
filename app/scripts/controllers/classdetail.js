@@ -11,25 +11,10 @@ angular.module('luZhouApp')
     .controller('classDetailCtrl', function($scope, $loading, commonService,$stateParams) {
 
         $scope.Id = $stateParams.Id;
-
-        //判断能否访问
-        // commonService.isVisit();
-        //保持在线
-        //commonService.keepOnline();
-
-
         //loading
         $loading.start('classMy');
         $loading.start('classDetail');
         $loading.start('personalLearningInfo');
-
-        //个人学习信息
-        var classInfomation = commonService.getData(ALL_PORT.ClassInformation.url, 'POST', $.extend({}, ALL_PORT.ClassInformation.data, { Id: $scope.Id }))
-        classInfomation.then(function(response) {
-            $loading.finish('personalLearningInfo');
-            $scope.classInfoData = response.Data;
-        });
-
 
         //我的班级
         var classMy = commonService.getData(ALL_PORT.ClassMy.url, 'POST', ALL_PORT.ClassMy.data);

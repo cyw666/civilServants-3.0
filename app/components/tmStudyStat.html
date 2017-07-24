@@ -29,20 +29,18 @@
     </p>
     <div class="myTab">
       <div class="tab-content" dw-loading="studyStat">
-        <div class="tab-panel perlist clearfix">
-          <div class="title_bar clearfix">
-            <span class="list1">用户名</span>
+        <div class="tab-panel perlist">
+          <div class="title_bar">
+            <span class="list2">用户名</span>
             <span class="list2">姓名</span>
-            <span class="list3">课程名称</span>
-            <span class="list4">获得学时</span>
+            <span class="list4">课程名称</span>
+            <span class="list2">获得学时</span>
           </div>
           <div class="list" ng-repeat="studyList in studyStatData.ListData">
-            <p class="clearfix">
-              <span class="list1 cur_name">{{studyStatData.Account}}</span>
+              <span class="list2">{{studyStatData.Account}}</span>
               <span class="list2">{{studyList.UserName}}</span>
-              <span class="list3">{{studyList.Name}}</span>
-              <span class="list4">{{studyList.Credit}}</span>
-            </p>
+              <span class="list4 ellipsis">{{studyList.Name}}</span>
+              <span class="list2">{{studyList.Credit}}</span>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
@@ -51,28 +49,6 @@
   </div>
 </div>
 <style>
-  .myTab .perlist .list1 {
-    width: 20%;
-    height: 37px;
-  }
-  .myTab .perlist .list .list1 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  .myTab .perlist .list2 {
-    width: 20%;
-  }
-  .myTab .perlist .list .list2 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .myTab .perlist .list3 {
-    width: 40%;
-  }
-  .myTab .perlist .list4 {
-    width: 20%;
-  }
   #startTime{
     width: 200px;
   }

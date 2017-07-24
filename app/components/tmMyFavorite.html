@@ -16,51 +16,42 @@
     <div class="myTab" dw-loading="myFavorite">
       <div class="tab-content">
         <div class="tab-panel perlist clearfix">
-          <div class="title_bar clearfix">
-            <span class="list1">标题</span>
-            <span class="list2">类型</span>
-            <span class="list3">操作</span>
+          <div class="title_bar">
+            <span class="list5">标题</span>
+            <span class="list2-5">类型</span>
+            <span class="list2-5">操作</span>
           </div>
           <div class="list" ng-repeat="favoriteList in myFavoriteData.ListData">
-            <p class="clearfix">
-              <span class="list1 cur_name" title="{{favoriteList.Title}}">{{favoriteList.Title}}</span>
-              <span ng-if="favoriteList.Type=='Course'" class="list2">课程</span>
-              <span ng-if="favoriteList.Type=='Article'" class="list2">文章</span>
-              <span ng-if="favoriteList.Type=='Notice'" class="list2">公告</span>
-              <span ng-if="favoriteList.Type=='Book'" class="list2">图书</span>
-              <span ng-if="favoriteList.Type=='BookChapter'" class="list2">图书章节</span>
-              <span
-                ng-if="favoriteList.Type!='Course'&&favoriteList.Type!='Article'&&favoriteList.Type!='Notice'&&favoriteList.Type!='Book'&&favoriteList.Type!='BookChapter'"
-                class="list2">其他</span>
+              <span class="list5 ellipsis" title="{{favoriteList.Title}}">{{favoriteList.Title}}</span>
+              <span ng-if="favoriteList.Type=='Course'" class="list2-5">课程</span>
+              <span ng-if="favoriteList.Type=='Article'" class="list2-5">文章</span>
+              <span ng-if="favoriteList.Type=='Notice'" class="list2-5">公告</span>
+              <span ng-if="favoriteList.Type=='Book'" class="list2-5">图书</span>
+              <span ng-if="favoriteList.Type=='BookChapter'" class="list2-5">图书章节</span>
+              <span ng-if="favoriteList.Type!='Course'&&favoriteList.Type!='Article'&&favoriteList.Type!='Notice'&&favoriteList.Type!='Book'&&favoriteList.Type!='BookChapter'" class="list2-5">其他</span>
 
 
-              <span ng-if="favoriteList.Type=='Course'" class="list3">
+              <span ng-if="favoriteList.Type=='Course'" class="list2-5">
               <a ui-sref="courseDetails({Id:favoriteList.MainId})" target="_blank">查看</a>
               <a class="fav" href="javascript:;" ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a>
             </span>
-              <span ng-if="favoriteList.Type=='Article'" class="list3">
+              <span ng-if="favoriteList.Type=='Article'" class="list2-5">
               <a ui-sref="articleDetail({ID:favoriteList.MainId})" target="_blank">查看</a>
               <a class="fav" href="javascript:;" ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a>
             </span>
-              <span ng-if="favoriteList.Type=='Notice'" class="list3">
+              <span ng-if="favoriteList.Type=='Notice'" class="list2-5">
               <a ui-sref="noticeDetail({ID:favoriteList.MainId})" target="_blank">查看</a>
-              <a class="fav" href="javascript:;"
-                 ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a></span>
-              <span ng-if="favoriteList.Type=='Book'" class="list3">
+              <a class="fav" href="javascript:;" ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a></span>
+              <span ng-if="favoriteList.Type=='Book'" class="list2-5">
               <a ui-sref="courseDetails({Id:favoriteList.MainId})" target="_blank">查看</a>
-              <a class="fav" href="javascript:;"
-                 ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a></span>
-              <span ng-if="favoriteList.Type=='BookChapter'" class="list3">
+              <a class="fav" href="javascript:;" ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a></span>
+              <span ng-if="favoriteList.Type=='BookChapter'" class="list2-5">
               <a ui-sref="courseDetails({Id:favoriteList.MainId})" target="_blank">查看</a>
-              <a class="fav" href="javascript:;"
-                 ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a></span>
-              <span
-                ng-if="favoriteList.Type!='Course'&&favoriteList.Type!='Article'&&favoriteList.Type!='Notice'&&favoriteList.Type!='Book'&&favoriteList.Type!='BookChapter'"
-                class="list3">
+              <a class="fav" href="javascript:;" ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a></span>
+              <span ng-if="favoriteList.Type!='Course'&&favoriteList.Type!='Article'&&favoriteList.Type!='Notice'&&favoriteList.Type!='Book'&&favoriteList.Type!='BookChapter'" class="list2-5">
               <a ui-sref="courseDetails({Id:favoriteList.MainId})" target="_blank">查看</a>
               <a class="fav" href="javascript:;" ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a>
             </span>
-            </p>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
@@ -68,34 +59,6 @@
     </div>
   </div>
 </div>
-<style>
-  .myTab .perlist .list1 {
-    width: 50%;
-    height: 37px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .myTab .perlist .list .list1 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .myTab .perlist .list2 {
-    width: 25%;
-  }
-
-  .myTab .perlist .list .list2 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .myTab .perlist .list3 {
-    width: 25%;
-  }
-</style>
 
 
 

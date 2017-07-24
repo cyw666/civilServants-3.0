@@ -11,20 +11,6 @@ angular.module('luZhouApp')
     .controller('PersonalearningarchivesCtrl', function($scope, $timeout, $rootScope, $cookieStore, commonService, $location, $loading) {
         $scope.startDate = '';
         $scope.endDate = '';
-        //判断能否访问
-        // commonService.isVisit();
-        //保持在线
-        //commonService.keepOnline();
-        //退出
-        $scope.loginOut = commonService.loginOut;
-
-        //请求用户信息
-      $loading.start('loginOut');
-      commonService.getData(ALL_PORT.LoginLong.url, 'POST', ALL_PORT.LoginLong.data)
-        .then(function(response) {
-          $loading.finish('loginOut');
-          $scope.userMessage = response.Data;
-        });
         //请求个人学习档案信息
         $scope.table_show_one = false;
         $scope.table_show_two = false;

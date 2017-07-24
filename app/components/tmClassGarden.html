@@ -5,7 +5,7 @@
       班级园地
     </p>
     <p class="more pull-right">
-      <a ui-sref="specialTrainingCourse" target="_blank"><img src="../images/more.png" alt="更多"></a>
+      <a ui-sref="trainingClass" target="_blank"><img src="../images/more.png" alt="更多"></a>
     </p>
   </div>
   <div class="borderNews">
@@ -28,7 +28,7 @@
               </tr>
 
               <tr ng-repeat="list in classListData.ListData">
-                <td class="list1 clearfix">
+                <td class="item1 clearfix">
                   <p class="pull-left">
                     <img src="../images/bookLog.png" alt="">
                   </p>
@@ -36,12 +36,12 @@
                     <a ng-click="checkUserClass(list.Id)">{{list.Name}}</a>
                   </span>
                 </td>
-                <td class="list2">{{list.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{list.EndTime | dateFilter | date:'yyyy-MM-dd'}}</td>
-                <td class="list3">{{list.Address}}</td>
+                <td class="item2">{{list.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{list.EndTime | dateFilter | date:'yyyy-MM-dd'}}</td>
+                <td class="item3">{{list.Address}}</td>
 
-                <td class="list4" ng-if="!list.ApplyStatus"><a class="btn btn-info" ng-click="addClass(list.Id)">点击报名</a></td>
-                <td class="list4" ng-if="list.ApplyStatus=='Normal'"><a disabled class="btn btn-success">{{JudgeStatus(list.ApplyStatus)}}</a></td>
-                <td class="list4" ng-if="list.ApplyStatus=='UnAudit'||list.ApplyStatus=='UnApprove'"><a disabled class="btn btn-default">{{JudgeStatus(list.ApplyStatus)}}</a></td>
+                <td class="item4" ng-if="!list.ApplyStatus"><a class="btn btn-info" ng-click="addClass(list.Id)">点击报名</a></td>
+                <td class="item4" ng-if="list.ApplyStatus=='Normal'"><a disabled class="btn btn-success">{{JudgeStatus(list.ApplyStatus)}}</a></td>
+                <td class="item4" ng-if="list.ApplyStatus=='UnAudit'||list.ApplyStatus=='UnApprove'"><a disabled class="btn btn-default">{{JudgeStatus(list.ApplyStatus)}}</a></td>
               </tr>
             </tbody>
           </table>
@@ -84,15 +84,6 @@
     border-color: #a2a2a2;
     color: #fff;
   }
-  /*.classGarden .borderNews .tab-content .btn-success{
-    background-color: #60db87;
-    border-color: #60db87;
-  }
-  .classGarden .borderNews .tab-content .btn-success:hover,.classGarden .borderNews .tab-content .btn-success:focus{
-    background-color: #60db87;
-    border-color: #60db87;
-    color: #fff;
-  }*/
   .perlist >.table{
     margin-bottom: 0px;
   }
@@ -111,28 +102,28 @@
     height: 30px;
     line-height: 30px;
   }
-  .perlist >.table .list1 {
+  .perlist >.table .item1 {
     width: 35%;
     text-align: left;
     font-weight: 600;
   }
-  .perlist >.table .list1 img{
+  .perlist >.table .item2 {
+    width: 25%;
+  }
+  .perlist >.table .item3 {
+    width: 20%;
+  }
+  .perlist >.table .item4 {
+    width: 20%;
+  }
+  .perlist >.table .item2 img{
     margin: 0 20px;
   }
-  .perlist >.table .list1 span{
+  .perlist >.table .item1 span{
     width: 230px;
     display: inline-block;
   }
-  .perlist >.table .list2 {
-    width: 25%;
-
-  }
-  .perlist >.table .list3 {
-    width: 20%;
-
-  }
-  .perlist >.table .list4 {
-    width: 20%;
-
+  .perlist >.table .item1 p{
+    margin: 0 20px;
   }
 </style>

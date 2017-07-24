@@ -490,38 +490,63 @@ h4.title-h4{
   border-bottom-color: transparent;
   text-align: center;
 }
-.myTab .perlist .title_bar span {
-  float: left;
-  display: inline-block;
-  text-align: center;
-  line-height: 37px;
-}
-.myTab .perlist span a{
-  color: #333;
-}
-.myTab .perlist span a:hover{
-  color:#62a3db;
-}
-.myTab .perlist .title_bar {
-  line-height: 30px;
+.myTab .perlist .title_bar{
+  width: 100%;
   font-weight: bold;
   background: #EDF3FC;
   color: #666;
+  zoom: 1;
   border-bottom: 1px dashed #ccc;
 }
 .myTab .perlist .list{
+  width: 100%;
   border-bottom: 1px dashed #ccc;
+  zoom: 1;
+}
+.myTab .perlist .list:before,
+.myTab .perlist .list:after ,
+.myTab .perlist .title_bar:before,
+.myTab .perlist .title_bar:after{
+  content: '.';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  font-size: 0;
+  line-height: 0;
+  width: 0;
+  height: 0;
+}
+.myTab .perlist .list:after,
+.myTab .perlist .title_bar:after{
+  clear: both;
 }
 .myTab .perlist .list:hover{
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
 }
-.myTab .perlist .list span{
-  line-height: 37px;
-  float: left;
-}
 .myTab .perlist span a.fav{
   margin-left: 10px;
 }
+.list0-75   {  width: 7.5%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list1   {  width: 10%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list1-5 {  width: 15%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list2   {  width: 20%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list2-5 {  width: 25%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list3   {  width: 30%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list3-5 {  width: 35%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list4   {  width: 40%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list4-5 {  width: 45%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list5   {  width: 50%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list5-5 {  width: 55%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list6   {  width: 60%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list6-5 {  width: 65%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list7   {  width: 70%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list7-5 {  width: 75%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list8   {  width: 80%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list8-5 {  width: 85%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list9   {  width: 90%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list9-5 {  width: 95%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+.list10  {  width: 100%;float: left;line-height: 37px;padding-left: 10px; padding-right: 10px;}
+
 
 /*排行标签页*/
 .rankTab {
@@ -612,6 +637,9 @@ h4.title-h4{
  }
 .mar_top_34 {
   margin-top: 34px;
+}
+.mar_top_40 {
+  margin-top: 40px;
 }
 .mar_left_10 {
   margin-left:10px;

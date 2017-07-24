@@ -22,49 +22,45 @@
     </form>
     <div class="myTab">
       <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
-        <li ng-class="{active: vm.activeTab == 1}"><a href="javascript:;" ng-click="vm.activeTab = 1;searchMyCenterCourse({'examType':'UnFinish','title':searchTitle})">未完成的考试</a></li>
-        <li ng-class="{active: vm.activeTab == 3}"><a href="javascript:;" ng-click="vm.activeTab = 3;searchMyCenterCourse({'examType':'Finish','title':searchTitle})">已完成的考试</a></li>
+        <li ng-class="{active: vm.activeTab == 1}"><a ng-click="vm.activeTab = 1;searchMyCenterCourse({'examType':'UnFinish','title':searchTitle})">未完成的考试</a></li>
+        <li ng-class="{active: vm.activeTab == 3}"><a ng-click="vm.activeTab = 3;searchMyCenterCourse({'examType':'Finish','title':searchTitle})">已完成的考试</a></li>
       </ul>
       <div class="tab-content" dw-loading="examList">
         <div class="tab-panel perlist" ng-show="vm.activeTab == 1">
-          <div class="title_bar clearfix">
-            <span class="list1">考试名称</span>
-            <span class="list2">考试学时</span>
-            <span class="list6">时限</span>
-            <span class="list4">参加测试</span>
-            <span class="list5">考试时间</span>
+          <div class="title_bar">
+            <span class="list3-5">考试名称</span>
+            <span class="list1">考试学时</span>
+            <span class="list1">时限</span>
+            <span class="list1-5">参加测试</span>
+            <span class="list2-5">考试时间</span>
           </div>
           <div class="list" ng-repeat="unFinish in TotalData.UnfinishModel">
-            <p class="clearfix">
-              <span class="list1 cur_name" title="{{unFinish.Name}}"><a target="_blank" ng-click="havTest(unFinish.Id)">{{unFinish.Name}}</a></span>
-              <span class="list2">{{unFinish.CreditHour}}</span>
-              <span class="list6">{{unFinish.TimeLimit}}</span>
-              <span class="list4"><a target="_blank" ng-click="havTest(unFinish.Id)">参加测试</a></span>
-              <span class="list5">{{unFinish.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{unFinish.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
-            </p>
+              <span class="list3-5 ellipsis" title="{{unFinish.Name}}"><a target="_blank" ng-click="havTest(unFinish.Id)">{{unFinish.Name}}</a></span>
+              <span class="list1">{{unFinish.CreditHour}}</span>
+              <span class="list1">{{unFinish.TimeLimit}}</span>
+              <span class="list1-5"><a target="_blank" ng-click="havTest(unFinish.Id)">参加测试</a></span>
+              <span class="list2-5">{{unFinish.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{unFinish.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 3">
-          <div class="title_bar clearfix">
-            <span class="list1">考试名称</span>
-            <span class="list2">考试学时</span>
-            <span class="list6">时限</span>
-            <span class="list3">通过状态</span>
-            <span class="list3">参加测试</span>
-            <span class="list3">查看详细记录</span>
+          <div class="title_bar">
+            <span class="list3-5">考试名称</span>
+            <span class="list1">考试学时</span>
+            <span class="list1">时限</span>
+            <span class="list1-5">通过状态</span>
+            <span class="list1-5">参加测试</span>
+            <span class="list1-5">查看详细记录</span>
           </div>
           <div class="list" ng-repeat="Finish in TotalData.FinishModel">
-            <p class="clearfix">
-              <span class="list1 cur_name" title="{{Finish.Name}}"><a ng-click="havTest(Finish.Id)" target="_blank">{{Finish.Name}}</a></span>
-              <span class="list2">{{Finish.CreditHour}}</span>
-              <span class="list6">{{Finish.TimeLimit}}</span>
-              <span class="list3 red" ng-show="Finish.PassFlag">通过</span>
-              <span class="list3" ng-hide="Finish.PassFlag">未通过</span>
+              <span class="list3-5 ellipsis" title="{{Finish.Name}}"><a ng-click="havTest(Finish.Id)" target="_blank">{{Finish.Name}}</a></span>
+              <span class="list1">{{Finish.CreditHour}}</span>
+              <span class="list1">{{Finish.TimeLimit}}</span>
+              <span class="list1-5 red" ng-show="Finish.PassFlag">通过</span>
+              <span class="list1-5" ng-hide="Finish.PassFlag">未通过</span>
 
-              <span class="list3"><a ng-click="havTest(Finish.Id)" target="_blank">参加测试</a></span>
-              <span class="list3"><a ui-sref="examDetailList({Id:Finish.Id})">查看详细记录</a></span>
-            </p>
+              <span class="list1-5"><a ng-click="havTest(Finish.Id)" target="_blank">参加测试</a></span>
+              <span class="list1-5"><a ui-sref="examDetailList({Id:Finish.Id})">查看详细记录</a></span>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
@@ -72,31 +68,3 @@
     </div>
   </div>
 </div>
-<style>
-  .myTab .perlist .list1 {
-    width: 25%;
-    height: 37px;
-  }
-  .myTab .perlist .list .list1 {
-    /*text-align: left;*/
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding-left: 10px;
-  }
-  .myTab .perlist .list2 {
-    width: 10%;
-  }
-  .myTab .perlist .list3 {
-    width: 15%;
-  }
-  .myTab .perlist .list4 {
-    width: 15%;
-  }
-  .myTab .perlist .list5 {
-    width: 25%;
-  }
-  .myTab .perlist .list6 {
-    width: 10%;
-  }
-</style>

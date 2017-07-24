@@ -11,16 +11,17 @@
   </div>
   <div class="tmBorder">
     <p class="rankTitle clearfix">
-      <span class="list1">排行</span>
-      <span class="list2">课程名称</span>
+      <span class="list2">排行</span>
+      <span class="list5">课程名称</span>
       <span class="list3">点击数</span>
     </p>
     <ul class="rankingList clearfix" ng-repeat="rankingData in courseRankingList.ListData"  ng-class="{'rankListBg':$index%2!=0}">
-      <li class="list1">
+      <li class="list2">
         <span ng-if="$index<3" ng-class="{'rankFirstBg':$index==0,'rankSecondBg':$index==1,'rankThirdBg':$index==2}"></span>
         <span ng-if="$index>=3">{{$index+1}}</span>
       </li>
-      <li class="list2" title="{{rankingData.Name}}"><a ui-sref="courseDetails({Id:rankingData.Id})" target="_blank">{{rankingData.Name}}</a>
+      <li class="list5 ellipsis" title="{{rankingData.Name}}">
+        <a ui-sref="courseDetails({Id:rankingData.Id})" target="_blank">{{rankingData.Name}}</a>
       </li>
       <li class="list3">{{rankingData.Total}}</li>
     </ul>
@@ -45,28 +46,9 @@
   .courseRankingList .rankTitle span, .courseRankingList .rankingList li {
     float: left;
   }
-  .courseRankingList .list1 {
-    width: 20%;
-  }
-  .courseRankingList .rankingList .list1 span {
+  .courseRankingList .rankingList .list2 span {
     display: inline-block;
     width: 100%;
     height: 44px;
-  }
-  .courseRankingList .list1 {
-    /*padding-left: 15px;*/
-  }
-  .courseRankingList .list2 {
-    width: 60%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align: left;
-  }
-  .courseRankingList .rankTitle .list2 {
-    text-align: center;
-  }
-  .courseRankingList .list3 {
-    width: 20%;
   }
 </style>

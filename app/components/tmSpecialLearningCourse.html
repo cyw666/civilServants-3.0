@@ -1,0 +1,52 @@
+<!--专题学习课程-->
+<div class="specialLearningCourse">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      {{specialCourseData.ChannelName}}
+    </p>
+    <p class="more pull-right">
+      <a ui-sref="courseCenter" target="_blank"><img src="../images/more.png" alt="更多"></a>
+    </p>
+  </div>
+
+  <ul class="courseList clearfix">
+    <li ng-repeat="list in specialCourseData.ListData" ng-class="{'last':($index+1)%4==0}">
+      <a ui-sref="courseDetails({Id:list.Id})" title="{{list.Name}}" target="_blank">
+        <img ng-src="{{specialCourseData.ImageCourse+'/'+list.Img}}" err-Src="images/notFound.jpeg" alt="">
+      </a>
+      <p class="courseName ellipsis" title="{{list.Name}}"><a ui-sref="courseDetails">{{list.Name}}</a></p>
+      <p class="courseTeacher">讲师：{{list.Teacher}}</p>
+    </li>
+  </ul>
+</div>
+
+
+<style>
+  .specialLearningCourse .courseList {
+    margin-top: 15px;
+  }
+  .specialLearningCourse .courseList li{
+    float: left;
+    margin: 20px 26px 0 0;
+  }
+  .specialLearningCourse .courseList li.last{
+    margin-right: 0;
+  }
+  .specialLearningCourse .courseList li img{
+    width: 280px;
+    height: 158px;
+  }
+  .specialLearningCourse .courseList li .courseName {
+    margin-top: 10px;
+    width: 280px;
+  }
+  .specialLearningCourse .courseList li .courseName a{
+    color: #003333;
+    font-size: 16px;
+  }
+  .specialLearningCourse .courseList li .courseTeacher{
+    color: #999;
+    margin-top: 5px;
+  }
+</style>

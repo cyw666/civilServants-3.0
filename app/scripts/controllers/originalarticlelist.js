@@ -9,14 +9,6 @@
  */
 angular.module('luZhouApp')
   .controller('OriginalarticlelistCtrl', function ($scope, $http,$timeout, $rootScope, $cookieStore, commonService, $location, $loading) {
-    //退出
-    $scope.loginOut = commonService.loginOut;
-    //请求用户信息
-    $loading.start('loginOut');
-    commonService.getData(ALL_PORT.LoginLong.url, 'POST', ALL_PORT.LoginLong.data).then(function(response) {
-      $loading.finish('loginOut');
-      $scope.userMessage = response.Data;
-    });
 
     //原创文章列表
     $scope.paginationConf = $.extend({},paginationConf,{itemsPerPage: ALL_PORT.OriginalArticleList.data.rows});

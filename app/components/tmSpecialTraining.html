@@ -1,5 +1,5 @@
 <!--专题培训-->
-<div class="specialTraining">
+<div class="specialTraining" dw-loading="specialTraining">
   <div class="com-header clearfix">
     <p class="title pull-left">
       <img src="../images/headerLeftIcon.png" alt="图标">
@@ -12,7 +12,7 @@
   <ul class="specialContent">
     <li ng-repeat="list in studySpecialData.ListData">
       <p>
-        <a ng-href="{{list.Url}}" target="_blank">
+        <a ui-sref="{{list.Url}}" target="_blank">
           <img class="specialImg" ng-src="{{studySpecialData.ImagePath+'/'+list.Icon}}" err-Src="images/notFound.jpeg" alt="">
         </a>
       </p>

@@ -9,22 +9,10 @@
  */
 angular.module('luZhouApp')
     .controller('changeUserInfoCtrl', function($scope,$interval, commonService, $loading,$http,$cookieStore) {
-	    //保持在线
-	    //commonService.keepOnline();
-	    //退出
-	    $scope.loginOut = commonService.loginOut;
-	    $loading.start('changeUserInfo');
-
-	    //请求用户信息
-	    $loading.start('loginOut');
-	    commonService.getData(ALL_PORT.LoginLong.url, 'POST', ALL_PORT.LoginLong.data).then(function (response) {
-		    $loading.finish('loginOut');
-		    $scope.userMessage = response.Data;
-	    });
-
 
 	    //获取用户信息
-	    commonService.getData(ALL_PORT.GetUserInfo.url, 'POST', ALL_PORT.GetUserInfo.data)
+      $loading.start('changeUserInfo');
+      commonService.getData(ALL_PORT.GetUserInfo.url, 'POST', ALL_PORT.GetUserInfo.data)
 		    .then(function (data) {
 			    $loading.finish('changeUserInfo');
 			    $scope.userInfo = data.Data.Model;

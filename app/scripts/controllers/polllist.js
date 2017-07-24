@@ -9,15 +9,6 @@
  */
 angular.module('luZhouApp')
   .controller('PolllistCtrl', function ($scope, $location, $rootScope, $cookieStore, commonService, $timeout, $loading,$stateParams) {
-    //退出
-    $scope.loginOut = commonService.loginOut;
-    //请求用户信息
-    $loading.start('loginOut');
-    commonService.getData(ALL_PORT.LoginLong.url, 'POST', ALL_PORT.LoginLong.data).then(function(response) {
-      $loading.finish('loginOut');
-      $scope.userMessage = response.Data;
-    });
-
     //报名状态
     $scope.JudgeStatus = commonService.JudgeStatus;
     //问卷调查列表
@@ -52,7 +43,7 @@ angular.module('luZhouApp')
           if (response.Type === 0) {
             alert("请先加入培训班!");
           } else {
-            window.open('#/specialTrainingCourse/classDetail/' + id);
+            window.open('#/trainingClass/classDetail/' + id);
           }
         });
     };

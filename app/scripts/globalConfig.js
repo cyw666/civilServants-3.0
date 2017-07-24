@@ -4,10 +4,12 @@
 var API_URL = "http://122.225.101.117:9090/api";
 // var API_URL = "http://test7.jy365.net/api";
 // var API_URL = "http://192.168.1.25/api";
-// var API_URL_ADMIN = API_URL + "/admin";
+var API_URL_ADMIN = API_URL + "/admin";
+//限制多次请求
 var limitTime = 0;
 // jQuery.support.cors=true;
-
+//响应数据变量
+var responseData = 'ListData';
 var NAVISOBJ = false;
 var IMPORT = {
     userimportfields: "用户导入模板.xls",
@@ -77,30 +79,7 @@ String.prototype.rsaEnscrypt = function (publicKey) {
   rsaProvider.setPublicKey(publicKey);
   var strEncrypt = rsaProvider.encrypt(this.replace(/\+/g, '%2B'));
   return strEncrypt;
-}
-function dyniframesize(down) {
-  var pTar = null;
-  if (document.getElementById){
-    pTar = document.getElementById(down);
-  }
-  else{
-    eval('pTar = ' + down + ';');
-  }
-  if (pTar && !window.opera){
-//begin resizing iframe
-    pTar.style.display="block"
-    if (pTar.contentDocument && pTar.contentDocument.body.offsetHeight){
-//ns6 syntax
-      pTar.height = pTar.contentDocument.body.offsetHeight +20;
-      pTar.width = pTar.contentDocument.body.scrollWidth+20;
-    }
-    else if (pTar.Document && pTar.Document.body.scrollHeight){
-//ie5+ syntax
-      pTar.height = pTar.Document.body.scrollHeight;
-      pTar.width = pTar.Document.body.scrollWidth;
-    }
-  }
-}
+};
 $.ajaxSetup({
   contentType: "application/x-www-form-urlencoded;charset=UTF-8",
   xhrFields: {
@@ -166,12 +145,12 @@ var ALL_PORT = {
     url:API_URL+"/Page/ArticleCategory",
     data:{titleNav:'文章分类',sort:'Sort',order:'desc'}
   },
-  //新闻
+  //文章
   ArticleList:{
     url:API_URL+"/Page/ArticleList",
     data:{page:'1',rows:'7',sort:'Sort',order:'desc',wordLimt:'20'}
   },
-  //新闻内容
+  //文章内容
   ArticleContent:{
     url:API_URL+"/Page/ArticleContent",
     data:{}
@@ -274,7 +253,19 @@ var ALL_PORT = {
   //课程列表
   CourseList:{
     url:API_URL+"/Page/CourseList",
-    data:{}
+    data:{
+      page: 1,
+      rows: 10,
+      sort: 'Sort',
+      order: 'desc',
+      courseType: 'All',
+      channelId: '',
+      channelCode:'',
+      title: '',
+      titleNav: '课程中心',
+      wordLimt: 35,
+      teacher: ''
+    }
   },
   //课程点击排行
   CourseClickRank:{
@@ -331,10 +322,10 @@ var ALL_PORT = {
     url:API_URL+"/Page/ExamList",
     data:{page:1,rows:5,sort:'Id',order:'desc',titleNav:"在线考试",examType:"All",title:""}
   },
-  //问卷列表
+  //问卷调查列表
   PollList:{
     url:API_URL+"/Page/PollList",
-    data:{page:1,rows:10,sort:'Id',order:'desc',titleNav:"问卷列表",examType:"All",title:"",trainingId:"",wordLimt:30}
+    data:{page:1,rows:10,sort:'Id',order:'desc',titleNav:"问卷调查",examType:"All",title:"",trainingId:"",wordLimt:30}
   },
   //参加问卷调查
   Poll:{
@@ -642,15 +633,15 @@ var ALL_PORT = {
     url:API_URL+"/Page/ClassPaperAdd",
     data:{page:1,rows:9,sort:'Id',order:'desc'}
   },
-  //原创文章添加
+  //原创文章添加（发表心声）
   AddOriginalArticle:{
     url:API_URL+"/Page/AddOriginalArticle",
     data:{Name:'',Content:''}
   },
-  //原创文章列表
+  //原创文章列表(学员心声)
   OriginalArticleList:{
     url:API_URL+"/Page/OriginalArticleList",
-    data:{page:1,rows:9,sort:'Id',order:'desc',titleNav:'原创文章列表'}
+    data:{page:1,rows:9,sort:'Id',order:'desc',titleNav:'学员心声列表'}
   },
   //专题培训班--获取分类
   GetTrainingArticleCategory:{
@@ -797,7 +788,7 @@ var ALL_PORT = {
     url:API_URL+"/page/CollegeInfo",
     data:{sort:'Sort'}
   },
-  //学院风采
+  //学员风采
   StudentStyle:{
     url:API_URL+"/Page/StudentStyle",
     data:{page:1,rows:9,sort:'Sort',order:'desc',titleNav:'学员风采'}

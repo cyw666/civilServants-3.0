@@ -9,8 +9,7 @@
  */
 angular.module('luZhouApp')
   .controller('BookdetailCtrl', function ($scope, $state, $rootScope, $cookieStore, commonService, $stateParams, $loading) {
-    //保持在线
-    //commonService.keepOnline();
+
     $scope.token = commonService.AntiForgeryToken();
     $scope.Id = $stateParams.Id;
 

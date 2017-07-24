@@ -10,7 +10,7 @@
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
       <li><a ui-sref="main">首页</a></li>
-      <li><a ui-sref="specialTrainingCourse">专题培训班</a></li>
+      <li><a ui-sref="trainingClass">培训班</a></li>
       <li class="active">班级详情</li>
     </ol>
     <div class="trclasstitle text-center" dw-loading="classDetail">
@@ -54,129 +54,111 @@
       </ul>
       <div class="tab-content">
         <div class="tab-panel perlist" ng-show="vm.activeTab == 1">
-          <div class="title_bar clearfix">
-            <span class="list1">公告</span>
+          <div class="title_bar">
+            <span class="list4">公告</span>
             <span class="list2">时间</span>
             <span class="list2">作者</span>
           </div>
-          <span ng-show="classDetailData.Model.ClassNoticeList.length==0"
-                class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
           <div class="list" ng-repeat="list in classDetailData.Model.ClassNoticeList">
-            <p class="clearfix">
-              <span class="list1 cur_name"><a ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a></span>
-              <span class="list2">{{list.CreatedDate | dateFilter | date:'yyyy-MM-dd'}}</span>
-              <span class="list2">{{list.Author}}</span>
-            </p>
+              <div class="list4 ellipsis ">
+                <a ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a>
+              </div>
+              <div class="list2">{{list.CreatedDate | dateFilter | date:'yyyy-MM-dd'}}</div>
+              <div class="list2">{{list.Author}}</div>
           </div>
-          <div ng-transclude="pagation"></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 2">
-          <div class="title_bar clearfix">
-            <span class="list1">课程名称</span>
+          <div class="title_bar">
+            <span class="list4">课程名称</span>
             <span class="list2">进度</span>
             <span class="list2">播放</span>
-
           </div>
-          <span ng-show="classDetailData.Model.ClassRequiredCourseList.length==0"
-                class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
           <div class="list" ng-repeat="list in classDetailData.Model.ClassRequiredCourseList">
-            <p class="clearfix">
-              <span class="list1 cur_name" ng-show="!list.Name">暂无名称</span>
-              <span class="list1 cur_name" ng-show="list.Name">{{list.Name}}</span>
-              <span class="list2">{{list.BrowseScore}}%</span>
-              <span class="list2"><a ui-sref="play({Id:list.Id})" target="_blank">点击进入</a></span>
-            </p>
+              <div class="list4 ellipsis" ng-show="!list.Name">暂无名称</div>
+              <div class="list4 ellipsis" ng-show="list.Name">{{list.Name}}</div>
+              <div class="list2">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{list.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':list.BrowseScore+'%'};">
+                    {{list.BrowseScore.toFixed(1)}}%
+                  </div>
+                </div>
+              </div>
+              <div class="list2"><a ui-sref="play({Id:list.Id})" target="_blank">点击进入</a></div>
           </div>
-          <div ng-transclude="pagation"></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 3">
-          <div class="title_bar clearfix">
-            <span class="list1">课程名称</span>
+          <div class="title_bar">
+            <span class="list4">课程名称</span>
             <span class="list2">进度</span>
             <span class="list2">播放</span>
-
           </div>
-          <span ng-show="classDetailData.Model.ClassElectiveCourseList.length==0"
-                class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
           <div class="list" ng-repeat="list in classDetailData.Model.ClassElectiveCourseList">
-            <p class="clearfix">
-              <span class="list1 cur_name" ng-show="!list.Name">暂无名称</span>
-              <span class="list1 cur_name" ng-show="list.Name">{{list.Name}}</span>
-              <span class="list2">{{list.BrowseScore}}%</span>
-              <span class="list2"><a ui-sref="play({Id:list.Id})" target="_blank">点击进入</a></span>
-            </p>
+              <div class="list4 ellipsis" ng-show="!list.Name">暂无名称</div>
+              <div class="list4 ellipsis" ng-show="list.Name">{{list.Name}}</div>
+              <div class="list2">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{list.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':list.BrowseScore+'%'};">
+                    {{list.BrowseScore.toFixed(1)}}%
+                  </div>
+                </div>
+              </div>
+              <div class="list2"><a ui-sref="play({Id:list.Id})" target="_blank">点击进入</a></div>
           </div>
-          <div ng-transclude="pagation"></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 4">
-          <div class="title_bar clearfix">
-            <span class="list1">考试名称</span>
+          <div class="title_bar">
+            <span class="list4">考试名称</span>
             <span class="list2">考试学时</span>
             <span class="list2">最高分</span>
             <span class="list2">参加测试</span>
           </div>
-          <span ng-show="classDetailData.Model.ClassExamList.length==0"
-                class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
           <div class="list" ng-repeat="list in classDetailData.Model.ClassExamList">
-            <p class="clearfix">
-              <span class="list1 cur_name">{{list.Name}}</span>
-              <span class="list2">{{list.Credit}}</span>
-              <span class="list2">{{list.TotalScore}}</span>
-              <span class="list2"><a ng-click="havTest(list.Id)" target="_blank">参加测试</a></span>
-            </p>
+              <div class="list4 ellipsis">{{list.Name}}</div>
+              <div class="list2">{{list.Credit}}</div>
+              <div class="list2">{{list.TotalScore}}</div>
+              <div class="list2"><a ng-click="havTest(list.Id)" target="_blank">参加测试</a></div>
           </div>
-          <div ng-transclude="pagation"></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 5">
-          <div class="title_bar clearfix">
-            <span class="list1">话题</span>
+          <div class="title_bar">
+            <span class="list4">话题</span>
             <span class="list2">话题分类</span>
             <span class="list2">时间</span>
             <span class="list2">作者</span>
-
           </div>
-          <span ng-show="classDetailData.Model.ClassTopicList.length==0"
-                class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
           <div class="list" ng-repeat="list in classDetailData.Model.ClassTopicList">
-            <p class="clearfix">
-              <span class="list1 cur_name"><a ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a></span>
-              <span class="list2">{{list.Type}}</span>
-              <span class="list2">{{list.CreatedDate |dateFilter |date:'yy-MM-dd' }}</span>
-              <span class="list2">{{list.Author}}</span>
-            </p>
+              <div class="list4 ellipsis">
+                <a ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a>
+              </div>
+              <div class="list2">{{list.Type}}</div>
+              <div class="list2">{{list.CreatedDate |dateFilter |date:'yyyy-MM-dd' }}</div>
+              <div class="list2">{{list.Author}}</div>
           </div>
-          <div ng-transclude="pagation"></div>
+
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 6">
-          <div class="title_bar clearfix">
-            <span class="list1">论文标题</span>
+          <div class="title_bar">
+            <span class="list4">论文标题</span>
             <span class="list2">作者</span>
             <span class="list2">创建时间</span>
           </div>
-          <span ng-show="classDetailData.Model.ClassPaperList.length==0"
-                class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
           <div class="list" ng-repeat="list in classDetailData.Model.ClassPaperList">
-            <p class="clearfix">
-              <span class="list1 cur_name"><a ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a></span>
-              <span class="list2">{{list.Author}}</span>
-              <span class="list2">{{list.CreatedDate | dateFilter | date:'yyyy-MM-dd'}}</span>
-            </p>
+              <div class="list4 ellipsis">
+                <a ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a>
+              </div>
+              <div class="list2">{{list.Author}}</div>
+              <div class="list2">{{list.CreatedDate | dateFilter | date:'yyyy-MM-dd'}}</div>
           </div>
-          <div ng-transclude="pagation"></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 7">
-                 <span ng-show="classDetailData.Model.ClassPhotoList.length==0"
-                       class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
-          <ul>
-            <li class="list3" ng-repeat="list in classDetailData.Model.ClassPhotoList">
+          <ul class="clearfix">
+            <li class="list3 photo" ng-repeat="list in classDetailData.Model.ClassPhotoList">
               <a ui-sref="photoPreview({AlbumId:list.Id,TrainingId:classDetailData.TrainingId})" target="_blank">
                 <img ng-src="{{ImgPath+'/'+list.Img}}" err-src="images/notFound.jpeg">
-                <span class="text-center">{{list.Name}}</span>
+                <p class="text-center">{{list.Name}}</p>
               </a>
-
             </li>
           </ul>
-          <div ng-transclude="pagation"></div>
         </div>
 
       </div>
@@ -188,56 +170,27 @@
     height: 30px;
     line-height: 30px;
     font-size: 20px;
-    font-family: 微软雅黑;
   }
-
   .trclasstitle .fabiao {
     margin: 15px auto;
   }
-.trainingCenter .tmBorder-red {
-  border: none;
-  border-top: 4px solid #db1011;
-}
+  .trainingCenter .tmBorder-red {
+    border: none;
+    border-top: 4px solid #db1011;
+  }
   .contentclassinfo {
     text-indent: 2em;
     font-size: 14px;
     line-height: 24px;
     padding-left: 5px;
   }
-
-  .myTab .perlist .list1 {
-    width: 40%;
-    height: 37px;
+  .trainingCenter .myTab .perlist .photo {
+    margin-top: 20px;
   }
-
-  .myTab .perlist .list .list1 {
-    text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .myTab .perlist .list2 {
-    width: 20%;
-  }
-
-  .myTab .perlist .list3 {
-    width: 26%;
-    float: left;
-    margin: 5px 20px;
-  }
-
-  .myTab .perlist .list3 img {
+  .trainingCenter .myTab .perlist .photo img {
     width: 80%;
     height: 130px;
     border-radius: 3px;
-
-  }
-
-  .myTab .perlist .list3 span {
-    display: block;
   }
 </style>
 

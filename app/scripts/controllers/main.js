@@ -148,7 +148,7 @@ angular.module('luZhouApp')
       commonService.limitSubmit(clickLogin);
     }
 
-    //专题培训轮播新闻
+    /*//培训班轮播新闻
     $scope.getClassNews = function () {
       $loading.start('specialTraining');
       commonService.getData(ALL_PORT.TrainingClass.url, 'POST',
@@ -159,35 +159,8 @@ angular.module('luZhouApp')
           $scope.specialTraining = response.Data.ListData;
         });
     };
-    $scope.getClassNews();
+    $scope.getClassNews();*/
 
-    //单位排行
-    $loading.start('rankingList');
-    commonService.getData(ALL_PORT.LeftGroupRank.url, 'POST',
-      $.extend({},ALL_PORT.LeftGroupRank.data,{rows:6}))
-      .then(function(response) {
-        $loading.finish('rankingList');
-        $scope.govermentRanking = response.Data;
-      });
-    //个人学时排行
-    commonService.getData(ALL_PORT.RankUserList.url, 'POST',
-      $.extend({},ALL_PORT.RankUserList.data,{rows:6}) )
-      .then(function(response) {
-        $scope.userRankingData = response.Data;
-      });
-    //课程排行
-    commonService.getData(ALL_PORT.CourseClickRank.url, 'POST',
-      $.extend({},ALL_PORT.CourseClickRank.data,{rows:6}) )
-      .then(function(response) {
-        $scope.courseRankingData = response.Data;
-      });
-    //专题学习
-    commonService.getData(ALL_PORT.StudySpecial.url, 'POST',
-      $.extend({},ALL_PORT.StudySpecial.data,{rows:3}) )
-      .then(function(response) {
-        $scope.studySpecialData = response.Data;
-        $scope.showNoSpecialClass = response.Data.ListData.length == 0?true:false;
-      });
     //培训班分类
     var defaultClassId;
     $loading.start('classGarden');
@@ -236,7 +209,7 @@ angular.module('luZhouApp')
                 if (response.Type === 0) {
                   alert("请先加入培训班!");
                 } else {
-                  window.open('#/specialTrainingCourse/classDetail/' + id);
+                  window.open('#/trainingClass/classDetail/' + id);
                 }
               });
           }else {
@@ -246,14 +219,6 @@ angular.module('luZhouApp')
 
 
     };
-    //实时数据
-    $loading.start('realTimeList');
-    commonService.getData(ALL_PORT.LeftRealTimeData.url, 'POST',
-      ALL_PORT.LeftRealTimeData.data)
-      .then(function(response) {
-        $loading.finish('realTimeList');
-        $scope.realTimeData = response.Data;
-      });
     //课程中心
     //课程分类
     commonService.getData(ALL_PORT.CourseCategory.url, 'POST',
@@ -296,40 +261,6 @@ angular.module('luZhouApp')
 
     };
 
-
-    //未读通知小提示
-    $scope.showTip = false;
-    commonService.getData(ALL_PORT.UnReadNotice2.url, 'POST', $.extend({}, ALL_PORT.UnReadNotice2.data))
-      .then(function(response) {
-        $scope.unReadNoticeList = response.Data;
-        if (response.Data.length > 0) {
-          $scope.showTip = true;
-        }
-      });
-    //关闭小提示
-    $scope.closeTip = function() {
-      $scope.showTip = false;
-    };
-
-
-    //通知公告
-    $loading.start('noticeAnnouncement');
-    commonService.getData(ALL_PORT.noticeAnnouncement.url, 'POST',
-      $.extend({},ALL_PORT.noticeAnnouncement.data,{rows:3}))
-      .then(function(response) {
-        $loading.finish('noticeAnnouncement');
-        $scope.noticeData = response.Data;
-      });
-    $scope.startSlide = function () {
-      $('#noticeSlide').slideBox({
-        duration : 0.5,//滚动持续时间，单位：秒
-        easing : 'linear',//swing,linear//滚动特效
-        delay : 4,//滚动延迟时间，单位：秒
-        hideClickBar : false,//不自动隐藏点选按键
-        clickBarRadius : 5
-      });
-    }
-
     //新闻资讯
     $scope.getNewsContent = function (id) {
       $loading.start('articleList');
@@ -342,19 +273,5 @@ angular.module('luZhouApp')
         });
     };
     $scope.getNewsContent(83);
-    //获取文章分类
-    commonService.getData(ALL_PORT.ArticleCategory.url,'POST',
-      $.extend({}, ALL_PORT.ArticleCategory.data,{rows:3}))
-      .then(function(response) {
-        $scope.categoryData = response.Data;
-      });
 
-    //电子图书
-    $loading.start('bookList');
-    commonService.getData(ALL_PORT.BookList.url,'POST',ALL_PORT.BookList.data)
-      .then(function(response) {
-        $loading.finish('bookList');
-        $scope.booksData = response.Data;
-        $scope.imgPath = response.Data.Path;
-      });
   });

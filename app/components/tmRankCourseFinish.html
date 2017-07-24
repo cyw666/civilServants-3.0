@@ -12,44 +12,22 @@
       <li><a ui-sref="main">首页</a></li>
       <li class="active">{{rankCourseFinish.ViewBag.TitleNav}}</li>
     </ol>
-    <!--
-    <div class="rankTitle">
-      <div class="txt">{{rankCourseFinish.ViewBag.TitleNav}}</div>
-    </div>-->
     <div class="myTab" dw-loading="rankCourseClick">
       <div class="tab-content">
         <div class="tab-panel perlist">
-          <div class="title_bar clearfix">
-            <span class="list1">排名</span>
-            <span class="list1">姓名</span>
-            <span class="list1">完成课程数</span>
+          <div class="title_bar">
+            <span class="list3">排名</span>
+            <span class="list3">姓名</span>
+            <span class="list3">完成课程数</span>
           </div>
           <div class="list" ng-repeat="rankCourseFinishList in rankCourseFinish.ListData"  ng-class="{'rankListBg':$index%2!=0}">
-            <p class="clearfix">
-              <span class="list1">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
-              <span class="list1" title="{{rankCourseFinishList.Name}}">{{rankCourseFinishList.Name}}</span>
-              <span class="list1">{{rankCourseFinishList.Total}}</span>
-            </p>
+            <span class="list3">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
+            <span class="list3" title="{{rankCourseFinishList.Name}}">{{rankCourseFinishList.Name}}</span>
+            <span class="list3">{{rankCourseFinishList.Total}}</span>
           </div>
-
         </div>
       </div>
-      <div ng-show="paginationConf.totalItems>0" tm-pagation conf="paginationConf" style="margin-left: 20%"></div>
-      <div class="noData" ng-show="paginationConf.totalItems <=0">暂无数据</div>
+      <div tm-pagation conf="paginationConf"></div>
     </div>
   </div>
 </div>
-
-<style>
-  .myTab .perlist .list1 {
-    width: 30%;
-    height: 37px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .myTab .perlist .list .list1 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-</style>

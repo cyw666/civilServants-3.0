@@ -10,31 +10,28 @@
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
       <li><a ui-sref="main">首页</a></li>
-      <li><a ui-sref="specialTrainingCourse">专题培训班</a></li>
+      <li><a ui-sref="trainingClass">培训班</a></li>
       <li><a ui-sref="classDetail({Id:Id})">{{Data.TrainingName}}</a></li>
       <li class="active">{{Data.TitleNav}}</li>
     </ol>
     <div class="trclasstitle text-center tmBorder-red" dw-loading="photoAlbumList">
-      <h2>{{Data.TitleNav}}</h2>
+      <h2 style="margin: 10px 0;">{{Data.TitleNav}}</h2>
       <div>
-        <a class="btn btn-success" data-toggle="modal" data-target=".modal">+新增相册</a>
+        <a class="btn btn-danger" data-toggle="modal" data-target=".modal">+新增相册</a>
       </div>
       <div class="myTab">
         <div class="tab-content clearfix">
           <div class="tab-panel perlist">
-                 <span ng-show="Data.ListData.length==0"
-                       class="list1 cur_name" style="line-height: 32px">暂无数据！</span>
             <ul class="clearfix">
               <li class="list3" ng-repeat="list in Data.ListData">
                 <a ui-sref="photoPreview({AlbumId:list.Id,TrainingId:Data.TrainingId})">
                   <img src="{{ImgSrc+'/'+list.Img}}" err-src="images/notFound.jpeg">
-                  <span class="text-center">{{list.Name}}</span>
+                  <p class="text-center">{{list.Name}}</p>
                 </a>
-
               </li>
             </ul>
           </div>
-          <div ng-show="Data.ListData.length!==0" ng-transclude="pagation"></div>
+          <div ng-transclude="pagation"></div>
         </div>
       </div>
     </div>
@@ -58,15 +55,13 @@
               <tr>
                 <td>相册说明：</td>
                 <td>
-                  <textarea ng-model="description" id="txtContent" name="Content" cols="50" rows="5" type="text"
-                            class="txt2"></textarea>
+                  <textarea ng-model="description" id="txtContent" name="Content" cols="50" rows="5" type="text" class="txt2"></textarea>
                 </td>
               </tr>
               <tr>
                 <td>相册封面：</td>
                 <td>
-                  <input type="file" name="ImageToUpload" id="ImageToUpload" multiple="multiple"
-                         onchange="fileSelected('ImageToUpload', 'ImageTraining', 1);"/>
+                  <input type="file" name="ImageToUpload" id="ImageToUpload" multiple="multiple" onchange="fileSelected('ImageToUpload', 'ImageTraining', 1);"/>
                   <div id="ImageMessage" style="display:none;padding: 10px"></div>
                   <input type="hidden" id="hidValueImage" name="ImgUrl" ng-model="ImgUrl"/>
                 </td>
@@ -83,39 +78,15 @@
   </div>
 </div>
 <style>
-  h2 {
-    margin: 10px 0;
+
+  .trainingCenter .myTab .perlist .list3 {
+    margin: 5px;
   }
 
-  .myTab .perlist .list1 {
-    width: 40%;
-    height: 37px;
-  }
-
-  .myTab .perlist .list .list1 {
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .myTab .perlist .list3 {
-    width: 26%;
-    float: left;
-    margin: 5px 20px;
-  }
-
-  .myTab .perlist .list3 img {
+  .trainingCenter .myTab .perlist .list3 img {
     width: 80%;
     height: 130px;
     border-radius: 3px;
-
-  }
-
-  .myTab .perlist .list3 span {
-    display: block;
   }
   .trainingCenter .modal-footer {
     text-align: center;

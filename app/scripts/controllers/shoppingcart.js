@@ -11,14 +11,6 @@ angular.module('luZhouApp')
   .controller('ShoppingcartCtrl', function ($scope, $location, $state,$rootScope, $cookieStore, commonService, $timeout, $loading) {
     //防伪造请求
     $scope.token = commonService.AntiForgeryToken();
-    //退出
-    $scope.loginOut = commonService.loginOut;
-    //请求用户信息
-    $loading.start('loginOut');
-    commonService.getData(ALL_PORT.LoginLong.url, 'POST', ALL_PORT.LoginLong.data).then(function(response) {
-      $loading.finish('loginOut');
-      $scope.userMessage = response.Data;
-    });
 
     //购物车列表
     var totalCount;

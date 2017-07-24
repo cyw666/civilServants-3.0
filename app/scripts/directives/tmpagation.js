@@ -20,8 +20,9 @@ angular.module('luZhouApp')
       '<li ng-class="{disabled: conf.currentPage == conf.numberOfPages}" ng-click="nextPage()"><span>下一页</span></li>' +
       '</ul>' +
       '<div class="page-total" ng-show="conf.totalItems > 0">' +
-      '/共<strong>{{ conf.totalItems }}</strong>条 ' +
-      '跳转至<input type="text" ng-model="jumpPageNum" ng-keyup="jumpPageKeyUp($event)"/>' +
+      '<span>/共<strong>{{ conf.totalItems }}</strong>条 &nbsp;跳转至</span>'+
+      '<input type="text" ng-model="jumpPageNum" ng-keyup="jumpPageKeyUp($event)"/>' +
+      '<button class="btn btn-default" ng-click="jumpToPage()">Go</button>'+
       '</div>' +
       '<div class="no-items" ng-show="conf.totalItems <= 0">暂无数据</div>' +
       '</div>',

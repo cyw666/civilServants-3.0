@@ -10,14 +10,6 @@
 angular.module('luZhouApp')
   .controller('ArticleCtrl', function ($scope, $state, $rootScope, $cookieStore, commonService, $stateParams, $loading) {
     $scope.categoryId = $stateParams.categoryId?$stateParams.categoryId:'';
-    //保持在线
-    //commonService.keepOnline();
-    //获取文章分类
-    commonService.getData(ALL_PORT.ArticleCategory.url,'POST',
-      $.extend({}, ALL_PORT.ArticleCategory.data))
-      .then(function(response) {
-        $scope.categoryData = response.Data;
-      });
 
     //分页
     var params = {
@@ -46,24 +38,4 @@ angular.module('luZhouApp')
       $scope.refreshList(pageOptions);
     });
 
-    //热门文章
-    $scope.hotArticle = function () {
-      $loading.start('articleHot');
-      var options = {
-        page:1,
-        rows:10,
-        sort:'ClickCount',
-        order:'desc',
-        categoryId:null,
-        titleNav:'热门文章',
-        wordLimt:35
-      };
-      commonService.getData(ALL_PORT.ArticleList.url,'POST',
-        $.extend({}, ALL_PORT.ArticleList.data,options))
-        .then(function(response) {
-          $loading.finish('articleHot');
-          $scope.hotArticleData = response.Data;
-        });
-    };
-    $scope.hotArticle();
   });

@@ -11,25 +11,6 @@ angular.module('luZhouApp')
   .controller('PersonalcenterCtrl', function ($scope, $http, $timeout, $rootScope, $cookieStore, commonService, $location, $loading) {
     //防伪造请求
     $scope.token = commonService.AntiForgeryToken();
-    //退出
-    $scope.loginOut = commonService.loginOut;
-    //请求用户信息
-    $loading.start('loginOut');
-    commonService.getData(ALL_PORT.LoginLong.url, 'POST', ALL_PORT.LoginLong.data).then(function (response) {
-      $loading.finish('loginOut');
-      $scope.userMessage = response.Data;
-    });
-
-    //学院学时排行（请勿删除）
-    $loading.start('studentsHourRanking');
-    commonService.getData(ALL_PORT.LeftUserRank.url, 'POST',
-      ALL_PORT.LeftUserRank.data)
-      .then(function (response) {
-        $loading.finish('studentsHourRanking');
-        $scope.userRankingData = response.Data;
-      });
-
-
     //个人中心
     $scope.selectedName = {};
     //搜索title

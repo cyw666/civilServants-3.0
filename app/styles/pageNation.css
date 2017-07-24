@@ -3,11 +3,11 @@
 .page-list .pagination span {cursor: pointer;  color: #333;}
 .page-list .pagination .separate span{cursor: default; border-top:none;border-bottom:none;}
 .page-list .pagination .separate span:hover {background: none;}
-.page-list .page-total {float:left; margin: 14px 10px;}
-.page-list .page-total input, .page-list .page-total select{height: 26px; border: 1px solid #ddd;}
-.page-list .page-total input {width: 40px; padding-left:3px;}
+.page-list .page-total {float:left; margin: 10px 10px;  height: 28px;line-height:28px;}
+.page-list .page-total input, .page-list .page-total span{height: 28px;float: left;}
+.page-list .page-total input {width: 40px; padding-left:3px; border: 1px solid #ddd;}
 .page-list .page-total select {width: 50px;}
-.page-list .no-items {text-align: center;height: 30px;line-height: 30px;font-size: 18px;font-weight: 600;margin: 20px 0;}
+.page-list .page-total button.btn-default {color: #000;float: left;  background-color: #e0e0e0;  margin-left:5px;  padding: 0; height: 28px;width: 40px;}
 .pagination>.active>span {background-color: #db1011; border-color: #f50001;color:#fff;}
 .pagination>.active>span:hover {background-color: #db1011; border-color: #f50001;color:#fff;}
 .pagination>li>span:hover {

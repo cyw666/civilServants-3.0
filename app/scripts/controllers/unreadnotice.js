@@ -9,21 +9,6 @@
  */
 angular.module('luZhouApp')
     .controller('unReadNoticeCtrl', function($scope, $timeout, $loading,$rootScope, $cookieStore, commonService) {
-        //判断能否访问
-        // commonService.isVisit();
-        //保持在线
-        //commonService.keepOnline();
-        //退出
-        $scope.loginOut = commonService.loginOut;
-
-        //请求用户信息
-      $loading.start('loginOut');
-      commonService.getData(ALL_PORT.LoginLong.url, 'POST', ALL_PORT.LoginLong.data)
-        .then(function(response) {
-          $loading.finish('loginOut');
-          $scope.userMessage = response.Data;
-        });
-
 
       $scope.paginationConf = $.extend({},paginationConf,{itemsPerPage: ALL_PORT.UnReadNotice.data.rows});
 

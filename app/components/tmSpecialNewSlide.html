@@ -1,0 +1,66 @@
+<!--<div id="specialNewSlide" class="slideBox">
+  <ul class="items">
+    <li ng-repeat="list in slideData.ListData" repeat-finish="startSlide()">
+      <a ui-sref="noticeDetail({ID:noticeList.Id})" title="{{list.Name}}" target="_blank">
+        <img ng-src="{{list.Path+'/'+list.Img}}" err-Src="images/notFound.jpeg">
+      </a>
+    </li>
+  </ul>
+</div>
+
+<style>
+  #specialNewSlide ul.items li a img {
+    width: 345px;
+    height: 306px;
+  }
+</style>-->
+<div id="specialNewSlide">
+  <div class="specialNewSlide">
+    <div class="slideList" ng-repeat="list in slideData.ListData" repeat-finish="startSlide()">
+      <a ui-sref="articleDetail({ID:list.Id})" target="_blank">
+        <img ng-src="{{slideData.Path+'/'+list.Img}}"  title="{{list.Name}}" err-Src="images/notFound.jpeg">
+      </a>
+      <p class="titleName">
+        <a class="ellipsis" ui-sref="articleDetail({ID:list.Id})" title="{{list.Name}}" target="_blank">
+          {{list.Name}}
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  #specialNewSlide .slideList img{
+    width: 345px;
+    height: 306px;
+  }
+  #specialNewSlide .bx-wrapper {
+    margin: 0 auto;
+  }
+  #specialNewSlide .bx-wrapper .bx-pager {
+    height: 25px;
+    padding: 0;
+    bottom: 0;
+  }
+  #specialNewSlide .bx-wrapper .bx-pager.bx-default-pager a {
+    background: transparent;
+    border: 1px solid #fff;
+  }
+  #specialNewSlide .bx-wrapper .bx-pager.bx-default-pager a:hover,
+  #specialNewSlide .bx-wrapper .bx-pager.bx-default-pager a.active {
+    background: #fa1f20;
+    border: 1px solid #fa1f20;
+  }
+  #specialNewSlide .slideList .titleName{
+    position: absolute;
+    bottom: 25px;
+    margin-left: 10%;
+    width: 80%;
+  }
+  #specialNewSlide .slideList .titleName a{
+    display: inline-block;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+  }
+</style>

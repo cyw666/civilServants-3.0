@@ -9,15 +9,6 @@
  */
 angular.module('luZhouApp')
   .controller('MyfavoriteCtrl', function ($scope, $timeout, $rootScope, $cookieStore, commonService, $location, $loading) {
-    //退出
-    $scope.loginOut = commonService.loginOut;
-    //请求用户信息
-    $loading.start('loginOut');
-    commonService.getData(ALL_PORT.LoginLong.url, 'POST', ALL_PORT.LoginLong.data)
-      .then(function (response) {
-        $loading.finish('loginOut');
-        $scope.userMessage = response.Data;
-      });
 
     $scope.token = commonService.AntiForgeryToken();
     //我的收藏

@@ -21,28 +21,28 @@
       </li>
       <li>
         <span>个人学习档案</span>
-        <span class="list2 grey"><a ui-sref="personaLearningArchives" target="_blank">详细&gt;&gt;</a></span>
+        <span class="item2 grey"><a ui-sref="personaLearningArchives" target="_blank">详细&gt;&gt;</a></span>
       </li>
       <li>
         <span class="grey"><a ui-sref="shoppingcart">购物车&gt;&gt;</a></span>
-        <span class="list2 grey"><a ui-sref="orderlist">我的订单&gt;&gt;</a></span>
+        <span class="item2 grey"><a ui-sref="orderlist">我的订单&gt;&gt;</a></span>
       </li>
       <li>
         <span class="grey"><a ui-sref="invoicelist">我的发票&gt;&gt;</a></span>
-        <span class="list2 grey"><a ui-sref="orderlist"></a></span>
+        <span class="item2 grey"><a ui-sref="orderlist"></a></span>
       </li>
       <li>
-        <span class="list1">您有<span class="red"> {{info.Model.UnRead}} </span>条新通知！</span>
-        <span class="list2 grey"><a ui-sref="unReadNotice">详细&gt;&gt;</a></span>
+        <span class="item1">您有<span class="red"> {{info.Model.UnRead}} </span>条新通知！</span>
+        <span class="item2 grey"><a ui-sref="unReadNotice">详细&gt;&gt;</a></span>
       </li>
       <li class="lastChild fontSize12 grey">
         <a ui-sref="modifyPassword">修改密码</a>&nbsp;&nbsp;|&nbsp;&nbsp;
         <a ui-sref="changeUser" id="ctl05_A2">修改信息</a> &nbsp;|&nbsp;
-        <span class="list2" ><a href="/admin/" target="_blank">进入管理控制台</a></span>
+        <span class="item2" ><a href="/admin/" target="_blank">进入管理控制台</a></span>
       </li>
       <li class="lastChild lastChild1">
         <a class="exit" href="javascript:;" ng-click="out('out')">退出</a>
-        <!--<span class="list1"><a  href="javascript:void();" onclick="loginOut('cancel')">删除账号</a></span>-->
+        <!--<span class="item1"><a  href="javascript:void();" onclick="loginOut('cancel')">删除账号</a></span>-->
       </li>
     </ul>
   </div>
@@ -78,7 +78,7 @@
     color: #333;
   }
 
-  .UserInformation .list2 {
+  .UserInformation .item2 {
     float: right;
   }
   .UserInformation .loginAfter_ul li.lastChild {
@@ -101,10 +101,10 @@
     color: #fff;
     border-radius: 6px;
   }
-  .UserInformation .loginAfter_ul .lastChild .list2 a {
+  .UserInformation .loginAfter_ul .lastChild .item2 a {
     color: #db1011;
   }
-  .UserInformation .loginAfter_ul .lastChild .list2 a:hover {
+  .UserInformation .loginAfter_ul .lastChild .item2 a:hover {
     color: #333;
   }
 </style>

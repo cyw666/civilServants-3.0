@@ -12,48 +12,28 @@
       <li><a ui-sref="main">首页</a></li>
       <li class="active">{{govermentRanking.ViewBag.TitleNav}}</li>
     </ol>
-    <!--<div class="rankTitle">
-      <div class="txt">{{govermentRanking.ViewBag.TitleNav}}</div>
-    </div>-->
     <div class="myTab" dw-loading="userRankingList">
       <div class="tab-content">
         <div class="tab-panel perlist">
-          <div class="title_bar clearfix">
-            <span class="list1">排名</span>
-            <span class="list1">单位名称</span>
-            <span class="list1">平均学分</span>
-            <span class="list1">总学分</span>
-            <span class="list1">总人数</span>
+          <div class="title_bar">
+            <span class="list2">排名</span>
+            <span class="list2">单位名称</span>
+            <span class="list2">平均学分</span>
+            <span class="list2">总学分</span>
+            <span class="list2">总人数</span>
           </div>
           <div class="list" ng-repeat="govermentRankingList in govermentRanking.ListData"  ng-class="{'rankListBg':$index%2!=0}">
-            <p class="clearfix">
-              <span class="list1">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
-              <span class="list1" title="{{govermentRankingList.DepartmentName}}">{{govermentRankingList.DepartmentName}}</span>
-              <span class="list1">{{govermentRankingList.Average}}</span>
-              <span class="list1">{{govermentRankingList.Credit}}</span>
-              <span class="list1">{{govermentRankingList.UserCount}}</span>
-            </p>
+            <span class="list2">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
+            <span class="list2" title="{{govermentRankingList.DepartmentName}}">{{govermentRankingList.DepartmentName}}</span>
+            <span class="list2">{{govermentRankingList.Average}}</span>
+            <span class="list2">{{govermentRankingList.Credit}}</span>
+            <span class="list2">{{govermentRankingList.UserCount}}</span>
           </div>
-
         </div>
       </div>
-      <div ng-show="paginationConf.totalItems>0" tm-pagation conf="paginationConf" style="margin-left: 20%"></div>
-      <div class="noData" ng-show="paginationConf.totalItems <=0">暂无数据</div>
+      <div tm-pagation conf="paginationConf"></div>
     </div>
   </div>
 
 </div>
 
-<style>
-  .myTab .perlist .list1 {
-    width: 20%;
-    height: 37px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .myTab .perlist .list .list1 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-</style>

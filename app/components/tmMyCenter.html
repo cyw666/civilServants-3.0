@@ -28,37 +28,30 @@
     </form>
     <div class="myTab">
       <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
-        <li ng-class="{active: vm.activeTab == 1}"><a
-          ng-click="vm.activeTab = 1;searchMyCenterCourse({'courseType':'Unfinish','title':searchTitle})">正在学习的课程 <span>({{TotalData.UnfinishCount}})</span></a>
-        </li>
-        <li ng-class="{active: vm.activeTab == 2}"><a
-          ng-click="vm.activeTab = 2;searchMyCenterCourse({'courseType':'Appointed','title':searchTitle})">指定到您的课程
-          <span>({{TotalData.AppointedCount}})</span></a></li>
-        <li ng-class="{active: vm.activeTab == 3}"><a
-          ng-click="vm.activeTab = 3;searchMyCenterCourse({'courseType':'Finish','title':searchTitle})">已完成的课程 <span>({{TotalData.FinishCount}})</span></a>
-        </li>
+        <li ng-class="{active: vm.activeTab == 1}"><a ng-click="vm.activeTab = 1;searchMyCenterCourse({'courseType':'Unfinish','title':searchTitle})">正在学习的课程 <span>({{TotalData.UnfinishCount}})</span></a></li>
+        <li ng-class="{active: vm.activeTab == 2}"><a ng-click="vm.activeTab = 2;searchMyCenterCourse({'courseType':'Appointed','title':searchTitle})">指定到您的课程<span>({{TotalData.AppointedCount}})</span></a></li>
+        <li ng-class="{active: vm.activeTab == 3}"><a ng-click="vm.activeTab = 3;searchMyCenterCourse({'courseType':'Finish','title':searchTitle})">已完成的课程 <span>({{TotalData.FinishCount}})</span></a></li>
       </ul>
       <div class="tab-content" dw-loading="myCenter">
         <div class="tab-panel perlist" ng-show="vm.activeTab == 1">
-          <div class="title_bar clearfix">
-            <span class="list1">课程名称</span>
-            <span class="list2"><a class="getorder"
-                                   ng-click="learningProgress('Unfinish')"><span>▼</span>学习进度</a></span>
-            <span class="list5">学时</span>
-            <span class="list5">类型</span>
-            <span class="list5">播放</span>
-            <span class="list5">笔记</span>
-            <span class="list5">计划</span>
-            <span class="list5">测试</span>
-            <span class="list5">删除</span>
+          <div class="title_bar">
+            <div class="list3">课程名称</div>
+            <div class="list1-5">
+              <a class="getorder" ng-click="learningProgress('Unfinish')"><span>▼</span>学习进度</a>
+            </div>
+            <div class="list0-75">学时</div>
+            <div class="list0-75">类型</div>
+            <div class="list0-75">播放</div>
+            <div class="list0-75">笔记</div>
+            <div class="list0-75">计划</div>
+            <div class="list0-75">测试</div>
+            <div class="list0-75">删除</div>
           </div>
           <div class="list" ng-repeat="unFinish in TotalData.ListData.UnfinishModel">
-            <div class="clearfix">
-            <span class="list1 cur_name" title="{{unFinish.Name}}">
+            <div class="list3 ellipsis" title="{{unFinish.Name}}">
               <a ui-sref="courseDetails({Id:unFinish.Id})" target="_blank">{{unFinish.Name}}</a>
-            </span>
-
-              <span class="list2">
+            </div>
+            <div class="list1-5">
               <div class="progress">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
                      aria-valuenow="{{unFinish.BrowseScore}}" aria-valuemin="0" aria-valuemax="100"
@@ -66,51 +59,41 @@
                   {{unFinish.BrowseScore.toFixed(1)}}%
                 </div>
               </div>
-            </span>
-              <span class="list5">{{unFinish.Credit}}</span>
-              <span class="list5">{{unFinish.Type}}</span>
-              <span class="list5"><a ui-sref="play({Id:unFinish.Id})" target="_blank">播放</a></span>
-              <span class="list5" ng-if="unFinish.NoteFlag"><a href="" ng-click="seeNote(unFinish.Id,unFinish.Name)"
-                                                               data-toggle="modal"
-                                                               data-target=".notemodal">查看</a></span>
-              <span class="list5" ng-if="!unFinish.NoteFlag"><a href="" ng-click="nodeAdd(unFinish.Id)"
-                                                                data-toggle="modal"
-                                                                data-target=".notemodal">添加</a></span>
-
-              <span class="list5" ng-if="unFinish.PlanId"><a href="" ng-click="seePlan(unFinish.PlanId,unFinish.Name)"
-                                                             data-toggle="modal" data-target=".notemodal2">查看</a></span>
-              <span class="list5" ng-if="!unFinish.PlanId"><a href="" ng-click="planAdd(unFinish.Id)"
-                                                              data-toggle="modal"
-                                                              data-target=".notemodal2">添加</a></span>
-
-
-              <span ng-if="unFinish.ExamFlag&&unFinish.BrowseScore<100" class="list5">有考试</span>
-              <span ng-if="unFinish.ExamFlag&&unFinish.BrowseScore==100" class="list5"><a
-                ng-click="courseExamList(unFinish.Id)" data-toggle="modal" data-target=".seeTest">查看</a></span>
-              <span ng-if="!unFinish.ExamFlag" class="list5">无</span>
-              <span class="list5"><a ng-click="deleatUserCourse(unFinish.Id)"><img src="images/del.jpg"/></a></span>
             </div>
+              <div class="list0-75">{{unFinish.Credit}}</div>
+              <div class="list0-75">{{unFinish.Type}}</div>
+              <div class="list0-75"><a ui-sref="play({Id:unFinish.Id})" target="_blank">播放</a></div>
+              <div class="list0-75" ng-if="unFinish.NoteFlag"><a ng-click="seeNote(unFinish.Id,unFinish.Name)" data-toggle="modal" data-target=".notemodal">查看</a></div>
+              <div class="list0-75" ng-if="!unFinish.NoteFlag"><a ng-click="nodeAdd(unFinish.Id)" data-toggle="modal" data-target=".notemodal">添加</a></div>
+
+              <div class="list0-75" ng-if="unFinish.PlanId"><a ng-click="seePlan(unFinish.PlanId,unFinish.Name)"
+                                                             data-toggle="modal" data-target=".notemodal2">查看</a></div>
+              <div class="list0-75" ng-if="!unFinish.PlanId"><a ng-click="planAdd(unFinish.Id)" data-toggle="modal" data-target=".notemodal2">添加</a></div>
+
+              <div ng-if="unFinish.ExamFlag&&unFinish.BrowseScore<100" class="list0-75">有考试</div>
+              <div ng-if="unFinish.ExamFlag&&unFinish.BrowseScore==100" class="list0-75"><a
+                ng-click="courseExamList(unFinish.Id)" data-toggle="modal" data-target=".seeTest">查看</a></div>
+              <div ng-if="!unFinish.ExamFlag" class="list0-75">无</div>
+              <div class="list0-75"><a ng-click="deleatUserCourse(unFinish.Id)"><img src="images/del.jpg"/></a></div>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 2">
-          <div class="title_bar clearfix">
-            <span class="list1">课程名称</span>
-            <span class="list2"><a ng-click="learningProgress('Appointed')"
-                                   class="getorder"><span>▼</span>学习进度</a></span>
-            <span class="list5">学时</span>
-            <span class="list5">类型</span>
-            <span class="list5">播放</span>
-            <span class="list5">笔记</span>
-            <span class="list5">计划</span>
-            <span class="list5">测试</span>
-            <span class="list5">删除</span>
+          <div class="title_bar">
+            <div class="list3">课程名称</div>
+            <div class="list1-5"><a ng-click="learningProgress('Appointed')" class="getorder"><span>▼</span>学习进度</a></div>
+            <div class="list0-75">学时</div>
+            <div class="list0-75">类型</div>
+            <div class="list0-75">播放</div>
+            <div class="list0-75">笔记</div>
+            <div class="list0-75">计划</div>
+            <div class="list0-75">测试</div>
+            <div class="list0-75">删除</div>
           </div>
           <div class="list" ng-repeat="Appointed in TotalData.ListData.AppointedModel">
-            <div class="clearfix">
-              <span class="list1 cur_name" title="{{Appointed.Name}}"><a ui-sref="courseDetails({Id:Appointed.Id})"
-                                                                         target="_blank">{{Appointed.Name}}</a></span>
-              <span class="list2">
+              <div class="list3 ellipsis" title="{{Appointed.Name}}"><a ui-sref="courseDetails({Id:Appointed.Id})"
+                                                                         target="_blank">{{Appointed.Name}}</a></div>
+              <div class="list1-5">
               <div class="progress">
                 <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
                      aria-valuenow="{{Appointed.BrowseScore}}" aria-valuemin="0" aria-valuemax="100"
@@ -118,78 +101,62 @@
                   {{Appointed.BrowseScore.toFixed(1)}}%
                 </div>
               </div>
-            </span>
-              <span class="list5">{{Appointed.Credit}}</span>
-              <span class="list5">{{Appointed.Type}}</span>
-              <span class="list5"><a ui-sref="play({Id:Appointed.Id})" target="_blank">播放</a></span>
-              <span class="list5" ng-if="Appointed.NoteFlag"><a href="" ng-click="seeNote(Appointed.Id,Appointed.Name)"
-                                                                data-toggle="modal"
-                                                                data-target=".notemodal">查看</a></span>
-              <span class="list5" ng-if="!Appointed.NoteFlag"><a href="" ng-click="nodeAdd(Appointed.Id)"
-                                                                 data-toggle="modal"
-                                                                 data-target=".notemodal">添加</a></span>
-
-              <span class="list5" ng-if="Appointed.PlanId"><a href=""
-                                                              ng-click="seePlan(Appointed.PlanId,Appointed.Name)"
-                                                              data-toggle="modal"
-                                                              data-target=".notemodal2">查看</a></span>
-              <span class="list5" ng-if="!Appointed.PlanId"><a href="" ng-click="planAdd(Appointed.Id)"
-                                                               data-toggle="modal"
-                                                               data-target=".notemodal2">添加</a></span>
-
-              <span ng-if="Appointed.ExamFlag&&Appointed.BrowseScore<100" class="list5">有考试</span>
-              <span ng-if="Appointed.ExamFlag&&Appointed.BrowseScore==100" class="list5"><a
-                ng-click="courseExamList(Appointed.Id)" data-toggle="modal" data-target=".seeTest">查看</a></span>
-              <span ng-if="!Appointed.ExamFlag" class="list5">无</span>
-              <span class="list5"><a ng-click="deleatUserCourse(Appointed.Id)"><img src="images/del.jpg"/></a></span>
             </div>
+              <div class="list0-75">{{Appointed.Credit}}</div>
+              <div class="list0-75">{{Appointed.Type}}</div>
+              <div class="list0-75"><a ui-sref="play({Id:Appointed.Id})" target="_blank">播放</a></div>
+              <div class="list0-75" ng-if="Appointed.NoteFlag"><a ng-click="seeNote(Appointed.Id,Appointed.Name)" data-toggle="modal" data-target=".notemodal">查看</a></div>
+              <div class="list0-75" ng-if="!Appointed.NoteFlag"><a ng-click="nodeAdd(Appointed.Id)" data-toggle="modal" data-target=".notemodal">添加</a></div>
+
+              <div class="list0-75" ng-if="Appointed.PlanId"><a ng-click="seePlan(Appointed.PlanId,Appointed.Name)" data-toggle="modal" data-target=".notemodal2">查看</a></div>
+              <div class="list0-75" ng-if="!Appointed.PlanId"><a ng-click="planAdd(Appointed.Id)" data-toggle="modal" data-target=".notemodal2">添加</a></div>
+
+              <div ng-if="Appointed.ExamFlag&&Appointed.BrowseScore<100" class="list0-75">有考试</div>
+              <div ng-if="Appointed.ExamFlag&&Appointed.BrowseScore==100" class="list0-75"><a
+                ng-click="courseExamList(Appointed.Id)" data-toggle="modal" data-target=".seeTest">查看</a></div>
+              <div ng-if="!Appointed.ExamFlag" class="list0-75">无</div>
+              <div class="list0-75"><a ng-click="deleatUserCourse(Appointed.Id)"><img src="images/del.jpg"/></a></div>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 3">
-          <div class="title_bar clearfix">
-            <span class="list1">课程名称</span>
-            <span class="list2"><a ng-click="learningProgress('Finish')" class="getorder"><span>▼</span>学习进度</a></span>
-            <span class="list5">学时</span>
-            <span class="list5">类型</span>
-            <span class="list5">播放</span>
-            <span class="list5">笔记</span>
-            <span class="list5">计划</span>
-            <span class="list5">测试</span>
-            <span class="list5">删除</span>
+          <div class="title_bar">
+            <div class="list3">课程名称</div>
+            <div class="list1-5"><a ng-click="learningProgress('Finish')" class="getorder"><span>▼</span>学习进度</a></div>
+            <div class="list0-75">学时</div>
+            <div class="list0-75">类型</div>
+            <div class="list0-75">播放</div>
+            <div class="list0-75">笔记</div>
+            <div class="list0-75">计划</div>
+            <div class="list0-75">测试</div>
+            <div class="list0-75">删除</div>
           </div>
           <div class="list" ng-repeat="Finish in TotalData.ListData.FinishModel">
-            <div class="clearfix">
-              <span class="list1 cur_name" title="{{Finish.Name}}"><a ui-sref="courseDetails({Id:Finish.Id})"
-                                                                      target="_blank">{{Finish.Name}}</a></span>
-              <span class="list2">
-              <div class="progress">
-                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
-                     aria-valuenow="{{Finish.BrowseScore}}" aria-valuemin="0" aria-valuemax="100"
-                     ng-style="{'width':Finish.BrowseScore+'%'};">
-                  {{Finish.BrowseScore.toFixed(1)}}%
+              <div class="list3 ellipsis" title="{{Finish.Name}}">
+                <a ui-sref="courseDetails({Id:Finish.Id})" target="_blank">{{Finish.Name}}</a>
+              </div>
+              <div class="list1-5">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                       aria-valuenow="{{Finish.BrowseScore}}" aria-valuemin="0" aria-valuemax="100"
+                       ng-style="{'width':Finish.BrowseScore+'%'};">
+                    {{Finish.BrowseScore.toFixed(1)}}%
+                  </div>
                 </div>
               </div>
-            </span>
-              <span class="list5">{{Finish.Credit}}</span>
-              <span class="list5">{{Finish.Type}}</span>
-              <span class="list5"><a ui-sref="play({Id:Finish.Id})" target="_blank">播放</a></span>
-              <span class="list5" ng-if="Finish.NoteFlag"><a href="" ng-click="seeNote(Finish.Id,Finish.Name)"
-                                                             data-toggle="modal" data-target=".notemodal">查看</a></span>
-              <span class="list5" ng-if="!Finish.NoteFlag"><a href="" ng-click="nodeAdd(Finish.Id)" data-toggle="modal"
-                                                              data-target=".notemodal">添加</a></span>
+              <div class="list0-75">{{Finish.Credit}}</div>
+              <div class="list0-75">{{Finish.Type}}</div>
+              <div class="list0-75"><a ui-sref="play({Id:Finish.Id})" target="_blank">播放</a></div>
+              <div class="list0-75" ng-if="Finish.NoteFlag"><a ng-click="seeNote(Finish.Id,Finish.Name)" data-toggle="modal" data-target=".notemodal">查看</a></div>
+              <div class="list0-75" ng-if="!Finish.NoteFlag"><a ng-click="nodeAdd(Finish.Id)" data-toggle="modal" data-target=".notemodal">添加</a></div>
 
-              <span class="list5" ng-if="Finish.PlanId"><a href="" ng-click="seePlan(Finish.PlanId,Finish.Name)"
-                                                           data-toggle="modal" data-target=".notemodal2">查看</a></span>
-              <span class="list5" ng-if="!Finish.PlanId"><a href="" ng-click="planAdd(Finish.Id)" data-toggle="modal"
-                                                            data-target=".notemodal2">添加</a></span>
+              <div class="list0-75" ng-if="Finish.PlanId"><a ng-click="seePlan(Finish.PlanId,Finish.Name)" data-toggle="modal" data-target=".notemodal2">查看</a></div>
+              <div class="list0-75" ng-if="!Finish.PlanId"><a ng-click="planAdd(Finish.Id)" data-toggle="modal" data-target=".notemodal2">添加</a></div>
 
-              <span ng-if="Finish.ExamFlag&&Finish.BrowseScore<100" class="list5">有考试</span>
-              <span ng-if="Finish.ExamFlag&&Finish.BrowseScore==100" class="list5"><a
-                ng-click="courseExamList(Finish.Id)" data-toggle="modal" data-target=".seeTest">查看</a></span>
-              <span ng-if="!Finish.ExamFlag" class="list5">无</span>
-              <span class="list5"><a ng-click="deleatUserCourse(Finish.Id)"><img src="images/del.jpg"/></a></span>
-            </div>
+              <div ng-if="Finish.ExamFlag&&Finish.BrowseScore<100" class="list0-75">有考试</div>
+              <div ng-if="Finish.ExamFlag&&Finish.BrowseScore==100" class="list0-75"><a ng-click="courseExamList(Finish.Id)" data-toggle="modal" data-target=".seeTest">查看</a></div>
+              <div ng-if="!Finish.ExamFlag" class="list0-75">无</div>
+              <div class="list0-75"><a ng-click="deleatUserCourse(Finish.Id)"><img src="images/del.jpg"/></a></div>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
@@ -447,51 +414,30 @@
   </div>
 </div>
 <style>
-  .myTab .perlist .list1 {
-    width: 30%;
-    height: 37px;
-  }
-
-  .myTab .perlist .list .list1 {
-    text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .myTab .perlist .list2 {
-    width: 15%;
-  }
-  .myTab .perlist .list5 {
-    width: 7.5%;
-  }
-
-  .myTab .modal-footer {
+  .myCenter .myTab .modal-footer {
     text-align: center;
   }
 
-  .myTab .table input {
+  .myCenter .myTab .table input {
     width: 320px;
     text-align: left;
     height: 26px;
     line-height: 26px;
   }
 
-  .myTab .table td {
+  .myCenter .myTab .table td {
     text-align: left;
   }
 
-  .myTab .seaNote a {
+  .myCenter .myTab .seaNote a {
     padding: 0 15px;
   }
 
-  .myTab .newnote {
+  .myCenter .myTab .newnote {
     padding: 2px 12px;
   }
 
-  .myTab .content_page {
+  .myCenter .myTab .content_page {
     line-height: 26px;
   }
 </style>

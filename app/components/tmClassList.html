@@ -24,52 +24,27 @@
       <div class="myTab" dw-loading="trainingCenter">
         <div class="tab-content">
           <div class="tab-panel perlist">
-            <div class="title_bar clearfix">
-              <span class="list1">培训班名称</span>
-              <span class="list2">班级分数</span>
-              <span class="list1">开班日期</span>
-              <span class="list2">状态</span>
-              <span class="list2">活跃度</span>
+            <div class="title_bar">
+              <span class="list4">培训班名称</span>
+              <span class="list1">班级分数</span>
+              <span class="list3">开班日期</span>
+              <span class="list1">状态</span>
+              <span class="list1">活跃度</span>
             </div>
             <div class="list" ng-repeat="classList in classListData.ListData">
-              <p class="clearfix">
-                <span class="list1" title="{{classList.Name}}"><a ng-click="checkUserClass(classList.Id)">{{classList.Name}}</a></span>
-                <span class="list2">{{classList.Score}}</span>
-                <span class="list1">{{classList.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{classList.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+              <span class="list4 ellipsis" title="{{classList.Name}}"><a ng-click="checkUserClass(classList.Id)">{{classList.Name}}</a></span>
+              <span class="list1">{{classList.Score}}</span>
+              <span class="list3">{{classList.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{classList.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
 
-                <span class="list2" ng-if="!classList.ApplyStatus"><a ng-click="addClass(classList.Id)">点击报名</a></span>
-                <span class="list2" ng-if="classList.ApplyStatus">{{JudgeStatus(classList.ApplyStatus)}}</span>
+              <span class="list1" ng-if="!classList.ApplyStatus"><a ng-click="addClass(classList.Id)">点击报名</a></span>
+              <span class="list1" ng-if="classList.ApplyStatus">{{JudgeStatus(classList.ApplyStatus)}}</span>
 
-                <span class="list2">{{classList.ArticleCount}}</span>
-              </p>
+              <span class="list1">{{classList.ArticleCount}}</span>
             </div>
-
           </div>
         </div>
-        <div ng-show="paginationConf.totalItems>0" tm-pagation conf="paginationConf" style="margin-left: 20%"></div>
-        <div class="noData" ng-show="paginationConf.totalItems <=0">暂无数据</div>
+        <div tm-pagation conf="paginationConf"></div>
       </div>
     </div>
   </div>
-
 </div>
-<style>
-  .myTab .perlist .list1 {
-    width: 35%;
-    height: 37px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .myTab .perlist .list2 {
-    width: 10%;
-    height: 37px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .myTab .perlist .list .list1 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-</style>

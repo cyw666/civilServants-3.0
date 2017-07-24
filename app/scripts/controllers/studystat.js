@@ -9,20 +9,6 @@
  */
 angular.module('luZhouApp')
     .controller('StudystatCtrl', function($scope, $timeout, $rootScope, $cookieStore, commonService, $location, $loading) {
-        //判断能否访问
-        // commonService.isVisit();
-        //保持在线
-        //commonService.keepOnline();
-        //退出
-        $scope.loginOut = commonService.loginOut;
-        //请求用户信息
-      $loading.start('loginOut');
-      commonService.getData(ALL_PORT.LoginLong.url, 'POST', ALL_PORT.LoginLong.data)
-        .then(function(response) {
-          $loading.finish('loginOut');
-          $scope.userMessage = response.Data;
-        });
-
         //个人学习统计
       $scope.paginationConf = $.extend({},paginationConf,{itemsPerPage: 10});
         $scope.n = 0;

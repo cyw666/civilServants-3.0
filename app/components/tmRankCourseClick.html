@@ -5,9 +5,6 @@
       <img src="../images/headerLeftIcon.png" alt="图标">
       {{rankCourseClick.ViewBag.TitleNav}}
     </p>
-    <!--<p class="more pull-right">
-      <a ui-sref="rankcourseclick" target="_blank"><img src="../images/more.png" alt="更多"></a>
-    </p>-->
   </div>
   <div class="tmBorder">
     <ol class="breadcrumb">
@@ -18,45 +15,21 @@
     <div class="myTab" dw-loading="rankCourseClick">
       <div class="tab-content">
         <div class="tab-panel perlist">
-          <div class="title_bar clearfix">
-            <span class="list1">排名</span>
-            <span class="list2">课程</span>
-            <span class="list1">点击次数</span>
+          <div class="title_bar">
+            <span class="list2">排名</span>
+            <span class="list6">课程</span>
+            <span class="list2">点击次数</span>
           </div>
           <div class="list" ng-repeat="rankCourseClickList in rankCourseClick.ListData"  ng-class="{'rankListBg':$index%2!=0}">
-            <p class="clearfix">
-              <span class="list1">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
-              <span class="list2" title="{{rankCourseClickList.Name}}"><a ui-sref="courseDetails({Id:rankCourseClickList.Id})" target="_blank">{{rankCourseClickList.Name}}</a></span>
-              <span class="list1">{{rankCourseClickList.Total}}</span>
-            </p>
+            <span class="list2">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
+            <span class="list6" title="{{rankCourseClickList.Name}}"><a ui-sref="courseDetails({Id:rankCourseClickList.Id})" target="_blank">{{rankCourseClickList.Name}}</a></span>
+            <span class="list2">{{rankCourseClickList.Total}}</span>
           </div>
-
         </div>
       </div>
       <div ng-show="paginationConf.totalItems>0" tm-pagation conf="paginationConf" style="margin-left: 20%"></div>
       <div class="noData" ng-show="paginationConf.totalItems <=0">暂无数据</div>
     </div>
   </div>
-
 </div>
 
-<style>
-  .myTab .perlist .list1 {
-    width: 20%;
-    height: 37px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .myTab .perlist .list2 {
-    width: 60%;
-    height: 37px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .myTab .perlist .list .list1 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-</style>

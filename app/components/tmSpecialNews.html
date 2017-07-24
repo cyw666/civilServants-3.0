@@ -1,0 +1,42 @@
+
+<div class="specialNews">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      {{specialNewsData.TitleNav}}
+    </p>
+    <p class="more pull-right">
+      <a ui-sref="article" target="_blank"><img src="../images/more.png" alt="更多"></a>
+    </p>
+  </div>
+  <ul class="specialNewsContent clearfix">
+    <li class="pull-left" ng-repeat="list in specialNewsData.ListData">
+      <span class="arrow"><img src="../images/arrowRight.png" alt=""></span>
+      <span class="title ellipsis" title="{{list.Name}}">
+        <a ui-sref="articleDetail({ID:list.Id})" target="_blank">{{list.Name}}</a>
+      </span>
+    </li>
+  </ul>
+</div>
+
+<style>
+  .specialNews {
+    padding-left: 20px;
+  }
+  .specialNews .specialNewsContent li{
+    height: 38px;
+    line-height: 38px;
+    width: 100%;
+  }
+  .specialNews .specialNewsContent li span{
+    display: inline-block;
+    float: left;
+  }
+  .specialNews .specialNewsContent .arrow{
+    margin-right: 15px;
+  }
+  .specialNews .specialNewsContent .title{
+    width: 90%;
+    text-align: left;
+  }
+</style>

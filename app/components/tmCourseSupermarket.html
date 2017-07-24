@@ -31,16 +31,16 @@
       </div>
       <div class="sortCourse clearfix">
         <div class="tag">
-          <span><img src="images/sfp.png"><a href="javascript:;" ng-click="judgement(selectedName.id,'ThreeScreenCourse')">精品三分屏</a></span>
-          <span><img src="images/dsp.png"><a href="javascript:;" ng-click="judgement(selectedName.id,'SingleCourse')">单视频课件</a></span>
-          <span><img src="images/dh.png"><a href="javascript:;" ng-click="judgement(selectedName.id,'AnimationCourse')">动画类课件</a></span>
+          <span><img src="images/sfp.png"><a ng-click="judgement(selectedName.id,'ThreeScreenCourse')">精品三分屏</a></span>
+          <span><img src="images/dsp.png"><a ng-click="judgement(selectedName.id,'SingleCourse')">单视频课件</a></span>
+          <span><img src="images/dh.png"><a ng-click="judgement(selectedName.id,'AnimationCourse')">动画类课件</a></span>
         </div>
         <div class="title_bar">
-          <span class="list3"><a href="javascript:;" ng-click="judgement(selectedName.id,null,'Name','order')">课程名称<span id="asc_Name">▼</span></a></span>
-          <span class="list3"><a href="javascript:;" ng-click="judgement(selectedName.id,null,'CommentCount','order')">评论<span id="asc_CommentCount">▼</span></a></span>
-          <span class="list3"><a href="javascript:;" ng-click="judgement(selectedName.id,null,'Credit','order')">学时<span id="asc_Credit">▼</span></a></span>
-          <span class="list3"><a href="javascript:;" ng-click="judgement(selectedName.id,null,'ClickCount','order')">点击量<span id="asc_ClickCount">▼</span></a></span>
-          <span class="list3"><a href="javascript:;" ng-click="judgement(selectedName.id,null,'CreateDate','order')">上线时间<span id="asc_CreateDate">▼</span></a></span>
+          <span class="list2-5"><a ng-click="judgement(selectedName.id,null,'Name','order')">课程名称<span id="asc_Name">▼</span></a></span>
+          <span class="list1-5"><a ng-click="judgement(selectedName.id,null,'CommentCount','order')">评论<span id="asc_CommentCount">▼</span></a></span>
+          <span class="list1-5"><a ng-click="judgement(selectedName.id,null,'Credit','order')">学时<span id="asc_Credit">▼</span></a></span>
+          <span class="list2"><a ng-click="judgement(selectedName.id,null,'ClickCount','order')">点击量<span id="asc_ClickCount">▼</span></a></span>
+          <span class="list2-5"><a ng-click="judgement(selectedName.id,null,'CreateDate','order')">上线时间<span id="asc_CreateDate">▼</span></a></span>
         </div>
       </div>
 
@@ -60,12 +60,12 @@
               <div class="line line3">
                 <span style="width:72px;">学时：{{courseList.Credit}}</span>
                 <span style="width:108px;">主讲人：{{courseList.Teacher}}</span>
-                <span><a href="javascript:;">点击量：{{courseList.ClickCount}}</a></span>
+                <span><a>点击量：{{courseList.ClickCount}}</a></span>
               </div>
               <div class="line line2">
-                <span style="width: 72px"><a href="javascript:;">评论：({{courseList.CommentCount}})</a></span>
+                <span style="width: 72px"><a>评论：({{courseList.CommentCount}})</a></span>
                 <span style="width: 108px">
-                <span style="width:36px;">试卷：</span><span class="list3">{{courseList.Exam==0?'无':Exam}}</span>
+                <span style="width:36px;">试卷：</span><span>{{courseList.Exam==0?'无':Exam}}</span>
               </span>
                 <span>
                 <span>选课状态：</span>
@@ -83,9 +83,9 @@
         <p ng-show="!paginationConf.totalItems" class="result">暂无数据</p>
       </div>
       <div class="checkCourse pull-left">
-        <a href="javascript:;" class="btn btn-default" ng-click="checkAll()">全选</a>
-        <a href="javascript:;" class="btn btn-default" ng-click="selectInvert()">反选</a>
-        <a href="javascript:;" class="btn btn-default" ng-click="ckBatch()">批量选课</a>
+        <a class="btn btn-default" ng-click="checkAll()">全选</a>
+        <a class="btn btn-default" ng-click="selectInvert()">反选</a>
+        <a class="btn btn-default" ng-click="ckBatch()">批量选课</a>
         <!--<div class="preventorgery"></div>-->
       </div>
       <div ng-transclude="pagation" ng-show="paginationConf.totalItems"></div>
@@ -102,6 +102,11 @@
   .courseSupermarket .form-group input {
     width: 400px;
   }
+  .courseSupermarket .tag {
+    margin-left: 30px;
+    float: left;
+    padding: 10px 5px 10px 0;
+  }
  .courseList{
    position: relative;
    border-top: 1px solid #f2f2f2;
@@ -113,7 +118,6 @@
    text-overflow: ellipsis;
  }
  .courseList .title_bar{
-   padding: 10px 5px 10px 0;
    text-align: right;
    float: left;
    margin-left: 20px;

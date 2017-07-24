@@ -8,8 +8,8 @@
   </div>
   <div class="tmBorder">
     <ul class="categoryGuide clearfix">
-      <li ng-repeat="categoryData in categoryData.ListData" title="{{categoryData.Name}}">
-        <a class="btn" ng-click="refreshList({categoryId:categoryData.Id})">{{categoryData.Name}}</a>
+      <li ng-repeat="list in categoryData.ListData" title="{{list.Name}}">
+        <a class="btn" ng-click="refreshList({categoryId:list.Id})">{{list.Name}}</a>
       </li>
     </ul>
   </div>

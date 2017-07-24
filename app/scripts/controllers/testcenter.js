@@ -9,17 +9,7 @@
  */
 angular.module('luZhouApp')
   .controller('TestcenterCtrl', function ($scope, $timeout, $rootScope,$state, $cookieStore, commonService, $location, $loading) {
-    //退出
-    $scope.loginOut = commonService.loginOut;
     $scope.token = commonService.AntiForgeryToken();
-    //请求用户信息
-    $loading.start('loginOut');
-    commonService.getData(ALL_PORT.LoginLong.url, 'POST', ALL_PORT.LoginLong.data).then(function (response) {
-      $loading.finish('loginOut');
-      $scope.userMessage = response.Data;
-    });
-
-
     //考试中心
     $scope.selectedName = {};
     //搜索title

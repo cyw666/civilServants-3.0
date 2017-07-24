@@ -12,14 +12,6 @@ angular.module('luZhouApp')
     $scope.orderId = $stateParams.orderId;
     //防伪造请求
     $scope.token = commonService.AntiForgeryToken();
-    //退出
-    $scope.loginOut = commonService.loginOut;
-    //请求用户信息
-    $loading.start('loginOut');
-    commonService.getData(ALL_PORT.LoginLong.url, 'POST', ALL_PORT.LoginLong.data).then(function(response) {
-      $loading.finish('loginOut');
-      $scope.userMessage = response.Data;
-    });
     //订单详细列表
     $scope.getOrderDetailList = function () {
       $loading.start('payConfirm');

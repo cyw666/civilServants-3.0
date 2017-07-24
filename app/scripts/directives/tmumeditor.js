@@ -32,6 +32,7 @@ angular.module('luZhouApp')
 			      scope.config = {};
 			      if (attr.config != '' && attr.config != undefined) {
 				      scope.config = $.parseJSON(attr.config);
+              debugger
 				      editorFunctions = editorFunctions.concat($.parseJSON(attr.config).functions);
 			      }
 

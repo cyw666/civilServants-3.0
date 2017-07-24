@@ -57,9 +57,9 @@ angular
         controllerAs: 'testCenter',
         data: {title: "在线考试"}
       })
-      .state('specialTrainingCourse', {
-        url: '/specialTrainingCourse',
-        templateUrl: 'views/specialtrainingcourse.html',
+      .state('trainingClass', {
+        url: '/trainingClass',
+        templateUrl: 'views/trainingClass.html',
         controller: 'SpecialtrainingcourseCtrl',
         controllerAs: 'specialTrainingCourse',
         data: {title: "班级园地"}
@@ -170,100 +170,100 @@ angular
         controllerAs: 'changeUserInfo'
       })
       .state('classDetail', {
-        url: '/specialTrainingCourse/classDetail/:Id',
+        url: '/trainingClass/classDetail/:Id',
         data: {title: "班级详情"},
-        templateUrl: 'views/specialTrainingCourse/classdetail.html',
+        templateUrl: 'views/trainingClass/classdetail.html',
         controller: 'classDetailCtrl',
         controllerAs: 'classDetail'
       })
       .state('classPlan', {
-        url: '/specialTrainingCourse/classPlan/:Id',
+        url: '/trainingClass/classPlan/:Id',
         data: {title: "教学计划"},
-        templateUrl: 'views/specialTrainingCourse/classplan.html',
+        templateUrl: 'views/trainingClass/classplan.html',
         controller: 'classPlanCtrl',
         controllerAs: 'classPlan'
       })
       .state('classStudent', {
-        url: '/specialTrainingCourse/classStudent/:Id',
+        url: '/trainingClass/classStudent/:Id',
         data: {title: "同学名录"},
-        templateUrl: 'views/specialTrainingCourse/classstudent.html',
+        templateUrl: 'views/trainingClass/classstudent.html',
         controller: 'classStudentCtrl',
         controllerAs: 'classStudent'
       })
       .state('classPaperList', {
-        url: '/specialTrainingCourse/classPaperList/:Id',
+        url: '/trainingClass/classPaperList/:Id',
         data: {title: "班级论文"},
-        templateUrl: 'views/specialTrainingCourse/classpaperlist.html',
+        templateUrl: 'views/trainingClass/classpaperlist.html',
         controller: 'classPaperListCtrl',
         controllerAs: 'classPaperList'
       })
       .state('photoAlbumList', {
-        url: '/specialTrainingCourse/photoAlbumList/:Id',
+        url: '/trainingClass/photoAlbumList/:Id',
         data: {title: "班级相册"},
-        templateUrl: 'views/specialTrainingCourse/photoalbumlist.html',
+        templateUrl: 'views/trainingClass/photoalbumlist.html',
         controller: 'photoAlbumListCtrl',
         controllerAs: 'photoAlbumList'
       })
       .state('classTopicList', {
-        url: '/specialTrainingCourse/classTopicList/:Id',
+        url: '/trainingClass/classTopicList/:Id',
         data: {title: "班级话题"},
-        templateUrl: 'views/specialTrainingCourse/classtopiclist.html',
+        templateUrl: 'views/trainingClass/classtopiclist.html',
         controller: 'classTopicListCtrl',
         controllerAs: 'classTopicList'
       })
       .state('classCourse', {
-        url: '/specialTrainingCourse/classCourse/:Id/:Type',
+        url: '/trainingClass/classCourse/:Id/:Type',
         data: {title: "班级课程"},
-        templateUrl: 'views/specialTrainingCourse/classcourse.html',
+        templateUrl: 'views/trainingClass/classcourse.html',
         controller: 'classCourseCtrl',
         controllerAs: 'classCourse'
       })
       .state('classNotice', {
-        url: '/specialTrainingCourse/classNotice/:Id',
+        url: '/trainingClass/classNotice/:Id',
         data: {title: "班级公告"},
-        templateUrl: 'views/specialTrainingCourse/classnotice.html',
+        templateUrl: 'views/trainingClass/classnotice.html',
         controller: 'classNoticeCtrl',
         controllerAs: 'classNotice'
       })
       .state('classExam', {
-        url: '/specialTrainingCourse/classExam/:Id',
+        url: '/trainingClass/classExam/:Id',
         data: {title: "班级考试"},
-        templateUrl: 'views/specialTrainingCourse/classexam.html',
+        templateUrl: 'views/trainingClass/classexam.html',
         controller: 'classExamCtrl',
         controllerAs: 'classExam'
       })
       .state('classArticleDetail', {
-        url: '/specialTrainingCourse/classArticleDetail/:Id',
+        url: '/trainingClass/classArticleDetail/:Id',
         data: {title: "班级文章内容"},
-        templateUrl: 'views/specialTrainingCourse/classarticledetail.html',
+        templateUrl: 'views/trainingClass/classarticledetail.html',
         controller: 'classArticleDetailCtrl',
         controllerAs: 'classArticleDetail'
       })
       .state('classTopicAdd', {
-        url: '/specialTrainingCourse/classTopicAdd/:Id',
+        url: '/trainingClass/classTopicAdd/:Id',
         data: {title: "添加话题"},
-        templateUrl: 'views/specialTrainingCourse/classtopicadd.html',
+        templateUrl: 'views/trainingClass/classtopicadd.html',
         controller: 'classTopicAddCtrl',
         controllerAs: 'classTopicAdd'
       })
       .state('classPaperAdd', {
-        url: '/specialTrainingCourse/classPaperAdd/:Id',
+        url: '/trainingClass/classPaperAdd/:Id',
         data: {title: "添加论文"},
-        templateUrl: 'views/specialTrainingCourse/classpaperadd.html',
+        templateUrl: 'views/trainingClass/classpaperadd.html',
         controller: 'classPaperAddCtrl',
         controllerAs: 'classPaperAdd'
       })
       .state('photoAlbumAdd', {
-        url: '/specialTrainingCourse/photoAlbumAdd/:Id',
+        url: '/trainingClass/photoAlbumAdd/:Id',
         data: {title: "添加相册"},
-        templateUrl: 'views/specialTrainingCourse/photoalbumadd.html',
+        templateUrl: 'views/trainingClass/photoalbumadd.html',
         controller: 'photoAlbumAddCtrl',
         controllerAs: 'photoAlbumAdd'
       })
       .state('photoPreview', {
-        url: '/specialTrainingCourse/photoPreview/:AlbumId/:TrainingId',
+        url: '/trainingClass/photoPreview/:AlbumId/:TrainingId',
         data: {title: "班级照片"},
-        templateUrl: 'views/specialTrainingCourse/photopreview.html',
+        templateUrl: 'views/trainingClass/photopreview.html',
         controller: 'photoPreviewCtrl',
         controllerAs: 'photoPreview'
       })
@@ -381,22 +381,22 @@ angular
       })
       .state('originalarticle', {
         url: '/news/originalarticle',
-        data: {title: "发表文章"},
+        data: {title: "发表心声"},
         templateUrl: 'views/news/originalarticle.html',
         controller: 'OriginalarticleCtrl',
         controllerAs: 'originalArticle'
       })
       .state('originalarticlelist', {
         url: '/news/originalarticlelist',
-        data: {title: "原创文章列表"},
+        data: {title: "学员心声列表"},
         templateUrl: 'views/news/originalarticlelist.html',
         controller: 'OriginalarticlelistCtrl',
         controllerAs: 'originalArticleList'
       })
       .state('classlist', {
-        url: '/specialtrainingcourse/classlist?type',
+        url: '/trainingClass/classlist?type',
         data: {title: "我的班级"},
-        templateUrl: 'views/specialtrainingcourse/classlist.html',
+        templateUrl: 'views/trainingClass/classlist.html',
         controller: 'ClasslistCtrl',
         controllerAs: 'classList',
         // params:{type:'my'}
@@ -492,11 +492,18 @@ angular
         controllerAs: 'resultShow'
       })
       .state('speciallearning', {
-        url: '/specialtrainingcourse/speciallearning',
+        url: '/speciallearning',
         data: {title: "专题学习"},
-        templateUrl: 'views/specialtrainingcourse/speciallearning.html',
+        templateUrl: 'views/specialLearning/speciallearning.html',
         controller: 'SpeciallearningCtrl',
         controllerAs: 'specialLearning'
+      })
+      .state('speciallearningone', {
+        url: '/speciallearning/speciallearningone',
+        data: {title: "习近平重要讲话精神"},
+        templateUrl: 'views/specialLearning/speciallearningone.html',
+        controller: 'SpeciallearningoneCtrl',
+        controllerAs: 'specialLearningOne'
       })
       .state('shoppingcart', {
         url: '/shopping/shoppingcart',
@@ -935,6 +942,11 @@ angular
      templateUrl: 'views/tryplay.html',
      controller: 'TryplayCtrl',
      controllerAs: 'tryPlay'
+     })
+     .when('/specialLearningOne', {
+       templateUrl: 'views/speciallearningone.html',
+       controller: 'SpeciallearningoneCtrl',
+       controllerAs: 'specialLearningOne'
      })
      .otherwise({
      redirectTo: '/main'

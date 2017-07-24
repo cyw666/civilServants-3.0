@@ -104,7 +104,7 @@ angular.module('luZhouApp')
           if (response.Type === 0) {
             alert("请先加入培训班!");
           } else {
-            window.open('#/specialTrainingCourse/classDetail/' + id);
+            window.open('#/trainingClass/classDetail/' + id);
           }
         });
     };

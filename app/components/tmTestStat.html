@@ -34,22 +34,20 @@
     </p>
     <div class="myTab" dw-loading="examStat">
       <div class="tab-content" dw-loading="myCenter">
-        <div class="tab-panel perlist clearfix">
-          <div class="title_bar clearfix">
-            <span class="list1">用户名</span>
+        <div class="tab-panel perlist">
+          <div class="title_bar">
+            <span class="list2">用户名</span>
             <span class="list2">姓名</span>
-            <span class="list3">考试名称</span>
-            <span class="list3">考试成绩</span>
-            <span class="list4">获得学时</span>
+            <span class="list2 ellipsis">考试名称</span>
+            <span class="list2">考试成绩</span>
+            <span class="list2">获得学时</span>
           </div>
           <div class="list" ng-repeat="examList in examStatData.ListData">
-            <p class="clearfix">
-              <span class="list1 cur_name">{{examStatData.Account}}</span>
+              <span class="list2">{{examStatData.Account}}</span>
               <span class="list2">{{examList.UserName}}</span>
-              <span class="list3">{{examList.Name}}</span>
-              <span class="list3">{{examList.ExamScore}}</span>
-              <span class="list4">{{examList.Credit}}</span>
-            </p>
+              <span class="list2">{{examList.Name}}</span>
+              <span class="list2">{{examList.ExamScore}}</span>
+              <span class="list2">{{examList.Credit}}</span>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
@@ -62,36 +60,7 @@
     padding: 2px 14px;
     margin-left: 10px;
   }
-
-  .myTab .perlist .list1 {
-    width: 20%;
-    height: 37px;
-  }
-
-  .myTab .perlist .list .list1 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .myTab .perlist .list2 {
-    width: 20%;
-  }
-
-  .myTab .perlist .list .list2 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .myTab .perlist .list3 {
-    width: 20%;
-  }
-
-  .myTab .perlist .list4 {
-    width: 20%;
-  }
-
-  .examStat .form-group input {
+  .examStat .formCourse input {
     width: 200px;
   }
 </style>

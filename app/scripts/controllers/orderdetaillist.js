@@ -10,14 +10,6 @@
 angular.module('luZhouApp')
   .controller('OrderdetaillistCtrl', function ($scope, $state,$location, $stateParams,$rootScope, $cookieStore, commonService, $timeout, $loading) {
     $scope.orderId = $stateParams.orderId;
-    //退出
-    $scope.loginOut = commonService.loginOut;
-    //请求用户信息
-    $loading.start('loginOut');
-    commonService.getData(ALL_PORT.LoginLong.url, 'POST', ALL_PORT.LoginLong.data).then(function(response) {
-      $loading.finish('loginOut');
-      $scope.userMessage = response.Data;
-    });
 
     //获取订单详情
     $scope.getOrderDetailList = function () {

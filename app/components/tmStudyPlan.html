@@ -16,24 +16,24 @@
     <div class="myTab" dw-loading="studyPlan">
       <div class="tab-content">
         <div class="tab-panel perlist clearfix">
-          <div class="title_bar clearfix">
-            <span class="list1">课程名称</span>
-            <span class="list2">课程进度</span>
-            <span class="list2">计划状态</span>
-            <span class="list2">计划完成日期</span>
-            <span class="list2">操作</span>
+          <div class="title_bar">
+            <span class="list4">课程名称</span>
+            <span class="list1-5">课程进度</span>
+            <span class="list1-5">计划状态</span>
+            <span class="list1-5">计划完成日期</span>
+            <span class="list1-5">操作</span>
           </div>
           <div class="list" ng-repeat="studyList in stydyPlanData.ListData">
-            <p class="clearfix">
-              <span class="list1" title="{{studyList.CourseName}}"><a ui-sref="courseDetails({Id:studyList.CourseId})">{{studyList.CourseName}}</a></span>
-              <span class="list2">{{studyList.BrowseScore}}</span>
-              <span class="list2">课程未完成</span>
-              <span class="list2">{{studyList.PlanFinishDate | dateFilter | date:'yyyy-MM-dd'}}</span>
-              <span class="list2">
-              <a href="" ng-click="planAdd(studyList.CourseId)" data-toggle="modal" data-target=".stydyPlanModal">更新</a>&nbsp;&nbsp;
-              <a href="" ng-click="delStudyPlan(studyList.Id)">删除</a>
-            </span>
-            </p>
+              <span class="list4 ellipsis" title="{{studyList.CourseName}}">
+                <a ui-sref="courseDetails({Id:studyList.CourseId})">{{studyList.CourseName}}</a>
+              </span>
+              <span class="list1-5">{{studyList.BrowseScore}}</span>
+              <span class="list1-5">课程未完成</span>
+              <span class="list1-5">{{studyList.PlanFinishDate | dateFilter | date:'yyyy-MM-dd'}}</span>
+              <span class="list1-5">
+                <a ng-click="planAdd(studyList.CourseId)" data-toggle="modal" data-target=".stydyPlanModal">更新</a>&nbsp;&nbsp;
+                <a ng-click="delStudyPlan(studyList.Id)">删除</a>
+              </span>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
@@ -93,38 +93,15 @@
             </div>
           </div>
         </div>
-        <!--<div class="preventorgery"></div>-->
       </div>
     </div>
   </div>
 </div>
 <style>
-  .myTab .perlist .list1 {
-    width: 40%;
-    height: 37px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .myTab .perlist .list .list1 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  .myTab .perlist .list2 {
-    width: 15%;
-  }
-  .myTab .perlist .list .list2 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .myTab .perlist .list3 {
-    width: 25%;
-  }
-  .myTab .table td{
+  .stydyPlan .table td{
     text-align: left;
   }
-  .myTab .modal-footer{
+  .stydyPlan .modal-footer{
    text-align: center;
   }
 </style>
