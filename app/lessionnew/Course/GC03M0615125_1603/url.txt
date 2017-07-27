@@ -1,1 +1,0 @@
-swf_url=contents/&flv_url=flv/
