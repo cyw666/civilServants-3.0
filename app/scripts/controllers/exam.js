@@ -14,7 +14,6 @@ angular.module('luZhouApp')
         $scope.token = commonService.AntiForgeryToken();
         $loading.start('exam');
         var Id = $stateParams.Id;
-        // console.log(Id,$scope.token);
         var params = $.extend({}, ALL_PORT.Exam.data, { parameter1: Id })
         commonService.getData(ALL_PORT.Exam.url, 'POST', params)
             .then(function(response) {
@@ -55,7 +54,6 @@ angular.module('luZhouApp')
                     $(this).parent('td').css({ "backgroundColor": "red", "color": "white" });
                     if ($(this).siblings('.tibg').children('span').attr("type") == "0") {
                         str0 += $(this).siblings('.tibg').children('span').html();
-                        // console.log(str0)
                     }
                     if ($(this).siblings('.tibg').children('span').attr("type") == "1") {
                         str1 += $(this).siblings('.tibg').children('span').html();
@@ -75,8 +73,6 @@ angular.module('luZhouApp')
             if (str1 == "单选题第题、") { str1 = ""; }
             if (str2 == "多选题第题、") { str2 = ""; }
             // confirm(str0 + str1 + str2 + "未答,是否提交?");
-            // console.log($("#editForm").serialize());
-
             if (e == "1"||((str0 + str1 + str2) === "" || ((str0 + str1 + str2) !== "" && confirm(str0 + str1 + str2 + "未答,是否提交?")))) {
                 var params = $("#editForm").serialize();
                 $http({

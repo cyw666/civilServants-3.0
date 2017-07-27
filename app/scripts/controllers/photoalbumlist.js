@@ -58,7 +58,6 @@ angular.module('luZhouApp')
         //添加相册
         $scope.getPhotoAlbumAdd = function() {
             $scope.hidValueImage = $('#hidValueImage').val();
-            console.log($scope.hidValueImage);
             commonService.getData(ALL_PORT.GetPhotoAlbumAdd.url, 'POST',
                     $.extend({}, ALL_PORT.GetPhotoAlbumAdd.data, { Name: $scope.name, Description: $scope.description, ImgUrl: $scope.hidValueImage, TrainingId: $scope.Id }))
                 .then(function(response) {

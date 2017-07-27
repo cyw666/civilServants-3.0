@@ -12,7 +12,8 @@ angular.module('luZhouApp')
       templateUrl: 'components/tmSpecialNews.html',
       restrict: 'EA',
       scope:{
-        specialNewsData:'='
+        specialNewsData:'=',
+        categoryCode:'='
       },
       link: function postLink(scope, element, attrs) {
       }

@@ -87,7 +87,7 @@ angular.module('luZhouApp')
 
           var _thePlayer = jwplayer('myplayer').setup({
             flashplayer: "jwplayer/jwplayer.flash.swf",
-            // file: "http://test7.jy365.net"+$scope.playMp4Data.Url,
+            // file: "http://122.225.101.117:9090"+$scope.playMp4Data.Url,
             file: $scope.playMp4Data.Url,
             autostart: 'true',
             width: "100%",
@@ -102,17 +102,9 @@ angular.module('luZhouApp')
                 "courseid": _courseId,
                 "positionen": _thePlayer.getPosition().toString().rsaEnscrypt()
               }, $scope.token);
-              // console.log(data);
               commonService.getData(ALL_PORT.SingleProcess.url, 'POST', data)
                 .then(function (data) {
                   $scope.loadPlayInfo();
-                  //如果记录成功，更新播放页进度条
-                  /*if (data.BrowseScore >= 0 || data.Content == "试看记录！") {
-                   $scope.loadPlayInfo();
-                   } else {
-                   alert("记录异常，将刷新!");
-                   // window.location.reload();
-                   }*/
                 }, function () {
                   alert("网路异常，将刷新!");
                   window.location.reload();
@@ -201,10 +193,17 @@ angular.module('luZhouApp')
           }
           initPlay();
 
+          document.addEventListener('visibilitychange',function(){ //浏览器切换事件
+            if(document.visibilityState=='hidden') { //状态判断
+              _thePlayer.pause();
+            }else {
+              _thePlayer.play();
+            }
+          });
+
         }, function () {
           window.close();
         });
-
 
     };
     //播放精英课程
@@ -479,7 +478,6 @@ angular.module('luZhouApp')
           }
           var MediaPlayer;
           // var au = "47$67$111$117$114$115$101$80$114$111$99$101$115$115$47$83$105$110$103$108$101$80$114$111$99$101$115$115$".toCharString("$");
-          // console.log(au);
           function sendProcess() {
             var data = $.extend({}, {
               "PortalId": _portalId,
@@ -489,7 +487,6 @@ angular.module('luZhouApp')
             }, $scope.token);
             commonService.getData(ALL_PORT.SingleProcess.url, 'POST', data)
               .then(function (data) {
-                console.log(data);
                 $scope.loadPlayInfo();
               }, function () {
                 alert("网路异常，将刷新!");
@@ -563,9 +560,7 @@ angular.module('luZhouApp')
     $scope.showPlaySingle = false;
     $scope.dragReady = function () {
       document.getElementById("playBg").style.display = 'none';
-      // console.log("logReady",$scope.options);
       var playPage = $scope.allPlayInfo.PlayPage.split('?')[0];
-      // console.log(playPage);
       if (playPage == 'PlayJwplay.html') {
         $scope.showPlayMp4 = true;
         playMp4();

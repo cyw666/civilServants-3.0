@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="gb2312" ?> 
+ <course LessonTitle="财税新常态" CourseID="UP200712261" swf_width="1024" swf_height="768" total_time="1274" mode="1">
+<general subTitle="" teacher="李炜光" image="pic/logo.png" teacherimage="pic/small.jpg"/>
+<descrption lession="本课程由天津财经大学财政学科首席教授李炜光主讲，主要内容包括：一、供给侧改革和减税；二、减少干预；三、税收道德问题。" teacherinfo = "天津财经大学财政学科首席教授" document="ziliao.doc" about="杭州精英在线教育科技有限公司是国内规模最大、技术最为先进、建有面向全国的、成熟的电信运维体系的电子化教育和经营服务机构，是浙江省经贸委唯一推荐的在线学习平台机构。公司在大规模干部在线教育培训市场占有70%的市场份额，与此同时，成功的为100家以上大、中型企业、政府机构和高校提供了在线学习整体解决方案。公司为客户提供结合技术、课件和服务的综合、高效的在线学习整体解决方案，通过中国境内不同行业的不同机关和企业以及超过150万的用户使用，证明是成功有效的，项目实施的结果令客户都非常满意。\n“至诚为客户服务”是我们永远的气质和永恒的定位，“精致、执着、和谐、创新”是我们的企业精神。"/>
+   <part PartTitle="课程前言"  PartNum="2" PartOver="1">
+     <sco  ScoTitle="S001" isExam="1" minTime="67" maxTime="221" swf_url="content1.swf" flv_url="content1.flv"/> 
+<quest questionID="S001" descrption="" A="正确" B="错误" answer="B" type="2" QuestionTitle="李炜光教授认为，我国以后的宏观经济政策会有越来越多的凯恩斯学派的因素。（判断题）"/>
+
+     <sco  ScoTitle="S002" isExam="1" minTime="61" maxTime="202" swf_url="content2.swf" flv_url="content2.flv"/> 
+<quest questionID="S002" descrption="" A="20世纪50年代" B="20世纪30年代" C="19世纪90年代" D="19世纪70年代" answer="D" type="0" QuestionTitle="奥地利学派兴起于（）。（单选题）"/>
+   </part>
+ <part PartTitle="一、供给侧改革和减税"  PartNum="1" PartOver="3">
+     <sco  ScoTitle="S003" isExam="1" minTime="75" maxTime="248" swf_url="content3.swf" flv_url="content3.flv"/> 
+<quest questionID="S003" descrption="" A="萨伊" B="哈耶克" C="米塞斯" D="门格尔" answer="A" type="0" QuestionTitle="（）可能是最早把税收分为直接税和间接税的经济学家。（单选题）"/>
+   </part>
+ <part PartTitle="二、减少干预"  PartNum="1" PartOver="4">
+     <sco  ScoTitle="S004" isExam="1" minTime="78" maxTime="260" swf_url="content4.swf" flv_url="content4.flv"/>
+<quest questionID="S004" descrption="" A="正确" B="错误" answer="B" type="2" QuestionTitle="奥地利学派主张干预经济。（判断题）"/> 
+   </part>
+ <part PartTitle="三、税收道德问题"  PartNum="1" PartOver="5">
+     <sco  ScoTitle="S005" isExam="1" minTime="103" maxTime="343" swf_url="content5.swf" flv_url="content5.flv"/>
+<quest questionID="S005" descrption="" A="正确" B="错误" answer="A" type="2" QuestionTitle="罗斯巴德对税收采取了否定的态度。（判断题）"/>
+
+  </part>
+</course>

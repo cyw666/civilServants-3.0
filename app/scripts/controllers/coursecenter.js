@@ -63,9 +63,7 @@ angular.module('luZhouApp')
       // var newListParams;
         $scope.searchCourse = function(options) {
             $loading.start('courseSupermarket');
-            // newListParams = $.extend({}, ALL_PORT.CourseList.data, courseListParams, options);
            $.extend(courseListParams, ALL_PORT.CourseList.data, options);
-            // console.log(courseListParams);
           $scope.paginationConf.currentPage=courseListParams.page;
             commonService.getData(ALL_PORT.CourseList.url, 'POST', courseListParams)
                 .then(function(response) {
@@ -164,7 +162,6 @@ angular.module('luZhouApp')
 				}
 			});
 			$scope.selectClass.checkValue = checkValue;
-			//console.log($scope.selectClass);
 			if (checkValue !== '') {
 				commonService.getData(ALL_PORT.AddStudyCourse.url,'POST',$.extend({}, ALL_PORT.AddStudyCourse.data, $scope.selectClass, token))
 					.then(function(response) {

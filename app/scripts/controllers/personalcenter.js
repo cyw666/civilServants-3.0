@@ -27,7 +27,6 @@ angular.module('luZhouApp')
     $scope.searchMyCenterCourse = function (option) {
       $loading.start('myCenter');
       var params = $.extend({}, ALL_PORT.MyCenter.data, option);
-      //console.log(params);
       commonService.getData(ALL_PORT.MyCenter.url, 'POST',
         params)
         .then(function (response) {
@@ -219,7 +218,6 @@ angular.module('luZhouApp')
     $scope.addPlan = function (options) {
       var addPlan = function () {
         var editPlanParams = $.extend({}, ALL_PORT.AddStudyPlan.data, $scope.token, options);
-        // console.log(editPlanParams);
         if (editPlanParams.Remark.length < 7) {
           alert("计划内容字数不能少于7个字！");
         } else if (editPlanParams.Remark.length >= 249) {

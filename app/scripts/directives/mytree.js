@@ -16,7 +16,6 @@ angular.module('luZhouApp')
         $("#tt").tree({
           url: ALL_PORT.GetGroupList.url,
           onSelect: function (node) {
-            // console.log(node);
             if(!node.SunFlag){
               $(".groupName").val(node.text);
               scope.$apply(function() {

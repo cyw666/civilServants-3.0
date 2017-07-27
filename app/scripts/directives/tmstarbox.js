@@ -19,7 +19,6 @@ angular.module('luZhouApp')
         $scope.clickCnt = 0;
         $scope.$watch('ngModel', function(newValue) {
           var dataList = newValue;
-          // console.log(dataList);
           if(!dataList) return;
           $scope.myStar = dataList;
           $scope.clickCnt = dataList;

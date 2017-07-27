@@ -494,7 +494,6 @@ angular.module('luZhouApp')
            var data = $.extend({},{ "PortalId": _portalId, "userid": _userId, "courseid": _courseId, "positionen": MediaPlayer.currentPosition},$scope.token);
            commonService.getData(ALL_PORT.SingleProcess.url, 'POST', data)
            .then(function (data) {
-           console.log(data);
            $scope.loadPlayInfo();
            },function () {
            alert("网路异常，将刷新!");

@@ -9,16 +9,7 @@
  */
 angular.module('luZhouApp')
     .controller('GuideviewCtrl', function($rootScope,$location,pubSubService,$scope, $interval , $cookieStore, commonService, $loading) {
-        // Put cookie
-        //$cookieStore.put('myFavorite','oatmeal');
-        /*
-        // Get cookie
-        var favoriteCookie = $cookieStore.get('rememberMe');
-        console.log(favoriteCookie);
-        */
 
-        //保持在线
-        //commonService.keepOnline();
         //loading
         $loading.start('tmNewsInformation');
         $loading.start('noticeAnnouncement');

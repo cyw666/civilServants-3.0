@@ -10,7 +10,7 @@
     </p>
   </div>
 
-  <ul class="courseList clearfix">
+  <ul class="courseList clearfix" dw-loading="specialLearningCourse">
     <li ng-repeat="list in specialCourseData.ListData" ng-class="{'last':($index+1)%4==0}">
       <a ui-sref="courseDetails({Id:list.Id})" title="{{list.Name}}" target="_blank">
         <img ng-src="{{specialCourseData.ImageCourse+'/'+list.Img}}" err-Src="images/notFound.jpeg" alt="">

@@ -25,7 +25,6 @@ angular.module('luZhouApp')
                 if (response.Type === 1) {
                     $scope.articleData.FavoriteId = response.Value;
                     alert(response.Message);
-                    console.log(response.Value);
                 } else if (response.Type === 0) {
                     alert(response.Message);
                 }
@@ -52,7 +51,6 @@ angular.module('luZhouApp')
             $scope.articleData = response.Data;
             $scope.content = response.Data.Content;
             $scope.articleData.Type = 'Article';
-            // console.log($scope.content);
             var str = $scope.content.split('font-size:');
             var reg = /^(?=.*\d.*\b)/;
             for (var i = 0; i < str.length; i++) {

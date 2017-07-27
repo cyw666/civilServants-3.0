@@ -21,7 +21,6 @@ angular.module('luZhouApp')
           $scope.articleData = response.Data;
           $scope.content = response.Data.Content;
           $scope.articleData.Type = 'BookChapter';
-          // console.log($scope.content);
           var str = $scope.content.split('font-size:');
           var reg = /^(?=.*\d.*\b)/;
           for (var i = 0; i < str.length; i++) {

@@ -1,0 +1,419 @@
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>精英在线精品课程</title>
+    <script type="text/javascript" src="util/json2.js"></script>
+	<script type="text/javascript" src="util/fulljsmin.js"></script>
+
+<script type="text/javascript">
+	var serverURL;
+	var courseID;
+	var userID;
+	var mark = true;
+
+	var SID = "S001";
+	var sectionStatus = "I";
+	var lessonStatus = "I";
+	var lastLocation = 0;
+	var duration = 0;
+	var progress = 0;
+	var STime = 0;
+	var offLine = false;
+	var forward = 0;
+	var media = "";
+
+	function getValueFromUrl(val) { 
+		var uri = window.location.search; 
+		var re = new RegExp("" +val+ "=([^&?]*)", "ig"); 
+		return ((uri.match(re))?(uri.match(re)[0].substr(val.length+1)):null); 
+	} 
+
+	var statusPlay = getValueFromUrl("go");
+
+
+	function CourseInfo(){
+		this.sectionTempLocation = 0;
+		this.sectionTempDuration = 0;
+		this.sectionTempState = "I";
+
+		this.setSectionTempLocation = setSectionTempLocation;
+		this.setsectionTempDuration = setsectionTempDuration;
+		this.setSectionTempState = setSectionTempState;
+
+		this.getSectionTempLocation = getSectionTempLocation;
+		this.getSectionTempLocation = getSectionTempLocation;
+		this.getSectionTempState = getSectionTempState;
+	}
+
+	function setSectionTempLocation(tempLocation){
+		this.sectionTempLocation = tempLocation;
+	}
+
+	function setsectionTempDuration(tempDuration){
+		this.sectionTempDuration = tempDuration;
+	}
+
+	function setSectionTempState(tempState){
+		this.sectionTempState = tempState;
+	}
+
+	function getSectionTempLocation(){
+		return this.sectionTempLocation;
+	}
+
+	function getsectionTempDuration(tempDuration){
+		return this.sectionTempDuration;
+	}
+
+	function getSectionTempState(tempState){
+		return this.sectionTempState;
+	}
+
+	function getValueFromUrl(val) { 
+		var uri = window.location.search; 
+		var re = new RegExp("" +val+ "=([^&?]*)", "ig"); 
+		return ((uri.match(re))?(uri.match(re)[0].substr(val.length+1)):null); 
+	} 
+
+	var courseInfo = new CourseInfo();
+	serverURL = getValueFromUrl("URL");
+	courseID = getValueFromUrl("courseID"); 
+	userID = getValueFromUrl("userID"); 
+	forward = getValueFromUrl("forward");
+	media = getValueFromUrl("mediaURL");
+	//alert("media"+media+"forward"+forward);  
+	function setOffline(){
+		offLine = true;
+	}
+
+
+	function setCourseValue(tempObj){
+		if(tempObj){
+			sectionTempLocation = tempObj.lastLocation;
+			courseInfo.setSectionTempLocation(sectionTempLocation);
+			var tempLoaction = document.getElementById("tempLoaction");
+			tempLoaction.value = sectionTempLocation;
+			sectionTempDuration = tempObj.duration;
+			sectionTempState = tempObj.state;
+		}
+	}
+
+	function setCourseInfo(paraArray){
+		if(paraArray){
+		SID = paraArray[0];
+		sectionStatus = paraArray[1];		
+		lastLocation = paraArray[2]?paraArray[2]:0;
+		STime = paraArray[3];
+		duration = paraArray[4];
+	} 
+	//alert("playCourse:sid:"+SID+"sectionStatus:"+sectionStatus+" lastLocation:"+lastLocation+" STime:"+STime+" duration:"+duration);
+	sendServerRequest("setParam",paraArray);
+	//alert("进度更新");
+	//getServerRequest(SID);
+	//var tempLoaction = document.getElementById("tempLoaction");
+	return "OK";
+
+	return "OK";
+	}
+
+	Date.prototype.format = function(format){
+		var o =
+			{
+			"M+" : this.getMonth()+1, //month
+			"d+" : this.getDate(),    //day
+			"h+" : this.getHours(),   //hour
+			"m+" : this.getMinutes(), //minute
+			"s+" : this.getSeconds(), //second
+			"q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+			"S" : this.getMilliseconds() //millisecond
+			}
+		if(/(y+)/.test(format))
+			format=format.replace(RegExp.$1,(this.getFullYear()+"").substr(4 - RegExp.$1.length));
+		for(var k in o)
+			if(new RegExp("("+ k +")").test(format))
+			format = format.replace(RegExp.$1,RegExp.$1.length==1 ? o[k] : ("00"+ o[k]).substr((""+ o[k]).length));
+		return format;
+	}
+
+
+	function sendServerRequest(method,arr) {
+		var oXMLHttp = createXMLHttp(); //取得 XMLHttp 对象 
+		var url = "http://" + serverURL;
+
+		var aParams = new Array(); //用来存储"名-值"对的数组  
+
+		var methodParam = encodeURIComponent("method"); 
+		methodParam += "=";    
+		methodParam += encodeURIComponent(method);    
+		aParams.push(methodParam);    
+
+		var lastLocationParam = encodeURIComponent("lastLocation"); 
+		lastLocationParam += "=";    
+		lastLocationParam += encodeURIComponent(lastLocation); 
+		aParams.push(lastLocationParam);        
+
+		var SIDParam = encodeURIComponent("SID"); 
+		SIDParam += "=";    
+		SIDParam += encodeURIComponent(SID);    
+		aParams.push(SIDParam);  
+
+		var myDate = new Date();
+		var curtime= myDate.format('yyyy-MM-dd hh:mm:ss');
+
+		var curtimeParam = encodeURIComponent("curtime"); 
+		curtimeParam += "=";    
+		curtimeParam += curtime;    
+		aParams.push(curtimeParam); 
+
+		if(sectionStatus == "pe" ){
+			var durationParam = encodeURIComponent("duration"); 
+			durationParam += "=";    
+			durationParam += encodeURIComponent(duration);    
+			aParams.push(durationParam);
+		}
+
+		if(offLine){
+			var offLineParam = encodeURIComponent("offLine"); 
+			offLineParam += "=";    
+			offLineParam += encodeURIComponent(offLine);    
+			aParams.push(offLineParam);
+		}
+
+		var STimeParam = encodeURIComponent("STime"); 
+		STimeParam += "=";    
+		STimeParam += encodeURIComponent(STime);    
+		aParams.push(STimeParam);  
+
+		var stateParam = encodeURIComponent("state"); 
+		stateParam += "=";    
+		stateParam += encodeURIComponent(sectionStatus);    
+		aParams.push(stateParam);    
+
+		var courseIDParam = encodeURIComponent("courseID"); 
+		courseIDParam += "=";    
+		courseIDParam += encodeURIComponent(courseID);    
+		aParams.push(courseIDParam);    
+
+		var userIDParam = encodeURIComponent("userID"); 
+		userIDParam += "=";    
+		userIDParam += encodeURIComponent(userID);    
+		aParams.push(userIDParam);   
+
+
+		var sBody = aParams.join("&");  
+		//alert(sBody);	 
+		try{
+			oXMLHttp.open("post",url,true);    
+			// 注意下面利用XMLHttp对象对请求头Content-Type的设置  
+			oXMLHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");    
+			oXMLHttp.onreadystatechange = function() {    
+				if (oXMLHttp.readyState == 4) {    
+					if (oXMLHttp.status == 200) {    
+					;
+					}else {    
+						//alert("保存失败");    
+					}    
+				}    
+			}    
+			oXMLHttp.send(sBody);  
+		}catch(e){	
+		}
+	}  
+
+	function getServerRequest(searchSID) { 
+
+		var oXMLHttp = createXMLHttp(); //取得 XMLHttp 对象   
+		var url = "http://" + serverURL;
+
+		var aParams = new Array(); // 用来存储"名-值"对的数组 
+
+		var methodParam = encodeURIComponent("method"); 
+		methodParam += "=";    
+		methodParam += encodeURIComponent("getParam");    
+		aParams.push(methodParam);   
+
+		var SIDParam = encodeURIComponent("SID"); 
+		SIDParam += "=";    
+		SIDParam += encodeURIComponent(searchSID);    
+		aParams.push(SIDParam);
+
+		var courseIDParam = encodeURIComponent("courseID"); 
+		courseIDParam += "=";    
+		courseIDParam += encodeURIComponent(courseID);    
+		aParams.push(courseIDParam);    
+
+		var userIDParam = encodeURIComponent("userID"); 
+		userIDParam += "=";    
+		userIDParam += encodeURIComponent(userID);    
+		aParams.push(userIDParam);  
+
+		var sBody = aParams.join("&");   	
+		try{
+			// var url = "http://" + serverURL + "?method=getParam&SID=" + searchSID;
+			oXMLHttp.open("post", url, true);
+			oXMLHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");    	 
+			oXMLHttp.onreadystatechange = function() {    
+				if (oXMLHttp.readyState == 4) {   
+					if (oXMLHttp.status == 200){ 
+						var message = "" + oXMLHttp.responseText;
+						//alert("getServerRequest"+message);
+						var myObject = JSON.parse(message); 
+						alert(message);
+						setCourseValue(myObject.Section);
+					}else {    
+					//alert("服务器连接失败");    
+					}    
+				}    
+			}    
+			oXMLHttp.send(sBody); 	 
+		}catch(e){	
+		}
+	}
+
+	function getInitCourse() { 	
+
+		var oXMLHttp = createXMLHttp(); //取得 XMLHttp 对象 
+		var url = "http://" + serverURL;
+
+		var aParams = new Array(); //用来存储"名-值"对的数组
+
+		var methodParam = encodeURIComponent("method"); 
+		methodParam += "=";    
+		methodParam += encodeURIComponent("initParam");    
+		aParams.push(methodParam);   
+
+		var courseIDParam = encodeURIComponent("courseID"); 
+		courseIDParam += "=";    
+		courseIDParam += encodeURIComponent(courseID);    
+		aParams.push(courseIDParam);    
+
+		var userIDParam = encodeURIComponent("userID"); 
+		userIDParam += "=";    
+		userIDParam += encodeURIComponent(userID);    
+		aParams.push(userIDParam);  
+
+
+		var sBody = aParams.join("&");   	
+		try{
+			// var url = "http://" + serverURL + "?method=getParam&SID=" + searchSID;
+			oXMLHttp.open("post", url, true);
+			oXMLHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");    	 
+			oXMLHttp.onreadystatechange = function() {    
+				if (oXMLHttp.readyState == 4) {    
+					if (oXMLHttp.status == 200) { 
+						var message = "" + oXMLHttp.responseText;
+						//alert("getInitCourse"+message);
+						var myObject = JSON.parse(message); 
+						//setInitCourseValue(myObject.Section);
+						playCourse(myObject.Section);
+					}else{
+						playCourse();
+					}   
+				}    
+			}   
+		oXMLHttp.send(sBody); 		 
+		}catch(e){		
+			//alert("服务器连接失败"); 
+			playCourse();   
+		}
+	}
+
+	function setInitCourseValue(tempObj){
+
+		if(tempObj){
+			var sectionInitLocation = tempObj.lastLocation;
+			var sectionInitSID = tempObj.SID;
+			sectionInitDuration = tempObj.duration;
+			sectionInitState = tempObj.state;
+		}
+	}
+	function playCourse(tempObj){
+		var paraArray  = new Array();
+
+		var sectionInitLocation = "0";
+		var sectionInitSID = "S001";
+		var sectionInitDuration = "0";
+		var sectionInitMedia="";
+		var sectionInitForward="0";
+
+		if(tempObj){
+			if(statusPlay == 1){
+				if(tempObj.lastLocation != "null"){
+					sectionInitLocation = tempObj.lastLocation;
+				}
+				if(tempObj.SID != "null"){
+					sectionInitSID = tempObj.SID;
+				}
+			}
+		}
+		if(media != null) sectionInitMedia = media;
+		if(forward != null) sectionInitForward = forward;
+
+		paraArray.push(sectionInitSID);
+		paraArray.push(sectionInitLocation);
+		paraArray.push(sectionInitMedia);
+		paraArray.push(sectionInitForward);
+
+		//alert("playCourse:sid:"+sectionInitSID+"sli:"+sectionInitLocation+" media:"+sectionInitMedia+" Froward:"+sectionInitForward);
+		getFlashMovieObject("myFlash").sendData(paraArray);
+	}
+
+	function getFlashMovieObject(movieName){
+		if (window.document[movieName]){
+			//alert("1"+window.document[movieName]);
+			return window.document[movieName];
+		}else if (navigator.appName.indexOf("Microsoft Internet")==-1){
+			if (document.embeds && document.embeds[movieName])
+				//alert("2"+document.embeds[movieName]);
+				return document.embeds[movieName]; 
+		}else{
+			//alert("3"+document.getElementById(movieName));
+			return document.getElementById(movieName);
+		}
+	}
+
+	function createXMLHttp(){   
+		if (typeof XMLHttpRequest != "undefined"){   
+		return new XMLHttpRequest();   
+		}else if (window.ActiveXObject) {   
+			var aVersions = ["MSXML2.XMLHttp.5.0","MSXML2.XMLHttp.4.0","MSXML2.XMLHttp.3.0","MSXML2.XMLHttp","Microsoft.XMLHttp"];   
+			for (var i=0;i<aVersions.length;i++){   
+				try{   
+					var oXMLHttp = new ActiveXObject(aVersions[i]);   
+					return oXMLHttp;   
+				}catch(e){   
+				;//do nothing           
+				}   
+			}   
+		}   
+	} 	 
+	function  flvReplay(){
+		window.focus();
+		return "OK";
+	}
+	function showMessage(){
+		//alert("课程已经被暂停！");
+	}	 
+	function getFinishCourse(){
+		try{
+			getFlashMovieObject("myFlash").getCurrentInfo();
+			//window.document.flashObject.SetVariable("endText","end");
+		}catch(e){   
+			;//do nothing           
+		} 
+	}
+</script>
+	</head>
+	<body  topmargin="0" leftmargin="0" bgcolor="#ffffff" style="overflow-x:hidden;overflow-y:hidden" onunload="setOffline();getFinishCourse();">
+		<object  id="myFlash" align="center" width="100%" height="100%" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=11,4,0,0">
+		<param name="allowScriptAccess" value="always" />
+		<param name="movie" value="control_bar.swf" />
+		<param name="menu" value="false"/>
+		<param name="quality" value="high" />
+		<embed src="control_bar.swf"align="center" quality="high" width="100%" height="100%" name="myFlash" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+		</object>
+	</body>
+	<script type="text/javascript"  event="onload" for="window" >
+		getInitCourse();
+	</script>
+</html>

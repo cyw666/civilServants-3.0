@@ -59,10 +59,10 @@ angular
       })
       .state('trainingClass', {
         url: '/trainingClass',
+        data: {title: "班级园地"},
         templateUrl: 'views/trainingClass.html',
-        controller: 'SpecialtrainingcourseCtrl',
-        controllerAs: 'specialTrainingCourse',
-        data: {title: "班级园地"}
+        controller: 'TrainingclassCtrl',
+        controllerAs: 'trainingClass'
       })
       .state('csTrainingNews', {
         url: '/csTrainingNews',
@@ -457,7 +457,7 @@ angular
         controllerAs: 'bookChapterContent'
       })
       .state('article', {
-        url: '/news/article?categoryId',
+        url: '/news/article?categoryCode',
         data: {title: "文章"},
         templateUrl: 'views/news/article.html',
         controller: 'ArticleCtrl',
@@ -558,11 +558,6 @@ angular
     // $locationProvider.html5Mode(true);
 
     /*$routeProvider
-     .when('/', {
-     templateUrl: 'views/guideview.html',
-     controller: 'GuideviewCtrl',
-     controllerAs: 'guideView'
-     })
      .when('/main', {
      templateUrl: 'views/main.html',
      controller: 'MainCtrl',
@@ -947,6 +942,11 @@ angular
        templateUrl: 'views/speciallearningone.html',
        controller: 'SpeciallearningoneCtrl',
        controllerAs: 'specialLearningOne'
+     })
+     .when('/trainingClass', {
+       templateUrl: 'views/trainingclass.html',
+       controller: 'TrainingclassCtrl',
+       controllerAs: 'trainingClass'
      })
      .otherwise({
      redirectTo: '/main'

@@ -10,20 +10,13 @@
 angular.module('luZhouApp')
   .controller('SpeciallearningoneCtrl', function ($scope, $http, commonService, $location, $loading) {
     //专题新闻轮播
+    $loading.start('specialNewSlide');
     commonService.getData(ALL_PORT.ArticleList.url, 'POST',
       $.extend({},ALL_PORT.ArticleList.data,{rows:4,CategoryCode:'specialNewsSlide',TitleNav:'专题新闻轮播'}))
       .then(function(response) {
+        $loading.finish('specialNewSlide');
         $scope.slideData = response.Data;
       });
-    /*$scope.startSlide = function () {
-      $('#specialNewSlide').slideBox({
-        duration : 0.5,//滚动持续时间，单位：秒
-        easing : 'linear',//swing,linear//滚动特效
-        delay : 4,//滚动延迟时间，单位：秒
-        hideClickBar : false,//不自动隐藏点选按键
-        clickBarRadius : 5
-      });
-    };*/
     $scope.startSlide = function () {
       setTimeout(function () {
         $('.specialNewSlide').bxSlider({
@@ -36,54 +29,59 @@ angular.module('luZhouApp')
     };
 
     //习近平重要讲话新闻
+    $scope.importantTalk='importantTalk';
+    $loading.start($scope.importantTalk);
     commonService.getData(ALL_PORT.ArticleList.url, 'POST',
-      $.extend({},ALL_PORT.ArticleList.data,{rows:7,CategoryCode:'importantTalk',TitleNav:'习近平重要讲话'}))
+      $.extend({},ALL_PORT.ArticleList.data,{rows:7,CategoryCode:$scope.importantTalk,TitleNav:'习近平重要讲话'}))
       .then(function(response) {
+        $loading.finish($scope.importantTalk);
         $scope.specialNewsData = response.Data;
       });
 
     //学习通知
+    $scope.LearningInform='LearningInform';
+    $loading.start($scope.LearningInform);
     commonService.getData(ALL_PORT.ArticleList.url, 'POST',
-      $.extend({},ALL_PORT.ArticleList.data,{rows:7,CategoryCode:'LearningInform',TitleNav:'学习通知'}))
+      $.extend({},ALL_PORT.ArticleList.data,{rows:7,CategoryCode:$scope.LearningInform,TitleNav:'学习通知'}))
       .then(function(response) {
+        $loading.finish($scope.LearningInform);
         $scope.learningInformData = response.Data;
       });
 
     //专题课程
-    var courseListParams = {
-      page: 1,
-      rows: 10,
-      sort: 'Sort',
-      order: 'desc',
-      courseType: 'All',
-      channelId: '',
-      title: '',
-      titleNav: '课程中心',
-      wordLimt: 35,
-      teacher: ''
-    };
+    $loading.start('specialLearningCourse');
     commonService.getData(ALL_PORT.CourseList.url, 'POST',
       $.extend({},ALL_PORT.CourseList.data,{rows:8,channelCode:'xiJinPingCourse',TitleNav:'习近平总书记系列重要讲话精神'}))
       .then(function(response) {
+        $loading.finish('specialLearningCourse');
         $scope.specialCourseData = response.Data;
       });
 
     //评论观点
+    $scope.commentsNews='commentsNews';
+    $loading.start($scope.commentsNews);
     commonService.getData(ALL_PORT.ArticleList.url, 'POST',
-      $.extend({},ALL_PORT.ArticleList.data,{rows:5,CategoryCode:'commentsNews',TitleNav:'评论观点'}))
+      $.extend({},ALL_PORT.ArticleList.data,{rows:5,CategoryCode:$scope.commentsNews,TitleNav:'评论观点'}))
       .then(function(response) {
+        $loading.finish($scope.commentsNews);
         $scope.commentsNewsData = response.Data;
       });
     //理论阐述
+    $scope.theory='theory';
+    $loading.start($scope.theory);
     commonService.getData(ALL_PORT.ArticleList.url, 'POST',
-      $.extend({},ALL_PORT.ArticleList.data,{rows:5,CategoryCode:'theory',TitleNav:'理论阐述'}))
+      $.extend({},ALL_PORT.ArticleList.data,{rows:5,CategoryCode:$scope.theory,TitleNav:'理论阐述'}))
       .then(function(response) {
+        $loading.finish($scope.theory);
         $scope.theoryData = response.Data;
       });
     //各地动态
+    $scope.placeState='placeState';
+    $loading.start($scope.placeState);
     commonService.getData(ALL_PORT.ArticleList.url, 'POST',
-      $.extend({},ALL_PORT.ArticleList.data,{rows:5,CategoryCode:'placeState',TitleNav:'各地动态'}))
+      $.extend({},ALL_PORT.ArticleList.data,{rows:5,CategoryCode:$scope.placeState,TitleNav:'各地动态'}))
       .then(function(response) {
+        $loading.finish($scope.placeState);
         $scope.placeStateData = response.Data;
       });
 
@@ -103,8 +101,9 @@ angular.module('luZhouApp')
           minSlides: 5,
           maxSlides: 5,
           moveSlides: 1,
-          slideMargin: 10,
+          slideMargin: 8,
           auto: true,
+          autoHover:true,
           pager:false
         });
       },500);

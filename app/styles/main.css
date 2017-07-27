@@ -258,6 +258,12 @@ h4 {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+/*两端对齐*/
+.justify {
+  text-align: justify;
+  -ms-text-justify: inter-ideograph;
+  text-justify: inter-ideograph;
+}
 .triangleRight {
   font-size: 0;
   line-height: 0;

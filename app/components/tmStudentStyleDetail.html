@@ -33,17 +33,9 @@
         <a ng-click="increaseFont()">[放大字体]</a>
       </p>
     </div>
-    <div id="setFont" class="article-detail article-detail-content" ng-bind-html="articleData.Content| trustHtml">
+    <div id="setFont" class="article-detail article-detail-content justify" ng-bind-html="articleData.Content| trustHtml">
 
     </div>
-    <!--<div class="article-detail article-detail-changeBar" >
-      <p class="grid_11 article-detail article-detail-changeBar-anhor pull-left" ng-show="articleData.UpName">
-        <a ui-sref="articleDetail({ID:articleData.UpId})">上一篇：{{articleData.UpName}}</a>
-      </p>
-      <p class="grid_11 article-detail article-detail-changeBar-anhor pull-right" ng-show="articleData.DownName">
-        <a ui-sref="articleDetail({ID:articleData.DownId})">下一篇：{{articleData.DownName}}</a>
-      </p>
-    </div>-->
 
   </div>
 </div>

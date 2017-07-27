@@ -12,7 +12,6 @@ angular.module('luZhouApp')
       restrict: 'EA',
       require: '?ngModel',
       link: function (scope, element, attrs, ctrl) {
-        console.log(element,ctrl)
         var _initContent, editor;
         var fexUE = {
           initEditor: function () {

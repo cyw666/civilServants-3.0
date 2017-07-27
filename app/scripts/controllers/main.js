@@ -148,18 +148,24 @@ angular.module('luZhouApp')
       commonService.limitSubmit(clickLogin);
     }
 
-    /*//培训班轮播新闻
-    $scope.getClassNews = function () {
-      $loading.start('specialTraining');
-      commonService.getData(ALL_PORT.TrainingClass.url, 'POST',
-        ALL_PORT.TrainingClass.data)
-        .then(function(response) {
-          $loading.finish('specialTraining');
-          $scope.allTrainingData=response.Data;
-          $scope.specialTraining = response.Data.ListData;
+    //通知公告
+    $loading.start('noticeAnnouncement');
+    commonService.getData(ALL_PORT.noticeAnnouncement.url, 'POST',
+      $.extend({},ALL_PORT.noticeAnnouncement.data,{rows:3}))
+      .then(function(response) {
+        $loading.finish('noticeAnnouncement');
+        $scope.noticeData = response.Data;
+      });
+    $scope.startSlide = function () {
+      setTimeout(function () {
+        $('.noticeSlide').bxSlider({
+          slideWidth: 568,
+          auto:true,
+          autoHover:true,
+          controls:false
         });
-    };
-    $scope.getClassNews();*/
+      },500);
+    }
 
     //培训班分类
     var defaultClassId;
@@ -262,16 +268,16 @@ angular.module('luZhouApp')
     };
 
     //新闻资讯
-    $scope.getNewsContent = function (id) {
+    $scope.getNewsContent = function (categoryCode) {
       $loading.start('articleList');
       commonService.getData(ALL_PORT.ArticleList.url,'POST',
-        $.extend({}, ALL_PORT.ArticleList.data,{rows:6,categoryId:id}))
+        $.extend({}, ALL_PORT.ArticleList.data,{rows:6,CategoryCode:categoryCode}))
         .then(function(response) {
           $loading.finish('articleList');
           $scope.articleListData = response.Data;
           $scope.articleTop = response.Data.ListData[0];
         });
     };
-    $scope.getNewsContent(83);
+    $scope.getNewsContent('newsInformation');
 
   });

@@ -1,31 +1,38 @@
 <!--@*通知公告*@-->
 
 <div class="noticeAnnouncement">
-  <div class="notice" dw-loading="noticeAnnouncement">
-    <div id="noticeSlide" class="slideBox">
-      <ul class="items">
-        <li ng-repeat="noticeList in noticeData.ListData" repeat-finish="startSlide()">
-          <a ui-sref="noticeDetail({ID:noticeList.Id})" title="{{noticeList.Name}}" target="_blank">
-            <img ng-src="{{noticeData.Path+'/'+noticeList.Img}}" err-Src="images/notFound.jpeg">
+  <div class="notice"  dw-loading="noticeAnnouncement">
+    <!--轮播-->
+    <div class="noticeSlide">
+      <div class="noticeSlideList" ng-repeat="list in noticeData.ListData" repeat-finish="repeatFinish()">
+        <a ui-sref="noticeDetail({ID:list.Id})" target="_blank">
+          <img ng-src="{{noticeData.Path+'/'+list.Img}}"  title="{{list.Name}}" err-Src="images/notFound.jpeg">
+        </a>
+        <p class="titleBg"></p>
+        <p class="titleName">
+          <a class="ellipsis" ui-sref="articleDetail({ID:list.Id})" title="{{list.Name}}" target="_blank">
+            {{list.Name}}
           </a>
-        </li>
-      </ul>
+        </p>
+      </div>
     </div>
+    <!--列表-->
     <div class="notice-body clearfix">
       <div class="notice-body-left pull-left">通知公告</div>
       <div class="notice-body-right pull-left">
         <ul class="clearfix">
-          <li class="pull-left" ng-repeat="noticeList in noticeData.ListData">
+          <li class="pull-left" ng-repeat="list in noticeData.ListData">
             <span class="triangleRight"></span>
-            <a class="title ellipsis" ui-sref="noticeDetail({ID:noticeList.Id})" title="{{noticeList.Name}}"
-               target="_blank">{{noticeList.Name}}</a>
-            <span class="time">{{noticeList.CreateDate | dateFilter |date :'yyyy-MM-dd'}}</span>
+            <a class="title ellipsis" ui-sref="noticeDetail({ID:list.Id})" title="{{list.Name}}"
+               target="_blank">{{list.Name}}</a>
+            <span class="time">{{list.CreateDate | dateFilter |date :'yyyy-MM-dd'}}</span>
           </li>
         </ul>
       </div>
     </div>
   </div>
 </div>
+
 <style>
   .noticeAnnouncement {
     height: 482px;
@@ -33,22 +40,73 @@
     border: 1px solid #eee;
     padding: 10px;
   }
+  .noticeAnnouncement .noticeSlide img{
+    width: 568px;
+    height: 350px;
+  }
+  .noticeAnnouncement .bx-wrapper {
+    margin-bottom: 0;
+  }
+  .noticeAnnouncement .bx-wrapper .bx-pager {
+    bottom: 5px;
+    padding-top: 0px;
+    width: auto;
+    right: 25px;
+  }
+  .noticeAnnouncement .bx-wrapper .bx-pager.bx-default-pager a {
+    background: #959595;
+    border: 1px solid #959595;
+  }
+  .noticeAnnouncement .bx-wrapper .bx-pager.bx-default-pager a:hover,
+  .noticeAnnouncement .bx-wrapper .bx-pager.bx-default-pager a.active {
+    background: #fff;
+    border: 1px solid #fff;
+  }
+  .noticeAnnouncement .noticeSlide .titleName{
+    position: absolute;
+    bottom: 0;
+    width: 80%;
+    z-index:10;
+  }
+  .noticeAnnouncement .noticeSlide .titleName a{
+    float: left;
+    color: #fff;
+    text-align: left;
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 10px;
+  }
+  .noticeAnnouncement .noticeSlide .titleBg{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #000;
+    z-index:1;
+    /*兼容IE7、8 */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+    filter: alpha(opacity=40);
+    opacity:0.4;
+    height: 32px;
+  }
+
+
   .noticeAnnouncement .notice-body {
     background-color: #f3f3f3;
     margin-top: 10px;
   }
 
   .noticeAnnouncement .notice-body .notice-body-left {
-    height: 80px;
-    padding: 0 19px;
+    height: 100%;
+    width: 60px;
+    padding: 0 25px;
     border-right: 1px solid #ddd;
     font-size: 14px;
     font-weight: bold;
     color: #db1011;
     margin: 10px auto;
     text-align: center;
-    writing-mode: vertical-lr; /*从左向右 从右向左是 writing-mode: vertical-rl;*/
-    writing-mode: tb-lr; /*IE浏览器的从左向右 从右向左是 writing-mode: tb-rl；*/
+    word-wrap: break-word;
   }
 
   .noticeAnnouncement .notice-body .notice-body-right {

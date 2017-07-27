@@ -32,7 +32,6 @@ angular.module('luZhouApp')
         }
       }
       var params = $.extend({}, ALL_PORT.ExamList.data, option);
-      //console.log(params);
       commonService.getData(ALL_PORT.ExamList.url, 'POST',
         params)
         .then(function (response) {

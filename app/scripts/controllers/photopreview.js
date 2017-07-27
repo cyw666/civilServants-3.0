@@ -94,7 +94,6 @@ angular.module('luZhouApp')
         //放大图片
         $scope.viewPhoto = function(index) {
             $scope.imgObj = $scope.Data.ListData[index];
-            // console.log($scope.imgObj, $scope.Data);
         };
 
 

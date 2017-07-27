@@ -16,7 +16,6 @@ angular.module('luZhouApp')
         dragReady:"="
       },
       link: function postLink(scope, element, attrs) {
-        // console.log(element);
         var x, drag = $('#drag'), isMove = false, defaults = {
         };
         var options = $.extend(defaults, options);

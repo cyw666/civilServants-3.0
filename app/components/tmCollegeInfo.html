@@ -18,7 +18,7 @@
       </ul>
       <div class="tab-content collegeContent" dw-loading="collegeInfo">
         <div ng-repeat="list2 in collegeInfoData.ListData" class="tab-panel perlist" ng-show="vm.activeTab == $index+1">
-          <p ng-bind-html="list2.Content| trustHtml"></p>
+          <p class="justify" ng-bind-html="list2.Content| trustHtml"></p>
         </div>
       </div>
     </div>

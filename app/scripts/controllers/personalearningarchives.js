@@ -63,7 +63,6 @@ angular.module('luZhouApp')
                         $scope.startDate = response.Data.ViewBag.StartDate;
                         $scope.endDate = response.Data.ViewBag.EndDate;
                         $scope.n = 1;
-                        // console.log($scope.n);
                     } else {}
                 });
         };

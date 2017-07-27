@@ -15,26 +15,26 @@
 	var defaults = {
 
 		// GENERAL
-		mode: 'horizontal',
+		mode: 'horizontal', // 'horizontal', 'vertical', 'fade' 定义slider滚动的方向，有三个值可供选择
 		slideSelector: '',
-		infiniteLoop: true,
-		hideControlOnEnd: false,
-		speed: 500,
-		easing: null,
-		slideMargin: 0,
-		startSlide: 0,
-		randomStart: false,
-		captions: false,
-		ticker: false,
-		tickerHover: false,
-		adaptiveHeight: false,
+		infiniteLoop: true, // true, false 无限循环
+		hideControlOnEnd: false, //true, false 如果设置true，将会在最后一个幻灯片隐藏“next”，在最前面的幻灯片因此“prev”
+		speed: 500, //速度，单位为毫秒
+    easing: null, // used with jquery.easing.1.3.js - see http://gsgd.co.uk/sandbox/jquery/easing/ for available options
+		slideMargin: 0, //margin-right值
+		startSlide: 0, //第几个开始
+		randomStart: false, //随即开始
+		captions: false, // true, false -  是否显示图片的标题，读取图片的title属性的内容。
+		ticker: false, // true, false - continuous motion ticker mode (think news ticker)跑马灯
+		tickerHover: false, // true, false - if true ticker will pause on mouseover
+		adaptiveHeight: false, //自适应高度
 		adaptiveHeightSpeed: 500,
 		video: false,
 		useCSS: true,
 		preloadImages: 'visible',
 		responsive: true,
-		slideZIndex: 50,
-		wrapperClass: 'bx-wrapper',
+		slideZIndex: 50, //slide zindex值
+		wrapperClass: 'bx-wrapper', // string - classname attached to the slider wraper
 
 		// TOUCH
 		touchEnabled: true,
@@ -44,37 +44,37 @@
 		preventDefaultSwipeY: false,
 
 		// PAGER
-		pager: true,
-		pagerType: 'full',
-		pagerShortSeparator: ' / ',
-		pagerSelector: null,
+		pager: true, // true / false - display a pager
+		pagerType: 'full', // 'full', 'short'如果设置full，将显示1，2，3……，如果设置short，将显示1/4 .
+		pagerShortSeparator: ' / ', // string - ex: 'of' pager would display 1 of 4 页面分隔符
+		pagerSelector: null, // jQuery selector - element to contain the pager. ex: '#pager'
 		buildPager: null,
 		pagerCustom: null,
 
 		// CONTROLS
-		controls: true,
-		nextText: 'Next',
-		prevText: 'Prev',
-		nextSelector: null,
-		prevSelector: null,
-		autoControls: false,
-		startText: 'Start',
-		stopText: 'Stop',
+		controls: true, // true, false -是否显示“previous”和“next”按钮
+		nextText: 'Next', // string - text displayed for 'next' control 下一页的文字
+		prevText: 'Prev', // string - text displayed for 'previous' control 上一页的文字
+		nextSelector: null, // jQuery selector - element to contain the next control. ex: '#next'
+		prevSelector: null, // jQuery selector - element to contain the previous control. ex: '#next'
+		autoControls: false, // true, false - show 'start' and 'stop' controls for auto show 自动滚动的控制键
+		startText: 'Start', // string - text displayed for 'start' control 开始按钮的文字
+		stopText: 'Stop', // string - text displayed for 'stop' control 停止按钮的文本
 		autoControlsCombine: false,
-		autoControlsSelector: null,
+		autoControlsSelector: null,// jQuery selector - element to contain the auto controls. ex: '#auto-controls'
 
 		// AUTO
-		auto: false,
-		pause: 4000,
-		autoStart: true,
-		autoDirection: 'next',
-		autoHover: false,
-		autoDelay: 0,
+		auto: false, // true, false -  幻灯片自动滚动
+		pause: 4000, // integer - in ms, 过渡时间
+		autoStart: true,// true, false - if false show will wait for 'start' control to activate
+		autoDirection: 'next',// 'next', 'prev' -  自动滚动的顺序
+		autoHover: false,// true, false - 设置鼠标mouseover将会使自动滚动暂停
+		autoDelay: 0,// integer - in ms, the amount of time before starting the auto show
 		autoSlideForOnePage: false,
 
 		// CAROUSEL
-		minSlides: 1,
-		maxSlides: 1,
+		minSlides: 1, //轮播开始最小个数
+		maxSlides: 1, //轮播开始最大个数
 		moveSlides: 0,
 		slideWidth: 0,
 

@@ -9,21 +9,24 @@
  */
 angular.module('luZhouApp')
   .controller('ArticleCtrl', function ($scope, $state, $rootScope, $cookieStore, commonService, $stateParams, $loading) {
-    $scope.categoryId = $stateParams.categoryId?$stateParams.categoryId:'';
+    var categoryCode = $stateParams.categoryCode?$stateParams.categoryCode:'';
 
     //分页
     var params = {
       page:1,
       rows:15,
-      categoryId:$scope.categoryId,
+      categoryId:'',
+      CategoryCode:categoryCode,
+      sort:'Sort',
+      order:'desc',
+      wordLimt:'20',
       titleNav:'文章列表'
     };
     $scope.paginationConf = $.extend({},paginationConf,{itemsPerPage: 15});
     $scope.refreshList = function (options) {
       $loading.start('articleList');
-      params.categoryId = options.categoryId?options.categoryId:params.categoryId;
       commonService.getData(ALL_PORT.ArticleList.url,'POST',
-        $.extend({}, ALL_PORT.ArticleList.data,params,options))
+        $.extend(params,options))
         .then(function(response) {
           $loading.finish('articleList');
           $scope.articleListData = response.Data;

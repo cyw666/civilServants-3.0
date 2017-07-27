@@ -463,7 +463,6 @@ angular.module('luZhouApp')
           url: ALL_PORT.ClearPlayingCourse.url+'?'+Math.round(Math.random() * 10000),
           data: $.param($.extend({}, ALL_PORT.ClearPlayingCourse.data, {userid: userid})),
         }).success(function (response) {
-          // console.log(response);
         });
       });
     };
@@ -538,15 +537,11 @@ angular.module('luZhouApp')
             'Content-Type': undefined
           }
         }).success(function (response) {
-          // alert(response);
           $('#hidValueImage').val(response);
-          // console.log($('#hidValueImage').val());
         }).error(function (error, status) {
 
         });
       }
-      // console.log(event.type,event.name);
-      // console.log(file, typeConfig);
 
     };
 

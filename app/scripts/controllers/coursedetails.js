@@ -31,7 +31,6 @@ angular.module('luZhouApp')
           if (response.Type == 1) {
             $scope.courseDetailsData.CourseModel.FavoriteId = response.Value;
             alert(response.Message);
-            // console.log(response.Value);
           }
         });
     };

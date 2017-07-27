@@ -13,16 +13,10 @@ angular.module('luZhouApp')
     $scope.token = commonService.AntiForgeryToken();
     $loading.start('exam');
     var Id = $stateParams.Id;
-    // console.log(Id,$scope.token);
     var params = $.extend({}, ALL_PORT.Poll.data, { parameter1: Id })
-    console.log(params)
     commonService.getData(ALL_PORT.Poll.url, 'POST', params)
       .then(function(response) {
         $loading.finish('exam');
-        /*if (response.Data.Exam.TimeLimit != 0) {
-          $scope.seconds = parseInt(response.Data.Exam.TimeLimit) * 60 * 1000;
-        }*/
-        // $scope.seconds = 5*1000;
         //考试题目数量
         if(response.Data){
           $scope.examData = response.Data;
@@ -56,7 +50,6 @@ angular.module('luZhouApp')
           $(this).parent('td').css({ "backgroundColor": "red", "color": "white" });
           if ($(this).siblings('.tibg').children('span').attr("type") == "0") {
             str0 += $(this).siblings('.tibg').children('span').html();
-            // console.log(str0)
           }
           if ($(this).siblings('.tibg').children('span').attr("type") == "1") {
             str1 += $(this).siblings('.tibg').children('span').html();
@@ -76,8 +69,6 @@ angular.module('luZhouApp')
       if (str1 == "类型二题、") { str1 = ""; }
       if (str2 == "类型三题、") { str2 = ""; }
       // confirm(str0 + str1 + str2 + "未答,是否提交?");
-      // console.log($("#editForm").serialize());
-
       if (e == "1"||((str0 + str1 + str2) === "" || ((str0 + str1 + str2) !== "" && confirm(str0 + str1 + str2 + "未答,是否提交?")))) {
         var params = $("#editForm").serialize();
         commonService.getData(ALL_PORT.PostExam.url, 'POST', params)

@@ -74,8 +74,6 @@ angular.module('luZhouApp')
         .then(function(response) {
           if (response.Type == 1) {
             //重新登录
-            //console.log(response.Type);
-            //window.location.reload();
             $scope.clickLogin();
           }
         });

@@ -6,10 +6,10 @@
       {{specialNewsData.TitleNav}}
     </p>
     <p class="more pull-right">
-      <a ui-sref="article" target="_blank"><img src="../images/more.png" alt="更多"></a>
+      <a ui-sref="article({categoryCode:categoryCode})" target="_blank"><img src="../images/more.png" alt="更多"></a>
     </p>
   </div>
-  <ul class="specialNewsContent clearfix">
+  <ul class="specialNewsContent clearfix" dw-loading="{{categoryCode}}">
     <li class="pull-left" ng-repeat="list in specialNewsData.ListData">
       <span class="arrow"><img src="../images/arrowRight.png" alt=""></span>
       <span class="title ellipsis" title="{{list.Name}}">

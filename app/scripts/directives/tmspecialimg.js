@@ -16,18 +16,7 @@ angular.module('luZhouApp')
         repeatFinish:'=',
       },
       link: function postLink(scope, element, attrs) {
-        /*console.log(scope.$index)
-        setTimeout(function () {
-          $('.slider3').bxSlider({
-            slideWidth: 210,
-            minSlides: 5,
-            maxSlides: 5,
-            moveSlides: 1,
-            slideMargin: 10,
-            auto: true,
-            pager:false
-          });
-        },100);*/
+
       }
     };
   });

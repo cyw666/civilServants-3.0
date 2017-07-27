@@ -27,6 +27,5 @@ angular.module('luZhouApp')
             $scope.articleData = response.Data.Model;
             $scope.Data = response.Data.Model;
             $scope.CreatedDate = response.Data.Model.CreatedDate;
-	        console.log($scope.CreatedDate);
         });
     });

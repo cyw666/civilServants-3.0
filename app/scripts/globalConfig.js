@@ -1,7 +1,8 @@
 ﻿"user strict"
 //请求后台数据入口
-// var API_URL = "/api";
-var API_URL = "http://122.225.101.117:9090/api";
+var API_URL = "/api";
+// var API_URL = "http://122.225.101.117:9090/api";
+// var API_URL = "http://test10.jy365.net/api";
 // var API_URL = "http://test7.jy365.net/api";
 // var API_URL = "http://192.168.1.25/api";
 var API_URL_ADMIN = API_URL + "/admin";
@@ -148,7 +149,7 @@ var ALL_PORT = {
   //文章
   ArticleList:{
     url:API_URL+"/Page/ArticleList",
-    data:{page:'1',rows:'7',sort:'Sort',order:'desc',wordLimt:'20'}
+    data:{page:'1',rows:'7',sort:'Sort',order:'desc',wordLimt:'20',CategoryCode:'',categoryId:''}
   },
   //文章内容
   ArticleContent:{
