@@ -4,7 +4,6 @@
 var API_URL = "http://122.225.101.117:9090/api";
 // var API_URL = "http://test10.jy365.net/api";
 // var API_URL = "http://test7.jy365.net/api";
-// var API_URL = "http://192.168.1.25/api";
 var API_URL_ADMIN = API_URL + "/admin";
 //限制多次请求
 var limitTime = 0;
@@ -505,9 +504,14 @@ var ALL_PORT = {
     data:{parameter1:'',parameter2:''}
   },
   //报名培训班
-  ApplyClass: {
-    url: API_URL + "/Page/ApplyClass",
-    data: {trainingId: ''}
+  UpdateTrainingStudentup: {
+    url: API_URL + "/Pc/UpdateTrainingStudentup",
+    data: {Id: ''}
+  },
+  //取消报名培训班
+  UpdateTrainingStudentdown: {
+    url: API_URL + "/Pc/UpdateTrainingStudentdown",
+    data: {Id: ''}
   },
   //未读通知
   UnReadNotice:{

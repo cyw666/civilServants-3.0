@@ -137,9 +137,6 @@ angular.module('luZhouApp')
         .then(function (response) {
           response.Data.CourseName = courseName;
           $scope.seeNoteData = response.Data;
-
-          /*$('.modal').modal('hide');
-           alert('添加完成！')*/
         });
     }
 

@@ -30,12 +30,6 @@ angular.module('luZhouApp')
                 $scope.gapFilling = response.Data.Type3Questions;
 
                 $scope.examAllScore1 = commonService.examAllScore;
-
-
-                /*$scope.examAllScore0 = commonService.examAllScore (response.Data.Type0Questions);
-                $scope.examAllScore1 = commonService.examAllScore (response.Data.Type1Questions);
-                $scope.examAllScore2 = commonService.examAllScore (response.Data.Type2Questions);
-                $scope.examAllScore3 = commonService.examAllScore (response.Data.Type3Questions);*/
             });
         //倒计时
         $interval(function() {

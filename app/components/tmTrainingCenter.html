@@ -37,34 +37,42 @@
         <div class="tab-panel perlist" ng-show="vm.activeTab == 1">
           <div class="title_bar clearfix">
             <span class="list3 ellipsis">班级名称</span>
-            <span class="list2">班级简介</span>
-            <span class="list2">状态</span>
+            <span class="list1">班级简介</span>
+            <span class="list1-5">状态</span>
             <span class="list3">举办时间</span>
+            <span class="list1-5">操作</span>
           </div>
           <div class="list" ng-repeat="justata in justListData.ListData">
-              <span class="list3" title="{{justata.Name}}">{{justata.Name}}</span>
-              <span class="list2"><a ng-click="checkUserClass(justata.Id)">详情</a></span>
-              <span class="list2" ng-if="!justata.ApplyStatus"><a ng-click="addClass(justata.Id,'just')">点击报名</a></span>
-              <span class="list2" ng-if="justata.ApplyStatus">{{JudgeStatus(justata.ApplyStatus)}}</span>
-              <span class="list3">{{justata.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{justata.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+            <span class="list3" title="{{justata.Name}}">{{justata.Name}}</span>
+            <span class="list1"><a ng-click="checkUserClass(justata.Id)">详情</a></span>
+            <span class="list1-5" ng-if="!justata.ApplyStatus">未报名</span>
+            <span class="list1-5" ng-if="justata.ApplyStatus">{{JudgeStatus(justata.ApplyStatus)}}</span>
+            <span class="list3">{{justata.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{justata.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+            <span class="list1-5" ng-if="justata.ApplyStatus=='UnApprove'"><a class="btn btn-danger" disabled>审核未通过</a></span>
+            <span class="list1-5" ng-if="justata.ApplyStatus=='Normal'"><a class="btn btn-success" disabled>已报名</a></span>
+            <span class="list1-5" ng-if="justata.ApplyStatus=='UnAudit'"><a class="btn btn-default" ng-click="delClass(justata.Id,'just')">取消报名</a></span>
+            <span class="list1-5" ng-if="!justata.ApplyStatus"><a class="btn btn-info" ng-click="addClass(justata.Id,'just')">点击报名</a></span>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 2">
           <div class="title_bar">
-            <span class="list3">班级名称</span>
-            <span class="list2">班级简介</span>
-            <span class="list2">状态</span>
+            <span class="list3 ellipsis">班级名称</span>
+            <span class="list1">班级简介</span>
+            <span class="list1-5">状态</span>
             <span class="list3">举办时间</span>
+            <span class="list1-5">操作</span>
           </div>
           <div class="list" ng-repeat="immediatelyData in immediatelyListData.ListData">
-              <span class="list3 cur_name" title="{{immediatelyData.Name}}">{{immediatelyData.Name}}</span>
-              <span class="list2"><a ng-click="checkUserClass(immediatelyData.Id)">详情</a></span>
-              <span class="list2" ng-if="!immediatelyData.ApplyStatus"><a
-                ng-click="addClass(immediatelyData.Id,'immediately')">点击报名</a></span>
-              <span class="list2"
-                    ng-if="immediatelyData.ApplyStatus">{{JudgeStatus(immediatelyData.ApplyStatus)}}</span>
-              <span class="list3">{{immediatelyData.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{immediatelyData.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+            <span class="list3 cur_name" title="{{immediatelyData.Name}}">{{immediatelyData.Name}}</span>
+            <span class="list1"><a ng-click="checkUserClass(immediatelyData.Id)">详情</a></span>
+            <span class="list1-5" ng-if="!immediatelyData.ApplyStatus">未报名</span>
+            <span class="list1-5" ng-if="immediatelyData.ApplyStatus">{{JudgeStatus(immediatelyData.ApplyStatus)}}</span>
+            <span class="list3">{{immediatelyData.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{immediatelyData.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+            <span class="list1-5" ng-if="immediatelyData.ApplyStatus=='UnApprove'"><a class="btn btn-danger" disabled>审核未通过</a></span>
+            <span class="list1-5" ng-if="immediatelyData.ApplyStatus=='Normal'"><a class="btn btn-success" disabled>已报名</a></span>
+            <span class="list1-5" ng-if="immediatelyData.ApplyStatus=='UnAudit'"><a class="btn btn-default" ng-click="delClass(immediatelyData.Id,'immediately')">取消报名</a></span>
+            <span class="list1-5" ng-if="!immediatelyData.ApplyStatus"><a class="btn btn-info" ng-click="addClass(immediatelyData.Id,'immediately')">点击报名</a></span>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
@@ -78,8 +86,8 @@
           <div class="list" ng-repeat="alreadyData in alreadyListData.ListData">
             <span class="list3" title="{{alreadyData.Name}}">{{alreadyData.Name}}</span>
             <span class="list2"><a ng-click="checkUserClass(alreadyData.Id)">详情</a></span>
-            <span class="list2" ng-if="!alreadyData.ApplyStatus">已举办</span>
-            <span class="list2" ng-if="alreadyData.ApplyStatus">{{JudgeStatus(alreadyData.ApplyStatus)}}</span>
+            <span class="list2">已举办</span>
+            <!--<span class="list2" ng-if="alreadyData.ApplyStatus">{{JudgeStatus(alreadyData.ApplyStatus)}}</span>-->
             <span class="list3">{{alreadyData.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{alreadyData.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
           </div>
           <div ng-transclude="pagation"></div>
@@ -91,6 +99,19 @@
 <style>
   .trainingCenter .formCourse {
     margin-bottom: 10px;
+  }
+  .trainingCenter .btn {
+    width: 75px;
+    padding: 2px 0;
+  }
+  .trainingCenter .btn-default{
+    background-color: #B4B4B4;
+    border-color: #B4B4B4;
+  }
+  .trainingCenter .btn-default:hover{
+    color: #fff;
+    background-color: #a2a2a2;
+    border-color: #a2a2a2;
   }
 </style>
 

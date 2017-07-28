@@ -109,15 +109,24 @@ angular.module('luZhouApp')
         });
     };
 
-
+    //报名培训班
     $scope.addClass = function (id, type) {
-      commonService.getData(ALL_PORT.ApplyClass.url, 'POST',
-        $.extend({}, ALL_PORT.ApplyClass.data, {trainingId: id}))
+      commonService.getData(ALL_PORT.UpdateTrainingStudentup.url, 'POST',
+        $.extend({}, ALL_PORT.UpdateTrainingStudentup.data, {Id: id}))
         .then(function (response) {
           alert(response.Message);
           $scope.getClassList({type: type});
         });
     };
+    //取消报名
+    $scope.delClass = function (id,type) {
+      commonService.getData(ALL_PORT.UpdateTrainingStudentdown.url, 'POST',
+        $.extend({}, ALL_PORT.UpdateTrainingStudentdown.data, {Id: id}))
+        .then(function (response) {
+          alert(response.Message);
+          $scope.getClassList({type: type});
+        });
+    }
 
 
     // 通过$watch currentPage 当他们一变化的时候，重新获取数据条目
