@@ -12,7 +12,6 @@ angular.module('luZhouApp')
             templateUrl: 'components/tmCourseDetails.html',
             restrict: 'EA',
             link: function postLink(scope, element, attrs) {
-
             }
         };
     });

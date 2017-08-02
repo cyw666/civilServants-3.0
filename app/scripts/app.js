@@ -399,7 +399,6 @@ angular
         templateUrl: 'views/trainingClass/classlist.html',
         controller: 'ClasslistCtrl',
         controllerAs: 'classList',
-        // params:{type:'my'}
       })
       .state('polllist', {
         url: '/exam/polllist',
@@ -963,7 +962,6 @@ angular
 
       $rootScope.rememberName = toState.name;
       $rootScope.rememberParams = JSON.stringify(toParams);
-      // console.log(toState);
       if (toState.name == 'main')return;// 首页
       if (toState.name == 'userLogin')return;// 登录界面
       if (toState.name == 'userRegister')return;// 注册界面
@@ -1022,7 +1020,6 @@ angular
     });
     /* 路由状态变化成功 */
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-      // console.log(toState);
       $rootScope.pageTitle = $state.current.data.title;
       //保持在线
       setInterval(function () {
@@ -1039,7 +1036,6 @@ angular
 
     //当视图开始加载，DOM渲染完成之前触发
     $rootScope.$on('$viewContentLoading', function (event, viewConfig) {
-      // console.log($state.current);
       if (!!$state.current.data) {
         $rootScope.pageTitle = $state.current.data.title;
       } else {

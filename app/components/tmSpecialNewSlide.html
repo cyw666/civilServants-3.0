@@ -1,19 +1,4 @@
-<!--<div id="specialNewSlide" class="slideBox">
-  <ul class="items">
-    <li ng-repeat="list in slideData.ListData" repeat-finish="startSlide()">
-      <a ui-sref="noticeDetail({ID:noticeList.Id})" title="{{list.Name}}" target="_blank">
-        <img ng-src="{{list.Path+'/'+list.Img}}" err-Src="images/notFound.jpeg">
-      </a>
-    </li>
-  </ul>
-</div>
 
-<style>
-  #specialNewSlide ul.items li a img {
-    width: 345px;
-    height: 306px;
-  }
-</style>-->
 <div id="specialNewSlide" dw-loading="specialNewSlide">
   <div class="specialNewSlide">
     <div class="slideList" ng-repeat="list in slideData.ListData" repeat-finish="startSlide()">

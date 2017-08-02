@@ -359,7 +359,6 @@ angular.module('luZhouApp')
       for (var i = 0; i < arr.length; i++) {
         sum += arr[i].Question.Score;
       }
-      // debugger
       return sum;
     };
     //答对题目总数
@@ -412,7 +411,6 @@ angular.module('luZhouApp')
         }).success(function (data) {
           if (!!data) {
             if ((data + '').indexOf("ok") > -1) {
-              // setTimeout(fresh, 2000);
             }
             else {
               if (data.Type === 401) {
@@ -450,14 +448,10 @@ angular.module('luZhouApp')
         });
       }
       var timer = setInterval(fresh, 3000);
-      // clearInterval(timer);
     }
     // 视频播放页面当页面卸载（关闭）或刷新时调用
     this.beforeUnload = function (userid) {
       $(window).bind('beforeunload', function (e) {
-        /*var confirmationMessage = '确定离开此页吗？本页不需要刷新或后退';
-         (e || window.event).returnValue = confirmationMessage;     // Gecko and Trident
-         return confirmationMessage;*/
         $http({
           method: 'POST',
           url: ALL_PORT.ClearPlayingCourse.url+'?'+Math.round(Math.random() * 10000),
@@ -480,7 +474,6 @@ angular.module('luZhouApp')
       }).success(function (data) {
         defer.resolve(data);
       }).error(function (data, status, headers, config) {
-        // defer.resolve(data);
         defer.reject(data);
       });
       return defer.promise;
@@ -643,20 +636,6 @@ angular.module('luZhouApp')
         $timeout(function () {
           limitTime = 0;
         },3000);
-
-        /*var timePromise;
-        timePromise = $interval(function(){
-          if(limitTime==0){
-            limitTime=0;
-            $interval.cancel(timePromise);
-            timePromise = null;
-            debugger
-            return;
-          }else{
-            limitTime--;
-          }
-        },1000,100);*/
-
         callback();
       }else {
         alert("提交过于频繁，请5秒后再试！");

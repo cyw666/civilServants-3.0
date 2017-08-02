@@ -6,9 +6,6 @@
       <img src="../images/headerLeftIcon.png" alt="图标">
       课程中心
     </p>
-    <!--<p class="more pull-right">
-      <a ui-sref="library" target="_blank"><img src="../images/more.png" alt="更多"></a>
-    </p>-->
   </div>
   <div class="tmBorder">
     <ol class="breadcrumb">
@@ -64,8 +61,6 @@
             <p class="list3">
               <a ng-if="courseList.ShopStatus=='HasBuy'||courseList.ShopStatus=='Free'" ui-sref="play({Id:courseList.Id})" target="_blank" class="play">播放</a>
               <a ng-if="courseList.ShopStatus=='NoBuy'||courseList.ShopStatus=='InShoppingCart'||courseList.ShopStatus=='InOrder'" ui-sref="tryplay({Id:courseList.Id})" target="_blank" class="play">试看</a>
-              <!--<a ui-sref="play({Id:courseList.Id})" target="_blank" class="play">播放</a>
-              <a ui-sref="tryplay({Id:courseList.Id})" target="_blank" class="play">试看</a>-->
             </p>
             <p class="list4">
               <button ng-if="courseList.ShopStatus=='HasBuy'" class="btn btn-success" disabled="disabled">已购买</button>
@@ -83,7 +78,6 @@
           <a class="btn btn-default" ng-click="checkAll()">全选</a>
           <a class="btn btn-default" ng-click="selectInvert()">反选</a>
           <a class="btn btn-default" ng-click="ckBatch()">批量加入购物车</a>
-          <!--<div class="preventorgery"></div>-->
         </div>
         <div ng-transclude="pagation" ng-show="paginationConf.totalItems"></div>
       </div>

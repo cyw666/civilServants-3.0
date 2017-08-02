@@ -48,7 +48,6 @@ angular.module('luZhouApp')
     //分页
     // 通过$watch currentPage 当他们一变化的时候，重新获取数据条目
     $scope.$watch('paginationConf.currentPage', function () {
-      // 发送给后台的请求数据
       var pageOptions = {
         page: $scope.paginationConf.currentPage,
         title: $scope.searchTitle
@@ -58,17 +57,18 @@ angular.module('luZhouApp')
 
     //参加测试
     $scope.havTest = function (Id) {
+      //打开一个不被拦截的新窗口
+      var newWindow = window.open('about:blank', '_blank');
       var params = $.extend({}, ALL_PORT.Exam.data, $scope.token, {parameter1: Id})
-      commonService.getData(ALL_PORT.Exam.url, 'POST',
-        params)
-
+      commonService.getData(ALL_PORT.Exam.url, 'POST', params)
         .then(function (response) {
           if (response.Type) {
+            newWindow.close();
             //Type存在，意味着不能考试
             alert(response.Message);
           } else {
             var examUrl = $state.href('exam',{Id:Id});
-            window.open(examUrl,'_blank');
+            newWindow.location.href = examUrl;
           }
 
         });

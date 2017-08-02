@@ -3,7 +3,6 @@
     <li>商户订单号:{{invoiceData.OrderId}}</li>
     <li>商品名称:{{invoiceData.Title}}</li>
     <li>购买时间:{{invoiceData.CreateTime | dateFilter  | date :'yyyy-MM-dd HH:mm:ss'}}</li>
-    <!--<li>购买时间:{{invoiceData.CreateTime}}</li>-->
     <li>交易类型：	{{invoiceData.Type}}</li>
     <li>交易金额:￥{{invoiceData.Money.toFixed(2)}}</li>
   </ul>

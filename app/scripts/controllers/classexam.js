@@ -8,13 +8,8 @@
  * Controller of the luZhouApp
  */
 angular.module('luZhouApp')
-    .controller('classExamCtrl', function($scope, $loading, $stateParams, commonService) {
+    .controller('classExamCtrl', function($scope, $loading, $stateParams, commonService,$state) {
         $scope.Id = $stateParams.Id;
-
-        //判断能否访问
-        // commonService.isVisit();
-        //保持在线
-        //commonService.keepOnline();
         //loading
         $loading.start('classMy');
         $loading.start('classDetail');
@@ -71,7 +66,10 @@ angular.module('luZhouApp')
                         //Type存在，意味着不能考试
                         alert(response.Message);
                     } else {
-                        window.open("#/exam/exam/" + Id);
+                        // window.open("#/exam/exam/" + Id);
+                      var newWindow = window.open('about:blank', '_blank');
+                      var examUrl = $state.href('exam',{Id:Id});
+                      newWindow.location.href = examUrl;
                     }
                 });
         };

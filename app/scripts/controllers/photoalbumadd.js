@@ -11,12 +11,7 @@ angular.module('luZhouApp')
     .controller('photoAlbumAddCtrl', function($scope, $location, $loading, $stateParams, $state,commonService) {
         $scope.Id = $stateParams.Id;
         $scope.location = '添加相册';
-
-        //判断能否访问
-        // commonService.isVisit();
-        //保持在线
-        //commonService.keepOnline();
-
+      
         commonService.getData(ALL_PORT.PhotoAlbumAdd.url, 'POST',
             $.extend({}, ALL_PORT.PhotoAlbumAdd.data, { TrainingId: $scope.Id }))
 
@@ -38,15 +33,4 @@ angular.module('luZhouApp')
 
                 });
         };
-
-
-		// $scope.fileChanged = function(ele){
-		//     $scope.files = ele.files;
-		//     $scope.$apply(); //传播Model的变化。
-		// }
-		//
-		// //上传图片
-		// $scope.upload=function (event,types) {
-	    	// commonService.upload(event,types);
-		// };
     });

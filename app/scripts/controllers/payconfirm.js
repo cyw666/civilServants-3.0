@@ -47,7 +47,6 @@ angular.module('luZhouApp')
         commonService.getData(ALL_PORT.InvoiceBeginPay.url, 'POST', params)
           .then(function(response) {
             if(response.Type==1){
-              // $state.go('alipaydefault',{invoiceId:response.Data.InvoiceId});
               getConfirmPay(response.Data.InvoiceId);
             }else {
               alert(response.Message);

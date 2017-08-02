@@ -17,19 +17,25 @@ angular.module('luZhouApp')
         var params = $.extend({}, ALL_PORT.Exam.data, { parameter1: Id })
         commonService.getData(ALL_PORT.Exam.url, 'POST', params)
             .then(function(response) {
-                $loading.finish('exam');
-                if (response.Data.Exam.TimeLimit != 0) {
-                    $scope.seconds = parseInt(response.Data.Exam.TimeLimit) * 60;
-                }
-                // $scope.seconds = 5*1000;
-                //考试题目数量
-                $scope.examData = response.Data;
-                $scope.checkingQuestions = response.Data.Type0Questions;
-                $scope.singleQuestions = response.Data.Type1Questions;
-                $scope.multipleQuestions = response.Data.Type2Questions;
-                $scope.gapFilling = response.Data.Type3Questions;
+              $loading.finish('exam');
+              if (response.Type) {
+                //Type存在，意味着不能考试
+                alert(response.Message);
+                window.open("about:blank","_top").close();
+                return
+              }
+              if (response.Data.Exam.TimeLimit != 0) {
+                  $scope.seconds = parseInt(response.Data.Exam.TimeLimit) * 60;
+              }
+              // $scope.seconds = 5*1000;
+              //考试题目数量
+              $scope.examData = response.Data;
+              $scope.checkingQuestions = response.Data.Type0Questions;
+              $scope.singleQuestions = response.Data.Type1Questions;
+              $scope.multipleQuestions = response.Data.Type2Questions;
+              $scope.gapFilling = response.Data.Type3Questions;
 
-                $scope.examAllScore1 = commonService.examAllScore;
+              $scope.examAllScore1 = commonService.examAllScore;
             });
         //倒计时
         $interval(function() {
@@ -66,7 +72,6 @@ angular.module('luZhouApp')
             if (str0 == "判断题第题、") { str0 = ""; }
             if (str1 == "单选题第题、") { str1 = ""; }
             if (str2 == "多选题第题、") { str2 = ""; }
-            // confirm(str0 + str1 + str2 + "未答,是否提交?");
             if (e == "1"||((str0 + str1 + str2) === "" || ((str0 + str1 + str2) !== "" && confirm(str0 + str1 + str2 + "未答,是否提交?")))) {
                 var params = $("#editForm").serialize();
                 $http({

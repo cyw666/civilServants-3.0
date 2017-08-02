@@ -5,9 +5,6 @@
       <img src="../images/headerLeftIcon.png" alt="图标">
       班级园地
     </p>
-    <!--<p class="more pull-right">
-      <a ui-sref="library" target="_blank"><img src="../images/more.png" alt="更多"></a>
-    </p>-->
   </div>
   <div class="tmBorder">
     <ol class="breadcrumb">
@@ -69,6 +66,7 @@
             <span class="list1-5" ng-if="!immediatelyData.ApplyStatus">未报名</span>
             <span class="list1-5" ng-if="immediatelyData.ApplyStatus">{{JudgeStatus(immediatelyData.ApplyStatus)}}</span>
             <span class="list3">{{immediatelyData.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{immediatelyData.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
+
             <span class="list1-5" ng-if="immediatelyData.ApplyStatus=='UnApprove'"><a class="btn btn-danger" disabled>审核未通过</a></span>
             <span class="list1-5" ng-if="immediatelyData.ApplyStatus=='Normal'"><a class="btn btn-success" disabled>已报名</a></span>
             <span class="list1-5" ng-if="immediatelyData.ApplyStatus=='UnAudit'"><a class="btn btn-default" ng-click="delClass(immediatelyData.Id,'immediately')">取消报名</a></span>
@@ -87,7 +85,6 @@
             <span class="list3" title="{{alreadyData.Name}}">{{alreadyData.Name}}</span>
             <span class="list2"><a ng-click="checkUserClass(alreadyData.Id)">详情</a></span>
             <span class="list2">已举办</span>
-            <!--<span class="list2" ng-if="alreadyData.ApplyStatus">{{JudgeStatus(alreadyData.ApplyStatus)}}</span>-->
             <span class="list3">{{alreadyData.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{alreadyData.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
           </div>
           <div ng-transclude="pagation"></div>

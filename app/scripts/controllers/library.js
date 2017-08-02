@@ -47,7 +47,6 @@ angular.module('luZhouApp')
     };
     //分页
     $scope.$watch('paginationConf.currentPage', function() {
-      // 发送给后台的请求数据
       var pageOptions = {
         page: $scope.paginationConf.currentPage,
       };

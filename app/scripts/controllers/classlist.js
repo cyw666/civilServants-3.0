@@ -73,7 +73,6 @@ angular.module('luZhouApp')
           $scope.classListData = response.Data;
         });
     };
-    // $scope.getClassList();
 
     //分页
     $scope.paginationConf = $.extend({},paginationConf,{itemsPerPage: ALL_PORT.CourseClickList.data.rows});

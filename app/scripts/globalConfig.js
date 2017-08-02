@@ -3,7 +3,6 @@
 // var API_URL = "/api";
 var API_URL = "http://122.225.101.117:9090/api";
 // var API_URL = "http://test10.jy365.net/api";
-// var API_URL = "http://test7.jy365.net/api";
 var API_URL_ADMIN = API_URL + "/admin";
 //限制多次请求
 var limitTime = 0;

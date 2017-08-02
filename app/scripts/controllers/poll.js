@@ -68,7 +68,6 @@ angular.module('luZhouApp')
       if (str0 == "类型一题、") { str0 = ""; }
       if (str1 == "类型二题、") { str1 = ""; }
       if (str2 == "类型三题、") { str2 = ""; }
-      // confirm(str0 + str1 + str2 + "未答,是否提交?");
       if (e == "1"||((str0 + str1 + str2) === "" || ((str0 + str1 + str2) !== "" && confirm(str0 + str1 + str2 + "未答,是否提交?")))) {
         var params = $("#editForm").serialize();
         commonService.getData(ALL_PORT.PostExam.url, 'POST', params)

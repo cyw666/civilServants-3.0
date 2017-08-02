@@ -10,7 +10,6 @@
 angular.module('luZhouApp')
   .controller('PlayCtrl', function ($scope, $http, $timeout, $interval, $rootScope, $cookieStore, commonService, $location, $loading, $stateParams, $sce) {
     $scope.Id = $stateParams.Id;
-    // $scope.iframSrc = "../../oldPage/play.html?id=" + $scope.Id;
     $scope.token = commonService.AntiForgeryToken();
     //星级评分
     var word = ['', '很差', '差', '一般', "好", "很好"];
@@ -87,7 +86,6 @@ angular.module('luZhouApp')
 
           var _thePlayer = jwplayer('myplayer').setup({
             flashplayer: "jwplayer/jwplayer.flash.swf",
-            // file: "http://122.225.101.117:9090"+$scope.playMp4Data.Url,
             file: $scope.playMp4Data.Url,
             autostart: 'true',
             width: "100%",
@@ -136,7 +134,6 @@ angular.module('luZhouApp')
                 _thePlayer.play(false);
                 alert("请不要在未播放区域拖动，否则可能丢失进度！");
                 _thePlayer.seek(_timePool.totalTime - 1); //TODO 放前面？
-                // thePlayer.play(true);
               }
             }
           }
@@ -279,7 +276,6 @@ angular.module('luZhouApp')
                   data: {"PortalId": portalId, "userid": userId, "courseid": courseId, "position": value},
                   success: function (result) {
                     if (result.Type == 1) {
-                      // window.parent.changeCourseBrowseScore(result.BrowseScore);
                       $scope.loadPlayInfo();
                     }
                   }

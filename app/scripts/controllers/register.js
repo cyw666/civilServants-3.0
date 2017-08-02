@@ -9,7 +9,6 @@
  */
 angular.module('luZhouApp')
   .controller('RegisterCtrl', function ($scope, $timeout, $rootScope, $cookieStore, $state, commonService, $loading,$interval) {
-    // $scope.showRegister = false;
     //防伪造请求
     var token = commonService.AntiForgeryToken();
     //正则表达式

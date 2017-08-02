@@ -27,10 +27,10 @@
           <a class="bookImg" ui-sref="bookdetail({Id:list.Id})" target="_blank">
             <img ng-src="{{imgPath+'/'+list.Icon}}" err-src="images/notFound.jpeg" alt="{{list.Name}}">
           </a>
-          <p class="list1">{{list.Name}}</p>
-          <p class="list2">作者:{{list.Author}}</p>
-          <p class="list2">点击数:{{list.ClickCount}}</p>
-          <p class="list3"><a ui-sref="bookdetail({Id:list.Id})" class="btn btn-danger" target="_blank">阅读本书</a></p>
+          <p class="name">{{list.Name}}</p>
+          <p class="author">作者:{{list.Author}}</p>
+          <p class="author">点击数:{{list.ClickCount}}</p>
+          <p class="read"><a ui-sref="bookdetail({Id:list.Id})" class="btn btn-danger" target="_blank">阅读本书</a></p>
         </li>
       </ul>
       <div tm-pagation conf="paginationConf"></div>
@@ -48,8 +48,9 @@
   }
   .library .libraryContent li {
     padding: 10px 20px;
+    width: 33%;
   }
-  .library .libraryContent li .list1{
+  .library .libraryContent li .name{
     height: 25px;
     line-height: 25px;
     font-size: 16px;
@@ -58,13 +59,13 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .library .libraryContent li .list2 {
+  .library .libraryContent li .author {
     height: 25px;
     line-height: 25px;
     font-size: 16px;
     color: #666;
   }
-  .library .libraryContent li .list3 a.btn {
+  .library .libraryContent li .read a.btn {
     width: 130px;
     padding: 4px 20px;
   }

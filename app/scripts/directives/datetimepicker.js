@@ -44,7 +44,6 @@ angular.module('luZhouApp')
             scope.$apply(setViewValue);
           });
 
-          // setViewValue();
           // 更新模型上的视图值
           function setViewValue() {
             var val = element.val();

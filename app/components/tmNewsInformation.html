@@ -3,9 +3,6 @@
   <div class="borderNews">
     <div class="myTab">
       <ul class="nav nav-tabs" ng-init="vm.activeTab=0">
-        <!--<li ng-repeat="newsCategory in categoryData.ListData" ng-class="{active: vm.activeTab == $index}" >
-          <a ng-click="vm.activeTab = $index;getNewsContent(newsCategory.Id)">{{newsCategory.Name}}</a>
-        </li>-->
         <li ng-class="{active: vm.activeTab == 0}" >
           <a ng-click="vm.activeTab = 0;getNewsContent('newsInformation')">新闻资讯</a>
         </li>

@@ -11,7 +11,6 @@
   <div class="borderNews">
     <div class="myTab" dw-loading="classGarden">
       <ul class="nav nav-tabs" ng-init="vm2.activeTab=0">
-        <!--<li ng-class="{active: vm2.activeTab == 1}"><a href="javascript:;" ng-click="vm2.activeTab = 1;">省级培训班</a></li>-->
         <li ng-repeat="list in trainingClassType.ListData" ng-class="{active: vm2.activeTab == $index}" >
           <a ng-click="vm2.activeTab = $index;getClassList(list.Id)">{{list.Name}}</a>
         </li>

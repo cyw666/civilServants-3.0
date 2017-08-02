@@ -198,7 +198,6 @@ angular.module('luZhouApp')
               .then(function(response) {
                 alert(response.Message);
                 $scope.getClassNews();
-                // $state.reload();
               });
           }else {
             alert("请先登录！");

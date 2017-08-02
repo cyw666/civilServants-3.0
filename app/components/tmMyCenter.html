@@ -193,7 +193,6 @@
                 </table>
               </div>
               <div class="modal-footer">
-                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
                 <button ng-click="editNote({Name:noteName,Content:noteContent,CourseId:nodeAddData.CourseId})"
                         type="button" class="btn btn-primary">提交
                 </button>
@@ -247,7 +246,6 @@
                 </table>
               </div>
               <div class="modal-footer" ng-hide="modalBody21">
-                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
                 <button ng-click="addNoteUpdate({Name:noteName,Content:noteContent})" type="button"
                         class="btn btn-primary">提交
                 </button>
@@ -255,7 +253,6 @@
               </div>
             </div>
           </div>
-          <!--<div class="preventorgery"></div>-->
         </div>
         <!-- Modal计划 -->
         <div class="modal fade notemodal2" tabindex="-1" role="dialog">
@@ -332,7 +329,6 @@
                   <tr>
                     <td>计划完成日期：</td>
                     <td>
-                      <!--<div datetimepicker dateID="timepicker3" ng-model="seePlanData.PlanFinishDate" class="form-control"></div>-->
                       <input type="text" id="timepicker3" ng-model="PlanFinishDate2" date-time-picker class="datebg">
                     </td>
                   </tr>
@@ -366,7 +362,6 @@
                 </table>
               </div>
               <div class="modal-footer">
-                <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
                 <button
                   ng-click="addPlanUpdate({PlanFinishDate:PlanFinishDate2,RemindDate:RemindDate2,RemindCycle:selectedName3,Remark:seePlanData.Remark,CourseId:seePlanData.CourseId,Id:seePlanData.Id})"
                   type="button" class="btn btn-primary">提交
@@ -374,7 +369,6 @@
               </div>
             </div>
           </div>
-          <!--<div class="preventorgery"></div>-->
         </div>
         <!--Modal查看考试-->
         <div class="modal fade seeTest" tabindex="-1" role="dialog">
@@ -407,7 +401,6 @@
               </div>
             </div>
           </div>
-          <!--<div class="preventorgery"></div>-->
         </div>
       </div>
     </div>

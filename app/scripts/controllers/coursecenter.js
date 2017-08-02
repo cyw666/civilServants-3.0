@@ -23,12 +23,12 @@ angular.module('luZhouApp')
 
     //折叠面板控制
     $scope.repeatDone = function () {
-      $('.courseClassify .panel1-title a').click(function () {
+      $('.courseClassify .panel1-title .category').click(function () {
         $(this).parents('.panel1-heading').next().slideToggle();
-        if ($(this).children('.category').html() == '+') {
-          $(this).children('.category').html('-');
+        if ($(this).html() == '+') {
+          $(this).html('-');
         } else {
-          $(this).children('.category').html('+');
+          $(this).html('+');
         }
       });
     };
@@ -60,7 +60,6 @@ angular.module('luZhouApp')
     };
     $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: courseListParams.rows});
     //搜索方法
-    // var newListParams;
     $scope.searchCourse = function (options) {
       $loading.start('courseSupermarket');
       $.extend(courseListParams, ALL_PORT.CourseList.data, options);
@@ -97,7 +96,6 @@ angular.module('luZhouApp')
         } else if (courseType == null && sort) {
           $scope.searchCourse({title: $scope.searchTitle1, sort: sort, order: order});
         } else {
-          // $scope.searchCourse({ channelId: courseListParams.channelId, title: $scope.searchTitle1 });
           $scope.searchCourse({channelId: '', title: $scope.searchTitle1, order: order, teacher: ''});
         }
       } else if (id == 2) {
@@ -135,7 +133,6 @@ angular.module('luZhouApp')
     //分页
     // 通过$watch currentPage 当他们一变化的时候，重新获取数据条目
     $scope.$watch('paginationConf.currentPage', function () {
-      // 发送给后台的请求数据
       var pageOptions = {
         page: $scope.paginationConf.currentPage,
       };

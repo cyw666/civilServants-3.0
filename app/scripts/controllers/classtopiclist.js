@@ -10,11 +10,6 @@
 angular.module('luZhouApp')
     .controller('classTopicListCtrl', function($scope, $loading, $stateParams, commonService) {
         $scope.Id = $stateParams.Id;
-
-        //判断能否访问
-        // commonService.isVisit();
-        //保持在线
-        //commonService.keepOnline();
         //loading
         $loading.start('classMy');
         $loading.start('classTopicList');
@@ -50,7 +45,6 @@ angular.module('luZhouApp')
 
         // 通过$watch currentPage 当他们一变化的时候，重新获取数据条目
         $scope.$watch('paginationConf.currentPage', function() {
-            // 发送给后台的请求数据
             var pageOptions = {
                 page: $scope.paginationConf.currentPage,
             };

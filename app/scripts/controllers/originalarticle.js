@@ -17,7 +17,6 @@ angular.module('luZhouApp')
     $scope.config = ueditorConfig;
 
     //发布话题
-    // commonService.limitSubmit();
     $scope.publishTopic = function() {
       commonService.limitSubmit(function () {
         if ($scope.title.length < 2) {

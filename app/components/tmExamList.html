@@ -35,10 +35,10 @@
             <span class="list2-5">考试时间</span>
           </div>
           <div class="list" ng-repeat="unFinish in TotalData.UnfinishModel">
-              <span class="list3-5 ellipsis" title="{{unFinish.Name}}"><a target="_blank" ng-click="havTest(unFinish.Id)">{{unFinish.Name}}</a></span>
+              <span class="list3-5 ellipsis" title="{{unFinish.Name}}"><a target="_blank" ng-click="havTest(unFinish.Id,e)">{{unFinish.Name}}</a></span>
               <span class="list1">{{unFinish.CreditHour}}</span>
               <span class="list1">{{unFinish.TimeLimit}}</span>
-              <span class="list1-5"><a target="_blank" ng-click="havTest(unFinish.Id)">参加测试</a></span>
+              <span class="list1-5"><a ng-click="havTest(unFinish.Id)">参加测试</a></span>
               <span class="list2-5">{{unFinish.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{unFinish.EndTime | dateFilter | date:'yyyy-MM-dd'}}</span>
           </div>
           <div ng-transclude="pagation"></div>
@@ -59,7 +59,7 @@
               <span class="list1-5 red" ng-show="Finish.PassFlag">通过</span>
               <span class="list1-5" ng-hide="Finish.PassFlag">未通过</span>
 
-              <span class="list1-5"><a ng-click="havTest(Finish.Id)" target="_blank">参加测试</a></span>
+              <span class="list1-5"><a ng-click="havTest(Finish.Id,e)">参加测试</a></span>
               <span class="list1-5"><a ui-sref="examDetailList({Id:Finish.Id})">查看详细记录</a></span>
           </div>
           <div ng-transclude="pagation"></div>

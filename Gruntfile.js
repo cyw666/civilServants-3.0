@@ -16,15 +16,18 @@ module.exports = function (grunt) {
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
-    cdnify: 'grunt-google-cdn'
+    cdnify: 'grunt-google-cdn',
+    configureProxies: 'grunt-connect-proxy'
   });
   var modRewrite = require('connect-modrewrite');
-
+  
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
+  // Setup the proxy
+  var middlewares = require('grunt-connect-proxy/lib/utils').proxyRequest;
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -91,7 +94,8 @@ module.exports = function (grunt) {
                 '/app/styles',
                 connect.static('./app/styles')
               ),
-              connect.static(appConfig.app)
+              connect.static(appConfig.app),
+              middlewares
             ];
             /*var middlewares = [];
             middlewares.push(modRewrite(['^[^\.]*$ /index.html [L]'])); //Matches everything that does not contain a '.' (period)
@@ -110,6 +114,15 @@ module.exports = function (grunt) {
           }
         }
       },
+      proxies: [
+        {
+          context: '/api',
+          host: '122.225.101.117',
+          port: 9090,
+          https: false,
+          changeOrigin: true
+        }
+      ],
       test: {
         options: {
           port: 9001,
@@ -460,6 +473,7 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'postcss:server',
+      //'configureProxies',
       'connect:livereload',
       'watch'
     ]);

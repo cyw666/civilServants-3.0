@@ -11,10 +11,6 @@ angular.module('luZhouApp')
   .controller('classTopicAddCtrl', function ($scope, $stateParams, commonService, $location, $state) {
     $scope.Id = $stateParams.Id;
     $scope.location = '发表话题';
-    //判断能否访问
-    // commonService.isVisit();
-    //保持在线
-    //commonService.keepOnline();
 
     var token = commonService.AntiForgeryToken();
 

@@ -23,12 +23,10 @@ angular.module('luZhouApp')
           $scope.pollListData = response.Data;
         });
     };
-    // $scope.getClassList();
 
     //分页
     $scope.paginationConf = $.extend({},paginationConf,{itemsPerPage: ALL_PORT.CourseClickList.data.rows});
     $scope.$watch('paginationConf.currentPage', function() {
-      // 发送给后台的请求数据
       var pageOptions = {
         page: $scope.paginationConf.currentPage
       };

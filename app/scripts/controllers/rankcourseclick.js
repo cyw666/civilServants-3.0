@@ -28,7 +28,6 @@ angular.module('luZhouApp')
     //分页
     // 通过$watch currentPage 当他们一变化的时候，重新获取数据条目
     $scope.$watch('paginationConf.currentPage', function() {
-      // 发送给后台的请求数据
       var pageOptions = {
         page: $scope.paginationConf.currentPage
       };

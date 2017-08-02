@@ -165,7 +165,6 @@ function uploadCanceled(evt) {
 (function ($) {
     var log = function (str) {
         if (window.console) {
-            console.log(str);
         }
     };
     var frameCount = 0;

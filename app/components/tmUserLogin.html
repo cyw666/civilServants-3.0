@@ -7,7 +7,6 @@
       </div>
     </div>
     <div class="form-group clearfix">
-      <!--<label for="exampleInputUser" class="login_icon_user"></label>-->
       <input ng-focus="inputFocus()" ng-change="inputChange()" ng-model="login.Account"
              type="text" class="form-control" id="exampleInputUser"
              my-placeholder
@@ -16,7 +15,6 @@
       <span class="error" ng-class="showError2?'is-visible':''">用户名密码不能为空</span>
     </div>
     <div class="form-group clearfix">
-      <!--<label for="exampleInputPassword1" class="login_icon_password"><span></span></label>-->
       <input ng-focus="inputFocus()" ng-change="inputChange()" ng-model="login.PassWord"
              type="password" autocomplete="off" class="form-control" id="exampleInputPassword1"
              my-placeholder
@@ -33,7 +31,6 @@
     </div>
     <button ng-click="clickLogin()" type="submit" class="btn btn-success">登录</button>
     <a ui-sref="userRegister" class="btn btn-primary">注册</a>
-    <!--<div class="preventorgery"></div>-->
   </form>
   <!--登陆成功-->
   <div id="loginAfter" dw-loading="loginOut" ng-if="!showLogin">
@@ -43,7 +40,7 @@
       </div>
     </div>
     <div class="content login_info">
-      <!--@*个人中心的登陆后详细和首页不同，个人中心更为具体详细，具体看 Mycenter.cshtml*@-->
+      <!--个人中心的登陆后详细和首页不同-->
       <ul class="loginAfter_ul">
         <li class="welcom">欢迎您:<b class="red">{{userMessage.Name}}</b>({{userMessage.Account}})</li>
         <li>
@@ -54,10 +51,6 @@
           <span>个人学习档案</span>
           <span class="item2 grey"><a ui-sref="personaLearningArchives" target="_blank">详细&gt;&gt;</a></span>
         </li>
-        <!--<li>
-          <span class="grey"><a ui-sref="shoppingcart">购物车&gt;&gt;</a></span>
-          <span class="item2 grey"><a ui-sref="personaLearningArchives" target="_blank">我的订单&gt;&gt;</a></span>
-        </li>-->
         <li>
           <span class="item1">您有<span class="red">{{userMessage.UnRead}} </span>条新通知！</span>
           <span class="item2 grey"><a ui-sref="unReadNotice">查看详情&gt;</a></span>
@@ -66,11 +59,9 @@
           <a ui-sref="modifyPassword">修改密码</a>&nbsp;&nbsp;|&nbsp;&nbsp;
           <a ui-sref="changeUser" id="ctl05_A2">修改信息</a> &nbsp;|&nbsp;
           <span class="item2" ng-if="userAllMessage.UserType=='管理员'" ><a href="/admin" target="_blank">进入管理控制台</a></span>
-          <!--<span class="item2" ng-if="userAllMessage.UserType=='管理员'" ><a href="http://192.168.1.25:9090/admin/" target="_blank">进入管理控制台</a></span>-->
         </li>
         <li class="lastChild lastChild1">
           <a class="exit" href="javascript:;" ng-click="loginOut('out')">退出</a>
-          <!--<span class="item1"><a  href="javascript:void();" onclick="loginOut('cancel')">删除账号</a></span>-->
         </li>
       </ul>
     </div>

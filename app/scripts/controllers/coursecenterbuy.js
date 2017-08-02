@@ -9,10 +9,6 @@
  */
 angular.module('luZhouApp')
   .controller('CoursecenterbuyCtrl', function ($scope,$state, $rootScope, $cookieStore, commonService, $timeout, $loading, $stateParams) {
-    //判断能否访问
-    // commonService.isVisit();
-    //保持在线
-    //commonService.keepOnline();
     $scope.showInput1 = true;
     $scope.showInput2 = false;
     $scope.showInput3 = false;
@@ -101,7 +97,6 @@ angular.module('luZhouApp')
         } else if (courseType == null && sort) {
           $scope.searchCourse({ title: $scope.searchTitle1, sort: sort ,order:order});
         } else {
-          // $scope.searchCourse({ channelId: courseListParams.channelId, title: $scope.searchTitle1 });
           $scope.searchCourse({ channelId: '', title: $scope.searchTitle1 ,order:order,teacher:''});
         }
       } else if (id == 2) {
@@ -126,7 +121,6 @@ angular.module('luZhouApp')
     //分页
     // 通过$watch currentPage 当他们一变化的时候，重新获取数据条目
     $scope.$watch('paginationConf.currentPage', function() {
-      // 发送给后台的请求数据
       var pageOptions = {
         page: $scope.paginationConf.currentPage,
       };

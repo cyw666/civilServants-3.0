@@ -13,7 +13,6 @@ angular.module('luZhouApp')
         $loading.start('tmnewsphoto');
         $loading.start('tmpolicyandnotify');
 
-        // $scope.searchNewsField = '请输入关键字';
         $scope.isNews=true;
 
         $scope.newsData = {

@@ -9,6 +9,7 @@
  */
 angular.module('luZhouApp')
   .controller('CoursedetailsCtrl', function ($scope, $rootScope, $state, $cookieStore, commonService, $timeout, $loading, $stateParams, $location) {
+    $scope.Id = $stateParams.Id;
     //显示loading
     $loading.start('courseDetails');
     $scope.token = commonService.AntiForgeryToken();
@@ -46,34 +47,56 @@ angular.module('luZhouApp')
     };
 
     $scope.selectClass = function (checkValue) {
-      //打开一个不被拦截的新窗口
       var newWindow = window.open('about:blank', '_blank');
       var params = $.extend({}, ALL_PORT.AddStudyCourse.data, {checkValue: checkValue}, $scope.token)
       commonService.getData(ALL_PORT.AddStudyCourse.url, 'POST', params)
         .then(function (response) {
           if (response.Type == 1) {
-            // $state.go('play',{Id:checkValue});
+            //打开一个不被拦截的新窗口
             var url = $state.href('play', {Id: checkValue});
-            //修改新窗口的url
             newWindow.location.href = url;
+          }else {
+            newWindow.close();
           }
         });
     };
 
     //参加测试
     $scope.havTest = function (Id) {
+      var newWindow = window.open('about:blank', '_blank');
       var params = $.extend({}, ALL_PORT.Exam.data, $scope.token, {parameter1: Id})
       commonService.getData(ALL_PORT.Exam.url, 'POST', params)
         .then(function (response) {
           $loading.finish('exam');
           if (response.Type) {
+            newWindow.close();
             //Type存在，意味着不能考试
             alert(response.Message);
           } else {
-            window.open("#/exam/exam/" + Id);
+            //打开一个不被拦截的新窗口
+            var url = $state.href('exam', {Id: Id});
+            newWindow.location.href = url;
           }
-
         });
     };
+  
+    //获取评论信息
+    $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: 10});
+    $scope.getComment = function (options) {
+      var params = $.extend({}, ALL_PORT.CourseComment.data, {id: $scope.Id,page:1,rows:10},options)
+      commonService.getData(ALL_PORT.CourseComment.url, 'POST',params)
+        .then(function (response) {
+          $scope.resultComment = response.Data;
+          $scope.paginationConf.totalItems =  response.Data.Count;
+        });
+    }
+    //分页
+    // 通过$watch currentPage 当他们一变化的时候，重新获取数据条目
+    $scope.$watch('paginationConf.currentPage', function () {
+      var pageOptions = {
+        page: $scope.paginationConf.currentPage
+      };
+      $scope.getComment(pageOptions);
+    });
 
   });

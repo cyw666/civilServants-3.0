@@ -38,7 +38,6 @@
             </li>
             <li>
               <span class="control-label grid_6 text-right" style="line-height: 26px">职位：</span>
-              <!--<span class="grid_6 info">{{userInfo.Grade}}</span>-->
               <select class="form-control grid_3" name="grade" ng-model="Grade" ng-options="item.Id as item.Name for item in gradeList">
                 <option value="">{{initGrade}}</option>
               </select>
@@ -67,13 +66,6 @@
                      placeholder="例：123-4567-8901"
               />
             </li>
-            <!--<li class="change-user-info-input mar_top_5">
-              <span class="control-label grid_6 text-right" style="line-height: 26px">验证码：</span>
-              <input ng-blur="outFocus()" ng-model="smgcode"
-                     type="text" class="form-control  grid_3" my-placeholder
-                     id="verificationCode" placeholder="请输入验证码">
-              <button ng-click="sendVerificationCode(Mobile)" class="btn btn-success verificationCode">{{paracont}}</button>
-            </li>-->
             <li class="change-user-info-input mar_top_5">
               <span class="control-label grid_6 text-right" style="line-height: 26px">Email：</span>
               <input type="tel" ng-model="Email" name="email"
@@ -89,7 +81,6 @@
           </ul>
 
         </div>
-        <!--<div class="preventorgery"></div>-->
       </form>
     </div>
   </div>

@@ -110,7 +110,6 @@ angular.module('luZhouApp')
 
           var _thePlayer = jwplayer('myplayer').setup({
             flashplayer: "jwplayer/jwplayer.flash.swf",
-            // file: "http://test7.jy365.net"+$scope.playMp4Data.Url,
             file: $scope.playMp4Data.Url,
             autostart: 'true',
             width: "100%",

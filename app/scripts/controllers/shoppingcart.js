@@ -51,7 +51,6 @@ angular.module('luZhouApp')
             $.extend({}, ALL_PORT.AddOrder.data))
             .then(function(response) {
               if(response.Type==1){
-                // alert(response.Message);response.OrderId
                 $state.go('orderdetaillist',{orderId:response.Data.OrderId});
               }else {
                 alert(response.Message);

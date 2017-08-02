@@ -1,4 +1,4 @@
-# lu-zhou
+# civilServants-3.0
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.16.0.
@@ -13,11 +13,11 @@ Running `grunt test` will run the unit tests with karma.
 ## 页面名称以及对应controller
 ### views &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;controller
 1. main.html(首页)      main.js
-2. guideview.html(引导页) guideview.js
-3. coursecenter.html(课程中心)  coursecenter.js
+2. coursecenter.html(课程中心)  coursecenter.js
+3. coursecenterbuy.html(课程中心购买)  coursecenterbuy.js
 4. personalcenter.html(个人中心)  personalcenter.js
 5. testcenter.html (考试中心)  testcenter.js
-6. specialtrainingcourse.html (专题培训班)  specialtrainingcourse.js
+6. trainingClass.html (培训班)  trainingClass.js
 7. cstrainingnews.html (公务员培训新闻) cstrainingnews.js
 8. patptrainingnews.html (专业技术人员培训新闻) patptrainingnews.js
 9. searchresult.html (搜索结果) searchresult.js
@@ -31,20 +31,20 @@ Running `grunt test` will run the unit tests with karma.
 17. messagelist.html (留言板) messagelist.js
 18. messagedetail.html (留言内容详情) messagedetail.js
 19. exam.html (考试页面) exam.js
-20. classdetail.html (专题培训班--班级详情) classdetail.js
-21. classnotice.html (专题培训班--班级公告) classnotice.js
-22. classcourse.html (专题培训班--班级课程) classcourse.js
-23. classexam.html (专题培训班--班级考试) classexam.js
-24. classtopiclist.html (专题培训班--班级话题) classtopiclist.js
-25. classpaperlist.html (专题培训班--班级论文) classpaperlist.js
-26. photoalbumlist.html (专题培训班--班级相册) photoalbumlist.js
-27. classplan.html (专题培训班--教学计划) classplan.js
-28. classarticledetail.html (专题培训班--班级文章内容) classarticledetail.js
-29. classpaperadd.html (专题培训班--添加论文) classpaperadd.js
-30. classtopicadd.html (专题培训班--添加话题) classtopicadd.js
-31. photoalbumadd.html (专题培训班--添加相册) photoalbumadd.js
-32. photopreview.html (专题培训班--班级照片) photopreview.js
-33. classstudent.html (专题培训班--同学名录) classstudent.js
+20. classdetail.html (培训班--班级详情) classdetail.js
+21. classnotice.html (培训班--班级公告) classnotice.js
+22. classcourse.html (培训班--班级课程) classcourse.js
+23. classexam.html (培训班--班级考试) classexam.js
+24. classtopiclist.html (培训班--班级话题) classtopiclist.js
+25. classpaperlist.html (培训班--班级论文) classpaperlist.js
+26. photoalbumlist.html (培训班--班级相册) photoalbumlist.js
+27. classplan.html (培训班--教学计划) classplan.js
+28. classarticledetail.html (培训班--班级文章内容) classarticledetail.js
+29. classpaperadd.html (培训班--添加论文) classpaperadd.js
+30. classtopicadd.html (培训班--添加话题) classtopicadd.js
+31. photoalbumadd.html (培训班--添加相册) photoalbumadd.js
+32. photopreview.html (培训班--班级照片) photopreview.js
+33. classstudent.html (培训班--同学名录) classstudent.js
 34. coursedetails.html (课程详情) coursedetails.js
 35. examdetaillist.html (考试记录列表) examdetaillist.js
 36. examreview.html (考试详情) examreview.js
@@ -78,6 +78,16 @@ Running `grunt test` will run the unit tests with karma.
 64. studentstyledetail.html (学员风采详情页) studentstyledetail.js
 65. resultshow.html (成果展示) resultshow.js
 66. collegeinfo.html (学院概况) collegeinfo.js
+67. speciallearning.html (专题学习) speciallearning.js
+68. speciallearningone.html (专题学习详细) speciallearningone.js
+69. shoppingcart.html (购物车) shoppingcart.js
+70. payconfirm.html (支付确认) payconfirm.js
+71. orderlist.html (订单列表) orderlist.js
+72. orderdetaillist.html (订单详细) orderdetaillist.js
+73. orderconfirm.html (订单确认) orderconfirm.js
+74. invoicelist.html (我的发票列表) invoicelist.js
+75. applyinvoice.html (申请发票) applyinvoice.js
+76. tryplay.html (试播) tryplay.js
 
 ## directives(组件指令) => components(组件)
 
@@ -190,9 +200,10 @@ Running `grunt test` will run the unit tests with karma.
 
 1. errsrc.js （图片路径找不到替换error图片）
 2. repeatfinish.js （ng-repeat 渲染完成后执行的操作）
-3. datepicker.js (日期插件指令)
+3. datetimepicker.js (日期插件指令)
 4. myplaceholder.js (placeholder指令兼容ie8)
 5. verificationcode.js (发送验证码指令)
+6. mytree.js (树形 单位选择)
 
 ## filters
 1. datafilter.js (日期过滤) 用法：time| dateFilter | date:'yyyy-MM-dd'

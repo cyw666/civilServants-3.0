@@ -39,7 +39,6 @@ angular.module('luZhouApp')
 
       $scope.paginationConf = $.extend({},paginationConf,{itemsPerPage: 20});
         $scope.$watch('paginationConf.currentPage', function() {
-            // 发送给后台的请求数据
             commonService.getData(ALL_PORT.ArticleList.url, 'POST',
                     $.extend({}, ALL_PORT.ArticleList.data, { page: $scope.paginationConf.currentPage, rows: $scope.paginationConf.itemsPerPage, categoryId: $scope.ID }))
                 .then(function(response) {

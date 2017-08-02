@@ -10,12 +10,7 @@
 angular.module('luZhouApp')
     .controller('classNoticeCtrl', function($scope, $loading, $stateParams, commonService) {
         $scope.Id = $stateParams.Id;
-
-        //判断能否访问
-        // commonService.isVisit();
-        //保持在线
-        //commonService.keepOnline();
-
+      
         //loading
         $loading.start('classMy');
         $loading.start('classNotice');

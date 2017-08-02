@@ -60,7 +60,6 @@ angular.module('luZhouApp')
         .then(function (response) {
           if (response.Type == 1) {
             alert(response.Message);
-            // $scope.getOrderList({page:$scope.paginationConf.currentPage});
             $state.go('shoppingcart');
           } else {
             alert(response.Message);
