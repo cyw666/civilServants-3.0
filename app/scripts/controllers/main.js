@@ -179,7 +179,9 @@ angular.module('luZhouApp')
       });
     $scope.JudgeStatus = commonService.JudgeStatus;
     //培训班列表
+    $scope.classCategoryId = 0;
     $scope.getClassList = function (Id) {
+      $scope.classCategoryId = Id;
       commonService.getData( ALL_PORT.GetClassList.url, 'POST',
         $.extend({},ALL_PORT.GetClassList.data,{rows:6,type:"All",categoryId:Id}))
         .then(function (response) {
@@ -194,10 +196,10 @@ angular.module('luZhouApp')
       commonService.getData(ALL_PORT.Authorization.url,'POST',$.extend({},ALL_PORT.CourseCategory.data))
         .then(function (response) {
           if(response.isauth==true){
-            commonService.getData(ALL_PORT.ApplyClass.url, 'POST', $.extend({}, ALL_PORT.ApplyClass.data, { trainingId: id }))
+            commonService.getData(ALL_PORT.UpdateTrainingStudentup.url, 'POST', $.extend({}, ALL_PORT.UpdateTrainingStudentup.data, { Id: id }))
               .then(function(response) {
                 alert(response.Message);
-                $scope.getClassNews();
+                $scope.getClassList($scope.classCategoryId);
               });
           }else {
             alert("请先登录！");
@@ -209,12 +211,15 @@ angular.module('luZhouApp')
       commonService.getData(ALL_PORT.Authorization.url,'POST',$.extend({},ALL_PORT.CourseCategory.data))
         .then(function (response) {
           if(response.isauth==true){
+            var newWindow = window.open('about:blank', '_blank');
             commonService.getData(ALL_PORT.CheckUserClass.url, 'POST', $.extend({}, ALL_PORT.CheckUserClass.data, { trainingId: id }))
               .then(function(response) {
                 if (response.Type === 0) {
+                  newWindow.close();
                   alert("请先加入培训班!");
                 } else {
-                  window.open('#/trainingClass/classDetail/' + id);
+                  var examUrl = $state.href('classDetail',{Id:id});
+                  newWindow.location.href = examUrl;
                 }
               });
           }else {
@@ -227,7 +232,7 @@ angular.module('luZhouApp')
     //课程中心
     //课程分类
     commonService.getData(ALL_PORT.CourseCategory.url, 'POST',
-      $.extend({}, ALL_PORT.CourseCategory.data, { page: '1', rows: '5' }))
+      $.extend({}, ALL_PORT.CourseCategory.data, { page: '1', rows: '4' }))
       .then(function(response) {
         $scope.courselassification = response.Data.ListData;
       });
@@ -243,6 +248,9 @@ angular.module('luZhouApp')
       channelId: '',
       title: ''
     };
+    $scope.courseCenterData={};
+    $scope.imageCourse='';
+    $scope.showNoCourse=false;
     $scope.searchCourseList = function(id, Sort, flag, title) {
       $loading.start('courseList');
       params.channelId = id || 250;
@@ -252,19 +260,35 @@ angular.module('luZhouApp')
       commonService.getData(ALL_PORT.CourseList.url, 'POST', params)
         .then(function(response) {
           $loading.finish('courseList');
-          $scope.courseCenterData = response.Data;
+          $scope.courseCenterData = response.Data.ListData;
           $scope.imageCourse = response.Data.ImageCourse;
           $scope.showNoCourse = response.Data.ListData.length == 0?true:false;
         });
     };
-    $scope.searchCourseList();
+    // $scope.searchCourseList();
 
     $scope.renderFinish = function() {
       $('.courselLink>.btn').on('click', function() {
         $(this).addClass('active').siblings('a').removeClass('active');
       });
-
+    
     };
+    //推荐课程
+    $scope.getRecommendCourse = function () {
+      $scope.courseCenterData={};
+      $scope.imageCourse='';
+      $scope.showNoCourse=false;
+      $loading.start('courseList');
+      commonService.getData(ALL_PORT.RecommendCourse.url, 'POST',
+        $.extend({}, ALL_PORT.RecommendCourse.data, { page: '1', rows: 8 }))
+        .then(function(response) {
+          $loading.finish('courseList');
+          $scope.courseCenterData = response.Data.ListData;
+          $scope.imageCourse = response.Data.ImageCourse;
+          $scope.showNoCourse = response.Data.ListData.length == 0?true:false;
+        });
+    }
+    $scope.getRecommendCourse();
 
     //新闻资讯
     $scope.getNewsContent = function (categoryCode) {

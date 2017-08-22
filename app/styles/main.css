@@ -357,18 +357,31 @@ h4 {
   padding-left: 25px;
   background: url("../images/link.gif") 0 2px no-repeat;
 }
-.formCourse{
+.formSearch{
   margin-left: 40px;
   margin-bottom: 10px;
 }
-.formCourse .form-control ,.formCourse .btn.btn-default{
+.formSearch .form-group{
+  width: 70%;
+}
+.formSearch .form-control ,.formSearch .btn.btn-default{
   height: 26px;
 }
-.formCourse select.form-control{
+.formSearch input.form-control{
+  width: 100%;
+}
+.formSearch select.form-control{
   padding: 0;
 }
-.formCourse .btn.btn-default{
-  padding:2px 15px;
+.formSearch .btn.btn-default{
+  padding: 2px 21px;
+  background: #db1011;
+  color: #fff;
+  border: 1px solid #db1011;
+}
+.formSearch .btn.btn-default:hover{
+  background: #f50001;
+  border: 1px solid #f50001;
 }
 
 /*模板通用边框*/
@@ -647,6 +660,9 @@ h4.title-h4{
 .mar_top_40 {
   margin-top: 40px;
 }
+.mar_left_14 {
+  margin-left:14px;
+}
 .mar_left_10 {
   margin-left:10px;
 }
@@ -690,10 +706,13 @@ h4.title-h4{
 .pad_left_20 {
   padding-left: 20px;
 }
+.pad_left_25 {
+  padding-left: 25px;
+}
 .pad_left_35 {
   padding-left: 35px;
 }
-pad_left_45 {
+.pad_left_45 {
   padding-left: 45px;
 }
 .pad_right_10 {

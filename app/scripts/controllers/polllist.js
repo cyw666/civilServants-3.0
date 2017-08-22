@@ -8,7 +8,7 @@
  * Controller of the luZhouApp
  */
 angular.module('luZhouApp')
-  .controller('PolllistCtrl', function ($scope, $location, $rootScope, $cookieStore, commonService, $timeout, $loading,$stateParams) {
+  .controller('PolllistCtrl', function ($scope, $location, $rootScope,$state, $cookieStore, commonService, $timeout, $loading,$stateParams) {
     //报名状态
     $scope.JudgeStatus = commonService.JudgeStatus;
     //问卷调查列表
@@ -32,26 +32,23 @@ angular.module('luZhouApp')
       };
       $scope.getClassList(pageOptions);
     });
-
-    //查看用户权限
-    $scope.checkUserClass = function(id) {
-      commonService.getData(ALL_PORT.CheckUserClass.url, 'POST',
-        $.extend({}, ALL_PORT.CheckUserClass.data, { trainingId: id }))
-        .then(function(response) {
-          if (response.Type === 0) {
-            alert("请先加入培训班!");
+  
+    //参加调查
+    $scope.havTest = function (Id) {
+      //打开一个不被拦截的新窗口
+      var newWindow = window.open('about:blank', '_blank');
+      var params = $.extend({}, ALL_PORT.Exam.data, $scope.token, {parameter1: Id})
+      commonService.getData(ALL_PORT.Exam.url, 'POST', params)
+        .then(function (response) {
+          if (response.Type) {
+            newWindow.close();
+            //Type存在，意味着不能考试
+            alert(response.Message);
           } else {
-            window.open('#/trainingClass/classDetail/' + id);
+            var pollUrl = $state.href('poll',{Id:Id});
+            newWindow.location.href = pollUrl;
           }
-        });
-    };
-    //班级报名
-    $scope.addClass = function(id) {
-      commonService.getData(ALL_PORT.ApplyClass.url, 'POST',
-        $.extend({}, ALL_PORT.ApplyClass.data, { trainingId: id }))
-        .then(function(response) {
-          alert(response.Message);
-          $scope.getClassList();
+        
         });
     };
   });

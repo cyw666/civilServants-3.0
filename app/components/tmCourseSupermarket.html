@@ -11,36 +11,36 @@
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
       <li><a ui-sref="main">首页</a></li>
-      <li class="active">课程中心</li>
+      <li><a ui-sref="courseCenter">课程中心</a></li>
+      <li ng-if="courseSupermarketData.ChannelName==''" class="active">{{courseSupermarketData.TitleNav}}({{courseSupermarketData.Count}})</li>
+      <li ng-if="courseSupermarketData.ChannelName!=''" class="active">{{courseSupermarketData.ChannelName}}({{courseSupermarketData.Count}})</li>
     </ol>
-    <form class="form-inline formCourse">
+    <form class="form-inline formSearch">
       <select class="form-control" ng-init="selectedName = selectText[0]" ng-model="selectedName" ng-options="x.name for x in selectText"  ng-change="judgement(selectedName.id)">
       </select>
       <div class="form-group">
         <input ng-show="showInput1" my-placeholder ng-model="searchTitle1" type="text" class="form-control" placeholder="请输入要搜索的课程">
-        <select class="form-control" ng-show="showInput2"  ng-init="searchTitle2 = videoType[0]" ng-model="searchTitle2" ng-options="x.name for x in videoType"  ng-change="judgement(selectedName.id)">
-        </select>
+        <select class="form-control" ng-show="showInput2"  ng-init="searchTitle2 = videoType[0]" ng-model="searchTitle2" ng-options="x.name for x in videoType"  ng-change="judgement(selectedName.id)"></select>
         <input ng-show="showInput3" my-placeholder ng-model="searchTitle3" type="text" class="form-control" placeholder="请输入主讲人">
       </div>
       <button ng-hide="showInput2" type="submit" class="btn btn-default" ng-click="judgement(selectedName.id)">搜索</button>
     </form>
     <div class="courseList  mar_top_15 clearfix" dw-loading="courseSupermarket">
-      <div class="titlebg">
-        <div class="txt" ng-if="courseSupermarketData.ChannelName==''">{{courseSupermarketData.TitleNav}}&nbsp;&nbsp;&nbsp;&nbsp;({{courseSupermarketData.Count}})</div>
-        <div class="txt" ng-if="courseSupermarketData.ChannelName!=''">{{courseSupermarketData.ChannelName}}&nbsp;&nbsp;&nbsp;&nbsp;({{courseSupermarketData.Count}})</div>
-      </div>
       <div class="sortCourse clearfix">
+        <a class="recommendCourse pull-left" ng-click="getRecommendCourse()">
+          <img src="../images/recomend.png" alt="智能推荐">
+        </a>
         <div class="tag">
           <span><img src="images/sfp.png"><a ng-click="judgement(selectedName.id,'ThreeScreenCourse')">精品三分屏</a></span>
           <span><img src="images/dsp.png"><a ng-click="judgement(selectedName.id,'SingleCourse')">单视频课件</a></span>
           <span><img src="images/dh.png"><a ng-click="judgement(selectedName.id,'AnimationCourse')">动画类课件</a></span>
         </div>
         <div class="title_bar">
-          <span class="list2-5"><a ng-click="judgement(selectedName.id,null,'Name','order')">课程名称<span id="asc_Name">▼</span></a></span>
-          <span class="list1-5"><a ng-click="judgement(selectedName.id,null,'CommentCount','order')">评论<span id="asc_CommentCount">▼</span></a></span>
-          <span class="list1-5"><a ng-click="judgement(selectedName.id,null,'Credit','order')">学时<span id="asc_Credit">▼</span></a></span>
-          <span class="list2"><a ng-click="judgement(selectedName.id,null,'ClickCount','order')">点击量<span id="asc_ClickCount">▼</span></a></span>
-          <span class="list2-5"><a ng-click="judgement(selectedName.id,null,'CreateDate','order')">上线时间<span id="asc_CreateDate">▼</span></a></span>
+          <span><a ng-click="judgement(selectedName.id,null,'Name','order')">课程名称<span id="asc_Name">▼</span></a></span>
+          <span><a ng-click="judgement(selectedName.id,null,'CommentCount','order')">评论<span id="asc_CommentCount">▼</span></a></span>
+          <span><a ng-click="judgement(selectedName.id,null,'Credit','order')">学时<span id="asc_Credit">▼</span></a></span>
+          <span><a ng-click="judgement(selectedName.id,null,'ClickCount','order')">点击量<span id="asc_ClickCount">▼</span></a></span>
+          <span><a ng-click="judgement(selectedName.id,null,'CreateDate','order')">上线时间<span id="asc_CreateDate">▼</span></a></span>
         </div>
       </div>
 
@@ -51,7 +51,7 @@
               <input ng-disabled="{{courseList.Learning>=0?1:0}}" name="subcheck" type="checkbox" class="check" value={{courseList.Id}}>
             </div>
             <div class="block2 pull-left" title="{{courseList.Name}}">
-              <img ng-src="{{courseSupermarketData.ImageCourse+'/'+courseList.Img}}" err-src="images/notFound.jpeg">
+              <img ng-src="{{courseSupermarketData.ImageCourse+'/'+courseList.Img}}" err-src="images/notCourse.png">
             </div>
             <div class="block3 pull-left">
               <div class="line line1" style="overflow:hidden;">
@@ -99,10 +99,9 @@
     color: #0f0f0f;
   }
   .courseSupermarket .form-group input {
-    width: 400px;
+    /*width: 550px;*/
   }
   .courseSupermarket .tag {
-    margin-left: 30px;
     float: left;
     padding: 10px 5px 10px 0;
   }
@@ -110,20 +109,19 @@
    position: relative;
    border-top: 1px solid #f2f2f2;
  }
- .courseList .txt{
-   width:58%;
-   overflow: hidden;
-   white-space: nowrap;
-   text-overflow: ellipsis;
+ .courseList .recommendCourse {
+   margin: 3px 5px 3px 30px;
  }
  .courseList .title_bar{
    text-align: right;
    float: left;
-   margin-left: 20px;
+   margin-left: 10px;
  }
- .courseList .title_bar span{
-   padding-right: 10px;
- }
+  .courseList .title_bar span{
+    line-height: 37px;
+    display: inline-block;
+    margin-right: 10px;
+  }
 
  .courseList .NewCourseList{
   text-align: center;
@@ -181,6 +179,9 @@
     text-align: center;
     line-height: 27px;
     border-radius: 3px;
+  }
+  .courseList .NewCourseList .block4 .play:hover {
+    background-color: #f50001;
   }
   .checkCourse>a.btn{
     color: #000;

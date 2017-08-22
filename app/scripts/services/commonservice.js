@@ -192,7 +192,7 @@ angular.module('luZhouApp')
           generate.HTML(option);
         }
       }
-
+      
     };
     //获取cookie
     this.getCookie = function (name) {
@@ -205,9 +205,9 @@ angular.module('luZhouApp')
     };
     //设置cookie
     this.setCookie = function (name, value, expiredays) {
-      var exdate=new Date();
+      var exdate = new Date();
       exdate.setDate(exdate.getDate() + expiredays);
-      document.cookie=name+ "=" + escape(value) + ((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
+      document.cookie = name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString());
     }
     //删除cookie
     this.delCookie = function (name) {
@@ -219,11 +219,12 @@ angular.module('luZhouApp')
           return null;
         }
       }
+      
       var exp = new Date();
       exp.setTime(exp.getTime() - 1);
-      var cval=getCookie(name);
-      if(cval!=null)
-        document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+      var cval = getCookie(name);
+      if (cval != null)
+        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
     }
     this.getCookie2 = function (name, pro, cookies) {
       cookies = cookies || document.cookie;
@@ -262,7 +263,7 @@ angular.module('luZhouApp')
     }
     //判断能否访问
     this.isVisit = function () {
-
+      
       $http({
         method: 'POST',
         url: ALL_PORT.Authorization.url,
@@ -275,7 +276,7 @@ angular.module('luZhouApp')
           window.location.reload();
         }
       }).error(function (error, status) {
-
+        
       });
     }
     //退出
@@ -328,7 +329,7 @@ angular.module('luZhouApp')
       function dFormat(i) {
         return i < 10 ? "0" + i.toString() : i;
       }
-
+      
       if (value == "yyyy-MM-dd hh:mm:ss") {
         var d = eval('new ' + str.substr(1, str.length - 2));
         var ar_date = [d.getFullYear(), d.getMonth() + 1, d.getDate(), d.getHours(), d.getMinutes(), d.getSeconds()];
@@ -379,7 +380,7 @@ angular.module('luZhouApp')
       }
       return sum;
     };
-
+    
     //培训班报名状态
     this.JudgeStatus = function (status) {
       var outputHtml = "";
@@ -396,11 +397,9 @@ angular.module('luZhouApp')
             break;
         }
       }
-      else {
-      }
       return outputHtml;
     };
-
+    
     //播放refresh
     this.refresh = function (PortalId, userId, courseid) {
       var fresh = function () {
@@ -410,30 +409,26 @@ angular.module('luZhouApp')
           data: $.param($.extend({}, ALL_PORT.Refresh.data, {PortalId: PortalId, userId: userId, courseid: courseid})),
         }).success(function (data) {
           if (!!data) {
-            if ((data + '').indexOf("ok") > -1) {
-            }
-            else {
-              if (data.Type === 401) {
-                clearTimeout(timer);
-                document.body.innerHTML = "";//屏蔽页面
-                if (confirm("消息：用户已登出，是否回到首页？  点击取消将关闭页面")) {
-                  $state.go('main');
-                  window.location.reload();
-                }
-                else {
-                  window.close();
-                }
-              }
-              else {
-                clearTimeout(timer);
-                document.body.innerHTML = "";
-                alert("出现错误 将返回首页");
+            if (data.Type === 401) {
+              clearTimeout(timer);
+              document.body.innerHTML = "";//屏蔽页面
+              if (confirm("消息：用户已登出，是否回到首页？  点击取消将关闭页面")) {
                 $state.go('main');
                 window.location.reload();
               }
+              else {
+                window.close();
+              }
+            } else if (data.Type == 1) {
+              return;
+            } else {
+              clearTimeout(timer);
+              document.body.innerHTML = "";
+              alert(data.Message);
+              $state.go('main');
+              window.location.reload();
             }
-          }
-          else {
+          } else {
             clearTimeout(timer);
             document.body.innerHTML = "";
             alert("出现错误 将返回首页");
@@ -441,10 +436,13 @@ angular.module('luZhouApp')
             window.location.reload();
           }
         }).error(function (ex) {
-          alert("出现错误:" + ex.Message + ", 将返回首页");
-          document.body.innerHTML = "";
-          $state.go('main');
-          window.location.reload();
+          clearTimeout(timer);
+          if (ex.Message) {
+            alert("出现错误:" + ex.Message + ", 将返回首页");
+            document.body.innerHTML = "";
+            $state.go('main');
+            window.location.reload();
+          }
         });
       }
       var timer = setInterval(fresh, 3000);
@@ -454,35 +452,36 @@ angular.module('luZhouApp')
       $(window).bind('beforeunload', function (e) {
         $http({
           method: 'POST',
-          url: ALL_PORT.ClearPlayingCourse.url+'?'+Math.round(Math.random() * 10000),
+          url: ALL_PORT.ClearPlayingCourse.url + '?' + Math.round(Math.random() * 10000),
           data: $.param($.extend({}, ALL_PORT.ClearPlayingCourse.data, {userid: userid})),
         }).success(function (response) {
         });
       });
     };
-
+    
     //获取数据
     this.getData = function (endpoint, method, params) {
       var defer = $q.defer();
+      var data = params ? $.param(params) : null
       $http({
         url: endpoint,
         method: method,
         headers: {
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
         },
-        data: $.param(params)
+        data: data
       }).success(function (data) {
         defer.resolve(data);
       }).error(function (data, status, headers, config) {
         defer.reject(data);
       });
       return defer.promise;
-
+      
     };
-
+    
     //上传文件
     this.upload = function (event, types) {
-
+      
       var typeConfig = "";
       switch (types) {
         case "Image":
@@ -498,12 +497,12 @@ angular.module('luZhouApp')
           typeConfig = "jpeg,jpg,png,gif,bmp,zip,rar,txt,doc,docx,xls,xlsx,ppt,pptx";
           break;
       }
-
+      
       var file = event.files[0];
       var fileName = file.name;
       var file_typename = fileName.substring(fileName.lastIndexOf('.') + 1, fileName.length);
-
-
+      
+      
       if (typeConfig.indexOf(file_typename) > -1) {//这里限定上传文件文件类型
         if (file) {
           var fileSize = 0;
@@ -515,8 +514,8 @@ angular.module('luZhouApp')
       } else {
         alert("文件后缀应为以下类型" + typeConfig + ",而不是" + file_typename + ",请重新选择文件");
       }
-
-
+      
+      
       if (window.FormData) {
         var fd = new FormData();
         fd.append('fileType', types);
@@ -532,12 +531,12 @@ angular.module('luZhouApp')
         }).success(function (response) {
           $('#hidValueImage').val(response);
         }).error(function (error, status) {
-
+          
         });
       }
-
+      
     };
-
+    
     //获取文章分类
     this.getArticleCategory = function () {
       var arr = [];
@@ -569,7 +568,7 @@ angular.module('luZhouApp')
         }
       });
     }
-
+    
     //收藏本站
     this.AddFavorite = function (title, url) {
       var title = title || document.title;
@@ -586,7 +585,7 @@ angular.module('luZhouApp')
         }
       }
     }
-
+    
     //设为首页
     this.SetHome = function (obj, url) {
       var url = url || location.href;
@@ -631,13 +630,13 @@ angular.module('luZhouApp')
     };
     //限制多次提交
     this.limitSubmit = function (callback) {
-      if(!limitTime){
+      if (!limitTime) {
         limitTime = 3;
         $timeout(function () {
           limitTime = 0;
-        },3000);
+        }, 3000);
         callback();
-      }else {
+      } else {
         alert("提交过于频繁，请5秒后再试！");
       }
     }

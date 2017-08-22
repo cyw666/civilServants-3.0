@@ -17,15 +17,19 @@
         <span ng-hide="articleListData.CategoryName">{{articleListData.TitleNav}}</span>
       </li>
     </ol>
-    <div class="articleListSearch">
+    <form class="form-inline formSearch">
+      <div class="form-group">
+        <input ng-model="searchTitle" type="text" class="form-control"
+               my-placeholder
+               placeholder="请输入搜索关键词">
+      </div>
+      <button type="submit" class="btn btn-default" ng-click="refreshList({page:1,search:searchTitle})">搜索</button>
+    </form>
+    <!--<div class="articleListSearch">
       <input type="text" ng-model="searchTitle" my-placeholder placeholder="请输入搜索关键词">
       <button class="btn btn-default" ng-click="refreshList({page:1,search:searchTitle})">搜索</button>
-    </div>
-    <div dw-loading="articleList">
-      <div class="articleListHeader">
-        <h1 ng-show="articleListData.CategoryName">{{articleListData.CategoryName}}</h1>
-        <h1 ng-hide="articleListData.CategoryName">{{articleListData.TitleNav}}</h1>
-      </div>
+    </div>-->
+    <div dw-loading="articleList" class="mar_top_20">
       <table class="table" ng-show="paginationConf.totalItems">
         <tr>
           <th class="titleName">文章名称</th>
@@ -47,6 +51,7 @@
   }
   .articleList th{
     font-weight: bold;
+    background-color: #EDF3FC;
   }
   .articleList td img{
     margin: 0 10px;
@@ -63,23 +68,6 @@
   }
   .articleList .titleName,.articleList .titleDate,.articleList .listDate{
     text-align: center;
-  }
-  .articleListSearch{
-    margin-left: 40px;
-    line-height: 26px;
-  }
-  .articleListSearch input[type="text"]{
-    width: 400px;
-    padding-left: 10px;
-  }
-  .articleListSearch .btn-default{
-    padding: 2px 15px;
-
-  }
-  .articleListSearch input[type="text"]{
-    border-radius: 5px;
-    outline: none;
-    border:1px solid #e5e5e5;
   }
   .articleListHeader > h1{
     line-height:49px;

@@ -414,8 +414,7 @@ module.exports = function (grunt) {
 	          'images/{,*/}*.{webp}',
 	          'views/**',
 	          'Do/**',
-	          'ueditor/**',
-	          'jwplayer/**',
+	          'plugins/**',
 	          'styles/fonts/{,*/}*.*'
           ]
         }, {

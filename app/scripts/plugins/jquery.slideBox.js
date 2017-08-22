@@ -128,7 +128,6 @@
 		//首张图片加载完毕后执行初始化
 		/*var imgLoader = new Image();
 		imgLoader.onload = function(){
-		  debugger
 			imgLoader.onload = null;
       init();
 		}

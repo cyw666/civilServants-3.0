@@ -23,3 +23,8 @@
   background-color: #db1011;
   border-color: #f50001;
 }
+.page-list .no-items {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+}

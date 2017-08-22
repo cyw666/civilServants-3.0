@@ -8,7 +8,7 @@
  * Controller of the luZhouApp
  */
 angular.module('luZhouApp')
-  .controller('PersonalcenterCtrl', function ($scope, $http, $timeout, $rootScope, $cookieStore, commonService, $location, $loading) {
+  .controller('PersonalcenterCtrl', function ($scope, $http,$state, $timeout, $rootScope, $cookieStore, commonService, $location, $loading) {
     //防伪造请求
     $scope.token = commonService.AntiForgeryToken();
     //个人中心
@@ -322,15 +322,17 @@ angular.module('luZhouApp')
 
     //参加测试
     $scope.havTest = function (Id) {
+      var newWindow = window.open('about:blank', '_blank');
       var params = $.extend({}, ALL_PORT.Exam.data, $scope.token, {parameter1: Id})
-      commonService.getData(ALL_PORT.Exam.url, 'POST',
-        params
-      ).then(function (response) {
+      commonService.getData(ALL_PORT.Exam.url, 'POST', params)
+        .then(function (response) {
         if (response.Type) {
+          newWindow.close();
           //Type存在，意味着不能考试
           alert(response.Message);
         } else {
-          window.open("#/exam/exam/" + Id);
+          var examUrl = $state.href('exam',{Id:Id});
+          newWindow.location.href = examUrl;
         }
 
       });

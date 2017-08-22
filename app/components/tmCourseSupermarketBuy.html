@@ -13,7 +13,7 @@
       <li><a ui-sref="main">首页</a></li>
       <li class="active">课程中心</li>
     </ol>
-    <form class="form-inline formCourse">
+    <form class="form-inline formSearch">
       <select class="form-control" ng-init="selectedName = selectText[0]" ng-model="selectedName" ng-options="x.name for x in selectText"  ng-change="judgement(selectedName.id)">
       </select>
       <div class="form-group">
@@ -93,7 +93,7 @@
     color: #0f0f0f;
   }
   .courseSupermarket .form-group input {
-    width: 400px;
+    /*width: 400px;*/
   }
   .courseList{
     border-top: 1px solid #f2f2f2;

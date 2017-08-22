@@ -22,6 +22,12 @@ angular.module('luZhouApp')
         $scope.findNews = function() {
           $state.go('search',{text:$scope.searchNewsField});
         };
+        /*$scope.hoverImg = function () {
+          angular.element(".bigAppImg")[0].style.visibility="visible";
+        }
+        $scope.leaveImg = function () {
+          angular.element(".bigAppImg")[0].style.visibility="hidden";
+        }*/
       },
       link: function postLink(scope, element, attrs) {
       }

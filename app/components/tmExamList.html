@@ -12,11 +12,11 @@
       <li><a ui-sref="main">首页</a></li>
       <li class="active">{{TotalData.TitleNav}}</li>
     </ol>
-    <form class="form-inline formCourse">
+    <form class="form-inline formSearch">
       <select class="form-control" ng-init="selectedName = courseStatus[0]" ng-model="selectedName" ng-options="x.name for x in courseStatus" ng-change="selectChangeFun(selectedName.id)">
       </select>
       <div class="form-group">
-        <input ng-model="searchTitle" type="text" class="form-control" style="width: 400px;" my-placeholder placeholder="请输入要搜索的考试">
+        <input ng-model="searchTitle" type="text" class="form-control" my-placeholder placeholder="请输入要搜索的考试">
       </div>
       <button type="submit" class="btn btn-default" ng-click="searchMyCenterCourse({'examType':selectedName.id,'title':searchTitle},1)">搜索</button>
     </form>

@@ -5,11 +5,6 @@
   var version = "2.1.9";
   // if node.js, we use Buffer
   var buffer;
-  if (typeof module !== 'undefined' && module.exports) {
-    try {
-      buffer = require('buffer').Buffer;
-    } catch (err) { }
-  }
   // constants
   var b64chars
     = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
@@ -65,7 +60,9 @@
         return (u.constructor === buffer.constructor ? u : new buffer(u))
           .toString('TBase64')
       }
-      : function (u) { return btoa(utob(u)) }
+      : function (u) {
+        return btoa(utob(u))
+      }
     ;
   var encode = function (u, urisafe) {
     return !urisafe
@@ -74,7 +71,9 @@
         return m0 == '+' ? '-' : '_';
       }).replace(/=/g, '');
   };
-  var encodeURI = function (u) { return encode(u, true) };
+  var encodeURI = function (u) {
+    return encode(u, true)
+  };
   // decoder stuff
   var re_btou = new RegExp([
     '[\xC0-\xDF][\x80-\xBF]',
@@ -131,11 +130,14 @@
       return (a.constructor === buffer.constructor
         ? a : new buffer(a, 'TBase64')).toString();
     }
-    : function (a) { return btou(atob(a)) };
+    : function (a) {
+      return btou(atob(a))
+    };
   var decode = function (a) {
     return _decode(
-      String(a).replace(/[-_]/g, function (m0) { return m0 == '-' ? '+' : '/' })
-        .replace(/[^A-Za-z0-9\+\/]/g, '')
+      String(a).replace(/[-_]/g, function (m0) {
+        return m0 == '-' ? '+' : '/'
+      }).replace(/[^A-Za-z0-9+\/]/g, '')
     );
   };
   var noConflict = function () {
@@ -160,7 +162,7 @@
   // if ES5 is available, make TBase64.extendString() available
   if (typeof Object.defineProperty === 'function') {
     var noEnum = function (v) {
-      return { value: v, enumerable: false, writable: true, configurable: true };
+      return {value: v, enumerable: false, writable: true, configurable: true};
     };
     global.TBase64.extendString = function () {
       Object.defineProperty(
@@ -186,7 +188,9 @@
   }
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define([], function () { return global.TBase64 });
+    define([], function () {
+      return global.TBase64
+    });
   }
 })(typeof self !== 'undefined' ? self
   : typeof window !== 'undefined' ? window

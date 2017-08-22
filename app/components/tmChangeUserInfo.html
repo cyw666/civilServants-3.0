@@ -28,8 +28,8 @@
             <li>
               <span class="control-label grid_6 text-right" style="line-height: 34px">性别：</span>
               <div class="grid_6 info">
-                <input type="radio" name="sex" ng-model="sex" value="1" ng-checked="userInfo.Sex==1">男
-                <input type="radio" name="sex" ng-model="sex" value="0"  ng-checked="userInfo.Sex==0">女
+                <input type="radio" name="sex" ng-model="sex" value="男" ng-checked="userInfo.Sex==1">男
+                <input type="radio" name="sex" ng-model="sex" value="女" ng-checked="userInfo.Sex==0">女
               </div>
             </li>
             <li>
@@ -38,8 +38,8 @@
             </li>
             <li>
               <span class="control-label grid_6 text-right" style="line-height: 26px">职位：</span>
-              <select class="form-control grid_3" name="grade" ng-model="Grade" ng-options="item.Id as item.Name for item in gradeList">
-                <option value="">{{initGrade}}</option>
+              <select class="form-control grid_3" name="grade" ng-model="Grade" ng-options="list.Id as list.Name for list in gradeList">
+                <option value="">--请选择职位--</option>
               </select>
             </li>
             <li>
@@ -76,7 +76,7 @@
             </li>
             <li class="change-user-info-input mar_top_5">
               <span class="control-label grid_6">&nbsp;</span>
-              <button class="btn grid_6 btn-success" ng-click="changeUser()" > 提交</button>
+              <button class="btn grid_6 btn-success" ng-click="changeUser()"> 提交</button>
             </li>
           </ul>
 
@@ -86,33 +86,38 @@
   </div>
 </div>
 <style>
-    .change-user-info-form{
-        height: 336px;
-        display: table-cell;
-        vertical-align: middle;
-    }
-    .change-user-info .info{
-        line-height: 34px;
-        text-align: center;
-    }
-    .change-user-info .info input{
-        width:auto;
-        height:auto;
-    }
-    .change-user-info select{
-        width:auto;
-        height:26px;
-        line-height: 26px;
-        padding: 0 0 0 12px;
-    }
-    .change-user-info-form li{
-        display: block;
-        height: 40px;
-    }
-    .modifyPassword .verificationCode {
-      padding: 2px 12px;
-      margin-left: 10px;
-    }
+  .change-user-info-form {
+    height: 336px;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .change-user-info .info {
+    line-height: 34px;
+    text-align: center;
+  }
+
+  .change-user-info .info input {
+    width: auto;
+    height: auto;
+  }
+
+  .change-user-info select {
+    width: auto;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 0 0 12px;
+  }
+
+  .change-user-info-form li {
+    display: block;
+    height: 40px;
+  }
+
+  .modifyPassword .verificationCode {
+    padding: 2px 12px;
+    margin-left: 10px;
+  }
 </style>
 
 

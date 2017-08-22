@@ -12,8 +12,11 @@ angular.module('luZhouApp')
     $scope.showInput1 = true;
     $scope.showInput2 = false;
     $scope.showInput3 = false;
+    //是否是调用推荐课程接口
+    $scope.recommendApi = false;
     //显示loading
     $loading.start('courseClassify');
+    
     //课程分类
     commonService.getData(ALL_PORT.CourseCategory.url, 'POST', ALL_PORT.CourseCategory.data)
       .then(function (response) {
@@ -32,7 +35,7 @@ angular.module('luZhouApp')
         }
       });
     };
-
+    
     //课程超市列表
     //搜索
     $scope.selectText = [
@@ -62,7 +65,8 @@ angular.module('luZhouApp')
     //搜索方法
     $scope.searchCourse = function (options) {
       $loading.start('courseSupermarket');
-      $.extend(courseListParams, ALL_PORT.CourseList.data, options);
+      $scope.recommendApi = false;
+      $.extend(courseListParams, options);
       $scope.paginationConf.currentPage = courseListParams.page;
       commonService.getData(ALL_PORT.CourseList.url, 'POST', courseListParams)
         .then(function (response) {
@@ -129,14 +133,32 @@ angular.module('luZhouApp')
         }
       }
     };
-
+    //智能推荐
+    $scope.getRecommendCourse = function (options) {
+      $scope.recommendApi = true;
+      $loading.start('courseSupermarket');
+      commonService.getData(ALL_PORT.RecommendCourse.url, 'POST',
+        $.extend({}, ALL_PORT.RecommendCourse.data, { page: 1, rows: 10 },options))
+        .then(function(response) {
+          $loading.finish('courseSupermarket');
+          $scope.courseSupermarketData = response.Data;
+          $scope.courseSupermarketData.ChannelName="智能推荐";
+          $scope.paginationConf.totalItems = response.Data.Count;
+          
+          // console.log($scope.paginationConf);
+        });
+    }
     //分页
     // 通过$watch currentPage 当他们一变化的时候，重新获取数据条目
     $scope.$watch('paginationConf.currentPage', function () {
       var pageOptions = {
         page: $scope.paginationConf.currentPage,
       };
-      $scope.searchCourse(pageOptions);
+      if($scope.recommendApi){
+        $scope.getRecommendCourse(pageOptions);
+      }else {
+        $scope.searchCourse(pageOptions);
+      }
     });
     $scope.selectClass = {};
     //防伪造请求
@@ -179,7 +201,12 @@ angular.module('luZhouApp')
           .then(function (response) {
             if (response.Type > 0) {
               alert(response.Message);
-              location.reload();
+              // location.reload();
+              if($scope.recommendApi){
+                $scope.getRecommendCourse();
+              }else {
+                $scope.searchCourse();
+              }
             }
           });
       } else {

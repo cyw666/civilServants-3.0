@@ -12,6 +12,9 @@
         <li ng-class="{active: vm.activeTab == 2}" >
           <a ng-click="vm.activeTab = 2;getNewsContent('newsHot')">时政热点</a>
         </li>
+        <p class="more pull-right">
+          <a ui-sref="article" target="_blank"><img src="../images/more.png" alt=""></a>
+        </p>
       </ul>
       <div class="tab-content" dw-loading="articleList">
         <div class="tab-panel perlist">
@@ -93,5 +96,10 @@
     float: right;
     margin-right: 20px;
     color: #999;
+  }
+  .tmNewsInformation .more {
+    height: 52px;
+    line-height: 52px;
+    margin-right: 8px;
   }
 </style>

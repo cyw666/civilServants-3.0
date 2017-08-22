@@ -60,16 +60,22 @@ angular.module('luZhouApp')
                     }
                 });
         };
-
-        //缩小字体
-        $scope.reduceFont = function() {
-            angular.element('#setFont').find("span").css("fontSize", $scope.fontSize-- + "pt");
-            angular.element('#setFont').find("p").css("fontSize", $scope.fontSize-- + "px");
-        };
-        //放大字体
-        $scope.increaseFont = function() {
-            angular.element('#setFont').find("span").css("fontSize", $scope.fontSize++ + "pt");
-            angular.element('#setFont').find("p").css("fontSize", $scope.fontSize++ + "px");
-        };
+  
+      //缩小字体
+      $scope.reduceFont = function () {
+        $scope.fontSize--;
+        var fontSize;
+        if ($scope.fontSize < 12) {
+          $scope.fontSize = 12;
+        }
+        angular.element('#setFont').find("span").css("fontSize", $scope.fontSize + "pt");
+        angular.element('#setFont').find("p").css("fontSize", $scope.fontSize + "px");
+      };
+      //放大字体
+      $scope.increaseFont = function () {
+        $scope.fontSize++;
+        angular.element('#setFont').find("span").css("fontSize", $scope.fontSize + "pt");
+        angular.element('#setFont').find("p").css("fontSize", $scope.fontSize + "px");
+      };
 
     });

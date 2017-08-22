@@ -13,7 +13,7 @@
   <ul class="courseList clearfix" dw-loading="specialLearningCourse">
     <li ng-repeat="list in specialCourseData.ListData" ng-class="{'last':($index+1)%4==0}">
       <a ui-sref="courseDetails({Id:list.Id})" title="{{list.Name}}" target="_blank">
-        <img ng-src="{{specialCourseData.ImageCourse+'/'+list.Img}}" err-Src="images/notFound.jpeg" alt="">
+        <img ng-src="{{specialCourseData.ImageCourse+'/'+list.Img}}" err-Src="images/notCourse.png" alt="">
       </a>
       <p class="courseName ellipsis" title="{{list.Name}}"><a ui-sref="courseDetails">{{list.Name}}</a></p>
       <p class="courseTeacher">讲师：{{list.Teacher}}</p>
@@ -44,6 +44,9 @@
   .specialLearningCourse .courseList li .courseName a{
     color: #003333;
     font-size: 16px;
+  }
+  .specialLearningCourse .courseList li .courseName a:hover{
+    color: #62a3db;
   }
   .specialLearningCourse .courseList li .courseTeacher{
     color: #999;

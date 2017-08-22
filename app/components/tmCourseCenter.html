@@ -9,14 +9,14 @@
     </p>
   </div>
   <div class="btn-group courselLink" role="group">
-    <a class="btn btn-default" ng-repeat="courseName in courselassification" ng-class="{'active':$index==0}"
-       ng-click="searchCourseList(courseName.Id)" repeat-finish="renderFinish()">{{courseName.Name}}</a>
+    <a class="btn btn-default active" ng-click="getRecommendCourse()">推荐课程</a>
+    <a class="btn btn-default" ng-repeat="courseName in courselassification" ng-click="searchCourseList(courseName.Id)" repeat-finish="renderFinish()">{{courseName.Name}}</a>
   </div>
   <div class="courseList mar_top_20 clearfix" dw-loading="courseList">
     <ul class="clearfix">
-      <li ng-repeat="courseCenterData in courseCenterData.ListData">
+      <li ng-repeat="courseCenterData in courseCenterData">
         <a ui-sref="courseDetails({Id:courseCenterData.Id})" title="{{courseCenterData.Name}}" target="_blank">
-          <img ng-src="{{imageCourse+'/'+courseCenterData.Img}}" err-Src="images/notFound.jpeg" alt="">
+          <img ng-src="{{imageCourse+'/'+courseCenterData.Img}}" err-Src="images/notCourse.png" alt="">
         </a>
         <div ng-if="$index<2" class="hotCourse">
           <p class="bg"></p>
@@ -93,6 +93,9 @@
   .courseList ul li .desc p a{
     font-size: 16px;
     color: #003333;
+  }
+  .courseList ul li .desc p a:hover{
+    color: #62a3db;
   }
 
   .courseList ul li .hotCourse {

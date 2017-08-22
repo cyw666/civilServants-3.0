@@ -621,9 +621,11 @@ angular.module('luZhouApp')
       } else if (editCommentParams.content.length >= 249) {
         alert('评论内容字数不能超过249个字！');
       }
-      else if ($scope.resultCourseDetail.BrowseScore < 100) {
+      /*else if ($scope.resultCourseDetail.BrowseScore < 100) {
         alert('课程为学完不可评论，请学完课程！');
-      } else {
+      }*/else if (!editCommentParams.rate){
+        alert('请选择评分！');
+      }else {
         $loading.start('playComment');
         commonService.getData(ALL_PORT.CourseCommentAdd.url, 'POST', editCommentParams)
           .then(function (response) {

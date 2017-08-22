@@ -22,7 +22,7 @@
           </div>
           <div class="list" ng-repeat="rankCourseClickList in rankCourseClick.ListData"  ng-class="{'rankListBg':$index%2!=0}">
             <span class="list2">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
-            <span class="list6" title="{{rankCourseClickList.Name}}"><a ui-sref="courseDetails({Id:rankCourseClickList.Id})" target="_blank">{{rankCourseClickList.Name}}</a></span>
+            <span class="list6 ellipsis" title="{{rankCourseClickList.Name}}"><a ui-sref="courseDetails({Id:rankCourseClickList.Id})" target="_blank">{{rankCourseClickList.Name}}</a></span>
             <span class="list2">{{rankCourseClickList.Total}}</span>
           </div>
         </div>

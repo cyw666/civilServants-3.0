@@ -2,13 +2,14 @@
   <div class="exam_top">
     <img src="/images/poll_top.png" />
   </div>
+  <div><h2 class="text-center">{{examData.Exam.Name}}</h2></div>
   <form method="post" id="editForm" name="editForm">
     <input type="hidden" value="{{examData.examid}}" id="hdnexamid" name="hdnexamid" />
     <input type="hidden" value="{{examData.isfixed}}" id="hdnisfixed" name="hdnisfixed"/>
     <table class="table" cellpadding="0" cellspacing="0" style="width:100%;">
       <tbody>
       <tr ng-show="checkingQuestions">
-        <td class="biaoti">类型一</td>
+        <!--<td class="biaoti">类型一</td>-->
       </tr>
       <tr ng-show="checkingQuestions" ng-repeat="checkques in checkingQuestions" ng-init="outerIndex0 = $index">
         <td>
@@ -25,7 +26,7 @@
         </td>
       </tr>
       <tr ng-show="singleQuestions">
-        <td class="biaoti">类型二</td>
+        <!--<td class="biaoti">类型二</td>-->
       </tr>
       <tr ng-show="singleQuestions" ng-repeat="singles in singleQuestions" ng-init="outerIndex1 = $index">
         <td>
@@ -42,7 +43,7 @@
         </td>
       </tr>
       <tr ng-show="multipleQuestions">
-        <td class="biaoti">类型三</td>
+        <!--<td class="biaoti">类型三</td>-->
       </tr>
       <tr ng-show="multipleQuestions" ng-repeat="multques in multipleQuestions"  ng-init="outerIndex2 = $index">
         <td>
@@ -60,7 +61,7 @@
       </tr>
       <tr>
         <td align="center" style="text-align: center">
-          <input ng-click="submitForm()" type="button" id="btnSave" class="btn" value="提交" />
+          <input ng-click="submitForm()" type="button" class="btn" value="提交" />
         </td>
       </tr>
       </tbody>

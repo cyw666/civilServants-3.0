@@ -11,10 +11,9 @@
       <li><a ui-sref="main">首页</a></li>
       <li class="active">{{pollListData.TitleNav}}</li>
     </ol>
-    <form class="form-inline formCourse">
+    <form class="form-inline formSearch">
       <div class="form-group">
         <input ng-model="searchTitle" type="text" class="form-control"
-               style="width: 400px;"
                my-placeholder
                placeholder="请输入要搜索的问卷">
       </div>
@@ -25,14 +24,14 @@
         <div class="tab-content">
           <div class="tab-panel perlist">
             <div class="title_bar">
-              <span class="list3">问卷名称</span>
-              <span class="list3">参加</span>
-              <span class="list3">详情</span>
+              <span class="list4">问卷名称</span>
+              <span class="list4">参加</span>
+              <!--<span class="list3">详情</span>-->
             </div>
             <div class="list" ng-repeat="pollList in pollListData.Model.UnfinishModel">
-              <span class="list3 ellipsis" title="{{pollList.Name}}"><a ui-sref="poll({Id:pollList.Id})" target="_blank">{{pollList.Name}}</a></span>
-              <span class="list3"><a ui-sref="poll({Id:pollList.Id})" target="_blank">参加</a></span>
-              <span class="list3"><a ui-sref="pollreview({parameter1:pollList.Id,parameter2:0})" target="_blank">查看详情</a></span>
+              <span class="list4 ellipsis" title="{{pollList.Name}}"><a ng-click="havTest(pollList.Id)">{{pollList.Name}}</a></span>
+              <span class="list4"><a ng-click="havTest(pollList.Id)">参加</a></span>
+              <!--<span class="list3"><a ui-sref="pollreview({parameter1:pollList.Id,parameter2:0})" target="_blank">查看详情</a></span>-->
             </div>
           </div>
         </div>

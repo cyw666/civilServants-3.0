@@ -8,7 +8,7 @@
  * Controller of the luZhouApp
  */
 angular.module('luZhouApp')
-  .controller('ClasslistCtrl', function ($scope, $location, $rootScope, $cookieStore, commonService, $timeout, $loading,$stateParams) {
+  .controller('ClasslistCtrl', function ($scope, $location,$state, $rootScope, $cookieStore, commonService, $timeout, $loading,$stateParams) {
     //loading
     $loading.start('courseClassify');
     $loading.start('classMy');
@@ -86,20 +86,24 @@ angular.module('luZhouApp')
 
     //查看用户权限
     $scope.checkUserClass = function(id) {
+      //打开一个不被拦截的新窗口
+      var newWindow = window.open('about:blank', '_blank');
       commonService.getData(ALL_PORT.CheckUserClass.url, 'POST',
         $.extend({}, ALL_PORT.CheckUserClass.data, { trainingId: id }))
         .then(function(response) {
           if (response.Type === 0) {
+            newWindow.close();
             alert("请先加入培训班!");
           } else {
-            window.open('#/trainingClass/classDetail/' + id);
+            var examUrl = $state.href('classDetail',{Id:id});
+            newWindow.location.href = examUrl;
           }
         });
     };
     //班级报名
     $scope.addClass = function(id) {
-      commonService.getData(ALL_PORT.ApplyClass.url, 'POST',
-        $.extend({}, ALL_PORT.ApplyClass.data, { trainingId: id }))
+      commonService.getData(ALL_PORT.UpdateTrainingStudentup.url, 'POST',
+        $.extend({}, ALL_PORT.UpdateTrainingStudentup.data, { Id: id }))
         .then(function(response) {
           alert(response.Message);
           $scope.getClassList();

@@ -1,14 +1,13 @@
 <div class="header">
   <div class="headerContent container_24">
-    <p class="grid_16">欢迎来到干部教育网络学院！</p>
-    <p class="grid_8 pad_left_45">
+    <p class="grid_15">欢迎来到干部教育网络学院！</p>
+    <p class="grid_9 pad_left_25">
       <a ng-click="addFavorite()">收藏本站</a> |
       <a ui-sref="messageList">在线留言</a> |
       <a ng-click="setHome($event.target)">设为首页</a> |
       <a ui-sref="articleDetail({ID:'31'})">联系我们</a>
       <span class="phone">
-        <img src="../images/phone.png" alt="">
-        400-222-666
+        <img src="../images/phone.png" alt="">0571-28990788
       </span>
     </p>
   </div>
@@ -36,13 +35,15 @@
       <p class="pull-left">
         <img class="redFlag" src="../images/redFlag.png" alt="">
       </p>
-      <p class="pull-left appImg">
-        <img src="../images/appImg.png" alt=""> <br>
+      <p class="pull-left Img appImg">
+        <img class="smAppImg" src="../images/appImg.png" alt=""> <br>
         <span>下载手机APP</span>
+        <img class="bigAppImg" src="../images/appImg.png"/>
       </p>
-      <p class="pull-left appImg">
-        <img src="../images/weiXinImg.png" alt=""> <br>
+      <p class="pull-left Img weiXinImg">
+        <img class="smWeixinImg" src="../images/weiXinImg.jpg" alt=""> <br>
         <span>关注公众号</span>
+        <img class="bigWeiXinImg" src="../images/weiXinImg.jpg"/>
       </p>
     </li>
   </ul>
@@ -77,9 +78,8 @@
     position: relative;
     top: -2px;
   }
-
   .headerSearch {
-    height: 100px;
+    height: 110px;
   }
 
   .headerSearch li .logoImg {
@@ -132,21 +132,43 @@
   }
 
   .headerSearch .redFlag {
-    margin: 30px 0 0 70px;
+    margin: 30px 0 0 15px;
   }
-  .headerSearch .appImg {
-    margin-top: 9px;
+  .headerSearch .Img {
     text-align: center;
-    padding: 0 15px;
+    padding: 0 20px;
+    margin-top: 5px;
+    position: relative;
   }
-  .headerSearch .appImg span{
+  .headerSearch .Img span{
     font-size: 12px;
     color: #333;
   }
-  .headerSearch .appImg img{
-    width: 61px;
-    height: 61px;
+  .headerSearch .Img .smAppImg,.headerSearch .Img .smWeixinImg{
+    width: 80px;
+    height: 80px;
   }
-
+  .headerSearch .appImg:hover .bigAppImg,.headerSearch .weiXinImg:hover .bigWeiXinImg{
+    visibility: visible;
+    opacity: 1;
+    transition:all 1s;
+    -moz-transition:all 1s; /* Firefox 4 */
+    -webkit-transition:all 1s; /* Safari and Chrome */
+    -o-transition:all 1s; /* Opera */
+  }
+  .bigAppImg ,.bigWeiXinImg{
+    position: absolute;
+    left: 10px;
+    top: 0;
+    z-index: 99999;
+    width: 120px;
+    height: 120px;
+    visibility: hidden;
+    opacity: 0;
+    transition:all 1s;
+    -moz-transition:all 1s; /* Firefox 4 */
+    -webkit-transition:all 1s; /* Safari and Chrome */
+    -o-transition:all 1s; /* Opera */
+  }
 </style>
 

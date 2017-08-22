@@ -28,9 +28,8 @@ angular.module('luZhouApp')
           $scope.examAllScore1 = commonService.examAllScore;
         }else {
           alert(response.Message);
-          window.close();
+          window.open("about:blank","_top").close();
         }
-
 
       });
     //倒计时
@@ -70,19 +69,25 @@ angular.module('luZhouApp')
       if (str2 == "类型三题、") { str2 = ""; }
       if (e == "1"||((str0 + str1 + str2) === "" || ((str0 + str1 + str2) !== "" && confirm(str0 + str1 + str2 + "未答,是否提交?")))) {
         var params = $("#editForm").serialize();
-        commonService.getData(ALL_PORT.PostExam.url, 'POST', params)
-          .then(function (response) {
-            if (response.Type == 1) {
-              alert(response.Message);
-              $state.go('pollreview',{parameter1:Id,parameter2:response.Value});
-
-            } else {
-              alert(response.Message);
-            }
-          },function (error) {
-            alert("提交失败！");
-            window.close();
-          });
+  
+        $http({
+          method: 'POST',
+          url: ALL_PORT.PostExam.url,
+          data: params,
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+          }
+        }).success(function(response) {
+          if (response.Type == 1) {
+            alert(response.Message);
+            $state.go('pollreview',{parameter1:Id,parameter2:response.Value});
+          } else {
+            alert(response.Message);
+          }
+        }).error(function(error, status) {
+          alert("提交失败！");
+          window.close();
+        });
 
       }
     };

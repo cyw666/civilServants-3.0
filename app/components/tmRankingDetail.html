@@ -24,7 +24,7 @@
           </div>
           <div class="list" ng-repeat="govermentRankingList in govermentRanking.ListData"  ng-class="{'rankListBg':$index%2!=0}">
             <span class="list2">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
-            <span class="list2" title="{{govermentRankingList.DepartmentName}}">{{govermentRankingList.DepartmentName}}</span>
+            <span class="list2 ellipsis" title="{{govermentRankingList.DepartmentName}}">{{govermentRankingList.DepartmentName}}</span>
             <span class="list2">{{govermentRankingList.Average}}</span>
             <span class="list2">{{govermentRankingList.Credit}}</span>
             <span class="list2">{{govermentRankingList.UserCount}}</span>

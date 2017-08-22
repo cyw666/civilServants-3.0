@@ -1,0 +1,79 @@
+
+<!--通知列表-->
+<div class="articleList">
+  <div class="com-header clearfix">
+    <p class="title pull-left">
+      <img src="../images/headerLeftIcon.png" alt="图标">
+      <span ng-show="noticeListData.CategoryName">{{noticeListData.CategoryName}}</span>
+      <span ng-hide="noticeListData.CategoryName">{{noticeListData.TitleNav}}</span>
+    </p>
+  </div>
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition">您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li class="active">
+        <span ng-show="noticeListData.CategoryName">{{noticeListData.CategoryName}}</span>
+        <span ng-hide="noticeListData.CategoryName">{{noticeListData.TitleNav}}</span>
+      </li>
+    </ol>
+    <form class="form-inline formSearch">
+      <div class="form-group">
+        <input ng-model="searchTitle" type="text" class="form-control"
+               my-placeholder
+               placeholder="请输入搜索关键词">
+      </div>
+      <button type="submit" class="btn btn-default" ng-click="getNoticeList({page:1,search:searchTitle})">搜索</button>
+    </form>
+    <!--<div class="articleListSearch">
+      <input type="text" ng-model="searchTitle" my-placeholder placeholder="请输入搜索关键词">
+      <button class="btn btn-default" ng-click="getNoticeList({page:1,search:searchTitle})">搜索</button>
+    </div>-->
+    <div dw-loading="articleList" class="mar_top_20">
+      <table class="table" ng-show="paginationConf.totalItems">
+        <tr>
+          <th class="titleName">文章名称</th>
+          <th class="titleDate">发布日期</th>
+        </tr>
+        <tr ng-repeat="listData in noticeListData.ListData | filter:{Name:search}">
+          <td><img src="images/arrow.png" alt=""><a ui-sref="noticeDetail({ID:listData.Id})" title="{{listData.Name}}" target="_blank">{{listData.Name}}</a></td>
+          <td class="listDate">{{listData.CreateDate | dateFilter | date:'yyyy/MM/dd-HH:mm:ss'}}</td>
+        </tr>
+      </table>
+      <div ng-show="paginationConf.totalItems" class="mar_top_5" tm-pagation conf="paginationConf"></div>
+      <p ng-show="!paginationConf.totalItems" class="result">暂无数据</p>
+    </div>
+  </div>
+</div>
+<style>
+  .articleList .titleName{
+    width: 500px;
+  }
+  .articleList th{
+    font-weight: bold;
+    background-color: #EDF3FC;
+  }
+  .articleList td img{
+    margin: 0 10px;
+  }
+  .articleList td a{
+    display: inline-block;
+    width: 458px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .articleList td img,.articleList td a{
+    vertical-align: middle;
+  }
+  .articleList .titleName,.articleList .titleDate,.articleList .listDate{
+    text-align: center;
+  }
+  .articleListHeader > h1{
+    line-height:49px;
+    padding-left: 49px;
+    font-size: 22px;
+    color: #000;
+  }
+</style>
+

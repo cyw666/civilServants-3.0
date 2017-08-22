@@ -20,14 +20,14 @@
             <span class="list2">姓名</span>
             <span class="list2">学时</span>
             <span class="list2">学次</span>
-            <span class="list2 ellipsis">单位名称</span>
+            <span class="list2">单位名称</span>
           </div>
           <div class="list" ng-repeat="userRankingDataList in userRankingData.ListData"  ng-class="{'rankListBg':$index%2!=0}">
               <span class="list2">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
               <span class="list2">{{userRankingDataList.UserName}}</span>
               <span class="list2">{{userRankingDataList.Credit}}</span>
               <span class="list2">0</span>
-              <span class="list2">{{userRankingDataList.DepartmentName}}</span>
+              <span class="list2 ellipsis">{{userRankingDataList.DepartmentName}}</span>
           </div>
         </div>
       </div>

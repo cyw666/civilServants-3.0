@@ -13,7 +13,7 @@
       <li><a ui-sref="personalCenter">个人中心</a></li>
       <li class="active">{{examStatData.TitleNav}}</li>
     </ol>
-    <form class="form-inline formCourse">
+    <form class="form-inline formSearch">
       <span>查询时间：</span>
       <div class="form-group">
         <input type="text" ng-model="startTime" date-time-picker class="datebg">
@@ -58,8 +58,11 @@
     padding: 2px 14px;
     margin-left: 10px;
   }
-  .examStat .formCourse input {
+  .examStat .formSearch input {
     width: 200px;
+  }
+  .examStat .formSearch .form-group {
+    width: auto;
   }
 </style>
 

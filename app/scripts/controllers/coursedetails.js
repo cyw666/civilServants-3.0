@@ -98,5 +98,14 @@ angular.module('luZhouApp')
       };
       $scope.getComment(pageOptions);
     });
-
+    
+    //相关课程
+    $scope.getRelatedCourse = function () {
+      var params = $.extend({}, ALL_PORT.RelatedCourse.data, {Page: 1, Rows: 10 ,CourseId:$scope.Id})
+      commonService.getData(ALL_PORT.RelatedCourse.url, 'POST',params)
+        .then(function (response) {
+          $scope.relatedCourseData = response.Data.CourseResult;
+        });
+    }
+    $scope.getRelatedCourse();
   });

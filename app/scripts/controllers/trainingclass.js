@@ -8,7 +8,7 @@
  * Controller of the luZhouApp
  */
 angular.module('luZhouApp')
-  .controller('TrainingclassCtrl', function ($scope, $location, $rootScope, $cookieStore, commonService, $timeout, $loading) {
+  .controller('TrainingclassCtrl', function ($scope, $location,$state, $rootScope, $cookieStore, commonService, $timeout, $loading) {
     $scope.showInput1 = true;
     $scope.showInput2 = false;
     $scope.showInput3 = false;
@@ -97,14 +97,17 @@ angular.module('luZhouApp')
 
     //查看用户权限
     $scope.checkUserClass = function (id) {
+      //打开一个不被拦截的新窗口
+      var newWindow = window.open('about:blank', '_blank');
       commonService.getData(ALL_PORT.CheckUserClass.url, 'POST',
         $.extend({}, ALL_PORT.CheckUserClass.data, {trainingId: id}))
-
         .then(function (response) {
           if (response.Type === 0) {
+            newWindow.close();
             alert("请先加入培训班!");
           } else {
-            window.open('#/trainingClass/classDetail/' + id);
+            var examUrl = $state.href('classDetail',{Id:id});
+            newWindow.location.href = examUrl;
           }
         });
     };

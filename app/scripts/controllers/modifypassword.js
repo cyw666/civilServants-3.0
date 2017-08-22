@@ -27,7 +27,6 @@ angular.module('luZhouApp')
             $.extend({}, ALL_PORT.UpdatePwd.data, {NewPwd: $scope.txtNewPwd, OldPwd: $scope.txtOldPwd}, $scope.token))
             .then(function (response) {
               alert(response.Message);
-              window.location.reload();
             });
         }
       };

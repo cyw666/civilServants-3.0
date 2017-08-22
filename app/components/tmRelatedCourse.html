@@ -1,0 +1,104 @@
+<!--相关课程-->
+
+<div class="relatedCourse">
+  <!--{{relatedCourseData}}-->
+  <div class="title">
+    <h3>相关课程</h3>
+  </div>
+  <ul class="clearfix">
+    <li ng-repeat="courseCenterData in relatedCourseData">
+      <a ui-sref="courseDetails({Id:courseCenterData.Id})" title="{{courseCenterData.Name}}" target="_blank">
+        <img ng-src="{{imageCourse+'/'+courseCenterData.Img}}" err-Src="images/notCourse.png" alt="">
+      </a>
+      <!--<div ng-if="$index<2" class="hotCourse">
+        <p class="bg"></p>
+        <p class="content">
+          <img src="../images/hotIcon.png" alt="">
+          <span>{{courseCenterData.ClickCount}}次</span>
+        </p>
+      </div>-->
+      <div class="mar_top_10 desc">
+        <p><a ui-sref="courseDetails({Id:courseCenterData.Id})" title="{{courseCenterData.Name}}" target="_blank">{{courseCenterData.Name}}</a>
+        </p>
+        <p class="clearfix"><span class="pull-left">讲师：{{courseCenterData.Teacher}}</span><span
+          class="red pull-right">学分：{{courseCenterData.Credit.toFixed(1)}}分</span></p>
+        <p>时长：{{courseCenterData.Time}}小时</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<style>
+  .relatedCourse {
+    min-height: 280px;
+  }
+
+  .relatedCourse .title{
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+  .relatedCourse .title h3{
+    color: #333;
+    padding:10px 15px;
+    font-size: 16px;
+  }
+  .relatedCourse ul {
+    margin: 20px 0;
+  }
+  .relatedCourse ul li {
+    float: left;
+    margin-left: 33px;
+    min-height: 200px;
+    width: 200px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .relatedCourse ul li .desc p {
+    line-height: 23px;
+    max-width: 190px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #999;
+  }
+  .relatedCourse ul li .desc p a{
+    font-size: 16px;
+    color: #003333;
+  }
+  .relatedCourse ul li .desc p a:hover{
+    color: #62a3db;
+  }
+
+  .relatedCourse ul li .hotCourse {
+    position: absolute;
+    left: 10px;
+    top: 100px;
+    color: #fff;
+    font-size: 12px;
+  }
+  .relatedCourse ul li .hotCourse .bg{
+    width: 66px;
+    height: 20px;
+    background-color: #000;
+    filter:alpha(opacity=40);
+    -moz-opacity:0.4;
+    -khtml-opacity: 0.4;
+    opacity: 0.4;
+  }
+  .relatedCourse ul li .hotCourse .content{
+    position: absolute;
+    top:3px;
+    left: 5px;
+  }
+  .relatedCourse ul li .hotCourse img{
+    position: relative;
+    top: -1px;
+  }
+
+  .relatedCourse ul li a img {
+    width: 200px;
+    height: 127px;
+  }
+</style>

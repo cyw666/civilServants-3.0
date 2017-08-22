@@ -12,13 +12,12 @@
       <li><a ui-sref="main">首页</a></li>
       <li class="active">个人中心</li>
     </ol>
-    <form class="form-inline formCourse">
+    <form class="form-inline formSearch">
       <select class="form-control" ng-init="selectedName = courseStatus[0]" ng-model="selectedName"
               ng-options="x.name for x in courseStatus" ng-change="selectChangeFun(selectedName.id)">
       </select>
       <div class="form-group">
         <input ng-model="searchTitle" type="text" class="form-control"
-               style="width: 400px;"
                my-placeholder
                placeholder="请输入要搜索的课程">
       </div>

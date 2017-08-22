@@ -36,6 +36,13 @@ angular
         controllerAs: 'courseCenter',
         data: {title: "课程中心"}
       })
+      .state('noticelist', {
+        url: '/noticelist',
+        data: {title: "通知公告"},
+        templateUrl: 'views/noticelist.html',
+        controller: 'NoticelistCtrl',
+        controllerAs: 'noticeList'
+      })
       .state('courseCenterBuy', {
         url: '/courseCenterBuy',
         data: {title: "课程中心"},
@@ -555,7 +562,7 @@ angular
       })
     $urlRouterProvider.otherwise('/');
     // $locationProvider.html5Mode(true);
-
+    
     /*$routeProvider
      .when('/main', {
      templateUrl: 'views/main.html',
@@ -938,19 +945,24 @@ angular
      controllerAs: 'tryPlay'
      })
      .when('/specialLearningOne', {
-       templateUrl: 'views/speciallearningone.html',
-       controller: 'SpeciallearningoneCtrl',
-       controllerAs: 'specialLearningOne'
+     templateUrl: 'views/speciallearningone.html',
+     controller: 'SpeciallearningoneCtrl',
+     controllerAs: 'specialLearningOne'
      })
      .when('/trainingClass', {
-       templateUrl: 'views/trainingclass.html',
-       controller: 'TrainingclassCtrl',
-       controllerAs: 'trainingClass'
+     templateUrl: 'views/trainingclass.html',
+     controller: 'TrainingclassCtrl',
+     controllerAs: 'trainingClass'
+     })
+     .when('/noticeList', {
+     templateUrl: 'views/noticelist.html',
+     controller: 'NoticelistCtrl',
+     controllerAs: 'noticeList'
      })
      .otherwise({
      redirectTo: '/main'
      });*/
-
+    
     $httpProvider.defaults.headers.post = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
     };
@@ -959,14 +971,14 @@ angular
   .run(function ($rootScope, $location, $http, $state, $loading) {
     /* 监听路由的状态变化 */
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-
+      
       $rootScope.rememberName = toState.name;
       $rootScope.rememberParams = JSON.stringify(toParams);
       if (toState.name == 'main')return;// 首页
       if (toState.name == 'userLogin')return;// 登录界面
       if (toState.name == 'userRegister')return;// 注册界面
       if (toState.name == 'forgetPassword')return;//忘记密码
-
+      
       $.ajax({
         type: "POST",
         async: false,
@@ -1016,7 +1028,7 @@ angular
           $state.go('main');
         }
       });
-
+      
     });
     /* 路由状态变化成功 */
     $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
@@ -1033,7 +1045,7 @@ angular
         text: '',
       });
     });
-
+    
     //当视图开始加载，DOM渲染完成之前触发
     $rootScope.$on('$viewContentLoading', function (event, viewConfig) {
       if (!!$state.current.data) {
@@ -1042,10 +1054,10 @@ angular
         $rootScope.pageTitle = '干部教育网络学院';
       }
     });
-
+    
     /*//当视图加载完成，DOM渲染完成之后触发
      $rootScope.$on('$viewContentLoaded',function(event, viewConfig){
      // console.log(event,viewConfig);
-
+     
      });*/
   });

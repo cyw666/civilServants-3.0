@@ -1451,7 +1451,7 @@
         r = "Adobe SiteCatalyst Error: Could not find Media Module"
       }
 
-      var c = l.repo(), m = l.extend({}, e.defaults), b = l.extend({}, m, f.config), p = f.config, h = b.plugins, q = b.analytics, n = "/jwplayer/jwpsrv.js", k = "./sharing.js", j = "./related.js", u = "./gapro.js", m = e.key ? e.key : m.key, t = (new e.utils.key(m)).edition(), r, h = h ? h : {};
+      var c = l.repo(), m = l.extend({}, e.defaults), b = l.extend({}, m, f.config), p = f.config, h = b.plugins, q = b.analytics, n = "./jwpsrv.js", k = "./sharing.js", j = "./related.js", u = "./gapro.js", m = e.key ? e.key : m.key, t = (new e.utils.key(m)).edition(), r, h = h ? h : {};
       "ads" == t && b.advertising && (g.test(b.advertising.client) ? h[b.advertising.client] = b.advertising : h[c + b.advertising.client +
         ".js"] = b.advertising);
       delete p.advertising;

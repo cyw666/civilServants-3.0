@@ -13,7 +13,7 @@
       <li><a ui-sref="personalCenter">个人中心</a></li>
       <li class="active">学习统计</li>
     </ol>
-    <form class="form-inline formCourse">
+    <form class="form-inline formSearch">
       <span>查询时间：</span>
       <div class="form-group">
         <input type="text" id="startTime" ng-model="startTime" date-time-picker class="datebg">
@@ -58,6 +58,9 @@
   .studyStat .btn.btn-danger{
     padding: 2px 14px;
     margin-left: 10px;
+  }
+  .studyStat .formSearch .form-group {
+    width: auto;
   }
 </style>
 

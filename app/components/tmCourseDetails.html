@@ -126,7 +126,10 @@
               <span>课程节点:</span>
             </td>
             <td colspan="3" class="listtb5">
-              <div class="jiedian">
+              <div ng-if="courseDetailsData.ListData.length==0">
+                未学时间点：<span class="red">{{courseDetailsData.CourseModel.Remainder}}</span> 分钟
+              </div>
+              <div ng-if="courseDetailsData.ListData.length>0" class="jiedian">
                 <div class="bar"><span class="number">节点编号</span><span class="name">节点名称</span><span class="tishi">（注：灰色为已学，红色为未学）</span>
                 </div>
                 <div class="jdcontext">
@@ -171,11 +174,16 @@
           </div>
         </div>
       </div>
+      <div tm-related-course related-course-data="relatedCourseData"></div>
     </div>
   </div>
 </div>
 
 <style>
+  .courseDetails .table-bordered {
+    border-left: none;
+    border-right: none;
+  }
   .listtb2 .progress {
     width: 150px;
     margin-top: 0;
@@ -217,6 +225,10 @@
   .panel-body .table tr,.panel-body .table th{
     text-align: center;
   }
+  .panel-body .table th {
+    font-size: 15px;
+    color: #333;
+  }
   .panel-body .table .name{
     width: 20%;
   }
@@ -225,5 +237,15 @@
   }
   .panel-body .table .time{
     width: 20%;
+  }
+  .courseComment .panel {
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+  .courseComment .panel-default > .panel-heading {
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
   }
 </style>
