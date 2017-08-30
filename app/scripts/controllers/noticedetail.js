@@ -37,6 +37,7 @@ angular.module('luZhouApp')
 
         //收藏
         $scope.favoriteAdd = function(options, token) {
+          debugger
             var params = $.extend({}, ALL_PORT.FavoriteAdd.data, options, token)
             commonService.getData(ALL_PORT.FavoriteAdd.url, 'POST',
                     params)
@@ -64,7 +65,6 @@ angular.module('luZhouApp')
       //缩小字体
       $scope.reduceFont = function () {
         $scope.fontSize--;
-        var fontSize;
         if ($scope.fontSize < 12) {
           $scope.fontSize = 12;
         }

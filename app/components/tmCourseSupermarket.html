@@ -20,10 +20,13 @@
       </select>
       <div class="form-group">
         <input ng-show="showInput1" my-placeholder ng-model="searchTitle1" type="text" class="form-control" placeholder="请输入要搜索的课程">
-        <select class="form-control" ng-show="showInput2"  ng-init="searchTitle2 = videoType[0]" ng-model="searchTitle2" ng-options="x.name for x in videoType"  ng-change="judgement(selectedName.id)"></select>
+        <div ng-show="showInput2">
+          <select class="form-control"  ng-init="searchTitle2 = videoType[0]" ng-model="searchTitle2" ng-options="x.name for x in videoType"  ng-change="judgement(selectedName.id)"></select>
+          <input my-placeholder ng-model="searchTitle22" type="text" class="form-control searchType" placeholder="请输入要搜索的课程">
+        </div>
         <input ng-show="showInput3" my-placeholder ng-model="searchTitle3" type="text" class="form-control" placeholder="请输入主讲人">
       </div>
-      <button ng-hide="showInput2" type="submit" class="btn btn-default" ng-click="judgement(selectedName.id)">搜索</button>
+      <button type="submit" class="btn btn-default" ng-click="judgement(selectedName.id)">搜索</button>
     </form>
     <div class="courseList  mar_top_15 clearfix" dw-loading="courseSupermarket">
       <div class="sortCourse clearfix">
@@ -98,8 +101,8 @@
   .courseSupermarket a:hover {
     color: #0f0f0f;
   }
-  .courseSupermarket .form-group input {
-    /*width: 550px;*/
+  .courseSupermarket .formSearch input.searchType{
+    width: 85%;
   }
   .courseSupermarket .tag {
     float: left;

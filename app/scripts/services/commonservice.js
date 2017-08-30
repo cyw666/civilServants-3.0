@@ -631,10 +631,10 @@ angular.module('luZhouApp')
     //限制多次提交
     this.limitSubmit = function (callback) {
       if (!limitTime) {
-        limitTime = 3;
+        limitTime = 1;
         $timeout(function () {
           limitTime = 0;
-        }, 3000);
+        }, 1000);
         callback();
       } else {
         alert("提交过于频繁，请5秒后再试！");

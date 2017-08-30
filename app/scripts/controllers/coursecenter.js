@@ -112,7 +112,7 @@ angular.module('luZhouApp')
           sort: sort,
           order: order,
           teacher: '',
-          title: ''
+          title: $scope.searchTitle22
         });
       } else if (id == 3) {
         $scope.showInput1 = false;

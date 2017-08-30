@@ -417,13 +417,15 @@ h4.title-h4{
 }
 /*星星*/
 .star {
+  display: inline-block;
   overflow: hidden;
   cursor: pointer;
   width: 121px;
   height: 18px;
   margin-right: 14px;
   /*float: left;*/
-  background: url(../images/star_all.gif) 0 0 no-repeat;
+  background: url(../images/star_all.png) 0 0 no-repeat;
+  vertical-align: middle;
 }
 /*验证码*/
 .verificationCode {
@@ -465,10 +467,11 @@ h4.title-h4{
   height: 18px;
   margin-top: 9px;
   margin-bottom: 0;
+  background-color: #c5c5c5;
 }
-.progress .progress-bar{
+/*.progress .progress-bar{
   color: #333;
-}
+}*/
 /*购物车头部*/
 .shoppingTitle{
   text-align: left;

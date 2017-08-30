@@ -18,7 +18,7 @@
             <div style="clear:both"><span><a href="#"></a></span></div>
           </div>
           <span class="star" style="background-position-x: -{{resultCourseDetail.StudentGrade*2*121}}px;"></span><span>{{resultCourseDetail.StudentGrade}}</span>
-          <div id="BrowseScore" class="clearfix">
+          <div class="BrowseScore clearfix">
             <span class="pull-left">课程进度：</span>
             <span class="list2 pull-left">
               <div class="progress">
@@ -166,10 +166,6 @@
     white-space: nowrap;
     text-align: left;
   }
-  .class_info .star {
-    color: #cadc03;
-    display: inline-block;
-  }
 
 
   .play .myTab .nav li{
@@ -227,11 +223,13 @@
   .playPage form button.btn{
     margin-right: 5%;
   }
-
-  #BrowseScore .list2 {
+  .BrowseScore {
+    padding: 5px 0;
+  }
+  .BrowseScore .list2 {
     width: 150px;
   }
-  #BrowseScore .list2 .progress{
+  .BrowseScore .list2 .progress{
     margin-top: 0;
   }
 </style>

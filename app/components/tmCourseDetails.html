@@ -16,7 +16,7 @@
     <div class="long cur_center" dw-loading="courseDetails">
       <div class="titlebg2">
         <div class="txt">
-          课程信息
+          课程详情
         </div>
       </div>
       <div class="content cur_detail">
@@ -27,21 +27,19 @@
               <span>课程名称：</span>
             </td>
             <td class="listtb2 cur_title">
-              <strong>{{courseDetailsData.CourseModel.Name}}</strong>
+              <strong>{{courseDetailsData.CourseModel.Name}} &nbsp;&nbsp;&nbsp;</strong>
               <a ng-if="courseDetailsData.CourseModel.FavoriteId==0"
                  ng-click="favoriteAdd({mainId:courseDetailsData.CourseModel.Id,type:'Course',title:courseDetailsData.CourseModel.Name,remark:'0'},token);"
-                 href="javascript:;" class="red favoriteadd">[收藏]</a>
+                 class="red favoriteadd"><span class="glyphicon glyphicon-heart" style="font-size: 15px" aria-hidden="true"></span> &nbsp;收藏</a>
               <a ng-if="courseDetailsData.CourseModel.FavoriteId!=0"
-                 ng-click="favoriteDelete({id:courseDetailsData.CourseModel.FavoriteId},token);" href="javascript:;"
-                 class="red favoritedel">[取消收藏]</a>
+                 ng-click="favoriteDelete({id:courseDetailsData.CourseModel.FavoriteId},token);"
+                 class="red favoritedel"><span class="glyphicon glyphicon-heart" style="font-size: 15px" aria-hidden="true"></span> &nbsp;取消收藏</a>
             </td>
             <td class="listtb3">
               <span>学员评分：</span>
             </td>
-            <td class="listtb4">
-              <span class="star"
-                    style="background-position-x: -{{courseDetailsData.CourseModel.StudentGrade*121}}px;"></span><span
-              style="color:#EA4646 !important">{{courseDetailsData.CourseModel.StudentGrade}}</span>
+            <td class="listtb4 starGroup">
+              <span class="star" style="background-position-x: -{{courseDetailsData.CourseModel.StudentGrade*2*121}}px;"></span>{{courseDetailsData.CourseModel.StudentGrade.toFixed(1)}}
             </td>
           </tr>
           <tr>
@@ -52,10 +50,9 @@
               <a ui-sref="courseCenter({channelId:courseDetailsData.CourseModel.ChannelId})">{{courseDetailsData.CourseModel.ChannelName}}</a>
             </td>
             <td class="listtb3">
-              <span>评论：</span>
+              <span>学员评论：</span>
             </td>
-            <td class="listtb4"><span>已有<span
-              style="color:#EA4646 !important">{{courseDetailsData.Count}}</span>条评论</span></td>
+            <td class="listtb4"><span>已有<span>{{courseDetailsData.Count}}</span>条评论</span></td>
           </tr>
           <tr>
             <td class="listtb1">
@@ -67,7 +64,7 @@
             <td class="listtb3">
               <span>课程学时：</span>
             </td>
-            <td class="listtb4"><span style="color:#EA4646 !important">{{courseDetailsData.CourseModel.Credit}}</span>
+            <td class="listtb4"><span>{{courseDetailsData.CourseModel.Credit}}</span>
             </td>
           </tr>
           <tr>
@@ -75,7 +72,7 @@
               <span>时长：</span>
             </td>
             <td class="listtb2">
-              <span style="color:#EA4646 !important">{{courseDetailsData.CourseModel.Duration}}</span>
+              <span>{{courseDetailsData.CourseModel.Duration}}</span>
             </td>
             <td class="listtb3">
               <span>参加测试：</span>
@@ -103,11 +100,15 @@
             <td class="listtb3">
               <span>播放：</span>
             </td>
-            <td class="listtb4">
-              <a ng-if="courseDetailsData.CourseModel.BrowseScore>=0"
-                 ui-sref="play({Id:courseDetailsData.CourseModel.Id})" target="_blank" class="red">播放</a>
-              <a ng-if="courseDetailsData.CourseModel.BrowseScore < 0"
-                 ng-click="selectClass(courseDetailsData.CourseModel.Id);" class="red favoritedel">选课并播放</a>
+            <td class="listtb4 cur_title">
+              <a ng-if="courseDetailsData.CourseModel.BrowseScore>=0" ui-sref="play({Id:courseDetailsData.CourseModel.Id})" target="_blank">
+                <span class="glyphicon glyphicon-play-circle" style="font-size: 15px" aria-hidden="true"></span>
+                <span>点击播放</span>
+              </a>
+              <a ng-if="courseDetailsData.CourseModel.BrowseScore < 0" ng-click="selectClass(courseDetailsData.CourseModel.Id);" class="favoritedel">
+                <span class="glyphicon glyphicon-play-circle" style="font-size: 15px" aria-hidden="true"></span>
+                <span>选课并播放</span>
+              </a>
             </td>
           </tr>
           <tr>
@@ -130,15 +131,21 @@
                 未学时间点：<span class="red">{{courseDetailsData.CourseModel.Remainder}}</span> 分钟
               </div>
               <div ng-if="courseDetailsData.ListData.length>0" class="jiedian">
-                <div class="bar"><span class="number">节点编号</span><span class="name">节点名称</span><span class="tishi">（注：灰色为已学，红色为未学）</span>
+                <div class="bar"><span class="number">节点编号</span><span class="name">节点名称</span><span class="tishi">（注：<span class="glyphicon glyphicon-ok" style="font-size: 15px;color: #13cb00" aria-hidden="true"></span> 为已学，<span class="glyphicon glyphicon-ok" style="font-size: 15px;color: #c5c5c5;" aria-hidden="true"></span> 为未学）</span>
                 </div>
                 <div class="jdcontext">
                   <ul class="clearfix">
                     <li ng-repeat="nodeList in courseDetailsData.ListData">
-                      <span ng-hide="nodeList.IsFinish"> <span class="number" style="color:#EA4646 !important">{{nodeList.Code}}</span><span
-                        class="name" style="color:#EA4646 !important">{{nodeList.Name}} </span> </span>
-                      <span ng-show="nodeList.IsFinish"> <span class="number" style="color:#999 !important">{{nodeList.Code}}</span><span
-                        class="name" style="color:#999 !important">{{nodeList.Name}} </span> </span>
+                      <p ng-hide="nodeList.IsFinish">
+                        <span class="number">{{nodeList.Code}}</span>
+                        <span class="name">{{nodeList.Name}} </span>
+                        <span class="glyphicon glyphicon-ok pull-right" style="font-size: 15px;color: #c5c5c5" aria-hidden="true"></span>
+                      </p>
+                      <p ng-show="nodeList.IsFinish">
+                        <span class="number">{{nodeList.Code}}</span>
+                        <span class="name">{{nodeList.Name}} </span>
+                        <span class="glyphicon glyphicon-ok pull-right" style="font-size: 15px;color: #13cb00" aria-hidden="true"></span>
+                      </p>
                     </li>
                   </ul>
                 </div>
@@ -154,20 +161,25 @@
             <h3 class="panel-title">课程评论</h3>
           </div>
           <div class="panel-body">
-            <table class="table table-bordered">
-              <thead>
+            <table class="table">
+              <!--<thead>
               <tr>
                 <th class="name">用户名</th>
                 <th class="comment">评论内容</th>
                 <th class="time">评论时间</th>
               </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="commentList in resultComment.ListData">
-                  <td class="name">{{commentList.UserName}}</td>
-                  <td class="comment text-left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{commentList.Comment}}</td>
-                  <td class="time">{{commentList.CreateDate | dateFilter | date:'yyyy-MM-dd HH:mm:ss'}}</td>
-                </tr>
+              </thead>-->
+              <tbody  ng-repeat="commentList in resultComment.ListData" border="0">
+              <tr>
+                <td class="userImg"><img src="../images/userPortrait.png" alt="用户头像"></td>
+                <td class="user text-left" style="font-weight: 600">{{commentList.UserName}}</td>
+                <td class="time">发表于：{{commentList.CreateDate | dateFilter | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="comment text-left">{{commentList.Comment}}</td>
+                <td></td>
+              </tr>
               </tbody>
             </table>
             <div tm-pagation conf="paginationConf"></div>
@@ -180,13 +192,44 @@
 </div>
 
 <style>
-  .courseDetails .table-bordered {
-    border-left: none;
-    border-right: none;
+  .courseDetails .table > tbody{
+    border-bottom: 1px solid #ddd;
+  }
+  .courseDetails .table > tbody > tr > td{
+    padding-left: 25px;
+    border-top: none;
+    vertical-align:middle;
+  }
+  .courseDetails .starGroup span{
+    float: left;
+  }
+  .courseDetails .jdcontext p{
+    height: 27px;
+    line-height: 27px;
+  }
+  .courseDetails .jdcontext .number{
+    color: #999;
+  }
+  .courseDetails .jdcontext .name{
+    color: #333;
+    margin-left: 45px;
+  }
+  .courseDetails .jdcontext .glyphicon-ok{
+    margin-right: 65px;
   }
   .listtb2 .progress {
     width: 150px;
     margin-top: 0;
+  }
+  .cur_title a {
+    color: #ff3839;
+  }
+  .cur_title a .glyphicon {
+    position: relative;
+    top: 2px;
+  }
+  .cur_title a:hover {
+    color: #f50001;
   }
 
   .listtb3 a {
@@ -196,7 +239,7 @@
 
   .listtb1 {
     width: 20%;
-    text-align: right;
+    text-align: center;
   }
 
   tbody > tr > td.listtb1, tbody > tr > td.listtb3 {
@@ -209,7 +252,7 @@
 
   .listtb3 {
     width: 20%;
-    text-align: right;
+    text-align: center;
   }
 
   .listtb4 {
@@ -219,30 +262,53 @@
   .listtb5 .jiedian {
 
   }
+
   .listtb5 .bar {
     font-size: 15px;
+    height: 27px;
+    line-height: 27px;
   }
-  .panel-body .table tr,.panel-body .table th{
+  .panel-body{
+    padding-top: 0;
+  }
+  .panel-body .table tr, .panel-body .table th {
     text-align: center;
   }
+
   .panel-body .table th {
     font-size: 15px;
     color: #333;
   }
-  .panel-body .table .name{
-    width: 20%;
+
+  .panel-body .table .userImg {
+    width: 7%;
+    text-align: right;
   }
-  .panel-body .table .comment{
+
+  .panel-body .table .user {
     width: 60%;
+    color: #666;
   }
-  .panel-body .table .time{
+  .panel-body .table .comment {
+    width: 60%;
+    color: #333;
+    padding-bottom: 25px;
+  }
+
+  .panel-body .table .time {
     width: 20%;
+    color: #999;
+  }
+  .panel-body .table > tbody + tbody{
+    border:none;
+    border-bottom: 1px solid #ddd;
   }
   .courseComment .panel {
     border-left: none;
     border-right: none;
     border-radius: 0;
   }
+
   .courseComment .panel-default > .panel-heading {
     border-left: none;
     border-right: none;

@@ -85,7 +85,6 @@ angular.module('luZhouApp')
             $scope.justListData = response.Data;
           } else if ($scope.params.type == "immediately") {
             $scope.immediatelyListData = response.Data;
-
           } else if ($scope.params.type == "already") {
             $scope.alreadyListData = response.Data;
           }
