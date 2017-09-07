@@ -34,9 +34,9 @@ angular.module('luZhouApp')
     $scope.publishTopic = function () {
       var publishTopic = function () {
         if ($scope.title.length < 2) {
-          alert('输入标题字数请大于两个字符');
+          commonService.alertMs('输入标题字数请大于两个字符');
         } else if ($scope.categoryId === null) {
-          alert('请选择论文分类');
+          commonService.alertMs('请选择论文分类');
         } else {
           commonService.getData(ALL_PORT.ClassPublishArticle.url, 'POST', $.extend({}, ALL_PORT.ClassPublishArticle.data, {
             Type: 'Paper',
@@ -46,10 +46,10 @@ angular.module('luZhouApp')
             Content: $scope.content
           }, token)).then(function (response) {
             if (response.Type === 1) {
-              alert(response.Message);
+              commonService.alertMs(response.Message);
               $state.go('classDetail', {Id: $scope.Id});
             } else {
-              alert(response.Message);
+              commonService.alertMs(response.Message);
             }
           })
         }

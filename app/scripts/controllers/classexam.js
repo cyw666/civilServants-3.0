@@ -64,7 +64,7 @@ angular.module('luZhouApp')
                 .then(function(response) {
                     if (response.Type) {
                         //Type存在，意味着不能考试
-                        alert(response.Message);
+                        commonService.alertMs(response.Message);
                     } else {
                         // window.open("#/exam/exam/" + Id);
                       var newWindow = window.open('about:blank', '_blank');

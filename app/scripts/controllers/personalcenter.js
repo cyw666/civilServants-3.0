@@ -98,17 +98,17 @@ angular.module('luZhouApp')
       var editNote = function () {
         var editNoteParams = $.extend({}, ALL_PORT.AddNote.data, $scope.token, options);
         if (editNoteParams.Name.length < 2) {
-          alert('笔记名称字数不能少于2个字！');
+          commonService.alertMs('笔记名称字数不能少于2个字！');
         } else if (editNoteParams.Content.length < 7) {
-          alert('笔记内容字数不能少于7个字');
+          commonService.alertMs('笔记内容字数不能少于7个字');
         } else if (editNoteParams.Content.length >= 249) {
-          alert('笔记内容字数不能超过249个字');
+          commonService.alertMs('笔记内容字数不能超过249个字');
         } else if (editNoteParams.Name.length >= 2 && editNoteParams.Content.length < 249) {
           commonService.getData(ALL_PORT.AddNote.url, 'POST',
             editNoteParams)
             .then(function (response) {
               $('.modal').modal('hide');
-              alert('添加完成！')
+              commonService.alertMs('添加完成！')
               if ($scope.vm.activeTab == 1) {
                 $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
               } else if ($scope.vm.activeTab == 2) {
@@ -161,7 +161,7 @@ angular.module('luZhouApp')
           $.extend({}, ALL_PORT.NoteUpdate.data, $scope.token, options, {Id: $scope.noteid}))
           .then(function (response) {
             if (response.Type == 1) {
-              alert('更新成功');
+              commonService.alertMs('更新成功');
               $('.modal').modal('hide');
             }
           });
@@ -177,7 +177,7 @@ angular.module('luZhouApp')
           $.extend({}, ALL_PORT.DelNote.data, $scope.token, {Id: id}))
           .then(function (response) {
             if (response.Type == 1) {
-              alert("删除成功！");
+              commonService.alertMs("删除成功！");
               $scope.seeNote($scope.courseId, $scope.courseName);
               if ($scope.vm.activeTab == 1) {
                 $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
@@ -215,16 +215,16 @@ angular.module('luZhouApp')
       var addPlan = function () {
         var editPlanParams = $.extend({}, ALL_PORT.AddStudyPlan.data, $scope.token, options);
         if (editPlanParams.Remark.length < 7) {
-          alert("计划内容字数不能少于7个字！");
+          commonService.alertMs("计划内容字数不能少于7个字！");
         } else if (editPlanParams.Remark.length >= 249) {
-          alert('计划内容字数不能超过249个字');
+          commonService.alertMs('计划内容字数不能超过249个字');
         } else {
           commonService.getData(ALL_PORT.AddStudyPlan.url, 'POST',
             editPlanParams)
 
             .then(function (response) {
               $('.modal').modal('hide');
-              alert('添加完成！')
+              commonService.alertMs('添加完成！')
               if ($scope.vm.activeTab == 1) {
                 $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
               } else if ($scope.vm.activeTab == 2) {
@@ -263,16 +263,16 @@ angular.module('luZhouApp')
       var addPlanUpdate = function () {
         var addPlanUpdateParams = $.extend({}, ALL_PORT.EditStudyPlanUpdate.data, $scope.token, options);
         if (addPlanUpdateParams.Remark.length < 7) {
-          alert("计划内容字数不能少于7个字！");
+          commonService.alertMs("计划内容字数不能少于7个字！");
         } else if (addPlanUpdateParams.Remark.length >= 249) {
-          alert('计划内容字数不能超过249个字');
+          commonService.alertMs('计划内容字数不能超过249个字');
         } else {
           commonService.getData(ALL_PORT.EditStudyPlanUpdate.url, 'POST',
             addPlanUpdateParams)
 
             .then(function (response) {
               $('.modal').modal('hide');
-              alert(response.Message)
+              commonService.alertMs(response.Message)
               if ($scope.vm.activeTab == 1) {
                 $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
               } else if ($scope.vm.activeTab == 2) {
@@ -294,7 +294,7 @@ angular.module('luZhouApp')
           $.extend({}, ALL_PORT.DelUserCourseReg.data, $scope.token, {courseId: id}))
           .then(function (response) {
             if (response.Type == 1) {
-              alert(response.Message)
+              commonService.alertMs(response.Message)
               if ($scope.vm.activeTab == 1) {
                 $scope.searchMyCenterCourse({'courseType': 'Unfinish', 'title': $scope.searchTitle});
               } else if ($scope.vm.activeTab == 2) {
@@ -303,7 +303,7 @@ angular.module('luZhouApp')
                 $scope.searchMyCenterCourse({'courseType': 'Finish', 'title': $scope.searchTitle});
               }
             } else if (response.Type == 0) {
-              alert(response.Message);
+              commonService.alertMs(response.Message);
             }
           });
       };
@@ -329,7 +329,7 @@ angular.module('luZhouApp')
         if (response.Type) {
           newWindow.close();
           //Type存在，意味着不能考试
-          alert(response.Message);
+          commonService.alertMs(response.Message);
         } else {
           var examUrl = $state.href('exam',{Id:Id});
           newWindow.location.href = examUrl;

@@ -20,7 +20,7 @@ angular.module('luZhouApp')
               $loading.finish('exam');
               if (response.Type) {
                 //Type存在，意味着不能考试
-                alert(response.Message);
+                commonService.alertMs(response.Message);
                 window.open("about:blank","_top").close();
                 return
               }
@@ -41,7 +41,7 @@ angular.module('luZhouApp')
         $interval(function() {
             $scope.seconds -= 1;
             if ($scope.seconds == 0) {
-                alert('考试时间到,系统将自动提交！');
+                commonService.alertMs('考试时间到,系统将自动提交！');
                 $scope.submitForm(1);
             }
         }, 1000);
@@ -83,14 +83,14 @@ angular.module('luZhouApp')
                     }
                 }).success(function(response) {
                     if (response.Type == 1) {
-                        alert(response.Message);
+                        commonService.alertMs(response.Message);
                       $state.go('examReview',{examId:Id,recordId:response.Value});
 
                     } else {
-                        alert(response.Message);
+                        commonService.alertMs(response.Message);
                     }
                 }).error(function(error, status) {
-                    alert("提交失败！");
+                    commonService.alertMs("提交失败！");
                     window.close();
                 });
 

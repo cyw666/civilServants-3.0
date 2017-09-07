@@ -43,7 +43,7 @@ angular.module('luZhouApp')
         $scope.userMessage = response.Data.Model;
         $scope.userAllMessage = response.Data;
         if ($scope.userMessage.Name) {
-          alert('用户已登录！');
+          commonService.alertMs('用户已登录！');
           window.open("about:blank","_top").close();
         } else {
         }
@@ -98,15 +98,15 @@ angular.module('luZhouApp')
           urlShort = "LoginCode";
         }
         if (!$scope.login.Account) {
-          alert('用户名不能为空！');
+          commonService.alertMs('用户名不能为空！');
           return;
         }
         if (!$scope.login.PassWord) {
-          alert('密码不能为空！');
+          commonService.alertMs('密码不能为空！');
           return;
         }
         if (!$scope.login.ValidateCode&&$scope.showVerifyCode) {
-          alert('验证码不能为空！');
+          commonService.alertMs('验证码不能为空！');
           return;
         }
         $loading.start('login');
@@ -121,8 +121,8 @@ angular.module('luZhouApp')
               $state.go($stateParams.name,JSON.parse($stateParams.params));
             } else if (data.Type == 2) {
               setUserCookie();
-              commonService.alertMs("首次登录，请修改密码！");
-              $state.go('modifyPassword');
+              commonService.alertMs("首次登录，请设置密保！");
+              $state.go('securitySetting');
 
             } else if (data.Type == 3) {
               if (window.confirm("帐号在别的地方登录，是否踢出？")) {
@@ -154,10 +154,10 @@ angular.module('luZhouApp')
               commonService.alertMs(data.Message);
               $scope.getVerifyCode();
             } else {
-              alert(data.Message);
+              commonService.alertMs(data.Message);
             }
           }, function(data) {
-            alert("登陆异常！");
+            commonService.alertMs("登陆异常！");
             window.location.reload();
           });
       }

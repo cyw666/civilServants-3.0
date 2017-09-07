@@ -15,10 +15,10 @@
     </ol>
     <div ng-if="isVisible">
       <form role="form">
-        <ul class="clearfix mar_left_10">
+        <ul class="clearfix mar_left_20">
           <li class="form-group form-inline pull-left">
             <label class="control-label pull-left" style="line-height: 30px">请输入密码：</label>
-            <input type="password" autocomplete="off" class="myPwd form-control pull-left" ng-model="$parent.myPwd" />
+            <input type="password" autocomplete="off" class="myPwd form-control pull-left" ng-model="$parent.myPwd"/>
           </li>
           <li class="pull-left">
             <input type="submit" class="btn btn-danger mar_left_10" ng-click="validatePwd()"/>
@@ -28,8 +28,8 @@
     </div>
     <div ng-if="!isVisible">
       <form role="form" class="form-group form-inline">
-        <ul>
-          <li ng-repeat="data in questionData" class="mar_top_15" >
+        <ul class="mar_left_20">
+          <li ng-repeat="data in questionData" class="mar_top_15">
             <div class="input-group">
               <label class="control-label">问题：</label>
               <input type="text" class="form-control" ng-model="data.Question"/>
@@ -45,20 +45,29 @@
         </ul>
       </form>
     </div>
+    <p class="tip">友情提示：设置密保之后才能找回密码！</p>
   </div>
 </div>
 <style>
-    .securitySetting{
-        min-height: 399px;
-    }
+  .securitySetting {
+    min-height: 399px;
+  }
+
   .securitySetting .btn-danger {
     width: 60px;
     height: 30px;
     line-height: 30px;
     padding: 0;
   }
-    .securitySetting input.form-control {
-      height: 30px;
-      line-height: 30px;
-    }
+
+  .securitySetting input.form-control {
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .securitySetting .tip {
+    color: #999;
+    font-size: 13px;
+    padding: 0 20px 20px 20px;
+  }
 </style>

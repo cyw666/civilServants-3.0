@@ -26,9 +26,9 @@ angular.module('luZhouApp')
         .then(function(response) {
           if (response.Type == 1) {
             $scope.bookContentData.FavoriteId = response.Value;
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           } else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -39,9 +39,9 @@ angular.module('luZhouApp')
         .then(function(response) {
           if (response.Type == 1) {
             $scope.bookContentData.FavoriteId = 0;
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -49,10 +49,10 @@ angular.module('luZhouApp')
     $scope.postComment = function(options) {
       commonService.limitSubmit(function () {
         if ($scope.bookContent.length < 7) {
-          alert('评论内容字数不能少于7个字！');
+          commonService.alertMs('评论内容字数不能少于7个字！');
           return;
         } else if ($scope.bookContent.length >= 249) {
-          alert('评论内容字数不能超过249个字！');
+          commonService.alertMs('评论内容字数不能超过249个字！');
           return;
         }
         var params = $.extend({}, ALL_PORT.BookCommentAdd.data, options, $scope.token)
@@ -60,9 +60,10 @@ angular.module('luZhouApp')
           .then(function(response) {
             $('.modal').modal('hide');
             if (response.Type == 1) {
-              alert('评论成功！');
+              commonService.alertMs('评论成功！');
+              $scope.getComment({page:1})
             }else {
-              alert(response.Message);
+              commonService.alertMs(response.Message);
             }
           });
       });

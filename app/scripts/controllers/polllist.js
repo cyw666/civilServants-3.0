@@ -43,7 +43,7 @@ angular.module('luZhouApp')
           if (response.Type) {
             newWindow.close();
             //Type存在，意味着不能考试
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           } else {
             var pollUrl = $state.href('poll',{Id:Id});
             newWindow.location.href = pollUrl;

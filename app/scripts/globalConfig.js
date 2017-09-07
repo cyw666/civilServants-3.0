@@ -315,7 +315,7 @@ var ALL_PORT = {
   //学员学时排行
   LeftUserRank: {
     url: API_URL + "/Page/LeftUserRank",
-    data: {page: 1, rows: 10, sort: 'TotalCredit', order: 'desc', titleNav: "学员学时排行", wordLimt: 6}
+    data: {page: 1, rows: 10, sort: 'TotalCredit', order: 'desc', titleNav: "个人排行", wordLimt: 6}
   },
   //个人排行
   RankUserList: {

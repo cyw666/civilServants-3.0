@@ -174,11 +174,11 @@ angular.module('luZhouApp')
                 $scope.searchCourse();
               }
             }else {
-              alert(response.Message);
+              commonService.alertMs(response.Message);
             }
           });
       } else {
-        alert("您没有选择可添加的课程！");
+        commonService.alertMs("您没有选择可添加的课程！");
       }
     };
     //添加购物车
@@ -194,7 +194,7 @@ angular.module('luZhouApp')
               $scope.searchCourse();
             }
           }else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };

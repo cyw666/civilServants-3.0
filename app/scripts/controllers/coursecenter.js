@@ -23,18 +23,7 @@ angular.module('luZhouApp')
         $loading.finish('courseClassify');
         $scope.courseClassify = response.Data;
       });
-
-    //折叠面板控制
-    $scope.repeatDone = function () {
-      $('.courseClassify .panel1-title .category').click(function () {
-        $(this).parents('.panel1-heading').next().slideToggle();
-        if ($(this).html() == '+') {
-          $(this).html('-');
-        } else {
-          $(this).html('+');
-        }
-      });
-    };
+    
     
     //课程超市列表
     //搜索
@@ -200,7 +189,7 @@ angular.module('luZhouApp')
         commonService.getData(ALL_PORT.AddStudyCourse.url, 'POST', $.extend({}, ALL_PORT.AddStudyCourse.data, $scope.selectClass, token))
           .then(function (response) {
             if (response.Type > 0) {
-              alert(response.Message);
+              commonService.alertMs(response.Message);
               // location.reload();
               if($scope.recommendApi){
                 $scope.getRecommendCourse();
@@ -210,7 +199,7 @@ angular.module('luZhouApp')
             }
           });
       } else {
-        alert("您没有选择可添加的课程！");
+        commonService.alertMs("您没有选择可添加的课程！");
       }
     };
 

@@ -26,7 +26,7 @@ angular.module('luZhouApp')
             commonService.getData(ALL_PORT.GetPhotoAlbumAdd.url, 'POST',
                     $.extend({}, ALL_PORT.GetPhotoAlbumAdd.data, { Name: $scope.name, Description: $scope.description, ImgUrl: $scope.hidValueImage, TrainingId: $scope.Id }))
                 .then(function(response) {
-                    alert(response.Message);
+                    commonService.alertMs(response.Message);
                     if (response.Type > 0) {
                       $state.go('photoAlbumList',{Id:$scope.Id});
                     }

@@ -18,15 +18,16 @@ angular.module('luZhouApp')
     $scope.modifyPwd = function () {
       var modifyPwd = function () {
         if ($scope.txtNewPwd !== $scope.txtRepeatNewPwd) {
-          alert('新密码不一致');
-        } else if ($scope.txtNewPwd === '' || $scope.txtNewPwd === null || $scope.txtOldPwd === '' ||
-          $scope.txtOldPwd === null) {
-          alert("请填写信息");
+          commonService.alertMs('新密码不一致！');
+        } else if ($scope.txtNewPwd === '' || $scope.txtNewPwd === null || $scope.txtOldPwd === '' || $scope.txtOldPwd === null) {
+          commonService.alertMs("请填写信息！");
+        } else if ($scope.txtNewPwd === $scope.txtOldPwd) {
+          commonService.alertMs("新旧密码不能一致！");
         } else {
           commonService.getData(ALL_PORT.UpdatePwd.url, 'POST',
             $.extend({}, ALL_PORT.UpdatePwd.data, {NewPwd: $scope.txtNewPwd, OldPwd: $scope.txtOldPwd}, $scope.token))
             .then(function (response) {
-              alert(response.Message);
+              commonService.alertMs(response.Message);
             });
         }
       };

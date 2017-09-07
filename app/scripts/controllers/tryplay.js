@@ -24,10 +24,10 @@ angular.module('luZhouApp')
           if(response.Type==1){
             $state.go('shoppingcart',{},{reload:true});
           }else if(response.Type==600){
-            alert(response.Message);
+            commonService.alertMs(response.Message);
             commonService.closeWindow();
           } else{
-            alert(response.Message);
+            commonService.alertMs(response.Message);
             commonService.closeWindow();
           }
         });
@@ -77,11 +77,11 @@ angular.module('luZhouApp')
             $scope.resultCourseNote = response.Data.resultCourseNote;
 
           }else {
-            alert("数据无效，请检查api");
+            commonService.alertMs("数据无效，请检查api");
             window.open("about:blank","_top").close();
           }
         }else if (response.Data && response.Data.Content){
-          alert('同时只能打开一门课程,请关闭之前页面,并于' + response.Data.Content + '秒后重试！');
+          commonService.alertMs('同时只能打开一门课程,请关闭之前页面,并于' + response.Data.Content + '秒后重试！');
           window.open("about:blank","_top").close();
         }
 
@@ -242,10 +242,10 @@ angular.module('luZhouApp')
           $scope.jyIframeSrc = $sce.trustAsResourceUrl($scope.Url);
           countDown($scope.CourseId);
           if (!$scope.PortalId || !$scope.UserId || !$scope.CourseId) {
-            alert("数据无效，请检查api");
+            commonService.alertMs("数据无效，请检查api");
             window.open("about:blank","_top").close();
           }else if(!$scope.Url||!$scope.PortalURL){
-            alert("没有视频资源！");
+            commonService.alertMs("没有视频资源！");
             window.open("about:blank","_top").close();
           }
         });
@@ -267,7 +267,7 @@ angular.module('luZhouApp')
 
           $scope.scormIframeSrc = $sce.trustAsResourceUrl(Url2);
           if (!portalId || !userId || !courseId) {
-            alert("数据无效，请检查api");
+            commonService.alertMs("数据无效，请检查api");
             window.open("about:blank","_top").close();
           }
           countDown(courseId);
@@ -484,7 +484,7 @@ angular.module('luZhouApp')
           var url = response.Data.Url;
           var authcode = "";
           if (!_portalId || !_userId || !_courseId) {
-            alert("数据无效，请检查api");
+            commonService.alertMs("数据无效，请检查api");
             window.open("about:blank","_top").close();
           }
           var MediaPlayer;

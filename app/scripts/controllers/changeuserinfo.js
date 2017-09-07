@@ -8,7 +8,7 @@
  * Controller of the luZhouApp
  */
 angular.module('luZhouApp')
-  .controller('changeUserInfoCtrl', function ($scope, $interval, commonService, $loading, $http, $cookieStore) {
+  .controller('changeUserInfoCtrl', function ($scope, $interval,$state, commonService, $loading, $http, $cookieStore) {
     
     //获取用户信息
     $loading.start('changeUserInfo');
@@ -87,20 +87,22 @@ angular.module('luZhouApp')
         
         
         if (telTest && mobileTest && emailTest && businessTest) {
-          var updateUserInfo = commonService.getData(ALL_PORT.UpdateUserInfo.url, 'POST',
-            $.extend({}, ALL_PORT.UpdateUserInfo.data, options, token));
+          var updateUserInfo = commonService.getData(ALL_PORT.UpdateUserInfo.url, 'POST', $.extend({}, ALL_PORT.UpdateUserInfo.data, options, token));
           updateUserInfo.then(function (response) {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
             // window.location.reload();
+            if(response.Type==1){
+              $state.go('main');
+            }
           });
         } else if (!mobileTest) {
-          alert('请输入正确格式的手机号');
+          commonService.alertMs('请输入正确格式的手机号');
         } else if (!telTest) {
-          alert('请输入正确格式的电话');
+          commonService.alertMs('请输入正确格式的电话');
         } else if (!emailTest) {
-          alert('请输入正确格式的邮箱');
+          commonService.alertMs('请输入正确格式的邮箱');
         } else if (!businessTest) {
-          alert('请输入正确格式的职务名称');
+          commonService.alertMs('请输入正确格式的职务名称');
         }
       };
       commonService.limitSubmit(changeUser);

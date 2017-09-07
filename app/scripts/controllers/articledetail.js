@@ -24,9 +24,9 @@ angular.module('luZhouApp')
       promise.then(function (response) {
         if (response.Type === 1) {
           $scope.articleData.FavoriteId = response.Value;
-          alert(response.Message);
+          commonService.alertMs(response.Message);
         } else if (response.Type === 0) {
-          alert(response.Message);
+          commonService.alertMs(response.Message);
         }
       });
     };
@@ -38,9 +38,9 @@ angular.module('luZhouApp')
       promise.then(function (response) {
         if (response.Type === 1) {
           $scope.articleData.FavoriteId = 0;
-          alert(response.Message);
+          commonService.alertMs(response.Message);
         } else if (response.Type === 0) {
-          alert(response.Message);
+          commonService.alertMs(response.Message);
         }
       });
     };

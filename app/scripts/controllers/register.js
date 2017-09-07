@@ -125,10 +125,10 @@ angular.module('luZhouApp')
           commonService.getData(ALL_PORT.Register.url, 'POST',$scope.register,token)
             .then(function(response) {
               if(response.Type==1){
-                alert(response.Message);
+                commonService.alertMs(response.Message);
                 $state.go('main');
               }else {
-                alert(response.Message);
+                commonService.alertMs(response.Message);
               }
             });
         }
@@ -136,6 +136,7 @@ angular.module('luZhouApp')
       commonService.limitSubmit(clickRegister);
 
     };
+    
     $scope.$watch('register.groupid',function () {
       if($scope.register.groupid){
         $scope.verifyGroup();

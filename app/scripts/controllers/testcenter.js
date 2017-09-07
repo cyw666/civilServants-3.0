@@ -65,7 +65,7 @@ angular.module('luZhouApp')
           if (response.Type) {
             newWindow.close();
             //Type存在，意味着不能考试
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           } else {
             var examUrl = $state.href('exam',{Id:Id});
             newWindow.location.href = examUrl;

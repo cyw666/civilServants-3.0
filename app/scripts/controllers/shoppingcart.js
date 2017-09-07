@@ -24,7 +24,7 @@ angular.module('luZhouApp')
             $scope.shoppingCartData = response.Data;
             totalCount = response.Data.Count;
           }else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     }
@@ -35,10 +35,10 @@ angular.module('luZhouApp')
         $.extend({}, ALL_PORT.DelCourseFromCart.data,{courseid:courseid}))
         .then(function(response) {
           if(response.Type==1){
-            alert(response.Message);
+            commonService.alertMs(response.Message);
             $scope.getShoppingCartList();
           }else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -53,11 +53,11 @@ angular.module('luZhouApp')
               if(response.Type==1){
                 $state.go('orderdetaillist',{orderId:response.Data.OrderId});
               }else {
-                alert(response.Message);
+                commonService.alertMs(response.Message);
               }
             });
         }else {
-          alert('购物车为空，请添加商品到购物车！')
+          commonService.alertMs('购物车为空，请添加商品到购物车！')
         }
       };
       commonService.limitSubmit(addOrder);

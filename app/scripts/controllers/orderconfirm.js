@@ -22,7 +22,7 @@ angular.module('luZhouApp')
           if(response.Type==1){
             $scope.invoiceData = response.Data;
           }else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -34,7 +34,7 @@ angular.module('luZhouApp')
           if(response.Type==1){
             $scope.payContent = response.Data;
           }else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };

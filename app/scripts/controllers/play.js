@@ -22,6 +22,7 @@ angular.module('luZhouApp')
     $scope.allPlayInfo;
     $scope.userId;
     var loadOnce = 0;
+    var browseScore=0;
     $scope.loadPlayInfo = function () {
       commonService.getData(ALL_PORT.Play.url, 'POST',
         $.extend({}, ALL_PORT.Play.data, {id: $scope.Id}))
@@ -39,13 +40,14 @@ angular.module('luZhouApp')
               $scope.options = response.Data.PlayPage;
               $scope.resultCourseDetail = response.Data.resultCourseDetail;
               $scope.resultCourseNote = response.Data.resultCourseNote;
+              browseScore = response.Data.resultCourseDetail.BrowseScore;
 
             } else {
-              alert("数据无效，请检查api");
+              commonService.alertMs("数据无效，请检查api");
               window.close();
             }
           } else if (response.Data && response.Data.Content) {
-            alert('同时只能打开一门课程,请关闭之前页面,并于' + response.Data.Content + '秒后重试！');
+            commonService.alertMs('同时只能打开一门课程,请关闭之前页面,并于' + response.Data.Content + '秒后重试！');
             window.close();
           }
         });
@@ -104,7 +106,7 @@ angular.module('luZhouApp')
                 .then(function (data) {
                   $scope.loadPlayInfo();
                 }, function () {
-                  alert("网路异常，将刷新!");
+                  commonService.alertMs("网路异常，将刷新!");
                   window.location.reload();
                 });
 
@@ -127,12 +129,12 @@ angular.module('luZhouApp')
 
           var _processCheck = function () {
             _timePool.totalTime = _timePool.startTime + _timePool.increaseTime;
-            var curProcess = _thePlayer.getPosition() - 0.2;
+            var curProcess = _thePlayer.getPosition() - 3;
             if (_thePlayer.getState() == 'PLAYING') {
               if (curProcess > _timePool.totalTime) {
 
                 _thePlayer.play(false);
-                alert("请不要在未播放区域拖动，否则可能丢失进度！");
+                commonService.alertMs("请不要在未播放区域拖动，否则可能丢失进度！");
                 _thePlayer.seek(_timePool.totalTime - 1); //TODO 放前面？
               }
             }
@@ -221,10 +223,10 @@ angular.module('luZhouApp')
           // $scope.jyIframeSrc =$sce.trustAsResourceUrl( $scope.Url+'?url=192.168.1.25/api/CourseProcess/JYProcess?batchId='+$scope.BatchId+'&portalId='+$scope.PortalId+'&UserId='+$scope.UserId+'&courseId='+$scope.CourseId);
           $scope.jyIframeSrc = $sce.trustAsResourceUrl($scope.Url + '?url=' + $scope.PortalURL + '/api/CourseProcess/JYProcess?batchId=' + $scope.BatchId + '&portalId=' + $scope.PortalId + '&UserId=' + $scope.UserId + '&courseId=' + $scope.CourseId);
           if (!$scope.PortalId || !$scope.UserId || !$scope.CourseId) {
-            alert("数据无效，请检查api");
+            commonService.alertMs("数据无效，请检查api");
             window.close();
           } else if (!$scope.Url || !$scope.PortalURL) {
-            alert("没有视频资源！");
+            commonService.alertMs("没有视频资源！");
             window.close();
           }
         });
@@ -246,7 +248,7 @@ angular.module('luZhouApp')
 
           $scope.scormIframeSrc = $sce.trustAsResourceUrl(Url2);
           if (!portalId || !userId || !courseId) {
-            alert("数据无效，请检查api");
+            commonService.alertMs("数据无效，请检查api");
             window.close();
           }
 
@@ -330,7 +332,7 @@ angular.module('luZhouApp')
             //        url: API_URL + "/CourseProcess/ScormProcess?m=" + paraName + "&v=" + value,
             //        data: { "PortalId": portalId, "userid": userId, "courseid": courseId, "position": value },
             //        success: function (result) {
-            //            alert("In LMSSetValue -- result is :" + result)
+            //            commonService.alertMs("In LMSSetValue -- result is :" + result)
             //        }
             //    });
             //}
@@ -408,7 +410,7 @@ angular.module('luZhouApp')
             //        url: API_URL + "/CourseProcess/ScormProcess?m=" + paraName,
             //        data: { "PortalId": portalId, "userid": userId, "courseid": courseId, "position": "1" },
             //        success: function (result) {
-            //            alert("In LMSGetValue -- result is :" + result);
+            //            commonService.alertMs("In LMSGetValue -- result is :" + result);
             //        }
             //    });
             //}
@@ -469,7 +471,7 @@ angular.module('luZhouApp')
           var url = response.Data.Url;
           var authcode = "";
           if (!_portalId || !_userId || !_courseId) {
-            alert("数据无效，请检查api");
+            commonService.alertMs("数据无效，请检查api");
             window.close();
           }
           var MediaPlayer;
@@ -485,7 +487,7 @@ angular.module('luZhouApp')
               .then(function (data) {
                 $scope.loadPlayInfo();
               }, function () {
-                alert("网路异常，将刷新!");
+                commonService.alertMs("网路异常，将刷新!");
                 window.location.reload();
               });
 
@@ -502,7 +504,7 @@ angular.module('luZhouApp')
             _timePool.increaseTime += 1;
             _timePool.totalTime = _timePool.startTime + _timePool.increaseTime;
             if (MediaPlayer.currentPosition > _timePool.totalTime) {
-              alert('请不要在未播放区域拖动，否则可能丢失进度!');
+              commonService.alertMs("请不要在未播放区域拖动，否则可能丢失进度！");
               MediaPlayer.currentPosition = _timePool.totalTime - 3;
             }
           }, 1000);
@@ -511,11 +513,11 @@ angular.module('luZhouApp')
           });
 
           $("#btnduration").click(function () {
-            alert(MediaPlayer.duration);
+            commonService.alertMs(MediaPlayer.duration);
           });
 
           $("#btnURL").click(function () {
-            alert(MediaPlayer.URL);
+            commonService.alertMs(MediaPlayer.URL);
           });
 
           $("#btnplay").click(function () {
@@ -539,7 +541,7 @@ angular.module('luZhouApp')
           });
 
           $("#btnplayState").click(function () {
-            alert(MediaPlayer.playState);
+            commonService.alertMs(MediaPlayer.playState);
           });
 
           setTimeout(sendProcess, 2000);//第一次送进度时间
@@ -579,11 +581,11 @@ angular.module('luZhouApp')
       var editNote = function () {
         var editNoteParams = $.extend({}, ALL_PORT.AddNote.data, $scope.token, options);
         if (editNoteParams.Name.length < 2) {
-          alert('笔记名称字数不能少于2个字！');
+          commonService.alertMs("笔记名称字数不能少于2个字！");
         } else if (editNoteParams.Content.length < 7) {
-          alert('笔记内容字数不能少于7个字');
+          commonService.alertMs('笔记内容字数不能少于7个字');
         } else if (editNoteParams.Content.length >= 249) {
-          alert('笔记内容字数不能超过249个字');
+          commonService.alertMs('笔记内容字数不能超过249个字');
         } else if (editNoteParams.Name.length >= 2 && editNoteParams.Content.length < 249) {
           $loading.start('playComment');
           commonService.getData(ALL_PORT.AddNote.url, 'POST', editNoteParams)
@@ -591,7 +593,7 @@ angular.module('luZhouApp')
               $loading.finish('playComment');
               $scope.noteName = '';
               $scope.noteContent = '';
-              alert('添加完成！');
+              commonService.alertMs('添加完成！');
               $scope.loadPlayInfo();
             });
         }
@@ -605,10 +607,10 @@ angular.module('luZhouApp')
         $.extend({}, ALL_PORT.DelNote.data, $scope.token, {Id: id}))
         .then(function (response) {
           if (response.Type == 1) {
-            alert("删除成功！");
+            commonService.alertMs("删除成功！");
             $scope.loadPlayInfo();
           } else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -617,14 +619,14 @@ angular.module('luZhouApp')
     $scope.editComment = function (options) {
       var editCommentParams = $.extend({}, ALL_PORT.CourseCommentAdd.data, $scope.token, options);
       if (editCommentParams.content.length < 7) {
-        alert('评论内容字数不能少于7个字！');
+        commonService.alertMs('评论内容字数不能少于7个字！');
       } else if (editCommentParams.content.length >= 249) {
-        alert('评论内容字数不能超过249个字！');
-      }
-      /*else if ($scope.resultCourseDetail.BrowseScore < 100) {
-        alert('课程为学完不可评论，请学完课程！');
-      }*/else if (!editCommentParams.rate){
-        alert('请选择评分！');
+        commonService.alertMs('评论内容字数不能超过249个字！');
+      } else if (browseScore < 100) {
+        debugger
+        commonService.alertMs('课程未学完不可评论，请学完课程！');
+      }else if (!editCommentParams.rate){
+        commonService.alertMs('请选择评分！');
       }else {
         $loading.start('playComment');
         commonService.getData(ALL_PORT.CourseCommentAdd.url, 'POST', editCommentParams)
@@ -633,10 +635,10 @@ angular.module('luZhouApp')
             if (response.Type == 1) {
               $scope.drLevel = 1;
               $scope.comment = '';
-              alert("评论成功，等待审核！");
+              commonService.alertMs("评论成功，等待审核！");
               $scope.getComment();
-            } else {
-              alert(response.Message);
+            }else {
+              commonService.alertMs(response.Message);
             }
           });
       }

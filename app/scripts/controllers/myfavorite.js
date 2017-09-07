@@ -39,7 +39,7 @@ angular.module('luZhouApp')
           params)
           .then(function (response) {
             if (response.Type == 1) {
-              alert(response.Message);
+              commonService.alertMs(response.Message);
               $scope.requestMyStudyStat();
             }
           });

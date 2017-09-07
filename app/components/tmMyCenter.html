@@ -65,8 +65,7 @@
               <div class="list0-75" ng-if="unFinish.NoteFlag"><a ng-click="seeNote(unFinish.Id,unFinish.Name)" data-toggle="modal" data-target=".notemodal">查看</a></div>
               <div class="list0-75" ng-if="!unFinish.NoteFlag"><a ng-click="nodeAdd(unFinish.Id)" data-toggle="modal" data-target=".notemodal">添加</a></div>
 
-              <div class="list0-75" ng-if="unFinish.PlanId"><a ng-click="seePlan(unFinish.PlanId,unFinish.Name)"
-                                                             data-toggle="modal" data-target=".notemodal2">查看</a></div>
+              <div class="list0-75" ng-if="unFinish.PlanId"><a ng-click="seePlan(unFinish.PlanId,unFinish.Name)" data-toggle="modal" data-target=".notemodal2">查看</a></div>
               <div class="list0-75" ng-if="!unFinish.PlanId"><a ng-click="planAdd(unFinish.Id)" data-toggle="modal" data-target=".notemodal2">添加</a></div>
 
               <div ng-if="unFinish.ExamFlag&&unFinish.BrowseScore<100" class="list0-75">有考试</div>
@@ -376,7 +375,7 @@
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                   aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">添加计划</h4>
+                <h4 class="modal-title">考试列表</h4>
               </div>
               <div class="modal-body">
                 <table class="table table-bordered">

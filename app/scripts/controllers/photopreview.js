@@ -66,7 +66,7 @@ angular.module('luZhouApp')
                 }))
 
             .then(function(response) {
-                alert(response.Message);
+                commonService.alertMs(response.Message);
                 if (response.Type >= 1) {
                     document.location.reload();
                 }

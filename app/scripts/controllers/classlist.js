@@ -93,7 +93,7 @@ angular.module('luZhouApp')
         .then(function(response) {
           if (response.Type === 0) {
             newWindow.close();
-            alert("请先加入培训班!");
+            commonService.alertMs("请先加入培训班!");
           } else {
             var examUrl = $state.href('classDetail',{Id:id});
             newWindow.location.href = examUrl;
@@ -105,7 +105,7 @@ angular.module('luZhouApp')
       commonService.getData(ALL_PORT.UpdateTrainingStudentup.url, 'POST',
         $.extend({}, ALL_PORT.UpdateTrainingStudentup.data, { Id: id }))
         .then(function(response) {
-          alert(response.Message);
+          commonService.alertMs(response.Message);
           $scope.getClassList();
         });
     };

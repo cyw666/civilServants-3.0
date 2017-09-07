@@ -23,15 +23,14 @@ angular.module('luZhouApp')
         });
     };
     queryDetail();
-
-
+    
     $scope.favoriteAdd = function (options, token) {
       var params = $.extend({}, ALL_PORT.FavoriteAdd.data, options, token)
       commonService.getData(ALL_PORT.FavoriteAdd.url, 'POST', params)
         .then(function (response) {
           if (response.Type == 1) {
             $scope.courseDetailsData.CourseModel.FavoriteId = response.Value;
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -41,7 +40,7 @@ angular.module('luZhouApp')
         .then(function (response) {
           if (response.Type == 1) {
             $scope.courseDetailsData.CourseModel.FavoriteId = 0;
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -71,7 +70,7 @@ angular.module('luZhouApp')
           if (response.Type) {
             newWindow.close();
             //Type存在，意味着不能考试
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           } else {
             //打开一个不被拦截的新窗口
             var url = $state.href('exam', {Id: Id});

@@ -21,7 +21,7 @@ angular.module('luZhouApp')
           if(response.Type==1){
             $scope.orderDetailListData = response.Data;
           }else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -32,9 +32,9 @@ angular.module('luZhouApp')
       commonService.getData(ALL_PORT.InvoiceBeginPay.url, 'POST', params)
         .then(function(response) {
           if(response.Type==1){
-            alert('下单成功！')
+            commonService.alertMs('下单成功！')
           }else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -46,7 +46,7 @@ angular.module('luZhouApp')
       }else if (payType==2){
         payCash();
       }else {
-        alert('请选择支付方式！');
+        commonService.alertMs('请选择支付方式！');
       }
     }
   });

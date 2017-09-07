@@ -40,10 +40,10 @@ angular.module('luZhouApp')
       commonService.getData(ALL_PORT.FavoriteAdd.url, 'POST', params)
         .then(function(response) {
           if (response.Type == 1) {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
             $scope.getBookChapter($scope.Id);
           }else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -52,10 +52,10 @@ angular.module('luZhouApp')
       commonService.getData(ALL_PORT.FavoriteDelete.url, 'POST', params)
         .then(function(response) {
           if (response.Type == 1) {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
             $scope.getBookChapter($scope.Id);
           }else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };

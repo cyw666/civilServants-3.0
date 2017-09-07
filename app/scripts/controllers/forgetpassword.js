@@ -20,7 +20,7 @@ angular.module('luZhouApp')
                         $scope.question = response.Data.Question.Question;
                         $scope.showAccount = false;
                     } else {
-                        alert(response.Message);
+                        commonService.alertMs(response.Message);
                     }
 
                 });
@@ -31,7 +31,7 @@ angular.module('luZhouApp')
                     $.extend({}, ALL_PORT.GetPasswordByQuestion.data, { account: $scope.account, question: $scope.question, answer: answer }))
                 .then(function(response) {
                     $loading.finish('forgetPassword');
-                    alert(response.Message);
+                    commonService.alertMs(response.Message);
 
                 });
         };

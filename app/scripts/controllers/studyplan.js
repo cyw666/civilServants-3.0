@@ -50,7 +50,7 @@ angular.module('luZhouApp')
         addPlanUpdateParams)
         .then(function (response) {
           $('.modal').modal('hide');
-          alert(response.Message);
+          commonService.alertMs(response.Message);
           $scope.requestStudyPlan();
         });
     }
@@ -60,7 +60,7 @@ angular.module('luZhouApp')
       commonService.getData(ALL_PORT.DelStudyPlan.url, 'POST',
         $.extend({}, ALL_PORT.DelStudyPlan.data, $scope.token, {id: id}))
         .then(function (response) {
-          alert(response.Message);
+          commonService.alertMs(response.Message);
           $scope.requestStudyPlan();
         });
     };

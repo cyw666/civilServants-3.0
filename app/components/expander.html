@@ -1,0 +1,27 @@
+<!--折叠面板-->
+<div class="expander">
+  <div class="title">
+    <span  ng-click="toggle()" ng-hide="showMe" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    <span  ng-click="toggle()" ng-show="showMe" class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+    <span ng-click="titleClick({channelId:channelId,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">{{title}}</span>
+  </div>
+  <div class="body" ng-show="showMe" ng-transclude></div>
+</div>
+
+<style>
+  .expander {
+    margin-left: 10px;
+  }
+  .expander>.title {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  .expander>.title:hover {
+    background-color: #f6f6f6;
+
+  }
+
+  .expander>.body {
+    padding: .1em .3em;
+  }
+</style>

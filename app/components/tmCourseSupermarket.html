@@ -30,13 +30,15 @@
     </form>
     <div class="courseList  mar_top_15 clearfix" dw-loading="courseSupermarket">
       <div class="sortCourse clearfix">
-        <a class="recommendCourse pull-left" ng-click="getRecommendCourse()">
-          <img src="../images/recomend.png" alt="智能推荐">
-        </a>
-        <div class="tag">
-          <span><img src="images/sfp.png"><a ng-click="judgement(selectedName.id,'ThreeScreenCourse')">精品三分屏</a></span>
-          <span><img src="images/dsp.png"><a ng-click="judgement(selectedName.id,'SingleCourse')">单视频课件</a></span>
-          <span><img src="images/dh.png"><a ng-click="judgement(selectedName.id,'AnimationCourse')">动画类课件</a></span>
+        <div class="clearfix">
+          <a class="recommendCourse pull-left" ng-click="getRecommendCourse()">
+            <img src="../images/recomend.png" alt="智能推荐">
+          </a>
+          <div class="tag">
+            <span><img src="images/sfp.png"><a ng-click="judgement(selectedName.id,'ThreeScreenCourse')">精品三分屏</a></span>
+            <span><img src="images/dsp.png"><a ng-click="judgement(selectedName.id,'SingleCourse')">单视频课件</a></span>
+            <span><img src="images/dh.png"><a ng-click="judgement(selectedName.id,'AnimationCourse')">动画类课件</a></span>
+          </div>
         </div>
         <div class="title_bar">
           <span><a ng-click="judgement(selectedName.id,null,'Name','order')">课程名称<span id="asc_Name">▼</span></a></span>
@@ -106,7 +108,7 @@
   }
   .courseSupermarket .tag {
     float: left;
-    padding: 10px 5px 10px 0;
+    padding: 10px 15px 10px 0;
   }
  .courseList{
    position: relative;
@@ -116,14 +118,14 @@
    margin: 3px 5px 3px 30px;
  }
  .courseList .title_bar{
-   text-align: right;
-   float: left;
-   margin-left: 10px;
+   text-align: left;
+   /*float: left;*/
+   margin-left: 155px;
  }
   .courseList .title_bar span{
     line-height: 37px;
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 5px;
   }
 
  .courseList .NewCourseList{

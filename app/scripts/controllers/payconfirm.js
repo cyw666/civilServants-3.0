@@ -22,7 +22,7 @@ angular.module('luZhouApp')
           if(response.Type==1){
             $scope.orderDetailListData = response.Data;
           }else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -34,7 +34,7 @@ angular.module('luZhouApp')
           if(response.Type==1){
             $scope.payContent = response.Data;
           }else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -49,11 +49,11 @@ angular.module('luZhouApp')
             if(response.Type==1){
               getConfirmPay(response.Data.InvoiceId);
             }else {
-              alert(response.Message);
+              commonService.alertMs(response.Message);
             }
           });
       }else {
-        alert('请选择支付方式！');
+        commonService.alertMs('请选择支付方式！');
       }
     };
   });

@@ -15,7 +15,7 @@ angular.module('luZhouApp')
       commonService.getData(ALL_PORT.SetPasswordQuestion.url, 'POST', {pwd: $scope.myPwd})
         .then(function (response) {
           if (response.Type == 0) {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           } else {
             $scope.questionData = response.Data.Question;
             $scope.isVisible = false;
@@ -34,7 +34,7 @@ angular.module('luZhouApp')
         $.extend({}, ALL_PORT.AddPasswordQuestion.data, {pwd: $scope.myPwd, questions: json}, token))
 
         .then(function (response) {
-          alert(response.Message);
+          commonService.alertMs(response.Message);
         });
     };
 

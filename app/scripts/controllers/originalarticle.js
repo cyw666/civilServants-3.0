@@ -20,7 +20,7 @@ angular.module('luZhouApp')
     $scope.publishTopic = function() {
       commonService.limitSubmit(function () {
         if ($scope.title.length < 2) {
-          alert('输入标题字数请大于两个字符');
+          commonService.alertMs('输入标题字数请大于两个字符');
         }
         else {
           commonService.getData(ALL_PORT.AddOriginalArticle.url, 'POST', $.extend({}, ALL_PORT.AddOriginalArticle.data, {
@@ -29,10 +29,10 @@ angular.module('luZhouApp')
           }, token))
             .then(function(response) {
               if (response.Type === 1) {
-                alert(response.Message);
+                commonService.alertMs(response.Message);
                 $state.go('originalarticlelist');
               } else {
-                alert(response.Message);
+                commonService.alertMs(response.Message);
               }
 
             });

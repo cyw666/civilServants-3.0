@@ -35,10 +35,10 @@ angular.module('luZhouApp')
       commonService.getData(ALL_PORT.DelOrder.url, 'POST', {orderId: orderId})
         .then(function (response) {
           if (response.Type == 1) {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
             $scope.getOrderList({page: $scope.paginationConf.currentPage});
           } else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -47,10 +47,10 @@ angular.module('luZhouApp')
       commonService.getData(ALL_PORT.CancelOrder.url, 'POST', {orderId: orderId})
         .then(function (response) {
           if (response.Type == 1) {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
             $scope.getOrderList({page: $scope.paginationConf.currentPage});
           } else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };
@@ -59,10 +59,10 @@ angular.module('luZhouApp')
       commonService.getData(ALL_PORT.RestoreOrder.url, 'POST', {orderId: orderId})
         .then(function (response) {
           if (response.Type == 1) {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
             $state.go('shoppingcart');
           } else {
-            alert(response.Message);
+            commonService.alertMs(response.Message);
           }
         });
     };

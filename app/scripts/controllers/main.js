@@ -114,8 +114,8 @@ angular.module('luZhouApp')
               window.location.reload();
             } else if (data.Type == 2) {
               setUserCookie();
-              commonService.alertMs("首次登录，请修改密码！");
-              $state.go('modifyPassword');
+              commonService.alertMs("首次登录，请设置密保！");
+              $state.go('securitySetting');
 
             } else if (data.Type == 3) {
               if (window.confirm("帐号在别的地方登录，是否踢出？")) {
@@ -138,10 +138,10 @@ angular.module('luZhouApp')
             } else if (data.Type == 12 || data.Type == 13) {
               commonService.alertMs(data.Message);
             } else {
-              alert(data.Message);
+              commonService.alertMs(data.Message);
             }
           }, function() {
-            alert("登陆异常！");
+            commonService.alertMs("登陆异常！");
             window.location.reload();
           });
       };
@@ -198,11 +198,11 @@ angular.module('luZhouApp')
           if(response.isauth==true){
             commonService.getData(ALL_PORT.UpdateTrainingStudentup.url, 'POST', $.extend({}, ALL_PORT.UpdateTrainingStudentup.data, { Id: id }))
               .then(function(response) {
-                alert(response.Message);
+                commonService.alertMs(response.Message);
                 $scope.getClassList($scope.classCategoryId);
               });
           }else {
-            alert("请先登录！");
+            commonService.alertMs("请先登录！");
           }
         });
     };
@@ -216,14 +216,14 @@ angular.module('luZhouApp')
               .then(function(response) {
                 if (response.Type === 0) {
                   newWindow.close();
-                  alert("请先加入培训班!");
+                  commonService.alertMs("请先加入培训班!");
                 } else {
                   var examUrl = $state.href('classDetail',{Id:id});
                   newWindow.location.href = examUrl;
                 }
               });
           }else {
-            alert("请先登录！");
+            commonService.alertMs("请先登录！");
           }
         });
 

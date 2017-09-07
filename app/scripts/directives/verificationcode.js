@@ -71,10 +71,10 @@ angular.module('luZhouApp')
         scope.paracont = "获取验证码";
         scope.sendVerificationCode = function (mobileNo) {
           if(!mobileNo){
-            alert('手机号码不能为空！');
+            commonService.alertMs('手机号码不能为空！');
             return;
           } else if(!reg.mobile.test(mobileNo)){
-            alert('手机格式有误！');
+            commonService.alertMs('手机格式有误！');
             return;
           }
           commonService.getData(ALL_PORT.SendMsg.url, 'POST',{mobileNo:mobileNo})
@@ -83,7 +83,7 @@ angular.module('luZhouApp')
               if(response.Type==1){
                 countDown ();
               }else {
-                alert(response.Message);
+                commonService.alertMs(response.Message);
               }
             });
 
