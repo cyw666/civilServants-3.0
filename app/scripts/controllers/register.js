@@ -63,8 +63,8 @@ angular.module('luZhouApp')
     };
     //邮箱验证
     $scope.verifyEmail = function () {
-      $scope.emailError=(!$scope.register.email)?true:false;
-      if($scope.register.email&&reg.email.test($scope.register.email)){
+      // $scope.emailError=(!$scope.register.email)?true:false;
+      /*if($scope.register.email&&reg.email.test($scope.register.email)){
         $scope.emailError2 = false;
         $scope.emailError = false;
       }else if($scope.register.email&&!reg.email.test($scope.register.email)){
@@ -73,6 +73,13 @@ angular.module('luZhouApp')
       }else {
         $scope.emailError2 = false;
         $scope.emailError = true;
+      }*/
+      if($scope.register.email&&!reg.email.test($scope.register.email)){
+        $scope.emailError2 = true;
+        $scope.emailError = false;
+      }else {
+        $scope.emailError2 = false;
+        $scope.emailError = false;
       }
     };
     //姓名验证
@@ -81,8 +88,8 @@ angular.module('luZhouApp')
     };
     //身份证号验证
     $scope.verifyIdCard = function () {
-      $scope.idcardError=(!$scope.register.idcard)?true:false;
-      //验证身份证号码格式
+      // $scope.idcardError=(!$scope.register.idcard)?true:false;
+      /*//验证身份证号码格式
       if($scope.register.idcard&&reg.idCard.test($scope.register.idcard)){
         $scope.idcardError2 = false;
         $scope.idcardError = false;
@@ -92,6 +99,14 @@ angular.module('luZhouApp')
       }else {
         $scope.idcardError2 = false;
         $scope.idcardError = true;
+      }*/
+      //验证身份证号码格式
+      if($scope.register.idcard&&!reg.idCard.test($scope.register.idcard)){
+        $scope.idcardError2 = true;
+        $scope.idcardError = false;
+      }else {
+        $scope.idcardError2 = false;
+        $scope.idcardError = false;
       }
     };
     //单位验证
@@ -100,8 +115,8 @@ angular.module('luZhouApp')
     };
     //手机号码验证
     $scope.verifyMobile = function () {
-      $scope.mobileError=(!$scope.register.mobile)?true:false;
-      //验证手机号码格式
+      // $scope.mobileError=(!$scope.register.mobile)?true:false;
+      /*//验证手机号码格式
       if($scope.register.mobile&&reg.mobile.test($scope.register.mobile)){
         $scope.mobileError2 = false;
         $scope.mobileError = false;
@@ -111,6 +126,14 @@ angular.module('luZhouApp')
       }else {
         $scope.mobileError2 = false;
         $scope.mobileError = true;
+      }*/
+      //验证手机号码格式
+      if($scope.register.mobile&&!reg.mobile.test($scope.register.mobile)){
+        $scope.mobileError2 = true;
+        $scope.mobileError = false;
+      }else {
+        $scope.mobileError2 = false;
+        $scope.mobileError = false;
       }
     };
     //验证码验证
@@ -121,7 +144,7 @@ angular.module('luZhouApp')
     //注册
     $scope.clickRegister = function () {
       var clickRegister = function () {
-        if(!$scope.accountError && !$scope.passwordError && !$scope.confirmError && !$scope.confirmError2 && !$scope.emailError && !$scope.emailError2 && !$scope.nameError && !$scope.idcardError && !$scope.idcardError2 && !$scope.groupidError && !$scope.mobileError && !$scope.mobileError2 && !$scope.smgcodeError){
+        if($scope.register.account && $scope.register.password && $scope.confirmPassword && !$scope.confirmError2 && $scope.register.name  && $scope.register.groupid && !$scope.idcardError2 && !$scope.emailError2 && !$scope.mobileError2){
           commonService.getData(ALL_PORT.Register.url, 'POST',$scope.register,token)
             .then(function(response) {
               if(response.Type==1){
@@ -131,6 +154,8 @@ angular.module('luZhouApp')
                 commonService.alertMs(response.Message);
               }
             });
+        }else {
+          commonService.alertMs('信息填写错误，请核对！');
         }
       };
       commonService.limitSubmit(clickRegister);
@@ -141,6 +166,7 @@ angular.module('luZhouApp')
       if($scope.register.groupid){
         $scope.verifyGroup();
       }
+        
     });
 
     //同意

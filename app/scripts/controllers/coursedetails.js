@@ -103,7 +103,7 @@ angular.module('luZhouApp')
       var params = $.extend({}, ALL_PORT.RelatedCourse.data, {Page: 1, Rows: 10 ,CourseId:$scope.Id})
       commonService.getData(ALL_PORT.RelatedCourse.url, 'POST',params)
         .then(function (response) {
-          $scope.relatedCourseData = response.Data.CourseResult;
+          $scope.relatedCourseData = response.Data;
         });
     }
     $scope.getRelatedCourse();

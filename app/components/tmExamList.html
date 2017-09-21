@@ -18,12 +18,12 @@
       <div class="form-group">
         <input ng-model="searchTitle" type="text" class="form-control" my-placeholder placeholder="请输入要搜索的考试">
       </div>
-      <button type="submit" class="btn btn-default" ng-click="searchMyCenterCourse({'examType':selectedName.id,'title':searchTitle},1)">搜索</button>
+      <button type="submit" class="btn btn-default" ng-click="searchMyCenterCourse({'examType':selectedName.id,'title':searchTitle,'page':'1'})">搜索</button>
     </form>
     <div class="myTab">
-      <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
-        <li ng-class="{active: vm.activeTab == 1}"><a ng-click="vm.activeTab = 1;searchMyCenterCourse({'examType':'UnFinish','title':searchTitle})">未完成的考试</a></li>
-        <li ng-class="{active: vm.activeTab == 3}"><a ng-click="vm.activeTab = 3;searchMyCenterCourse({'examType':'Finish','title':searchTitle})">已完成的考试</a></li>
+      <ul class="nav nav-tabs">
+        <li ng-class="{active: vm.activeTab == 1}"><a ng-click="vm.activeTab = 1;searchMyCenterCourse({'examType':'UnFinish','title':searchTitle,'page':'1'})">未完成的考试</a></li>
+        <li ng-class="{active: vm.activeTab == 3}"><a ng-click="vm.activeTab = 3;searchMyCenterCourse({'examType':'Finish','title':searchTitle,'page':'1'})">已完成的考试</a></li>
       </ul>
       <div class="tab-content" dw-loading="examList">
         <div class="tab-panel perlist" ng-show="vm.activeTab == 1">

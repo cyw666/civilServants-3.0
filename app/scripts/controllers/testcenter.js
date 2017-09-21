@@ -20,27 +20,38 @@ angular.module('luZhouApp')
       {name: '已完成', id: 'Finish'},
       {name: '未完成', id: 'UnFinish'}
     ];
-    $scope.vm = {};
+    $scope.vm = {activeTab:1};
+    
+    var examParams = {
+      page: 1,
+      rows: 5,
+      examType: "All",
+      title: "",
+      sort: 'Id',
+      order: 'desc',
+      titleNav: "在线考试",
+    }
+  
     //考试列表请求
     $scope.searchMyCenterCourse = function (option, mark) {
       $loading.start('examList');
-      if (mark == 1) {
-        if (option.examType == "Finish") {
-          $scope.vm.activeTab = 3;
-        } else {
-          $scope.vm.activeTab = 1;
-        }
+        
+      $.extend(examParams,option);
+      if (examParams.examType == "Finish") {
+        $scope.vm.activeTab = 3;
+      } else {
+        $scope.vm.activeTab = 1;
       }
-      var params = $.extend({}, ALL_PORT.ExamList.data, option);
-      commonService.getData(ALL_PORT.ExamList.url, 'POST',
-        params)
+      commonService.getData(ALL_PORT.ExamList.url, 'POST', examParams)
         .then(function (response) {
           $loading.finish('examList');
           $scope.TotalData = response.Data;
-          if (params.examType == "Finish") {
+          if (examParams.examType == "Finish") {
             $scope.paginationConf.totalItems = response.Data.FinishCount == null ? 0 : response.Data.FinishCount;
+            $scope.paginationConf.currentPage = response.Data.FinishPage;
           } else {
             $scope.paginationConf.totalItems = response.Data.UnFinishCount == null ? 0 : response.Data.UnFinishCount;
+            $scope.paginationConf.currentPage = response.Data.UnFinishPage;
           }
         });
     }

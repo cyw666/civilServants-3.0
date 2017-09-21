@@ -22,15 +22,15 @@ angular.module('luZhouApp')
             toggle = 1
           } else {
             $('.play').show();
-            $('.playMp4').css('width', '78%');
-            $('.toggleSideSec').css('right', '21%');
+            $('.playMp4').css('width', '76%');
+            $('.toggleSideSec').css('right', '22%');
             $(this).css('background', 'url("images/2.jpg")');
             toggle = 0
           }
         });
         // $(document).height();
-        $('.playPage').css({'height':$(document).height()-22});
-
+        $('.playPage').css({'height': $(document).height() - 22});
+        
       }
     };
   });

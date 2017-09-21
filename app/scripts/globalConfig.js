@@ -1,7 +1,7 @@
 ﻿"user strict"
 //请求后台数据入口
-// var API_URL = "/api";
-var API_URL = "http://test10.jy365.net/api";
+var API_URL = "/api";
+// var API_URL = "http://test10.jy365.net/api";
 // var API_URL = "http://122.225.101.117:9090/api";
 // var API_URL = "http://192.168.1.25:9090/api2";
 var API_URL_ADMIN = API_URL + "/admin";
@@ -787,6 +787,16 @@ var ALL_PORT = {
   PlaySingle: {
     url: API_URL + "/Home/PlaySingle",
     data: {courseId: ''}
+  },
+  //播放PlayOffice视频
+  PlayOffice: {
+    url: API_URL + "/Home/PlayOffice",
+    data: {courseId: ''}
+  },
+  //PlayOffice视频进度提交
+  ProcessOffice: {
+    url: API_URL + "/CourseProcess/ProcessOffice",
+    data: {course_id: '', lesson_id: '', user_id: '', total_id: ''}
   },
   //图书分类
   BookCategory: {

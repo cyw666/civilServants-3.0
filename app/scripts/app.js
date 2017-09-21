@@ -18,12 +18,26 @@ angular
     'ngSanitize',
     'darthwade.dwLoading',
     'ng.ueditor',
-    'ui.router'
+    'ui.router',
   ])
   .config(function ($routeProvider, $httpProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
+      .state('error', {
+        url: '/error',
+        templateUrl: 'views/error.html',
+        controller: 'ErrorCtrl',
+        controllerAs: 'error',
+        data: {title: "没有此页面"}
+      })
       .state('main', {
         url: '/',
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main',
+        data: {title: "干部教育网络学院-基准3.0"}
+      })
+      .state('main2', {
+        url: '',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main',
@@ -560,7 +574,7 @@ angular
         controller: 'ApplyinvoiceCtrl',
         controllerAs: 'applyInvoice'
       })
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/error');
     // $locationProvider.html5Mode(true);
     
     /*$routeProvider
@@ -959,6 +973,11 @@ angular
      controller: 'NoticelistCtrl',
      controllerAs: 'noticeList'
      })
+     .when('/error', {
+       templateUrl: 'views/error.html',
+       controller: 'ErrorCtrl',
+       controllerAs: 'error'
+     })
      .otherwise({
      redirectTo: '/main'
      });*/
@@ -975,6 +994,7 @@ angular
       $rootScope.rememberName = toState.name;
       $rootScope.rememberParams = JSON.stringify(toParams);
       if (toState.name == 'main')return;// 首页
+      if (toState.name == 'main2')return;// 首页
       if (toState.name == 'userLogin')return;// 登录界面
       if (toState.name == 'userRegister')return;// 注册界面
       if (toState.name == 'forgetPassword')return;//忘记密码

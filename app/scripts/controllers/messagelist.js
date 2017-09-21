@@ -32,8 +32,12 @@ angular.module('luZhouApp')
         });
 
         //添加留言
-        $scope.allClass = ['课程建设', '支持服务', '平台功能'];
-        $scope.messageClass = "课程建设";
+        $scope.allClass = [
+          {name:"课程建设",value:"Curricula"},
+          {name:"支持服务",value:"Support"},
+          {name:"平台功能",value:"Platform"},
+          ];
+        $scope.messageClass = "Curricula";
         $scope.messageName = '';
         $scope.messageContent = '';
         $scope.addMessage = function(options) {

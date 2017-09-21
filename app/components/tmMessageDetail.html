@@ -38,7 +38,9 @@
                       {{messageDetailData.Model.Content}}
                     </div>
                     <div class="message-time grid_6 text-right">
-                      <span>{{messageDetailData.Model.Class}}</span><br><br>
+                      <span ng-if="messageDetailData.Model.Class=='Curricula'">课程建设</span><br/>
+                      <span ng-if="messageDetailData.Model.Class=='Support'">支持服务</span><br/>
+                      <span ng-if="messageDetailData.Model.Class=='Platform'">平台功能</span><br/>
                       <span>{{messageDetailData.Model.CreateDate | dateFilter | date:'yyyy-MM-dd HH:mm:ss'}}</span>
                     </div>
                   </div>

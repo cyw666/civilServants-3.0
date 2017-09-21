@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+<head>
+  <title>pdf</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width"/>
+  <style type="text/css" media="screen">
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: auto;
+    }
+
+    #flashContent {
+      display: none;
+    }
+
+    .flexpaper_viewer {
+      margin: 20px auto 0;
+    }
+  </style>
+
+  <link rel="stylesheet" type="text/css" href="css/flexpaper.css"/>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/flexpaper.js"></script>
+  <script type="text/javascript" src="js/flexpaper_handlers.js"></script>
+</head>
+<body>
+<div>
+  <div style="color:#333;text-align: center">10秒允许翻页，当前章节学习时间<span id="stime"></span>秒</div>
+  <div id="documentViewer" class="flexpaper_viewer" style="width:770px;height:600px"></div>
+  <script type="text/javascript">
+    function getDocumentUrl(document) {
+      return "php/services/view.php?doc={doc}&format={format}&page={page}".replace("{doc}", document);
+    }
+//    var api = "/api";
+    var api = "http://test10.jy365.net/api";
+    var regPath = /^#\/play\/play\/(?:([^\/]+?))\/?$/i;
+    var pathName = window.parent.location.hash;
+    var courseId = pathName.match(regPath)[1];
+    var startDocument = "Paper";
+    /*获取token*/
+    var token = new Object();
+    function antiForgeryToken() {
+      $.ajax({
+        type: "POST",
+        url: api+"/Page/AntiForgeryToken",
+        xhrFields: {
+          withCredentials: true
+        },
+        contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+        success: function(response){
+          if(response.html){
+            var reg1 = new RegExp('name="([^& \/\>]*)"', 'i');
+            var reg2 = new RegExp('value="([^& \/\>]*)"', 'i');
+            var name = response.html.match(reg1)[1];
+            var value = response.html.match(reg2)[1];
+            token[name] = value;
+          }
+        }
+      });
+    };
+    var playOffice = function (data) {
+      var _url = data.Url;
+      var _userId = data.UserId;
+      var _courseId = data.CourseId;
+      var _lastPosition = data.LastPostion||1; //上次观看的位置
+      var _lastLocation = data.Location||1; //记录进度的位置
+      var totalId = 0;
+      var firstFlag = 0;
+      var startDocument = "Paper";
+      var time = 0;
+      $('#documentViewer').FlexPaperViewer(
+        {
+          config: {
+//            SWFFile: "http://test10.jy365.net"+_url,
+            SWFFile: _url,
+            Scale: 0.6,
+            ZoomTransition: 'easeOut',
+            ZoomTime: 0.5,
+            ZoomInterval: 0.2,
+            FitPageOnLoad: true,
+            FitWidthOnLoad: false,
+            FullScreenAsMaxWindow: false,
+            ProgressiveLoading: false,
+            MinZoomSize: 0.2,
+            MaxZoomSize: 5,
+            SearchMatchAll: false,
+            InitViewMode: 'Portrait',
+            RenderingOrder: 'flash',
+            StartAtPage: '',
+
+            ViewModeToolsVisible: true,
+            ZoomToolsVisible: true,
+            NavToolsVisible: true,
+            CursorToolsVisible: true,
+            SearchToolsVisible: true,
+            WMode: 'window',
+            localeChain: 'zh_CN'
+          }
+        }
+      );
+      jQuery('#documentViewer').bind('onDocumentLoaded', function (e, totalPages, a, b, c) {
+        totalId = totalPages;
+        firstFlag = 1;
+        setTimeout(function () {
+          $FlexPaper("documentViewer").gotoPage(_lastPosition);
+        }, 100);
+      });
+      $(window).keydown(function (event) {
+        var keyCode = event.keyCode;
+        switch(keyCode) {
+          case 13:
+            $FlexPaper('documentViewer').nextPage();
+            break;
+          case 40:
+            $FlexPaper('documentViewer').nextPage();
+            break;
+          case 38:
+            $FlexPaper('documentViewer').prevPage();
+            break;
+        }
+      })
+      var lastpagenum = parseFloat(_lastPosition);
+      var newLocation = parseFloat(_lastLocation);
+      jQuery('#documentViewer').bind('onCurrentPageChanged', function (e, pagenum) {
+        var pagenum = parseInt(pagenum);
+        if (!totalId) {
+          return
+        }
+        else {
+          if (time < 10) {
+            if (pagenum > newLocation) {
+              $FlexPaper('documentViewer').gotoPage(lastpagenum);
+              alert("你翻太快了");
+            }
+            else {
+              lastpagenum = pagenum;
+              time = 0;           //页面改变时间重置；
+            }
+          }
+          else {
+            if (pagenum == newLocation + 1) {
+              sendProcess(pagenum);
+              newLocation = pagenum;
+              lastpagenum = pagenum;
+              time = 0;           //页面改变时间重置；
+            }
+            else if (pagenum > newLocation + 1) {
+              alert("你翻太快了");
+              $FlexPaper("documentViewer").gotoPage(lastpagenum);
+            }
+            else {
+              lastpagenum = pagenum;
+              time = 0;           //页面改变时间重置；
+            }
+          }
+        }
+      });
+
+      var sendProcess = function (pagenum) {
+        var data = { course_id: _courseId, lesson_id: pagenum, user_id: _userId, total_id: totalId };
+        var params = $.extend({},data,token);
+        $.ajax({
+          type: "POST",
+          url: api+"/CourseProcess/ProcessOffice",
+          data: params,
+          xhrFields: {
+            withCredentials: true
+          },
+          contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+          success: function (result) {
+            //如果记录成功，更新播放页进度条
+//            console.info(result.Content);
+          },
+          error: function (error) {
+            console.info("记录错误！");
+          }
+        });
+      }
+      function playing() {
+        time = time + 1;
+        $("#stime").html(time);
+        setTimeout(playing, 1000);
+      }
+      playing();
+    }
+
+    $.ajax({
+      type: "POST",
+      url: api+"/Home/PlayOffice",
+      data: {"courseId":courseId},
+      xhrFields: {
+        withCredentials: true
+      },
+      contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+      success: function(response){
+        if(response.Data){
+          antiForgeryToken();
+          playOffice(response.Data);
+        }
+      }
+    });
+  </script>
+</div>
+
+<script type="text/javascript">
+  var url = window.location.href.toString();
+
+  if (location.length == 0) {
+    url = document.URL.toString();
+  }
+
+  if (url.indexOf("file:") >= 0) {
+    jQuery('#documentViewer').html("<div style='position:relative;background-color:#ffffff;width:420px;font-family:Verdana;font-size:10pt;left:22%;top:20%;padding: 10px 10px 10px 10px;border-style:solid;border-width:5px;'><img src='http://flexpaper.devaldi.com/resources/warning_icon.gif'>&nbsp;<b>You are trying to use FlexPaper from a local directory.</b><br/><br/> FlexPaper needs to be copied to a web server before the viewer can display its document properlty.<br/><br/>Please copy the FlexPaper files to a web server and access the viewer through a http:// url.</div>");
+  }
+</script>
+</body>
+</html>

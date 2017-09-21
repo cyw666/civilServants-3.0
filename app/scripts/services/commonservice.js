@@ -307,13 +307,6 @@ angular.module('luZhouApp')
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
         }
       }).success(function (response) {
-        /*return $timeout(function () {
-         $('.preventorgery').html(response.html);
-         var value = $('.preventorgery input').val();
-         var name = $('.preventorgery input').attr('name');
-         token[name] = value;
-         return token;
-         },1000);*/
         $('body').append('<div class="preventorgery"></div>');
         $('.preventorgery').html(response.html);
         var value = $('.preventorgery input').val();
