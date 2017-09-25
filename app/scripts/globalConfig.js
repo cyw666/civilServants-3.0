@@ -1,7 +1,7 @@
 ﻿"user strict"
 //请求后台数据入口
-var API_URL = "/api";
-// var API_URL = "http://test10.jy365.net/api";
+// var API_URL = "/api";
+var API_URL = "http://test10.jy365.net/api";
 // var API_URL = "http://122.225.101.117:9090/api";
 // var API_URL = "http://192.168.1.25:9090/api2";
 var API_URL_ADMIN = API_URL + "/admin";
@@ -540,12 +540,12 @@ var ALL_PORT = {
   },
   //报名培训班
   UpdateTrainingStudentup: {
-    url: API_URL + "/Pc/UpdateTrainingStudentup",
+    url: API_URL + "/Guid/UpdateTrainingStudentup",
     data: {Id: ''}
   },
   //取消报名培训班
   UpdateTrainingStudentdown: {
-    url: API_URL + "/Pc/UpdateTrainingStudentdown",
+    url: API_URL + "/Guid/UpdateTrainingStudentdown",
     data: {Id: ''}
   },
   //未读通知
