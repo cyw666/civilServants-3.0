@@ -1,0 +1,160 @@
+/**
+ * mixins
+ */
+/*字体*/
+@font-family: '"Microsoft Yahei", "AvenirNext-Regular", "Helvetica Neue", "lucida grande", "PingFangHK-Light", "STHeiti", "Heiti SC", "Hiragino Sans GB", "Microsoft JhengHei", SimHei, "WenQuanYi Micro Hei", "Droid Sans", "Roboto", Helvetica, Tahoma, Arial, "sans-serif"';
+
+@white: #fff;
+@black: #000;
+@blue: #3a7fb6;
+@blue-2: #2371ff;
+@blue-3: #108ee9;
+@green: #00a854;
+@cyan: #b4ca41;
+@red: #db1011;
+@red-2: #f04134;
+@orange: #ff9842;
+@yellow: #ffbf00;
+@gray-333: #333;
+@gray-ccc: #ccc;
+@gray-ddd: #ddd;
+@gray-eee: #eee;
+@gray-f3: #f3f3f3;
+@gray-f4: #f4f4f4;
+@gray-f7: #f7f7f7;
+@gray-f9: #f9f9f9;
+/*颜色*/
+@primary-color: @red;
+@info-color: @blue-3;
+@success-color: @green;
+@error-color: @red-2;
+@highlight-color: @red;
+@warning-color: @yellow;
+@normal-color: #d9d9d9;
+// Background color for `<body>`
+@body-background: @white;
+@component-background: @white;
+@text-color: @gray-333;
+@font-size-base: 14px;
+@font-size-lg: @font-size-base + 2px;
+@border-radius-base: 4px;
+@border-radius-sm: 2px;
+// LINK
+@link-color: @text-color;
+@link-hover-color: lighten(@primary-color, 1%);
+@link-active-color: lighten(@primary-color, 2%);
+@link-hover-decoration: none;
+// Disabled states
+@disabled-color: rgba(0, 0, 0, .25);
+@disabled-bg: #f7f7f7;
+@disabled-color-dark: #f9f9f9;
+// Border color
+@border-color-base: #d9d9d9; // base border outline a component
+@border-color-split: #e9e9e9; // split border inside a component
+@border-width-base: 1px; // width of the border for a component
+@border-style-base: solid; // style of a components border
+
+@list-header-bg:#edf3fc;
+// 边框圆角
+.border-radius (@radius: 3px) {
+  border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+
+.wh (@width,@height) {
+  width: @width;
+  height: @height;
+}
+
+.ht-lineHt (@height) {
+  height: @height;
+  line-height: @height;
+}
+
+.square(@size) {
+  .wh(@size; @size);
+}
+
+.opacity(@opacity:1) {
+  @opacityPercentage: @opacity * 100;
+  filter: ~"alpha(opacity = (@{opacityPercentage}))";;
+  -moz-opacity: @opacity;
+  -khtml-opacity: @opacity;
+  opacity: @opacity;
+}
+
+// 左浮动
+.pull-left() {
+  float: left !important;
+}
+
+// 右浮动
+.pull-right() {
+  float: right !important;
+}
+
+// 清除浮动
+.clearFix() {
+  zoom: 1;
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+    visibility: hidden;
+    font-size: 0;
+    height: 0;
+  }
+}
+
+// 文字居中
+.text-center(){
+  text-align: center;
+}
+// 文字居左
+.text-left(){
+  text-align: left;
+}
+// 文字居右
+.text-right(){
+  text-align: right;
+}
+//base边框
+.border-base(){
+  border: @border-width-base @border-style-base @border-color-base;
+}
+/*超出显示...*/
+.ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/*两端对齐*/
+.justify() {
+  text-align: justify;
+  -ms-text-justify: inter-ideograph;
+  text-justify: inter-ideograph;
+}
+/*向右箭头*/
+.triangleRight(@width:5px,@color:@red) {
+  font-size: 0;
+  line-height: 0;
+  border-width: @width;
+  border-color: @color;
+  border-right-width: 0;
+  border-style: dashed;
+  border-left-style: solid;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+
+/*圆点*/
+.dian() {
+  display: inline-block;
+  .wh(4px, 4px);
+  .border-radius(50%);
+  background-color: @gray-333;
+}

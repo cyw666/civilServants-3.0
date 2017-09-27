@@ -1,8 +1,8 @@
 
 <!--文章列表-->
 <div class="articleList">
-  <div class="com-header clearfix">
-    <p class="title pull-left">
+  <div class="com-header">
+    <p class="title">
       <img src="../images/headerLeftIcon.png" alt="图标">
       <span ng-show="articleListData.CategoryName">{{articleListData.CategoryName}}</span>
       <span ng-hide="articleListData.CategoryName">{{articleListData.TitleNav}}</span>
@@ -25,10 +25,6 @@
       </div>
       <button type="submit" class="btn btn-default" ng-click="refreshList({page:1,search:searchTitle})">搜索</button>
     </form>
-    <!--<div class="articleListSearch">
-      <input type="text" ng-model="searchTitle" my-placeholder placeholder="请输入搜索关键词">
-      <button class="btn btn-default" ng-click="refreshList({page:1,search:searchTitle})">搜索</button>
-    </div>-->
     <div dw-loading="articleList" class="mar_top_20">
       <table class="table" ng-show="paginationConf.totalItems">
         <tr>
@@ -45,34 +41,4 @@
     </div>
   </div>
 </div>
-<style>
-  .articleList .titleName{
-    width: 500px;
-  }
-  .articleList th{
-    font-weight: bold;
-    background-color: #EDF3FC;
-  }
-  .articleList td img{
-    margin: 0 10px;
-  }
-  .articleList td a{
-    display: inline-block;
-    width: 458px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .articleList td img,.articleList td a{
-    vertical-align: middle;
-  }
-  .articleList .titleName,.articleList .titleDate,.articleList .listDate{
-    text-align: center;
-  }
-  .articleListHeader > h1{
-    line-height:49px;
-    padding-left: 49px;
-    font-size: 22px;
-    color: #000;
-  }
-</style>
+

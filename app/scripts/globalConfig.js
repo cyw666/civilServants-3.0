@@ -22,7 +22,7 @@ var IMPORT = {
   a: "用户排行设置导入模板.xls",
   courseurlimport: "课程地址模版.xls"
 };
-var BROSWER = (function () {
+/*var BROSWER = (function () {
   var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
   var isOpera = userAgent.indexOf("Opera") > -1; //判断是否Opera浏览器
   var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器
@@ -58,6 +58,20 @@ var BROSWER = (function () {
     return "Opera";
   }
   return "Other";
+})();*/
+var changeTheme = function(themeFile) {
+  document.getElementById('global-css').setAttribute("href", "styles/"+themeFile+".css");
+}
+var ORIGIN = (function () {
+  var origin = window.origin;
+  var plate = "hunan";
+  if(origin === "http://localhost:9000"){
+    plate="hunan";
+  }else {
+    plate="changsha";
+  }
+  return plate;
+  // changeTheme(themeFile);
 })();
 /**
  * 加密

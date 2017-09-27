@@ -1,13 +1,14 @@
 <div class="courselCenter">
-  <div class="com-header clearfix">
-    <p class="title pull-left">
+  <!--<div class="com-header">
+    <p class="title">
       <img src="../images/headerLeftIcon.png" alt="图标">
       课程中心
     </p>
-    <p class="more pull-right">
+    <p class="more">
       <a ui-sref="courseCenter" target="_blank"><img src="../images/more.png" alt="更多"></a>
     </p>
-  </div>
+  </div>-->
+  <common-header title="courseTitle" show-more="courseShow" link-url="courseLink"></common-header>
   <div class="btn-group courselLink" role="group">
     <a class="btn btn-default active" ng-click="getRecommendCourse()">推荐课程</a>
     <a class="btn btn-default" ng-repeat="courseName in courselassification" ng-click="searchCourseList(courseName.Id)" repeat-finish="renderFinish()">{{courseName.Name}}</a>

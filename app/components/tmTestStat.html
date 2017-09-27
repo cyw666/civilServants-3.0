@@ -1,7 +1,7 @@
 <!--考试统计-->
 <div class="examStat">
-  <div class="com-header clearfix">
-    <p class="title pull-left">
+  <div class="com-header">
+    <p class="title">
       <img src="../images/headerLeftIcon.png" alt="图标">
       {{examStatData.TitleNav}}
     </p>
@@ -43,7 +43,7 @@
           <div class="list" ng-repeat="examList in examStatData.ListData">
               <span class="list2">{{examStatData.Account}}</span>
               <span class="list2">{{examList.UserName}}</span>
-              <span class="list2">{{examList.Name}}</span>
+              <span class="list2 ellipsis">{{examList.Name}}</span>
               <span class="list2">{{examList.ExamScore}}</span>
               <span class="list2">{{examList.Credit}}</span>
           </div>

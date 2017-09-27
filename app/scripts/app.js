@@ -1020,7 +1020,8 @@ angular
             }
             else if (data.Type == 10) {
               alert("您还不是本平台会员，将前往您所在的平台" + ":" + data.Message);
-              document.location = "http://" + data.Message;
+              // document.location = "http://" + data.Message;
+              window.open("http://" + data.Message,"_blank");
             }
             else if (data.Type == 11) {
               alert("过期了");

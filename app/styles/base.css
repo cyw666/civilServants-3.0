@@ -1,0 +1,143 @@
+/**
+ * base
+ */
+/**
+ * mixins
+ */
+/*字体*/
+/*颜色*/
+/*超出显示...*/
+/*两端对齐*/
+/*向右箭头*/
+/*圆点*/
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+body {
+  font-family: '"Microsoft Yahei", "AvenirNext-Regular", "Helvetica Neue", "lucida grande", "PingFangHK-Light", "STHeiti", "Heiti SC", "Hiragino Sans GB", "Microsoft JhengHei", SimHei, "WenQuanYi Micro Hei", "Droid Sans", "Roboto", Helvetica, Tahoma, Arial, "sans-serif"';
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+}
+img {
+  color: transparent;
+  font-size: 0;
+  vertical-align: middle;
+  border: 0px;
+  /*
+    For IE.
+    http://css-tricks.com/ie-fix-bicubic-scaling-for-images
+  */
+  -ms-interpolation-mode: bicubic;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+}
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+ul,
+ol {
+  display: list-item;
+  list-style: none;
+}
+input::-ms-clear,
+input::-ms-reveal {
+  display: none;
+}
+::selection {
+  background: #db1011;
+  color: #fff;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: 500;
+}
+a {
+  color: #333;
+  background: transparent;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  transition: color .3s ease;
+}
+a:focus {
+  text-decoration: underline;
+  text-decoration-skip: ink;
+}
+a:hover {
+  color: #e01011;
+}
+a:active {
+  color: #e51112;
+}
+a:active,
+a:hover {
+  outline: 0;
+  text-decoration: none;
+}
+a[disabled] {
+  color: rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: '"Microsoft Yahei", "AvenirNext-Regular", "Helvetica Neue", "lucida grande", "PingFangHK-Light", "STHeiti", "Heiti SC", "Hiragino Sans GB", "Microsoft JhengHei", SimHei, "WenQuanYi Micro Hei", "Droid Sans", "Roboto", Helvetica, Tahoma, Arial, "sans-serif"';
+}

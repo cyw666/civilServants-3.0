@@ -1,0 +1,17 @@
+/**
+ * 折叠面板
+ */
+@import "../styles/mixins";
+.expander {
+  margin-left: 10px;
+  &>.title{
+    padding: 5px 10px;
+    cursor: pointer;
+    &:hover{
+      background-color: @gray-f7;
+    }
+  }
+  &.body{
+    padding: .1em .3em;
+  }
+}

@@ -7,16 +7,16 @@
  * # tmClassMy
  */
 angular.module('luZhouApp')
-    .directive('tmClassMy', function() {
-        return {
-            templateUrl: 'components/tmClassMy.html',
-            restrict: 'EA',
-            scope: {
-                classMyData: "=",
-                classType: "="
-            },
-            link: function postLink(scope, element, attrs) {
-
-            }
-        };
-    });
+  .directive('tmClassMy', function () {
+    return {
+      templateUrl: 'components/tmClassMy.html',
+      restrict: 'EA',
+      scope: {
+        classMyData: "=",
+        classType: "="
+      },
+      link: function postLink(scope, element, attrs) {
+        
+      }
+    };
+  });

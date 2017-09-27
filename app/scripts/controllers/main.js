@@ -11,6 +11,7 @@ angular.module('luZhouApp')
   .controller('MainCtrl', function($scope, $timeout, $interval,$rootScope, $cookieStore, $state, commonService, $loading, $location, $stateParams) {
     //防伪造请求
     var token = commonService.AntiForgeryToken();
+    $scope.plate = ORIGIN;
     $scope.vm={};
     $scope.vm2={};
     $scope.vm3={};
@@ -26,6 +27,9 @@ angular.module('luZhouApp')
       PassWord: '',
       RememberMe: true
     };
+    $scope.courseTitle="课程中心";
+    $scope.courseShow=true;
+    $scope.courseLink = 'courseCenter';
     var getCookie = commonService.getCookie;
     var setCookie = commonService.setCookie;
     var delCookie = commonService.delCookie;

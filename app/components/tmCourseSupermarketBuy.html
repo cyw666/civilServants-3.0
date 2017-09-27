@@ -1,8 +1,8 @@
 
 <!--课程超市列表-->
 <div class="courseSupermarket">
-  <div class="com-header clearfix">
-    <p class="title pull-left">
+  <div class="com-header">
+    <p class="title">
       <img src="../images/headerLeftIcon.png" alt="图标">
       课程中心
     </p>
@@ -54,7 +54,7 @@
               <input ng-disabled="{{courseList.Learning>=0?1:0}}" name="subcheck" type="checkbox" class="check" value={{courseList.Id}}>
             </p>
             <p class="list2"><a ui-sref="courseDetails({Id:courseList.Id})" target="_blank"  title="{{courseList.Name}}">{{courseList.Name}}</a></p>
-            <p class="list3 green">￥{{courseList.Price.toFixed(2)}}</p>
+            <p class="list3 money">￥{{courseList.Price.toFixed(2)}}</p>
             <p class="list3">{{courseList.Credit.toFixed(1)}}</p>
             <p class="list3">{{courseList.ClickCount}}</p>
             <p class="list3">{{courseList.CreateDate | dateFilter | date:'yyyy-MM-dd'}}</p>
@@ -164,9 +164,10 @@
   .courseList .NewCourseList a:hover{
     color: #7abc1d;
   }
-  .courseList .NewCourseList .green{
+  .courseList .NewCourseList .money{
     font-weight: bold;
     font-size: 15px;
+    color: #00A854;
   }
   .courseList .NewCourseList li{
     border-bottom: 1px solid #f2f2f2;
