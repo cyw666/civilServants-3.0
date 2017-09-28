@@ -14,14 +14,14 @@
       <li class="active">{{bookContentData.Name}}</li>
     </ol>
 
-    <div class="booktitle">
-      <h2 class="titlename">{{bookContentData.Name}}</h2>
+    <div class="bookTitle">
+      <h2 class="titleName">{{bookContentData.Name}}</h2>
     </div>
 
-    <div class="bookcontent clearfix">
+    <div class="bookContent">
       <img ng-src="{{bookContentData.ImagePath+'/'+bookContentData.Icon}}">
-      <div class="booktxt">
-        <h4 class="bookkey"><span>{{bookContentData.BookKey?bookContentData.BookKey:'无'}}</span></h4>
+      <div class="bookTxt">
+        <h4>{{bookContentData.BookKey?bookContentData.BookKey:'无'}}</h4>
         <p class="mar_top_20">作者: &nbsp;<strong>{{bookContentData.Author}}</strong></p>
         <p>出版时间: &nbsp;<strong>{{bookContentData.Time}}</strong></p>
         <p>总点击: &nbsp;<strong>{{bookContentData.ClickCount}}</strong></p>
@@ -65,7 +65,7 @@
         </div>
       </div>
     </div>
-    <div  class="booksum">
+    <div  class="bookSum">
       <h3>作品简介</h3>
       <p class="justify" ng-bind-html="bookContentData.Content| trustHtml"></p>
     </div>
@@ -73,8 +73,8 @@
     <div class="bookComment">
       <h3>图书评论</h3>
       <ul class="comment_bord">
-        <li ng-repeat="list in commentData.ListData" class="clearfix">
-          <div class="bookCommentLeft pull-left">
+        <li ng-repeat="list in commentData.ListData">
+          <div class="bookCommentLeft">
             <h4>{{list.UserName}}:</h4>
             <p>{{list.Comment}}</p>
           </div>
@@ -88,95 +88,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  .bookDetail .titlename {
-    line-height: 70px;
-    height: 70px;
-    text-align: center;
-    margin-top: 10px;
-  }
-  .bookDetail .booktitle p {
-    text-align: right;
-    padding-right: 40px;
-  }
-  .bookDetail .bookcontent img {
-    float: left;
-    width: 187px;
-    height: 247px;
-    margin: 20px 0 0 20px;
-  }
-  .bookDetail .bookcontent .booktxt {
-    float: left;
-    padding-left: 11px;
-    margin-top: 20px;
-  }
-  .bookDetail .bookcontent .booktxt>p{
-    height: 25px;
-    line-height: 25px;
-  }
-  .bookDetail .bookcontent h4 {
-    height: 30px;
-    line-height: 30px;
-    font-weight: 600;
-    font-size: 24px;
-  }
-  .bookDetail .bookcontent h4 span{
-    font-weight: normal;
-  }
-  .bookDetail .bookcontent span {
-    width: 25%;
-    height: 30px;
-    line-height: 30px;
-    display: inline-block;
-    color: #666;
-  }
-  .bookDetail .booktxt .group a.btn {
-    margin: 30px 10px 0 0;
-    width: 130px;
-  }
-  .bookDetail .modal-footer {
-    text-align: center;
-  }
-  .bookDetail .comment_bord {
-    border-left: 5px solid #eee;
-    border-bottom: 3px solid #eee;
-    margin-bottom: 20px;
-  }
-  .bookDetail .bookCommentLeft{
-    width: 80%;
-  }
-  .bookDetail .bookCommentLeft h4,.bookDetail .bookCommentLeft p{
-    padding-left: 15px;
-    margin-top: 5px;
-  }
-  .bookDetail .bookCommentLeft p{
-    min-height: 40px;
-  }
-  .bookDetail .bookComment li{
-    border-bottom: dashed #333 1px;
-  }
-  .bookDetail .bookCommentRight span{
-    display: inline-block;
-    width: 45px;
-    height: 45px;
-    background-color: #d9534f;
-    color: #fff;
-    line-height: 45px;
-    font-weight: bold;
-    text-align: center;
-    margin-right: 40px;
-    margin-top: 10px;
-    border:1px solid #d43f3a;
-    border-radius: 3px;
-  }
-  .bookDetail .booksum ,.bookDetail .bookComment{
-    padding: 20px;
-  }
-  .bookDetail h3{
-    height: 40px;
-    line-height: 40px;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
-  }
-</style>

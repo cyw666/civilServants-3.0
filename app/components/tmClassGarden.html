@@ -1,3 +1,4 @@
+<!--班级园地-->
 <div class="classGarden mar_top_20">
   <div class="com-header">
     <p class="title">
@@ -11,119 +12,39 @@
   <div class="borderNews">
     <div class="myTab" dw-loading="classGarden">
       <ul class="nav nav-tabs" ng-init="vm2.activeTab=0">
-        <li ng-repeat="list in trainingClassType.ListData" ng-class="{active: vm2.activeTab == $index}" >
+        <li ng-repeat="list in trainingClassType.ListData" ng-class="{active: vm2.activeTab == $index}">
           <a ng-click="vm2.activeTab = $index;getClassList(list.Id)">{{list.Name}}</a>
         </li>
       </ul>
       <div class="tab-content">
         <div class="tab-panel perlist">
-          <table class="table">
-            <tbody>
-              <tr class="title">
-                <td>班级名称</td>
-                <td>培训时间</td>
-                <td>培训地点</td>
-                <td>状态</td>
-              </tr>
+          <div class="title_bar">
+            <div class="list3-5">班级名称</div>
+            <div class="list2-5">培训时间</div>
+            <div class="list2">培训地点</div>
+            <div class="list2">状态</div>
+          </div>
+          <div class="list" ng-repeat="list in classListData.ListData">
+            <div class="list3-5 bookLog">
+              <img src="../images/bookLog.png" alt="">
+              <a ng-click="checkUserClass(list.Id)">{{list.Name}}</a>
+            </div>
+            <div class="list2-5">{{list.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{list.EndTime | dateFilter |
+              date:'yyyy-MM-dd'}}
+            </div>
+            <div class="list2">{{list.Address || "无"}}</div>
 
-              <tr ng-repeat="list in classListData.ListData">
-                <td class="item1 clearfix">
-                  <p class="pull-left">
-                    <img src="../images/bookLog.png" alt="">
-                  </p>
-                  <span class="ellipsis pull-left" title="{{list.Name}}">
-                    <a ng-click="checkUserClass(list.Id)">{{list.Name}}</a>
-                  </span>
-                </td>
-                <td class="item2">{{list.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{list.EndTime | dateFilter | date:'yyyy-MM-dd'}}</td>
-                <td class="item3">{{list.Address}}</td>
-
-                <td class="item4" ng-if="!list.ApplyStatus"><a class="btn btn-info" ng-click="addClass(list.Id)">点击报名</a></td>
-                <td class="item4" ng-if="list.ApplyStatus=='Normal'"><a disabled class="btn btn-success">{{JudgeStatus(list.ApplyStatus)}}</a></td>
-                <td class="item4" ng-if="list.ApplyStatus=='UnAudit'||list.ApplyStatus=='UnApprove'"><a disabled class="btn btn-default">{{JudgeStatus(list.ApplyStatus)}}</a></td>
-              </tr>
-            </tbody>
-          </table>
+            <div class="list2" ng-if="!list.ApplyStatus"><a class="btn btn-info" ng-click="addClass(list.Id)">点击报名</a>
+            </div>
+            <div class="list2" ng-if="list.ApplyStatus=='Normal'"><a disabled class="btn btn-success">{{JudgeStatus(list.ApplyStatus)}}</a>
+            </div>
+            <div class="list2" ng-if="list.ApplyStatus=='UnAudit'||list.ApplyStatus=='UnApprove'"><a disabled
+                                                                                                     class="btn btn-default">{{JudgeStatus(list.ApplyStatus)}}</a>
+            </div>
+          </div>
         </div>
         <div ng-show="showNoClass" class="result">暂无培训班</div>
       </div>
     </div>
   </div>
 </div>
-<style>
-  .classGarden {
-
-  }
-  .classGarden .borderNews{
-    min-height: 396px;
-    background: url("../images/classGardenbg.png") no-repeat center;
-  }
-  .classGarden .borderNews .tab-content{
-    border: 1px solid #eee;
-    border-top: none;
-    border-bottom: none;
-  }
-  .classGarden a.btn {
-    width: 75px;
-    padding: 2px 0;
-  }
-  .classGarden a.btn.btn-info {
-    background-color: #00b4ff;
-    border-color: #00b4ff;
-  }
-  .classGarden .btn-info[disabled]:hover,.classGarden .btn-info[disabled]:focus,.classGarden .btn-info[disabled]{
-    background-color: #00b4ff;
-    border-color: #00b4ff;
-  }
-  .classGarden .borderNews .tab-content .btn-default{
-    background-color: #a2a2a2;
-    border-color: #a2a2a2;
-  }
-  .classGarden .borderNews .tab-content .btn-default:hover,.classGarden .borderNews .tab-content .btn-default:focus{
-    background-color: #a2a2a2;
-    border-color: #a2a2a2;
-    color: #fff;
-  }
-  .perlist >.table{
-    margin-bottom: 0px;
-  }
-  .perlist >.table > thead > tr > td, .perlist>.table > tbody > tr > td, .perlist>.table > tfoot > tr > td{
-    border-bottom: 1px solid #ddd;
-    height: 48px;
-    line-height: 48px;
-    padding: 0;
-    border-top: none;
-  }
-  .perlist>.table > tbody > tr.title {
-    font-size: 16px;
-    color: #666;
-  }
-  .perlist>.table > tbody > tr.title > td {
-    height: 30px;
-    line-height: 30px;
-  }
-  .perlist >.table .item1 {
-    width: 35%;
-    text-align: left;
-    font-weight: 600;
-  }
-  .perlist >.table .item2 {
-    width: 25%;
-  }
-  .perlist >.table .item3 {
-    width: 20%;
-  }
-  .perlist >.table .item4 {
-    width: 20%;
-  }
-  .perlist >.table .item2 img{
-    margin: 0 20px;
-  }
-  .perlist >.table .item1 span{
-    width: 230px;
-    display: inline-block;
-  }
-  .perlist >.table .item1 p{
-    margin: 0 20px;
-  }
-</style>

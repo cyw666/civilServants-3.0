@@ -272,10 +272,9 @@ angular.module('luZhouApp')
     // $scope.searchCourseList();
 
     $scope.renderFinish = function() {
-      $('.courselLink>.btn').on('click', function() {
+      $('.courseLink>.btn').on('click', function() {
         $(this).addClass('active').siblings('a').removeClass('active');
       });
-    
     };
     //推荐课程
     $scope.getRecommendCourse = function () {

@@ -1,8 +1,9 @@
+<!--考试-->
 <div class="exam" dw-loading="exam" style="-webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;">
   <div class="exam_top">
     <img src="/images/exam_top.png" />
   </div>
-  <form method="post" id="editForm" name="editForm">
+  <form method="post" id="editForm" class="editForm" name="editForm">
     <input type="hidden" value="{{examData.examid}}" id="hdnexamid" name="hdnexamid" />
     <input type="hidden" value="{{examData.isfixed}}" id="hdnisfixed" name="hdnisfixed"/>
     <table class="table" cellpadding="0" cellspacing="0" style="width:100%;">
@@ -42,7 +43,7 @@
         </td>
       </tr>
       <tr ng-show="checkingQuestions">
-        <td class="biaoti">一、判断题(共 {{checkingQuestions.length}} 题,共{{examAllScore1(examData.Type0Questions)}} 分)</td>
+        <td>一、判断题(共 {{checkingQuestions.length}} 题,共{{examAllScore1(examData.Type0Questions)}} 分)</td>
       </tr>
       <tr ng-show="checkingQuestions" ng-repeat="checkques in checkingQuestions" ng-init="outerIndex0 = $index">
         <td>
@@ -102,7 +103,7 @@
         </td>
       </tr>
       <tr>
-        <td align="center" style="text-align: center">
+        <td style="text-align: center">
           <input ng-click="submitForm()" type="button" id="btnSave" class="btn" value="提交" />
         </td>
       </tr>
@@ -110,34 +111,3 @@
     </table>
   </form>
 </div>
-
-<style>
-  .exam {
-    min-height: 700px;
-    background-color: #f9f9f9;
-  }
-  .exam_top {
-    margin: 0 auto;
-    padding: 10px 0;
-    text-align: center;
-  }
-  #editForm {
-    padding: 20px;
-  }
-  .exam tr td{
-    text-align: left;
-    padding-left: 15px;
-  }
-  .exam .red {
-    color: #f00909;
-  }
-  .exam .xz li{
-    float: left;
-    font-size: 15px;
-    font-weight: bold;
-    padding-left: 15px;
-  }
-  .exam .xz li.red{
-    padding-left: 0;
-  }
-</style>

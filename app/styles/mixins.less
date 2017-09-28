@@ -9,19 +9,24 @@
 @blue: #3a7fb6;
 @blue-2: #2371ff;
 @blue-3: #108ee9;
+@blue-4: #00b4ff;
 @green: #00a854;
 @cyan: #b4ca41;
 @red: #db1011;
 @red-2: #f04134;
+@red-3: #d43f3a;
+@red-4: #d9534f;
 @orange: #ff9842;
 @yellow: #ffbf00;
 @gray-333: #333;
+@gray-aaa: #aaa;
 @gray-ccc: #ccc;
 @gray-ddd: #ddd;
 @gray-eee: #eee;
 @gray-f3: #f3f3f3;
 @gray-f4: #f4f4f4;
 @gray-f7: #f7f7f7;
+@gray-f8: #f8f8f8;
 @gray-f9: #f9f9f9;
 /*颜色*/
 @primary-color: @red;
@@ -34,8 +39,10 @@
 // Background color for `<body>`
 @body-background: @white;
 @component-background: @white;
+@footer-background: #ebebeb;
 @text-color: @gray-333;
 @font-size-base: 14px;
+@font-size-sm: @font-size-base - 2px;
 @font-size-lg: @font-size-base + 2px;
 @border-radius-base: 4px;
 @border-radius-sm: 2px;
@@ -55,11 +62,14 @@
 @border-style-base: solid; // style of a components border
 
 @list-header-bg:#edf3fc;
+
+@input-placeholder-color:@text-color*3;
 // 边框圆角
 .border-radius (@radius: 3px) {
   border-radius: @radius;
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
+  -o-border-radius: @radius;
 }
 
 .wh (@width,@height) {
@@ -109,6 +119,28 @@
     height: 0;
   }
 }
+//过渡
+.transition(@pro:all,@dur:0.5s,@fn:ease-in,@delay:0){
+  -webkit-transition-property: @pro;
+  -moz-transition-property: @pro;
+  -o-transition-property: @pro;
+  transition-property: @pro;
+
+  -webkit-transition-duration: @dur;
+  -moz-transition-duration: @dur;
+  -o-transition-duration: @dur;
+  transition-duration: @dur;
+
+  -webkit-transition-timing-function: @fn;
+  -moz-transition-timing-function: @fn;
+  -o-transition-timing-function:@fn;
+  transition-timing-function: @fn;
+
+  -webkit-transition-delay: @delay;
+  -moz-transition-delay: @delay;
+  -o-transition-delay: @delay;
+  transition-delay: @delay;
+}
 
 // 文字居中
 .text-center(){
@@ -125,6 +157,22 @@
 //base边框
 .border-base(){
   border: @border-width-base @border-style-base @border-color-base;
+}
+// Placeholder text
+.placeholder(@color: @input-placeholder-color) {
+  // Firefox
+  &::-moz-placeholder {
+    color: @color;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  // Internet Explorer 10+
+  &:-ms-input-placeholder {
+    color: @color;
+  }
+  // Safari and Chrome
+  &::-webkit-input-placeholder {
+    color: @color;
+  }
 }
 /*超出显示...*/
 .ellipsis() {
@@ -152,9 +200,10 @@
 }
 
 /*圆点*/
-.dian() {
+.dian(@size:4px,@color:@primary-color) {
   display: inline-block;
-  .wh(4px, 4px);
+  .square(@size);
   .border-radius(50%);
-  background-color: @gray-333;
+  background-color: @color;
+  vertical-align: middle;
 }

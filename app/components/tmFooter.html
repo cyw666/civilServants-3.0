@@ -17,11 +17,8 @@
         <li class="pull-left last"><a href="http://cqgj.12371.gov.cn/" target="_blank"><img src="../images/linkLogo7.png" alt=""></a></li>
       </ul>
     </div>
-    <div class="friendlyLink clearfix" dw-loading="friendlyLink">
-      <!--<select ng-model="$parent.linkNode" ng-repeat="friendlyLink in firenlyLinkData" ng-options="item.Name for item in friendlyLink.Nodes">
-        <option value="">-&#45;&#45;{{friendlyLink.Name}}-&#45;&#45;</option>
-      </select>-->
-      <div class="dropup pull-left" ng-repeat="friendlyLink in firenlyLinkData" ng-class="{'mar_left_14':$index>0}">
+    <div class="friendlyLink" dw-loading="friendlyLink">
+      <div class="dropup" ng-repeat="friendlyLink in firenlyLinkData" ng-class="{'mar_left_14':$index>0}">
         <button class="btn btn-default dropdown-toggle" type="button" id="friendlyLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           -&#45;&#45;{{friendlyLink.Name}}-&#45;&#45;
           <span class="caret"></span>
@@ -33,7 +30,7 @@
     </div>
   </div>
   <div class="footerBg">
-    <div class="foot_con">
+    <div class="container_24">
       <p>主办单位：杭州精英在线教育科技股份有限公司  &nbsp;&nbsp;&nbsp;承办单位：杭州精英在线教育科技股份有限公司 &nbsp;&nbsp;&nbsp; 联系电话：0571-28990788
         &nbsp;&nbsp;&nbsp</p>
       <p>Copyright © 2010-2017 All rights reserved. 浙ICP备06005845号</p>
@@ -41,47 +38,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  .footer {
-
-  }
-  .footer .imgLink {
-    margin: 23px 0;
-  }
-  .footer .imgLink li{
-    margin-right: 14px;
-  }
-  .footer .imgLink li.last{
-    margin-right: 0;
-  }
-
-  .friendlyLink{
-    text-align: center;
-    margin: 0px auto 24px;
-  }
-  .friendlyLink .dropup{
-    width: 188px;
-  }
-  .friendlyLink .dropup .btn{
-    width: 100%;
-    padding: 3px 12px;
-  }
-  .footer .footerBg {
-    height: 156px;
-    background-color: #ebebeb;
-    padding: 40px 0 40px 0;
-    text-align: center;
-  }
-  .foot_con{
-    width:1200px;
-    margin: 0 auto;
-  }
-  .footer .footerBg p{
-    line-height: 32px;
-    font-size: 12px;
-    color: #999;
-    margin-left: 30px;
-  }
-
-</style>

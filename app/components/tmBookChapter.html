@@ -1,3 +1,4 @@
+<!--图书章节-->
 <div class="bookChapter">
   <div class="com-header">
     <p class="title">
@@ -13,8 +14,8 @@
       <li><a ui-sref="bookdetail({Id:bookId})">红楼梦</a></li>
       <li class="active">图书章节</li>
     </ol>
-    <div class="booktitle">
-      <h2 class="titlename">{{bookChapterData.BookName}}</h2>
+    <div class="bookTitle">
+      <h2 class="titleName">{{bookChapterData.BookName}}</h2>
       <p>作者: &nbsp;<strong>{{bookChapterData.Author}}</strong> &nbsp;出版时间: &nbsp;{{bookChapterData.Time}}&nbsp;</p>
     </div>
     <div class="bookChapterContent">
@@ -25,37 +26,4 @@
       <div tm-pagation conf="paginationConf"></div>
     </div>
   </div>
-
 </div>
-
-<style>
-  .bookChapter .titlename {
-    line-height: 3.1em;
-    text-align: center;
-    color: #666;
-    margin-top: 10px;
-  }
-
-  .bookChapter .booktitle p {
-    text-align: right;
-    padding-right: 40px;
-    margin-bottom: 10px;
-  }
-
-  .bookChapterContent {
-    border-top: 5px solid #ccc;
-  }
-
-  .bookChapterContent li {
-    height: 35px;
-    line-height: 35px;
-  }
-
-  .bookChapterContent li a {
-    font-size: 1.3em;
-    line-height: 1.3em;
-    color: #666;
-    margin-top: 10px;
-    margin-left: 20px;
-  }
-</style>

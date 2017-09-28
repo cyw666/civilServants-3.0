@@ -1,3 +1,4 @@
+<!--章节内容-->
 <div class="bookChapterContent">
   <ol class="breadcrumb">
     <li class="currentPosition">您的当前位置:</li>
@@ -8,90 +9,32 @@
     <li class="active">{{articleData.Name}}</li>
   </ol>
 
-  <div class="article-detail article-detail-container container_24" dw-loading="tmshowarticledetail">
-    <div class="article-detail article-detail-title-bar">
-      <p class="article-detail article-detail-title text-center grid_24">{{articleData.Name}}</p>
-      <p class="article-detail article-detail-info">
-        <span ng-if="articleData.CreatedDate">发布时间：{{articleData.CreatedDate | dateFilter | date:'yyyy-MM-dd'}}</span>
-        <span ng-if="!articleData.CreatedDate">发布时间：{{articleData.CreateDate | dateFilter | date:'yyyy-MM-dd'}}</span>
-        <span ng-if="articleData.Author">作者：{{articleData.Author}}</span>
-        <span ng-if="!articleData.Author">作者：{{articleData.Creator}}</span>
-        <span>来源：{{articleData.Source}}</span>
-        <span ng-show="articleData.ClickCount">浏览次数：{{articleData.ClickCount}}</span>
+  <div class="article-detail" dw-loading="tmshowarticledetail">
+    <div class="article-detail-title-bar">
+      <p class="article-detail-title">{{articleData.Name}}</p>
+      <p class="article-detail-info">
+        <span>发布时间：{{articleData.CreatedDate | dateFilter | date:'yyyy-MM-dd'}}</span>
+        <span>作者：{{articleData.Author || '无'}}</span>
+        <span>来源：{{articleData.Source || '无'}}</span>
+        <span>浏览次数：{{articleData.ClickCount || 0}}</span>
       </p>
-      <p class="article-detail article-detail-info" ng-show="articleData.Id">
-        <a class="favoriteadd"
-           ng-click="favoriteAdd({mainId:articleData.Id,type:articleData.Type,title:articleData.Name,remark:'0'},token);" ng-show="!articleData.FavoriteId">[收藏]</a>
-        <a class="favoritedel"  ng-click="favoriteDelete({id:articleData.FavoriteId},token);" ng-show="articleData.FavoriteId">[取消收藏]</a>
+      <p class="article-detail-adjust" ng-show="articleData.Id">
+        <a ng-click="favoriteAdd({mainId:articleData.Id,type:articleData.Type,title:articleData.Name,remark:'0'},token)" ng-show="!articleData.FavoriteId">[收藏]</a>
+        <a ng-click="favoriteDelete({id:articleData.FavoriteId},token)" ng-show="articleData.FavoriteId">[取消收藏]</a>
         <a href="/Content/Upload/Attachment/{{articleData.AttachmentName}}" target="_blank" ng-show="articleData.AttachmentName">[附件下载]</a>
         <a href="javascript:window.print();">[打印]</a>
-        <a  ng-click="reduceFont()">[缩小字体]</a>
+        <a ng-click="reduceFont()">[缩小字体]</a>
         <a ng-click="increaseFont()">[放大字体]</a>
       </p>
     </div>
-    <div id="setFont" class="article-detail article-detail-content justify" ng-bind-html="articleData.Content| trustHtml">
-
-    </div>
-    <div class="article-detail article-detail-changeBar clearfix" >
-      <p class="grid_11 article-detail article-detail-changeBar-anhor pull-left ellipsis" ng-show="articleData.UpId>0">
+    <div id="setFont" class="article-detail-content" ng-bind-html="articleData.Content| trustHtml"></div>
+    <div class="article-detail-changeBar">
+      <p class="article-detail-changeBar-up" ng-show="articleData.UpId>0">
         <a class="btn btn-danger" ui-sref="bookchaptercontent({Id:articleData.UpId})">上一章</a>
       </p>
-      <p class="grid_11 article-detail article-detail-changeBar-anhor pull-right ellipsis">
+      <p class="article-detail-changeBar-down">
         <a class="btn btn-danger" ui-sref="bookchaptercontent({Id:articleData.DownId})">下一章</a>
       </p>
     </div>
-
   </div>
 </div>
-
-
-<style>
-  .article-detail-container{
-    padding: 0 5px;
-  }
-  .article-detail-title-bar{
-    border-bottom: 1px solid #D4D5D7;
-  }
-  .article-detail-title{
-    font-size: 22px;
-    font-weight: bold;
-    line-height: 35px;
-    white-space: nowrap;
-    word-spacing: 0px;
-  }
-  .article-detail-info{
-    font-size: 12px;
-    line-height: 35px;
-    color: #999;
-    text-align: center;
-  }
-  .article-detail-info span{
-    display: inline;
-    margin: 0 15px;
-  }
-  .article-detail .article-detail-info a{
-    text-decoration: none;
-    font-size: 14px;
-    color: #999;
-    line-height: 35px;
-  }
-  .article-detail .article-detail-info a:hover{
-    text-decoration: none;
-    color: #999;
-    line-height: 35px;
-  }
-  .article-detail-content{
-    min-height: 500px;
-  }
-  #setFont{
-    word-wrap: break-word;
-  }
-  .article-detail-changeBar {
-    margin-bottom: 20px;
-    text-align: center;
-    margin-top: 20px;
-  }
-  .article-detail-changeBar  a{
-    width: 200px;
-  }
-</style>

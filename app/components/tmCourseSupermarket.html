@@ -1,4 +1,3 @@
-
 <!--课程超市列表-->
 <div class="courseSupermarket">
   <div class="com-header">
@@ -12,19 +11,28 @@
       <li class="currentPosition">您的当前位置:</li>
       <li><a ui-sref="main">首页</a></li>
       <li><a ui-sref="courseCenter">课程中心</a></li>
-      <li ng-if="courseSupermarketData.ChannelName==''" class="active">{{courseSupermarketData.TitleNav}}({{courseSupermarketData.Count}})</li>
-      <li ng-if="courseSupermarketData.ChannelName!=''" class="active">{{courseSupermarketData.ChannelName}}({{courseSupermarketData.Count}})</li>
+      <li ng-if="courseSupermarketData.ChannelName==''" class="active">
+        {{courseSupermarketData.TitleNav}}({{courseSupermarketData.Count}})
+      </li>
+      <li ng-if="courseSupermarketData.ChannelName!=''" class="active">
+        {{courseSupermarketData.ChannelName}}({{courseSupermarketData.Count}})
+      </li>
     </ol>
     <form class="form-inline formSearch">
-      <select class="form-control" ng-init="selectedName = selectText[0]" ng-model="selectedName" ng-options="x.name for x in selectText"  ng-change="judgement(selectedName.id)">
+      <select class="form-control" ng-init="selectedName = selectText[0]" ng-model="selectedName"
+              ng-options="x.name for x in selectText" ng-change="judgement(selectedName.id)">
       </select>
       <div class="form-group">
-        <input ng-show="showInput1" my-placeholder ng-model="searchTitle1" type="text" class="form-control" placeholder="请输入要搜索的课程">
+        <input ng-show="showInput1" my-placeholder ng-model="searchTitle1" type="text" class="form-control"
+               placeholder="请输入要搜索的课程">
         <div ng-show="showInput2">
-          <select class="form-control"  ng-init="searchTitle2 = videoType[0]" ng-model="searchTitle2" ng-options="x.name for x in videoType"  ng-change="judgement(selectedName.id)"></select>
-          <input my-placeholder ng-model="searchTitle22" type="text" class="form-control searchType" placeholder="请输入要搜索的课程">
+          <select class="form-control" ng-init="searchTitle2 = videoType[0]" ng-model="searchTitle2"
+                  ng-options="x.name for x in videoType" ng-change="judgement(selectedName.id)"></select>
+          <input my-placeholder ng-model="searchTitle22" type="text" class="form-control searchType"
+                 placeholder="请输入要搜索的课程">
         </div>
-        <input ng-show="showInput3" my-placeholder ng-model="searchTitle3" type="text" class="form-control" placeholder="请输入主讲人">
+        <input ng-show="showInput3" my-placeholder ng-model="searchTitle3" type="text" class="form-control"
+               placeholder="请输入主讲人">
       </div>
       <button type="submit" class="btn btn-default" ng-click="judgement(selectedName.id)">搜索</button>
     </form>
@@ -35,17 +43,21 @@
             <img src="../images/recomend.png" alt="智能推荐">
           </a>
           <div class="tag">
-            <span><img src="images/sfp.png"><a ng-click="judgement(selectedName.id,'ThreeScreenCourse')">精品三分屏</a></span>
+            <span><img src="images/sfp.png"><a
+              ng-click="judgement(selectedName.id,'ThreeScreenCourse')">精品三分屏</a></span>
             <span><img src="images/dsp.png"><a ng-click="judgement(selectedName.id,'SingleCourse')">单视频课件</a></span>
             <span><img src="images/dh.png"><a ng-click="judgement(selectedName.id,'AnimationCourse')">动画类课件</a></span>
           </div>
         </div>
         <div class="title_bar">
           <span><a ng-click="judgement(selectedName.id,null,'Name','order')">课程名称<span id="asc_Name">▼</span></a></span>
-          <span><a ng-click="judgement(selectedName.id,null,'CommentCount','order')">评论<span id="asc_CommentCount">▼</span></a></span>
-          <span><a ng-click="judgement(selectedName.id,null,'Credit','order')">学时<span id="asc_Credit">▼</span></a></span>
+          <span><a ng-click="judgement(selectedName.id,null,'CommentCount','order')">评论<span
+            id="asc_CommentCount">▼</span></a></span>
+          <span><a ng-click="judgement(selectedName.id,null,'Credit','order')">学时<span
+            id="asc_Credit">▼</span></a></span>
           <span><a ng-click="judgement(selectedName.id,null,'ClickCount','order')">点击量<span id="asc_ClickCount">▼</span></a></span>
-          <span><a ng-click="judgement(selectedName.id,null,'CreateDate','order')">上线时间<span id="asc_CreateDate">▼</span></a></span>
+          <span><a ng-click="judgement(selectedName.id,null,'CreateDate','order')">上线时间<span
+            id="asc_CreateDate">▼</span></a></span>
         </div>
       </div>
 
@@ -53,14 +65,16 @@
         <ul>
           <li class="clearfix" ng-repeat="courseList in courseSupermarketData.ListData">
             <div class="block1 pull-left">
-              <input ng-disabled="{{courseList.Learning>=0?1:0}}" name="subcheck" type="checkbox" class="check" value={{courseList.Id}}>
+              <input ng-disabled="{{courseList.Learning>=0?1:0}}" name="subcheck" type="checkbox" class="check"
+                     value={{courseList.Id}}>
             </div>
             <div class="block2 pull-left" title="{{courseList.Name}}">
               <img ng-src="{{courseSupermarketData.ImageCourse+'/'+courseList.Img}}" err-src="images/notCourse.png">
             </div>
             <div class="block3 pull-left">
-              <div class="line line1" style="overflow:hidden;">
-                <span class="CourseName"><a ui-sref="courseDetails({Id:courseList.Id})" target="_blank"  title="{{courseList.Name}}">{{courseList.Name}}</a></span>
+              <div class="line line1">
+                <span class="CourseName"><a ui-sref="courseDetails({Id:courseList.Id})" target="_blank"
+                                            title="{{courseList.Name}}">{{courseList.Name}}</a></span>
               </div>
               <div class="line line3">
                 <span style="width:72px;">学时：{{courseList.Credit}}</span>
@@ -96,113 +110,3 @@
     </div>
   </div>
 </div>
-
-
-
-<style>
-  .courseSupermarket a:hover {
-    color: #0f0f0f;
-  }
-  .courseSupermarket .formSearch input.searchType{
-    width: 85%;
-  }
-  .courseSupermarket .tag {
-    float: left;
-    padding: 10px 15px 10px 0;
-  }
-  .courseSupermarket .tag span {
-    padding-left: 10px;
-  }
-
-  .courseSupermarket .tag a {
-    margin-left: 5px;
-  }
- .courseList{
-   position: relative;
-   border-top: 1px solid #f2f2f2;
- }
- .courseList .recommendCourse {
-   margin: 3px 5px 3px 30px;
- }
- .courseList .title_bar{
-   text-align: left;
-   /*float: left;*/
-   margin-left: 155px;
- }
-  .courseList .title_bar span{
-    line-height: 37px;
-    display: inline-block;
-    margin-right: 5px;
-  }
-
- .courseList .NewCourseList{
-  text-align: center;
-   font-size: 12px;
-   border-top: 1px solid #f2f2f2;
- }
-  .courseList .NewCourseList li{
-    border-bottom: 1px solid #f2f2f2;
-    padding-top: 10px;
-  }
- .NewCourseList .line span {
-   display: inline-block;
- }
- .courseList .NewCourseList .block1{
-   width: 30px;
-   margin-top: 25px;
- }
-  .courseList .NewCourseList .block2{
-    height: 84px;
-  }
- .courseList .NewCourseList .block2 img{
-    width: 110px;
-    height: 74px;
- }
- .courseList .NewCourseList .block3{
-   text-align: left;
-   width: 430px;
-   margin-left: 15px;
- }
- .courseList .NewCourseList .block3 .CourseName a{
-   font-size: 15px;
- }
- .courseList .NewCourseList .block3 .line{
-   overflow: hidden;
- }
-  .courseList .NewCourseList .block3 .line3,.courseList .NewCourseList .block3 .line2{
-    line-height: 25px;
-  }
-  .courseList .NewCourseList .block3 .line3 a,.courseList .NewCourseList .block3 .line2 a{
-    font-size: 12px;
-  }
-  .courseList .NewCourseList .onlineDate {
-    display: block;
-    margin-right: 10px;
-  }
-  .courseList .NewCourseList .block4 .play{
-    width: 97px;
-    height: 27px;
-    border: none;
-    background-color: #db1011;
-    color: #fff;
-    margin-top: 14px;
-    display: block;
-    margin-right: 10px;
-    text-align: center;
-    line-height: 27px;
-    border-radius: 3px;
-  }
-  .courseList .NewCourseList .block4 .play:hover {
-    background-color: #f50001;
-  }
-  .checkCourse>a.btn{
-    color: #000;
-    background-color: #e0e0e0;
-    margin: 10px 0 0 5px;
-    padding:4px 10px;
-  }
-</style>
-
-<script>
-
-</script>

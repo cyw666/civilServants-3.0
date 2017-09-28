@@ -1,0 +1,54 @@
+/**
+ * 图书分类
+ */
+@import "../styles/mixins";
+
+.bookCategory {
+  min-height: 525px;
+  .panel1 {
+    border: 0;
+    .panel1-heading {
+      background-color: @gray-f3;
+      padding: 0 20px;
+      .category2, .category2 {
+        display: inline-block;
+        .square(20px);
+        line-height: 20px;
+        .text-center();
+        border: 1px solid lighten(@black,3%);
+        font-size: @font-size-base+1;
+        position: relative;
+        top: 5px;
+        .ellipsis();
+      }
+      a {
+        display: inline-block;
+        .text-left();
+        font-size: @font-size-base+1;
+        color: @text-color;
+        width: 200px;
+        min-height: 34px;
+        line-height: 34px;
+      }
+    }
+    a:hover {
+      background-color: @gray-f3;
+      color: @text-color;
+    }
+    .panel1-body {
+      padding: 0;
+      li {
+        margin-left: 35px;
+        a {
+          display: inline-block;
+          padding: 7px;
+          width: 200px;
+          .ellipsis();
+        }
+      }
+    }
+  }
+}
+.bookCategory.panel1-group .panel1-heading + .panel1-collapse > .panel1-body, .panel1-group .panel1-heading + .panel1-collapse > .list-group {
+  border-top: none;
+}

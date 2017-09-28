@@ -1,0 +1,61 @@
+/**
+ * 班级园地
+ */
+@import "../styles/mixins";
+
+.classGarden {
+  .borderNews {
+    min-height: 396px;
+    background: url("../images/classGardenbg.png") no-repeat center;
+    .myTab ul.nav-tabs > li > a {
+      font-weight: 600;
+    }
+    .tab-content {
+      .border-base();
+      border-top: none;
+      border-bottom: none;
+      .perlist {
+        .title_bar {
+          background-color: @white;
+          border-bottom: @border-width-base @border-style-base @border-color-base;
+          font-size: @font-size-lg;
+          color: @text-color*2;
+          font-weight: normal;
+        }
+        .list {
+          border-bottom: @border-width-base @border-style-base @border-color-base;
+          & > div {
+            .ht-lineHt(48px);
+          }
+          .bookLog {
+            text-align: left;
+            img {
+              margin: 0 20px;
+            }
+          }
+        }
+      }
+    }
+    a.btn {
+      width: 75px;
+      padding: 2px 0;
+    }
+    a.btn.btn-info {
+      background-color: @blue-4;
+      border-color: @blue-4;
+    }
+    .btn-info[disabled]:hover, .btn-info[disabled]:focus, .btn-info[disabled] {
+      background-color: @blue-4;
+      border-color: @blue-4;
+    }
+    a.btn.btn-default {
+      background-color: darken(@gray-aaa, 3%);
+      border-color: darken(@gray-aaa, 3%);
+    }
+    .btn-default[disabled]:hover, .btn-default[disabled]:focus, .btn-default[disabled] {
+      background-color: darken(@gray-aaa, 3%);
+      border-color: darken(@gray-aaa, 3%);
+    }
+  }
+}
+

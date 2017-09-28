@@ -62,7 +62,6 @@ angular.module('luZhouApp')
           Mobile: $scope.Mobile,
           Tel: $scope.Tel
         };
-        debugger
         var telTest = false, mobileTest = false, emailTest = false, businessTest = false;
         if (options.Tel) {
           telTest = reg.tel.test(options.Tel);

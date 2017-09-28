@@ -1,5 +1,5 @@
 <!--@*课程分类*@-->
-<div class="courseClassify panel1-group"  dw-loading="courseClassify">
+<div class="courseClassify" dw-loading="courseClassify">
   <div class="com-header">
     <p class="title">
       <img src="../images/headerLeftIcon.png" alt="图标">
@@ -7,148 +7,25 @@
     </p>
   </div>
   <div class="tmBorder">
-    <!--<div class="panel1 panel1-default">
-      <div class="panel1-heading">
-        <p class="panel1-title ellipsis" title="全部课程">
-          <span class="category2">-</span>
-          <a ng-click="searchCourse({channelId:'',title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
-            全部课程
-          </a>
-        </p>
+    <p class="panels" ng-click="searchCourse({channelId:'',title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
+      全部课程
+    </p>
+    <div ng-repeat="courseList in courseClassify.ListData" ng-if="courseList.Nodes.length>0" expander
+         expander-title="courseList.Name" title-click="searchCourse" channel-id="courseList.Id">
+      <p class="panels" ng-repeat="node in courseList.Nodes" ng-if="node.Nodes.length==0"
+         ng-click="searchCourse({channelId:node.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
+        {{node.Name}}</p>
+      <div ng-repeat="node in courseList.Nodes" ng-if="node.Nodes.length>0" expander expander-title="node.Name"
+           title-click="searchCourse" channel-id="node.Id">
+        <p class="panels" ng-repeat="node2 in node.Nodes"
+           ng-click="searchCourse({channelId:node2.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
+          {{node2.Name}}</p>
       </div>
     </div>
-    <div class="panel1 panel1-default" ng-repeat="courseList in courseClassify.ListData" repeat-finish="repeatDone()">
-      <div class="panel1-heading">
-        <p class="panel1-title ellipsis" title="{{courseList.Name}}"  ng-show="courseList.Nodes">
-          <span class="category">+</span>
-          <a href="javascript:;" ng-click="searchCourse({channelId:courseList.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
-            {{courseList.Name}}
-          </a>
-        </p>
-        <p class="panel1-title ellipsis" title="{{courseList.Name}}"  ng-hide="courseList.Nodes">
-          <span class="category2">-</span>
-          <a href="javascript:;" ng-click="searchCourse({channelId:courseList.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
-            {{courseList.Name}}
-          </a>
-        </p>
-      </div>
-      &lt;!&ndash;<div class="panel1-collapse collapse">
-        <div class="panel1-body">
-          &lt;!&ndash;<ul>
-            <li  title="{{list.Name}}" ng-repeat="list in courseList.Nodes"><a href="javascript:;" ng-click="searchCourse({channelId:list.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">{{list.Name}}</a></li>
-          </ul>&ndash;&gt;
-          <div class="panel1 panel1-default" ng-repeat="Nodes1 in courseList.Nodes" repeat-finish="repeatDone()">
-            <div class="panel1-heading">
-              <p class="panel1-title ellipsis" title="{{Nodes1.Name}}"  ng-show="Nodes1.Nodes">
-                <span class="category">+</span>
-                <a href="javascript:;" ng-click="searchCourse({channelId:Nodes1.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
-                  {{Nodes1.Name}}
-                </a>
-              </p>
-              <p class="panel1-title ellipsis" title="{{Nodes1.Name}}"  ng-hide="Nodes1.Nodes">
-                <span class="category2">-</span>
-                <a href="javascript:;" ng-click="searchCourse({channelId:courseList.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
-                  {{Nodes1.Name}}
-                </a>
-              </p>
-            </div>
-            <div class="panel1-collapse collapse">
-              <div class="panel1-body">
-                &lt;!&ndash;<ul>
-                  <li  title="{{list.Name}}" ng-repeat="list in courseList.Nodes"><a href="javascript:;" ng-click="searchCourse({channelId:list.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">{{list.Name}}</a></li>
-                </ul>&ndash;&gt;
-                <div class="panel1-heading" ng-repeat="Nodes2 in Nodes1.Nodes">
-                  <p class="panel1-title ellipsis" title="{{Nodes2.Name}}"  ng-show="Nodes2.Nodes">
-                    <span class="category">+</span>
-                    <a href="javascript:;" ng-click="searchCourse({channelId:Nodes2.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
-                      {{Nodes2.Name}}
-                    </a>
-                  </p>
-                  <p class="panel1-title ellipsis" title="{{Nodes2.Name}}"  ng-hide="Nodes2.Nodes">
-                    <span class="category2">-</span>
-                    <a href="javascript:;" ng-click="searchCourse({channelId:courseList.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
-                      {{Nodes2.Name}}
-                    </a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>&ndash;&gt;
-    </div>-->
-    <div ng-repeat="courseList in courseClassify.ListData" ng-if="courseList.Nodes.length>0" expander expander-title="courseList.Name" title-click="searchCourse" channel-id="courseList.Id">
-      <p class="panels" ng-repeat="node in courseList.Nodes" ng-if="node.Nodes.length==0" ng-click="searchCourse({channelId:node.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">{{node.Name}}</p>
-      <div ng-repeat="node in courseList.Nodes" ng-if="node.Nodes.length>0" expander expander-title="node.Name" title-click="searchCourse" channel-id="node.Id">
-        <p class="panels" ng-repeat="node2 in node.Nodes" ng-click="searchCourse({channelId:node2.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">{{node2.Name}}</p>
-      </div>
-    </div>
-    <p class="panels" ng-repeat="courseList in courseClassify.ListData" ng-if="courseList.Nodes.length==0" ng-click="searchCourse({channelId:courseList.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">{{courseList.Name}}</p>
+    <p class="panels" ng-repeat="courseList in courseClassify.ListData" ng-if="courseList.Nodes.length==0"
+       ng-click="searchCourse({channelId:courseList.Id,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">
+      {{courseList.Name}}
+    </p>
   </div>
 </div>
-
-<style>
-  .courseClassify {
-    /*min-height: 525px;*/
-  }
-.courseClassify .panels{
-  margin-left: 20px;
-  padding: 5px 18px;
-  cursor: pointer;
-}
-  .courseClassify .panels:hover{
-    background-color: #f6f6f6;
-  }
-.courseClassify .panel1 .panel1-heading{
-  background-color: #fff;
-  padding:0 20px;
-}
-.courseClassify .panel1 .panel1-heading .category,.courseClassify .panel1 .panel1-heading .category2{
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  text-align: center;
-  border: 1px solid #0f0f0f;
-  font-size: 15px;
-  position: relative;
-  top: 0px;
-  cursor: pointer;
-}
-.courseClassify .panel1 .panel1-heading a{
-  display: inline-block;
-  text-align: left;
-  font-size:15px;
-  color: #0f0f0f;
-  width: 90%;
-  min-height: 34px;
-  line-height: 34px;
-  padding: 0 10px;
-}
-.courseClassify .panel1 a:hover{
-  background-color: #f1f1f1;
-  color: #0f0f0f;
-}
-
-.courseClassify .panel1 .panel1-body {
-  padding:0;
-}
-.courseClassify.panel1-group .panel1-heading + .panel1-collapse > .panel1-body, .panel1-group .panel1-heading + .panel1-collapse > .list-group {
-  border-top: none;
-}
-.courseClassify .panel1 .panel1-body li {
-  margin-left: 60px;
-}
-.courseClassify .panel1 .panel1-body li a{
-  display: inline-block;
-  padding:7px;
-  width: 200px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-  .panel1-collapse{
-    margin-left: 15px;
-  }
-</style>
 

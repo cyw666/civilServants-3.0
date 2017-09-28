@@ -69,21 +69,26 @@ a.btn {
     .ht-lineHt(49px);
     text-indent: 49px;
     font-size: 20px;
-    color: #333;
   }
 }
 
 /*课程分类头部2*/
 .titlebg2 {
   .txt {
-    .ht-lineHt(65px);
-    color: #666;
+    .ht-lineHt(60px);
     font-size: @font-size-lg;
     font-weight: bold;
-    text-align: center;
+    .text-center();
   }
 }
 
+/*培训班级标题*/
+.classTitle{
+  padding: 10px;
+  font-size: 30px;
+  line-height: 1.5em;
+  .text-center();
+}
 /*文章分类，个人中心导航*/
 .categoryGuide {
   padding: 20px 20px 0 20px;
@@ -291,6 +296,10 @@ a.btn {
   padding-right: 10px;
   .ellipsis();
 }
+.list {
+  width: 100%;
+  .clearFix();
+}
 .list0-75 {
   .list-item(7.5%);
 }
@@ -406,7 +415,7 @@ a.btn {
 
 /*偶数行背景*/
 .rankListBg {
-  background-color: darken(@white,5);
+  background-color: darken(@white,3);
 }
 
 /*placeholder*/

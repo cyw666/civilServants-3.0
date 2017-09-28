@@ -1,5 +1,5 @@
 <!--修改信息-->
-<div class="modifyPassword">
+<div class="changeUserInfo">
   <div class="com-header">
     <p class="title">
       <img src="../images/headerLeftIcon.png" alt="图标">
@@ -14,111 +14,88 @@
       <li class="active">修改信息</li>
     </ol>
     <div class="change-user-info" dw-loading="changeUserInfo">
-      <form role="form" name="form">
-        <div class="form-group change-user-info-form">
-          <ul>
-            <li>
-              <span class="control-label grid_6 text-right" style="line-height: 34px">账号：</span>
-              <span class="grid_6 info">{{userInfo.Account}}</span>
-            </li>
-            <li>
-              <span class="control-label grid_6 text-right" style="line-height: 34px">姓名：</span>
-              <span class="grid_6 info">{{userInfo.Name}}</span>
-            </li>
-            <li>
-              <span class="control-label grid_6 text-right" style="line-height: 34px">性别：</span>
-              <div class="grid_6 info">
+      <form class="form-horizonta">
+        <div class="form-group">
+          <label class="col-sm-2">账号：</label>
+          <div class="col-sm-10">{{userInfo.Account}}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2">姓名：</label>
+          <div class="col-sm-10">{{userInfo.Name}}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2">性别：</label>
+          <div class="col-sm-10">
+              <label class="radio-inline">
                 <input type="radio" name="sex" ng-model="sex" value="男" ng-checked="userInfo.Sex==1">男
+              </label>
+              <label class="radio-inline">
                 <input type="radio" name="sex" ng-model="sex" value="女" ng-checked="userInfo.Sex==0">女
-              </div>
-            </li>
-            <li>
-              <span class="control-label grid_6 text-right" style="line-height: 34px">部门：</span>
-              <span class="grid_6 info">{{userInfo.GroupName}}</span>
-            </li>
-            <li>
-              <span class="control-label grid_6 text-right" style="line-height: 26px">职位：</span>
-              <select class="form-control grid_3" name="grade" ng-model="Grade" ng-options="list.Id as list.Name for list in gradeList">
-                <option value="">--请选择职位--</option>
-              </select>
-            </li>
-            <li>
-              <span class="control-label grid_6 text-right" style="line-height: 26px">职务：</span>
-              <input type="text" ng-model="Business" name="business"
-                     class="form-control grid_6"
-                     my-placeholder
-                     placeholder="例：老师"
-              />
-            </li>
-            <li class="change-user-info-input mar_top_5">
-              <span class="control-label grid_6 text-right" style="line-height: 26px">电话：</span>
-              <input type="tel" ng-model="Tel" name="tel"
-                     class="form-control grid_6"
-                     my-placeholder
-                     placeholder="例：0571-88776655"
-              />
-            </li>
-            <li class="change-user-info-input mar_top_5">
-              <span class="control-label grid_6 text-right" style="line-height: 26px">手机：</span>
-              <input type="tel" ng-model="Mobile" name="mobile"
-                     class="form-control grid_6"
-                     my-placeholder
-                     placeholder="例：123-4567-8901"
-              />
-            </li>
-            <li class="change-user-info-input mar_top_5">
-              <span class="control-label grid_6 text-right" style="line-height: 26px">Email：</span>
-              <input type="tel" ng-model="Email" name="email"
-                     class="form-control grid_6"
-                     my-placeholder
-                     placeholder="例：example@email.com"
-              />
-            </li>
-            <li class="change-user-info-input mar_top_5">
-              <span class="control-label grid_6">&nbsp;</span>
-              <button class="btn grid_6 btn-success" ng-click="changeUser()"> 提交</button>
-            </li>
-          </ul>
-
+              </label>
+            </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2">部门：</label>
+          <div class="col-sm-10">{{userInfo.GroupName}}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">职位：</label>
+          <div class="col-sm-10 ">
+            <select class="form-control select-grade" name="grade" ng-model="Grade" ng-options="list.Id as list.Name for list in gradeList">
+              <option value="">--请选择职位--</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">职务：</label>
+          <div class="col-sm-10 ">
+            <input type="text" ng-model="Business" name="business"
+                   class="form-control"
+                   my-placeholder
+                   placeholder="例：老师"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">电话：</label>
+          <div class="col-sm-10 ">
+            <input type="tel" ng-model="Tel" name="tel"
+                   class="form-control"
+                   my-placeholder
+                   placeholder="例：0571-88776655"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">手机：</label>
+          <div class="col-sm-10 ">
+            <input type="tel" ng-model="Mobile" name="mobile"
+                   class="form-control"
+                   my-placeholder
+                   placeholder="例：123-4567-8901"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">邮箱：</label>
+          <div class="col-sm-10 ">
+            <input type="tel" ng-model="Email" name="email"
+                   class="form-control"
+                   my-placeholder
+                   placeholder="例：example@email.com"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-danger" ng-click="changeUser()"> 提交</button>
+          </div>
         </div>
       </form>
     </div>
   </div>
 </div>
-<style>
-  .change-user-info-form {
-    height: 336px;
-    display: table-cell;
-    vertical-align: middle;
-  }
 
-  .change-user-info .info {
-    line-height: 34px;
-    text-align: center;
-  }
-
-  .change-user-info .info input {
-    width: auto;
-    height: auto;
-  }
-
-  .change-user-info select {
-    width: auto;
-    height: 26px;
-    line-height: 26px;
-    padding: 0 0 0 12px;
-  }
-
-  .change-user-info-form li {
-    display: block;
-    height: 40px;
-  }
-
-  .modifyPassword .verificationCode {
-    padding: 2px 12px;
-    margin-left: 10px;
-  }
-</style>
 
 
 
