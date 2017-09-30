@@ -28,10 +28,10 @@
         <p>总字数: &nbsp;<strong>{{bookContentData.ByteCount}}</strong></p>
         <p>总鲜花: &nbsp;<strong>{{bookContentData.FlowerCount}}</strong></p>
         <div class="group">
-          <a class="btn btn-danger" ui-sref="bookchapter({bookId:bookContentData.Id})">阅读本书</a>
-          <a class="btn btn-danger" data-toggle="modal" data-target=".notemodal">发表评论</a>
-          <a ng-if="bookContentData.FavoriteId==0" class="btn btn-danger" ng-click="favoriteAdd({mainId:bookContentData.Id,type:'Book',title:bookContentData.Name,remark:'0'},token)">收藏</a>
-          <a ng-if="bookContentData.FavoriteId!=0" class="btn btn-danger" ng-click="favoriteDelete({id:bookContentData.FavoriteId},token)">取消收藏</a>
+          <a class="btn btn-primary" ui-sref="bookchapter({bookId:bookContentData.Id})">阅读本书</a>
+          <a class="btn btn-primary" data-toggle="modal" data-target=".notemodal">发表评论</a>
+          <a ng-if="bookContentData.FavoriteId==0" class="btn btn-primary" ng-click="favoriteAdd({mainId:bookContentData.Id,type:'Book',title:bookContentData.Name,remark:'0'},token)">收藏</a>
+          <a ng-if="bookContentData.FavoriteId!=0" class="btn btn-primary" ng-click="favoriteDelete({id:bookContentData.FavoriteId},token)">取消收藏</a>
         </div>
       </div>
     </div>

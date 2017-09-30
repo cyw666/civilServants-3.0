@@ -4,7 +4,7 @@
 @import "../styles/mixins";
 .classNavigation{
   .classdh{
-    border-top: 1px solid #ccc;
+    border-top: 1px solid @border-color-base;
     min-height: 166px;
     .clearFix();
     .text-center();
@@ -12,10 +12,10 @@
       .pull-left();
       line-height: 35px;
       font-size: @font-size-lg;
-      color: @text-color*2;
+      color: @text-color-2;
       margin-left: 15px;
       width: 40%;
-      border-bottom: 1px dashed @gray-ccc;
+      border-bottom: 1px dashed @border-color-base;
       .dian1 {
         .dian(2px);
         margin-right: 20px;

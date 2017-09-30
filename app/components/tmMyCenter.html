@@ -21,7 +21,7 @@
                my-placeholder
                placeholder="请输入要搜索的课程">
       </div>
-      <button type="submit" class="btn btn-default"
+      <button type="submit" class="btn btn-primary"
               ng-click="searchMyCenterCourse({'courseType':selectedName.id,'title':searchTitle})">搜索
       </button>
     </form>
@@ -158,246 +158,254 @@
           </div>
           <div ng-transclude="pagation"></div>
         </div>
-        <!-- Modal笔记 -->
-        <div class="modal fade notemodal" tabindex="-1" role="dialog">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content" ng-show="modalBody1">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                  aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">添加笔记</h4>
-              </div>
-              <div class="modal-body">
-                <table class="table table-bordered">
-                  <tbody>
-                  <tr>
-                    <td>课程名称：</td>
-                    <td>{{nodeAddData.CourseName}}</td>
-                  </tr>
-                  <tr>
-                    <td>笔记名称：</td>
-                    <td>
-                      <input id="txtName" name="Name" class="txt" type="text" ng-model="noteName">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>内 容：</td>
-                    <td>
-                      <textarea ng-model="noteContent" id="txtContent" name="Content" cols="50" rows="5" type="text"
-                                class="txt2"></textarea>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="modal-footer">
-                <button ng-click="editNote({Name:noteName,Content:noteContent,CourseId:nodeAddData.CourseId})"
-                        type="button" class="btn btn-primary">提交
-                </button>
-              </div>
-            </div>
-            <div class="modal-content" ng-show="modalBody2">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                  aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">{{seeNoteData.CourseName}}</h4>
-              </div>
-              <div class="modal-body" ng-show="modalBody21">
-                <table class="table table-bordered">
-                  <tbody>
-                  <tr ng-repeat="seeList in seeNoteData.ListData">
-                    <td>笔记名称：</td>
-                    <td class="seaNote">
-                      <span class="pull-left">{{seeList.Name}}</span>
-                      <a class="pull-right" href="" ng-click="delNote(seeList.Id)">删除</a>
-                      <a class="pull-right" href="" ng-click="noteUpdate(seeList.Id)">编辑</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <div id="content_page" class="content_page">
-                        <span class="p_num current">{{seeNoteData.Page}}</span><span>共 {{Math.ceil(seeNoteData.Count/seeNoteData.Rows)}} 页,总记录 {{seeNoteData.Count}} 条</span>
-                        <a class="btn btn-danger newnote pull-right" ng-click="nodeAdd(courseId)">添加笔记</a>
-                      </div>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="modal-body" ng-hide="modalBody21">
-                <table class="table table-bordered">
-                  <tbody>
-                  <tr>
-                    <td>笔记名称：</td>
-                    <td>
-                      <input id="txtName2" name="Name" class="txt" type="text" ng-model="noteName">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>内 容：</td>
-                    <td>
-                      <textarea ng-model="noteContent" id="txtContent2" name="Content" cols="50" rows="5" type="text"
-                                class="txt2"></textarea>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="modal-footer" ng-hide="modalBody21">
-                <button ng-click="addNoteUpdate({Name:noteName,Content:noteContent})" type="button"
-                        class="btn btn-primary">提交
-                </button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-              </div>
-            </div>
+      </div>
+    </div>
+    <!-- Modal笔记 -->
+    <div class="modal fade notemodal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" ng-show="modalBody1">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">添加笔记</h4>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered">
+              <tbody>
+              <tr>
+                <td>课程名称：</td>
+                <td>{{nodeAddData.CourseName}}</td>
+              </tr>
+              <tr>
+                <td>笔记名称：</td>
+                <td>
+                  <input class="form-control" type="text" ng-model="noteName">
+                </td>
+              </tr>
+              <tr>
+                <td>内 容：</td>
+                <td>
+                  <textarea class="form-control" ng-model="noteContent" cols="50" rows="5"></textarea>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button ng-click="editNote({Name:noteName,Content:noteContent,CourseId:nodeAddData.CourseId})"
+                    type="button" class="btn btn-primary">提交
+            </button>
           </div>
         </div>
-        <!-- Modal计划 -->
-        <div class="modal fade notemodal2" tabindex="-1" role="dialog">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content" ng-show="modalBody1">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                  aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">添加计划</h4>
-              </div>
-              <div class="modal-body">
-                <table class="table table-bordered">
-                  <tbody>
-                  <tr>
-                    <td>课程名称：</td>
-                    <td style="text-align: left">{{planAddData.CourseName}}</td>
-                  </tr>
-                  <tr>
-                    <td>计划完成日期：</td>
-                    <td>
-                      <input type="text" id="timepicker1" ng-model="PlanFinishDate" date-time-picker class="datebg">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>开始提醒日期：</td>
-                    <td>
-                      <input type="text" id="timepicker2" ng-model="RemindDate" date-time-picker class="datebg">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>提醒周期：</td>
-                    <td style="text-align: left">
-                      <select ng-init="selectedName2 = remindCycle[0]" ng-model="selectedName2"
-                              ng-options="x for x in remindCycle">
-                      </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>提醒方式：</td>
-                    <td style="text-align: left">
-                      站内通知
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>计划说明：</td>
-                    <td>
-                      <textarea ng-model="planAddData.planAddData" id="txtContent3" name="Content" cols="50" rows="5"
-                                type="text" class="txt2"></textarea>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="modal-footer">
-                <button
-                  ng-click="addPlan({PlanFinishDate:PlanFinishDate,RemindDate:RemindDate,RemindCycle:selectedName2,Remark:planAddData.planAddData,CourseId:planAddData.CourseId})"
-                  type="button" class="btn btn-primary">提交
-                </button>
-              </div>
-            </div>
-            <div class="modal-content" ng-show="modalBody2">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                  aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">修改计划</h4>
-              </div>
-              <div class="modal-body">
-                <table class="table table-bordered">
-                  <tbody>
-                  <tr>
-                    <td>课程名称：</td>
-                    <td style="text-align: left">{{seePlanData.CourseName}}</td>
-                  </tr>
-                  <tr>
-                    <td>计划完成日期：</td>
-                    <td>
-                      <input type="text" id="timepicker3" ng-model="PlanFinishDate2" date-time-picker class="datebg">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>开始提醒日期：</td>
-                    <td>
-                      <input type="text" id="timepicker4" ng-model="RemindDate2" date-time-picker class="datebg">
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>提醒周期：</td>
-                    <td style="text-align: left">
-                      <select ng-model="selectedName3" ng-options="x for x in remindCycle">
-                      </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>提醒方式：</td>
-                    <td style="text-align: left">
-                      站内通知
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>计划说明：</td>
-                    <td>
-                      <textarea ng-model="seePlanData.Remark" id="txtContent4" name="Content" cols="50" rows="5"
-                                type="text" class="txt2"></textarea>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div class="modal-footer">
-                <button
-                  ng-click="addPlanUpdate({PlanFinishDate:PlanFinishDate2,RemindDate:RemindDate2,RemindCycle:selectedName3,Remark:seePlanData.Remark,CourseId:seePlanData.CourseId,Id:seePlanData.Id})"
-                  type="button" class="btn btn-primary">提交
-                </button>
-              </div>
-            </div>
+        <div class="modal-content" ng-show="modalBody2">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{{seeNoteData.CourseName}}</h4>
+          </div>
+          <div class="modal-body" ng-show="modalBody21">
+            <table class="table table-bordered">
+              <tbody>
+              <tr ng-repeat="seeList in seeNoteData.ListData">
+                <td>笔记名称：</td>
+                <td class="seaNote">
+                  <span class="pull-left">{{seeList.Name}}</span>
+                  <a class="pull-right" href="" ng-click="delNote(seeList.Id)">删除</a>
+                  <a class="pull-right" href="" ng-click="noteUpdate(seeList.Id)">编辑</a>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <div class="content_page">
+                    <span class="p_num current">{{seeNoteData.Page}}</span><span>共 {{Math.ceil(seeNoteData.Count/seeNoteData.Rows)}} 页,总记录 {{seeNoteData.Count}} 条</span>
+                    <a class="btn btn-danger newnote pull-right" ng-click="nodeAdd(courseId)">添加笔记</a>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-body" ng-hide="modalBody21">
+            <table class="table table-bordered">
+              <tbody>
+              <tr>
+                <td>笔记名称：</td>
+                <td>
+                  <input class="form-control" type="text" ng-model="noteName">
+                </td>
+              </tr>
+              <tr>
+                <td>内 容：</td>
+                <td>
+                  <textarea class="form-control" ng-model="noteContent" cols="50" rows="5"></textarea>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer" ng-hide="modalBody21">
+            <button ng-click="addNoteUpdate({Name:noteName,Content:noteContent})" type="button"
+                    class="btn btn-primary">提交
+            </button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
           </div>
         </div>
-        <!--Modal查看考试-->
-        <div class="modal fade seeTest" tabindex="-1" role="dialog">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                  aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">考试列表</h4>
-              </div>
-              <div class="modal-body">
-                <table class="table table-bordered">
-                  <thead>
-                  <tr>
-                    <th>考试名称</th>
-                    <th>考试学时</th>
-                    <th>时限</th>
-                    <th>参加测试</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr ng-repeat="test in courseExamListData.ListData">
-                    <td>{{test.Name}}</td>
-                    <td>{{test.CreditHour}}</td>
-                    <td>{{test.TimeLimit}}</td>
-                    <td><a href="" target="_blank" ng-click="havTest(test.Id)">参加测试</a></td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+      </div>
+    </div>
+    <!-- Modal计划 -->
+    <div class="modal fade notemodal2" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" ng-show="modalBody1">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">添加计划</h4>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered">
+              <tbody>
+              <tr>
+                <td>课程名称：</td>
+                <td style="text-align: left">{{planAddData.CourseName}}</td>
+              </tr>
+              <tr>
+                <td>计划完成日期：</td>
+                <td>
+                  <div class="datePicker">
+                    <input class="form-control" type="text" ng-model="PlanFinishDate" date-time-picker>
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>开始提醒日期：</td>
+                <td>
+                  <div class="datePicker">
+                    <input class="form-control" type="text" ng-model="RemindDate" date-time-picker>
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>提醒周期：</td>
+                <td style="text-align: left">
+                  <select class="form-control" ng-init="selectedName2 = remindCycle[0]" ng-model="selectedName2"
+                          ng-options="x for x in remindCycle">
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>提醒方式：</td>
+                <td style="text-align: left">
+                  站内通知
+                </td>
+              </tr>
+              <tr>
+                <td>计划说明：</td>
+                <td>
+                  <textarea class="form-control" ng-model="planAddData.planAddData" cols="50" rows="5"></textarea>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button
+              ng-click="addPlan({PlanFinishDate:PlanFinishDate,RemindDate:RemindDate,RemindCycle:selectedName2,Remark:planAddData.planAddData,CourseId:planAddData.CourseId})"
+              type="button" class="btn btn-primary">提交
+            </button>
+          </div>
+        </div>
+        <div class="modal-content" ng-show="modalBody2">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">修改计划</h4>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered">
+              <tbody>
+              <tr>
+                <td>课程名称：</td>
+                <td style="text-align: left">{{seePlanData.CourseName}}</td>
+              </tr>
+              <tr>
+                <td>计划完成日期：</td>
+                <td>
+                  <div class="datePicker">
+                    <input class="form-control" type="text" ng-model="PlanFinishDate2" date-time-picker>
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>开始提醒日期：</td>
+                <td>
+                  <div class="datePicker">
+                    <input class="form-control" type="text" ng-model="RemindDate2" date-time-picker>
+                    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>提醒周期：</td>
+                <td style="text-align: left">
+                  <select class="form-control" ng-model="selectedName3" ng-options="x for x in remindCycle">
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>提醒方式：</td>
+                <td style="text-align: left">
+                  站内通知
+                </td>
+              </tr>
+              <tr>
+                <td>计划说明：</td>
+                <td>
+                  <textarea class="form-control" ng-model="seePlanData.Remark" cols="50" rows="5"></textarea>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button
+              ng-click="addPlanUpdate({PlanFinishDate:PlanFinishDate2,RemindDate:RemindDate2,RemindCycle:selectedName3,Remark:seePlanData.Remark,CourseId:seePlanData.CourseId,Id:seePlanData.Id})"
+              type="button" class="btn btn-primary">提交
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Modal查看考试-->
+    <div class="modal fade seeTest" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">考试列表</h4>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th>考试名称</th>
+                <th>考试学时</th>
+                <th>时限</th>
+                <th>参加测试</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="test in courseExamListData.ListData">
+                <td>{{test.Name}}</td>
+                <td>{{test.CreditHour}}</td>
+                <td>{{test.TimeLimit}}</td>
+                <td><a href="" target="_blank" ng-click="havTest(test.Id)">参加测试</a></td>
+              </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -405,30 +413,26 @@
   </div>
 </div>
 <style>
-  .myCenter .myTab .modal-footer {
+  .myCenter .modal-footer {
     text-align: center;
   }
 
-  .myCenter .myTab .table input {
+  .myCenter .table input {
     width: 320px;
-    text-align: left;
-    height: 26px;
-    line-height: 26px;
   }
-
-  .myCenter .myTab .table td {
+  .myCenter .table td {
     text-align: left;
   }
 
-  .myCenter .myTab .seaNote a {
+  .myCenter .seaNote a {
     padding: 0 15px;
   }
 
-  .myCenter .myTab .newnote {
+  .myCenter .newnote {
     padding: 2px 12px;
   }
 
-  .myCenter .myTab .content_page {
+  .myCenter .content_page {
     line-height: 26px;
   }
 </style>

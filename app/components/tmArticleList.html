@@ -10,7 +10,7 @@
   </div>
   <div class="tmBorder">
     <ol class="breadcrumb">
-      <li class="currentPosition">您的当前位置:</li>
+      <li class="currentPosition"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 您的当前位置:</li>
       <li><a ui-sref="main">首页</a></li>
       <li class="active">
         <span ng-show="articleListData.CategoryName">{{articleListData.CategoryName}}</span>
@@ -23,7 +23,7 @@
                my-placeholder
                placeholder="请输入搜索关键词">
       </div>
-      <button type="submit" class="btn btn-default" ng-click="refreshList({page:1,search:searchTitle})">搜索</button>
+      <button type="submit" class="btn btn-primary" ng-click="refreshList({page:1,search:searchTitle})">搜索</button>
     </form>
     <div dw-loading="articleList" class="mar_top_20">
       <table class="table" ng-show="paginationConf.totalItems">
@@ -32,7 +32,7 @@
           <th class="titleDate">发布日期</th>
         </tr>
         <tr ng-repeat="listData in articleListData.ListData | filter:{Name:search}">
-          <td><img src="images/arrow.png" alt=""><a ui-sref="articleDetail({ID:listData.Id})" title="{{listData.Name}}" target="_blank">{{listData.Name}}</a></td>
+          <td class="name"><img src="images/arrowRight.png" alt=""><a ui-sref="articleDetail({ID:listData.Id})" title="{{listData.Name}}" target="_blank">{{listData.Name}}</a></td>
           <td class="listDate">{{listData.CreateDate | dateFilter | date:'yyyy/MM/dd-HH:mm:ss'}}</td>
         </tr>
       </table>

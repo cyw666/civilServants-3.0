@@ -5,7 +5,8 @@
 /**
  * mixins
  */
-/*字体*/
+/*Color函数*/
+/*调色板*/
 /*颜色*/
 /*超出显示...*/
 /*两端对齐*/
@@ -460,6 +461,9 @@ textarea {
   line-height: inherit;
   color: inherit;
 }
+button {
+  outline: none;
+}
 ul,
 ol {
   display: list-item;
@@ -470,6 +474,10 @@ input::-ms-reveal {
   display: none;
 }
 ::selection {
+  background: #db1011;
+  color: #fff;
+}
+::-moz-selection {
   background: #db1011;
   color: #fff;
 }
@@ -495,10 +503,10 @@ a:focus {
   text-decoration-skip: ink;
 }
 a:hover {
-  color: #e01011;
+  color: #e24041;
 }
 a:active {
-  color: #e51112;
+  color: #d00f10;
 }
 a:active,
 a:hover {
@@ -506,9 +514,8 @@ a:hover {
   text-decoration: none;
 }
 a[disabled] {
-  color: rgba(0, 0, 0, 0.25);
+  color: rgba(0, 0, 0, 0.35);
   cursor: not-allowed;
-  pointer-events: none;
 }
 code,
 kbd,
@@ -542,8 +549,361 @@ samp {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-a.btn {
+/*input focus*/
+.form-control,
+input {
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.form-control:focus,
+input:focus {
+  border-color: #e24041;
+  outline: 0;
+  box-shadow: 0 0 0 2px rgba(219, 16, 17, 0.2);
+}
+.form-control:hover,
+input:hover {
+  border-color: #e24041;
+}
+.btn.btn-default .btn-info[disabled]:hover,
+.btn-info[disabled]:focus,
+.btn-info[disabled] {
+  background-color: #108ee9;
+  border-color: #40a5ed;
+}
+.btn {
   color: #fff;
+}
+.btn[disabled] {
+  color: #fff;
+}
+.btn.active.focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn:active:focus,
+.btn:focus {
+  outline: none;
+}
+.btn-default {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #d9d9d9;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.btn-default:hover {
+  background-color: #fff;
+  color: #db1011;
+  border: 1px solid #db1011;
+}
+.btn-default:focus {
+  background-color: #fff;
+  color: #db1011;
+  border: 1px solid #db1011;
+}
+.btn-default:active {
+  background-color: #fff;
+  color: #db1011;
+  border: 1px solid #db1011;
+}
+.btn-default:active:focus {
+  background-color: #fff;
+  color: #db1011;
+  border: 1px solid #db1011;
+}
+.btn-default:active:focus {
+  background-color: #fff;
+  color: #db1011;
+  border: 1px solid #db1011;
+}
+.btn-default[disabled] {
+  color: rgba(0, 0, 0, 0.45);
+  background-color: #f8f8f8;
+  border: 1px solid #d9d9d9;
+}
+.btn-primary {
+  background-color: #db1011;
+  color: #fff;
+  border: 1px solid #e24041;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.btn-primary:hover {
+  background-color: #e24041;
+  color: #fff;
+  border: 1px solid #e24041;
+}
+.btn-primary:focus {
+  background-color: #e24041;
+  color: #fff;
+  border: 1px solid #e24041;
+}
+.btn-primary:active {
+  background-color: #e24041;
+  color: #fff;
+  border: 1px solid #e24041;
+}
+.btn-primary:active:focus {
+  background-color: #e24041;
+  color: #fff;
+  border: 1px solid #e24041;
+}
+.btn-primary:active:focus {
+  background-color: #e24041;
+  color: #fff;
+  border: 1px solid #e24041;
+}
+.btn-primary[disabled] {
+  color: #fff;
+  background-color: #e24041;
+  border: 1px solid #db1011;
+}
+.btn-success {
+  background-color: #00a854;
+  color: #fff;
+  border: 1px solid #33b976;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.btn-success:hover {
+  background-color: #33b976;
+  color: #fff;
+  border: 1px solid #33b976;
+}
+.btn-success:focus {
+  background-color: #33b976;
+  color: #fff;
+  border: 1px solid #33b976;
+}
+.btn-success:active {
+  background-color: #33b976;
+  color: #fff;
+  border: 1px solid #33b976;
+}
+.btn-success:active:focus {
+  background-color: #33b976;
+  color: #fff;
+  border: 1px solid #33b976;
+}
+.btn-success:active:focus {
+  background-color: #33b976;
+  color: #fff;
+  border: 1px solid #33b976;
+}
+.btn-success[disabled] {
+  color: #fff;
+  background-color: #4dc287;
+  border: 1px solid #00a854;
+}
+.btn-info {
+  background-color: #108ee9;
+  color: #fff;
+  border: 1px solid #40a5ed;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.btn-info:hover {
+  background-color: #40a5ed;
+  color: #fff;
+  border: 1px solid #40a5ed;
+}
+.btn-info:focus {
+  background-color: #40a5ed;
+  color: #fff;
+  border: 1px solid #40a5ed;
+}
+.btn-info:active {
+  background-color: #40a5ed;
+  color: #fff;
+  border: 1px solid #40a5ed;
+}
+.btn-info:active:focus {
+  background-color: #40a5ed;
+  color: #fff;
+  border: 1px solid #40a5ed;
+}
+.btn-info:active:focus {
+  background-color: #40a5ed;
+  color: #fff;
+  border: 1px solid #40a5ed;
+}
+.btn-info[disabled] {
+  color: #fff;
+  background-color: #58b0f0;
+  border: 1px solid #108ee9;
+}
+.btn-warning {
+  background-color: #ffbf00;
+  color: #fff;
+  border: 1px solid #ffcc33;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.btn-warning:hover {
+  background-color: #ffcc33;
+  color: #fff;
+  border: 1px solid #ffcc33;
+}
+.btn-warning:focus {
+  background-color: #ffcc33;
+  color: #fff;
+  border: 1px solid #ffcc33;
+}
+.btn-warning:active {
+  background-color: #ffcc33;
+  color: #fff;
+  border: 1px solid #ffcc33;
+}
+.btn-warning:active:focus {
+  background-color: #ffcc33;
+  color: #fff;
+  border: 1px solid #ffcc33;
+}
+.btn-warning:active:focus {
+  background-color: #ffcc33;
+  color: #fff;
+  border: 1px solid #ffcc33;
+}
+.btn-warning[disabled] {
+  color: #fff;
+  background-color: #ffd24d;
+  border: 1px solid #ffbf00;
+}
+.btn-danger {
+  background-color: #e24041;
+  color: #fff;
+  border: 1px solid #e86667;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.btn-danger:hover {
+  background-color: #e86667;
+  color: #fff;
+  border: 1px solid #e86667;
+}
+.btn-danger:focus {
+  background-color: #e86667;
+  color: #fff;
+  border: 1px solid #e86667;
+}
+.btn-danger:active {
+  background-color: #e86667;
+  color: #fff;
+  border: 1px solid #e86667;
+}
+.btn-danger:active:focus {
+  background-color: #e86667;
+  color: #fff;
+  border: 1px solid #e86667;
+}
+.btn-danger:active:focus {
+  background-color: #e86667;
+  color: #fff;
+  border: 1px solid #e86667;
+}
+.btn-danger[disabled] {
+  color: #fff;
+  background-color: #eb797a;
+  border: 1px solid #e24041;
 }
 .red {
   color: #db1011;
@@ -644,6 +1004,29 @@ a.btn {
 /*文章分类，个人中心导航*/
 .categoryGuide {
   padding: 20px 20px 0 20px;
+  zoom: 1;
+}
+.categoryGuide:before,
+.categoryGuide:after {
+  content: " ";
+  display: table;
+}
+.categoryGuide:after {
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+}
+.categoryGuide:before,
+.categoryGuide:after {
+  content: " ";
+  display: table;
+}
+.categoryGuide:after {
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
 }
 .categoryGuide li {
   width: 50%;
@@ -652,30 +1035,22 @@ a.btn {
   margin-bottom: 20px;
 }
 .categoryGuide li a.btn {
-  display: inline-block;
   width: 100px;
   height: 38px;
   line-height: 38px;
-  text-align: center;
-  color: #fff;
-  background: #db1011;
   padding: 0;
 }
-.categoryGuide li a.btn:hover {
-  background-color: #e51112;
-}
-/*日期选择背景图*/
-.datebg {
-  background: url(../images/datePicker.gif) no-repeat right;
-}
 /*路径导航通用样式*/
-.breadcrumb .currentPosition {
-  padding-left: 25px;
-  background: url("../images/link.gif") 0 2px no-repeat;
+.breadcrumb .glyphicon-cog {
+  color: #666;
+  font-size: 16px;
+  vertical-align: middle;
+  position: relative;
+  top: 0px;
 }
 .formSearch {
   padding-left: 40px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 .formSearch .form-control {
   height: 26px;
@@ -689,16 +1064,25 @@ a.btn {
 .formSearch select.form-control {
   padding: 0;
 }
-.formSearch .btn.btn-default {
-  padding: 2px 21px;
-  background: #db1011;
-  color: #fff;
-  border: 1px solid #db1011;
-  height: 26px;
+.formSearch .btn {
+  padding: 2px 23px;
 }
-.formSearch .btn.btn-default:hover {
-  background: #e01011;
-  border: 1px solid #db1011;
+.datePicker {
+  display: inline-block;
+  position: relative;
+}
+.datePicker input {
+  padding-right: 25px;
+}
+.datePicker .glyphicon-calendar {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  right: 8px;
+  top: 50%;
+  margin-top: -7px;
+  line-height: 14px;
+  font-size: 12px;
 }
 /*模板通用边框*/
 .tmBorder {
@@ -780,14 +1164,64 @@ a.btn {
   margin-left: 10px;
   width: 30px;
   height: 20px;
-  border-left: 2px solid #ff9842;
+  border-left: 2px solid #f56a00;
+}
+/*table*/
+.table td,
+.table th {
+  text-align: center;
+}
+.table > tbody > tr {
+  -webkit-transition-property: background-color;
+  -moz-transition-property: background-color;
+  -o-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.table > tbody > tr:hover {
+  background-color: #fceeee;
+}
+.table > tbody > tr > th {
+  background-color: #edf3fc;
+}
+/*文章、通知列表*/
+.articleList .titleName {
+  width: 60%;
+}
+.articleList .titleDate {
+  width: 40%;
+}
+.articleList td.name {
+  text-align: left;
+}
+.articleList td img {
+  padding: 0 10px;
+}
+.articleList td a {
+  display: inline-block;
+  width: 80%;
+  vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 /*标签页*/
 .myTab {
   text-align: center;
 }
 .myTab ul.nav-tabs {
-  background-color: #f3f3f3;
+  background-color: #f7f7f7;
 }
 .myTab ul.nav-tabs > li > a {
   padding: 12px 20px;
@@ -799,13 +1233,29 @@ a.btn {
   border: 1px solid #d9d9d9;
   border-top: 3px solid #db1011;
   border-bottom-color: transparent;
+  -webkit-transition-property: color;
+  -moz-transition-property: color;
+  -o-transition-property: color;
+  transition-property: color;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }
 .myTab .perlist .title_bar {
   width: 100%;
   font-weight: bold;
-  background: #EDF3FC;
+  background: #edf3fc;
   color: #333;
-  border-bottom: 1px dashed #ccc;
+  border-bottom: 1px dashed #e9e9e9;
   zoom: 1;
 }
 .myTab .perlist .title_bar:before,
@@ -835,8 +1285,24 @@ a.btn {
 }
 .myTab .perlist .list {
   width: 100%;
-  border-bottom: 1px dashed #ccc;
+  border-bottom: 1px dashed #e9e9e9;
   zoom: 1;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }
 .myTab .perlist .list:before,
 .myTab .perlist .list:after {
@@ -861,7 +1327,8 @@ a.btn {
   height: 0;
 }
 .myTab .perlist .list:hover {
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  background-color: #fceeee;
 }
 .list {
   width: 100%;
@@ -1257,23 +1724,202 @@ a.btn {
   left: 0;
   top: 25px;
   display: none;
-  background-color: #f7f7f7;
+  background-color: #f8f8f8;
+}
+/*分页*/
+.page-list {
+  zoom: 1;
+}
+.page-list:before,
+.page-list:after {
+  content: " ";
+  display: table;
+}
+.page-list:after {
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+}
+.page-list:before,
+.page-list:after {
+  content: " ";
+  display: table;
+}
+.page-list:after {
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+}
+.page-list .pagination {
+  float: left !important;
+  margin: 10px 0 10px 10px;
+}
+.page-list .pagination span {
+  cursor: pointer;
+  color: #333;
+}
+.page-list .pagination .separate span {
+  cursor: default;
+  border-top: none;
+  border-bottom: none;
+}
+.page-list .pagination .separate span:hover {
+  background: none;
+}
+.page-list .pagination > .active > span {
+  background-color: #db1011;
+  border-color: #e24041;
+  color: #fff;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.page-list .pagination > .active > span:hover {
+  background-color: #e24041;
+  border-color: #e24041;
+  color: #fff;
+}
+.page-list .pagination > .active > span:focus {
+  background-color: #db1011;
+  border-color: #db1011;
+}
+.page-list .pagination > li > span {
+  padding: 4px 10px;
+  border: 1px solid #d9d9d9;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.page-list .pagination > li > span:hover {
+  color: #db1011;
+  border: 1px solid #db1011;
+  background-color: #fff;
+}
+.page-list .pagination li.disabled span {
+  color: #666;
+  cursor: not-allowed;
+  border: 1px solid #d9d9d9;
+}
+.page-list .page-total {
+  float: left !important;
+  margin: 10px 10px;
+  height: 28px;
+  line-height: 28px;
+}
+.page-list .page-total input,
+.page-list .page-total span {
+  height: 28px;
+  float: left !important;
+}
+.page-list .page-total input {
+  width: 50px;
+  padding: 3px 12px;
+  margin-left: 5px;
+}
+.page-list .page-total select {
+  width: 50px;
+}
+.page-list .page-total button.btn-default {
+  float: left !important;
+  margin-left: 5px;
+  padding: 0;
+  width: 40px;
+  height: 28px;
+}
+.page-list .no-items {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 20px;
 }
 /**
  * 折叠面板
  */
-.expander {
-  margin-left: 10px;
+.panels {
+  padding: 9px 28px;
+  cursor: pointer;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.panels:hover {
+  background-color: #fceeee;
+  color: #e24041;
 }
 .expander > .title {
-  padding: 5px 10px;
+  padding: 4px 10px;
   cursor: pointer;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }
 .expander > .title:hover {
-  background-color: #f7f7f7;
+  background-color: #fceeee;
 }
-.expander.body {
-  padding: .1em .3em;
+.expander > .title a {
+  display: inline-block;
+  width: 80%;
+  line-height: 30px;
+}
+.expander .body {
+  height: auto;
+}
+.expander .body .panels {
+  padding: 9px 33px;
 }
 /**
  * 申请发票
@@ -1284,7 +1930,7 @@ a.btn {
   padding: 10px 10px 10px 20px;
 }
 .applyInvoice .description li .dian {
-  background-color: #ff9842;
+  background-color: #f56a00;
   position: relative;
   left: -10px;
 }
@@ -1453,85 +2099,9 @@ a.btn {
 /**
  * 文章列表
  */
-.articleList .titleName {
-  width: 500px;
-}
-.articleList th {
-  background-color: #edf3fc;
-  text-align: center;
-}
-.articleList td img {
-  margin: 0 10px;
-}
-.articleList td a {
-  display: inline-block;
-  width: 458px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.articleList td.listDate {
-  text-align: center;
-}
 /**
  * 图书分类
  */
-.bookCategory {
-  min-height: 525px;
-}
-.bookCategory .panel1 {
-  border: 0;
-}
-.bookCategory .panel1 .panel1-heading {
-  background-color: #f3f3f3;
-  padding: 0 20px;
-}
-.bookCategory .panel1 .panel1-heading .category2,
-.bookCategory .panel1 .panel1-heading .category2 {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  text-align: center;
-  border: 1px solid #080808;
-  font-size: 15px;
-  position: relative;
-  top: 5px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.bookCategory .panel1 .panel1-heading a {
-  display: inline-block;
-  text-align: left;
-  font-size: 15px;
-  color: #333;
-  width: 200px;
-  min-height: 34px;
-  line-height: 34px;
-}
-.bookCategory .panel1 a:hover {
-  background-color: #f3f3f3;
-  color: #333;
-}
-.bookCategory .panel1 .panel1-body {
-  padding: 0;
-}
-.bookCategory .panel1 .panel1-body li {
-  margin-left: 35px;
-}
-.bookCategory .panel1 .panel1-body li a {
-  display: inline-block;
-  padding: 7px;
-  width: 200px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-.bookCategory.panel1-group .panel1-heading + .panel1-collapse > .panel1-body,
-.panel1-group .panel1-heading + .panel1-collapse > .list-group {
-  border-top: none;
-}
 /**
  * 图书章节
  */
@@ -1543,11 +2113,11 @@ a.btn {
 .bookChapter .bookTitle .titleName {
   line-height: 3.1em;
   text-align: center;
-  color: #666666;
+  color: #666;
   margin-top: 10px;
 }
 .bookChapter .bookChapterContent {
-  border-top: 5px solid #ccc;
+  border-top: 5px solid #d9d9d9;
 }
 .bookChapter .bookChapterContent li {
   height: 35px;
@@ -1556,7 +2126,7 @@ a.btn {
 .bookChapter .bookChapterContent li a {
   font-size: 1.3em;
   line-height: 1.3em;
-  color: #666666;
+  color: #666;
   margin-top: 10px;
   margin-left: 20px;
 }
@@ -1581,24 +2151,24 @@ a.btn {
 .bookChapterContent .article-detail .article-detail-title-bar .article-detail-info {
   line-height: 30px;
   font-size: 12px;
-  color: #999999;
+  color: #999;
   text-align: center;
 }
 .bookChapterContent .article-detail .article-detail-title-bar .article-detail-info span {
   margin: 0 15px;
 }
 .bookChapterContent .article-detail .article-detail-title-bar .article-detail-adjust {
-  color: #999999;
+  color: #999;
   text-align: center;
   line-height: 35px;
 }
 .bookChapterContent .article-detail .article-detail-title-bar .article-detail-adjust a {
-  color: #999999;
+  color: #999;
   line-height: 30px;
   margin: 0 5px;
 }
 .bookChapterContent .article-detail .article-detail-title-bar .article-detail-adjust a:hover {
-  color: #666666;
+  color: #666;
 }
 .bookChapterContent .article-detail .article-detail-content {
   min-height: 500px;
@@ -1696,7 +2266,7 @@ a.btn {
   line-height: 30px;
   font-weight: normal;
   font-size: 22px;
-  color: #666666;
+  color: #666;
 }
 .bookDetail .bookContent .bookTxt .group a.btn {
   margin: 30px 10px 0 0;
@@ -1709,12 +2279,12 @@ a.btn {
   padding: 20px;
 }
 .bookDetail .bookComment .comment_bord {
-  border-left: 5px solid #eee;
-  border-bottom: 3px solid #eee;
+  border-left: 5px solid solid;
+  border-bottom: 3px solid solid;
   margin-bottom: 20px;
 }
 .bookDetail .bookComment .comment_bord > li {
-  border-bottom: 1px dashed #333;
+  border-bottom: 1px dashed #d9d9d9;
   zoom: 1;
 }
 .bookDetail .bookComment .comment_bord > li:before,
@@ -1755,13 +2325,13 @@ a.btn {
   display: inline-block;
   width: 45px;
   height: 45px;
-  background-color: #d9534f;
+  background-color: #db1011;
   color: #fff;
   line-height: 45px;
   font-weight: bold;
   text-align: center;
   margin: 10px 40px 0 0;
-  border: 1px solid #d43f3a;
+  border: 1px solid #e24041;
   border-radius: 4px;
 }
 .bookDetail .bookSum {
@@ -1770,7 +2340,7 @@ a.btn {
 .bookDetail h3 {
   height: 40px;
   line-height: 40px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #d9d9d9;
   margin-bottom: 10px;
 }
 /**
@@ -1822,15 +2392,15 @@ a.btn {
   text-overflow: ellipsis;
 }
 .bookGuide .bookList li .content .desc {
-  color: #999999;
+  color: #999;
   margin: 10px 0;
   height: 60px;
 }
 .bookGuide .bookList li .content .author {
-  color: #666666;
+  color: #666;
 }
 .bookGuide .bookList li .content .clickCount {
-  color: #ff9842;
+  color: #f56a00;
   margin-top: 5px;
 }
 /**
@@ -1889,25 +2459,25 @@ a.btn {
   right: -430px;
   top: 50%;
   background: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0px 0px 8px #ccc;
+  border: 1px solid #d9d9d9;
+  box-shadow: 0px 0px 8px #d9d9d9;
   z-index: 99999;
   -webkit-transition-property: all;
   -moz-transition-property: all;
   -o-transition-property: all;
   transition-property: all;
-  -webkit-transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
   -webkit-transition-timing-function: ease-in;
   -moz-transition-timing-function: ease-in;
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
-  -webkit-transition-delay: 0;
-  -moz-transition-delay: 0;
-  -o-transition-delay: 0;
-  transition-delay: 0;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
@@ -1921,10 +2491,8 @@ a.btn {
   left: -30px;
   color: #fff;
   background: #94dde1;
-  -webkit-border-radius: 3px 0px 0px 3px;
-  -moz-border-radius: 3px 0px 0px 3px;
-  -o-border-radius: 3px 0px 0px 3px;
-  border-radius: 3px 0px 0px 3px;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
 }
 .slideBar .hoverBtn span {
   float: left !important;
@@ -1955,7 +2523,7 @@ a.btn {
   bottom: 30px;
   left: 20px;
   font-size: 16px;
-  color: #666666;
+  color: #666;
 }
 /**
  * 公务员培训
@@ -1984,10 +2552,10 @@ a.btn {
   text-overflow: ellipsis;
 }
 .civilServiceTrainingLink .civil-body li a:hover {
-  color: #3a7fb6;
+  color: #e24041;
 }
 .civilServiceTrainingLink .civil-body li a:hover .dian {
-  background-color: #3a7fb6;
+  background-color: #e24041;
 }
 .civilServiceTrainingLink .civil-body li a .content {
   margin-left: 10px;
@@ -2041,7 +2609,7 @@ a.btn {
   background-color: #fff;
   border-bottom: 1px solid #d9d9d9;
   font-size: 16px;
-  color: #666666;
+  color: #666;
   font-weight: normal;
 }
 .classGarden .borderNews .tab-content .perlist .list {
@@ -2060,26 +2628,6 @@ a.btn {
 .classGarden .borderNews a.btn {
   width: 75px;
   padding: 2px 0;
-}
-.classGarden .borderNews a.btn.btn-info {
-  background-color: #00b4ff;
-  border-color: #00b4ff;
-}
-.classGarden .borderNews .btn-info[disabled]:hover,
-.classGarden .borderNews .btn-info[disabled]:focus,
-.classGarden .borderNews .btn-info[disabled] {
-  background-color: #00b4ff;
-  border-color: #00b4ff;
-}
-.classGarden .borderNews a.btn.btn-default {
-  background-color: #a2a2a2;
-  border-color: #a2a2a2;
-}
-.classGarden .borderNews .btn-default[disabled]:hover,
-.classGarden .borderNews .btn-default[disabled]:focus,
-.classGarden .borderNews .btn-default[disabled] {
-  background-color: #a2a2a2;
-  border-color: #a2a2a2;
 }
 /**
  * 班级列表
@@ -2105,7 +2653,7 @@ a.btn {
  * 班级列表
  */
 .classNavigation .classdh {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #d9d9d9;
   min-height: 166px;
   zoom: 1;
   text-align: center;
@@ -2136,10 +2684,10 @@ a.btn {
   float: left !important;
   line-height: 35px;
   font-size: 16px;
-  color: #666666;
+  color: #666;
   margin-left: 15px;
   width: 40%;
-  border-bottom: 1px dashed #ccc;
+  border-bottom: 1px dashed #d9d9d9;
 }
 .classNavigation .classdh li .dian1 {
   display: inline-block;
@@ -2185,22 +2733,40 @@ a.btn {
   background: #f8f8f8;
 }
 .courseCenter .courseLink.btn-group > .btn {
-  color: #666666;
+  color: #666;
   width: 169px;
   height: 44px;
   line-height: 44px;
   background: #f8f8f8;
   padding: 0;
-  border-color: #fff;
+  border-color: #f8f8f8;
   font-size: 18px;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.3s ease;
+  -moz-transition-duration: 0.3s ease;
+  -o-transition-duration: 0.3s ease;
+  transition-duration: 0.3s ease;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }
 .courseCenter .courseLink.btn-group > .btn:hover {
-  background-color: #db1011;
   color: #fff;
+  background-color: #e24041;
+  border-color: #e24041;
 }
 .courseCenter .courseLink.btn-group > .btn.active {
-  color: #fff;
   background-color: #db1011;
+  color: #fff;
+  border-color: #db1011;
 }
 .courseCenter .courseList {
   min-height: 440px;
@@ -2244,7 +2810,7 @@ a.btn {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  color: #999999;
+  color: #999;
 }
 .courseCenter .courseList ul li .desc p a {
   font-size: 16px;
@@ -2263,11 +2829,7 @@ a.btn {
 .courseCenter .courseList ul li .hotCourse .bg {
   width: 66px;
   height: 20px;
-  background-color: #000;
-  filter: alpha(opacity = (40));
-  -moz-opacity: 0.4;
-  -khtml-opacity: 0.4;
-  opacity: 0.4;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .courseCenter .courseList ul li .hotCourse .content {
   position: absolute;
@@ -2285,17 +2847,6 @@ a.btn {
 /**
  * 课程分类
  */
-.courseClassify {
-  /*min-height: 525px;*/
-}
-.courseClassify .panels {
-  margin-left: 20px;
-  padding: 5px 18px;
-  cursor: pointer;
-}
-.courseClassify .panels:hover {
-  background-color: #f7f7f7;
-}
 /**
  * 课程详情
  */
@@ -2315,24 +2866,23 @@ a.btn {
   line-height: 27px;
 }
 .courseDetails .jdcontext .number {
-  color: #999999;
+  color: #999;
 }
 .courseDetails .jdcontext .name {
-  color: #333;
   margin-left: 45px;
 }
 .courseDetails .jdcontext .glyphicon-ok {
   margin-right: 65px;
 }
 .courseDetails .cur_title a {
-  color: #d9534f;
+  color: #db1011;
 }
 .courseDetails .cur_title a .glyphicon {
   position: relative;
   top: 2px;
 }
 .courseDetails .cur_title a:hover {
-  color: #db1011;
+  color: #e24041;
 }
 .courseDetails tbody > tr > td.listtb1,
 .courseDetails tbody > tr > td.listtb3 {
@@ -2347,20 +2897,16 @@ a.btn {
 }
 .courseDetails .listtb2 .progress {
   width: 150px;
-  margin-top: 0;
+  margin: 0 auto;
 }
 .courseDetails .listtb3 {
   width: 20%;
   text-align: center;
 }
-.courseDetails .listtb3 a {
-  color: #3a7fb6;
-}
 .courseDetails .listtb4 {
   width: 20%;
 }
 .courseDetails .listtb5 .bar {
-  font-size: 15px;
   height: 27px;
   line-height: 27px;
 }
@@ -2381,7 +2927,7 @@ a.btn {
 }
 .courseDetails .panel-body .table .user {
   width: 60%;
-  color: #666666;
+  color: #666;
 }
 .courseDetails .panel-body .table .comment {
   width: 60%;
@@ -2390,7 +2936,7 @@ a.btn {
 }
 .courseDetails .panel-body .table .time {
   width: 20%;
-  color: #999999;
+  color: #999;
 }
 .courseDetails .panel-body .table > tbody + tbody {
   border: none;
@@ -2478,7 +3024,9 @@ a.btn {
 .courseRankingList .rankingList .list2 span {
   display: inline-block;
   width: 100%;
-  height: 44px;
+  height: 23px;
+  line-height: 23px;
+  vertical-align: middle;
 }
 /**
  * 课程超市列表
@@ -2488,7 +3036,7 @@ a.btn {
 }
 .courseSupermarket .courseList {
   position: relative;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #d9d9d9;
 }
 .courseSupermarket .courseList .sortCourse .recommendCourse {
   margin: 3px 5px 3px 30px;
@@ -2515,10 +3063,10 @@ a.btn {
 .courseSupermarket .courseList .NewCourseList {
   text-align: center;
   font-size: 12px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #d9d9d9;
 }
 .courseSupermarket .courseList .NewCourseList ul li {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #d9d9d9;
   padding-top: 10px;
 }
 .courseSupermarket .courseList .NewCourseList ul li .line span {
@@ -2566,17 +3114,15 @@ a.btn {
   margin-right: 10px;
   text-align: center;
   line-height: 27px;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -o-border-radius: 3px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 .courseSupermarket .courseList .NewCourseList ul li .block4 .play:hover {
   background-color: #e91112;
 }
 .courseSupermarket .checkCourse > a.btn {
-  color: #333;
-  background-color: #d9d9d9;
   margin: 10px 0 0 5px;
   padding: 4px 10px;
 }
@@ -2585,7 +3131,7 @@ a.btn {
  */
 .exam {
   min-height: 700px;
-  background-color: #f9f9f9;
+  background-color: #f8f8f8;
 }
 .exam .exam_top {
   margin: 0 auto;
@@ -2597,10 +3143,10 @@ a.btn {
 }
 .exam .table tr td {
   text-align: left;
-  padding-left: 15px;
+  padding: 5px 15px;
 }
 .exam .table tr td .xz li {
-  float: left;
+  float: left !important;
   font-size: 15px;
   font-weight: bold;
   padding-left: 15px;
@@ -2616,7 +3162,7 @@ a.btn {
  */
 .examReview {
   min-height: 700px;
-  background-color: #f9f9f9;
+  background-color: #f8f8f8;
 }
 .examReview .exam_top {
   margin: 0 auto;
@@ -2628,7 +3174,7 @@ a.btn {
 }
 .examReview .examReviewForm tr td {
   text-align: left;
-  padding-left: 15px;
+  padding: 5px 15px;
 }
 .examReview .examReviewForm .xz li {
   float: left !important;
@@ -2637,7 +3183,7 @@ a.btn {
   padding-left: 15px;
 }
 /**
- * 考试结果查看
+ * footer
  */
 .footer .imgLink {
   margin: 23px 0;
@@ -2692,6 +3238,242 @@ a.btn {
 .footer .footerBg p {
   line-height: 32px;
   font-size: 12px;
-  color: #999999;
+  color: #999;
   margin-left: 30px;
+}
+/**
+ * 忘记密码
+ */
+.forgetPassword .tmBorder {
+  min-height: 200px;
+}
+.forgetPassword .tmBorder .center {
+  text-align: center;
+}
+.forgetPassword .tmBorder .tip {
+  color: #999;
+  text-align: center;
+  font-size: 12px;
+  padding: 20px;
+}
+/**
+ * 友情链接(短模块)
+ */
+.friendlyLinkShort {
+  height: 215px;
+  padding-left: 20px;
+}
+.friendlyLinkShort h4 {
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  background-color: #f7f7f7;
+  margin-right: 10px;
+}
+.friendlyLinkShort ul li {
+  float: left !important;
+  width: 180px;
+  height: 28px;
+  background-color: #f7f7f7;
+  margin: 5px 5px 0 0;
+  padding: 0 5px;
+}
+.friendlyLinkShort ul li a {
+  line-height: 28px;
+  text-align: left;
+  zoom: 1;
+}
+.friendlyLinkShort ul li a:before,
+.friendlyLinkShort ul li a:after {
+  content: " ";
+  display: table;
+}
+.friendlyLinkShort ul li a:after {
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+}
+.friendlyLinkShort ul li a:before,
+.friendlyLinkShort ul li a:after {
+  content: " ";
+  display: table;
+}
+.friendlyLinkShort ul li a:after {
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+}
+.friendlyLinkShort ul li a .linkName {
+  float: left !important;
+  width: 145px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.friendlyLinkShort ul li a .linkArrow {
+  float: right !important;
+}
+/**
+ * 友情链接(短模块)
+ */
+.guideEntry a {
+  display: inline-block;
+  width: 110px;
+}
+.guideEntry .guideContent {
+  margin-top: 20px;
+  height: 233px;
+  border: 1px solid #e9e9e9;
+  text-align: center;
+}
+.guideEntry .guideContent ul {
+  margin-top: 15px;
+}
+.guideEntry .guideContent ul li {
+  width: 109px;
+  float: left !important;
+}
+.guideEntry .guideContent .professionals {
+  display: inline-block;
+}
+.guideEntry .guideContent .professionals p {
+  padding: 12px 0;
+}
+/**
+ * header
+ */
+.tmHeader .header {
+  width: 100%;
+  background-color: #ebebeb;
+}
+.tmHeader .header .headerContent {
+  background-color: #ebebeb;
+  height: 40px;
+  line-height: 40px;
+  color: #999;
+}
+.tmHeader .header .headerContent a {
+  color: #999;
+}
+.tmHeader .header .headerContent a:hover {
+  color: #666;
+}
+.tmHeader .header .headerContent img {
+  padding: 2px 12px;
+  position: relative;
+  top: -2px;
+}
+.tmHeader .header .headerContent .phone {
+  color: #db1011;
+}
+.tmHeader .headerSearch {
+  height: 110px;
+}
+.tmHeader .headerSearch ul li .logoImg {
+  height: 100px;
+  line-height: 100px;
+}
+.tmHeader .headerSearch ul li .logoText h3 {
+  font-size: 35px;
+  font-weight: 600;
+  margin-top: 25px;
+  color: #444548;
+  text-align: center;
+}
+.tmHeader .headerSearch ul li .logoText p {
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+}
+.tmHeader .headerSearch ul .searchInput {
+  height: 100px;
+  vertical-align: middle;
+  padding-left: 24px;
+}
+.tmHeader .headerSearch ul .searchInput .input-group {
+  margin-top: 30px;
+}
+.tmHeader .headerSearch ul .searchInput .input-group .form-control {
+  height: 44px;
+  line-height: 44px;
+  width: 335px;
+  padding: 0 10px 0 40px;
+  background: url("../images/search.png") 9px 10px no-repeat;
+}
+.tmHeader .headerSearch ul .searchInput .input-group .input-group-btn {
+  height: 44px;
+  line-height: 44px;
+  display: block;
+}
+.tmHeader .headerSearch ul .searchInput .input-group .input-group-btn .btn {
+  padding: 11px 16px;
+  background-color: #444548;
+  color: #fff;
+}
+.tmHeader .headerSearch ul .redFlag {
+  margin: 30px 0 0 15px;
+}
+.tmHeader .headerSearch ul .Img {
+  text-align: center;
+  padding: 0 20px;
+  margin-top: 5px;
+  position: relative;
+}
+.tmHeader .headerSearch ul .Img span {
+  font-size: 12px;
+}
+.tmHeader .headerSearch ul .Img .smWeixinImg,
+.tmHeader .headerSearch ul .Img .smAppImg {
+  width: 80px;
+  height: 80px;
+}
+.tmHeader .headerSearch ul .appImg:hover .bigAppImg,
+.tmHeader .headerSearch ul .weiXinImg:hover .bigWeiXinImg {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
+}
+.tmHeader .headerSearch ul .bigAppImg,
+.tmHeader .headerSearch ul .bigWeiXinImg {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  z-index: 99999;
+  width: 120px;
+  height: 120px;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-transition-delay: 0s;
+  -moz-transition-delay: 0s;
+  -o-transition-delay: 0s;
+  transition-delay: 0s;
 }

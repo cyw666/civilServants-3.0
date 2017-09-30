@@ -1,174 +1,53 @@
-<div class="header">
-  <div class="headerContent container_24">
-    <p class="grid_15">欢迎来到干部教育网络学院 ！</p>
-    <p class="grid_9 pad_left_25">
-      <a ng-click="addFavorite()">收藏本站</a> |
-      <a ui-sref="messageList">在线留言</a> |
-      <a ng-click="setHome($event.target)">设为首页</a> |
-      <a ui-sref="articleDetail({ID:'31'})">联系我们</a>
-      <span class="phone">
-        <img src="../images/phone.png" alt="">0571-28990788
-      </span>
-    </p>
+<!--header-->
+<div class="tmHeader">
+  <div class="header">
+    <div class="headerContent container_24">
+      <p class="grid_15">欢迎来到干部教育网络学院 ！</p>
+      <p class="grid_9 pad_left_25">
+        <a ng-click="addFavorite()">收藏本站</a> |
+        <a ui-sref="messageList">在线留言</a> |
+        <a ng-click="setHome($event.target)">设为首页</a> |
+        <a ui-sref="articleDetail({ID:'31'})">联系我们</a>
+        <img src="../images/phone.png" alt="">
+        <span class="phone">0571-28990788</span>
+      </p>
+    </div>
+  </div>
+  <div class="container_24 headerSearch">
+    <ul class="clearfix">
+      <li class="grid_8">
+        <p class="logoImg pull-left">
+          <img src="../images/logo.png" alt="">
+        </p>
+        <div class="pull-left logoText mar_left_15">
+          <h3>干部教育网络学院</h3>
+          <p>CADRE EDUCATION NETWORK COLLEGE</p>
+        </div>
+      </li>
+      <li class="grid_9 searchInput">
+        <div class="input-group">
+          <input ng-model="searchNewsField" type="text" class="form-control" my-placeholder placeholder="请输入搜索内容...">
+          <div class="input-group-btn">
+            <button class="btn" ng-click="findNews()">搜索</button>
+          </div>
+        </div>
+      </li>
+      <li class="grid_7 clearfix">
+        <p class="pull-left">
+          <img class="redFlag" src="../images/redFlag.png" alt="">
+        </p>
+        <p class="pull-left Img appImg">
+          <img class="smAppImg" src="../images/appImg.png" alt=""> <br>
+          <span>下载手机APP</span>
+          <img class="bigAppImg" src="../images/appImg.png"/>
+        </p>
+        <p class="pull-left Img weiXinImg">
+          <img class="smWeixinImg" src="../images/weiXinImg.jpg" alt=""> <br>
+          <span>关注公众号</span>
+          <img class="bigWeiXinImg" src="../images/weiXinImg.jpg"/>
+        </p>
+      </li>
+    </ul>
   </div>
 </div>
-<div class="container_24 headerSearch">
-  <ul class="clearfix">
-    <li class="grid_8">
-      <p class="logoImg pull-left">
-        <img src="../images/logo.png" alt="">
-      </p>
-      <div class="pull-left logoText mar_left_15">
-        <h3>干部教育网络学院</h3>
-        <p>CADRE EDUCATION NETWORK COLLEGE</p>
-      </div>
-    </li>
-    <li class="grid_9 searchInput">
-      <div class="input-group">
-        <input ng-model="searchNewsField" type="text" class="form-control" my-placeholder placeholder="请输入搜索内容...">
-        <div class="input-group-btn">
-          <button class="btn" ng-click="findNews()">搜索</button>
-        </div>
-      </div>
-    </li>
-    <li class="grid_7 clearfix">
-      <p class="pull-left">
-        <img class="redFlag" src="../images/redFlag.png" alt="">
-      </p>
-      <p class="pull-left Img appImg">
-        <img class="smAppImg" src="../images/appImg.png" alt=""> <br>
-        <span>下载手机APP</span>
-        <img class="bigAppImg" src="../images/appImg.png"/>
-      </p>
-      <p class="pull-left Img weiXinImg">
-        <img class="smWeixinImg" src="../images/weiXinImg.jpg" alt=""> <br>
-        <span>关注公众号</span>
-        <img class="bigWeiXinImg" src="../images/weiXinImg.jpg"/>
-      </p>
-    </li>
-  </ul>
-</div>
-<style>
-  .header {
-    width: 100%;
-    background-color: #ebebeb;
-  }
-
-  .header .headerContent {
-    background-color: #ebebeb;
-    height: 40px;
-    line-height: 40px;
-    color: #999;
-  }
-
-  .header .headerContent a {
-    color: #999;
-  }
-
-  .header .headerContent a:hover {
-    color: #666;
-  }
-
-  .header .headerContent .phone {
-    color: #db1011;
-  }
-
-  .header .headerContent .phone img {
-    padding: 0 14px;
-    position: relative;
-    top: -2px;
-  }
-  .headerSearch {
-    height: 110px;
-  }
-
-  .headerSearch li .logoImg {
-    line-height: 100px;
-    height: 100px;
-  }
-
-  .headerSearch li .logoText h3 {
-    font-size: 35px;
-    font-weight: 600;
-    margin-top: 25px;
-    color: #444548;
-    text-align: center;
-  }
-
-  .headerSearch li .logoText p {
-    font-size: 14px;
-    line-height: 30px;
-    text-align: center;
-  }
-
-  .headerSearch .searchInput {
-    height: 100px;
-    vertical-align: middle;
-    padding-left: 24px;
-  }
-
-  .headerSearch .searchInput .input-group {
-    margin-top: 30px;
-  }
-
-  .headerSearch .searchInput .input-group .form-control {
-    height: 44px;
-    line-height: 44px;
-    width: 335px;
-    padding: 0 10px 0 40px;
-    background: url("../images/search.png")9px 10px no-repeat;
-  }
-
-  .headerSearch .searchInput .input-group .input-group-btn {
-    height: 44px;
-    line-height: 44px;
-    display: block;
-  }
-
-  .headerSearch .searchInput .input-group .input-group-btn .btn {
-    padding: 11px 16px;
-    background-color: #444548;
-    color: #fff;
-  }
-
-  .headerSearch .redFlag {
-    margin: 30px 0 0 15px;
-  }
-  .headerSearch .Img {
-    text-align: center;
-    padding: 0 20px;
-    margin-top: 5px;
-    position: relative;
-  }
-  .headerSearch .Img span{
-    font-size: 12px;
-    color: #333;
-  }
-  .headerSearch .Img .smAppImg,.headerSearch .Img .smWeixinImg{
-    width: 80px;
-    height: 80px;
-  }
-  .headerSearch .appImg:hover .bigAppImg,.headerSearch .weiXinImg:hover .bigWeiXinImg{
-    visibility: visible;
-    opacity: 1;
-    transition:all 1s;
-    -moz-transition:all 1s; /* Firefox 4 */
-    -webkit-transition:all 1s; /* Safari and Chrome */
-    -o-transition:all 1s; /* Opera */
-  }
-  .bigAppImg ,.bigWeiXinImg{
-    position: absolute;
-    left: 10px;
-    top: 0;
-    z-index: 99999;
-    width: 120px;
-    height: 120px;
-    visibility: hidden;
-    opacity: 0;
-    transition:all 1s;
-    -moz-transition:all 1s; /* Firefox 4 */
-    -webkit-transition:all 1s; /* Safari and Chrome */
-    -o-transition:all 1s; /* Opera */
-  }
-</style>
 

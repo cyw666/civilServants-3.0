@@ -19,7 +19,7 @@
           background-color: @white;
           border-bottom: @border-width-base @border-style-base @border-color-base;
           font-size: @font-size-lg;
-          color: @text-color*2;
+          color: @text-color-2;
           font-weight: normal;
         }
         .list {
@@ -28,7 +28,7 @@
             .ht-lineHt(48px);
           }
           .bookLog {
-            text-align: left;
+            .text-left();
             img {
               margin: 0 20px;
             }
@@ -39,22 +39,6 @@
     a.btn {
       width: 75px;
       padding: 2px 0;
-    }
-    a.btn.btn-info {
-      background-color: @blue-4;
-      border-color: @blue-4;
-    }
-    .btn-info[disabled]:hover, .btn-info[disabled]:focus, .btn-info[disabled] {
-      background-color: @blue-4;
-      border-color: @blue-4;
-    }
-    a.btn.btn-default {
-      background-color: darken(@gray-aaa, 3%);
-      border-color: darken(@gray-aaa, 3%);
-    }
-    .btn-default[disabled]:hover, .btn-default[disabled]:focus, .btn-default[disabled] {
-      background-color: darken(@gray-aaa, 3%);
-      border-color: darken(@gray-aaa, 3%);
     }
   }
 }

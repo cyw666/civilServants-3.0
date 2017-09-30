@@ -51,18 +51,18 @@
               <tbody>
               <tr>
                 <td>标题</td>
-                <td><input type="text" ng-model="messageName"></td>
+                <td><input class="form-control" type="text" ng-model="messageName"></td>
               </tr>
               <tr>
                 <td>分类</td>
                 <td>
-                  <select ng-model="messageClass" ng-options="x.value as x.name for x in allClass"></select>
+                  <select  class="form-control" ng-model="messageClass" ng-options="x.value as x.name for x in allClass"></select>
                 </td>
               </tr>
               <tr>
                 <td>说明</td>
                 <td>
-                  <textarea ng-model="messageContent" cols="50" rows="5" type="text"></textarea>
+                  <textarea class="form-control" ng-model="messageContent" cols="50" rows="5"></textarea>
                 </td>
               </tr>
               </tbody>

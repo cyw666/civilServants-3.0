@@ -319,17 +319,20 @@ angular.module('luZhouApp')
     }
     //过滤日期
     this.dateFilter = function (str, value) {
+      if (!str) {
+        return "";
+      }
+      str = str.match(/\d+/ig)[0];
       function dFormat(i) {
         return i < 10 ? "0" + i.toString() : i;
       }
-      
       if (value == "yyyy-MM-dd hh:mm:ss") {
-        var d = eval('new ' + str.substr(1, str.length - 2));
+        var d = new Date(Number(str));
         var ar_date = [d.getFullYear(), d.getMonth() + 1, d.getDate(), d.getHours(), d.getMinutes(), d.getSeconds()];
         for (var i = 0; i < ar_date.length; i++) ar_date[i] = dFormat(ar_date[i]);
         return ar_date.slice(0, 3).join('-') + ' ' + ar_date.slice(3).join(':');
       } else if (value == "yyyy-MM-dd") {
-        var d = eval('new ' + str.substr(1, str.length - 2));
+        var d = new Date(Number(str));
         var ar_date = [d.getFullYear(), d.getMonth() + 1, d.getDate()];
         for (var i = 0; i < ar_date.length; i++) ar_date[i] = dFormat(ar_date[i]);
         return ar_date.join('-');

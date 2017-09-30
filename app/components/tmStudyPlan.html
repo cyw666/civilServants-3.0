@@ -57,13 +57,19 @@
                 <tr>
                   <td>计划完成日期：</td>
                   <td>
-                    <input type="text" ng-model="PlanFinishDate" date-time-picker class="datebg">
+                    <div class="datePicker">
+                      <input class="form-control" type="text" ng-model="PlanFinishDate" date-time-picker>
+                      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    </div>
                   </td>
                 </tr>
                 <tr>
                   <td>开始提醒日期：</td>
                   <td>
-                    <input type="text" ng-model="RemindDate" date-time-picker class="datebg">
+                    <div class="datePicker">
+                      <input class="form-control" type="text" ng-model="RemindDate" date-time-picker>
+                      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                    </div>
                   </td>
                 </tr>
                 <tr>

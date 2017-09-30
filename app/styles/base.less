@@ -2,6 +2,7 @@
  * base
  */
 @import "mixins";
+
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); //  remove tap highlight color for mobile safari
@@ -12,38 +13,41 @@
   box-sizing: border-box;
 }
 
-
 body {
   font-family: @font-family;
   font-size: @font-size-base;
   color: @text-color;
   background-color: @body-background;
 }
+
 img {
   color: transparent;
   font-size: 0;
   vertical-align: middle;
-  border:0px;
+  border: 0px;
   /*
     For IE.
     http://css-tricks.com/ie-fix-bicubic-scaling-for-images
   */
   -ms-interpolation-mode: bicubic;
 }
+
 // unify the setting of elements's margin and padding for browsers
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
   margin: 0;
   padding: 0;
 }
 
 // Reset fonts for relevant elements
-button,input,select,textarea {
+button, input, select, textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
   color: inherit;
 }
-
+button{
+  outline: none;
+}
 ul,
 ol {
   display: list-item;
@@ -57,12 +61,17 @@ input::-ms-clear, input::-ms-reveal {
 
 ::selection {
   background: @primary-color;
-  color: #fff;
+  color: @white;
+}
+
+::-moz-selection {
+  background: @primary-color;
+  color: @white;
 }
 
 // Headers
 h1, h2, h3, h4, h5, h6 {
-  color: rgba(0,0,0,0.85);
+  color: rgba(0, 0, 0, 0.85);
   font-weight: 500;
 }
 
@@ -74,7 +83,6 @@ a {
   outline: none;
   cursor: pointer;
   transition: color .3s ease;
-
   &:focus {
     text-decoration: underline;
     text-decoration-skip: ink;
@@ -97,10 +105,9 @@ a {
   &[disabled] {
     color: @disabled-color;
     cursor: not-allowed;
-    pointer-events: none;
+    //pointer-events: none;
   }
 }
-
 
 code,
 kbd,

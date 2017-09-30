@@ -36,12 +36,18 @@
         <br />
         <fieldset style="visibility: visible;">
           <legend class="legend_60"><strong>基本信息</strong></legend><br />
-          <input type="text" ng-model="startDate" date-time-picker class="datebg">
+          <div class="datePicker">
+            <input class="form-control" type="text" ng-model="startDate" date-time-picker>
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+          </div>
           <span class="zhi">至</span>
-          <input type="text" ng-model="endDate" date-time-picker class="datebg">
-          <input id="btnDataSearch" type="button" value="时间查询" class="searchBtn btn" ng-click="refresh({startDate:startDate,endDate:endDate})" />
+          <div class="datePicker">
+            <input class="form-control" type="text" ng-model="endDate" date-time-picker>
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+          </div>
+          <button class="searchBtn btn btn-primary" ng-click="refresh({startDate:startDate,endDate:endDate})">时间查询</button>
 
-          <table style="width:96%;margin:0 auto;margin-top: 10px;" border="0" align="center" cellpadding="0" cellspacing="0">
+          <table style="width:96%;margin:10px auto 0 auto" border="0" align="center" cellpadding="0" cellspacing="0">
             <tr>
               <td width="25%" align="center" class="table1">
                 用户名
@@ -239,9 +245,9 @@
 
 
 <style>
-  .personalArchives input.date{
-    height: 26px;
-    line-height: 26px;
+  .personalArchives input.datebg {
+    width: 200px;
+    display: inline-block;
   }
   .breadCrumb{
     line-height: 18px;
@@ -300,9 +306,6 @@
   .mar_0_auto{
     margin: 0 auto;
     display: inline-block;
-  }
-  .statisticsBox .txt{
-    margin-left: 20px;
   }
   .statisticsBox .searchBtn{
     margin-left: 20px;

@@ -18,7 +18,7 @@
                my-placeholder
                placeholder="请输入要搜索的培训班">
       </div>
-      <button type="submit" class="btn btn-default" ng-click="getClassList({'title':searchTitle})">搜索</button>
+      <button type="submit" class="btn btn-primary" ng-click="getClassList({'title':searchTitle})">搜索</button>
     </form>
     <div class="myTab">
       <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
@@ -93,21 +93,9 @@
   </div>
 </div>
 <style>
-  .trainingCenter .formSearch {
-    margin-bottom: 10px;
-  }
-  .trainingCenter .btn {
+  .trainingCenter .tab-content .btn {
     width: 75px;
     padding: 2px 0;
-  }
-  .trainingCenter .btn-default{
-    background-color: #B4B4B4;
-    border-color: #B4B4B4;
-  }
-  .trainingCenter .btn-default:hover{
-    color: #fff;
-    background-color: #a2a2a2;
-    border-color: #a2a2a2;
   }
 </style>
 

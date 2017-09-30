@@ -19,18 +19,6 @@ angular.module('luZhouApp')
         $loading.finish('bookCategory');
         $scope.bookCategory = response.Data;
       });
-
-    //折叠面板控制
-    $scope.repeatDone = function() {
-      $('.bookCategory .panel1-title a').click(function() {
-        $(this).parents('.panel1-heading').next().slideToggle();
-        if ($(this).children('.category').html() == '+') {
-          $(this).children('.category').html('-');
-        } else {
-          $(this).children('.category').html('+');
-        }
-      });
-    };
     //搜索图书
     var courseListParams = $.extend({}, ALL_PORT.BookList.data);
     $scope.paginationConf = $.extend({},paginationConf,{itemsPerPage: courseListParams.rows});

@@ -19,22 +19,169 @@
 .clearFix {
   .clearFix();
 }
+
 /*超出显示...*/
 .ellipsis {
   .ellipsis();
 }
-a.btn {
+
+/*input focus*/
+.form-control, input {
+  .transition();
+  &:focus {
+    .input-focus();
+  }
+  &:hover {
+    .input-hover();
+  }
+}
+
+.btn.btn-default
+.btn-info[disabled]:hover, .btn-info[disabled]:focus, .btn-info[disabled] {
+  background-color: @blue-3;
+  border-color: @blue-4;
+}
+
+//
+// Buttons
+// --------------------------------------------------
+.btn {
   color: @white;
+  &[disabled] {
+    color: @white;
+  }
+}
+
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+  outline: none;
+}
+
+.button-variant(@color, @background,@border,@color2,@background2,@border2) {
+  background-color: @background;
+  color: @color;
+  border: 1px solid @border;
+  .transition();
+  &:hover {
+    background-color: @background2;
+    color: @color2;
+    border: 1px solid @border2;
+  }
+  &:focus {
+    background-color: @background2;
+    color: @color2;
+    border: 1px solid @border2;
+  }
+  &:active {
+    background-color: @background2;
+    color: @color2;
+    border: 1px solid @border2;
+  }
+  &:active:focus {
+    background-color: @background2;
+    color: @color2;
+    border: 1px solid @border2;
+  }
+}
+
+.disabled-btn(@dis-color,@dis-bg,@dis-border) {
+  color: @dis-color;
+  background-color: @dis-bg;
+  border: 1px solid @dis-border;
+}
+
+.btn-default {
+  .button-variant(@text-color, @component-background, @border-color-base, @primary-color, @component-background, @primary-color);
+  &:active {
+    &:focus {
+      background-color: @component-background;
+      color: @primary-color;
+      border: 1px solid @primary-color;
+    }
+  }
+  &[disabled] {
+    .disabled-btn(@disabled-color-dark, @disabled-bg, @border-color-base);
+  }
+}
+
+.btn-primary {
+  .button-variant(@white, @primary-color, @primary-4, @white, @primary-4, @primary-4);
+  &:active {
+    &:focus {
+      background-color: @primary-4;
+      color: @white;
+      border: 1px solid @primary-4;
+    }
+  }
+  &[disabled] {
+    .disabled-btn(@white, tint(@primary-color, 20%), @primary-color);
+  }
+}
+
+.btn-success {
+  .button-variant(@white, @success-color, tint(@success-color, 20%), @white, tint(@success-color, 20%), tint(@success-color, 20%));
+  &:active {
+    &:focus {
+      background-color: tint(@success-color, 20%);
+      color: @white;
+      border: 1px solid tint(@success-color, 20%);
+    }
+  }
+  &[disabled] {
+    .disabled-btn(@white, tint(@success-color, 30%), @success-color);
+  }
+}
+
+.btn-info {
+  .button-variant(@white, @info-color, tint(@info-color, 20%), @white, tint(@info-color, 20%), tint(@info-color, 20%));
+  &:active {
+    &:focus {
+      background-color: tint(@info-color, 20%);
+      color: @white;
+      border: 1px solid tint(@info-color, 20%);
+    }
+  }
+  &[disabled] {
+    .disabled-btn(@white, tint(@info-color, 30%), @info-color);
+  }
+}
+
+.btn-warning {
+  .button-variant(@white, @warning-color, tint(@warning-color, 20%), @white, tint(@warning-color, 20%), tint(@warning-color, 20%));
+  &:active {
+    &:focus {
+      background-color: tint(@warning-color, 20%);
+      color: @white;
+      border: 1px solid tint(@warning-color, 20%);
+    }
+  }
+  &[disabled] {
+    .disabled-btn(@white, tint(@warning-color, 30%), @warning-color);
+  }
+}
+
+.btn-danger {
+  .button-variant(@white, @error-color, tint(@error-color, 20%), @white, tint(@error-color, 20%), tint(@error-color, 20%));
+  &:active {
+    &:focus {
+      background-color: tint(@error-color, 20%);
+      color: @white;
+      border: 1px solid tint(@error-color, 20%);
+    }
+  }
+  &[disabled] {
+    .disabled-btn(@white, tint(@error-color, 30%), @error-color);
+  }
 }
 
 .red {
-  color: @red
+  color: @red-3;
 }
 
 /*两端对齐*/
 .justify {
   .justify();
 }
+
 /*右箭头*/
 .triangleRight {
   .triangleRight();
@@ -49,13 +196,13 @@ a.btn {
 .com-header {
   .wh(100%, 50px);
   .clearFix();
-  border-bottom: 1px solid @red;
+  border-bottom: 1px solid @primary-color;
   .more {
     .ht-lineHt(50px);
     .pull-right();
   }
   .title {
-    color: @gray-333;
+    color: @text-color;
     font-size: 18px;
     font-weight: 600;
     .pull-left();
@@ -83,52 +230,46 @@ a.btn {
 }
 
 /*培训班级标题*/
-.classTitle{
+.classTitle {
   padding: 10px;
   font-size: 30px;
   line-height: 1.5em;
   .text-center();
 }
+
 /*文章分类，个人中心导航*/
 .categoryGuide {
   padding: 20px 20px 0 20px;
+  .clearFix();
   li {
     width: 50%;
     .pull-left();
     .text-center();
     margin-bottom: 20px;
     a.btn {
-      display: inline-block;
       .wh(100px, 38px);
       line-height: 38px;
-      .text-center();
-      color: @white;
-      background: @primary-color;
       padding: 0;
-      &:hover {
-        background-color: lighten(@primary-color, 2%);
-      }
     }
   }
 }
 
-/*日期选择背景图*/
-.datebg {
-  background: url(../images/datePicker.gif) no-repeat right;
-}
 
 /*路径导航通用样式*/
 .breadcrumb {
-  .currentPosition {
-    padding-left: 25px;
-    background: url("../images/link.gif") 0 2px no-repeat;
+  .glyphicon-cog{
+    color: @text-color-2;
+    font-size: @font-size-lg;
+    vertical-align: middle;
+    position: relative;
+    top: 0px;
   }
 }
 
 //搜索框
 .formSearch {
   padding-left: 40px;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   .form-control {
     height: 26px;
   }
@@ -141,19 +282,27 @@ a.btn {
   select.form-control {
     padding: 0;
   }
-  .btn.btn-default {
-    padding: 2px 21px;
-    background: @primary-color;
-    color: @white;
-    border: 1px solid @primary-color;
-    height: 26px;
-    &:hover {
-      background: lighten(@primary-color, 1%);
-      border: @border-width-base @border-style-base @primary-color;
-    }
+  .btn{
+    padding: 2px 23px;
   }
 }
-
+//日期选择
+.datePicker{
+  display: inline-block;
+  position: relative;
+  input{
+    padding-right: 25px;
+  }
+  .glyphicon-calendar{
+    position: absolute;
+    .square(14px);
+    right: 8px;
+    top: 50%;
+    margin-top: -7px;
+    line-height: 14px;
+    font-size: @font-size-sm;
+  }
+}
 /*模板通用边框*/
 .tmBorder {
   .border-base();
@@ -231,7 +380,7 @@ a.btn {
 
 /*购物车头部*/
 .shoppingTitle {
-  .text-left;
+  .text-left();
   margin-top: 20px;
   font-size: 20px;
   .verticalLine {
@@ -241,7 +390,51 @@ a.btn {
     left: 0px;
     margin-left: 10px;
     .wh(30px, 20px);
-    border-left: 2px @border-style-base @orange;
+    border-left: 2px @border-style-base @orange-3;
+  }
+}
+
+/*table*/
+.table {
+  td, th {
+    .text-center();
+  }
+  & > tbody {
+    & > tr {
+      .transition(background-color);
+      &:hover {
+        background-color: @item-hover-bg;
+      }
+    }
+    & > tr {
+      & > th {
+        background-color: @item-header-bg;
+      }
+    }
+  }
+}
+
+/*文章、通知列表*/
+.articleList {
+  .titleName {
+    width: 60%;
+  }
+  .titleDate {
+    width: 40%;
+  }
+  td {
+    &.name {
+      .text-left();
+    }
+    img {
+      padding: 0 10px;
+    }
+    a {
+      display: inline-block;
+      width: 80%;
+      vertical-align: middle;
+      .ellipsis();
+    }
   }
 }
 
@@ -249,18 +442,19 @@ a.btn {
 .myTab {
   .text-center();
   ul.nav-tabs {
-    background-color: @gray-f3;
-    &>li{
-      &>a{
+    background-color: @tab-header-bg;
+    & > li {
+      & > a {
         padding: 12px 20px;
         font-size: @font-size-lg;
       }
-      &.active>a{
+      &.active > a {
         color: @primary-color;
         background-color: @component-background;
         .border-base();
         border-top: 3px solid @primary-color;
         border-bottom-color: transparent;
+        .transition(color);
       }
     }
   }
@@ -268,10 +462,10 @@ a.btn {
     .title_bar {
       width: 100%;
       font-weight: bold;
-      background: #EDF3FC;
+      background: @item-header-bg;
       color: @text-color;
       zoom: 1;
-      border-bottom: 1px dashed @gray-ccc;
+      border-bottom: 1px dashed @border-color-split;
       .clearFix()
     }
     span a.fav {
@@ -279,16 +473,19 @@ a.btn {
     }
     .list {
       width: 100%;
-      border-bottom: 1px dashed @gray-ccc;
+      border-bottom: 1px dashed @border-color-split;
       zoom: 1;
       .clearFix();
-      &:hover{
-        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+      .transition();
+      &:hover {
+        box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+        background-color: @item-hover-bg;
       }
     }
   }
 }
-.list-item(@width){
+
+.list-item(@width) {
   width: @width;
   float: left;
   line-height: 37px;
@@ -296,10 +493,12 @@ a.btn {
   padding-right: 10px;
   .ellipsis();
 }
+
 .list {
   width: 100%;
   .clearFix();
 }
+
 .list0-75 {
   .list-item(7.5%);
 }
@@ -387,10 +586,10 @@ a.btn {
     background-color: @component-background;
     border-bottom: none;
     height: 45px;
-    &>li{
+    & > li {
       width: 33.33%;
       .text-center();
-      &>a{
+      & > a {
         display: inline-block;
         color: @text-color;
         .ht-lineHt(45px);
@@ -400,8 +599,8 @@ a.btn {
         width: 33.33%;
         border-bottom: 3px solid transparent;
       }
-      &.active{
-        &>a{
+      &.active {
+        & > a {
           color: @primary-color;
           border-bottom: 3px solid @primary-color;
           .text-center();
@@ -415,7 +614,7 @@ a.btn {
 
 /*偶数行背景*/
 .rankListBg {
-  background-color: darken(@white,3);
+  background-color: darken(@white, 3);
 }
 
 /*placeholder*/
@@ -570,4 +769,5 @@ a.btn {
 .pad_top_20 {
   padding-top: 20px;
 }
+
 @import "components";

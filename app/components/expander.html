@@ -3,7 +3,7 @@
   <div class="title">
     <span  ng-click="toggle()" ng-hide="showMe" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     <span  ng-click="toggle()" ng-show="showMe" class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-    <span ng-click="titleClick({channelId:channelId,title: '',sort: 'Sort',order: 'desc',courseType: 'All',teacher: '',page: 1})">{{title}}</span>
+    <a ng-click="titleClick(params)">{{title}}</a>
   </div>
-  <div class="body" ng-show="showMe" ng-transclude></div>
+  <div class="body" ng-hide="!showMe" ng-transclude></div>
 </div>
