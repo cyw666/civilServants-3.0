@@ -1,14 +1,6 @@
-<!--专题培训-->
+<!--专题培训(首页)-->
 <div class="specialTraining" dw-loading="specialTraining">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      专题学习
-    </p>
-    <p class="more">
-      <a ui-sref="speciallearning" target="_blank" href="#/courseCenter"><img src="../images/more.png" alt="更多"></a>
-    </p>
-  </div>
+  <div common-header title="'专题学习'" show-more=true link-url="'speciallearning'"></div>
   <ul class="specialContent">
     <li ng-repeat="list in studySpecialData.ListData">
       <p>
@@ -16,37 +8,10 @@
           <img class="specialImg" ng-src="{{studySpecialData.ImagePath+'/'+list.Icon}}" err-Src="images/notFound.jpeg" alt="">
         </a>
       </p>
-      <p class="title ellipsis" title="{{list.SeriesName}}">
+      <p class="title" title="{{list.SeriesName}}">
         <a ng-href="{{list.Url}}" target="_blank">{{list.SeriesName}}</a>
       </p>
     </li>
     <p ng-show="showNoSpecialClass" class="result">暂无专题学习</p>
   </ul>
 </div>
-<style>
-  .specialTraining {
-    margin-left: 16px;
-    margin-top: 25px;
-  }
-  .specialTraining .specialContent{
-    margin-top: 20px;
-    min-height: 464px;
-  }
-  .specialTraining .specialContent li{
-    margin-top: 10px;
-  }
-  .specialTraining .specialContent li .title{
-    height: 33px;
-    line-height: 33px;
-    padding: 0 10px;
-  }
-  .specialTraining .specialContent li .title a{
-    font-size: 16px;
-    color: #333;
-  }
-  .specialTraining .specialContent li .specialImg{
-    width:334px;
-    height: 115px;
-  }
-
-</style>

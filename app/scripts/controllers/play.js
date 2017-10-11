@@ -11,13 +11,7 @@ angular.module('luZhouApp')
   .controller('PlayCtrl', function ($scope, $http, $timeout, $interval, $rootScope, $cookieStore, commonService, $location, $loading, $stateParams, $sce) {
     $scope.Id = $stateParams.Id;
     $scope.token = commonService.AntiForgeryToken();
-    //星级评分
-    var word = ['', '很差', '差', '一般', "好", "很好"];
-    $scope.ratingText = '';
-    $scope.drLevel;
-    $scope.$watch('drLevel', function (newValue) {
-      $scope.ratingText = word[$scope.drLevel];
-    })
+    
     //加载视频信息
     $scope.allPlayInfo;
     $scope.userId;

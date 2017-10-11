@@ -77,7 +77,7 @@ angular.module('luZhouApp')
           $(".msTitle").css({
             "display": 'block',
             "fontSize": '14px',
-            "color": '#444',
+            "color": '#333',
             "padding": '10px 15px',
             "backgroundColor": '#f0f4f7',
             "borderRadius": '15px 15px 0 0',
@@ -137,25 +137,24 @@ angular.module('luZhouApp')
           $("#msBox").css({"left": ($width - boxWidth) / 2 + "px"});
           $("#msBox").stop().animate({
             "top": ($height - boxHeight) / 2 + "px",
-            "left": ($width - boxWidth) / 2 + "px",
             "opacity": "1"
-          }, 300);
+          }, 250);
           $(".msConfirm").click(function () {
-            $("#msBox").stop().animate({"top": "0", "opacity": "0.2"}, 300, function () {
+            $("#msBox").stop().animate({"top": "0", "opacity": "0"}, 250, function () {
               $("#msOut").remove();
             });
             if (typeof opt_callback1 === "function") {
               opt_callback1();
-              $('.msOut').remove()
+              $('.msOut').remove();
             }
           });
           $(".msReject").click(function () {
-            $("#msBox").stop().animate({"top": "0", "opacity": "0.2"}, 300, function () {
+            $("#msBox").stop().animate({"top": "0", "opacity": "0"}, 250, function () {
               $("#msOut").remove();
             });
             if (typeof opt_callback2 === "function") {
               opt_callback2();
-              $('.msOut').remove()
+              $('.msOut').remove();
             }
           });
         }
@@ -326,6 +325,7 @@ angular.module('luZhouApp')
       function dFormat(i) {
         return i < 10 ? "0" + i.toString() : i;
       }
+      
       if (value == "yyyy-MM-dd hh:mm:ss") {
         var d = new Date(Number(str));
         var ar_date = [d.getFullYear(), d.getMonth() + 1, d.getDate(), d.getHours(), d.getMinutes(), d.getSeconds()];

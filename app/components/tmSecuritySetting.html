@@ -1,11 +1,6 @@
 <!--设置密保-->
 <div class="securitySetting">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      设置密保
-    </p>
-  </div>
+  <div common-header title="'设置密保'" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -17,11 +12,11 @@
       <form role="form">
         <ul class="clearfix mar_left_20">
           <li class="form-group form-inline pull-left">
-            <label class="control-label pull-left" style="line-height: 30px">请输入密码：</label>
+            <label class="control-label pull-left">请输入密码：</label>
             <input type="password" autocomplete="off" class="myPwd form-control pull-left" ng-model="$parent.myPwd"/>
           </li>
           <li class="pull-left">
-            <input type="submit" class="btn btn-danger mar_left_10" ng-click="validatePwd()"/>
+            <button type="submit" ng-click="validatePwd()" class="btn btn-primary mar_left_10">提交</button>
           </li>
         </ul>
       </form>
@@ -30,44 +25,21 @@
       <form role="form" class="form-group form-inline">
         <ul class="mar_left_20">
           <li ng-repeat="data in questionData" class="mar_top_15">
-            <div class="input-group">
+            <div class="form-group">
               <label class="control-label">问题：</label>
               <input type="text" class="form-control" ng-model="data.Question"/>
             </div>
-            <div class="input-group mar_left_10">
+            <div class="form-group mar_left_10">
               <label>答案：</label>
               <input type="text" class="form-control" ng-model="data.Answer">
             </div>
           </li>
           <li>
-            <button class="mar_top_15 mar_left_10 btn btn-danger" ng-click="addQuestion()">提交</button>
+            <button class="mar_top_15 mar_left_10 btn btn-primary" ng-click="addQuestion()">提交</button>
           </li>
         </ul>
       </form>
     </div>
-    <p class="tip">友情提示：设置密保之后才能找回密码！</p>
+    <p class="tip-security">友情提示：设置密保之后才能找回密码！</p>
   </div>
 </div>
-<style>
-  .securitySetting {
-    min-height: 399px;
-  }
-
-  .securitySetting .btn-danger {
-    width: 60px;
-    height: 30px;
-    line-height: 30px;
-    padding: 0;
-  }
-
-  .securitySetting input.form-control {
-    height: 30px;
-    line-height: 30px;
-  }
-
-  .securitySetting .tip {
-    color: #999;
-    font-size: 13px;
-    padding: 0 20px 20px 20px;
-  }
-</style>

@@ -1,11 +1,6 @@
 <!--登录次数（more）-->
 <div class="rankingDetail">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{rankCourseFinish.ViewBag.TitleNav}}
-    </p>
-  </div>
+  <div common-header title="rankCourseFinish.ViewBag.TitleNav" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -20,7 +15,7 @@
             <span class="list2-5">姓名</span>
             <span class="list2-5">次数</span>
           </div>
-          <div class="list" ng-repeat="rankCourseFinishList in rankCourseFinish.ListData"  ng-class="{'rankListBg':$index%2!=0}">
+          <div class="list" ng-repeat="rankCourseFinishList in rankCourseFinish.ListData">
             <span class="list2-5">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
             <span class="list2-5">{{rankCourseFinishList.Name}}</span>
             <span class="list2-5">{{rankCourseFinishList.Total}}</span>

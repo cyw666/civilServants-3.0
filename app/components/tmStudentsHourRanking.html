@@ -1,78 +1,23 @@
-<!--个人排行-->
+<!--个人排行(模块)-->
 <div class="studentsHourRanking">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{studentHourRanking.ViewBag.TitleNav}}
+  <div common-header title="studentHourRanking.ViewBag.TitleNav" show-more=true link-url="'userRankingList'"></div>
+  <div class="tmBorder" dw-loading="studentsHourRanking">
+    <p class="rankTitle list">
+      <span class="list2">排行</span>
+      <span class="list3">姓名</span>
+      <span class="list2-5">学时</span>
+      <span class="list2-5">学次</span>
     </p>
-    <p class="more">
-      <a ui-sref="userRankingList" target="_blank" href="#/courseCenter"><img src="../images/more.png" alt="更多"></a>
-    </p>
-  </div>
-  <div class="tmBorder"   dw-loading="studentsHourRanking">
-    <p class="rankTitle clearfix">
-      <span class="list1">排行</span>
-      <span class="list2">姓名</span>
-      <span class="list3">学时</span>
-      <span class="list4">学次</span>
-    </p>
-    <ul class="rankingList clearfix" ng-repeat="rankingData in studentHourRanking.ListData"  ng-class="{'rankListBg':$index%2!=0}">
-      <li class="list1">
+    <ul class="rankingList list" ng-repeat="rankingData in studentHourRanking.ListData"  ng-class="{'rankListBg':$index%2!=0}">
+      <li class="list2">
         <span ng-if="$index<3" ng-class="{'rankFirstBg':$index==0,'rankSecondBg':$index==1,'rankThirdBg':$index==2}"></span>
         <span ng-if="$index>=3">{{$index+1}}</span>
       </li>
-      <li class="list2">{{rankingData.UserName}}</li>
-      <li class="list3">{{rankingData.Credit}}</li>
-      <li class="list4">{{rankingData.LearnTime}}</li>
+      <li class="list3">{{rankingData.UserName}}</li>
+      <li class="list2-5">{{rankingData.Credit}}</li>
+      <li class="list2-5">{{rankingData.LearnTime}}</li>
     </ul>
   </div>
 
 </div>
-<style>
-  .studentsHourRanking{
-    text-align: center;
-  }
-  .studentsHourRanking .rankingList{
-    height: 44px;
-    line-height: 44px;
-  }
-  .studentsHourRanking .rankTitle {
-    width: auto;
-    background-color: #f8f8f8;
-  }
-  .studentsHourRanking .rankingList li{
-    height: 44px;
-    line-height: 44px;
-  }
-  .studentsHourRanking .rankTitle span{
-    height: 48px;
-    line-height: 48px;
-  }
-  .studentsHourRanking .rankTitle span ,.studentsHourRanking .rankingList li{
-    float: left;
-  }
-  .studentsHourRanking .list1{
-    width: 20%;
-  }
-  .studentsHourRanking .rankingList .list1 span{
-    display: inline-block;
-    width: 100%;
-    height: 44px;
-  }
-  .studentsHourRanking .list1{
-    /*padding-left: 15px;*/
-  }
-  .studentsHourRanking .list2{
-    width: 30%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-  .studentsHourRanking .list3{
-    width: 25%;
-  }
-  .studentsHourRanking .list4{
-    width: 25%;
-  }
-</style>
 

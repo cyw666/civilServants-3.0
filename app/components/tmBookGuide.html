@@ -1,14 +1,7 @@
-<!--电子书引导模块-->
+<!--电子书引导模块(首页)-->
 <div class="bookGuide">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      电子书
-    </p>
-    <p class="more">
-      <a ui-sref="library" target="_blank"><img src="../images/more.png" alt="更多"></a>
-    </p>
-  </div>
+  <div common-header title="'电子书'" show-more=true link-url="'library'"></div>
+
   <ul class="bookList" dw-loading="bookList">
     <li class="pull-left" ng-repeat="list in booksData.ListData">
       <p class="pull-left">

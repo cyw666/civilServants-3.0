@@ -1,11 +1,7 @@
 <!--班级课程-->
 <div class="trainingCenter">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{Data.TitleNav}}
-    </p>
-  </div>
+  <div common-header title="Data.TitleNav" show-more=false link-url="''"></div>
+
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -14,7 +10,7 @@
       <li><a ui-sref="classDetail({Id:Id})">{{Data.TrainingName}}</a></li>
       <li class="active">{{Data.TitleNav}}</li>
     </ol>
-    <div class="trclasstitle text-center tmBorder-red" dw-loading="classCourse">
+    <div class="text-center tmBorder-red" dw-loading="classCourse">
       <h2 class="classTitle">{{Data.TitleNav}}</h2>
       <div class="myTab">
         <div class="tab-content">

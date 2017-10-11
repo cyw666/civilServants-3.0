@@ -18,26 +18,14 @@ angular.module('luZhouApp')
 
     $scope.vm = {activeTab: 1};
 
-    //专题培训班分类
+    //培训班分类
     commonService.getData(ALL_PORT.GetTrainingClassTypeList.url, 'POST',
       $.extend({}, ALL_PORT.GetTrainingClassTypeList.data))
       .then(function (response) {
         $loading.finish('courseClassify');
         $scope.courseClassify = response.Data;
       });
-
-    //折叠面板控制
-    $scope.repeatDone = function () {
-      $('.courseClassify .panel1-title a').click(function () {
-        $(this).parents('.panel1-heading').next().slideToggle();
-        if ($(this).children('.category').html() == '+') {
-          $(this).children('.category').html('-');
-        } else {
-          $(this).children('.category').html('+');
-        }
-      });
-    };
-
+    
     //分页
     $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: 10});
 
@@ -71,8 +59,7 @@ angular.module('luZhouApp')
     $scope.getClassList = function (options) {
       $loading.start('trainingCenter');
       $.extend($scope.params, options);
-      commonService.getData(ALL_PORT.GetClassList.url, 'POST',
-        $scope.params)
+      commonService.getData(ALL_PORT.GetClassList.url, 'POST', $scope.params)
         .then(function (response) {
           $loading.finish('trainingCenter');
           if (response.Data.ListData.length === 0) {
@@ -80,7 +67,6 @@ angular.module('luZhouApp')
           } else {
             $scope.paginationConf.totalItems = response.Data.ListData[0].Count;
           }
-
           if ($scope.params.type == "just") {
             $scope.justListData = response.Data;
           } else if ($scope.params.type == "immediately") {

@@ -1,4 +1,4 @@
-<!--登陆-->
+<!--首页登陆-->
 <div>
   <form class="login" dw-loading="userLogin" ng-if="showLogin">
     <div class="title">
@@ -29,213 +29,41 @@
         <a ui-sref="forgetPassword">忘记密码？</a>
       </div>
     </div>
-    <button ng-click="clickLogin()" type="submit" class="btn btn-success">登录</button>
-    <a ui-sref="userRegister" class="btn btn-primary">注册</a>
+    <button ng-click="clickLogin()" type="submit" class="btn btn-primary">登录</button>
+    <a ui-sref="userRegister" class="btn btn-default">注册</a>
   </form>
   <!--登陆成功-->
-  <div id="loginAfter" dw-loading="loginOut" ng-if="!showLogin">
+  <div class="loginAfter" dw-loading="loginOut" ng-if="!showLogin">
     <div class="title">
       <div class="txt">
         个人信息
       </div>
     </div>
-    <div class="content login_info">
+    <div class="login_info">
       <!--个人中心的登陆后详细和首页不同-->
       <ul class="loginAfter_ul">
-        <li class="welcom">欢迎您:<b class="red">{{userMessage.Name}}</b>({{userMessage.Account}})</li>
+        <li>欢迎您:<b class="red">{{userMessage.Name}}</b>({{userMessage.Account}})</li>
         <li>
-          <span>年度学时：<span class="red">{{userMessage.BatchTotalCredit}}</span></span>
-          <span>当前学时：<span class="red">{{userMessage.SumCredit}}</span></span>
+          <span class="hours">年度学时：<span class="red">{{userMessage.BatchTotalCredit}}</span></span>
+          <span class="hours">当前学时：<span class="red">{{userMessage.SumCredit}}</span></span>
         </li>
         <li>
           <span>个人学习档案</span>
-          <span class="item2 grey"><a ui-sref="personaLearningArchives" target="_blank">详细&gt;&gt;</a></span>
+          <span class="item2"><a ui-sref="personaLearningArchives" target="_blank">详细&gt;&gt;</a></span>
         </li>
         <li>
-          <span class="item1">您有<span class="red">{{userMessage.UnRead}} </span>条新通知！</span>
-          <span class="item2 grey"><a ui-sref="unReadNotice">查看详情&gt;</a></span>
+          <span>您有<span class="red">{{userMessage.UnRead}} </span>条新通知！</span>
+          <span class="item2"><a ui-sref="unReadNotice">查看详情&gt;</a></span>
         </li>
-        <li class="lastChild fontSize12 grey">
+        <li class="lastChild">
           <a ui-sref="modifyPassword">修改密码</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-          <a ui-sref="changeUser" id="ctl05_A2">修改信息</a> &nbsp;|&nbsp;
-          <span class="item2" ng-if="userAllMessage.UserType=='管理员'" ><a href="/admin" target="_blank">进入管理控制台</a></span>
+          <a ui-sref="changeUser">修改信息</a>&nbsp;|&nbsp;
+          <span class="item2" ng-if="userAllMessage.UserType=='管理员'"><a href="/admin" target="_blank">进入管理控制台</a></span>
         </li>
-        <li class="lastChild lastChild1">
-          <a class="exit" href="javascript:;" ng-click="loginOut('out')">退出</a>
+        <li class="exit">
+          <a class="btn btn-primary" ng-click="loginOut('out')">退出</a>
         </li>
       </ul>
     </div>
   </div>
 </div>
-
-<style>
-
-  form.login,#loginAfter{
-    padding: 20px;
-    border-radius: 5px;
-    width: 280px;
-    height: 360px;
-    background-color: #fff;
-    margin-top: 35px;
-  }
-  .login .title ,#loginAfter .title{
-    height: 44px;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 44px;
-    border-bottom: 1px solid #db1011;
-  }
-  .form-group {
-    margin: 25px 0 0 0;
-    position: relative;
-  }
-  .form-group label{
-    float: left;
-    width: 36px;
-    height: 34px;
-    border: 1px solid #ccc;
-    margin-left: 25px;
-  }
-  .form-group .login_icon_user{
-    background: url("images/login-icon.png") 2px -4px no-repeat;
-  }
-  .form-group .login_icon_password{
-    background: url("images/login-icon.png") 2px -83px no-repeat;
-  }
-  .login .form-group input {
-    height: 34px;
-    line-height: 34px;
-    float: left;
-    display: inline-block;
-    width: 100%;
-  }
-  .checkbox {
-    margin-bottom: 0;
-    margin-top: 13px;
-  }
-  .checkbox label {
-    color: #777;
-  }
-  form.login .btn-success{
-    width: 100%;
-    height: 34px;
-    background-color: #db1011;
-    border-color: #db1011;
-    margin-top: 23px;
-  }
-  form.login .btn-success:active{
-    background-color: #db1011;
-    border-color: #db1011;
-  }
-  form.login .btn-primary{
-    width: 100%;
-    height: 34px;
-    color: #db1011;
-    background-color: #fff;
-    border-color: #db1011;
-    margin-top: 23px;
-  }
-  form.login .btn-primary:active{
-    background-color: #fff;
-    border-color: #db1011;
-    color: #db1011;
-  }
-  form.login .forgetPassword {
-    text-align: center;
-    color: #777;
-  }
-  form.login .forgetPassword a{
-    color: #777;
-  }
-  form.login .forgetPassword a:hover{
-    color: #db1011;
-    text-decoration: underline;
-  }
-  .login .preventorgery {
-    display: block;
-  }
-  /*form.login .register {
-    float: right;
-  }
-  form.login .register a{
-    padding: 0 45px 0 0;
-
-  }*/
-  form.login span.error.is-visible {
-    visibility: visible;
-    opacity: 1;
-    right: 0;
-    transition:all 0.25s;
-    -moz-transition: all 0.25s; /* Firefox 4 */
-    -webkit-transition: all 0.25s; /* Safari 和 Chrome */
-    -o-transition: all 0.25s; /* Opera */
-  }
-  form.login span.error {
-    visibility: hidden;
-    position: absolute;
-    right: -85px;
-    padding: 0 8px;
-    line-height: 34px;
-    color: #c33;
-    cursor: text;
-    font-weight: normal;
-    opacity: 0;
-    /*-ms-filter: "alpha(Opacity=0)";
-    -webkit-transform: translate(20px,0);
-    -ms-transform: translate(20px,0);
-    transform: translate(20px,0);*/
-    transition:all 0.25s;
-    -moz-transition: all 0.25s; /* Firefox 4 */
-    -webkit-transition: all 0.25s; /* Safari 和 Chrome */
-    -o-transition: all 0.25s; /* Opera */
-  }
-  #loginAfter {
-
-  }
-  #loginAfter .loginAfter_ul li {
-    color: #333;
-    height: 45px;
-    line-height: 45px;
-    width: 100%;
-    margin:0 auto;
-    border-bottom: 1px solid #d4d5d7;
-  }
-
-  #loginAfter .loginAfter_ul .grey a {
-    color: #666;
-  }
-  #loginAfter .loginAfter_ul .grey a:hover {
-    text-decoration: none;
-    color: #333;
-  }
-
-  #loginAfter .item2 {
-    float: right;
-  }
-  #loginAfter .loginAfter_ul li.lastChild {
-    border-bottom: 0;
-  }
-  #loginAfter .loginAfter_ul li.lastChild1 {
-    text-align: center;
-  }
-  #loginAfter .loginAfter_ul .fontSize12 a {
-    font-size: 12px;
-  }
-  #loginAfter .exit {
-    display: block;
-    margin: 7px auto;
-    width: 80px;
-    height: 26px;
-    background-color: #db1011;
-    text-align: center;
-    line-height: 26px;
-    color: #fff;
-    border-radius: 6px;
-  }
-  #loginAfter .loginAfter_ul .lastChild .item2 a {
-    color: #db1011;
-  }
-  #loginAfter .loginAfter_ul .lastChild .item2 a:hover {
-    color: #333;
-  }
-</style>

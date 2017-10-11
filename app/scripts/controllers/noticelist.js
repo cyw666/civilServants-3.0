@@ -19,6 +19,12 @@ angular.module('luZhouApp')
         .then(function(response) {
           $loading.finish('noticeAnnouncement');
           $scope.noticeListData = response.Data;
+          var categoryName = response.Data.CategoryName;
+          if(categoryName){
+            $scope.noticeTitle = categoryName;
+          }else {
+            $scope.noticeTitle = response.Data.TitleNav;
+          }
           $scope.paginationConf.totalItems = response.Data.Count;
         });
     }

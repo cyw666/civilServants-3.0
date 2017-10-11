@@ -1,3 +1,4 @@
+<!--小提示-->
 <div class="tip" ng-show="showTip">
   <div class="title">
     <span>您有 <span>{{unReadNoticeList.length}}</span> 条未读消息！</span>
@@ -7,56 +8,3 @@
     <a ui-sref="noticeDetail({ID:unReadNoticeList[0].Id})" target="_blank">{{unReadNoticeList[0].Name}}</a>
   </p>
 </div>
-<style>
-  .tip {
-    transition: all linear 0.5s;
-    width: 150px;
-    background: #fff;
-    border: 1px solid #ccc;
-    height: 104px;
-    position: fixed;
-    bottom: 0px;
-    left: 1px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border: 1px solid #db1011;
-  }
-  /*.animate-show {
-    transition: all linear 0.5s;
-    width: 150px;
-    background: #fff;
-    border: 1px solid #ccc;
-    height: 104px;
-    bottom: 0px;
-    display: none;
-  }
-
-  .animate-show.ng-hide-add,
-  .animate-show.ng-hide-remove {
-    display:block!important;
-  }
-
-  .animate-show.ng-hide {
-    bottom: -104px;
-  }*/
-
-  .tip .title{
-    background-color: #db1011;
-    color: #fff;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  }
-  .tip .title a{
-    color: #fff;
-    padding: 0 4px 0 5px;
-    height: 30px;
-    line-height: 30px;
-  }
-  .tip .title a:hover{
-    color: #333;
-  }
-  .tip .title span{
-    height: 30px;
-    line-height: 30px;
-  }
-</style>

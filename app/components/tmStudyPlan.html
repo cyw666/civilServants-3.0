@@ -1,11 +1,6 @@
 <!--我的学习计划-->
-<div class="stydyPlan">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{stydyPlanData.TitleNav}}
-    </p>
-  </div>
+<div class="studyPlan">
+  <div common-header title="stydyPlanData.TitleNav" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -75,8 +70,7 @@
                 <tr>
                   <td>提醒周期：</td>
                   <td style="text-align: left">
-                    <select ng-model="selectCycle" ng-options="x for x in remindCycle">
-                    </select>
+                    <select class="form-control" ng-model="selectCycle" ng-options="x for x in remindCycle"></select>
                   </td>
                 </tr>
                 <tr>
@@ -88,7 +82,7 @@
                 <tr>
                   <td>计划说明：</td>
                   <td>
-                    <textarea ng-model="planAddData.Remark" id="txtContent3" name="Content" cols="50" rows="5" type="text" class="txt2"></textarea>
+                    <textarea class="form-control" ng-model="planAddData.Remark" cols="50" rows="5"></textarea>
                   </td>
                 </tr>
                 </tbody>
@@ -103,15 +97,6 @@
     </div>
   </div>
 </div>
-<style>
-  .stydyPlan .table td{
-    text-align: left;
-  }
-  .stydyPlan .modal-footer{
-   text-align: center;
-  }
-</style>
-
 
 
 

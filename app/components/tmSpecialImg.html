@@ -1,33 +1,11 @@
+<!--专题学习轮播-->
 <div class="specialImg">
-
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{studySpecialData.TitleNav}}
-    </p>
-    <p class="more">
-      <a ui-sref="speciallearning" target="_blank"><img src="../images/more.png" alt="更多"></a>
-    </p>
-  </div>
-
+  <div common-header title="studySpecialData.TitleNav" show-more=true link-url="'speciallearning'"></div>
   <div class="slider3">
     <div class="slide" ng-repeat="list in studySpecialData.ListData" repeat-finish="repeatFinish()">
-      <a ui-sref="{{list.Url}}"  title="{{list.SeriesName}}" target="_blank">
+      <a ui-sref="{{list.Url}}" title="{{list.SeriesName}}" target="_blank">
         <img ng-src="{{studySpecialData.ImagePath+'/'+list.Icon}}" err-Src="images/notFound.jpeg" alt="">
       </a>
     </div>
   </div>
 </div>
-
-<style>
-  .specialImg .bx-wrapper .bx-prev {
-    left: -48px;
-  }
-  .specialImg .bx-wrapper .bx-next {
-    right: -48px;
-  }
-  .slider3 .slide img {
-    width: 200px;
-    height: 119px;
-  }
-</style>

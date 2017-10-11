@@ -1,9 +1,10 @@
-<div class="exam" dw-loading="exam" style="-webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;">
+<!--问卷调查-->
+<div class="poll" dw-loading="exam" style="-webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;">
   <div class="exam_top">
     <img src="/images/poll_top.png" />
   </div>
   <div><h2 class="text-center">{{examData.Exam.Name}}</h2></div>
-  <form method="post" id="editForm" name="editForm">
+  <form method="post" class="editForm" name="editForm">
     <input type="hidden" value="{{examData.examid}}" id="hdnexamid" name="hdnexamid" />
     <input type="hidden" value="{{examData.isfixed}}" id="hdnisfixed" name="hdnisfixed"/>
     <table class="table" cellpadding="0" cellspacing="0" style="width:100%;">
@@ -60,43 +61,12 @@
         </td>
       </tr>
       <tr>
-        <td align="center" class="text-center">
-          <input ng-click="submitForm()" type="button" class="btn" value="提交" />
+        <td style="text-align: center">
+          <button ng-click="submitForm()" type="submit" class="btn btn-primary">提交</button>
         </td>
       </tr>
       </tbody>
     </table>
   </form>
 </div>
-
-<style>
-  .exam {
-    min-height: 700px;
-    background-color: #f9f9f9;
-  }
-  .exam_top {
-    margin: 0 auto;
-    padding: 10px 0;
-    text-align: center;
-  }
-  #editForm {
-    padding: 20px;
-  }
-  .exam tr td{
-    text-align: left;
-    padding-left: 15px;
-  }
-  .exam .red {
-    color: #f00909;
-  }
-  .exam .xz li{
-    float: left;
-    font-size: 15px;
-    font-weight: bold;
-    padding-left: 15px;
-  }
-  .exam .xz li.red{
-    padding-left: 0;
-  }
-</style>
 

@@ -27,9 +27,7 @@ angular.module('luZhouApp')
       PassWord: '',
       RememberMe: true
     };
-    $scope.courseTitle="课程中心";
-    $scope.courseShow=true;
-    $scope.courseLink = 'courseCenter';
+    
     var getCookie = commonService.getCookie;
     var setCookie = commonService.setCookie;
     var delCookie = commonService.delCookie;
@@ -168,7 +166,7 @@ angular.module('luZhouApp')
           autoHover:true,
           controls:false
         });
-      },500);
+      },0);
     }
 
     //培训班分类

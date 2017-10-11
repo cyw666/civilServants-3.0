@@ -1,13 +1,7 @@
 
 <!--通知列表-->
 <div class="articleList">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      <span ng-show="noticeListData.CategoryName">{{noticeListData.CategoryName}}</span>
-      <span ng-hide="noticeListData.CategoryName">{{noticeListData.TitleNav}}</span>
-    </p>
-  </div>
+  <div common-header title="noticeTitle" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -25,10 +19,6 @@
       </div>
       <button type="submit" class="btn btn-primary" ng-click="getNoticeList({page:1,search:searchTitle})">搜索</button>
     </form>
-    <!--<div class="articleListSearch">
-      <input type="text" ng-model="searchTitle" my-placeholder placeholder="请输入搜索关键词">
-      <button class="btn btn-default" ng-click="getNoticeList({page:1,search:searchTitle})">搜索</button>
-    </div>-->
     <div dw-loading="articleList" class="mar_top_20">
       <table class="table" ng-show="paginationConf.totalItems">
         <tr>

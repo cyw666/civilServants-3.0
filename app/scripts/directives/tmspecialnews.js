@@ -16,6 +16,7 @@ angular.module('luZhouApp')
         categoryCode:'='
       },
       link: function postLink(scope, element, attrs) {
+        scope.articleUrl = "article({categoryCode:'"+scope.categoryCode+"'})";
       }
     };
   });

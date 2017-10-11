@@ -1,11 +1,6 @@
-
+<!--成果展示-->
 <div class="resultShow">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{resultShowData.TitleNav}}
-    </p>
-  </div>
+  <div common-header title="resultShowData.TitleNav" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -14,28 +9,10 @@
     </ol>
     <ul class="resultContent clearfix" dw-loading="resultShow">
       <li class="pull-left" ng-repeat="list in resultShowData.ListData">
-        <a ui-sref="articleDetail({ID:list.Id})" target="_blank"><img ng-src="{{resultShowData.Path+'/'+list.Img}}" alt="{{list.Name}}"></a>
+        <a ui-sref="articleDetail({ID:list.Id})" target="_blank"><img ng-src="{{resultShowData.Path+'/'+list.Img}}" alt="{{list.Name}}" err-Src="images/notCourse.png"></a>
         <p><a ui-sref="articleDetail({ID:list.Id})" target="_blank">{{list.Name}}</a></p>
       </li>
     </ul>
   </div>
 </div>
-<style>
-  .resultContent li{
-    width: 200px;
-    height:260px;
-    border: 1px solid #eaeaea;
-    margin-left: 50px;
-    margin-top: 20px;
-    text-align: center;
-  }
- .resultContent li img{
-   display: inline-block;
-   width: 200px;
-   height:200px;
- }
-  .resultContent li p{
-    height:30px;
-    line-height: 30px;
-  }
-</style>
+

@@ -1,90 +1,11 @@
 <!--@*培训班分类*@-->
-<div class="courseClassify panel1-group">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{courseClassify.TitleNav}}
+<div class="courseClassify">
+  <div common-header title="courseClassify.TitleNav" show-more=false link-url="''"></div>
+  <div class="tmBorder">
+    <p class="panels" ng-repeat="courseList in courseClassify.ListData" ng-click="getClassList({categoryId:courseList.Id})">
+      {{courseList.Name}}
     </p>
   </div>
-  <div class="tmBorder">
-    <div class="panel1 panel1-default" dw-loading="courseClassify" ng-repeat="courseList in courseClassify.ListData" repeat-finish="repeatDone()">
-      <div class="panel1-heading">
-        <p class="panel1-title" title="{{courseList.Name}}">
-          <a href="javascript:;" ng-click="getClassList({categoryId:courseList.Id})">
-            <span ng-show="courseList.Nodes" class="category">+</span>
-            {{courseList.Name}}
-          </a>
-        </p>
-      </div>
-      <div class="panel1-collapse collapse">
-        <div class="panel1-body">
-          <ul>
-            <li title="{{list.Name}}" ng-repeat="list in courseList.Nodes"><a href="javascript:;" ng-click="getClassList({categoryId:list.Id})">{{list.Name}}</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
-
-<style>
-  .courseClassify .panel1{
-    border:0;
-  }
-  .courseClassify .panel1 .panel1-heading{
-    background-color: #fff;
-    padding:0 20px;
-  }
-  .courseClassify .panel1 .panel1-heading .category{
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    text-align: center;
-    border: 1px solid #0f0f0f;
-    font-size: 15px;
-    position: relative;
-    top: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  /*.courseClassify .panel1 .panel1-heading .category2{
-    display: none;
-  }*/
-  .courseClassify .panel1 .panel1-heading a{
-    display: inline-block;
-    text-align: left;
-    font-size:15px;
-    color: #0f0f0f;
-    width: 90%;
-    height: 34px;
-    line-height: 34px;
-    padding: 0 20px;
-  }
-  .courseClassify .panel1 a:hover{
-    background-color: #f1f1f1;
-    color: #0f0f0f;
-  }
-
-  .courseClassify .panel1 .panel1-body {
-    padding:0;
-  }
-  .courseClassify.panel1-group .panel1-heading + .panel1-collapse > .panel1-body, .panel1-group .panel1-heading + .panel1-collapse > .list-group {
-    border-top: none;
-  }
-  .courseClassify .panel1 .panel1-body li {
-    margin-left: 35px;
-    height: 36px;
-  }
-  .courseClassify .panel1 .panel1-body li a{
-    display: inline-block;
-    padding:7px;
-    width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-</style>
 
 

@@ -1,6 +1,6 @@
-<!--班级模块-->
+<!--班级展示模块-->
 <div class="classMy mar_top_20">
-  <div class="com-header">
+  <!--<div class="com-header">
     <p class="title">
       <img src="../images/headerLeftIcon.png" alt="图标">
       {{classMyData.TitleNav}}
@@ -8,7 +8,9 @@
     <p class="more">
       <a ui-sref="classlist({type:classType})" target="_self"><img src="../images/more.png" alt="更多"></a>
     </p>
-  </div>
+  </div>-->
+  <div common-header title="classMyData.TitleNav" show-more=true link-url="classUrl"></div>
+
   <div class="tmBorder">
     <div class="myClass" dw-loading="classMy">
       <div class="list listTitle">

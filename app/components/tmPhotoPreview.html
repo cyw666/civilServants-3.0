@@ -1,12 +1,7 @@
 
 <!--班级照片-->
-<div class="trainingCenter">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{Data.TitleNav}}
-    </p>
-  </div>
+<div class="tmPhotoPreview">
+  <div common-header title="Data.TitleNav" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -48,13 +43,13 @@
               <tr>
                 <td>照片标题：</td>
                 <td>
-                  <input type="text" ng-model="name">
+                  <input class="form-control" type="text" ng-model="name">
                 </td>
               </tr>
               <tr>
                 <td>照片说明：</td>
                 <td>
-                  <textarea ng-model="description" id="txtContent" name="Content" cols="50" rows="5" type="text" class="txt2"></textarea>
+                  <textarea class="form-control" ng-model="description" cols="50" rows="5"></textarea>
                 </td>
               </tr>
               <tr>
@@ -94,19 +89,6 @@
       </div>
     </div>
   </div>
-
 </div>
-<style>
-  .trainingCenter .myTab .perlist .list3 {
-		margin: 5px;
-	}
-  .trainingCenter .myTab .perlist .list3 img {
-		width: 80%;
-		height: 130px;
-		border-radius: 3px;
-	}
-  .trainingCenter .modal-footer {
-    text-align: center;
-  }
-</style>
+
 

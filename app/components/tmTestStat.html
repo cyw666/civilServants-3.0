@@ -1,11 +1,6 @@
 <!--考试统计-->
 <div class="examStat">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{examStatData.TitleNav}}
-    </p>
-  </div>
+  <div common-header title="examStatData.TitleNav" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -32,11 +27,11 @@
         查询
       </button>
     </form>
-    <p>
-      尊敬的 <b>{{examStatData.Account}}</b>, 截止 <b>{{examStatData.StartDate}} 至 {{examStatData.EndDate}} </b>, 您目前顺利通过 <b>{{examStatData.FinishExam}}</b>
-      门考试 , 有 <b>{{examStatData.UnFinishExam}}</b> 门考试未通过。总共获得 <b>{{examStatData.ExamCreditSum}}</b> 学时
+    <p class="welcome">
+      尊敬的 <b class="red">{{examStatData.Account}}</b>, 截止 <b class="red">{{examStatData.StartDate}} 至 {{examStatData.EndDate}} </b>, 您目前顺利通过 <b class="red">{{examStatData.FinishExam}}</b>
+      门考试 , 有 <b class="red">{{examStatData.UnFinishExam}}</b> 门考试未通过。总共获得 <b class="red">{{examStatData.ExamCreditSum}}</b> 学时
     </p>
-    <div class="myTab" dw-loading="examStat">
+    <div class="myTab mar_top_15" dw-loading="examStat">
       <div class="tab-content" dw-loading="myCenter">
         <div class="tab-panel perlist">
           <div class="title_bar">
@@ -59,13 +54,5 @@
     </div>
   </div>
 </div>
-<style>
-  .examStat .formSearch input {
-    width: 200px;
-  }
-  .examStat .formSearch .form-group {
-    width: auto;
-  }
-</style>
 
 

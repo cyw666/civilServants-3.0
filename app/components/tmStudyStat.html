@@ -1,11 +1,6 @@
 <!--学习统计-->
 <div class="studyStat">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      学习统计
-    </p>
-  </div>
+  <div common-header title="'学习统计'" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -30,8 +25,8 @@
       </div>
       <button type="submit" class="btn btn-primary" ng-click="requestMyStudyStat({StartDate:startTime,EndDate:endTime})">查询</button>
     </form>
-    <p>
-      尊敬的 <b>{{studyStatData.Account}}</b>, 截止 <b>{{studyStatData.StartDate}} 至 {{studyStatData.EndDate}} </b>, 您的学习状态：<b>学习中</b> , 您已经累计获得课程学时 <b>{{studyStatData.CreditSum}}</b> 学时 , 您已经选修 <b>{{studyStatData.Count}}</b> 门课程, 已经完成 <b>{{studyStatData.FinishCourse}}</b> 门课程, 您目前正在学习 <b>{{studyStatData.UnFinishCourse}}</b> 门课程。
+    <p class="welcome">
+      尊敬的 <b class="red">{{studyStatData.Account}}</b>, 截止 <b class="red">{{studyStatData.StartDate}} 至 {{studyStatData.EndDate}} </b>, 您的学习状态：<b class="red">学习中</b> , 您已经累计获得课程学时 <b class="red">{{studyStatData.CreditSum}}</b> 学时 , 您已经选修 <b class="red">{{studyStatData.Count}}</b> 门课程, 已经完成 <b class="red">{{studyStatData.FinishCourse}}</b> 门课程, 您目前正在学习 <b class="red">{{studyStatData.UnFinishCourse}}</b> 门课程。
     </p>
     <div class="myTab">
       <div class="tab-content" dw-loading="studyStat">
@@ -54,20 +49,5 @@
     </div>
   </div>
 </div>
-<style>
-  #startTime{
-    width: 200px;
-  }
-  #endTime{
-    width: 200px;
-  }
-  .studyStat .btn.btn-danger{
-    padding: 2px 14px;
-    margin-left: 10px;
-  }
-  .studyStat .formSearch .form-group {
-    width: auto;
-  }
-</style>
 
 

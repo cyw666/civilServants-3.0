@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: tmclassdetail', function () {
+describe('Directive: tmClassDetail', function () {
 
   // load the directive's module
   beforeEach(module('luZhouApp'));
@@ -13,8 +13,8 @@ describe('Directive: tmclassdetail', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<tmclassdetail></tmclassdetail>');
+    element = angular.element('<tm-class-detail></tm-class-detail>');
     element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the tmclassdetail directive');
+    expect(element.text()).toBe('this is the tmClassDetail directive');
   }));
 });

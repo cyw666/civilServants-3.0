@@ -1,11 +1,6 @@
 <!--课程点击排行列表（more）-->
 <div class="rankingDetail">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{rankCourseClick.ViewBag.TitleNav}}
-    </p>
-  </div>
+  <div common-header title="rankCourseClick.ViewBag.TitleNav" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -20,7 +15,7 @@
             <span class="list6">课程</span>
             <span class="list2">点击次数</span>
           </div>
-          <div class="list" ng-repeat="rankCourseClickList in rankCourseClick.ListData"  ng-class="{'rankListBg':$index%2!=0}">
+          <div class="list" ng-repeat="rankCourseClickList in rankCourseClick.ListData">
             <span class="list2">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
             <span class="list6 ellipsis" title="{{rankCourseClickList.Name}}"><a ui-sref="courseDetails({Id:rankCourseClickList.Id})" target="_blank">{{rankCourseClickList.Name}}</a></span>
             <span class="list2">{{rankCourseClickList.Total}}</span>

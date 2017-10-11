@@ -25,7 +25,7 @@ angular.module('luZhouApp')
           controls:false,
           autoHover:true,
         });
-      },500);
+      },0);
     };
 
     //习近平重要讲话新闻
@@ -106,7 +106,7 @@ angular.module('luZhouApp')
           autoHover:true,
           pager:false
         });
-      },500);
+      },0);
     };
 
   });

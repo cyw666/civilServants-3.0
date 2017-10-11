@@ -1,5 +1,5 @@
-
-<div id="specialNewSlide" dw-loading="specialNewSlide">
+<!--专题学习新闻轮播-->
+<div class="specialNewSlideOuter" dw-loading="specialNewSlide">
   <div class="specialNewSlide">
     <div class="slideList" ng-repeat="list in slideData.ListData" repeat-finish="startSlide()">
       <a ui-sref="articleDetail({ID:list.Id})" target="_blank">
@@ -13,39 +13,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  #specialNewSlide .slideList img{
-    width: 345px;
-    height: 306px;
-  }
-  #specialNewSlide .bx-wrapper {
-    margin: 0 auto;
-  }
-  #specialNewSlide .bx-wrapper .bx-pager {
-    height: 25px;
-    padding: 0;
-    bottom: 0;
-  }
-  #specialNewSlide .bx-wrapper .bx-pager.bx-default-pager a {
-    background: transparent;
-    border: 1px solid #fff;
-  }
-  #specialNewSlide .bx-wrapper .bx-pager.bx-default-pager a:hover,
-  #specialNewSlide .bx-wrapper .bx-pager.bx-default-pager a.active {
-    background: #fa1f20;
-    border: 1px solid #fa1f20;
-  }
-  #specialNewSlide .slideList .titleName{
-    position: absolute;
-    bottom: 25px;
-    margin-left: 10%;
-    width: 80%;
-  }
-  #specialNewSlide .slideList .titleName a{
-    display: inline-block;
-    color: #fff;
-    text-align: center;
-    width: 100%;
-  }
-</style>

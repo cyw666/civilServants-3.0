@@ -1,10 +1,6 @@
+<!--学员风采-->
 <div class="studyStyle">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      学员风采
-    </p>
-  </div>
+  <div common-header title="'学员风采'" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -17,8 +13,8 @@
           <a ui-sref="studentstyledetail({Id:list.Id})">
             <img ng-src="{{list.Img}}" err-src="/images/notFound.jpeg">
           </a>
-          <p><a ui-sref="studentstyledetail({Id:list.Id})" class="title">{{list.Name}}</a></p>
-          <p class="list title2">{{list.Source}}</p>
+          <p><a ui-sref="studentstyledetail({Id:list.Id})" class="name">{{list.Name}}</a></p>
+          <p class="source">{{list.Source}}</p>
         </li>
       </ul>
       <div tm-pagation conf="paginationConf"></div>
@@ -26,39 +22,3 @@
   </div>
 
 </div>
-
-<style>
-  .studyStyle .styleContent .txt {
-    color: #000;
-    font-size: 17px;
-    line-height: 25px;
-  }
-  .studyStyle .styleContent .courseList {
-    width: 160px;
-    height: 300px;
-    margin: 20px 0 0 11%;
-  }
-  .studyStyle .styleContent p {
-    text-align: center;
-    color: #3b3a3a;
-  }
-  .studyStyle .styleContent p .title{
-    margin-top: 20px;
-    line-height: 30px;
-    height: 30px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #3b3a3a;
-    text-align: center;
-  }
-  .studyStyle .styleContent .title2 {
-    line-height: 25px;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  .studyStyle .styleContent .courseList img{
-    display: inline-block;
-    width: 160px;
-    height: 200px;
-  }
-</style>

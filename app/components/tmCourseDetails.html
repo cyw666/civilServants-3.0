@@ -1,11 +1,6 @@
 <!--@*课程详情*@-->
 <div class="courseDetails">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{courseDetailsData.CourseModel.Name}}
-    </p>
-  </div>
+  <div common-header title="'课程详情'" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -14,11 +9,7 @@
       <li class="active">{{courseDetailsData.CourseModel.Name}}</li>
     </ol>
     <div class="long cur_center" dw-loading="courseDetails">
-      <div class="titlebg2">
-        <div class="txt">
-          课程详情
-        </div>
-      </div>
+      <div class="commonTitle">课程详情</div>
       <div class="content cur_detail">
         <table class="table table-bordered">
           <tbody>

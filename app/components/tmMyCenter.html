@@ -1,11 +1,6 @@
 <!--个人中心-->
 <div class="myCenter">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      个人中心
-    </p>
-  </div>
+  <div common-header title="'个人中心'" show-more=false link-url="''"></div>
   <div class=" tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -46,7 +41,7 @@
             <div class="list0-75">测试</div>
             <div class="list0-75">删除</div>
           </div>
-          <div class="list" ng-repeat="unFinish in TotalData.ListData.UnfinishModel">
+          <div class="list" ng-repeat="unFinish in TotalData.ListData.UnfinishModel track by $index">
             <div class="list3 ellipsis" title="{{unFinish.Name}}">
               <a ui-sref="courseDetails({Id:unFinish.Id})" target="_blank">{{unFinish.Name}}</a>
             </div>
@@ -72,7 +67,7 @@
               <div ng-if="unFinish.ExamFlag&&unFinish.BrowseScore==100" class="list0-75"><a
                 ng-click="courseExamList(unFinish.Id)" data-toggle="modal" data-target=".seeTest">查看</a></div>
               <div ng-if="!unFinish.ExamFlag" class="list0-75">无</div>
-              <div class="list0-75"><a ng-click="deleatUserCourse(unFinish.Id)"><img src="images/del.jpg"/></a></div>
+              <div class="list0-75"><a class="del" ng-click="deleatUserCourse(unFinish.Id)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></div>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
@@ -88,7 +83,7 @@
             <div class="list0-75">测试</div>
             <div class="list0-75">删除</div>
           </div>
-          <div class="list" ng-repeat="Appointed in TotalData.ListData.AppointedModel">
+          <div class="list" ng-repeat="Appointed in TotalData.ListData.AppointedModel track by $index">
               <div class="list3 ellipsis" title="{{Appointed.Name}}"><a ui-sref="courseDetails({Id:Appointed.Id})"
                                                                          target="_blank">{{Appointed.Name}}</a></div>
               <div class="list1-5">
@@ -113,7 +108,7 @@
               <div ng-if="Appointed.ExamFlag&&Appointed.BrowseScore==100" class="list0-75"><a
                 ng-click="courseExamList(Appointed.Id)" data-toggle="modal" data-target=".seeTest">查看</a></div>
               <div ng-if="!Appointed.ExamFlag" class="list0-75">无</div>
-              <div class="list0-75"><a ng-click="deleatUserCourse(Appointed.Id)"><img src="images/del.jpg"/></a></div>
+              <div class="list0-75"><a class="del" ng-click="deleatUserCourse(Appointed.Id)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></div>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
@@ -129,7 +124,7 @@
             <div class="list0-75">测试</div>
             <div class="list0-75">删除</div>
           </div>
-          <div class="list" ng-repeat="Finish in TotalData.ListData.FinishModel">
+          <div class="list" ng-repeat="Finish in TotalData.ListData.FinishModel track by $index">
               <div class="list3 ellipsis" title="{{Finish.Name}}">
                 <a ui-sref="courseDetails({Id:Finish.Id})" target="_blank">{{Finish.Name}}</a>
               </div>
@@ -154,7 +149,7 @@
               <div ng-if="Finish.ExamFlag&&Finish.BrowseScore<100" class="list0-75">有考试</div>
               <div ng-if="Finish.ExamFlag&&Finish.BrowseScore==100" class="list0-75"><a ng-click="courseExamList(Finish.Id)" data-toggle="modal" data-target=".seeTest">查看</a></div>
               <div ng-if="!Finish.ExamFlag" class="list0-75">无</div>
-              <div class="list0-75"><a ng-click="deleatUserCourse(Finish.Id)"><img src="images/del.jpg"/></a></div>
+              <div class="list0-75"><a class="del" ng-click="deleatUserCourse(Finish.Id)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></div>
           </div>
           <div ng-transclude="pagation"></div>
         </div>
@@ -210,15 +205,15 @@
                 <td>笔记名称：</td>
                 <td class="seaNote">
                   <span class="pull-left">{{seeList.Name}}</span>
-                  <a class="pull-right" href="" ng-click="delNote(seeList.Id)">删除</a>
-                  <a class="pull-right" href="" ng-click="noteUpdate(seeList.Id)">编辑</a>
+                  <a class="pull-right" ng-click="delNote(seeList.Id)">删除</a>
+                  <a class="pull-right" ng-click="noteUpdate(seeList.Id)">编辑</a>
                 </td>
               </tr>
               <tr>
                 <td colspan="2">
                   <div class="content_page">
                     <span class="p_num current">{{seeNoteData.Page}}</span><span>共 {{Math.ceil(seeNoteData.Count/seeNoteData.Rows)}} 页,总记录 {{seeNoteData.Count}} 条</span>
-                    <a class="btn btn-danger newnote pull-right" ng-click="nodeAdd(courseId)">添加笔记</a>
+                    <a class="btn btn-primary newNote pull-right" ng-click="nodeAdd(courseId)">添加笔记</a>
                   </div>
                 </td>
               </tr>
@@ -412,27 +407,3 @@
     </div>
   </div>
 </div>
-<style>
-  .myCenter .modal-footer {
-    text-align: center;
-  }
-
-  .myCenter .table input {
-    width: 320px;
-  }
-  .myCenter .table td {
-    text-align: left;
-  }
-
-  .myCenter .seaNote a {
-    padding: 0 15px;
-  }
-
-  .myCenter .newnote {
-    padding: 2px 12px;
-  }
-
-  .myCenter .content_page {
-    line-height: 26px;
-  }
-</style>

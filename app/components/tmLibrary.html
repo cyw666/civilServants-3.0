@@ -1,10 +1,6 @@
+<!--图书列表-->
 <div class="library">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{booksData.TitleNav}}
-    </p>
-  </div>
+  <div common-header title="booksData.TitleNav" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -17,13 +13,11 @@
       </div>
       <button type="submit" class="btn btn-primary" ng-click="searchCategory({'title':searchTitle,page:1})">搜索</button>
     </form>
-    <div class="libraryList mar_top_15" dw-loading="library">
-      <div class="titlebg">
-        <div class="txt" ng-if="booksData.Ptitle==''">{{booksData.TitleNav}}&nbsp;&nbsp;&nbsp;&nbsp;({{booksData.Count}})</div>
-        <div class="txt" ng-if="booksData.Ptitle!=''">{{booksData.Ptitle}}&nbsp;&nbsp;&nbsp;&nbsp;({{booksData.Count}})</div>
-      </div>
-      <ul class="libraryContent clearfix">
-        <li ng-repeat="list in booksData.ListData" class="pull-left">
+    <div class="libraryList" dw-loading="library">
+      <div class="libraryTitle" ng-if="booksData.Ptitle==''">{{booksData.TitleNav}} ({{booksData.Count}})</div>
+      <div class="libraryTitle" ng-if="booksData.Ptitle!=''">{{booksData.Ptitle}}&nbsp;({{booksData.Count}})</div>
+      <ul class="libraryContent">
+        <li ng-repeat="list in booksData.ListData">
           <a class="bookImg" ui-sref="bookdetail({Id:list.Id})" target="_blank">
             <img ng-src="{{imgPath+'/'+list.Icon}}" err-src="images/notFound.jpeg" alt="{{list.Name}}">
           </a>
@@ -37,37 +31,5 @@
     </div>
   </div>
 </div>
-<style>
-  .library .libraryContent {
-    text-align: center;
-  }
-  .library .libraryContent img {
-    width: 190px;
-    height: 270px;
-    margin: 5px 0 0 5px;
-  }
-  .library .libraryContent li {
-    padding: 10px 20px;
-    width: 33%;
-  }
-  .library .libraryContent li .name{
-    height: 25px;
-    line-height: 25px;
-    font-size: 16px;
-    color: #337ab7;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .library .libraryContent li .author {
-    height: 25px;
-    line-height: 25px;
-    font-size: 16px;
-    color: #666;
-  }
-  .library .libraryContent li .read a.btn {
-    width: 130px;
-    padding: 4px 20px;
-  }
-</style>
+
 

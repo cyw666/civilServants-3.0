@@ -2,6 +2,7 @@
  * 折叠面板
  */
 @import "../styles/mixins";
+
 .panels {
   padding: 9px 28px;
   cursor: pointer;
@@ -11,21 +12,22 @@
     color: @link-hover-color;
   }
 }
+
 .expander {
-  &>.title{
+  & > .title {
     padding: 4px 10px;
     cursor: pointer;
     .transition();
-    &:hover{
+    &:hover {
       background-color: @item-hover-bg;
     }
-    a{
+    a {
       display: inline-block;
       width: 80%;
       line-height: 30px;
     }
   }
-  .body{
+  .body {
     height: auto;
     .panels {
       padding: 9px 33px;

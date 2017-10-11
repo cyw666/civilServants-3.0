@@ -1,11 +1,6 @@
 <!--用户排行列表（more）-->
 <div class="userRankingList">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{userRankingData.ViewBag.TitleNav}}
-    </p>
-  </div>
+  <div common-header title="userRankingData.ViewBag.TitleNav" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -22,7 +17,7 @@
             <span class="list2">学次</span>
             <span class="list2">单位名称</span>
           </div>
-          <div class="list" ng-repeat="userRankingDataList in userRankingData.ListData"  ng-class="{'rankListBg':$index%2!=0}">
+          <div class="list" ng-repeat="userRankingDataList in userRankingData.ListData">
               <span class="list2">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
               <span class="list2">{{userRankingDataList.UserName}}</span>
               <span class="list2">{{userRankingDataList.Credit}}</span>

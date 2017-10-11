@@ -59,7 +59,7 @@ angular.module('luZhouApp')
     }
     $scope.inputChange = function() {
       $scope.showVerifyCode = true;
-      $scope.login.ValidateCode = '';
+      // $scope.login.ValidateCode = '';
     }
 
 

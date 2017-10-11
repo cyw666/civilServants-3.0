@@ -1,10 +1,6 @@
-<div class="trainingCenter">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      {{location}}
-    </p>
-  </div>
+<!--添加相册-->
+<div class="tmPhotoAlbumAdd">
+  <div common-header title="location" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -18,7 +14,7 @@
         <div class="photo-album-add-title">
           <h4 class="text-center">添加相册</h4>
         </div>
-        <div class="photo-album-add-body mar_top_10">
+        <div class="photo-album-add-body">
           <div class="form-group clearfix">
             <span class="grid_8 text-right">相册标题：</span>
             <div>
@@ -34,7 +30,7 @@
           <div class="form-group clearfix">
             <span class="grid_8 text-right">相册封面：</span>
             <div class="clearfix grid_4">
-              <input  type="file" name="ImageToUpload" id="ImageToUpload"
+              <input class="upLoadFile" type="file" name="ImageToUpload" id="ImageToUpload"
                       multiple="multiple" onchange="fileSelected('ImageToUpload', 'ImageTraining', 1);">
               <div id="ImageMessage" style="display:none;padding: 10px;height: 34px"></div>
               <input type="hidden" id="hidValueImage" name="ImgUrl" ng-model="ImgUrl" />
@@ -49,8 +45,3 @@
     </div>
   </div>
 </div>
-<style>
-	.photo-album-add-body span{
-		line-height: 35px;
-	}
-</style>

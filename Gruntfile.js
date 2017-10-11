@@ -241,10 +241,17 @@ module.exports = function (grunt) {
         options: {
           compress: false,
         },
+        /*files: [{
+          expand: true,
+          cwd: 'app/styles/',
+          src: '{,*!/}*.less',
+          dest: 'app/styles/',
+          ext: '.css'
+        }],*/
         files: [{
           expand: true,
           cwd: 'app/styles/',
-          src: '{,*/}*.less',
+          src: 'main.less',
           dest: 'app/styles/',
           ext: '.css'
         }]

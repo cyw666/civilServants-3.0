@@ -1,7 +1,8 @@
-<div class="article-detail article-detail-container container_24" dw-loading="tmshowarticledetail">
-  <div class="article-detail article-detail-title-bar">
-    <p class="article-detail article-detail-title text-center grid_24">{{articleData.Name}}</p>
-    <p class="article-detail article-detail-info">
+<!--文章详情-->
+<div class="article-detail container_24" dw-loading="tmshowarticledetail">
+  <div class="article-detail-title-bar">
+    <p class="article-detail-title">{{articleData.Name}}</p>
+    <p class="article-detail-info">
       <span ng-if="articleData.CreatedDate">发布时间：{{articleData.CreatedDate | dateFilter | date:'yyyy-MM-dd'}}</span>
       <span ng-if="!articleData.CreatedDate">发布时间：{{articleData.CreateDate | dateFilter | date:'yyyy-MM-dd'}}</span>
       <span ng-if="articleData.Author">作者：{{articleData.Author}}</span>
@@ -9,7 +10,7 @@
       <span>来源：{{articleData.Source}}</span>
       <span ng-show="articleData.ClickCount">浏览次数：{{articleData.ClickCount}}</span>
     </p>
-    <p class="article-detail article-detail-info" ng-show="articleData.Id">
+    <p class="article-detail-info" ng-show="articleData.Id">
       <a class="favoriteadd"
          ng-click="favoriteAdd({mainId:articleData.Id,type:articleData.Type,title:articleData.Name,remark:'0'},token);"
          ng-show="!articleData.FavoriteId">[收藏]</a>
@@ -22,78 +23,17 @@
       <a ng-click="increaseFont()">[放大字体]</a>
     </p>
   </div>
-  <div id="setFont" class="article-detail article-detail-content justify" ng-bind-html="articleData.Content| trustHtml">
+  <div id="setFont" class="article-detail-content justify" ng-bind-html="articleData.Content| trustHtml">
 
   </div>
-  <div class="article-detail article-detail-changeBar clearfix">
-    <p class="grid_11 article-detail article-detail-changeBar-anhor pull-left ellipsis" ng-show="articleData.UpName"
+  <div class="article-detail-changeBar clearfix">
+    <p class="grid_11 article-detail-changeBar-anhor pull-left ellipsis" ng-show="articleData.UpName"
        title="{{articleData.UpName}}">
       <a ui-sref="articleDetail({ID:articleData.UpId})">上一篇：{{articleData.UpName}}</a>
     </p>
-    <p class="grid_11 article-detail article-detail-changeBar-anhor pull-right ellipsis" ng-show="articleData.DownName"
+    <p class="grid_11 article-detail-changeBar-anhor pull-right ellipsis" ng-show="articleData.DownName"
        title="{{articleData.DownName}}">
       <a ui-sref="articleDetail({ID:articleData.DownId})">下一篇：{{articleData.DownName}}</a>
     </p>
   </div>
-
 </div>
-<style>
-  .article-detail-container {
-    padding: 0 5px;
-  }
-
-  .article-detail-title-bar {
-    border-bottom: 1px solid #D4D5D7;
-  }
-
-  .article-detail-title {
-    font-family: "宋体", Serif;
-    font-size: 22px;
-    font-weight: bold;
-    line-height: 35px;
-    white-space: nowrap;
-    word-spacing: 0px;
-  }
-
-  .article-detail-info {
-    font-family: "宋体", Serif;
-    font-size: 12px;
-    line-height: 35px;
-    color: #999;
-    text-align: center;
-  }
-
-  .article-detail-info span {
-    display: inline;
-    margin: 0 15px;
-  }
-
-  .article-detail .article-detail-info a {
-    text-decoration: none;
-    font-size: 14px;
-    color: #999;
-    line-height: 35px;
-  }
-
-  .article-detail .article-detail-info a:hover {
-    text-decoration: none;
-    color: #999;
-    line-height: 35px;
-  }
-
-  .article-detail-content {
-    min-height: 500px;
-  }
-
-  .article-detail .article-detail-changeBar {
-    margin-bottom: 20px;
-  }
-
-  #setFont {
-    word-wrap: break-word;
-  }
-
-  .article-detail-changeBar {
-    margin-bottom: 20px;
-  }
-</style>

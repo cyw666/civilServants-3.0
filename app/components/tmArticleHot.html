@@ -1,12 +1,7 @@
 
 <!--热门文章-->
 <div class="articleHot mar_top_15">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      热门文章
-    </p>
-  </div>
+  <div common-header title="'热门文章'" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <div dw-loading="articleHot">
       <ul class="rankingList" ng-repeat="rankingData in hotArticleData.ListData" ng-class="{'rankListBg':$index%2!=0}">

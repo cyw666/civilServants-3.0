@@ -1,0 +1,26 @@
+/**
+ * 专题学习新闻
+ */
+@import "../styles/mixins";
+
+.specialNews {
+  padding-left: 20px;
+  .specialNewsContent {
+    .clearFix();
+    li {
+      .pull-left();
+      line-height: 38px;
+      .wh(100%, 38px);
+      span {
+        .pull-left();
+      }
+    }
+    .arrow {
+      margin-right: 15px;
+    }
+    .title {
+      width: 90%;
+      .text-left();
+    }
+  }
+}

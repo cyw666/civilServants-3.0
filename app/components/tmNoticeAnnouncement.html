@@ -1,4 +1,4 @@
-<!--@*通知公告*@-->
+<!--@*通知公告 轮播*@-->
 
 <div class="noticeAnnouncement">
   <div class="notice"  dw-loading="noticeAnnouncement">
@@ -23,7 +23,7 @@
         <ul class="clearfix">
           <li class="pull-left" ng-repeat="list in noticeData.ListData">
             <span class="triangleRight"></span>
-            <a class="title ellipsis" ui-sref="noticeDetail({ID:list.Id})" title="{{list.Name}}"
+            <a class="title" ui-sref="noticeDetail({ID:list.Id})" title="{{list.Name}}"
                target="_blank">{{list.Name}}</a>
             <span class="time">{{list.CreateDate | dateFilter |date :'yyyy-MM-dd'}}</span>
           </li>
@@ -32,113 +32,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  .noticeAnnouncement {
-    height: 482px;
-    width: 590px;
-    border: 1px solid #eee;
-    padding: 10px;
-  }
-  .noticeAnnouncement .noticeSlide img{
-    width: 568px;
-    height: 350px;
-  }
-  .noticeAnnouncement .bx-wrapper {
-    margin-bottom: 0;
-  }
-  .noticeAnnouncement .bx-wrapper .bx-pager {
-    bottom: 5px;
-    padding-top: 0px;
-    width: auto;
-    right: 25px;
-  }
-  .noticeAnnouncement .bx-wrapper .bx-pager.bx-default-pager a {
-    background: #959595;
-    border: 1px solid #959595;
-  }
-  .noticeAnnouncement .bx-wrapper .bx-pager.bx-default-pager a:hover,
-  .noticeAnnouncement .bx-wrapper .bx-pager.bx-default-pager a.active {
-    background: #fff;
-    border: 1px solid #fff;
-  }
-  .noticeAnnouncement .noticeSlide .titleName{
-    position: absolute;
-    bottom: 0;
-    width: 80%;
-    z-index:10;
-  }
-  .noticeAnnouncement .noticeSlide .titleName a{
-    float: left;
-    color: #fff;
-    text-align: left;
-    width: 100%;
-    height: 32px;
-    line-height: 32px;
-    padding-left: 10px;
-  }
-  .noticeAnnouncement .noticeSlide .titleBg{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #000;
-    z-index:1;
-    /*兼容IE7、8 */
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
-    filter: alpha(opacity=40);
-    opacity:0.4;
-    height: 32px;
-  }
-
-
-  .noticeAnnouncement .notice-body {
-    background-color: #f3f3f3;
-    margin-top: 10px;
-  }
-
-  .noticeAnnouncement .notice-body .notice-body-left {
-    height: 100%;
-    width: 60px;
-    padding: 0 25px;
-    border-right: 1px solid #ddd;
-    font-size: 14px;
-    font-weight: bold;
-    color: #db1011;
-    margin: 10px auto;
-    text-align: center;
-    word-wrap: break-word;
-  }
-
-  .noticeAnnouncement .notice-body .notice-body-right {
-    width: 500px;
-  }
-
-  .noticeAnnouncement .notice-body .notice-body-right li {
-    height: 33px;
-    line-height: 33px;
-  }
-
-  .noticeAnnouncement .notice-body .notice-body-right span {
-    display: inline-block;
-    float: left;
-  }
-
-  .noticeAnnouncement .notice-body .notice-body-right .triangleRight {
-    margin: 12px 10px;
-  }
-
-  .noticeAnnouncement .notice-body .notice-body-right .title {
-    float: left;
-    width: 320px;
-  }
-
-  .noticeAnnouncement .notice-body .notice-body-right .time {
-    margin-left: 50px;
-    color: #999;
-  }
-
-  #noticeSlide img {
-    width: 568px;
-    height: 350px;
-  }
-</style>

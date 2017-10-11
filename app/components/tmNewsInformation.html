@@ -20,14 +20,14 @@
         <div class="tab-panel perlist">
           <div class="top">
             <h4>
-              <a title="{{articleListData.ListData[0].Name}}" class="title ellipsis" ui-sref="articleDetail({ID:articleListData.ListData[0].Id})" target="_blank">{{articleListData.ListData[0].Name}}</a>
+              <a title="{{articleListData.ListData[0].Name}}" class="title" ui-sref="articleDetail({ID:articleListData.ListData[0].Id})" target="_blank">{{articleListData.ListData[0].Name}}</a>
             </h4>
             <p class="description"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{articleListData.ListData[0].Description|wordLimit:62}}</p>
           </div>
           <ul class="bottom clearfix">
             <li class="pull-left" ng-repeat="articleList in articleListData.ListData" ng-if="$index>0">
               <span class="arrow"><img src="../images/arrowRight.png" alt=""></span>
-              <span class="title ellipsis" title="{{articleList.Name}}">
+              <span class="title" title="{{articleList.Name}}">
                 <a ui-sref="articleDetail({ID:articleList.Id})" target="_blank">{{articleList.Name}}</a>
               </span>
               <span class="time">{{articleList.CreateDate | dateFilter |date :'yyyy-MM-dd'}}</span>
@@ -40,66 +40,3 @@
   </div>
 
 </div>
-
-
-<style>
-  .tmNewsInformation{
-    width: 100%;
-  }
-  .tmNewsInformation .borderNews {
-    border: 1px solid #eee;
-    margin-left: 11px;
-    height: 482px;
-  }
-  .tmNewsInformation .tab-content {
-    margin-top: 15px;
-  }
-  .tmNewsInformation .perlist  .top{
-    height: 123px;
-    background-color: #f3f3f3;
-  }
-  .tmNewsInformation .perlist  .top .title{
-    display: inline-block;
-    width: 90%;
-    height: 56px;
-    line-height: 56px;
-    font-size: 16px;
-    font-weight: 600;
-  }
-  .tmNewsInformation .perlist  .top .description{
-    line-height: 25px;
-    font-size: 16px;
-    text-align: left;
-    padding: 0 20px;
-    color: #666;
-  }
-  .tmNewsInformation .perlist  .bottom{
-
-  }
-  .tmNewsInformation .perlist  .bottom li{
-    height: 36px;
-    line-height: 36px;
-    width: 100%;
-  }
-  .tmNewsInformation .perlist  .bottom li span{
-    display: inline-block;
-    float: left;
-  }
-  .tmNewsInformation .perlist  .bottom .arrow{
-    margin: 0 20px;
-  }
-  .tmNewsInformation .perlist  .bottom .title{
-    width: 70%;
-    text-align: left;
-  }
-  .tmNewsInformation .perlist  .bottom .time{
-    float: right;
-    margin-right: 20px;
-    color: #999;
-  }
-  .tmNewsInformation .more {
-    height: 52px;
-    line-height: 52px;
-    margin-right: 8px;
-  }
-</style>

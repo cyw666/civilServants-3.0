@@ -1,0 +1,20 @@
+/**
+ * 模块通用头部
+ */
+@import "../styles/mixins";
+
+.com-header {
+  .wh(100%, 50px);
+  .clearFix();
+  border-bottom: 1px solid @primary-color;
+  .more {
+    .ht-lineHt(50px);
+    .pull-right();
+  }
+  .title {
+    color: @text-color;
+    font-size: 18px;
+    font-weight: 600;
+    .pull-left();
+  }
+}

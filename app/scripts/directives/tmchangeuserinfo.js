@@ -7,12 +7,12 @@
  * # tmChangeUserInfo
  */
 angular.module('luZhouApp')
-    .directive('tmChangeUserInfo', function() {
-        return {
-            templateUrl: 'components/tmChangeUserInfo.html',
-            restrict: 'EA',
-            link: function postLink(scope, element, attrs) {
-
-            }
-        };
-    });
+  .directive('tmChangeUserInfo', function () {
+    return {
+      templateUrl: 'components/tmChangeUserInfo.html',
+      restrict: 'EA',
+      link: function postLink(scope, element, attrs) {
+        
+      }
+    };
+  });

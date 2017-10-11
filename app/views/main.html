@@ -1,9 +1,15 @@
 <!--首页-->
 <div tm-header></div>
 <div tm-nav-bars></div>
-<div class="loginBg" ng-class="{'bgLarge1':plate=='hunan','bgLarge2':plate=='changsha'}">
+<!--<div class="loginBg" ng-class="{'bgLarge1':plate=='hunan','bgLarge2':plate=='changsha'}">
   <div class="bigBanner" ng-class="{'textBg1':plate=='hunan','textBg2':plate=='changsha'}">
-    <!--<img class="bannerText" src="../images/bannerText.png" alt="">-->
+  </div>
+  <div class="grid_8_2 loginPositon">
+    <div tm-user-login></div>
+  </div>
+</div>-->
+<div class="loginBg bgLarge1">
+  <div class="bigBanner textBg1">
   </div>
   <div class="grid_8_2 loginPositon">
     <div tm-user-login></div>
@@ -64,9 +70,6 @@
   .bigBanner.textBg2 {
     background: url("../images/bannerText2.png") no-repeat center;
   }
-
-
-
   .loginPositon {
     position: absolute;
     top: 0;

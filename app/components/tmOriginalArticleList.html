@@ -1,19 +1,15 @@
+<!--学员心声-->
 <div class="originalArgicleList">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      学员心声
-    </p>
-  </div>
+  <div common-header title="'学员心声'" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
       <li><a ui-sref="main">首页</a></li>
       <li class="active">学员心声</li>
     </ol>
-    <div class="clearfix">
-      <h4 class="pull-left">{{originalArgicleListData.TitleNav}}</h4>
-      <a ui-sref="originalarticle" target="_blank" class="btn btn-danger pull-right add">发表心声</a>
+    <div class="originTitle">
+      <h4>{{originalArgicleListData.TitleNav}}</h4>
+      <a ui-sref="originalarticle" target="_blank" class="btn btn-primary">发表心声</a>
     </div>
     <div class="myTab" dw-loading="studyPlan">
       <div class="tab-content" dw-loading="originalArgicleList">
@@ -34,13 +30,3 @@
     </div>
   </div>
 </div>
-<style>
-  .originalArgicleList .clearfix h4 {
-    text-align: center;
-    margin-left: 40%;
-  }
-  .originalArgicleList .add {
-    text-align: center;
-    margin-right: 10px;
-  }
-</style>

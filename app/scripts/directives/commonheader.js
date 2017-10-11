@@ -17,9 +17,9 @@ angular.module('luZhouApp')
         linkUrl:"="
       },
       link: function postLink(scope, element, attrs) {
-        scope.title2 = scope.title || "标题";
-        scope.showMore2 = scope.showMore || false;
-        scope.linkUrl2 = scope.linkUrl || "";
+        scope.title = scope.title || "标题";
+        scope.showMore = scope.showMore || false;
+        scope.linkUrl = scope.linkUrl || "";
       }
     };
   });

@@ -11,7 +11,6 @@
 angular
   .module('luZhouApp', [
     'ng',
-    'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',

@@ -11,7 +11,6 @@ angular.module('luZhouApp')
     return {
       templateUrl: 'components/tmPagation.html',
       restrict: 'EA',
-      replace: true,
       scope: {
         conf: '='
       },

@@ -30,6 +30,12 @@ angular.module('luZhouApp')
         .then(function(response) {
           $loading.finish('articleList');
           $scope.articleListData = response.Data;
+          var categoryName = response.Data.CategoryName;
+          if(categoryName){
+            $scope.articleTitle = categoryName;
+          }else {
+            $scope.articleTitle = response.Data.TitleNav;
+          }
           $scope.paginationConf.totalItems = response.Data.Count;
         });
     };

@@ -523,13 +523,131 @@ angular.module('luZhouApp')
           window.open("about:blank","_top").close();
         });
     };
+    //播放pdf
+    var initPdf = function (data) {
+      var _url = data.Url;
+      var _userId = data.UserId;
+      var _courseId = data.CourseId;
+      var _lastPosition = data.LastPostion || 1; //上次观看的位置
+      var _lastLocation = data.Location || 1; //记录进度的位置
+      var totalId = 0;
+      var pdfTime = 0;
+      $('#documentViewer').FlexPaperViewer(
+        {
+          config: {
+            SWFFile: escape(_url),
+            Scale: 0.6,
+            ZoomTransition: 'easeOut',
+            ZoomTime: 0.5,
+            ZoomInterval: 0.2,
+            FitPageOnLoad: true,
+            FitWidthOnLoad: false,
+            FullScreenAsMaxWindow: false,
+            ProgressiveLoading: false,
+            MinZoomSize: 0.2,
+            MaxZoomSize: 5,
+            SearchMatchAll: false,
+            InitViewMode: 'Portrait',
+            RenderingOrder: 'flash',
+            StartAtPage: _lastPosition,
+            ViewModeToolsVisible: true,
+            ZoomToolsVisible: true,
+            NavToolsVisible: true,
+            CursorToolsVisible: true,
+            SearchToolsVisible: true,
+            WMode: 'window',
+            localeChain: 'zh_CN',
+            jsDirectory: 'plugins/FlexPaper_2.3.6/js/',
+            cssDirectory: 'plugins/FlexPaper_2.3.6/css/',
+          }
+        }
+      );
+      $('#documentViewer').bind('onDocumentLoaded', function (e, totalPages) {
+        totalId = totalPages;
+        cutTime();
+      });
+      $(window).keydown(function (event) {
+        var keyCode = event.keyCode;
+        switch (keyCode) {
+          case 13:
+            $FlexPaper('documentViewer').nextPage();
+            break;
+          case 40:
+            $FlexPaper('documentViewer').nextPage();
+            break;
+          case 38:
+            $FlexPaper('documentViewer').prevPage();
+            break;
+        }
+      })
+      var lastpagenum = parseFloat(_lastPosition);
+      var newLocation = parseFloat(_lastLocation);
+      $('#documentViewer').bind('onCurrentPageChanged', function (e, pagenum) {
+        var pagenum = parseInt(pagenum);
+        if (!totalId) {
+          return
+        }
+        else {
+          if (pdfTime < 10) {
+            if (pagenum > newLocation) {
+              $FlexPaper('documentViewer').gotoPage(lastpagenum);
+              alert("你翻太快了");
+            }
+            else {
+              lastpagenum = pagenum;
+              pdfTime = 0;           //页面改变时间重置；
+            }
+          }
+          else {
+            if (pagenum == newLocation + 1) {
+              sendProcess(pagenum);
+              newLocation = pagenum;
+              lastpagenum = pagenum;
+              pdfTime = 0;           //页面改变时间重置；
+            }
+            else if (pagenum > newLocation + 1) {
+              $FlexPaper("documentViewer").gotoPage(lastpagenum);
+              alert("你翻太快了");
+            }
+            else {
+              lastpagenum = pagenum;
+              pdfTime = 0;           //页面改变时间重置；
+            }
+          }
+        }
+      });
+      var sendProcess = function (pagenum) {
+        var data = {course_id: _courseId, lesson_id: pagenum, user_id: _userId, total_id: totalId};
+        var params = $.extend({}, data, $scope.token);
+        commonService.getData(ALL_PORT.ProcessOffice.url, 'POST', params)
+          .then(function (response) {
+            //如果记录成功，更新播放页进度条
+            // console.info(response.Content);
+            $scope.loadPlayInfo();
+          })
+      }
+    
+      function cutTime() {
+        pdfTime = pdfTime + 1;
+        $("#stime").html(pdfTime);
+        setTimeout(cutTime, 1000);
+      }
+    }
+    var playPdf = function () {
+      var params = $.extend({}, ALL_PORT.PlayOffice.data, {courseId: $scope.allPlayInfo.CourseId})
+      commonService.getData(ALL_PORT.PlayOffice.url, 'POST', params)
+        .then(function (response) {
+          initPdf(response.Data);
+        })
+    }
     //多拽滑块完成回调
     $scope.showPlayMp4 = false;
     $scope.showPlayJy = false;
     $scope.showPlayScorm = false;
     $scope.showPlaySingle = false;
+    $scope.showPlayPdf = false;
     $scope.dragReady=function () {
-      document.getElementById("playBg").style.display = 'none';
+      document.getElementById("tryPlayBg").style.display = 'none';
       var playPage = $scope.allPlayInfo.PlayPage.split('?')[0];
       if(playPage=='PlayJwplay.html'){
         $scope.showPlayMp4 = true;
@@ -543,6 +661,9 @@ angular.module('luZhouApp')
       }else if (playPage=='PlaySingle.html') {
         $scope.showPlaySingle = true;
         playSingle();
+      } else if (playPage == 'PlayOffice.html') {
+        $scope.showPlayPdf = true;
+        playPdf();
       }
     };
 

@@ -1,12 +1,7 @@
 
 <!--课程超市列表-->
 <div class="courseSupermarketBuy">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      课程中心
-    </p>
-  </div>
+  <div common-header title="'课程中心'" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -25,10 +20,6 @@
       <button ng-hide="showInput2" type="submit" class="btn btn-primary" ng-click="judgement(selectedName.id)">搜索</button>
     </form>
     <div class="courseList  mar_top_15 clearfix" dw-loading="courseSupermarket">
-      <div class="titlebg">
-        <div class="txt" ng-if="courseSupermarketData.ChannelName==''">{{courseSupermarketData.TitleNav}}&nbsp;&nbsp;&nbsp;&nbsp;({{courseSupermarketData.Count}})</div>
-        <div class="txt" ng-if="courseSupermarketData.ChannelName!=''">{{courseSupermarketData.ChannelName}}&nbsp;&nbsp;&nbsp;&nbsp;({{courseSupermarketData.Count}})</div>
-      </div>
       <div class="sortCourse clearfix">
         <div class="tag clearfix" style="text-align: right;">
           <span><img src="images/sfp.png"><a href="javascript:;" ng-click="judgement(selectedName.id,'ThreeScreenCourse')">精品三分屏</a></span>

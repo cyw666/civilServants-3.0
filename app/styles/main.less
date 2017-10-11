@@ -36,12 +36,6 @@
   }
 }
 
-.btn.btn-default
-.btn-info[disabled]:hover, .btn-info[disabled]:focus, .btn-info[disabled] {
-  background-color: @blue-3;
-  border-color: @blue-4;
-}
-
 //
 // Buttons
 // --------------------------------------------------
@@ -192,41 +186,12 @@
   .dian();
 }
 
-/*模块头部公用样式*/
-.com-header {
-  .wh(100%, 50px);
-  .clearFix();
-  border-bottom: 1px solid @primary-color;
-  .more {
-    .ht-lineHt(50px);
-    .pull-right();
-  }
-  .title {
-    color: @text-color;
-    font-size: 18px;
-    font-weight: 600;
-    .pull-left();
-  }
-}
-
-/*课程分类头部1*/
-.titlebg {
-  .txt {
-    width: 100%;
-    .ht-lineHt(49px);
-    text-indent: 49px;
-    font-size: 20px;
-  }
-}
-
-/*课程分类头部2*/
-.titlebg2 {
-  .txt {
-    .ht-lineHt(60px);
-    font-size: @font-size-lg;
-    font-weight: bold;
-    .text-center();
-  }
+/*标题*/
+.commonTitle {
+  .ht-lineHt(50px);
+  font-size: @font-size-lg;
+  font-weight: bold;
+  .text-center();
 }
 
 /*培训班级标题*/
@@ -254,10 +219,9 @@
   }
 }
 
-
 /*路径导航通用样式*/
 .breadcrumb {
-  .glyphicon-cog{
+  .glyphicon-cog {
     color: @text-color-2;
     font-size: @font-size-lg;
     vertical-align: middle;
@@ -271,7 +235,8 @@
   padding-left: 40px;
   padding-bottom: 20px;
   .form-control {
-    height: 26px;
+    height: 28px;
+    padding: 0 12px;
   }
   .form-group {
     width: 70%;
@@ -282,18 +247,19 @@
   select.form-control {
     padding: 0;
   }
-  .btn{
-    padding: 2px 23px;
+  .btn {
+    padding: 3px 23px;
   }
 }
+
 //日期选择
-.datePicker{
+.datePicker {
   display: inline-block;
   position: relative;
-  input{
+  input {
     padding-right: 25px;
   }
-  .glyphicon-calendar{
+  .glyphicon-calendar {
     position: absolute;
     .square(14px);
     right: 8px;
@@ -303,28 +269,14 @@
     font-size: @font-size-sm;
   }
 }
+
 /*模板通用边框*/
 .tmBorder {
   .border-base();
 }
 
-.tmBorder-green {
-  .border-base();
-  border-top: 6px solid #6d9d85;
-}
-
-.tmBorder-blue {
-  .border-base();
-  border-top: 6px solid #3a7fb6;
-}
-
-.tmBorder-cyan {
-  .border-base();
-  border-top: 6px solid #b4ca41;
-}
-
 .tmBorder-red {
-  border-top: 6px solid #db1011;
+  border-top: 6px solid @red-3;
 }
 
 /*星星*/
@@ -344,33 +296,7 @@
   margin-left: 10px;
 }
 
-/*
- *星级评论
- */
-.my-stars-list {
-  .ht-lineHt(34px);
-  .pull-left();
-  .my-stars-items {
-    .pull-left();
-    cursor: pointer;
-    font-size: 0;
-    width: 25px;
-    .ht-lineHt(25px);
-    background: url(../images/star_all_02.png) no-repeat center;
-  }
-  .myStarHover {
-    &.my-stars-items {
-      background: url(../images/star_all_04.png) no-repeat center;
-    }
-  }
-  .myStarsSel {
-    &.my-stars-items {
-      background: url(../images/star_all_04.png) no-repeat center;
-    }
-  }
-}
-
-/*播放进度*/
+/*进度条*/
 .progress {
   height: 18px;
   margin-top: 9px;
@@ -447,6 +373,11 @@
       & > a {
         padding: 12px 20px;
         font-size: @font-size-lg;
+        margin-right: 0;
+        &:hover {
+          border: 1px solid transparent;
+          background-color: @tab-header-bg;
+        }
       }
       &.active > a {
         color: @primary-color;
@@ -598,10 +529,15 @@
         font-size: @font-size-lg;
         width: 33.33%;
         border-bottom: 3px solid transparent;
+        &:hover {
+          border: 1px solid transparent;
+          background-color: @tab-header-bg;
+        }
       }
       &.active {
         & > a {
           color: @primary-color;
+          border: 1px solid transparent;
           border-bottom: 3px solid @primary-color;
           .text-center();
           background-color: @component-background;
@@ -632,7 +568,6 @@
   font-size: 40px;
   text-align: center;
   line-height: 250px;
-  /*margin-left: -250px;*/
 }
 
 /*排行前三背景*/

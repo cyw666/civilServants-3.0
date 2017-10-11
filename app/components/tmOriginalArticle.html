@@ -1,12 +1,7 @@
 
 <!--发表文章-->
-<div class="originalAtricle">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      发表心声
-    </p>
-  </div>
+<div class="originalArticle">
+  <div common-header title="'发表心声'" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition">您的当前位置:</li>
@@ -16,7 +11,7 @@
     <div class="art_detail">
       <div class="content">
         <form>
-          <div class="bttitle clearfix">
+          <div class="bttitle">
             <span class="grid_2">标题：</span>
             <input class="grid_6 form-control" ng-model="title" name="Name" type="text"/>
           </div>
@@ -24,26 +19,11 @@
             <!-- 加载编辑器的容器 -->
             <div class="ueditor" config="config" ng-model="content"></div>
           </div>
-          <div class="bs mar_top_10">
+          <div class="bs">
             <button class="btn btn-primary" ng-click="publishTopic()" type="submit">提交审核</button>
           </div>
         </form>
       </div>
     </div>
   </div>
-
 </div>
-<style>
-  .bttitle{
-    margin-left: 9%;
-  }
-  .bttitle .form-control {
-    width: 70%;
-  }
-  .bttitle span{
-    line-height: 35px;
-  }
-  .bs{
-    text-align: center;
-  }
-</style>

@@ -1,10 +1,5 @@
 <div class="UserInformation">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      个人信息
-    </p>
-  </div>
+  <div common-header title="'个人信息'" show-more=false link-url="''"></div>
   <div class="content login_info tmBorder" dw-loading="loginOut">
     <ul class="loginAfter_ul">
       <li class="welcom">欢迎您:<b class="red">{{info.Model.Name}}</b>({{info.Model.Account}})</li>
@@ -37,7 +32,7 @@
       </li>
       <li class="lastChild fontSize12 grey">
         <a ui-sref="modifyPassword">修改密码</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-        <a ui-sref="changeUser" id="ctl05_A2">修改信息</a> &nbsp;|&nbsp;
+        <a ui-sref="changeUser">修改信息</a> &nbsp;|&nbsp;
         <span class="item2" ><a href="/admin/" target="_blank">进入管理控制台</a></span>
       </li>
       <li class="lastChild lastChild1">

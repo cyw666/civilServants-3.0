@@ -1,31 +1,19 @@
 <!--排行榜导航-->
 <div class="personalCenterNav">
-  <div class="com-header">
-    <p class="title">
-      <img src="../images/headerLeftIcon.png" alt="图标">
-      排行榜导航
-    </p>
-  </div>
-  <div class="content per tmBorder">
+  <div common-header title="'排行榜导航'" show-more=false link-url="''"></div>
+  <div class="content tmBorder">
     <ul>
       <li class="mar_top_15">
-        <a ui-sref="rankcourseclick" class="btn btn-default">课程点击排行</a>
-        <a ui-sref="rankloginsum" class="btn btn-default">登陆次数排行</a>
+        <a ui-sref="rankcourseclick" class="btn btn-primary">课程点击排行</a>
+        <a ui-sref="rankloginsum" class="btn btn-primary">登陆次数排行</a>
       </li>
       <li class="mar_top_15">
-        <a ui-sref="rankgroup" class="btn btn-default">单位排行</a>
-        <a ui-sref="rankcoursefinish" class="btn btn-default">课程完成排行</a>
+        <a ui-sref="rankgroup" class="btn btn-primary">单位排行</a>
+        <a ui-sref="rankcoursefinish" class="btn btn-primary">课程完成排行</a>
       </li>
       <li class="mar_top_15">
-        <a ui-sref="userRankingList" class="btn btn-default">个人排行</a>
+        <a ui-sref="userRankingList" class="btn btn-primary">个人排行</a>
       </li>
     </ul>
   </div>
 </div>
-<style>
-  .personalCenterNav .content a.btn {
-    width: 110px;
-    background-color: #db1011;
-    margin:0 0 15px 40px;
-  }
-</style>
