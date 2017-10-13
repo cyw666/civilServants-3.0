@@ -251,7 +251,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: 'app/styles/',
-          src: 'main.less',
+          src: 'main{,*!/}*.less',
           dest: 'app/styles/',
           ext: '.css'
         }]
@@ -282,7 +282,7 @@ module.exports = function (grunt) {
       }
     },
     
-    // Renames files for browser caching purposes
+    // Renames files for browser caching purposes 为浏览器缓存设置重命名文件
     filerev: {
       dist: {
         src: [
@@ -455,6 +455,11 @@ module.exports = function (grunt) {
         }, {
           expand: true,
           cwd: 'bower_components/bootstrap/dist',
+          src: 'fonts/*',
+          dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: 'bower_components/font-awesome',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
         }]

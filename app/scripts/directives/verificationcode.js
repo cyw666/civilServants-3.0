@@ -9,7 +9,7 @@
 angular.module('luZhouApp')
   .directive('verificationCode', function ($cookieStore,$interval,commonService) {
     return {
-      template: '<button ng-click="sendVerificationCode(mobile)" class="btn btn-danger verificationCode">{{paracont}}</button>',
+      template: '<button ng-click="sendVerificationCode(mobile)" class="btn btn-primary verificationCode">{{paracont}}</button>',
       restrict: 'EA',
       scope:{
         mobile:'='

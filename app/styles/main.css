@@ -1,6 +1,4 @@
-/**
- * 测试
- */
+/*默认主题*/
 /*公共样式*/
 /**
  * mixins
@@ -20,6 +18,8 @@
  * 2. Prevent adjustments of font size after orientation changes in
  *    IE on Windows Phone and in iOS.
  */
+@import "960_24_col.css";
+@import "jquery.bxslider.css";
 html {
   line-height: 1.15;
   /* 1 */
@@ -523,6 +523,577 @@ pre,
 samp {
   font-family: "Microsoft Yahei", SimHei, "Helvetica Neue", "PingFangHK-Light", "Heiti SC", "Hiragino Sans GB", "Microsoft JhengHei", "WenQuanYi Micro Hei", "Droid Sans", "Roboto", Helvetica, Tahoma, Arial, "sans-serif";
 }
+#drag {
+  position: relative;
+  z-index: 1100;
+  top: 50px;
+  left: 35%;
+  background-color: #e8e8e8;
+  width: 300px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+}
+#drag .handler {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 40px;
+  height: 34px;
+  border: 1px solid #ccc;
+  cursor: move;
+}
+.handler_bg {
+  background: #fff url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0ZDhlNWY5My05NmI0LTRlNWQtOGFjYi03ZTY4OGYyMTU2ZTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NTEyNTVEMURGMkVFMTFFNEI5NDBCMjQ2M0ExMDQ1OUYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NTEyNTVEMUNGMkVFMTFFNEI5NDBCMjQ2M0ExMDQ1OUYiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo2MTc5NzNmZS02OTQxLTQyOTYtYTIwNi02NDI2YTNkOWU5YmUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NGQ4ZTVmOTMtOTZiNC00ZTVkLThhY2ItN2U2ODhmMjE1NmU2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+YiRG4AAAALFJREFUeNpi/P//PwMlgImBQkA9A+bOnfsIiBOxKcInh+yCaCDuByoswaIOpxwjciACFegBqZ1AvBSIS5OTk/8TkmNEjwWgQiUgtQuIjwAxUF3yX3xyGIEIFLwHpKyAWB+I1xGSwxULIGf9A7mQkBwTlhBXAFLHgPgqEAcTkmNCU6AL9d8WII4HOvk3ITkWJAXWUMlOoGQHmsE45ViQ2KuBuASoYC4Wf+OUYxz6mQkgwAAN9mIrUReCXgAAAABJRU5ErkJggg==") no-repeat center;
+}
+.handler_ok_bg {
+  background: #fff url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0ZDhlNWY5My05NmI0LTRlNWQtOGFjYi03ZTY4OGYyMTU2ZTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDlBRDI3NjVGMkQ2MTFFNEI5NDBCMjQ2M0ExMDQ1OUYiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDlBRDI3NjRGMkQ2MTFFNEI5NDBCMjQ2M0ExMDQ1OUYiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDphNWEzMWNhMC1hYmViLTQxNWEtYTEwZS04Y2U5NzRlN2Q4YTEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NGQ4ZTVmOTMtOTZiNC00ZTVkLThhY2ItN2U2ODhmMjE1NmU2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+k+sHwwAAASZJREFUeNpi/P//PwMyKD8uZw+kUoDYEYgloMIvgHg/EM/ptHx0EFk9I8wAoEZ+IDUPiIMY8IN1QJwENOgj3ACo5gNAbMBAHLgAxA4gQ5igAnNJ0MwAVTsX7IKyY7L2UNuJAf+AmAmJ78AEDTBiwGYg5gbifCSxFCZoaBMCy4A4GOjnH0D6DpK4IxNSVIHAfSDOAeLraJrjgJp/AwPbHMhejiQnwYRmUzNQ4VQgDQqXK0ia/0I17wJiPmQNTNBEAgMlQIWiQA2vgWw7QppBekGxsAjIiEUSBNnsBDWEAY9mEFgMMgBk00E0iZtA7AHEctDQ58MRuA6wlLgGFMoMpIG1QFeGwAIxGZo8GUhIysmwQGSAZgwHaEZhICIzOaBkJkqyM0CAAQDGx279Jf50AAAAAABJRU5ErkJggg==") no-repeat center;
+}
+#drag .drag_bg {
+  background-color: #7ac23c;
+  height: 34px;
+  width: 0px;
+}
+#drag .drag_text {
+  position: absolute;
+  top: 0px;
+  width: 300px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+  font-size: 16px;
+}
+.tree {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.tree li {
+  white-space: nowrap;
+}
+.tree li ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.tree-node {
+  height: 18px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.tree-hit {
+  cursor: pointer;
+}
+.tree-expanded,
+.tree-collapsed,
+.tree-folder,
+.tree-file,
+.tree-checkbox,
+.tree-indent {
+  display: inline-block;
+  width: 16px;
+  height: 18px;
+  vertical-align: top;
+  overflow: hidden;
+}
+.tree-expanded {
+  background: url('../images/tree_icons.png') no-repeat -18px 0px;
+}
+.tree-expanded-hover {
+  background: url('../images/tree_icons.png') no-repeat -50px 0px;
+}
+.tree-collapsed {
+  background: url('../images/tree_icons.png') no-repeat 0px 0px;
+}
+.tree-collapsed-hover {
+  background: url('../images/tree_icons.png') no-repeat -32px 0px;
+}
+.tree-lines .tree-expanded,
+.tree-lines .tree-root-first .tree-expanded {
+  background: url('../images/tree_icons.png') no-repeat -144px 0;
+}
+.tree-lines .tree-collapsed,
+.tree-lines .tree-root-first .tree-collapsed {
+  background: url('../images/tree_icons.png') no-repeat -128px 0;
+}
+.tree-lines .tree-node-last .tree-expanded,
+.tree-lines .tree-root-one .tree-expanded {
+  background: url('../images/tree_icons.png') no-repeat -80px 0;
+}
+.tree-lines .tree-node-last .tree-collapsed,
+.tree-lines .tree-root-one .tree-collapsed {
+  background: url('../images/tree_icons.png') no-repeat -64px 0;
+}
+.tree-line {
+  background: url('../images/tree_icons.png') no-repeat -176px 0;
+}
+.tree-join {
+  background: url('../images/tree_icons.png') no-repeat -192px 0;
+}
+.tree-joinbottom {
+  background: url('../images/tree_icons.png') no-repeat -160px 0;
+}
+.tree-folder {
+  /*background: url('../images/tree_icons.png') no-repeat -208px 0;*/
+  width: 10px;
+}
+.tree-folder-open {
+  /*background: url('../images/tree_icons.png') no-repeat -224px 0;*/
+}
+.tree-file {
+  /*background: url('../images/tree_icons.png') no-repeat -240px 0;*/
+}
+.tree-loading {
+  background: url('../images/loading.gif') no-repeat center center;
+}
+.tree-checkbox0 {
+  background: url('../images/tree_icons.png') no-repeat -208px -18px;
+}
+.tree-checkbox1 {
+  background: url('../images/tree_icons.png') no-repeat -224px -18px;
+}
+.tree-checkbox2 {
+  background: url('../images/tree_icons.png') no-repeat -240px -18px;
+}
+.tree-title {
+  font-size: 14px;
+  display: inline-block;
+  text-decoration: none;
+  vertical-align: top;
+  white-space: nowrap;
+  padding: 0 2px;
+  height: 20px;
+  line-height: 20px;
+}
+.tree-node-proxy {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0 2px 0 20px;
+  border-width: 1px;
+  border-style: solid;
+  z-index: 9900000;
+}
+.tree-dnd-icon {
+  display: inline-block;
+  position: absolute;
+  width: 10px;
+  height: 18px;
+  left: 2px;
+  top: 50%;
+  margin-top: -9px;
+}
+.tree-dnd-yes {
+  background: url('../images/tree_icons.png') no-repeat -256px 0;
+}
+.tree-dnd-no {
+  background: url('../images/tree_icons.png') no-repeat -256px -18px;
+}
+.tree-node-top {
+  border-top: 1px dotted red;
+}
+.tree-node-bottom {
+  border-bottom: 1px dotted red;
+}
+.tree-node-append .tree-title {
+  border: 1px dotted red;
+}
+.tree-editor {
+  border: 1px solid #95B8E7;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0 4px;
+  margin: 0;
+  width: 80px;
+  outline-style: none;
+  vertical-align: top;
+  position: absolute;
+  top: 0;
+}
+.tree-node-proxy {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #95B8E7;
+}
+.tree-node-hover {
+  background: #eaf2ff;
+  color: #000000;
+}
+.tree-node-selected {
+  /*background: #ffe48d;*/
+  color: #000000;
+}
+.tree-node-hidden {
+  display: none;
+}
+/*!
+ * Datetimepicker for Bootstrap
+ *
+ * Copyright 2012 Stefan Petre
+ * Improvements by Andrew Rowls
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+.datetimepicker {
+  padding: 4px;
+  margin-top: 1px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  direction: ltr;
+}
+.datetimepicker-inline {
+  width: 220px;
+}
+.datetimepicker.datetimepicker-rtl {
+  direction: rtl;
+}
+.datetimepicker.datetimepicker-rtl table tr td span {
+  float: right;
+}
+.datetimepicker-dropdown,
+.datetimepicker-dropdown-left {
+  top: 0;
+  left: 0;
+}
+[class*=" datetimepicker-dropdown"]:before {
+  content: '';
+  display: inline-block;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #cccccc;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+}
+[class*=" datetimepicker-dropdown"]:after {
+  content: '';
+  display: inline-block;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
+  position: absolute;
+}
+[class*=" datetimepicker-dropdown-top"]:before {
+  content: '';
+  display: inline-block;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid #cccccc;
+  border-top-color: rgba(0, 0, 0, 0.2);
+  border-bottom: 0;
+}
+[class*=" datetimepicker-dropdown-top"]:after {
+  content: '';
+  display: inline-block;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #ffffff;
+  border-bottom: 0;
+}
+.datetimepicker-dropdown-bottom-left:before {
+  top: -7px;
+  right: 6px;
+}
+.datetimepicker-dropdown-bottom-left:after {
+  top: -6px;
+  right: 7px;
+}
+.datetimepicker-dropdown-bottom-right:before {
+  top: -7px;
+  left: 6px;
+}
+.datetimepicker-dropdown-bottom-right:after {
+  top: -6px;
+  left: 7px;
+}
+.datetimepicker-dropdown-top-left:before {
+  bottom: -7px;
+  right: 6px;
+}
+.datetimepicker-dropdown-top-left:after {
+  bottom: -6px;
+  right: 7px;
+}
+.datetimepicker-dropdown-top-right:before {
+  bottom: -7px;
+  left: 6px;
+}
+.datetimepicker-dropdown-top-right:after {
+  bottom: -6px;
+  left: 7px;
+}
+.datetimepicker > div {
+  display: none;
+}
+.datetimepicker.minutes div.datetimepicker-minutes {
+  display: block;
+}
+.datetimepicker.hours div.datetimepicker-hours {
+  display: block;
+}
+.datetimepicker.days div.datetimepicker-days {
+  display: block;
+}
+.datetimepicker.months div.datetimepicker-months {
+  display: block;
+}
+.datetimepicker.years div.datetimepicker-years {
+  display: block;
+}
+.datetimepicker table {
+  margin: 0;
+}
+.datetimepicker td,
+.datetimepicker th {
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: none;
+}
+.table-striped .datetimepicker table tr td,
+.table-striped .datetimepicker table tr th {
+  background-color: transparent;
+}
+.datetimepicker table tr td.minute:hover {
+  background: #eeeeee;
+  cursor: pointer;
+}
+.datetimepicker table tr td.hour:hover {
+  background: #eeeeee;
+  cursor: pointer;
+}
+.datetimepicker table tr td.day:hover {
+  background: #eeeeee;
+  cursor: pointer;
+}
+.datetimepicker table tr td.old,
+.datetimepicker table tr td.new {
+  color: #999999;
+}
+.datetimepicker table tr td.disabled,
+.datetimepicker table tr td.disabled:hover {
+  background: none;
+  color: #999999;
+  cursor: default;
+}
+.datetimepicker table tr td.today,
+.datetimepicker table tr td.today:hover,
+.datetimepicker table tr td.today.disabled,
+.datetimepicker table tr td.today.disabled:hover {
+  background-color: #fde19a;
+  background-image: -moz-linear-gradient(top, #fdd49a, #fdf59a);
+  background-image: -ms-linear-gradient(top, #fdd49a, #fdf59a);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdd49a), to(#fdf59a));
+  background-image: -webkit-linear-gradient(top, #fdd49a, #fdf59a);
+  background-image: -o-linear-gradient(top, #fdd49a, #fdf59a);
+  background-image: linear-gradient(to bottom, #fdd49a, #fdf59a);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdd49a', endColorstr='#fdf59a', GradientType=0);
+  border-color: #fdf59a #fdf59a #fbed50;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.datetimepicker table tr td.today:hover,
+.datetimepicker table tr td.today:hover:hover,
+.datetimepicker table tr td.today.disabled:hover,
+.datetimepicker table tr td.today.disabled:hover:hover,
+.datetimepicker table tr td.today:active,
+.datetimepicker table tr td.today:hover:active,
+.datetimepicker table tr td.today.disabled:active,
+.datetimepicker table tr td.today.disabled:hover:active,
+.datetimepicker table tr td.today.active,
+.datetimepicker table tr td.today:hover.active,
+.datetimepicker table tr td.today.disabled.active,
+.datetimepicker table tr td.today.disabled:hover.active,
+.datetimepicker table tr td.today.disabled,
+.datetimepicker table tr td.today:hover.disabled,
+.datetimepicker table tr td.today.disabled.disabled,
+.datetimepicker table tr td.today.disabled:hover.disabled,
+.datetimepicker table tr td.today[disabled],
+.datetimepicker table tr td.today:hover[disabled],
+.datetimepicker table tr td.today.disabled[disabled],
+.datetimepicker table tr td.today.disabled:hover[disabled] {
+  background-color: #fdf59a;
+}
+.datetimepicker table tr td.today:active,
+.datetimepicker table tr td.today:hover:active,
+.datetimepicker table tr td.today.disabled:active,
+.datetimepicker table tr td.today.disabled:hover:active,
+.datetimepicker table tr td.today.active,
+.datetimepicker table tr td.today:hover.active,
+.datetimepicker table tr td.today.disabled.active,
+.datetimepicker table tr td.today.disabled:hover.active {
+  background-color: #fbf069;
+}
+.datetimepicker table tr td.active,
+.datetimepicker table tr td.active:hover,
+.datetimepicker table tr td.active.disabled,
+.datetimepicker table tr td.active.disabled:hover {
+  background-color: #db1011;
+  background-image: -moz-linear-gradient(top, #df2829, #c50e0f);
+  background-image: -ms-linear-gradient(top, #df2829, #c50e0f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#df2829), to(#c50e0f));
+  background-image: -webkit-linear-gradient(top, #df2829, #c50e0f);
+  background-image: -o-linear-gradient(top, #df2829, #c50e0f);
+  background-image: linear-gradient(to bottom, #df2829, #c50e0f);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
+  border-color: #df2829 #df2829 #c50e0f;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.datetimepicker table tr td.active:hover,
+.datetimepicker table tr td.active:hover:hover,
+.datetimepicker table tr td.active.disabled:hover,
+.datetimepicker table tr td.active.disabled:hover:hover,
+.datetimepicker table tr td.active:active,
+.datetimepicker table tr td.active:hover:active,
+.datetimepicker table tr td.active.disabled:active,
+.datetimepicker table tr td.active.disabled:hover:active,
+.datetimepicker table tr td.active.active,
+.datetimepicker table tr td.active:hover.active,
+.datetimepicker table tr td.active.disabled.active,
+.datetimepicker table tr td.active.disabled:hover.active,
+.datetimepicker table tr td.active.disabled,
+.datetimepicker table tr td.active:hover.disabled,
+.datetimepicker table tr td.active.disabled.disabled,
+.datetimepicker table tr td.active.disabled:hover.disabled,
+.datetimepicker table tr td.active[disabled],
+.datetimepicker table tr td.active:hover[disabled],
+.datetimepicker table tr td.active.disabled[disabled],
+.datetimepicker table tr td.active.disabled:hover[disabled] {
+  background-color: #e24041;
+}
+.datetimepicker table tr td.active:active,
+.datetimepicker table tr td.active:hover:active,
+.datetimepicker table tr td.active.disabled:active,
+.datetimepicker table tr td.active.disabled:hover:active,
+.datetimepicker table tr td.active.active,
+.datetimepicker table tr td.active:hover.active,
+.datetimepicker table tr td.active.disabled.active,
+.datetimepicker table tr td.active.disabled:hover.active {
+  background-color: #e24041;
+}
+.datetimepicker table tr td span {
+  display: block;
+  width: 23%;
+  height: 54px;
+  line-height: 54px;
+  float: left;
+  margin: 1%;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.datetimepicker .datetimepicker-hours span {
+  height: 26px;
+  line-height: 26px;
+}
+.datetimepicker .datetimepicker-hours table tr td span.hour_am,
+.datetimepicker .datetimepicker-hours table tr td span.hour_pm {
+  width: 14.6%;
+}
+.datetimepicker .datetimepicker-hours fieldset legend,
+.datetimepicker .datetimepicker-minutes fieldset legend {
+  margin-bottom: inherit;
+  line-height: 30px;
+}
+.datetimepicker .datetimepicker-minutes span {
+  height: 26px;
+  line-height: 26px;
+}
+.datetimepicker table tr td span:hover {
+  background: #eeeeee;
+}
+.datetimepicker table tr td span.disabled,
+.datetimepicker table tr td span.disabled:hover {
+  background: none;
+  color: #999999;
+  cursor: default;
+}
+.datetimepicker table tr td span.active,
+.datetimepicker table tr td span.active:hover,
+.datetimepicker table tr td span.active.disabled,
+.datetimepicker table tr td span.active.disabled:hover {
+  background-color: #db1011;
+  background-image: -moz-linear-gradient(top, #df2829, #c50e0f);
+  background-image: -ms-linear-gradient(top, #df2829, #c50e0f);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#df2829), to(#c50e0f));
+  background-image: -webkit-linear-gradient(top, #df2829, #c50e0f);
+  background-image: -o-linear-gradient(top, #df2829, #c50e0f);
+  background-image: linear-gradient(to bottom, #df2829, #c50e0f);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
+  border-color: #df2829 #df2829 #c50e0f;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.datetimepicker table tr td span.active:hover,
+.datetimepicker table tr td span.active:hover:hover,
+.datetimepicker table tr td span.active.disabled:hover,
+.datetimepicker table tr td span.active.disabled:hover:hover,
+.datetimepicker table tr td span.active:active,
+.datetimepicker table tr td span.active:hover:active,
+.datetimepicker table tr td span.active.disabled:active,
+.datetimepicker table tr td span.active.disabled:hover:active,
+.datetimepicker table tr td span.active.active,
+.datetimepicker table tr td span.active:hover.active,
+.datetimepicker table tr td span.active.disabled.active,
+.datetimepicker table tr td span.active.disabled:hover.active,
+.datetimepicker table tr td span.active.disabled,
+.datetimepicker table tr td span.active:hover.disabled,
+.datetimepicker table tr td span.active.disabled.disabled,
+.datetimepicker table tr td span.active.disabled:hover.disabled,
+.datetimepicker table tr td span.active[disabled],
+.datetimepicker table tr td span.active:hover[disabled],
+.datetimepicker table tr td span.active.disabled[disabled],
+.datetimepicker table tr td span.active.disabled:hover[disabled] {
+  background-color: #e24041;
+}
+.datetimepicker table tr td span.active:active,
+.datetimepicker table tr td span.active:hover:active,
+.datetimepicker table tr td span.active.disabled:active,
+.datetimepicker table tr td span.active.disabled:hover:active,
+.datetimepicker table tr td span.active.active,
+.datetimepicker table tr td span.active:hover.active,
+.datetimepicker table tr td span.active.disabled.active,
+.datetimepicker table tr td span.active.disabled:hover.active {
+  background-color: #e24041;
+}
+.datetimepicker table tr td span.old {
+  color: #999999;
+}
+.datetimepicker th.switch {
+  width: 145px;
+}
+.datetimepicker th span.glyphicon {
+  pointer-events: none;
+}
+.datetimepicker thead tr:first-child th,
+.datetimepicker tfoot th {
+  cursor: pointer;
+}
+.datetimepicker thead tr:first-child th:hover,
+.datetimepicker tfoot th:hover {
+  background: #eeeeee;
+}
+.input-append.date .add-on i,
+.input-prepend.date .add-on i,
+.input-group.date .input-group-addon span {
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+}
 .pull-left {
   float: left !important;
 }
@@ -692,7 +1263,7 @@ input:hover {
 }
 .btn-primary[disabled] {
   color: #fff;
-  background-color: #e24041;
+  background-color: #e65858;
   border: 1px solid #db1011;
 }
 .btn-success {
@@ -899,7 +1470,7 @@ input:hover {
   background-color: #eb797a;
   border: 1px solid #e24041;
 }
-.red {
+.highlight {
   color: #db1011;
 }
 /*两端对齐*/
@@ -938,13 +1509,6 @@ input:hover {
   line-height: 50px;
   font-size: 16px;
   font-weight: bold;
-  text-align: center;
-}
-/*培训班级标题*/
-.classTitle {
-  padding: 10px;
-  font-size: 30px;
-  line-height: 1.5em;
   text-align: center;
 }
 /*文章分类，个人中心导航*/
@@ -987,12 +1551,8 @@ input:hover {
   padding: 0;
 }
 /*路径导航通用样式*/
-.breadcrumb .glyphicon-cog {
-  color: #666;
-  font-size: 16px;
-  vertical-align: middle;
-  position: relative;
-  top: 0px;
+.breadcrumb .fa-cog {
+  color: #999;
 }
 .formSearch {
   padding-left: 40px;
@@ -1035,7 +1595,7 @@ input:hover {
 .tmBorder {
   border: 1px solid #d9d9d9;
 }
-.tmBorder-red {
+.borderTopBold {
   border-top: 6px solid #db1011;
 }
 /*星星*/
@@ -1045,7 +1605,6 @@ input:hover {
   cursor: pointer;
   width: 121px;
   height: 18px;
-  margin-right: 14px;
   background: url(../images/star_all.png) 0 0 no-repeat;
   vertical-align: middle;
 }
@@ -1061,6 +1620,21 @@ input:hover {
   margin-top: 9px;
   margin-bottom: 0;
   background-color: #c7c7c7;
+}
+.progress .progress-bar {
+  background-color: #db1011;
+}
+.progress .progress-bar.progress-bar-success {
+  background-color: #00a854;
+}
+.progress .progress-bar.progress-bar-info {
+  background-color: #108ee9;
+}
+.progress .progress-bar.progress-bar-warning {
+  background-color: #ffbf00;
+}
+.progress .progress-bar.progress-bar-danger {
+  background-color: #e24041;
 }
 /*购物车头部*/
 .shoppingTitle {
@@ -1530,13 +2104,13 @@ input:hover {
 }
 /*排行前三背景*/
 .rankFirstBg {
-  background: url("../images/rankOne.png") center no-repeat;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAXCAMAAADTAfSvAAABOFBMVEUAAAD/6VP/7mT/+lP/72f/7WX/7mX/8Gf/8GD/71//7GD/7mT/72P/7mX/+FD/7WX/7WX/81T/72n/g1j//FP/8lb/7mX/7WX/71T/6FT/7mT/7mX/jVj/7mb/j1j/8Gn/ylX/2FX/8Gn/h1j/jlj/8V7/8E//0VT/4lT/pFf/7WX/pFb/m1b/nlb/7WX/8FT/51T/6lT/8Wr/7GX/0j7/72f/8Wb/1UP/8mv/20v/+Wr/zTf/7mX/6F3/fVf/41b/zzr/9G3/9Gn/52L/5Vn/5Vj/3U7/2Ej/6GP/62H/6mD/vF//tV//elj/dlj/zVf/slb/vlT/1kT//Wr/9Vz/mVv/iVj/cFb/8VT/0FT/tlL/p1D/9mn/4WH/4GH/1V7/1lj/glj/gFj/wFb/aVb/yFX/v1X/4VNCl95rAAAAMnRSTlMAO2r75jQEe0lDQg8LCP3b08OzqaOXc29eWTvt4NvSxMG+vKuqo6CGgnZwb21nY1IaFvMC+Z4AAAFQSURBVBjTVdDlbsMwEADgQsoMK42Z6RzmpElTZlzH+P5vMKfRUu1+2Nan04E9blwQBc//8BUrIQAIVYq+NUYRBQ3lR2kAhSLrVKA4lSRJlRPBTQ4eIFJVkI4UlUS7ccdutoEhRY16RhpFMkD4glgDCEy1yeq9ZZ1mm4ICKIA1lgJrCIh+eqjSCIYWpGJ2iTDF1LCiga01hgo7c1HDGovo+qBOIxbrarZEGjgGRLqKK4jAcJCOO90kwdBE9IJEzRAkp1uiQAAnSCzLs6wkcLAZSqwKx7OYLUMyLIzZ2N9yGwAmgzdmTIBjF1/5Ec83pQbPjx7NEwfz33K7NWnxut6etNrTRR7bfeajI8uz2WBMjJefXbnzvsjcecJ7h7mdN7mXjAYjyX53upU72r9d1bju9PxefHv9/e65++uXXzY6fOXq2Ryjw/NTV0tl91ku2ecvgL5BsDEjAWwAAAAASUVORK5CYII=") center no-repeat;
 }
 .rankSecondBg {
-  background: url("../images/rankTwo.png") center no-repeat;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAWCAMAAAAYXScKAAABd1BMVEUAAADe3+Lc4O3e3t7f39//1gDe3t7j4+P/NAff39/e3t7e3t7/VQTh4eHf39//0AD/2QD/0gDY4f/f39//2AD/zADf39/f39//lAD/tgHw4mHx2V3/pALh5PPg5PP/Mwf/Pwfk5OTk5OTf39/j3bfk4Lb/mQL/3AD/RAX41Sr50iX/4gD/wwD/XgTf39//4gDf39//5AD/0QDf39//3wD/4ADf39/f39/l5eTh4eHo6Oe/v7/MzMzJycm7u7vj4+O7vLyys7T/GwTt7e3W1tfR0tLExca4uLi1tbXb2trKysvq6end3N3Hx8aur7D/QQf/WQT/LwP/1QD/NADd/f/U8v/f7f/f9vzZ2dnY19POzs7Kycnou8HjvL63ubvkvrKpq66lp6vtlIH/cgT/4QD/vADY5vnh5vXh5fXS5OnT4+fm5ubj67rm6qiipaiPkpb7aSL7VyH9YxL/cAX/eQT/rwH/zgD/ywD/wwD/pAD/NwD/BwD/BQB3EmlYAAAAN3RSTlMARg/nqnAz+/DOyMaoo56Kd3Rzc2VePiIU9fHx8ezp5OLc266opJ+diIeHhoaDf3FuamUtGRcKFXHa7wAAAWBJREFUGNNNkOVuA0EMhDdJU2ZmZmbvHvNdmBpmKjPTwze5gDo/rNGn8cgyasjaAR1W9F9jnV09CwTIYk9X51iT7gN2sLRAsw4MQ03aixOG7mE8upHAvXV2OtTGeFkiE4pivUzbrtneaiMx0UnhTE5UZEaMEVtrhY4Cr3EEqzkqk5eJoPFgqYZbgGMxuGXl3okxy0GL2WsBjsFuiskrshszXCVqZgmtYV590FSVYI8AS8jsxU4DKFUUvJoLdCc2w0c2AjrNU64bysXTOtRuQNbB2bgoKEBAEcT4zGDjGyuXDtrgaM6gHRfLqK6RqXD07CrJJq/PouHJkRo8+HpKZwupCB9JFbLpx/JeFW69BaTvwE/x7vz2+TcUknzlNYSGp+fafQGpGNy0bHz6pZCvfX7Cjo4RGu+WXksDlbX+oF/qHkfoxGzeeSnZTWMP+tdRQ9vvh3U3/LHapAN9TdvXX51/8JRKNaGKCeoAAAAASUVORK5CYII=") center no-repeat;
 }
 .rankThirdBg {
-  background: url("../images/rankThree.png") center no-repeat;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAWCAMAAAAYXScKAAAByFBMVEUAAAD6x33/1AD7yH38yn/6yX36x3z/RAb/Pwb+z4j9zo/6x33+z4j7yH//WAX8y4H/0QD/3QD/1gD/1AD7xnz/cQP6yXv/eQH7yI7/sgD/sgH/wgD/Mwj/LAj6x3392TP90jj6x336yH77yH78y3/7yWb8y3/7zWn7yH7/twD7yH7+zhP/VAT+0hv/3AD/2AD/WQT5xZH/qwH6xpH/0wD/5AD/3QD5xnz/0wD/1wD5x4v6xnz7xnz/0QD/zgD9ynrilz/ekDb6x336xXX8yoH8xnbcjDP+z4f+z4b9zYT/1IL6x373wXT2vW3sqljqp1Hpo03mn0rgkjrEfzn/HQL/z3/7yX//zn3/zHv9yHf4wXH0uWjusGHtrFvpplPRj0fknEXkmkTjmUPIhj//MQT/NgH/0gD41aH91Jf84ZX93ZL9z5H4xHn+rnfzxHX7r2fxtGXss2Xfo1fsqVT8klH/GQn/eAj/SQb/cgT/4QD/vwD/DgD5y5L/3Yn+z4P6znr2xHX7rG37pGz72mj712jYmVLUlU/Uk0vOi0S9djK7dDDahy3Zhy3+Vhb+bxP/Ww3/UAb/UAX/qQL/zQD/wwD/vAD/pAD/OADFO9qpAAAAP3RSTlMAwnVuRTwE/v7z8N7MrqWOinNlWS4jHx4RC/n49/fw8OrovLqnp6SjmJSSj4iHhISCgX92cWpqZF5VTzMpFhaqXf9SAAABeklEQVQY01WQZW8CYRCED6i7u7u723uOu7vT4u51d5e/W47CJd0Pm8mT2UlmoeKUDamGoX/TxmDU13Bxbk09g9FGUxaf7TNKLVKjj81n0XSCE0JkUrEUQULsqWIiq9LwKMF4Gh4heTBUrpdRsKWaKyCjylOz/AZTikkBt3onR0tQjkmGAcPtyZ2Zh8lMHH4pZa5VwWKgI4jr+7AWiG2q2hyjzLAICDXaK3kEgCjML8nTEdwmASBiPrLLeUBixccoWIpyRIhOHZbb7XqgQ4xslMrd7sNRxEKo1UKNkrDKUHywhTJ3LFYJSViPaTE9TAqrljsKPca9AhsCW2DSKvCOFgtvDux73AGRSRRwe/b7N/7g6vfTWTDmPzg+8MeC58+faxSce3cofhzZxMXh5UvW6VSUZ+YhqLmroqfcoUi5prdmM0mFs6L3rbsZ2u1sba+LJ9LM3Fnjx2u8rr21cy+fPJNKr+RFoyu5QH990tVUUE1fSzRlNtCygUntX5BmXGRt67fXAAAAAElFTkSuQmCC") center no-repeat;
 }
 /*margin*/
 .mar_top_5 {
@@ -2446,7 +3020,7 @@ input:hover {
 }
 .slideBar .hoverBtn {
   width: 30px;
-  padding-top: 20px;
+  padding: 10px 0;
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -2529,12 +3103,15 @@ input:hover {
 /**
  * 班级详情
  */
-.classDetail .trclasstitle .title {
+.classDetail .classDes {
+  text-align: center;
+}
+.classDetail .classDes .title {
   height: 30px;
   line-height: 30px;
   font-size: 20px;
 }
-.classDetail .trclasstitle .fabiao {
+.classDetail .classDes .publish {
   margin: 15px auto;
 }
 .classDetail .contentclassinfo {
@@ -2798,6 +3375,9 @@ input:hover {
   position: absolute;
   top: 3px;
   left: 5px;
+}
+.courseCenter .courseList ul li .hotCourse .content .glyphicon {
+  color: #db1011;
 }
 .courseCenter .courseList ul li .hotCourse img {
   position: relative;
@@ -3323,13 +3903,11 @@ input:hover {
 .tmHeader .header .headerContent a:hover {
   color: #666;
 }
-.tmHeader .header .headerContent img {
-  padding: 2px 12px;
-  position: relative;
-  top: -2px;
-}
 .tmHeader .header .headerContent .phone {
   color: #db1011;
+}
+.tmHeader .header .headerContent .phone .glyphicon {
+  margin: 0 12px;
 }
 .tmHeader .headerSearch {
   height: 110px;
@@ -3363,7 +3941,6 @@ input:hover {
   line-height: 44px;
   width: 335px;
   padding: 0 10px 0 40px;
-  background: url("../images/search.png") 9px 10px no-repeat;
 }
 .tmHeader .headerSearch ul .searchInput .input-group .input-group-btn {
   height: 44px;
@@ -3374,6 +3951,13 @@ input:hover {
   padding: 11px 16px;
   background-color: #444548;
   color: #fff;
+}
+.tmHeader .headerSearch ul .searchInput .input-group .searchBg {
+  position: absolute;
+  left: 9px;
+  top: 7px;
+  color: #c7c7c7;
+  z-index: 5;
 }
 .tmHeader .headerSearch ul .redFlag {
   margin: 30px 0 0 15px;
@@ -3538,7 +4122,7 @@ input:hover {
 .tmLogin .form-signin .form-group.ValidateCodeform input {
   width: 69%;
 }
-.tmLogin .btn-danger {
+.tmLogin .loginBtn {
   width: 100%;
   height: 44px;
 }
@@ -4493,11 +5077,18 @@ input:hover {
   font-size: 17px;
 }
 .realTimeData .realTimeList ul li .labelName {
-  padding-top: 10px;
+  padding-top: 5px;
+  line-height: 25px;
+}
+.realTimeData .realTimeList ul li .labelName .fa {
+  font-size: 1.5em;
+  position: relative;
+  top: .14285714em;
 }
 .realTimeData .realTimeList ul li .labelName span {
   margin-left: 10px;
   display: inline-block;
+  line-height: 25px;
 }
 .realTimeData .realTimeList ul li.lastLi {
   border: none;
@@ -4659,12 +5250,18 @@ input:hover {
 /**
  * 全局搜索结果
  */
+.tmSearchResult {
+  min-height: 250px;
+}
 .tmSearchResult .news {
-  padding: 5px 20px;
+  padding: 5px 10px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   font-size: 16px;
+}
+.tmSearchResult .searchContent {
+  padding-left: 40px;
 }
 /**
  * 设置密保
@@ -5005,13 +5602,13 @@ input:hover {
   width: 25px;
   height: 25px;
   line-height: 25px;
-  background: url(../images/star_all_02.png) no-repeat center;
+  background: url(../images/star_off_bg.png) no-repeat center;
 }
 .starts-rate .my-stars-list .myStarHover.my-stars-items {
-  background: url(../images/star_all_04.png) no-repeat center;
+  background: url(../images/star_on_bg.png) no-repeat center;
 }
 .starts-rate .my-stars-list .myStarsSel.my-stars-items {
-  background: url(../images/star_all_04.png) no-repeat center;
+  background: url(../images/star_on_bg.png) no-repeat center;
 }
 .starts-rate .rate-text {
   height: 25px;

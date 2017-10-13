@@ -583,8 +583,8 @@ angular.module('luZhouApp')
             SearchToolsVisible: true,
             WMode: 'window',
             localeChain: 'zh_CN',
-            jsDirectory: 'plugins/FlexPaper_2.3.6/js/',
-            cssDirectory: 'plugins/FlexPaper_2.3.6/css/',
+            jsDirectory: 'plugins/FlexPaper/js/',
+            cssDirectory: 'plugins/FlexPaper/css/',
           }
         }
       );

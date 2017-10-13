@@ -13,7 +13,7 @@
     "angular-loading": "^0.1.4",
     "angular-ueditor": "*",
     "angular-ui-router": "0.3.1",
-    "jquery-ui": "^1.12.1"
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.0"
@@ -26,6 +26,18 @@
         "less/bootstrap.less",
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "./css/font-awesome.css",
+        "./fonts/*"
+      ]
+    },
+    "angular-loading": {
+      "main": [
+        "./angular-loading.css",
+        "./angular-loading.js"
       ]
     }
   }

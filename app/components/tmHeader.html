@@ -8,8 +8,7 @@
         <a ui-sref="messageList">在线留言</a> |
         <a ng-click="setHome($event.target)">设为首页</a> |
         <a ui-sref="articleDetail({ID:'31'})">联系我们</a>
-        <img src="../images/phone.png" alt="">
-        <span class="phone">0571-28990788</span>
+        <span class="phone"><i class="glyphicon glyphicon-phone-alt" aria-hidden="true"></i>0571-28990788</span>
       </p>
     </div>
   </div>
@@ -27,6 +26,7 @@
       <li class="grid_9 searchInput">
         <div class="input-group">
           <input ng-model="searchNewsField" type="text" class="form-control" my-placeholder placeholder="请输入搜索内容...">
+          <i class="searchBg fa fa-search fa-2x" aria-hidden="true"></i>
           <div class="input-group-btn">
             <button class="btn" ng-click="findNews()">搜索</button>
           </div>

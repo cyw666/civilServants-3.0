@@ -138,10 +138,10 @@ angular.module('luZhouApp')
       },
       link: function postLink(scope, element, attrs) {
         $(".slideBar").hover(function() {
-          $(".hoverimg").attr("src","images/hoverbtnbg1.gif");
+          $(".hoverArrow").removeClass('fa-angle-double-right').addClass('fa-angle-double-left');
           $('.slideBar').animate({right:'0'},300);
         }, function() {
-          $(".hoverimg").attr("src","images/hoverbtnbg.gif");
+          $(".hoverArrow").removeClass('fa-angle-double-left').addClass('fa-angle-double-right');
           $('.slideBar').animate({right:'-430'},300,function(){});
         });
       }

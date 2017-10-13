@@ -43,7 +43,7 @@ angular
         data: {title: "干部教育网络学院-基准3.0"}
       })
       .state('courseCenter', {
-        url: '/courseCenter?channelId',
+        url: '/courseCenter?channelId&title&searchType',
         templateUrl: 'views/coursecenter.html',
         controller: 'CoursecenterCtrl',
         controllerAs: 'courseCenter',
@@ -476,7 +476,7 @@ angular
         controllerAs: 'bookChapterContent'
       })
       .state('article', {
-        url: '/news/article?categoryCode',
+        url: '/news/article?categoryCode&title',
         data: {title: "文章"},
         templateUrl: 'views/news/article.html',
         controller: 'ArticleCtrl',

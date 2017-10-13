@@ -24,12 +24,12 @@
         </div>
         <div class="shooingCartFooter clearfix">
           <p class="pull-left">
-            <a ui-sref="courseCenterBuy" class="btn btn-danger">继续选课</a>
-            <a ui-sref="personalCenter" class="btn btn-danger">返回学习中心</a>
+            <a ui-sref="courseCenterBuy" class="btn btn-primary">继续选课</a>
+            <a ui-sref="personalCenter" class="btn btn-primary">返回学习中心</a>
           </p>
           <p class="pull-right mar_right_20">
             <span> 总价：￥{{shoppingCartData.TotalPrice.toFixed(2)}}</span>
-            <a ng-click="addOrder()" class="btn btn-danger">下单</a>
+            <a ng-click="addOrder()" class="btn btn-primary">下单</a>
           </p>
         </div>
       </div>
@@ -61,7 +61,7 @@
     font-size: 16px;
     font-weight: bold;
   }
-  .shooingCartFooter .pull-right .btn-danger {
+  .shooingCartFooter .pull-right .btn-primary {
     width: 80px;
   }
 </style>

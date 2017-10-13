@@ -2,17 +2,17 @@
   <div common-header title="'个人信息'" show-more=false link-url="''"></div>
   <div class="content login_info tmBorder" dw-loading="loginOut">
     <ul class="loginAfter_ul">
-      <li class="welcom">欢迎您:<b class="red">{{info.Model.Name}}</b>({{info.Model.Account}})</li>
+      <li class="welcom">欢迎您:<b class="highlight">{{info.Model.Name}}</b>({{info.Model.Account}})</li>
       <li>
-        <span  class="hours">课程学时：<span class="red">{{info.Model.PcCredit+info.Model.MobileCredit}}</span></span>
-        <span>考试学时：<span class="red">{{info.Model.ExamCredit}}</span></span>
+        <span  class="hours">课程学时：<span class="highlight">{{info.Model.PcCredit+info.Model.MobileCredit}}</span></span>
+        <span>考试学时：<span class="highlight">{{info.Model.ExamCredit}}</span></span>
       </li>
       <li>
-        <span  class="hours">当前学时：<span class="red">{{info.Model.SumCredit}}</span></span>
-        <span  class="hours">规定学时：<span class="red">{{info.Model.BatchTotalCredit}}</span></span>
+        <span  class="hours">当前学时：<span class="highlight">{{info.Model.SumCredit}}</span></span>
+        <span  class="hours">规定学时：<span class="highlight">{{info.Model.BatchTotalCredit}}</span></span>
       </li>
       <li>
-        <span>考核状态：<span class="red">{{info.Model.PassStatus?"通过":"未通过"}}</span></span>
+        <span>考核状态：<span class="highlight">{{info.Model.PassStatus?"通过":"未通过"}}</span></span>
       </li>
       <li>
         <span>个人学习档案</span>
@@ -27,7 +27,7 @@
         <span class="item2 grey"><a ui-sref="orderlist"></a></span>
       </li>
       <li>
-        <span class="item1">您有<span class="red"> {{info.Model.UnRead}} </span>条新通知！</span>
+        <span class="item1">您有<span class="highlight"> {{info.Model.UnRead}} </span>条新通知！</span>
         <span class="item2 grey"><a ui-sref="unReadNotice">详细&gt;&gt;</a></span>
       </li>
       <li class="lastChild fontSize12 grey">

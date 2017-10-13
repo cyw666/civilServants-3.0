@@ -11,13 +11,13 @@
           <div class="xz">
             <ul>
               <li>考试名称：</li>
-              <li class="red">{{examReviewData.Exam.Name}}</li>
+              <li class="highlight">{{examReviewData.Exam.Name}}</li>
               <li>考试类型:</li>
-              <li class="red">{{examReviewData.Exam.ExamTypeName}}</li>
+              <li class="highlight">{{examReviewData.Exam.ExamTypeName}}</li>
               <li>总分：</li>
-              <li class="red">{{examReviewData.Exam.TotalScore}}</li>
+              <li class="highlight">{{examReviewData.Exam.TotalScore}}</li>
               <li>及格分：</li>
-              <li class="red">{{examReviewData.Exam.PassingScore}}</li>
+              <li class="highlight">{{examReviewData.Exam.PassingScore}}</li>
             </ul>
           </div>
         </td>
@@ -27,7 +27,7 @@
           <div class="xz score">
             <ul>
               <li>您的得分：</li>
-              <li class="red">{{examReviewData.UserExamDetail.Score}}</li>
+              <li class="highlight">{{examReviewData.UserExamDetail.Score}}</li>
             </ul>
           </div>
         </td>
@@ -40,7 +40,7 @@
           <div>
             第<span> {{$index+1}} </span>题、 {{checkques.Question.Name}} （分值：{{checkques.Question.Score}}）
             <span>正确选项： {{checkques.Question.Answer}} ,</span>
-            <span class="xxys">您的选项 <span class="red">{{checkques.UserAnswer}}</span>,&nbsp;&nbsp;您的得分 <span class="red">{{checkques.UserScore}}</span></span>
+            <span class="xxys">您的选项 <span class="highlight">{{checkques.UserAnswer}}</span>,&nbsp;&nbsp;您的得分 <span class="highlight">{{checkques.UserScore}}</span></span>
             <table>
               <tr ng-repeat="checkList in checkques.Question.QuestionsItems">
                 <td>{{checkList.ItemFlag}} . {{checkList.Name}}</td>
@@ -62,7 +62,7 @@
           <div>
             第<span> {{$index+1}} </span>题、 {{singleques.Question.Name}} （分值：{{singleques.Question.Score}}）
             <span>正确选项： {{singleques.Question.Answer}} ,</span>
-            <span class="xxys">您的选项 <span class="red">{{singleques.UserAnswer}}</span>,&nbsp;&nbsp;您的得分 <span class="red">{{singleques.UserScore}}</span></span>
+            <span class="xxys">您的选项 <span class="highlight">{{singleques.UserAnswer}}</span>,&nbsp;&nbsp;您的得分 <span class="highlight">{{singleques.UserScore}}</span></span>
             <table>
               <tr ng-repeat="singleList in singleques.Question.QuestionsItems">
                 <td>{{singleList.ItemFlag}} . {{singleList.Name}}</td>
@@ -85,7 +85,7 @@
           <div>
             第<span> {{$index+1}} </span>题、 {{multipeques.Question.Name}} （分值：{{multipeques.Question.Score}}）
             <span>正确选项： {{multipeques.Question.Answer}} ,</span>
-            <span class="xxys">您的选项 <span class="red">{{multipeques.UserAnswer}}</span>,&nbsp;&nbsp;您的得分 <span class="red">{{multipeques.UserScore}}</span></span>
+            <span class="xxys">您的选项 <span class="highlight">{{multipeques.UserAnswer}}</span>,&nbsp;&nbsp;您的得分 <span class="highlight">{{multipeques.UserScore}}</span></span>
             <table>
               <tr ng-repeat="multipeList in multipeques.Question.QuestionsItems">
                 <td>{{multipeList.ItemFlag}} . {{multipeList.Name}}</td>

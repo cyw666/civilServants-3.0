@@ -16,13 +16,11 @@
           color: @text-color-2;
         }
       }
-      img{
-        padding: 2px 12px;
-        position: relative;
-        top: -2px;
-      }
       .phone {
         color: @primary-color;
+        .glyphicon{
+          margin: 0 12px;
+        }
       }
     }
   }
@@ -58,7 +56,7 @@
             .ht-lineHt(44px);
             width: 335px;
             padding: 0 10px 0 40px;
-            background: url("../images/search.png")9px 10px no-repeat;
+            //background: url("../images/search.png")9px 10px no-repeat;
           }
           .input-group-btn {
             height: 44px;
@@ -70,6 +68,13 @@
               background-color: #444548;
               color: @white;
             }
+          }
+          .searchBg{
+            position: absolute;
+            left: 9px;
+            top: 7px;
+            color: #c7c7c7;
+            z-index: 5;
           }
         }
       }

@@ -26,6 +26,15 @@ angular.module('luZhouApp')
     
     
     //课程超市列表
+    var searchText = $stateParams.title?$stateParams.title:'';
+    var channelId = $stateParams.channelId?$stateParams.channelId:'';
+    var teacher = '';
+    var title = '';
+    if($stateParams.searchType === "title"){
+      title = searchText;
+    }else if($stateParams.searchType === "teacher"){
+      teacher = searchText;
+    }
     //搜索
     $scope.selectText = [
       {name: '课程名称', id: '1'},
@@ -44,11 +53,11 @@ angular.module('luZhouApp')
       sort: 'Sort',
       order: 'desc',
       courseType: 'All',
-      channelId: '',
-      title: '',
+      channelId: channelId,
+      title: title,
       titleNav: '课程中心',
       wordLimt: 35,
-      teacher: ''
+      teacher: teacher
     };
     $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: courseListParams.rows});
     //搜索方法
@@ -64,11 +73,7 @@ angular.module('luZhouApp')
           $scope.paginationConf.totalItems = response.Data.Count;
         });
     };
-    if ($stateParams.channelId) {
-      $scope.searchCourse({channelId: $stateParams.channelId});
-    } else {
-      $scope.searchCourse();
-    }
+    // $scope.searchCourse();
     $scope.judgement = function (id, courseType, sort, orders) {
       var order;
       if (orders) {

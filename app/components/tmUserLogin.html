@@ -42,17 +42,17 @@
     <div class="login_info">
       <!--个人中心的登陆后详细和首页不同-->
       <ul class="loginAfter_ul">
-        <li>欢迎您:<b class="red">{{userMessage.Name}}</b>({{userMessage.Account}})</li>
+        <li>欢迎您：<b class="highlight">{{userMessage.Name}}</b> ({{userMessage.Account}})</li>
         <li>
-          <span class="hours">年度学时：<span class="red">{{userMessage.BatchTotalCredit}}</span></span>
-          <span class="hours">当前学时：<span class="red">{{userMessage.SumCredit}}</span></span>
+          <span class="hours">年度学时：<span class="highlight">{{userMessage.BatchTotalCredit}}</span></span>
+          <span class="hours">当前学时：<span class="highlight">{{userMessage.SumCredit}}</span></span>
         </li>
         <li>
           <span>个人学习档案</span>
           <span class="item2"><a ui-sref="personaLearningArchives" target="_blank">详细&gt;&gt;</a></span>
         </li>
         <li>
-          <span>您有<span class="red">{{userMessage.UnRead}} </span>条新通知！</span>
+          <span>您有<span class="highlight"> {{userMessage.UnRead}} </span>条新通知！</span>
           <span class="item2"><a ui-sref="unReadNotice">查看详情&gt;</a></span>
         </li>
         <li class="lastChild">

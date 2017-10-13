@@ -4,17 +4,17 @@
   <div common-header title="Data.TitleNav" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
-      <li class="currentPosition">您的当前位置:</li>
+      <li class="currentPosition"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></span> 您的当前位置:</li>
       <li><a ui-sref="main">首页</a></li>
       <li><a ui-sref="trainingClass">培训班</a></li>
       <li><a ui-sref="classDetail({Id:TrainingId})">{{Data.TrainingName}}</a></li>
       <li><a ui-sref="photoAlbumList({Id:TrainingId})">班级相册</a></li>
       <li class="active">{{Data.TitleNav}}</li>
     </ol>
-    <div class="trclasstitle text-center" dw-loading="photoPreview">
-      <h2 style="margin: 10px 0">{{Data.TitleNav}}</h2>
-      <div>
-        <a class="btn btn-danger" data-toggle="modal" data-target=".addphotomodal">+新增照片</a>
+    <div class="borderTopBold" dw-loading="photoPreview">
+      <div class="commonTitle">{{Data.TitleNav}}</div>
+      <div class="text-center">
+        <a class="btn btn-primary" data-toggle="modal" data-target=".addphotomodal">+新增照片</a>
       </div>
       <div class="myTab">
         <div class="tab-content clearfix">

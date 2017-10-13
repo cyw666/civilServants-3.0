@@ -10,7 +10,7 @@
 angular.module('luZhouApp')
   .controller('ArticleCtrl', function ($scope, $state, $rootScope, $cookieStore, commonService, $stateParams, $loading) {
     var categoryCode = $stateParams.categoryCode?$stateParams.categoryCode:'';
-
+    var search = $stateParams.title?$stateParams.title:'';
     //分页
     var params = {
       page:1,
@@ -20,13 +20,13 @@ angular.module('luZhouApp')
       sort:'Sort',
       order:'desc',
       wordLimt:'20',
-      titleNav:'文章列表'
+      titleNav:'文章列表',
+      search:search
     };
     $scope.paginationConf = $.extend({},paginationConf,{itemsPerPage: 15});
     $scope.refreshList = function (options) {
       $loading.start('articleList');
-      commonService.getData(ALL_PORT.ArticleList.url,'POST',
-        $.extend(params,options))
+      commonService.getData(ALL_PORT.ArticleList.url,'POST', $.extend(params,options))
         .then(function(response) {
           $loading.finish('articleList');
           $scope.articleListData = response.Data;
@@ -41,8 +41,7 @@ angular.module('luZhouApp')
     };
     $scope.$watch('paginationConf.currentPage', function() {
       var pageOptions = {
-        page: $scope.paginationConf.currentPage,
-        search: $scope.searchTitle
+        page: $scope.paginationConf.currentPage
       };
       $scope.refreshList(pageOptions);
     });

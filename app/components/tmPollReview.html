@@ -13,7 +13,7 @@
         <td class="tibg">
           <div class="title">
             <span> {{$index+1}} </span>、 {{checkques.Question.Name}}
-            <span class="xxys">您的选项 <span class="red">{{checkques.UserAnswer}}</span></span>
+            <span class="xxys">您的选项 <span class="highlight">{{checkques.UserAnswer}}</span></span>
           </div>
           <table>
             <tr ng-repeat="checkList in checkques.Question.QuestionsItems">
@@ -28,7 +28,7 @@
                 <span class="pull-left">共{{checkques.Ans1stCount}}票，占比</span>
                 <span class="list2 pull-left">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(checkques.Ans1stCount,checkques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(checkques.Ans1stCount,checkques)+'%'};">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(checkques.Ans1stCount,checkques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(checkques.Ans1stCount,checkques)+'%'};">
                       {{getRatePoll(checkques.Ans1stCount,checkques)}}%
                     </div>
                   </div>
@@ -40,7 +40,7 @@
                 <span class="pull-left">共{{checkques.Ans2ndCount}}票，占比</span>
                 <span class="list2 pull-left">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(checkques.Ans2ndCount,checkques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(checkques.Ans2ndCount,checkques)+'%'};">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(checkques.Ans2ndCount,checkques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(checkques.Ans2ndCount,checkques)+'%'};">
                       {{getRatePoll(checkques.Ans2ndCount,checkques)}}%
                     </div>
                   </div>
@@ -58,7 +58,7 @@
         <td class="tibg">
           <div class="title">
             <span> {{$index+1}} </span>、 {{singleques.Question.Name}}
-            <span class="xxys">您的选项 <span class="red">{{singleques.UserAnswer}}</span></span>
+            <span class="xxys">您的选项 <span class="highlight">{{singleques.UserAnswer}}</span></span>
           </div>
           <table>
             <tr ng-repeat="singleList in singleques.Question.QuestionsItems">
@@ -73,7 +73,7 @@
                 <span class="pull-left">共{{singleques.Ans1stCount}}票，占比</span>
                 <span class="list2 pull-left">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(singleques.Ans1stCount,singleques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(singleques.Ans1stCount,singleques)+'%'};">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(singleques.Ans1stCount,singleques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(singleques.Ans1stCount,singleques)+'%'};">
                       {{getRatePoll(singleques.Ans1stCount,singleques)}}%
                     </div>
                   </div>
@@ -85,7 +85,7 @@
                 <span class="pull-left">共{{singleques.Ans2ndCount}}票，占比</span>
                 <span class="list2 pull-left">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(singleques.Ans2ndCount,singleques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(singleques.Ans2ndCount,singleques)+'%'};">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(singleques.Ans2ndCount,singleques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(singleques.Ans2ndCount,singleques)+'%'};">
                       {{getRatePoll(singleques.Ans2ndCount,singleques)}}%
                     </div>
                   </div>
@@ -97,7 +97,7 @@
                 <span class="pull-left">共{{singleques.Ans3rdCount}}票，占比</span>
                 <span class="list2 pull-left">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(singleques.Ans3rdCount,singleques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(singleques.Ans3rdCount,singleques)+'%'};">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(singleques.Ans3rdCount,singleques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(singleques.Ans3rdCount,singleques)+'%'};">
                       {{getRatePoll(singleques.Ans3rdCount,singleques)}}%
                     </div>
                   </div>
@@ -109,7 +109,7 @@
                 <span class="pull-left">共{{singleques.Ans4thCount}}票，占比</span>
                 <span class="list2 pull-left">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(singleques.Ans4thCount,singleques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(singleques.Ans4thCount,singleques)+'%'};">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(singleques.Ans4thCount,singleques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(singleques.Ans4thCount,singleques)+'%'};">
                       {{getRatePoll(singleques.Ans4thCount,singleques)}}%
                     </div>
                   </div>
@@ -127,7 +127,7 @@
         <td class="tibg">
           <div class="title">
             <span> {{$index+1}} </span>、 {{multipeques.Question.Name}}
-            <span class="xxys">您的选项 <span class="red">{{multipeques.UserAnswer}}</span></span>
+            <span class="xxys">您的选项 <span class="highlight">{{multipeques.UserAnswer}}</span></span>
           </div>
           <table>
               <tr ng-repeat="multipeList in multipeques.Question.QuestionsItems">
@@ -142,7 +142,7 @@
                 <span class="pull-left">共{{multipeques.Ans1stCount}}票，占比</span>
                 <span class="list2 pull-left">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(multipeques.Ans1stCount,multipeques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(multipeques.Ans1stCount,multipeques)+'%'};">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(multipeques.Ans1stCount,multipeques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(multipeques.Ans1stCount,multipeques)+'%'};">
                       {{getRatePoll(multipeques.Ans1stCount,multipeques)}}%
                     </div>
                   </div>
@@ -154,7 +154,7 @@
                 <span class="pull-left">共{{multipeques.Ans2ndCount}}票，占比</span>
                 <span class="list2 pull-left">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(multipeques.Ans2ndCount,multipeques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(multipeques.Ans2ndCount,multipeques)+'%'};">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(multipeques.Ans2ndCount,multipeques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(multipeques.Ans2ndCount,multipeques)+'%'};">
                       {{getRatePoll(multipeques.Ans2ndCount,multipeques)}}%
                     </div>
                   </div>
@@ -166,7 +166,7 @@
                 <span class="pull-left">共{{multipeques.Ans3rdCount}}票，占比</span>
                 <span class="list2 pull-left">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(multipeques.Ans3rdCount,multipeques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(multipeques.Ans3rdCount,multipeques)+'%'};">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(multipeques.Ans3rdCount,multipeques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(multipeques.Ans3rdCount,multipeques)+'%'};">
                       {{getRatePoll(multipeques.Ans3rdCount,multipeques)}}%
                     </div>
                   </div>
@@ -178,7 +178,7 @@
                 <span class="pull-left">共{{multipeques.Ans4thCount}}票，占比</span>
                 <span class="list2 pull-left">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(multipeques.Ans4thCount,multipeques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(multipeques.Ans4thCount,multipeques)+'%'};">
+                    <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{getRatePoll(multipeques.Ans4thCount,multipeques)}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':getRatePoll(multipeques.Ans4thCount,multipeques)+'%'};">
                       {{getRatePoll(multipeques.Ans4thCount,multipeques)}}%
                     </div>
                   </div>

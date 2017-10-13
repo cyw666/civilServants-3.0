@@ -52,15 +52,15 @@ window.FlexPaperViewerEmbedding = window.$f = function(id, args) {
     _IMGFiles 			= (config.IMGFiles!=null?config.IMGFiles:_IMGFiles);
     _IMGFiles 			= (config.PageImagePattern!=null?config.PageImagePattern:_IMGFiles);
     _JSONFile 			= (config.JSONFile!=null?config.JSONFile:_JSONFile);
-    _jsDirectory 		= (config.jsDirectory!=null?config.jsDirectory:"plugins/FlexPaper_2.3.6/js/");
-    _cssDirectory 		= (config.cssDirectory!=null?config.cssDirectory:"plugins/FlexPaper_2.3.6/css/");
+    _jsDirectory 		= (config.jsDirectory!=null?config.jsDirectory:"plugins/FlexPaper/js/");
+    _cssDirectory 		= (config.cssDirectory!=null?config.cssDirectory:"plugins/FlexPaper/css/");
     _localeDirectory 	= (config.localeDirectory!=null?config.localeDirectory:"locale/");
     if(_SWFFile!=null && _SWFFile.indexOf("{" )==0 && _SWFFile.indexOf("[*," ) > 0 && _SWFFile.indexOf("]" ) > 0){_SWFFile = escape(_SWFFile);} // split file fix
 
     window[instance] = flashembed(id, {
         src						    : _jsDirectory+"../FlexPaperViewer.swf",
         version					    : [10, 0],
-        expressInstall			    : "plugins/FlexPaper_2.3.6/js/expressinstall.swf",
+        expressInstall			    : "plugins/FlexPaper/js/expressinstall.swf",
         wmode					    : _WMode
     },{
         ElementId               : id,

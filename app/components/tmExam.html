@@ -13,15 +13,15 @@
           <div class="xz">
             <ul>
               <li>时间限制：</li>
-              <li ng-if="examData.Exam.TimeLimit!=0" class="red">{{examData.Exam.TimeLimit}}分钟</li>
-              <li ng-if="examData.Exam.TimeLimit==0" class="red">不限时</li>
+              <li ng-if="examData.Exam.TimeLimit!=0" class="highlight">{{examData.Exam.TimeLimit}}分钟</li>
+              <li ng-if="examData.Exam.TimeLimit==0" class="highlight">不限时</li>
 
               <li>剩余时间：</li>
-              <li ng-if="examData.Exam.TimeLimit!=0" class="red">{{seconds | formatSeconds}}</li>
-              <li ng-if="examData.Exam.TimeLimit==0" class="red">不限时</li>
+              <li ng-if="examData.Exam.TimeLimit!=0" class="highlight">{{seconds | formatSeconds}}</li>
+              <li ng-if="examData.Exam.TimeLimit==0" class="highlight">不限时</li>
 
               <li>总分：</li>
-              <li class="red">{{examData.Exam.TotalScore}}</li>
+              <li class="highlight">{{examData.Exam.TotalScore}}</li>
             </ul>
           </div>
         </td>
@@ -31,13 +31,13 @@
           <div class="xz">
             <ul>
               <li>考试名称：</li>
-              <li class="red">{{examData.Exam.Name}}</li>
+              <li class="highlight">{{examData.Exam.Name}}</li>
               <li>考试类型：</li>
-              <li class="red">{{examData.Exam.ExamTypeName}}</li>
+              <li class="highlight">{{examData.Exam.ExamTypeName}}</li>
               <li>考试学时：</li>
-              <li class="red">{{examData.Exam.CreditHour}}</li>
+              <li class="highlight">{{examData.Exam.CreditHour}}</li>
               <li>及格分：</li>
-              <li class="red">{{examData.Exam.PassingScore}}</li>
+              <li class="highlight">{{examData.Exam.PassingScore}}</li>
             </ul>
           </div>
         </td>

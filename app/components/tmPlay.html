@@ -25,7 +25,7 @@
           <span class="pull-left">课程进度：</span>
           <span class="list2 pull-left">
               <div class="progress">
-                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                <div class="progress-bar progress-bar-striped" role="progressbar"
                      aria-valuenow="{{resultCourseDetail.BrowseScore}}" aria-valuemin="0" aria-valuemax="100"
                      ng-style="{'width':resultCourseDetail.BrowseScore+'%'};">
                   {{resultCourseDetail.BrowseScore.toFixed(1)}}%
@@ -77,7 +77,7 @@
                     </li>
                     <li class="content">
                       <span>{{courseNoteList.Content}}</span>
-                      <a ng-click="delNote(courseNoteList.Id)" class="btn btn-danger pull-right">删除</a>
+                      <a ng-click="delNote(courseNoteList.Id)" class="btn btn-primary pull-right">删除</a>
                     </li>
                   </ul>
                 </div>

@@ -1,5 +1,11 @@
 <!--文章详情-->
-<div class="article-detail container_24" dw-loading="tmshowarticledetail">
+<div class="article-detail" dw-loading="tmshowarticledetail">
+  <ol class="breadcrumb">
+    <li class="currentPosition"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></span> 您的当前位置:</li>
+    <li><a ui-sref="main">首页</a></li>
+    <li class="active">文章内容</li>
+  </ol>
+
   <div class="article-detail-title-bar">
     <p class="article-detail-title">{{articleData.Name}}</p>
     <p class="article-detail-info">
@@ -23,9 +29,9 @@
       <a ng-click="increaseFont()">[放大字体]</a>
     </p>
   </div>
-  <div id="setFont" class="article-detail-content justify" ng-bind-html="articleData.Content| trustHtml">
 
-  </div>
+  <div id="setFont" class="article-detail-content justify" ng-bind-html="articleData.Content| trustHtml"></div>
+
   <div class="article-detail-changeBar clearfix">
     <p class="grid_11 article-detail-changeBar-anhor pull-left ellipsis" ng-show="articleData.UpName"
        title="{{articleData.UpName}}">

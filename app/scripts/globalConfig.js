@@ -67,6 +67,7 @@ var ORIGIN = (function () {
   var plate = "hunan";
   if(origin === "http://localhost:9000"){
     plate="hunan";
+    // changeTheme(themeFile);
   }else {
     plate="changsha";
   }

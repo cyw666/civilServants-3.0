@@ -3,14 +3,14 @@
   <div common-header title="'班级详情'" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
-      <li class="currentPosition">您的当前位置:</li>
+      <li class="currentPosition"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></span> 您的当前位置:</li>
       <li><a ui-sref="main">首页</a></li>
       <li><a ui-sref="trainingClass">培训班</a></li>
       <li class="active">班级详情</li>
     </ol>
-    <div class="trclasstitle text-center" dw-loading="classDetail">
+    <div class="classDes" dw-loading="classDetail">
       <div class="title">{{classDetailData.Model.Name}}</div>
-      <div class="fabiao">
+      <div class="publish">
         <span>我要发表：</span>
         <a ui-sref="classTopicAdd({Id:Id})" target="_blank">
           <img src="images/btn_article_ht.png"/>
@@ -29,7 +29,7 @@
         </a>
       </div>
     </div>
-    <div class="tmBorder-red">
+    <div class="borderTopBold">
       <div class="commonTitle">班级简介</div>
       <div class="tab-contentinfo contentclassinfo">
         {{classDetailData.Model.Description}}
@@ -71,7 +71,7 @@
               <div class="list4 ellipsis" ng-show="list.Name">{{list.Name}}</div>
               <div class="list2">
                 <div class="progress">
-                  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{list.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':list.BrowseScore+'%'};">
+                  <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{list.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':list.BrowseScore+'%'};">
                     {{list.BrowseScore.toFixed(1)}}%
                   </div>
                 </div>
@@ -90,7 +90,7 @@
               <div class="list4 ellipsis" ng-show="list.Name">{{list.Name}}</div>
               <div class="list2">
                 <div class="progress">
-                  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="{{list.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':list.BrowseScore+'%'};">
+                  <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{list.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':list.BrowseScore+'%'};">
                     {{list.BrowseScore.toFixed(1)}}%
                   </div>
                 </div>
