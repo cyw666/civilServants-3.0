@@ -2,7 +2,33 @@
  * 首页登陆
  */
 @import "../styles/mixins";
+/*登陆banner*/
+.loginBg {
+  position: relative;
+  background-size: 100% 430px;
+  height: 430px;
+}
 
+.bigBanner {
+  position: absolute;
+  top: 118px;
+  right: 34%;
+  width: 720px;
+  height: 150px;
+}
+.loginBg.bgLarge1{
+  background: url("@{big-banner}") no-repeat center;
+}
+.bigBanner.textBg1 {
+  background: url("@{big-banner-text}") no-repeat center;
+}
+.loginPositon {
+  position: absolute;
+  top: 0;
+  left: 70%;
+}
+
+/*登陆*/
 .login, .loginAfter {
   padding: 20px;
   border-radius: 5px;

@@ -20,11 +20,12 @@
     <div class="notice-body clearfix">
       <div class="notice-body-left pull-left">通知公告</div>
       <div class="notice-body-right pull-left">
-        <ul class="clearfix">
-          <li class="pull-left" ng-repeat="list in noticeData.ListData">
-            <span class="triangleRight"></span>
-            <a class="title" ui-sref="noticeDetail({ID:list.Id})" title="{{list.Name}}"
-               target="_blank">{{list.Name}}</a>
+        <ul>
+          <li ng-repeat="list in noticeData.ListData">
+            <a class="title" ui-sref="noticeDetail({ID:list.Id})" title="{{list.Name}}" target="_blank">
+              <i class="glyphicon glyphicon-triangle-right"></i>
+              {{list.Name}}
+            </a>
             <span class="time">{{list.CreateDate | dateFilter |date :'yyyy-MM-dd'}}</span>
           </li>
         </ul>

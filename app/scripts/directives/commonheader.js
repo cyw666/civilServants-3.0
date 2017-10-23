@@ -12,12 +12,12 @@ angular.module('luZhouApp')
       templateUrl: 'components/commonHeader.html',
       restrict: 'EA',
       scope: {
-        title: "=",
+        titleHeader: "=",
         showMore: "=",
         linkUrl:"="
       },
       link: function postLink(scope, element, attrs) {
-        scope.title = scope.title || "标题";
+        scope.titleHeader = scope.titleHeader || "标题";
         scope.showMore = scope.showMore || false;
         scope.linkUrl = scope.linkUrl || "";
       }

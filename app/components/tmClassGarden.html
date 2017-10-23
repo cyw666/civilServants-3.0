@@ -1,6 +1,6 @@
 <!--班级园地模块（首页）-->
 <div class="classGarden mar_top_20">
-  <div common-header title="'班级园地'" show-more=true link-url="'trainingClass'"></div>
+  <div common-header title-header="'班级园地'" show-more=true link-url="'trainingClass'"></div>
 
   <div class="borderNews">
     <div class="myTab" dw-loading="classGarden">
@@ -19,7 +19,7 @@
           </div>
           <div class="list" ng-repeat="list in classListData.ListData">
             <div class="list3-5 bookLog">
-              <img src="../images/bookLog.png" alt="">
+              <span class="classLogoBg"></span>
               <a ng-click="checkUserClass(list.Id)">{{list.Name}}</a>
             </div>
             <div class="list2-5">{{list.StartTime | dateFilter | date:'yyyy-MM-dd'}}~{{list.EndTime | dateFilter |

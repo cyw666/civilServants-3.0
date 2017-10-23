@@ -146,6 +146,20 @@
 @input-hover-border-color: @primary-color;
 @input-placeholder-color: @text-color-3;
 
+/*背景*/
+@big-banner: '/images/banner.png';
+@big-banner-text: '/images/bannerText.png';
+@logo: data-uri('../images/logo.png');
+@flag: data-uri('../images/redFlag.png');
+@class-garden-bg: '/images/classGardenbg.png';
+@class-logo-bg: data-uri('../images/classLogoBg.png');
+@common-header-icon: data-uri('../images/headerLeftIcon.png');
+@common-header-more: data-uri('../images/more.png');
+@common-arrow-right: data-uri('../images/arrowRight.png');
+/*排行前三背景*/
+@rank-first-bg:data-uri('../images/rankOne.png');
+@rank-second-bg:data-uri('../images/rankTwo.png');
+@rank-third-bg:data-uri('../images/rankThree.png');
 // 边框圆角
 .border-radius (@radius: @border-radius-base) {
   border-radius: @radius;
@@ -311,19 +325,6 @@
   text-align: justify;
   -ms-text-justify: inter-ideograph;
   text-justify: inter-ideograph;
-}
-
-/*向右箭头*/
-.triangleRight(@width:5px,@color:@primary-color) {
-  font-size: 0;
-  line-height: 0;
-  border-width: @width;
-  border-color: @color;
-  border-right-width: 0;
-  border-style: dashed;
-  border-left-style: solid;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
 }
 
 /*圆点*/

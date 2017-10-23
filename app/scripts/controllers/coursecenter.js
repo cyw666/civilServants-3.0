@@ -195,7 +195,6 @@ angular.module('luZhouApp')
           .then(function (response) {
             if (response.Type > 0) {
               commonService.alertMs(response.Message);
-              // location.reload();
               if($scope.recommendApi){
                 $scope.getRecommendCourse();
               }else {

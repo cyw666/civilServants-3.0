@@ -29,10 +29,10 @@
     <div id="setFont" class="article-detail-content" ng-bind-html="articleData.Content| trustHtml"></div>
     <div class="article-detail-changeBar">
       <p class="article-detail-changeBar-up" ng-show="articleData.UpId>0">
-        <a class="btn btn-primary" ui-sref="bookchaptercontent({Id:articleData.UpId})">上一章</a>
+        <a class="btn btn-primary" onclick="window.scrollTo(0,0);" ui-sref="bookchaptercontent({Id:articleData.UpId})">上一章</a>
       </p>
       <p class="article-detail-changeBar-down">
-        <a class="btn btn-primary" ui-sref="bookchaptercontent({Id:articleData.DownId})">下一章</a>
+        <a class="btn btn-primary" onclick="window.scrollTo(0,0);" ui-sref="bookchaptercontent({Id:articleData.DownId})">下一章</a>
       </p>
     </div>
   </div>

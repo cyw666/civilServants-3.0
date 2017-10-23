@@ -1,9 +1,9 @@
 <!--专题学习新闻-->
 <div class="specialNews">
-  <div common-header title="specialNewsData.TitleNav" show-more=true link-url="articleUrl"></div>
+  <div common-header title-header="specialNewsData.TitleNav" show-more=true link-url="articleUrl"></div>
   <ul class="specialNewsContent" dw-loading="{{categoryCode}}">
     <li ng-repeat="list in specialNewsData.ListData">
-      <span class="arrow"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAMCAMAAACDd7esAAAASFBMVEUAAADbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBHbEBFxvG76AAAAF3RSTlMAyYMluqmRfWRgWlRQLLSymndnNjQYCCPn67wAAABLSURBVAjXJcdHAoAgAMTAYEewl/3/T3Uhpwk3cFyUlCCordYEncfW6FmqtcPqkQsPg3K1WqLO4vAyasbuoflpD2bCbqBXxkVgmwo/eS4FDiCAh7cAAAAASUVORK5CYII=" alt=""></span>
+      <span class="arrow"></span>
       <span class="title ellipsis" title="{{list.Name}}">
         <a ui-sref="articleDetail({ID:list.Id})" target="_blank">{{list.Name}}</a>
       </span>

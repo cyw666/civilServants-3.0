@@ -1,6 +1,6 @@
 <!--班级相册-->
 <div class="tmPhotoAlbumList">
-  <div common-header title="Data.TitleNav" show-more=false link-url="''"></div>
+  <div common-header title-header="Data.TitleNav" show-more=false link-url="''"></div>
   <div class="tmBorder">
     <ol class="breadcrumb">
       <li class="currentPosition"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></span> 您的当前位置:</li>
@@ -20,7 +20,7 @@
             <ul class="clearfix">
               <li class="list3" ng-repeat="list in Data.ListData">
                 <a ui-sref="photoPreview({AlbumId:list.Id,TrainingId:Data.TrainingId})">
-                  <img src="{{ImgSrc+'/'+list.Img}}" err-src="images/notFound.jpeg">
+                  <img ng-src="{{ImgSrc+'/'+list.Img}}" err-src="images/notFound.jpeg">
                   <p class="text-center">{{list.Name}}</p>
                 </a>
               </li>

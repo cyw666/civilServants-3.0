@@ -18,7 +18,6 @@ angular.module('luZhouApp')
         $scope.userInfo = data.Data.Model;
         $scope.sex = data.Data.Model.Sex;
         $scope.Grade = data.Data.Model.GradeId;
-        $scope.initGrade = data.Data.Model.Grade;
         $scope.Business = data.Data.Model.Business;
         $scope.Tel = data.Data.Model.Tel;
         $scope.Email = data.Data.Model.Email;
@@ -28,11 +27,6 @@ angular.module('luZhouApp')
     commonService.getData(ALL_PORT.GetGradeList.url, 'POST', ALL_PORT.GetGradeList.data)
       .then(function (data) {
         $scope.gradeList = data.GroupInfoList;
-        for (var item in $scope.gradeList) {
-          if ($scope.initGrade == item.Name) {
-            $scope.initId = item.Id;
-          }
-        }
       });
     
     
@@ -46,14 +40,6 @@ angular.module('luZhouApp')
     };
     $scope.changeUser = function () {
       var changeUser = function () {
-        /*if ($scope.sex == 1){
-         $scope.sex='男';
-         }else if ($scope.sex == 0){
-         $scope.sex='女';
-         }*/
-        if ($scope.Grade == $scope.initGrade) {
-          $scope.Grade = $scope.initId;
-        }
         var options = {
           Grade: $scope.Grade,
           Business: $scope.Business,
