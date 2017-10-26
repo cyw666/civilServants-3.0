@@ -8,6 +8,7 @@
 /*颜色*/
 /*背景*/
 /*排行前三背景*/
+/*必修选修*/
 /*超出显示...*/
 /*两端对齐*/
 /*圆点*/
@@ -581,7 +582,8 @@ samp {
   padding: 0;
 }
 .tree-node {
-  height: 18px;
+  height: 28px;
+  line-height: 28px;
   white-space: nowrap;
   cursor: pointer;
 }
@@ -596,8 +598,8 @@ samp {
 .tree-indent {
   display: inline-block;
   width: 16px;
-  height: 18px;
-  vertical-align: top;
+  height: 22px;
+  vertical-align: middle;
   overflow: hidden;
 }
 .tree-expanded {
@@ -646,6 +648,7 @@ samp {
 }
 .tree-file {
   /*background: url('../images/tree_icons.png') no-repeat -240px 0;*/
+  width: 10px;
 }
 .tree-loading {
   background: url('../images/loading.gif') no-repeat center center;
@@ -666,8 +669,9 @@ samp {
   vertical-align: top;
   white-space: nowrap;
   padding: 0 2px;
-  height: 20px;
-  line-height: 20px;
+  height: 28px;
+  line-height: 28px;
+  width: 80%;
 }
 .tree-node-proxy {
   font-size: 14px;
@@ -719,12 +723,12 @@ samp {
   border-color: #95B8E7;
 }
 .tree-node-hover {
-  background: #eaf2ff;
-  color: #000000;
+  background-color: #eef7fd;
+  color: #108ee9;
 }
 .tree-node-selected {
-  /*background: #ffe48d;*/
-  color: #000000;
+  background-color: #eef7fd;
+  color: #108ee9;
 }
 .tree-node-hidden {
   display: none;
@@ -2404,68 +2408,10 @@ input:hover {
   padding: 20px;
 }
 /**
- * 折叠面板
+ * 分类 tree
  */
-.panels {
-  padding: 9px 28px;
-  cursor: pointer;
-  -webkit-transition-property: all;
-  -moz-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-timing-function: ease-in;
-  -moz-transition-timing-function: ease-in;
-  -o-transition-timing-function: ease-in;
-  transition-timing-function: ease-in;
-  -webkit-transition-delay: 0s;
-  -moz-transition-delay: 0s;
-  -o-transition-delay: 0s;
-  transition-delay: 0s;
-}
-.panels:hover {
-  background-color: #eef7fd;
-  color: #40a5ed;
-}
-.expander > .title {
-  padding: 4px 10px;
-  cursor: pointer;
-  -webkit-transition-property: all;
-  -moz-transition-property: all;
-  -o-transition-property: all;
-  transition-property: all;
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -webkit-transition-timing-function: ease-in;
-  -moz-transition-timing-function: ease-in;
-  -o-transition-timing-function: ease-in;
-  transition-timing-function: ease-in;
-  -webkit-transition-delay: 0s;
-  -moz-transition-delay: 0s;
-  -o-transition-delay: 0s;
-  transition-delay: 0s;
-}
-.expander > .title:hover {
-  background-color: #eef7fd;
-}
-.expander > .title a {
-  display: inline-block;
-  width: 80%;
-  line-height: 30px;
-}
-.expander .body {
-  height: auto;
-}
-.expander .body .panels {
-  padding: 9px 33px;
-}
-.expander .body .title {
-  padding: 4px 10px 4px 15px;
+.expander {
+  padding: 5px;
 }
 /**
  * 申请发票
@@ -3591,8 +3537,8 @@ input:hover {
 /**
  * 课程超市列表
  */
-.courseSupermarket .formSearch input.searchType {
-  width: 85%;
+.courseSupermarket .formSearch input.form-control {
+  width: 75%;
 }
 .courseSupermarket .courseList {
   position: relative;
@@ -3648,8 +3594,32 @@ input:hover {
   width: 430px;
   margin-left: 15px;
 }
-.courseSupermarket .courseList .NewCourseList ul li .block3 .CourseName a {
+.courseSupermarket .courseList .NewCourseList ul li .block3 .CourseName {
   font-size: 15px;
+  zoom: 1;
+  line-height: 22px;
+}
+.courseSupermarket .courseList .NewCourseList ul li .block3 .CourseName:before,
+.courseSupermarket .courseList .NewCourseList ul li .block3 .CourseName:after {
+  content: " ";
+  display: table;
+}
+.courseSupermarket .courseList .NewCourseList ul li .block3 .CourseName:after {
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+}
+.courseSupermarket .courseList .NewCourseList ul li .block3 .CourseName:before,
+.courseSupermarket .courseList .NewCourseList ul li .block3 .CourseName:after {
+  content: " ";
+  display: table;
+}
+.courseSupermarket .courseList .NewCourseList ul li .block3 .CourseName:after {
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
 }
 .courseSupermarket .courseList .NewCourseList ul li .block3 .line3,
 .courseSupermarket .courseList .NewCourseList ul li .block3 .line2 {
