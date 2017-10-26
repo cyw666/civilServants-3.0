@@ -6,7 +6,7 @@
     <div class="myTab" dw-loading="classGarden">
       <ul class="nav nav-tabs" ng-init="vm2.activeTab=0">
         <li ng-repeat="list in trainingClassType.ListData" ng-class="{active: vm2.activeTab == $index}">
-          <a ng-click="vm2.activeTab = $index;getClassList(list.Id)">{{list.Name}}</a>
+          <a ng-click="vm2.activeTab = $index;getClassList(list.id)">{{list.text}}</a>
         </li>
       </ul>
       <div class="tab-content">

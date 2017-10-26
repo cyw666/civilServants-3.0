@@ -12,7 +12,7 @@
         <li ng-class="{active: vm.activeTab == 2}" >
           <a ng-click="vm.activeTab = 2;getNewsContent('newsHot')">时政热点</a>
         </li>
-        <a class="more" ui-sref="article" target="_blank"></a>
+        <a class="more" ui-sref="article({categoryCode:articleListUrl})" target="_blank"></a>
       </ul>
       <div class="tab-content" dw-loading="articleList">
         <div class="tab-panel perlist">

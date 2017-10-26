@@ -13,13 +13,13 @@ angular.module('luZhouApp')
     $loading.start('courseClassify');
     $loading.start('classMy');
 
-
     //专题培训班分类
     commonService.getData(ALL_PORT.GetTrainingClassTypeList.url, 'POST',
       $.extend({}, ALL_PORT.GetTrainingClassTypeList.data))
       .then(function(response) {
         $loading.finish('courseClassify');
-        $scope.courseClassify = response.Data;
+        var classClassify = [{id:0,text:"全部班级",children:null,state:"open",SunFlag: false}];
+        $scope.courseClassify = classClassify.concat(response.Data.ListData);
       });
 
     //折叠面板控制

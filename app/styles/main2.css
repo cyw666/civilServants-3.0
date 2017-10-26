@@ -5404,6 +5404,7 @@ input:hover {
 .specialLearningCourse .courseList {
   margin-top: 15px;
   zoom: 1;
+  min-height: 235px;
 }
 .specialLearningCourse .courseList:before,
 .specialLearningCourse .courseList:after {
@@ -5457,10 +5458,11 @@ input:hover {
  * 专题学习新闻
  */
 .specialNews {
-  padding-left: 20px;
+  padding-right: 20px;
 }
 .specialNews .specialNewsContent {
   zoom: 1;
+  min-height: 190px;
 }
 .specialNews .specialNewsContent:before,
 .specialNews .specialNewsContent:after {

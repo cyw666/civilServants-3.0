@@ -301,6 +301,7 @@ angular.module('luZhouApp')
           $loading.finish('articleList');
           $scope.articleListData = response.Data;
           $scope.articleTop = response.Data.ListData[0];
+          $scope.articleListUrl = categoryCode;
         });
     };
     $scope.getNewsContent('newsInformation');
