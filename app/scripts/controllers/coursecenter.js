@@ -117,6 +117,7 @@ angular.module('luZhouApp')
         $scope.showInput3 = true;
       }
     }
+    
     //智能推荐
     $scope.getRecommendCourse = function (options) {
       $scope.recommendApi = true;
