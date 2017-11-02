@@ -81,7 +81,6 @@ angular.module('luZhouApp')
             var examUrl = $state.href('exam',{Id:Id});
             newWindow.location.href = examUrl;
           }
-
         });
     };
   });

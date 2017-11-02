@@ -8,7 +8,7 @@
  * Controller of the luZhouApp
  */
 angular.module('luZhouApp')
-  .controller('changeUserInfoCtrl', function ($scope, $interval,$state, commonService, $loading, $http, $cookieStore) {
+  .controller('changeUserInfoCtrl', function ($scope, $interval, $state, commonService, $loading, $http, $cookieStore) {
     
     //获取用户信息
     $loading.start('changeUserInfo');
@@ -76,7 +76,7 @@ angular.module('luZhouApp')
           updateUserInfo.then(function (response) {
             commonService.alertMs(response.Message);
             // window.location.reload();
-            if(response.Type==1){
+            if (response.Type == 1) {
               $state.go('main');
             }
           });
