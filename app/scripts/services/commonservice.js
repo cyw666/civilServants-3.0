@@ -19,6 +19,7 @@ angular.module('luZhouApp')
      * @param  {function} opt_callback2 return function of cancle
      * @return {html}               change the alert style
      */
+    /*alert弹出框*/
     this.alertMs = function (options, opt_warntype, opt_callback1, opt_callback2) {
       var option = {
         warnType: 1, //1 为alert型; 2 为confirm型; 3 为系统alert型
@@ -225,31 +226,6 @@ angular.module('luZhouApp')
       if (cval != null)
         document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
     }
-    this.getCookie2 = function (name, pro, cookies) {
-      cookies = cookies || document.cookie;
-      var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");  // (^| )longguid=([^;]*)(;|$)
-      arr = cookies.match(reg);
-      if (pro) {
-        var cookie;
-        if (arr) {
-          cookie = unescape(arr[2]);
-          var ar, re = new RegExp("(=|&| |^)" + pro + "=([^&;]*)(&|;|$)");
-          ar = cookie.match(re);
-          if (ar) {
-            return unescape(ar[2]);
-          }
-          else return null;
-        }
-        else
-          return null;
-      }
-      else {
-        if (arr)
-          return unescape(arr[2]);
-        else
-          return null;
-      }
-    };
     //保持在线
     this.keepOnline = function () {
       setInterval(function () {
@@ -262,7 +238,6 @@ angular.module('luZhouApp')
     }
     //判断能否访问
     this.isVisit = function () {
-      
       $http({
         method: 'POST',
         url: ALL_PORT.Authorization.url,
@@ -325,7 +300,6 @@ angular.module('luZhouApp')
       function dFormat(i) {
         return i < 10 ? "0" + i.toString() : i;
       }
-      
       if (value == "yyyy-MM-dd hh:mm:ss") {
         var d = new Date(Number(str));
         var ar_date = [d.getFullYear(), d.getMonth() + 1, d.getDate(), d.getHours(), d.getMinutes(), d.getSeconds()];
@@ -472,7 +446,6 @@ angular.module('luZhouApp')
         defer.reject(data);
       });
       return defer.promise;
-      
     };
     
     //上传文件
@@ -633,7 +606,7 @@ angular.module('luZhouApp')
         }, 1000);
         callback();
       } else {
-        alert("提交过于频繁，请5秒后再试！");
+        alert("提交过于频繁，请稍后再试！");
       }
     }
   });

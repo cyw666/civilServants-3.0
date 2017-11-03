@@ -2771,8 +2771,8 @@ input:hover {
   padding: 20px;
 }
 .bookDetail .bookComment .comment_bord {
-  border-left: 5px solid solid;
-  border-bottom: 3px solid solid;
+  border-left: 5px solid #d9d9d9;
+  border-bottom: 3px solid #d9d9d9;
   margin-bottom: 20px;
 }
 .bookDetail .bookComment .comment_bord > li {
@@ -3082,6 +3082,95 @@ input:hover {
   height: 130px;
   border-radius: 4px;
 }
+.classDetail .myTab .tab-content {
+  min-height: 200px;
+}
+/**
+ * 班级说说
+ */
+.tmClassInteraction .title {
+  background-color: #f8f8f8;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  color: #333;
+  font-size: 16px;
+  padding: 10px 15px;
+}
+.tmClassInteraction .classForm {
+  width: 80%;
+  margin: 20px auto;
+}
+.tmClassInteraction .classForm input[type="file"] {
+  display: inline-block;
+}
+.tmClassInteraction .classForm .textLimit {
+  color: #999;
+  margin: 0 60px 0 207px;
+}
+.tmClassInteraction .classForm .textLimit .textNum {
+  font-size: 16px;
+  color: #f56a00;
+  font-weight: 700;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem {
+  border-top: 1px solid #d9d9d9;
+  line-height: 25px;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .outer {
+  padding: 10px 50px;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .name {
+  color: #108ee9;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .bottom {
+  text-align: right;
+  font-size: 12px;
+  padding: 0 10px;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .bottom a {
+  color: #108ee9;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment {
+  margin-left: 10%;
+  padding: 5px 0 0;
+  border-top: 1px solid #d9d9d9;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .otherCommentList {
+  display: none;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .commentList {
+  background-color: #f8f8f8;
+  border-bottom: 1px dotted #d9d9d9;
+  padding: 2px 10px 12px;
+  line-height: 22px;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .commentList p {
+  font-size: 12px;
+  text-align: right;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .commentList p a {
+  color: #108ee9;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .foldUnfold {
+  text-align: right;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .foldUnfold span {
+  color: #999;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .foldUnfold a {
+  color: #108ee9;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .replyForm {
+  display: none;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .replyUserName {
+  color: #108ee9;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .commentForm {
+  display: none;
+  margin-left: 10%;
+  margin-top: 20px;
+}
 /**
  * 班级考试
  */
@@ -3366,6 +3455,9 @@ input:hover {
 }
 .courseDetails .starGroup span {
   float: left !important;
+}
+.courseDetails .jdcontext {
+  text-align: left;
 }
 .courseDetails .jdcontext p {
   height: 27px;
@@ -5801,6 +5893,25 @@ input:hover {
   width: 75px;
   padding: 2px 0;
 }
+.trainingCenter .classContent {
+  padding: 10px 30px;
+  font-size: 15px;
+}
+.trainingCenter .classContent p {
+  padding: 2px 0;
+}
+.trainingCenter .classTip {
+  font-size: 12px;
+}
+.trainingCenter .classTip .fa {
+  font-size: 20px;
+}
+.trainingCenter .classTip .tipTitle {
+  color: #db1011;
+}
+.trainingCenter .classTip .tipContent {
+  color: #999;
+}
 /**
  * 试看
  */
@@ -5910,16 +6021,16 @@ input:hover {
 }
 .bigBanner {
   position: absolute;
-  top: 118px;
+  top: 70px;
   right: 34%;
-  width: 720px;
-  height: 150px;
+  width: 723px;
+  height: 178px;
+}
+.bigBanner .enter {
+  margin-top: 65px;
 }
 .loginBg.bgLarge1 {
   background: url("/images/banner2.png") no-repeat center;
-}
-.bigBanner.textBg1 {
-  background: url("/images/bannerText2.png") no-repeat center;
 }
 .loginPositon {
   position: absolute;

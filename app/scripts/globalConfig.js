@@ -933,4 +933,19 @@ var ALL_PORT = {
     url: API_URL + "/shop/PayForInvoice",
     data: {invoiceId: ''}
   },
+  //添加班级说说
+  AddTrainingSay: {
+    url: API_URL + "/page/AddTrainingSay",
+    data: {mainId: 0, parentId: 0, content: ""}
+  },
+  //删除班级说说
+  DelTrainingSay: {
+    url: API_URL + "/page/DelTrainingSay",
+    data: {id: ''}
+  },
+  //获取班级说说列表
+  TrainingSayList: {
+    url: API_URL + "/page/TrainingSayList",
+    data: {mainId: "", sort: "sort", order: "desc", page: 1, rows: 5}
+  },
 };

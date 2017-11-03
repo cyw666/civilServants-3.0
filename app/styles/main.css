@@ -20,7 +20,6 @@
  * 2. Prevent adjustments of font size after orientation changes in
  *    IE on Windows Phone and in iOS.
  */
-@import "960_24_col.css";
 @import "jquery.bxslider.css";
 html {
   line-height: 1.15;
@@ -524,6 +523,523 @@ kbd,
 pre,
 samp {
   font-family: "Microsoft Yahei", SimHei, "Helvetica Neue", "PingFangHK-Light", "Heiti SC", "Hiragino Sans GB", "Microsoft JhengHei", "WenQuanYi Micro Hei", "Droid Sans", "Roboto", Helvetica, Tahoma, Arial, "sans-serif";
+}
+/*
+  960 Grid System ~ Core CSS.
+  Learn more ~ http://960.gs/
+
+  Licensed under GPL and MIT.
+*/
+/*
+  Forces backgrounds to span full width,
+  even if there is horizontal scrolling.
+  Increase this if your layout is wider.
+
+  Note: IE6 works fine without this fix.
+*/
+body {
+  min-width: 1200px;
+}
+/* `Container
+----------------------------------------------------------------------------------------------------*/
+.container_24 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+}
+/* `Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_7_2,
+.grid_8,
+.grid_8_2,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12,
+.grid_13,
+.grid_14,
+.grid_15,
+.grid_16,
+.grid_16_2,
+.grid_17,
+.grid_18,
+.grid_19,
+.grid_20,
+.grid_21,
+.grid_22,
+.grid_23,
+.grid_24 {
+  display: inline;
+  float: left;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.push_1,
+.pull_1,
+.push_2,
+.pull_2,
+.push_3,
+.pull_3,
+.push_4,
+.pull_4,
+.push_5,
+.pull_5,
+.push_6,
+.pull_6,
+.push_7,
+.pull_7,
+.push_8,
+.pull_8,
+.push_9,
+.pull_9,
+.push_10,
+.pull_10,
+.push_11,
+.pull_11,
+.push_12,
+.pull_12,
+.push_13,
+.pull_13,
+.push_14,
+.pull_14,
+.push_15,
+.pull_15,
+.push_16,
+.pull_16,
+.push_17,
+.pull_17,
+.push_18,
+.pull_18,
+.push_19,
+.pull_19,
+.push_20,
+.pull_20,
+.push_21,
+.pull_21,
+.push_22,
+.pull_22,
+.push_23,
+.pull_23 {
+  position: relative;
+}
+/* `Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+.alpha {
+  margin-left: 0;
+}
+.omega {
+  margin-right: 0;
+}
+/* `Grid >> 24 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_24 .grid_1 {
+  width: 50px;
+}
+.container_24 .grid_2 {
+  width: 100px;
+}
+.container_24 .grid_3 {
+  width: 150px;
+}
+.container_24 .grid_4 {
+  width: 200px;
+}
+.container_24 .grid_5 {
+  width: 250px;
+}
+.container_24 .grid_6 {
+  width: 300px;
+}
+.container_24 .grid_7 {
+  width: 350px;
+}
+.container_24 .grid_7_2 {
+  width: 375px;
+}
+.container_24 .grid_8 {
+  width: 400px;
+}
+.container_24 .grid_8_2 {
+  width: 425px;
+}
+.container_24 .grid_9 {
+  width: 450px;
+}
+.container_24 .grid_10 {
+  width: 500px;
+}
+.container_24 .grid_11 {
+  width: 550px;
+}
+.container_24 .grid_12 {
+  width: 600px;
+}
+.container_24 .grid_13 {
+  width: 650px;
+}
+.container_24 .grid_14 {
+  width: 700px;
+}
+.container_24 .grid_15 {
+  width: 750px;
+}
+.container_24 .grid_16 {
+  width: 800px;
+}
+.container_24 .grid_16_2 {
+  width: 825px;
+}
+.container_24 .grid_17 {
+  width: 850px;
+}
+.container_24 .grid_18 {
+  width: 900px;
+}
+.container_24 .grid_19 {
+  width: 950px;
+}
+.container_24 .grid_20 {
+  width: 1000px;
+}
+.container_24 .grid_21 {
+  width: 1050px;
+}
+.container_24 .grid_22 {
+  width: 1100px;
+}
+.container_24 .grid_23 {
+  width: 1150px;
+}
+.container_24 .grid_24 {
+  width: 1200px;
+}
+/* `Prefix Extra Space >> 24 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_24 .prefix_1 {
+  padding-left: 40px;
+}
+.container_24 .prefix_2 {
+  padding-left: 80px;
+}
+.container_24 .prefix_3 {
+  padding-left: 120px;
+}
+.container_24 .prefix_4 {
+  padding-left: 160px;
+}
+.container_24 .prefix_5 {
+  padding-left: 200px;
+}
+.container_24 .prefix_6 {
+  padding-left: 240px;
+}
+.container_24 .prefix_7 {
+  padding-left: 280px;
+}
+.container_24 .prefix_8 {
+  padding-left: 320px;
+}
+.container_24 .prefix_9 {
+  padding-left: 360px;
+}
+.container_24 .prefix_10 {
+  padding-left: 400px;
+}
+.container_24 .prefix_11 {
+  padding-left: 440px;
+}
+.container_24 .prefix_12 {
+  padding-left: 480px;
+}
+.container_24 .prefix_13 {
+  padding-left: 520px;
+}
+.container_24 .prefix_14 {
+  padding-left: 560px;
+}
+.container_24 .prefix_15 {
+  padding-left: 600px;
+}
+.container_24 .prefix_16 {
+  padding-left: 640px;
+}
+.container_24 .prefix_17 {
+  padding-left: 680px;
+}
+.container_24 .prefix_18 {
+  padding-left: 720px;
+}
+.container_24 .prefix_19 {
+  padding-left: 760px;
+}
+.container_24 .prefix_20 {
+  padding-left: 800px;
+}
+.container_24 .prefix_21 {
+  padding-left: 840px;
+}
+.container_24 .prefix_22 {
+  padding-left: 880px;
+}
+.container_24 .prefix_23 {
+  padding-left: 920px;
+}
+/* `Suffix Extra Space >> 24 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_24 .suffix_1 {
+  padding-right: 40px;
+}
+.container_24 .suffix_2 {
+  padding-right: 80px;
+}
+.container_24 .suffix_3 {
+  padding-right: 120px;
+}
+.container_24 .suffix_4 {
+  padding-right: 160px;
+}
+.container_24 .suffix_5 {
+  padding-right: 200px;
+}
+.container_24 .suffix_6 {
+  padding-right: 240px;
+}
+.container_24 .suffix_7 {
+  padding-right: 280px;
+}
+.container_24 .suffix_8 {
+  padding-right: 320px;
+}
+.container_24 .suffix_9 {
+  padding-right: 360px;
+}
+.container_24 .suffix_10 {
+  padding-right: 400px;
+}
+.container_24 .suffix_11 {
+  padding-right: 440px;
+}
+.container_24 .suffix_12 {
+  padding-right: 480px;
+}
+.container_24 .suffix_13 {
+  padding-right: 520px;
+}
+.container_24 .suffix_14 {
+  padding-right: 560px;
+}
+.container_24 .suffix_15 {
+  padding-right: 600px;
+}
+.container_24 .suffix_16 {
+  padding-right: 640px;
+}
+.container_24 .suffix_17 {
+  padding-right: 680px;
+}
+.container_24 .suffix_18 {
+  padding-right: 720px;
+}
+.container_24 .suffix_19 {
+  padding-right: 760px;
+}
+.container_24 .suffix_20 {
+  padding-right: 800px;
+}
+.container_24 .suffix_21 {
+  padding-right: 840px;
+}
+.container_24 .suffix_22 {
+  padding-right: 880px;
+}
+.container_24 .suffix_23 {
+  padding-right: 920px;
+}
+/* `Push Space >> 24 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_24 .push_1 {
+  left: 40px;
+}
+.container_24 .push_2 {
+  left: 80px;
+}
+.container_24 .push_3 {
+  left: 120px;
+}
+.container_24 .push_4 {
+  left: 160px;
+}
+.container_24 .push_5 {
+  left: 200px;
+}
+.container_24 .push_6 {
+  left: 240px;
+}
+.container_24 .push_7 {
+  left: 280px;
+}
+.container_24 .push_8 {
+  left: 320px;
+}
+.container_24 .push_9 {
+  left: 360px;
+}
+.container_24 .push_10 {
+  left: 400px;
+}
+.container_24 .push_11 {
+  left: 440px;
+}
+.container_24 .push_12 {
+  left: 480px;
+}
+.container_24 .push_13 {
+  left: 520px;
+}
+.container_24 .push_14 {
+  left: 560px;
+}
+.container_24 .push_15 {
+  left: 600px;
+}
+.container_24 .push_16 {
+  left: 640px;
+}
+.container_24 .push_17 {
+  left: 680px;
+}
+.container_24 .push_18 {
+  left: 720px;
+}
+.container_24 .push_19 {
+  left: 760px;
+}
+.container_24 .push_20 {
+  left: 800px;
+}
+.container_24 .push_21 {
+  left: 840px;
+}
+.container_24 .push_22 {
+  left: 880px;
+}
+.container_24 .push_23 {
+  left: 920px;
+}
+/* `Pull Space >> 24 Columns
+----------------------------------------------------------------------------------------------------*/
+.container_24 .pull_1 {
+  left: -40px;
+}
+.container_24 .pull_2 {
+  left: -80px;
+}
+.container_24 .pull_3 {
+  left: -120px;
+}
+.container_24 .pull_4 {
+  left: -160px;
+}
+.container_24 .pull_5 {
+  left: -200px;
+}
+.container_24 .pull_6 {
+  left: -240px;
+}
+.container_24 .pull_7 {
+  left: -280px;
+}
+.container_24 .pull_8 {
+  left: -320px;
+}
+.container_24 .pull_9 {
+  left: -360px;
+}
+.container_24 .pull_10 {
+  left: -400px;
+}
+.container_24 .pull_11 {
+  left: -440px;
+}
+.container_24 .pull_12 {
+  left: -480px;
+}
+.container_24 .pull_13 {
+  left: -520px;
+}
+.container_24 .pull_14 {
+  left: -560px;
+}
+.container_24 .pull_15 {
+  left: -600px;
+}
+.container_24 .pull_16 {
+  left: -640px;
+}
+.container_24 .pull_17 {
+  left: -680px;
+}
+.container_24 .pull_18 {
+  left: -720px;
+}
+.container_24 .pull_19 {
+  left: -760px;
+}
+.container_24 .pull_20 {
+  left: -800px;
+}
+.container_24 .pull_21 {
+  left: -840px;
+}
+.container_24 .pull_22 {
+  left: -880px;
+}
+.container_24 .pull_23 {
+  left: -920px;
+}
+/* `Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+/* http://sonspring.com/journal/clearing-floats */
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+.clearfix:before,
+.clearfix:after,
+.container_24:before,
+.container_24:after {
+  content: '.';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  font-size: 0;
+  line-height: 0;
+  width: 0;
+  height: 0;
+}
+.clearfix:after,
+.container_24:after {
+  clear: both;
+}
+/*
+  The following zoom:1 rule is specifically for IE6 + IE7.
+  Move to separate stylesheet if invalid CSS is a problem.
+*/
+.clearfix,
+.container_24 {
+  zoom: 1;
 }
 #drag {
   position: relative;
@@ -1499,7 +2015,7 @@ input:hover {
 /*必修背景*/
 .biXiu {
   display: inline-block;
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAWCAYAAAC2ew6NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjZERjE3REFGQjdDOTExRTc5OUU0RUY5Q0JCREIyRUFFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjZERjE3REIwQjdDOTExRTc5OUU0RUY5Q0JCREIyRUFFIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NkRGMTdEQURCN0M5MTFFNzk5RTRFRjlDQkJEQjJFQUUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NkRGMTdEQUVCN0M5MTFFNzk5RTRFRjlDQkJEQjJFQUUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz43KRPpAAAFaElEQVR42oRXa2wVRRT+prmJWlqtIAUiVgtF5WHl2hZJxeAVtYqPoqQ+qDVBDY0JKkhRoxU1oQoxUggYiUBEDSEhWB/XIL6KgdrGQv2jIUAorbTakrS2GqDax47f7uzend07t2yyd2fPzJ75zjnfOXOukB8/CgjY1/2QWMlxEZ8ZjkTJg5fU5KaxdN9NY12GUfWc5e9hjjfw+ZU9F4HlzKzlileDiEQyQmcj/gjpKuTYQhCRs8aEStPrfR8e+0gzKI9xGOO4huPqCEZwnwIpRzE97JpUQGSKsS6TykCprUkY521juQ5x5LYDfyZQ+YIjcfaW/tMU6jBgGXK86T2xuTYhZXLQZDiQAQwrIxhGoYqf5qHAhiE5dEPEBYjK67o7gePfw+UIkHW1evb/HqJZCpoovYVpGLYyCRZ88pahOyQf4Z2ZAzy+FbhiFjDkrZHuutD6PIIsWqzWDbnr5i8Dog8pPZkEncE7cqmmR9t7KDHOjDgvSfz0LisYOjtkPe3AL/uBsjXAF7VAa6P67pG3gZOHgZY6P+nGTwE6jwM3Pkj5p0ABQY+bTIDjgCtfUXovugT4bwDYtiy4T4hmEcfSBKmlFgGZHJVyguk4Chz8hN7le/HDwLEG4NYn6GECqFunvGBf6VnA9GKg8TMgtgTo7QLmLlKgGvYCv34DTLsFuPcZ4LudCODwHOYlmXCASi2TL5CxttgGOERPN3KzJnrpqhsIuBSIfwD83e9/Oz2mvNXTrd7zF7Ayfgt0nQRKlgI5pM60KPDl+8CJBm1b095AmuKPflvKOl22ehcw626lw9LmLiPPSp8DmpksExjmB1b5c/nz1Q7D7sb7dyrP2dzr71Ug/6V3J0wFJuUDgzoG1xnaHcGgZchwzarCe5Rn2hny6G1wDghb2fhrgIrXgO7TwOdbgHllwMJyepYhv+kOfpOuvh9xdRUupJcLgIupq4lhr3uP3KW+KTOAm+9S4Dct18qkCNAvkuBUEkfdaxI91d0J/NHmh34yPVC+AujrYRK8rtYd2APczmyeW6rsbTsGzC72gfacITf3AUfo/QIaspTJeLQF2LyamX85kJ2jvCo0CmhYg0BNVTs6jxnboJTYUzNZdhcwKdpOABurgp8eoqfyZij5xFwF1Av9GSbT9bOB5zcoA/fuAM7/Ayx5CfiISdj316iNRZrigFRABl1+eGM7vPbVfNDP5onM7pafgHdWKf546978EPjtCEObrmSeJ70K19UBnGOvsWc7sGuLMqJihfK0/b3HT2dvD5PLVb6nJSXOoJdQfLafApaTe508RareBXKvZVKw3Gx9y1XgFni7NmaxNnaSr2sq/aIPlypeUrUyClGWpKr1yoDaN2jYGPWenasllFfs3cQedkJvabwUIW7wp4jZW/40MMAM7SPhx2YrhfranDzgT/K4tweJvmHYVWmDr2aSdJLji58ETvPA2FgDTKXRlQz7wHlg7YucP6Ud1eFDR9hZr1PSCtJjJjn1FMvPD18Du7ex/DzGE4jFfc6+ZDptWq88LNy+wfOoDbijVW0eZ+3NZ+ZXVKo1h+pZR3f7xgmtjkqtraRMyLISMlpkJhM4RQcsTQ21oW3KGgus2wy8/CxLTx+9Rz5GmYgd9HA9k67pxxSds/E6K+SiknquiZlPIpH6e8/igCy0Xrq9p6mtlxo4gaAsuSk7YPej7CzsbtoAyj1nfeXmxj9IHVPrh+TQ6seyMDTXQWGtDTROeY3T5Xudi8aNQP8pTX8pDP8GRKg5lqMENRXL/AH/iiAecUlfTZDNVE4iYQ4nxkBaWtul/V1ItGGe0ZbmAGEOoSm8CDlECJ1S5yhv5gujLeL2/P8CDAAmhbTFu7wUQwAAAABJRU5ErkJggg==") no-repeat center;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAWCAMAAACBpf6/AAABJlBMVEUAAAD/o1j/VUf/o1j/mlb/UEf/RkX/oFj/SUX/oFf/TUb/RkT/oFf/RkX/R0T/llb/llX/mlb/UUb/TUb/SUX/llX/oFf/olj/VUj/nVf/RkT/////klT/g1H/Xkn/jVP/bk3/flD/iFL/aEz/+Pb/eU//c07/ZEv/Y0r/8O3/3tn/Wkj/5eP/gm3/nVb/WUn/zMX/fGz/8u3/7uz/w7D/vq//pHT/Wkn/4dr/yLv/tKT/m4n/kG//dE7/1cb/wrn/ua7/tK3/ro3/pIv/lon/jlP/iVL/6eT/vaX/qaH/qo3/o4D/lH3/hXr/5Nr/2tD/0c7/wKb/wKX/vJr/tJn/rpn/j4j/jnv/d2v/gF//cl3/ZVn/5dr/z7z/mmT/kmP/kmL/hGC7kZaWAAAAEXRSTlMA8/O+vr6+hIRNTU1M9PTy8r0nXwoAAAGmSURBVCjPjcqHUttAEAbgpdf0Askm2JLPUk4F9WrhhsGV3iH1/V8iKySBZmAGf3e3s7f7A8DK3MzGC2bm1oEsfS7byMpTSwDrX7bpkG2qdEtokkubFZh/N6V5ePPpeWf0fL80eAvfSnx7XLRnNpWfTd/3fxcjqDzYq+ydYrdSOTyl9lfzpHLCbNtmdrpJgSiK+2JWDl1x0Bdd9lcU/7ABdhk/F7usK2brffj+KHSpjPGc6gBHeOSOeJONHtYgFNhF6ApCwqOoKQh93MVE2A0Zd8dFAOq5C0xCr57wo3qM/2JO0YgzL/FC1s8TIEnSjkQibUfxJlyhL/M8k6JxfBPzSLqZUCC9UM2xVlXRUEnbtlLVsYGNFlcaE7NagFpGZ1c1Bc20c660WhrV2w3ddNp6LQey/CNzq2CbPnIPb2XZwh5aPZOZVovptJQJbOV6juaYadPRqFhoWVvHnYOhplhFAowgUFXVOGAddYj3Lg01uMZrmnU0bagGRkBPNQyY3XzOnXO32XKOL0ujWVh4P6UFWP0wpVWA5Y9TWQaytvjq6wteL64B/AcW/3mmTYYoJQAAAABJRU5ErkJggg==") no-repeat center;
   width: 45px;
   height: 22px;
   vertical-align: middle;
@@ -1507,7 +2023,7 @@ input:hover {
 }
 .xuanXiu {
   display: inline-block;
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAWCAYAAAC2ew6NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjZCQjM1NEFDQjdDOTExRTdBNzFEOTM3NTdEQUNBQjVFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjZCQjM1NEFEQjdDOTExRTdBNzFEOTM3NTdEQUNBQjVFIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NkJCMzU0QUFCN0M5MTFFN0E3MUQ5Mzc1N0RBQ0FCNUUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NkJCMzU0QUJCN0M5MTFFN0E3MUQ5Mzc1N0RBQ0FCNUUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4E4q7SAAAFfUlEQVR42nxXfUxXVRh+DvuZCOJUhFgfmPmRBaF8VvZhqKl9razVnK5N/SPWVg2dqxVWa9kfbS3Y+lgb1bKpKy1bUGmCWBlzGDaLzaUkCljIBLSQzB9wT8+959zfOff+Lt7t3fl633Oe8573POe9Qn6yEt4n8CAk1rNWyvpEr096/aqErtv9GGMMob7L2cgIXeAC5WfKW5Sv3Y4YHE9pM8uqhFViAhFcWbAtI1Zxq46IAGzvNIzanw/J48pR5VyrnOXrlE0xjDoPcKQqQtkC5Q9Ja21pYZUBd0C4ehbiwFwywgHh+QJfFftbCBQbgqMhTRl15FEzypCNVvYBJI2FJg/rBddbn4IRlGCEPZ44MHUto9QbgdUHU6bnAjPvUe1hLZ6Nr8f5Zi0JzpdBm4m5pj3shGzstRO4SghUZgQADPvAtOQ/DCx/UYHwDd12Vh5wbRGv3iNKzx8btjY2m5sofVRvQvctfBIook3GdCWTKOMmmU26tr6uscuIeQ3YRxG6AB2tQBnBzlsBHP4SuCofuHoO0MLxcenKzPWSH4v9nebopl0PnD5mbItZZl5D/UzgoReUzhUTgPhFoLbCvZEmaIUMxH/Mc726thqfsAz49Z7iInuBwuUE9wUwZ4GafOUrRmfNm6betB1o3QVMmAzcSN1mAly0ihs4A9xKoJcI6ifO07aHHr8duP8poOFjFQIBNrEcJjyg0qBP0I9Ude+WU/ZvAX77gdpcPI+TN24D/jjMsFgIFNwJbN9sLkXfSVUWLQLGc0N9Z1S7YDGZkRvuOQEsWwPkMnRmFwJfvQccbzZeRIhtNIvoow/vAsqr0+cBJUtVs4cA2hkGnceBX/YBQ+eAGcXKpOdUMvUU3KW6RvWie+i1s9Sbewdwvl+B/I/ezZlFev+H87ZFY9CfAiplMp9BB7Q7lJOryrmlwORpQIV11Kn02oYPTPt8H3CUj8r4tCDQ0vtoX6z0D34H7HoXmE8+n3ETcMtSBb7macPXIcaLIZ7MsAnQ7Ud4LJTVz6u+liYgjY/G1CsZAlz0wLfBumszxNcvMwc4+TuBLDBAz/ZSqNPayFMiZa19mRti+Ly9kXQ1BcjOVbdcRDzDbKck+C8hjiovUeK67p9I8zfA3h2Mu17VbgjVBwlyCoHXfQTs/sycincpe9RYJZ/vvDLg8w8J+kdgFZ1wbgA4dkStFQ/hiStJUQOOATisAboLxKEUpZZhTeI3c6G2VsOt0DYukPxSQ+J2mPV0Mxa5kZ0Mk23vKG8/Uak2mnWdBdAxGPz6iAt0xKBWor0Ql4Z0Hb3g4seBl95nnJIH99WrMXfxVMbjOvJiGS9Q+1E1x6gf57p0N9nBizifrLHxDTVf9auM5XTVzp5hwMYt4tenamJU+JfKJluoxfP5Av3VreKsm4S+lWD/7le6jQQ8lTGZlQ38yphrqDdPo/v92cXc5xnakZYeWwt0kT1qmBDNvIGX8jng4r/AayxPd1jJjJOUO8a8o0wkD27pmDKPFLLuWXpvN3mPOy6/lx7jJVldoW2sTMlhmUrvLGEyVlsT9GjXCVWv20naKuGRa/sDvJx1n4bSQhufDPDoIHsyklMwSie910CQW2tV+7a7uRDBp6WHKMR6ggeHlEcHyLMD/ap02xWMx0KC7KaHd/DBOPj9GJmzE9EvLwi5YlkT+8oDOaSIoCs7dYv6ZDifDSfYIiIfFUH7xMsoLD71Kvt59LLay6aTXgVrQimsOWVyCirC/f4TbPc7yV5LykFlRD7s6VQzcZb1Ot2vSn5n5djZt7A3YZeIzuTD8yR0xeV/vISHrT7m8aAUm9g4RONK6pQRRLr57RAhoFYMRz13gRAKZUQyfKShJMTgHGL9EPt52sJ1JP4XYAAnDQf/MP6TigAAAABJRU5ErkJggg==") no-repeat center;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAWCAMAAACBpf6/AAABSlBMVEUAAAD/nlf/o1j/VUf/UUf/R0T/SkX/TUb/RkT/nVb/RkX/RkT/llb/llX/oVj/oFf/o1j/oVf/oVj/UUf/TUb/SUX/mlb/llX/nVf/8O3/////flD/aUv/jVP/iFL/bk3/WUj/R0X/9/b/Y0v/c07/Xkn/x8T/RkT/VUf/klX/s6P/kVT/nlf/g1H/VUj/zcX/8u3/ycT/v7n/klT/eU//eE//u6X/nIr/pHT/5eP/xbr/tK3/l3H/g23/fm3/mlf/4Nr/3Nn/3ND/0s7/xLD/vrD/ua7/q6L/p5f/oHL/hFL/g1L/hFH/X0n/6eP/0cX/z8X/wKX/vZr/rY3/qY3/pYz/lYj/qIH/nH7/hXr/knD/jWL/ZVr/bU3/18b/zrz/sa3/wqb/jof/lHz/emz/e2v/d2v/f1//+fb/5dr/tZr/emv/m2T/bVxx8tIIAAAAEnRSTlMAvvPzvr6ETU1M9PTy8oSETUwI7FgLAAAB4klEQVQoz43KZ3PaQBAG4MXd6XESx3cUwWElkrBQoYlqejfFYMAY3Evq//+aVcskM5kJz7Xd2xcA3njW9v5jzfMW0Ku9lbwG2D0wHZnn6ACX2+KxuX+74NnfP963/bM6disPvPj4F+PUKczXMP6YvAQxJsYioijelCMxsTy9UbHF/lSNRGJfLw3D+IFdJIYd+B0tNvRPv0yraqvVwvbqcugfMlVVmeomIOCqksAVtSUDFyxJR4x8C4zYyA2A3JXbHbndlrs5nOeqJJfLyXKSjmm5OiZ9NpY73bYsdzpd8Npm/X5yXr7wJonV9ugZnXvPiozUZl4HxBOJeCIenw16gyJBDE9RIhjNEFab14qsh2NMJeDQpShNKUPMLTVrA5qikvQkkczh050TAM6y5DhF4ZYS4XA361weo6kMKaXuFM6xBJ9LUXy+ku5rEF897TOj+Xoqr5B63g1A2KVpjTQphJtMI3q4QCe0MNGYVtBZwQkAz59Ye8JKWe0nz/NZTb8/+U4fHvhK9ryRLt3j1AJB2znLVljlk00PPtJH/Mum043gb7AuCEI0Kiyuo8Kt7kSvhQVZRHVSuRWi5tS612Hj3Yo2YPv9irYBtj6sZAvQzubzUOizuVAohI+5kXVZ9bPNHYBfrSuGzU34NPcAAAAASUVORK5CYII=") no-repeat center;
   width: 45px;
   height: 22px;
   vertical-align: middle;
@@ -2785,8 +3301,8 @@ input:hover {
   padding: 20px;
 }
 .bookDetail .bookComment .comment_bord {
-  border-left: 5px solid solid;
-  border-bottom: 3px solid solid;
+  border-left: 5px solid #d9d9d9;
+  border-bottom: 3px solid #d9d9d9;
   margin-bottom: 20px;
 }
 .bookDetail .bookComment .comment_bord > li {
@@ -3096,6 +3612,95 @@ input:hover {
   height: 130px;
   border-radius: 4px;
 }
+.classDetail .myTab .tab-content {
+  min-height: 200px;
+}
+/**
+ * 班级说说
+ */
+.tmClassInteraction .title {
+  background-color: #f8f8f8;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  color: #333;
+  font-size: 16px;
+  padding: 10px 15px;
+}
+.tmClassInteraction .classForm {
+  width: 80%;
+  margin: 20px auto;
+}
+.tmClassInteraction .classForm input[type="file"] {
+  display: inline-block;
+}
+.tmClassInteraction .classForm .textLimit {
+  color: #999;
+  margin: 0 60px 0 207px;
+}
+.tmClassInteraction .classForm .textLimit .textNum {
+  font-size: 16px;
+  color: #f56a00;
+  font-weight: 700;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem {
+  border-top: 1px solid #d9d9d9;
+  line-height: 25px;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .outer {
+  padding: 10px 50px;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .name {
+  color: #db1011;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .bottom {
+  text-align: right;
+  font-size: 12px;
+  padding: 0 10px;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .bottom a {
+  color: #db1011;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment {
+  margin-left: 10%;
+  padding: 5px 0 0;
+  border-top: 1px solid #d9d9d9;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .otherCommentList {
+  display: none;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .commentList {
+  background-color: #f8f8f8;
+  border-bottom: 1px dotted #d9d9d9;
+  padding: 2px 10px 12px;
+  line-height: 22px;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .commentList p {
+  font-size: 12px;
+  text-align: right;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .commentList p a {
+  color: #db1011;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .foldUnfold {
+  text-align: right;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .foldUnfold span {
+  color: #999;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .foldUnfold a {
+  color: #db1011;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .comment .replyForm {
+  display: none;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .replyUserName {
+  color: #db1011;
+}
+.tmClassInteraction .classInteractionList .classInteractionItem .commentForm {
+  display: none;
+  margin-left: 10%;
+  margin-top: 20px;
+}
 /**
  * 班级考试
  */
@@ -3380,6 +3985,9 @@ input:hover {
 }
 .courseDetails .starGroup span {
   float: left !important;
+}
+.courseDetails .jdcontext {
+  text-align: left;
 }
 .courseDetails .jdcontext p {
   height: 27px;
@@ -5815,6 +6423,25 @@ input:hover {
   width: 75px;
   padding: 2px 0;
 }
+.trainingCenter .classContent {
+  padding: 10px 30px;
+  font-size: 15px;
+}
+.trainingCenter .classContent p {
+  padding: 2px 0;
+}
+.trainingCenter .classTip {
+  font-size: 12px;
+}
+.trainingCenter .classTip .fa {
+  font-size: 20px;
+}
+.trainingCenter .classTip .tipTitle {
+  color: #db1011;
+}
+.trainingCenter .classTip .tipContent {
+  color: #999;
+}
 /**
  * 试看
  */
@@ -5924,16 +6551,16 @@ input:hover {
 }
 .bigBanner {
   position: absolute;
-  top: 118px;
+  top: 70px;
   right: 34%;
-  width: 720px;
-  height: 150px;
+  width: 723px;
+  height: 178px;
+}
+.bigBanner .enter {
+  margin-top: 65px;
 }
 .loginBg.bgLarge1 {
   background: url("/images/banner.png") no-repeat center;
-}
-.bigBanner.textBg1 {
-  background: url("/images/bannerText.png") no-repeat center;
 }
 .loginPositon {
   position: absolute;
