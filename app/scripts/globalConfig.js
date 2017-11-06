@@ -1,7 +1,7 @@
 ﻿"user strict"
 //请求后台数据入口
-// var API_URL = "/api";
-var API_URL = "http://test10.jy365.net/api";
+var API_URL = "/api";
+// var API_URL = "http://test10.jy365.net/api";
 // var API_URL = "http://122.225.101.117:9090/api";
 // var API_URL = "http://192.168.1.25:9090/api2";
 var API_URL_ADMIN = API_URL + "/admin";
@@ -59,6 +59,26 @@ var IMPORT = {
   }
   return "Other";
 })();*/
+Date.prototype.format = function(fmt) {
+  var o = {
+    "M+" : this.getMonth()+1,                 //月份
+    "d+" : this.getDate(),                    //日
+    "h+" : this.getHours(),                   //小时
+    "m+" : this.getMinutes(),                 //分
+    "s+" : this.getSeconds(),                 //秒
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度
+    "S"  : this.getMilliseconds()             //毫秒
+  };
+  if(/(y+)/.test(fmt)) {
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+  }
+  for(var k in o) {
+    if(new RegExp("("+ k +")").test(fmt)){
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+    }
+  }
+  return fmt;
+}
 var changeTheme = function(themeFile) {
   document.getElementById('global-css').setAttribute("href", "styles/"+themeFile+".css");
 }

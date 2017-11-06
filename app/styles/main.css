@@ -4213,7 +4213,7 @@ input:hover {
 }
 .courseSupermarket .courseList .NewCourseList ul li .block3 {
   text-align: left;
-  width: 430px;
+  width: 550px;
   margin-left: 15px;
 }
 .courseSupermarket .courseList .NewCourseList ul li .block3 .CourseName {
@@ -4242,6 +4242,11 @@ input:hover {
   visibility: hidden;
   font-size: 0;
   height: 0;
+}
+.courseSupermarket .courseList .NewCourseList ul li .block3 .CourseName .name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .courseSupermarket .courseList .NewCourseList ul li .block3 .line3,
 .courseSupermarket .courseList .NewCourseList ul li .block3 .line2 {

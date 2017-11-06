@@ -297,9 +297,11 @@ angular.module('luZhouApp')
         return "";
       }
       str = str.match(/\d+/ig)[0];
+      
       function dFormat(i) {
         return i < 10 ? "0" + i.toString() : i;
       }
+      
       if (value == "yyyy-MM-dd hh:mm:ss") {
         var d = new Date(Number(str));
         var ar_date = [d.getFullYear(), d.getMonth() + 1, d.getDate(), d.getHours(), d.getMinutes(), d.getSeconds()];
@@ -373,10 +375,17 @@ angular.module('luZhouApp')
     //播放refresh
     this.refresh = function (PortalId, userId, courseid) {
       var fresh = function () {
+        var now = new Date().format("yyyy-MM-dd hh:mm:ss");
         $http({
           method: 'POST',
           url: ALL_PORT.Refresh.url,
-          data: $.param($.extend({}, ALL_PORT.Refresh.data, {PortalId: PortalId, userId: userId, courseid: courseid})),
+          timeout: 5000,
+          data: $.param($.extend({}, ALL_PORT.Refresh.data, {
+            PortalId: PortalId,
+            userId: userId,
+            courseid: courseid,
+            time: now
+          })),
         }).success(function (data) {
           if (!!data) {
             if (data.Type === 401) {
@@ -399,20 +408,19 @@ angular.module('luZhouApp')
               window.location.reload();
             }
           } else {
+            debugger
             clearTimeout(timer);
             document.body.innerHTML = "";
             alert("出现错误 将返回首页");
             $state.go('main');
             window.location.reload();
           }
-        }).error(function (ex) {
+        }).error(function (error, status) {
           clearTimeout(timer);
-          if (ex.Message) {
-            alert("出现错误:" + ex.Message + ", 将返回首页");
-            document.body.innerHTML = "";
-            $state.go('main');
-            window.location.reload();
-          }
+          alert("出现错误, 将返回首页");
+          document.body.innerHTML = "";
+          $state.go('main');
+          window.location.reload();
         });
       }
       var timer = setInterval(fresh, 3000);
@@ -436,6 +444,7 @@ angular.module('luZhouApp')
       $http({
         url: endpoint,
         method: method,
+        timeout: 5000,
         headers: {
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
         },
