@@ -3609,6 +3609,11 @@ input:hover {
 .classDetail .myTab .tab-content {
   min-height: 200px;
 }
+.classDetail .myTab .tab-content .classMore a {
+  display: inline-block;
+  padding: 4px 30px;
+  color: #db1011;
+}
 /**
  * 班级说说
  */
