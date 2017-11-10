@@ -220,7 +220,6 @@ Running `grunt test` will run the unit tests with karma.
 1. commonservice.js (通用的函数)
 
 ## styles
-1. 960_24_col.css （布局）
-2. main.css （页面通用的样式）
-3. drag.css （视频播放拖动滑块样式）
-4. pageNation.css （分页样式）
+1. layout.less （布局）
+2. main.less （页面通用的样式）
+3. drag.less （视频播放拖动滑块样式）

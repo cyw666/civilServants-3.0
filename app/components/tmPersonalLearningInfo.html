@@ -1,5 +1,4 @@
 <!--个人学习信息-->
-
 <div class="personalLearningInfo ">
   <div common-header title-header="'个人学习信息'" show-more=false link-url="''"></div>
   <div class="tmBorder" dw-loading="personalLearningInfo">
@@ -10,10 +9,10 @@
     </div>
     <ul>
       <li>必修课(已学 | 总课数): {{classInfoData.Model.FinishRequiredCount}} | {{classInfoData.Model.RequiredCount}}</li>
-      <li>选修课(已学 | 总课数 | 必学课数):
+      <li>选修课(已学 | 总课数 | 必学课数)：
         {{classInfoData.Model.FinishElectiveCount}} | {{classInfoData.Model.ElectiveCount}} | {{classInfoData.Model.ElectivePassCount}}
       </li>
-      <li>考试:<span ng-show="classInfoData.Model.ExamCount>0">(已完成 | 考试数 | 必考数): {{classInfoData.Model.FinishExamCount}} | {{classInfoData.Model.ExamCount}} | {{classInfoData.Model.ExamPassCount}} </span>
+      <li>考试：<span ng-show="classInfoData.Model.ExamCount>0">(已完成 | 考试数 | 必考数): {{classInfoData.Model.FinishExamCount}} | {{classInfoData.Model.ExamCount}} | {{classInfoData.Model.ExamPassCount}} </span>
         <span ng-show="classInfoData.Model.ExamCount==0">未安排</span></li>
       <li><span>培训班考核状态：</span>
         <span ng-show="classInfoData.ViewBag.PassStatus=='Pass'" style="color:red">通过</span>

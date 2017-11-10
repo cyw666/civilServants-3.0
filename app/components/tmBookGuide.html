@@ -4,11 +4,9 @@
 
   <ul class="bookList" dw-loading="bookList">
     <li class="pull-left" ng-repeat="list in booksData.ListData">
-      <p class="pull-left">
-        <a ui-sref="bookdetail({Id:list.Id})" target="_blank">
+        <a class="bookImg" ui-sref="bookdetail({Id:list.Id})" target="_blank">
           <img ng-src="{{imgPath+'/'+list.Icon}}" err-src="images/notFound.jpeg" alt="{{list.Name}}">
         </a>
-      </p>
       <div class="content pull-left">
         <h4 class="title">
           <a ui-sref="bookdetail({Id:list.Id})" target="_blank">{{list.Name | wordLimit:17}}</a>

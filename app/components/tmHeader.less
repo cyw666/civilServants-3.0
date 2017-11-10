@@ -34,12 +34,14 @@
           background: @logo no-repeat center;
         }
         .logoText {
+          .text-left();
+          margin-left: 15px;
+          .pull-left();
           h3 {
             font-size: 35px;
             font-weight: 600;
             margin-top: 25px;
             color: #444548;
-            .text-center();
           }
           p {
             font-size: @font-size-lg;
@@ -54,9 +56,9 @@
         padding-left: 24px;
         .input-group {
           margin-top: 30px;
+          width: 85%;
           .form-control {
             .ht-lineHt(44px);
-            width: 335px;
             padding: 0 10px 0 40px;
           }
           .input-group-btn {
