@@ -23,11 +23,8 @@ angular.module('luZhouApp')
         .then(function(response) {
           if(response.Type==1){
             $state.go('shoppingcart',{},{reload:true});
-          }else if(response.Type==600){
-            commonService.alertMs(response.Message);
-            commonService.closeWindow();
           } else{
-            commonService.alertMs(response.Message);
+            alert(response.Message);
             commonService.closeWindow();
           }
         });

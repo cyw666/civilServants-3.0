@@ -4268,6 +4268,57 @@ input:hover {
   padding: 4px 10px;
 }
 /**
+ * 课程中心 购买
+ */
+.courseSupermarketBuy .formSearch input.form-control {
+  width: 75%;
+}
+.courseSupermarketBuy .courseList {
+  position: relative;
+  border-top: 1px solid #e9e9e9;
+}
+.courseSupermarketBuy .courseList .courseName {
+  text-align: left;
+}
+.courseSupermarketBuy .courseList .tag {
+  padding: 10px 15px 10px 0;
+}
+.courseSupermarketBuy .courseList .tag span {
+  padding-left: 10px;
+}
+.courseSupermarketBuy .courseList .tag a {
+  margin-left: 5px;
+}
+.courseSupermarketBuy .courseList .title_bar {
+  padding: 5px 0;
+  text-align: center;
+  background: #edf3fc;
+}
+.courseSupermarketBuy .courseList .title_bar > span {
+  padding: 0;
+}
+.courseSupermarketBuy .NewCourseList {
+  text-align: center;
+  font-size: 12px;
+  border-top: 1px solid #e9e9e9;
+}
+.courseSupermarketBuy .NewCourseList .money {
+  font-weight: bold;
+  font-size: 15px;
+  color: #00a854;
+}
+.courseSupermarketBuy .NewCourseList .btn {
+  width: 100px;
+}
+.courseSupermarketBuy .NewCourseList li {
+  border-bottom: 1px solid #e9e9e9;
+  padding: 5px 0;
+}
+.courseSupermarketBuy .checkCourse > a.btn {
+  margin: 10px 0 0 5px;
+  padding: 4px 10px;
+}
+/**
  * 考试
  */
 .exam {
@@ -6706,3 +6757,218 @@ input:hover {
 /**
  * 用户排行列表（more）
  */
+/**
+ * 购物车
+ */
+.shoppingCart .btn {
+  padding: 3px 20px;
+}
+.shoppingCart input.form-control {
+  width: 70%;
+  display: inline-block;
+  height: 28px;
+}
+.shoppingCart .shooingCartFooter {
+  text-align: left;
+  margin: 20px 0 10px 10px;
+}
+.shoppingCart .shooingCartFooter span {
+  margin-right: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.shoppingCart .shooingCartFooter .pull-right .btn-primary {
+  width: 80px;
+}
+/**
+ * 订单详细
+ */
+.orderDetailList {
+  text-align: center;
+}
+.orderDetailList .cartList .title {
+  font-weight: bold;
+  background: #EDF3FC;
+  color: #666;
+  height: 40px;
+  line-height: 40px;
+  margin: 10px 0 0 0;
+  border: 1px solid #e9e9e9;
+  border-top: 0;
+}
+.orderDetailList .cartList .title span {
+  height: 40px;
+  line-height: 40px;
+}
+.orderDetailList .cartList .content {
+  border-bottom: 1px dotted #cfe8fb;
+  border-top: 1px dotted #cfe8fb;
+  margin: 10px 0;
+  background-color: #f2f7ff;
+}
+.orderDetailList .cartList .bottom {
+  text-align: left;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #f2f7ff;
+}
+.orderDetailList .cartList .bottom .bottomInfo {
+  font-size: 18px;
+  display: inline-block;
+  line-height: 2.6;
+  font-weight: bold;
+  letter-spacing: normal;
+  color: #108ee9;
+}
+.orderDetailList .cartList .bottom .totalPrice {
+  margin: 20px 0 40px 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+.orderDetailList .cartList .bottom .btn {
+  float: right;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 7px 28px;
+  margin-top: 20px;
+}
+/**
+ * 支付确认
+ */
+.payConfirm {
+  text-align: center;
+}
+.payConfirm .cartList .title {
+  font-weight: bold;
+  background: #EDF3FC;
+  color: #666;
+  height: 40px;
+  line-height: 40px;
+  margin: 10px 0 0 0;
+  border: 1px solid #e9e9e9;
+  border-top: 0;
+}
+.payConfirm .cartList .title span {
+  height: 40px;
+  line-height: 40px;
+}
+.payConfirm .cartList .content {
+  border-bottom: 1px dotted #cfe8fb;
+  border-top: 1px dotted #cfe8fb;
+  margin: 10px 0;
+  background-color: #f2f7ff;
+}
+.payConfirm .cartList .bottom {
+  text-align: left;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #f2f7ff;
+}
+.payConfirm .cartList .bottom img {
+  width: 75px;
+  height: 22px;
+}
+.payConfirm .cartList .bottom .bottomInfo {
+  font-size: 18px;
+  display: inline-block;
+  line-height: 2.6;
+  font-weight: bold;
+  letter-spacing: normal;
+  color: #108ee9;
+}
+.payConfirm .cartList .bottom .btn {
+  float: right;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 7px 28px;
+  margin-top: 20px;
+}
+/**
+ * 我的订单
+ */
+.orderList {
+  text-align: center;
+}
+.orderList .cartList .title {
+  font-weight: bold;
+  background: #EDF3FC;
+  color: #666;
+  height: 40px;
+  line-height: 40px;
+  margin: 10px 0 0 0;
+  border: 1px solid #e9e9e9;
+  border-top: 0;
+}
+.orderList .cartList span {
+  float: left;
+}
+.orderList .cartList .item1 {
+  width: 30%;
+}
+.orderList .cartList .item2 {
+  width: 10%;
+}
+.orderList .cartList .item3 {
+  width: 20%;
+}
+.orderList .cartList .table {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+.orderList .cartList .table > tbody > tr > td {
+  vertical-align: middle;
+}
+.orderList .cartList .table .del {
+  position: relative;
+  top: 2px;
+  width: 20px;
+}
+.orderList .table > tbody > tr:hover {
+  background-color: #fff;
+}
+/**
+ * 个人信息（购买）
+ */
+.userInformationBuy .loginAfter_ul li {
+  line-height: 40px;
+  width: 270px;
+  height: 40px;
+  margin: 0 auto;
+  border-bottom: 1px solid #d9d9d9;
+}
+.userInformationBuy .loginAfter_ul li .hours {
+  display: inline-block;
+  width: 110px;
+}
+.userInformationBuy .loginAfter_ul li .item2 {
+  float: right !important;
+}
+.userInformationBuy .loginAfter_ul li .item2 a {
+  color: #999;
+}
+.userInformationBuy .loginAfter_ul li .item2 a:hover {
+  color: #666;
+}
+.userInformationBuy .loginAfter_ul li.lastChild {
+  border-bottom: 0;
+  font-size: 12px;
+}
+.userInformationBuy .loginAfter_ul li.lastChild a {
+  color: #666;
+}
+.userInformationBuy .loginAfter_ul li.lastChild a:hover {
+  color: #333;
+}
+.userInformationBuy .loginAfter_ul li.lastChild .item2 a {
+  color: #108ee9;
+}
+.userInformationBuy .loginAfter_ul li.lastChild .item2 a:hover {
+  color: #333;
+}
+.userInformationBuy .loginAfter_ul .exit {
+  text-align: center;
+}
+.userInformationBuy .loginAfter_ul .exit .btn {
+  border-radius: 6px;
+  padding: 2px 25px;
+}

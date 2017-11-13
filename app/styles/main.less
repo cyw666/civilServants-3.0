@@ -38,7 +38,19 @@
     .input-hover();
   }
 }
-
+.form-control:disabled, input:disabled {
+  &:focus {
+    border: 1px solid #ccc;;
+  }
+  &:hover {
+    border: 1px solid #ccc;;
+  }
+}
+input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus {
+  outline: none;
+  outline-offset: -2px;
+  box-shadow: none;
+}
 //
 // Buttons
 // --------------------------------------------------
@@ -449,6 +461,10 @@
 .list {
   width: 100%;
   .clearFix();
+}
+
+.list0-5 {
+  .list-item(5%);
 }
 
 .list0-75 {

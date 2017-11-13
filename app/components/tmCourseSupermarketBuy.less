@@ -1,0 +1,58 @@
+/**
+ * 课程中心 购买
+ */
+@import "../styles/mixins";
+
+.courseSupermarketBuy {
+  .formSearch {
+    input.form-control {
+      width: 75%;
+    }
+  }
+  .courseList {
+    position: relative;
+    border-top: 1px solid @border-color-split;
+    .courseName{
+      text-align: left;
+    }
+    .tag {
+      padding: 10px 15px 10px 0;
+      span {
+        padding-left: 10px;
+      }
+      a {
+        margin-left: 5px;
+      }
+    }
+    .title_bar {
+      padding: 5px 0;
+      text-align: center;
+      background: #edf3fc;
+      & > span {
+        padding: 0;
+      }
+    }
+  }
+  .NewCourseList {
+    text-align: center;
+    font-size: 12px;
+    border-top: 1px solid @border-color-split;
+    .money {
+      font-weight: bold;
+      font-size: 15px;
+      color: @green-3;
+    }
+    .btn {
+      width: 100px;
+    }
+    li {
+      border-bottom: 1px solid @border-color-split;
+      padding: 5px 0;
+    }
+  }
+
+  .checkCourse > a.btn {
+    margin: 10px 0 0 5px;
+    padding: 4px 10px;
+  }
+}
