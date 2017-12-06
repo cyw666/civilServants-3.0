@@ -17,7 +17,7 @@ angular.module('luZhouApp')
     //显示loading
     $loading.start('courseClassify');
     //课程分类
-    $scope.courseClassify=[];
+    $scope.courseClassify = [];
     commonService.getData(ALL_PORT.CourseCategory.url, 'POST', ALL_PORT.CourseCategory.data)
       .then(function (response) {
         $loading.finish('courseClassify');
@@ -27,7 +27,9 @@ angular.module('luZhouApp')
           id: 0,
           state: "open",
           text: "全部课程",
-        }]
+        }];
+        response.Data.ListData[0].state="open";
+        commonService.loop(response.Data.ListData[0].children);
         $scope.courseClassify = allCourse.concat(response.Data.ListData);
       });
     
@@ -65,7 +67,7 @@ angular.module('luZhouApp')
       titleNav: '课程中心',
       wordLimt: 35,
       teacher: teacher,
-      flag:'all'
+      flag: 'all'
     };
     $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: courseListParams.rows});
     //搜索方法

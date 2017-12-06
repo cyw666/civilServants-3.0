@@ -338,7 +338,7 @@ angular.module('luZhouApp')
     this.countIf = function (arr) {
       var count = 0;
       for (var i = 0; i < arr.length; i++) {
-        if (arr[i].UserAnswer == arr[i].Question.Answer) {
+        if (arr[i].UserScore>0) {
           count++;
         }
       }
@@ -379,7 +379,7 @@ angular.module('luZhouApp')
         $http({
           method: 'POST',
           url: ALL_PORT.Refresh.url,
-          timeout: 5000,
+          timeout: 10000,
           data: $.param($.extend({}, ALL_PORT.Refresh.data, {
             PortalId: PortalId,
             userId: userId,
@@ -408,7 +408,6 @@ angular.module('luZhouApp')
               window.location.reload();
             }
           } else {
-            debugger
             clearTimeout(timer);
             document.body.innerHTML = "";
             alert("出现错误 将返回首页");
@@ -416,11 +415,12 @@ angular.module('luZhouApp')
             window.location.reload();
           }
         }).error(function (error, status) {
-          clearTimeout(timer);
-          alert("出现错误, 将返回首页");
+          console.log(error,status);
+          alert("和平台通讯出错！");
+          /*clearTimeout(timer);
           document.body.innerHTML = "";
           $state.go('main');
-          window.location.reload();
+          window.location.reload();*/
         });
       }
       var timer = setInterval(fresh, 3000);
@@ -617,5 +617,17 @@ angular.module('luZhouApp')
       } else {
         alert("提交过于频繁，请稍后再试！");
       }
+    }
+    //递归循环（课程分类，文章分类...）
+    this.loop = function (data) {
+      var t = this;
+      data.map(function (item) {
+        if (item.children) {
+          $.extend(item, {state: 'open'})
+          return t.loop(item.children);
+        } else {
+          return item;
+        }
+      })
     }
   });

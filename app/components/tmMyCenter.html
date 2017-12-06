@@ -390,6 +390,7 @@
                 <th>考试学时</th>
                 <th>时限</th>
                 <th>参加测试</th>
+                <th>查看考试成绩</th>
               </tr>
               </thead>
               <tbody>
@@ -397,7 +398,8 @@
                 <td>{{test.Name}}</td>
                 <td>{{test.CreditHour}}</td>
                 <td>{{test.TimeLimit}}</td>
-                <td><a href="" target="_blank" ng-click="havTest(test.Id)">参加测试</a></td>
+                <td><a ng-click="havTest(test.Id)">参加测试</a></td>
+                <td><a ui-sref="examDetailList({Id:test.Id})" target="_blank">查看考试成绩</a></td>
               </tr>
               </tbody>
             </table>

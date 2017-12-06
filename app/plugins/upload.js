@@ -219,6 +219,7 @@ function uploadCanceled(evt) {
       contentType: false,
       cache: false,
       success: function (data) {
+        debugger
         if ('json' == options.dataType) {
           var d = window.eval('(' + data + ')');
           options.onComplate(d);
@@ -227,7 +228,7 @@ function uploadCanceled(evt) {
         }
       },
       error: function () {
-        alertMs("图片上传失败！");
+        alert("图片上传失败！");
         log("error");
       }
     })
