@@ -103,9 +103,9 @@ angular.module('luZhouApp')
      $scope.getExam({type:'exam'});
      $scope.getTraining({type:'training'});*/
     $scope.timeSearch = function (options) {
-      $scope.getStudy($.extend({},{type:'study'},options));
-      $scope.getExam($.extend({},{type:'exam'},options));
-      $scope.getTraining($.extend({},{type:'training'},options));
+      $scope.getStudy($.extend({}, {type: 'study'}, options));
+      $scope.getExam($.extend({}, {type: 'exam'}, options));
+      $scope.getTraining($.extend({}, {type: 'training'}, options));
     }
     $scope.$watch('paginationConf[0].currentPage', function (newValue, oldValue) {
       // 发送给后台的请求学习课程获得学时

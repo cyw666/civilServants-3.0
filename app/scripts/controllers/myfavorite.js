@@ -9,7 +9,7 @@
  */
 angular.module('luZhouApp')
   .controller('MyfavoriteCtrl', function ($scope, $timeout, $rootScope, $cookieStore, commonService, $location, $loading) {
-
+    
     $scope.token = commonService.AntiForgeryToken();
     //我的收藏
     $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: ALL_PORT.MyFavorite.data.rows});
@@ -22,7 +22,7 @@ angular.module('luZhouApp')
           $loading.finish('myFavorite');
           $scope.paginationConf.totalItems = response.Data.Count;
           $scope.myFavoriteData = response.Data;
-
+          
         });
     };
     $scope.$watch('paginationConf.currentPage', function () {
@@ -30,8 +30,8 @@ angular.module('luZhouApp')
       options.page = $scope.paginationConf.currentPage;
       $scope.requestMyStudyStat(options);
     });
-
-
+    
+    
     $scope.favoriteDelete = function (options, token) {
       var favoriteDelete = function () {
         var params = $.extend({}, ALL_PORT.FavoriteDelete.data, options, token)
@@ -44,8 +44,8 @@ angular.module('luZhouApp')
             }
           });
       };
-
+      
       commonService.limitSubmit(favoriteDelete);
-
+      
     }
   });

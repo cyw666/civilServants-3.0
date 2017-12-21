@@ -11,6 +11,7 @@ angular.module('luZhouApp')
     return {
       templateUrl: 'components/tmCollegeInfo.html',
       restrict: 'EA',
-      link: function postLink(scope, element, attrs) {}
+      link: function postLink(scope, element, attrs) {
+      }
     };
   });

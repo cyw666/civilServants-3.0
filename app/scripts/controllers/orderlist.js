@@ -9,7 +9,7 @@
  */
 angular.module('luZhouApp')
   .controller('OrderlistCtrl', function ($scope, $stateParams, $state, $cookieStore, commonService, $loading) {
-
+    
     //订单列表
     $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: 4});
     $scope.getOrderList = function (options) {
@@ -22,14 +22,14 @@ angular.module('luZhouApp')
           $scope.paginationConf.totalItems = response.Data.Count;
         });
     };
-
+    
     $scope.$watch('paginationConf.currentPage', function () {
       var pageOptions = {
         page: $scope.paginationConf.currentPage,
       };
       $scope.getOrderList(pageOptions);
     });
-
+    
     //删除订单
     $scope.delOrder = function (orderId) {
       commonService.getData(ALL_PORT.DelOrder.url, 'POST', {orderId: orderId})

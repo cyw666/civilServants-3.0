@@ -8,22 +8,23 @@
  * Controller of the luZhouApp
  */
 angular.module('luZhouApp')
-  .controller('TryplayCtrl', function ($scope, $http, $state,$timeout,$interval,$sce, $cookieStore, commonService, $location, $loading, $stateParams) {
+  .controller('TryplayCtrl', function ($scope, $http, $state, $timeout, $interval, $sce, $cookieStore, commonService, $location, $loading, $stateParams) {
     $scope.Id = $stateParams.Id;
     $scope.token = commonService.AntiForgeryToken();
-
+    
     //加载视频信息
     $scope.allPlayInfo;
     $scope.userId;
     var loadOnce = 0;
+    
     //添加购物车
-    function addCourseToCart (courseid) {
-      var params = $.extend({},ALL_PORT.AddCourseToCart.data,{courseid:courseid});
+    function addCourseToCart(courseid) {
+      var params = $.extend({}, ALL_PORT.AddCourseToCart.data, {courseid: courseid});
       commonService.getData(ALL_PORT.AddCourseToCart.url, 'POST', params)
-        .then(function(response) {
-          if(response.Type==1){
-            $state.go('shoppingcart',{},{reload:true});
-          } else{
+        .then(function (response) {
+          if (response.Type == 1) {
+            $state.go('shoppingcart', {}, {reload: true});
+          } else {
             alert(response.Message);
             commonService.closeWindow();
           }
@@ -31,89 +32,90 @@ angular.module('luZhouApp')
     };
     //播放倒计时
     var timePlay;
-    function countDown (courseid){
+    
+    function countDown(courseid) {
       var courseid = courseid;
-      $cookieStore.put('second',5);
+      $cookieStore.put('second', 5);
       timePlay = $cookieStore.get('second');
       var timePromise = undefined;
-      timePromise = $interval(function(){
-        if(timePlay<=0){
+      timePromise = $interval(function () {
+        if (timePlay <= 0) {
           $interval.cancel(timePromise);
           timePromise = undefined;
           $('.playPage').html('');
           var t = confirm('试看结束，是否购买此课程？');
           if (t) {
             addCourseToCart(courseid);
-          }else {
+          } else {
             commonService.closeWindow();
           }
-        }else{
+        } else {
           timePlay--;
-          $cookieStore.put('second',timePlay);
+          $cookieStore.put('second', timePlay);
         }
-      },1000,150);
+      }, 1000, 150);
     };
     //加载视频信息
-    $scope.loadPlayInfo=function () {
+    $scope.loadPlayInfo = function () {
       $http({
         method: 'POST',
         url: ALL_PORT.Play.url,
-        data: $.param($.extend({},ALL_PORT.Play.data,{id:$scope.Id})),
-      }).success(function(response) {
-        $scope.userId=response.Data.UserId;
+        data: $.param($.extend({}, ALL_PORT.Play.data, {id: $scope.Id})),
+      }).success(function (response) {
+        $scope.userId = response.Data.UserId;
         $scope.allPlayInfo = response.Data;
         if (response.Data && response.Data.Content == null) {
           if ((response.Data.PortalId) && (response.Data.UserId) && (response.Data.CourseId)) {
             //refresh
-            if (loadOnce==0){
-              commonService.refresh($scope.allPlayInfo.PortalId,$scope.allPlayInfo.UserId,$scope.allPlayInfo.CourseId);
-              loadOnce=1;
+            if (loadOnce == 0) {
+              commonService.refresh($scope.allPlayInfo.PortalId, $scope.allPlayInfo.UserId, $scope.allPlayInfo.CourseId);
+              loadOnce = 1;
             }
-            $scope.options=response.Data.PlayPage;
+            $scope.options = response.Data.PlayPage;
             $scope.resultCourseDetail = response.Data.resultCourseDetail;
             $scope.resultCourseNote = response.Data.resultCourseNote;
-
-          }else {
+            
+          } else {
             commonService.alertMs("数据无效，请检查api");
-            window.open("about:blank","_top").close();
+            window.open("about:blank", "_top").close();
           }
-        }else if (response.Data && response.Data.Content){
+        } else if (response.Data && response.Data.Content) {
           commonService.alertMs('同时只能打开一门课程,请关闭之前页面,并于' + response.Data.Content + '秒后重试！');
-          window.open("about:blank","_top").close();
+          window.open("about:blank", "_top").close();
         }
-
+        
       });
     };
     $scope.loadPlayInfo();
-
+    
     //播放单视频
     var playMp4 = function () {
-      var params = $.extend({}, ALL_PORT.PlayJwplay.data, { courseid: $scope.allPlayInfo.CourseId })
-      $scope.playMp4Data={};
+      var params = $.extend({}, ALL_PORT.PlayJwplay.data, {courseid: $scope.allPlayInfo.CourseId})
+      $scope.playMp4Data = {};
       var _timePool = {
         startTime: 0,
         increaseTime: 0,
         totalTime: 0
       };
-
+      
       commonService.getData(ALL_PORT.PlayJwplay.url, 'POST', params)
-        .then(function(response) {
+        .then(function (response) {
           $scope.playMp4Data = response.Data;
           var _portalId = response.Data.PortalId;
           var _userId = response.Data.UserId;
           var _courseId = response.Data.CourseId;
           var _lastPosition = response.Data.LastPostion;
           var _lastLocation = response.Data.Location;
-
+          
           var _thePlayer = jwplayer('myplayer').setup({
             flashplayer: "jwplayer/jwplayer.flash.swf",
             file: $scope.playMp4Data.Url,
             autostart: 'true',
             width: "100%",
-            height:"100%"
+            height: "100%"
           });
           countDown(_courseId);
-
+          
           /*var _sendProcess = function () {
            if(_thePlayer.getPosition())  {
            var data = $.extend({},{ "PortalId": _portalId, "userid": _userId, "courseid": _courseId, "positionen": _thePlayer.getPosition().toString().rsaEnscrypt()},$scope.token);
@@ -212,63 +214,63 @@ angular.module('luZhouApp')
            };
            }
            initPlay();*/
-
-        },function () {
-          window.open("about:blank","_top").close();
+          
+        }, function () {
+          window.open("about:blank", "_top").close();
         });
-
-
+      
+      
     };
     //播放精英课程
     var playJy = function () {
-      var params = $.extend({}, ALL_PORT.PlayJY.data, { courseId: $scope.allPlayInfo.CourseId })
-      $scope.playMJyData={};
+      var params = $.extend({}, ALL_PORT.PlayJY.data, {courseId: $scope.allPlayInfo.CourseId})
+      $scope.playMJyData = {};
       commonService.getData(ALL_PORT.PlayJY.url, 'POST', params)
         .then(function (response) {
-          $scope.playMJyData=response.Data;
-          $scope.BatchId=response.Data.BatchId;
-          $scope.CourseId=response.Data.CourseId;
-          $scope.LastPostion=response.Data.LastPostion;
-          $scope.PortalId=response.Data.PortalId;
-          $scope.PortalURL=response.Data.PortalURL;
-          $scope.Url=response.Data.Url;
-          $scope.UserId=response.Data.UserId;
-
+          $scope.playMJyData = response.Data;
+          $scope.BatchId = response.Data.BatchId;
+          $scope.CourseId = response.Data.CourseId;
+          $scope.LastPostion = response.Data.LastPostion;
+          $scope.PortalId = response.Data.PortalId;
+          $scope.PortalURL = response.Data.PortalURL;
+          $scope.Url = response.Data.Url;
+          $scope.UserId = response.Data.UserId;
+          
           // $scope.jyIframeSrc =$sce.trustAsResourceUrl( $scope.Url+'?url=192.168.1.25/api/CourseProcess/JYProcess?batchId='+$scope.BatchId+'&portalId='+$scope.PortalId+'&UserId='+$scope.UserId+'&courseId='+$scope.CourseId);
           // $scope.jyIframeSrc = $sce.trustAsResourceUrl($scope.Url+'?url='+$scope.PortalURL+'/api/CourseProcess/JYProcess?batchId='+$scope.BatchId+'&portalId='+$scope.PortalId+'&UserId='+$scope.UserId+'&courseId='+$scope.CourseId);
           $scope.jyIframeSrc = $sce.trustAsResourceUrl($scope.Url);
           countDown($scope.CourseId);
           if (!$scope.PortalId || !$scope.UserId || !$scope.CourseId) {
             commonService.alertMs("数据无效，请检查api");
-            window.open("about:blank","_top").close();
-          }else if(!$scope.Url||!$scope.PortalURL){
+            window.open("about:blank", "_top").close();
+          } else if (!$scope.Url || !$scope.PortalURL) {
             commonService.alertMs("没有视频资源！");
-            window.open("about:blank","_top").close();
+            window.open("about:blank", "_top").close();
           }
         });
     };
     //播放scorm视频
     var playScorm = function () {
-      var params = $.extend({}, ALL_PORT.PlayScorm.data, { courseId: $scope.allPlayInfo.CourseId })
-      $scope.playScormData={};
+      var params = $.extend({}, ALL_PORT.PlayScorm.data, {courseId: $scope.allPlayInfo.CourseId})
+      $scope.playScormData = {};
       commonService.getData(ALL_PORT.PlayScorm.url, 'POST', params)
         .then(function (response) {
-          $scope.playScormData=response.Data;
-          var BatchId2=response.Data.BatchId;
-          var courseId=response.Data.CourseId;
-          var LastPostion2=response.Data.LastPostion;
-          var portalId=response.Data.PortalId;
-          var PortalURL2=response.Data.PortalURL;
-          var Url2=response.Data.Url;
-          var userId=response.Data.UserId;
-
+          $scope.playScormData = response.Data;
+          var BatchId2 = response.Data.BatchId;
+          var courseId = response.Data.CourseId;
+          var LastPostion2 = response.Data.LastPostion;
+          var portalId = response.Data.PortalId;
+          var PortalURL2 = response.Data.PortalURL;
+          var Url2 = response.Data.Url;
+          var userId = response.Data.UserId;
+          
           $scope.scormIframeSrc = $sce.trustAsResourceUrl(Url2);
           if (!portalId || !userId || !courseId) {
             commonService.alertMs("数据无效，请检查api");
-            window.open("about:blank","_top").close();
+            window.open("about:blank", "_top").close();
           }
           countDown(courseId);
-
+          
           /*function LMSInitialize(value) {
            var reCode = "";
            return true;
@@ -467,11 +469,11 @@ angular.module('luZhouApp')
     };
     //播放single视频
     var playSingle = function () {
-      var params = $.extend({}, ALL_PORT.PlaySingle.data, { courseId: $scope.allPlayInfo.CourseId })
-      $scope.playSingleData={};
-
+      var params = $.extend({}, ALL_PORT.PlaySingle.data, {courseId: $scope.allPlayInfo.CourseId})
+      $scope.playSingleData = {};
+      
       commonService.getData(ALL_PORT.PlaySingle.url, 'POST', params)
-        .then(function(response) {
+        .then(function (response) {
           $scope.playSingleData = response.Data;
           var _portalId = response.Data.PortalId;
           var _userId = response.Data.UserId;
@@ -482,7 +484,7 @@ angular.module('luZhouApp')
           var authcode = "";
           if (!_portalId || !_userId || !_courseId) {
             commonService.alertMs("数据无效，请检查api");
-            window.open("about:blank","_top").close();
+            window.open("about:blank", "_top").close();
           }
           var MediaPlayer;
           // var au = "47$67$111$117$114$115$101$80$114$111$99$101$115$115$47$83$105$110$103$108$101$80$114$111$99$101$115$115$".toCharString("$");
@@ -515,9 +517,9 @@ angular.module('luZhouApp')
 
 
            setTimeout(sendProcess, 2000);//第一次送进度时间*/
-
-        },function () {
-          window.open("about:blank","_top").close();
+          
+        }, function () {
+          window.open("about:blank", "_top").close();
         });
     };
     //播放pdf
@@ -623,7 +625,7 @@ angular.module('luZhouApp')
             $scope.loadPlayInfo();
           })
       }
-    
+      
       function cutTime() {
         pdfTime = pdfTime + 1;
         $("#stime").html(pdfTime);
@@ -643,19 +645,19 @@ angular.module('luZhouApp')
     $scope.showPlayScorm = false;
     $scope.showPlaySingle = false;
     $scope.showPlayPdf = false;
-    $scope.dragReady=function () {
+    $scope.dragReady = function () {
       document.getElementById("tryPlayBg").style.display = 'none';
       var playPage = $scope.allPlayInfo.PlayPage.split('?')[0];
-      if(playPage=='PlayJwplay.html'){
+      if (playPage == 'PlayJwplay.html') {
         $scope.showPlayMp4 = true;
         playMp4();
-      }else if (playPage=='PlayJy.html'){
+      } else if (playPage == 'PlayJy.html') {
         $scope.showPlayJy = true;
         playJy();
-      }else if (playPage=='PlayScorm.html') {
+      } else if (playPage == 'PlayScorm.html') {
         $scope.showPlayScorm = true;
         playScorm();
-      }else if (playPage=='PlaySingle.html') {
+      } else if (playPage == 'PlaySingle.html') {
         $scope.showPlaySingle = true;
         playSingle();
       } else if (playPage == 'PlayOffice.html') {
@@ -663,5 +665,5 @@ angular.module('luZhouApp')
         playPdf();
       }
     };
-
+    
   });

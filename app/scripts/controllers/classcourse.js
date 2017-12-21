@@ -11,11 +11,11 @@ angular.module('luZhouApp')
   .controller('classCourseCtrl', function ($scope, $loading, $stateParams, commonService) {
     $scope.Id = $stateParams.Id;
     $scope.type = $stateParams.Type;
-    if($scope.type=="required"){
+    if ($scope.type == "required") {
       $scope.couseTypeText = "必修";
-    }else if($scope.type=="electives"){
+    } else if ($scope.type == "electives") {
       $scope.couseTypeText = "选修";
-    }else {
+    } else {
       $scope.couseTypeText = "";
     }
     //loading

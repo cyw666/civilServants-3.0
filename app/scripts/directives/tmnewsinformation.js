@@ -7,13 +7,13 @@
  * # tmNewsInformation
  */
 angular.module('luZhouApp')
-    .directive('tmNewsInformation', function() {
-        return {
-            templateUrl: 'components/tmNewsInformation.html',
-            restrict: 'EA',
-            link: function postLink(scope, element, attrs) {
-
-
-            }
-        };
-    });
+  .directive('tmNewsInformation', function () {
+    return {
+      templateUrl: 'components/tmNewsInformation.html',
+      restrict: 'EA',
+      link: function postLink(scope, element, attrs) {
+      
+      
+      }
+    };
+  });

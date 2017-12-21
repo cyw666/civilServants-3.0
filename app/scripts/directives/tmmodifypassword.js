@@ -7,12 +7,12 @@
  * # tmModifyPassword
  */
 angular.module('luZhouApp')
-    .directive('tmModifyPassword', function() {
-        return {
-            templateUrl: 'components/tmModifyPassword.html',
-            restrict: 'EA',
-            link: function postLink(scope, element, attrs) {
-
-            }
-        };
-    });
+  .directive('tmModifyPassword', function () {
+    return {
+      templateUrl: 'components/tmModifyPassword.html',
+      restrict: 'EA',
+      link: function postLink(scope, element, attrs) {
+      
+      }
+    };
+  });

@@ -11,8 +11,8 @@ angular.module('luZhouApp')
     return {
       templateUrl: 'components/tmRelatedCourse.html',
       restrict: 'EA',
-      scope:{
-        relatedCourseData:'='
+      scope: {
+        relatedCourseData: '='
       },
       link: function postLink(scope, element, attrs) {
       }

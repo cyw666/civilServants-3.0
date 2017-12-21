@@ -11,7 +11,7 @@ angular.module('luZhouApp')
     return {
       templateUrl: 'components/tmChart.html',
       restrict: 'EA',
-      controller: function ($scope, $http, $loading, commonService, $state,$stateParams,$element, $attrs) {
+      controller: function ($scope, $http, $loading, commonService, $state, $stateParams, $element, $attrs) {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
         var option = {
@@ -19,19 +19,19 @@ angular.module('luZhouApp')
             // show:false,
             text: '用户素质维度',
             // link:'#/courseCenter',
-            textStyle:{
+            textStyle: {
               fontSize: 20
             }
           },
           name: {
-            textStyle:{
-              color:'#333',
-              fontSize:14
+            textStyle: {
+              color: '#333',
+              fontSize: 14
             }
           },
           tooltip: {},
           legend: {
-            show:false,
+            show: false,
             data: ['当前值']
           },
           radar: {
@@ -40,16 +40,16 @@ angular.module('luZhouApp')
             splitNumber: 4,
             center: ['50%', '55%'],
             axisLine: {
-              lineStyle:{
-                color:'#d7d7d7'
+              lineStyle: {
+                color: '#d7d7d7'
               },
               width: 2
             },
             splitLine: {
-              show:true,
+              show: true,
             },
             splitArea: {
-              show:true,
+              show: true,
               areaStyle: {
                 color: '#fff',
                 width: 2
@@ -60,7 +60,7 @@ angular.module('luZhouApp')
             name: '当前值',
             type: 'radar',
             // areaStyle: {normal: {}},
-            data : []
+            data: []
           }]
         };
         myChart.setOption(option);
@@ -68,19 +68,19 @@ angular.module('luZhouApp')
         commonService.getData(ALL_PORT.GetUserSkill.url, 'POST')
           .then(function (response) {
             var data = response.Data;
-            if(data){
+            if (data) {
               var indicatorData = [];
               var currentValue = [];
               var targetValue = [];
-              for (var i=0;i<data.length;i++){
+              for (var i = 0; i < data.length; i++) {
                 var SkillValue = data[i].SkillValue;
                 var RequiredValue = data[i].RequiredValue;
-                var list = {name:data[i].SkillName,max:RequiredValue};
+                var list = {name: data[i].SkillName, max: RequiredValue};
                 indicatorData.push(list);
                 
-                if(SkillValue>max){
-                  SkillValue==max;
-                }else {
+                if (SkillValue > max) {
+                  SkillValue == max;
+                } else {
                   currentValue.push(SkillValue);
                 }
                 targetValue.push(RequiredValue);
@@ -95,28 +95,28 @@ angular.module('luZhouApp')
                   name: '当前值',
                   type: 'radar',
                   // areaStyle: {normal: {}},
-                  data : [
+                  data: [
                     {
                       value: targetValue,
                       name: '目标值',
                       symbol: 'none',
-                      lineStyle:{
-                        normal:{
-                          color:'#d7d7d7'
+                      lineStyle: {
+                        normal: {
+                          color: '#d7d7d7'
                         }
                       }
                     },
                     {
-                      value : currentValue,
-                      name : '当前值',
-                      lineStyle:{
-                        normal:{
-                          color:'#a3a3a3'
+                      value: currentValue,
+                      name: '当前值',
+                      lineStyle: {
+                        normal: {
+                          color: '#a3a3a3'
                         }
                       },
-                      itemStyle:{
-                        normal:{
-                          color:'#a3a3a3'
+                      itemStyle: {
+                        normal: {
+                          color: '#a3a3a3'
                         }
                       },
                       areaStyle: {
@@ -137,12 +137,13 @@ angular.module('luZhouApp')
         
       },
       link: function postLink(scope, element, attrs) {
-        $(".slideBar").hover(function() {
+        $(".slideBar").hover(function () {
           $(".hoverArrow").removeClass('fa-angle-double-right').addClass('fa-angle-double-left');
-          $('.slideBar').animate({right:'0'},300);
-        }, function() {
+          $('.slideBar').animate({right: '0'}, 300);
+        }, function () {
           $(".hoverArrow").removeClass('fa-angle-double-left').addClass('fa-angle-double-right');
-          $('.slideBar').animate({right:'-430'},300,function(){});
+          $('.slideBar').animate({right: '-430'}, 300, function () {
+          });
         });
       }
     };

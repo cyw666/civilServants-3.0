@@ -19,13 +19,13 @@ angular.module('luZhouApp')
     };
   })
   .filter('wordLimit', function () {
-    return function (text,num) {
-      var des='';
-      if (typeof text=="string") {
-        if (text.length>num){
-          des = text.substring(0,num)+"...";
+    return function (text, num) {
+      var des = '';
+      if (typeof text == "string") {
+        if (text.length > num) {
+          des = text.substring(0, num) + "...";
           return des;
-        }else {
+        } else {
           return text;
         }
       }
@@ -59,12 +59,12 @@ angular.module('luZhouApp')
       }
       return result;
     }
-
+    
   })
   .filter('delHtmlTag', function () {
     return function (value) {
       if (!value) return
-      var result = value.replace(/<[^>]+>|&nbsp;| /ig,"");//去掉所有的html标记
+      var result = value.replace(/<[^>]+>|&nbsp;| /ig, "");//去掉所有的html标记
       return result;
     }
   });

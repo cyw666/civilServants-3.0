@@ -12,7 +12,7 @@ angular.module('luZhouApp')
       templateUrl: 'components/tmTrainingCenter.html',
       restrict: 'EA',
       transclude: {
-        'pagation':'tm-pagation'
+        'pagation': 'tm-pagation'
       },
       link: function postLink(scope, element, attrs) {
       }

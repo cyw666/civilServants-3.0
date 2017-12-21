@@ -18,9 +18,11 @@
         <span>浏览次数：{{articleData.ClickCount || 0}}</span>
       </p>
       <p class="article-detail-adjust" ng-show="articleData.Id">
-        <a ng-click="favoriteAdd({mainId:articleData.Id,type:articleData.Type,title:articleData.Name,remark:'0'},token)" ng-show="!articleData.FavoriteId">[收藏]</a>
+        <a ng-click="favoriteAdd({mainId:articleData.Id,type:articleData.Type,title:articleData.Name,remark:'0'},token)"
+           ng-show="!articleData.FavoriteId">[收藏]</a>
         <a ng-click="favoriteDelete({id:articleData.FavoriteId},token)" ng-show="articleData.FavoriteId">[取消收藏]</a>
-        <a href="/Content/Upload/Attachment/{{articleData.AttachmentName}}" target="_blank" ng-show="articleData.AttachmentName">[附件下载]</a>
+        <a href="/Content/Upload/Attachment/{{articleData.AttachmentName}}" target="_blank"
+           ng-show="articleData.AttachmentName">[附件下载]</a>
         <a href="javascript:window.print();">[打印]</a>
         <a ng-click="reduceFont()">[缩小字体]</a>
         <a ng-click="increaseFont()">[放大字体]</a>
@@ -32,7 +34,8 @@
         <a class="btn btn-primary" onclick="window.scrollTo(0,0);" ui-sref="bookchaptercontent({Id:articleData.UpId})">上一章</a>
       </p>
       <p class="article-detail-changeBar-down">
-        <a class="btn btn-primary" onclick="window.scrollTo(0,0);" ui-sref="bookchaptercontent({Id:articleData.DownId})">下一章</a>
+        <a class="btn btn-primary" onclick="window.scrollTo(0,0);"
+           ui-sref="bookchaptercontent({Id:articleData.DownId})">下一章</a>
       </p>
     </div>
   </div>

@@ -15,14 +15,14 @@ angular.module('luZhouApp')
         //未读通知小提示
         $scope.showTip = false;
         commonService.getData(ALL_PORT.UnReadNotice2.url, 'POST', $.extend({}, ALL_PORT.UnReadNotice2.data))
-          .then(function(response) {
+          .then(function (response) {
             $scope.unReadNoticeList = response.Data;
             if (response.Data.length > 0) {
               $scope.showTip = true;
             }
           });
         //关闭小提示
-        $scope.closeTip = function() {
+        $scope.closeTip = function () {
           $scope.showTip = false;
         };
       },

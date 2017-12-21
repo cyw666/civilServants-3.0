@@ -3,13 +3,13 @@
   <div class="borderNews">
     <div class="myTab">
       <ul class="nav nav-tabs" ng-init="vm.activeTab=0">
-        <li ng-class="{active: vm.activeTab == 0}" >
+        <li ng-class="{active: vm.activeTab == 0}">
           <a ng-click="vm.activeTab = 0;getNewsContent('newsInformation')">新闻资讯</a>
         </li>
-        <li ng-class="{active: vm.activeTab == 1}" >
+        <li ng-class="{active: vm.activeTab == 1}">
           <a ng-click="vm.activeTab = 1;getNewsContent('cadreEducationNews')">干教资讯</a>
         </li>
-        <li ng-class="{active: vm.activeTab == 2}" >
+        <li ng-class="{active: vm.activeTab == 2}">
           <a ng-click="vm.activeTab = 2;getNewsContent('newsHot')">时政热点</a>
         </li>
         <a class="more" ui-sref="article({categoryCode:articleListUrl})" target="_blank"></a>
@@ -18,7 +18,8 @@
         <div class="tab-panel perlist">
           <div class="top">
             <h4>
-              <a title="{{articleListData.ListData[0].Name}}" class="title" ui-sref="articleDetail({ID:articleListData.ListData[0].Id})" target="_blank">{{articleListData.ListData[0].Name}}</a>
+              <a title="{{articleListData.ListData[0].Name}}" class="title"
+                 ui-sref="articleDetail({ID:articleListData.ListData[0].Id})" target="_blank">{{articleListData.ListData[0].Name}}</a>
             </h4>
             <p class="description">{{articleListData.ListData[0].Description|wordLimit:52}}</p>
           </div>

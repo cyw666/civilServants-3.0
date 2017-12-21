@@ -9,7 +9,9 @@
     </ol>
     <ul class="resultContent clearfix" dw-loading="resultShow">
       <li class="pull-left" ng-repeat="list in resultShowData.ListData">
-        <a ui-sref="articleDetail({ID:list.Id})" target="_blank"><img ng-src="{{resultShowData.Path+'/'+list.Img}}" alt="{{list.Name}}" err-Src="images/notCourse.png"></a>
+        <a ui-sref="articleDetail({ID:list.Id})" target="_blank"><img ng-src="{{resultShowData.Path+'/'+list.Img}}"
+                                                                      alt="{{list.Name}}"
+                                                                      err-Src="images/notCourse.png"></a>
         <p><a ui-sref="articleDetail({ID:list.Id})" target="_blank">{{list.Name}}</a></p>
       </li>
     </ul>

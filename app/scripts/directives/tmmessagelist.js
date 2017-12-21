@@ -7,10 +7,11 @@
  * # tmMessageList
  */
 angular.module('luZhouApp')
-    .directive('tmMessageList', function() {
-        return {
-            templateUrl: 'components/tmMessageList.html',
-            restrict: 'EA',
-            link: function postLink(scope, element, attrs) {}
-        };
-    });
+  .directive('tmMessageList', function () {
+    return {
+      templateUrl: 'components/tmMessageList.html',
+      restrict: 'EA',
+      link: function postLink(scope, element, attrs) {
+      }
+    };
+  });

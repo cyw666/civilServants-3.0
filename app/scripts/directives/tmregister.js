@@ -14,7 +14,7 @@ angular.module('luZhouApp')
       link: function postLink(scope, element, attrs) {
         //协议
         $('#myModal').modal({
-          show:true,
+          show: true,
           backdrop: 'static',
           keyboard: false
         });

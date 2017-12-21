@@ -11,6 +11,7 @@ angular.module('luZhouApp')
     return {
       templateUrl: 'components/tmLibrary.html',
       restrict: 'EA',
-      link: function postLink(scope, element, attrs) {}
+      link: function postLink(scope, element, attrs) {
+      }
     };
   });

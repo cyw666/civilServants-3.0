@@ -7,15 +7,15 @@
  * # tmMyFavorite
  */
 angular.module('luZhouApp')
-    .directive('tmMyFavorite', function() {
-        return {
-            templateUrl: 'components/tmMyFavorite.html',
-            restrict: 'EA',
-            transclude: {
-                'pagation': 'tm-pagation'
-            },
-            link: function postLink(scope, element, attrs) {
-
-            }
-        };
-    });
+  .directive('tmMyFavorite', function () {
+    return {
+      templateUrl: 'components/tmMyFavorite.html',
+      restrict: 'EA',
+      transclude: {
+        'pagation': 'tm-pagation'
+      },
+      link: function postLink(scope, element, attrs) {
+      
+      }
+    };
+  });

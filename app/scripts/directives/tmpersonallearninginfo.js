@@ -21,7 +21,7 @@ angular.module('luZhouApp')
           });
       },
       link: function postLink(scope, element, attrs) {
-
+      
       }
     };
   });

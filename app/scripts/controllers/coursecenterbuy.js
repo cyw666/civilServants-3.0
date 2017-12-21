@@ -17,7 +17,7 @@ angular.module('luZhouApp')
     //显示loading
     $loading.start('courseClassify');
     //课程分类
-    $scope.courseClassify=[];
+    $scope.courseClassify = [];
     commonService.getData(ALL_PORT.CourseCategory.url, 'POST', ALL_PORT.CourseCategory.data)
       .then(function (response) {
         $loading.finish('courseClassify');
@@ -60,7 +60,7 @@ angular.module('luZhouApp')
       teacher: teacher
     };
     $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: courseListParams.rows});
-  
+    
     //搜索方法
     $scope.searchCourse = function (options, isOrder) {
       $loading.start('courseSupermarket');
@@ -81,7 +81,7 @@ angular.module('luZhouApp')
       } else if ($scope.selectedName == "3") {
         $.extend(params, {teacher: $scope.searchTeacher, title: "", courseType: $scope.selectedType}, options);
       }
-    
+      
       $scope.recommendApi = false;
       $.extend(courseListParams, params);
       $scope.paginationConf.currentPage = courseListParams.page;
@@ -110,7 +110,7 @@ angular.module('luZhouApp')
         $scope.showInput3 = true;
       }
     }
-  
+    
     //智能推荐
     $scope.getRecommendCourse = function (options) {
       $scope.recommendApi = true;

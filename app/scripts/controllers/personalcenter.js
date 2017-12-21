@@ -15,7 +15,6 @@ angular.module('luZhouApp')
     $scope.selectedName = {};
     //搜索title
     $scope.searchTitle = '';
-    $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: ALL_PORT.MyCenter.data.rows});
     $scope.courseStatus = [
       {name: '所有', id: 'All'},
       {name: '正在学习课程', id: 'Unfinish'},
@@ -33,9 +32,13 @@ angular.module('luZhouApp')
       courseType: "Unfinish",
       title: ""
     }
+    $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: myCenterParams.rows});
     $scope.searchMyCenterCourse = function (option) {
       $loading.start('myCenter');
       var params = $.extend(myCenterParams, option);
+      if (option.page) {
+        $scope.paginationConf.currentPage = params.page;
+      }
       commonService.getData(ALL_PORT.MyCenter.url, 'POST', params)
         .then(function (response) {
           $loading.finish('myCenter');

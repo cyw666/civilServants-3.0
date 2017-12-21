@@ -1,12 +1,12 @@
 <!--@*通知公告 轮播*@-->
 
 <div class="noticeAnnouncement">
-  <div class="notice"  dw-loading="noticeAnnouncement">
+  <div class="notice" dw-loading="noticeAnnouncement">
     <!--轮播-->
     <div class="noticeSlide">
       <div class="noticeSlideList" ng-repeat="list in noticeData.ListData" repeat-finish="repeatFinish()">
         <a ui-sref="noticeDetail({ID:list.Id})" target="_blank">
-          <img ng-src="{{noticeData.Path+'/'+list.Img}}"  title="{{list.Name}}" err-Src="images/notFound.jpeg">
+          <img ng-src="{{noticeData.Path+'/'+list.Img}}" title="{{list.Name}}" err-Src="images/notFound.jpeg">
         </a>
         <p class="titleBg"></p>
         <p class="titleName">

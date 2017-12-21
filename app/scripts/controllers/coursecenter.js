@@ -28,7 +28,7 @@ angular.module('luZhouApp')
           state: "open",
           text: "全部课程",
         }];
-        response.Data.ListData[0].state="open";
+        response.Data.ListData[0].state = "open";
         commonService.loop(response.Data.ListData[0].children);
         $scope.courseClassify = allCourse.concat(response.Data.ListData);
       });

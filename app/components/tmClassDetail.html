@@ -53,13 +53,14 @@
             <span class="list2">作者</span>
           </div>
           <div class="list" ng-repeat="list in classDetailData.Model.ClassNoticeList">
-              <div class="list4 ellipsis ">
-                <a title="{{list.Name}}" ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a>
-              </div>
-              <div class="list2">{{list.CreatedDate | dateFilter | date:'yyyy-MM-dd'}}</div>
-              <div class="list2">{{list.Author}}</div>
+            <div class="list4 ellipsis ">
+              <a title="{{list.Name}}" ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a>
+            </div>
+            <div class="list2">{{list.CreatedDate | dateFilter | date:'yyyy-MM-dd'}}</div>
+            <div class="list2">{{list.Author}}</div>
           </div>
-          <div ng-if="classDetailData.Model.ClassNoticeList.length>0" class="classMore"><a ui-sref="classNotice({Id:Id})">更多...</a></div>
+          <div ng-if="classDetailData.Model.ClassNoticeList.length>0" class="classMore"><a
+              ui-sref="classNotice({Id:Id})">更多...</a></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 2">
           <div class="title_bar">
@@ -68,18 +69,20 @@
             <span class="list2">播放</span>
           </div>
           <div class="list" ng-repeat="list in classDetailData.Model.ClassRequiredCourseList">
-              <div class="list4 ellipsis" ng-show="!list.Name">暂无名称</div>
-              <div class="list4 ellipsis" ng-show="list.Name" title="{{list.Name}}">{{list.Name}}</div>
-              <div class="list2">
-                <div class="progress">
-                  <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{list.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':list.BrowseScore+'%'};">
-                    {{list.BrowseScore.toFixed(1)}}%
-                  </div>
+            <div class="list4 ellipsis" ng-show="!list.Name">暂无名称</div>
+            <div class="list4 ellipsis" ng-show="list.Name" title="{{list.Name}}">{{list.Name}}</div>
+            <div class="list2">
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{list.BrowseScore}}"
+                     aria-valuemin="0" aria-valuemax="100" ng-style="{'width':list.BrowseScore+'%'};">
+                  {{list.BrowseScore.toFixed(1)}}%
                 </div>
               </div>
-              <div class="list2"><a ui-sref="play({Id:list.Id})" target="_blank">点击进入</a></div>
+            </div>
+            <div class="list2"><a ui-sref="play({Id:list.Id})" target="_blank">点击进入</a></div>
           </div>
-          <div ng-if="classDetailData.Model.ClassRequiredCourseList.length>0" class="classMore"><a ui-sref="classCourse({Id:Id,Type:'required'})">更多...</a></div>
+          <div ng-if="classDetailData.Model.ClassRequiredCourseList.length>0" class="classMore"><a
+              ui-sref="classCourse({Id:Id,Type:'required'})">更多...</a></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 3">
           <div class="title_bar">
@@ -88,18 +91,20 @@
             <span class="list2">播放</span>
           </div>
           <div class="list" ng-repeat="list in classDetailData.Model.ClassElectiveCourseList">
-              <div class="list4 ellipsis" ng-show="!list.Name">暂无名称</div>
-              <div class="list4 ellipsis" ng-show="list.Name" title="{{list.Name}}">{{list.Name}}</div>
-              <div class="list2">
-                <div class="progress">
-                  <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{list.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':list.BrowseScore+'%'};">
-                    {{list.BrowseScore.toFixed(1)}}%
-                  </div>
+            <div class="list4 ellipsis" ng-show="!list.Name">暂无名称</div>
+            <div class="list4 ellipsis" ng-show="list.Name" title="{{list.Name}}">{{list.Name}}</div>
+            <div class="list2">
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{list.BrowseScore}}"
+                     aria-valuemin="0" aria-valuemax="100" ng-style="{'width':list.BrowseScore+'%'};">
+                  {{list.BrowseScore.toFixed(1)}}%
                 </div>
               </div>
-              <div class="list2"><a ui-sref="play({Id:list.Id})" target="_blank">点击进入</a></div>
+            </div>
+            <div class="list2"><a ui-sref="play({Id:list.Id})" target="_blank">点击进入</a></div>
           </div>
-          <div ng-if="classDetailData.Model.ClassElectiveCourseList.length>0" class="classMore"><a ui-sref="classCourse({Id:Id,Type:'electives'})">更多...</a></div>
+          <div ng-if="classDetailData.Model.ClassElectiveCourseList.length>0" class="classMore"><a
+              ui-sref="classCourse({Id:Id,Type:'electives'})">更多...</a></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 4">
           <div class="title_bar">
@@ -109,12 +114,13 @@
             <span class="list2">参加测试</span>
           </div>
           <div class="list" ng-repeat="list in classDetailData.Model.ClassExamList">
-              <div class="list4 ellipsis" title="{{list.Name}}">{{list.Name}}</div>
-              <div class="list2">{{list.Credit}}</div>
-              <div class="list2">{{list.TotalScore}}</div>
-              <div class="list2"><a ng-click="havTest(list.Id)" target="_blank">参加测试</a></div>
+            <div class="list4 ellipsis" title="{{list.Name}}">{{list.Name}}</div>
+            <div class="list2">{{list.Credit}}</div>
+            <div class="list2">{{list.TotalScore}}</div>
+            <div class="list2"><a ng-click="havTest(list.Id)" target="_blank">参加测试</a></div>
           </div>
-          <div ng-if="classDetailData.Model.ClassExamList.length>0" class="classMore"><a ui-sref="classExam({Id:Id})">更多...</a></div>
+          <div ng-if="classDetailData.Model.ClassExamList.length>0" class="classMore"><a ui-sref="classExam({Id:Id})">更多...</a>
+          </div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 5">
           <div class="title_bar">
@@ -124,14 +130,15 @@
             <span class="list2">作者</span>
           </div>
           <div class="list" ng-repeat="list in classDetailData.Model.ClassTopicList">
-              <div class="list4 ellipsis">
-                <a title="{{list.Name}}" ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a>
-              </div>
-              <div class="list2">{{list.Type}}</div>
-              <div class="list2">{{list.CreatedDate |dateFilter |date:'yyyy-MM-dd' }}</div>
-              <div class="list2">{{list.Author}}</div>
+            <div class="list4 ellipsis">
+              <a title="{{list.Name}}" ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a>
+            </div>
+            <div class="list2">{{list.Type}}</div>
+            <div class="list2">{{list.CreatedDate |dateFilter |date:'yyyy-MM-dd' }}</div>
+            <div class="list2">{{list.Author}}</div>
           </div>
-          <div ng-if="classDetailData.Model.ClassTopicList.length>0" class="classMore"><a ui-sref="classTopicList({Id:Id})">更多...</a></div>
+          <div ng-if="classDetailData.Model.ClassTopicList.length>0" class="classMore"><a
+              ui-sref="classTopicList({Id:Id})">更多...</a></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 6">
           <div class="title_bar">
@@ -140,13 +147,14 @@
             <span class="list2">创建时间</span>
           </div>
           <div class="list" ng-repeat="list in classDetailData.Model.ClassPaperList">
-              <div class="list4 ellipsis">
-                <a title="{{list.Name}}" ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a>
-              </div>
-              <div class="list2">{{list.Author}}</div>
-              <div class="list2">{{list.CreatedDate | dateFilter | date:'yyyy-MM-dd'}}</div>
+            <div class="list4 ellipsis">
+              <a title="{{list.Name}}" ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a>
+            </div>
+            <div class="list2">{{list.Author}}</div>
+            <div class="list2">{{list.CreatedDate | dateFilter | date:'yyyy-MM-dd'}}</div>
           </div>
-          <div ng-if="classDetailData.Model.ClassPaperList.length>0" class="classMore"><a ui-sref="classPaperList({Id:Id})">更多...</a></div>
+          <div ng-if="classDetailData.Model.ClassPaperList.length>0" class="classMore"><a
+              ui-sref="classPaperList({Id:Id})">更多...</a></div>
         </div>
         <div class="tab-panel perlist" ng-show="vm.activeTab == 7">
           <ul class="clearfix">
@@ -157,7 +165,8 @@
               </a>
             </li>
           </ul>
-          <div ng-if="classDetailData.Model.ClassPhotoList.length>0" class="classMore"><a ui-sref="photoAlbumList({Id:Id})">更多...</a></div>
+          <div ng-if="classDetailData.Model.ClassPhotoList.length>0" class="classMore"><a
+              ui-sref="photoAlbumList({Id:Id})">更多...</a></div>
         </div>
       </div>
     </div>

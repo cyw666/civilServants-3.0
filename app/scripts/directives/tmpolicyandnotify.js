@@ -7,16 +7,16 @@
  * # tmPolicyAndNotify
  */
 angular.module('luZhouApp')
-  .directive('tmPolicyAndNotify', function ($compile,$location) {
+  .directive('tmPolicyAndNotify', function ($compile, $location) {
     return {
       templateUrl: 'components/tmPolicyAndNotify.html',
       restrict: 'EA',
-      scope:{
-          myNewsData:'=myData',
-          title:'=myTitle'
+      scope: {
+        myNewsData: '=myData',
+        title: '=myTitle'
       },
       link: function (scope, element, attrs) {
-
+      
       }
     };
   });

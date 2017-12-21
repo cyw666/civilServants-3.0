@@ -11,14 +11,14 @@ angular.module('luZhouApp')
   .controller('classPaperAddCtrl', function ($scope, $location, $stateParams, commonService, $loading, $state) {
     $scope.Id = $stateParams.Id;
     $scope.location = '发表论文';
-
+    
     var token = commonService.AntiForgeryToken();
-
+    
     commonService.getData(ALL_PORT.ClassPaperAdd.url, 'POST', $.extend({}, ALL_PORT.ClassPaperAdd.data, {Id: $scope.Id}))
       .then(function (response) {
         $scope.data = response.Data.ViewBag;
       });
-
+    
     //获取论文分类
     commonService.getData(ALL_PORT.GetTrainingArticleCategory.url, 'POST', $.extend({}, ALL_PORT.GetTrainingArticleCategory.data, {
       trainingId: $scope.Id,
@@ -27,9 +27,9 @@ angular.module('luZhouApp')
       .then(function (response) {
         $scope.topicCategoryData = response;
       });
-
+    
     $scope.config = ueditorConfig;
-
+    
     //发布话题
     $scope.publishTopic = function () {
       var publishTopic = function () {
@@ -55,7 +55,7 @@ angular.module('luZhouApp')
         }
       };
       commonService.limitSubmit(publishTopic);
-
+      
     };
-
+    
   });

@@ -14,21 +14,21 @@ angular.module('luZhouApp')
     
     $scope.getNoticeList = function (options) {
       $loading.start('noticeAnnouncement');
-      var parmas = $.extend({},ALL_PORT.NoticeList.data,{rows:10},options);
+      var parmas = $.extend({}, ALL_PORT.NoticeList.data, {rows: 10}, options);
       commonService.getData(ALL_PORT.NoticeList.url, 'POST', parmas)
-        .then(function(response) {
+        .then(function (response) {
           $loading.finish('noticeAnnouncement');
           $scope.noticeListData = response.Data;
           var categoryName = response.Data.CategoryName;
-          if(categoryName){
+          if (categoryName) {
             $scope.noticeTitle = categoryName;
-          }else {
+          } else {
             $scope.noticeTitle = response.Data.TitleNav;
           }
           $scope.paginationConf.totalItems = response.Data.Count;
         });
     }
-  
+    
     $scope.$watch('paginationConf.currentPage', function () {
       var pageOptions = {
         page: $scope.paginationConf.currentPage,

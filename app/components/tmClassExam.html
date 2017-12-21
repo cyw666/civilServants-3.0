@@ -22,10 +22,10 @@
               <span class="list2">参加测试</span>
             </div>
             <div class="list" ng-repeat="list in Data.ListData">
-                <span class="list4 ellipsis">{{list.Name}}</span>
-                <span class="list2">{{list.Credit}}</span>
-                <span class="list2">{{list.TotalScore}}</span>
-                <span class="list2"><a ng-click="havTest(list.Id)" target="_blank">参加测试</a></span>
+              <span class="list4 ellipsis">{{list.Name}}</span>
+              <span class="list2">{{list.Credit}}</span>
+              <span class="list2">{{list.TotalScore}}</span>
+              <span class="list2"><a ng-click="havTest(list.Id)" target="_blank">参加测试</a></span>
             </div>
             <div ng-transclude="pagation"></div>
           </div>

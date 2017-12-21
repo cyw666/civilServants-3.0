@@ -575,7 +575,7 @@ angular
       })
       .state('printcertificate', {
         url: '/Do/printcertificate',
-        data:{title:"打印证书"},
+        data: {title: "打印证书"},
         templateUrl: 'views/Do/printcertificate.html',
         controller: 'PrintcertificateCtrl',
         controllerAs: 'printCertificate'
@@ -1003,18 +1003,18 @@ angular
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
       $rootScope.rememberName = toState.name;
       $rootScope.rememberParams = JSON.stringify(toParams);
-      if (toState.name == 'main')return;// 首页
-      if (toState.name == 'main2')return;// 首页
-      if (toState.name == 'userLogin')return;// 登录界面
-      if (toState.name == 'userRegister')return;// 注册界面
-      if (toState.name == 'forgetPassword')return;//忘记密码
+      if (toState.name == 'main') return;// 首页
+      if (toState.name == 'main2') return;// 首页
+      if (toState.name == 'userLogin') return;// 登录界面
+      if (toState.name == 'userRegister') return;// 注册界面
+      if (toState.name == 'forgetPassword') return;//忘记密码
       
       $.ajax({
         type: "POST",
         async: false,
         contentType: "application/x-www-form-urlencoded;charset=UTF-8",
         url: ALL_PORT.Authorization.url,
-        data: $.extend({}, ALL_PORT.Authorization.data),
+        data: $.extend({}, ALL_PORT.Authorization.data, {action: toState.name}),
         success: function (data) {
           if (data.isauth == true) {
           } else {
@@ -1030,8 +1030,7 @@ angular
             }
             else if (data.Type == 10) {
               alert("您还不是本平台会员，将前往您所在的平台" + ":" + data.Message);
-              // document.location = "http://" + data.Message;
-              window.open("http://" + data.Message,"_blank");
+              window.open("http://" + data.Message, "_blank");
             }
             else if (data.Type == 11) {
               alert("过期了");
@@ -1045,6 +1044,8 @@ angular
             }
             else if (data.Type == 15) {
               alert(data.Type + ":" + data.Message);
+            } else if (data.Type == 20) {
+              /*登陆之后，跳转问卷调查*/
             }
             else {
               alert("请登录！");

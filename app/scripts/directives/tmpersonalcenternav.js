@@ -11,8 +11,8 @@ angular.module('luZhouApp')
     return {
       templateUrl: 'components/tmPersonalCenterNav.html',
       restrict: 'EA',
-      scope:{
-        navList:'='
+      scope: {
+        navList: '='
       },
       link: function postLink(scope, element, attrs) {
       }

@@ -11,12 +11,12 @@ angular.module('luZhouApp')
     return {
       templateUrl: 'components/tmSpecialImg.html',
       restrict: 'EA',
-      scope:{
-        studySpecialData:'=',
-        repeatFinish:'=',
+      scope: {
+        studySpecialData: '=',
+        repeatFinish: '=',
       },
       link: function postLink(scope, element, attrs) {
-
+      
       }
     };
   });

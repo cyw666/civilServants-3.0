@@ -2,13 +2,14 @@
  * 用户素质维度
  */
 @import "../styles/mixins";
+
 .slideBar {
-  .wh(430px,554px);
+  .wh(430px, 554px);
   position: fixed;
   right: -430px;
-  top:50%;
+  top: 50%;
   background: @white;
-  border:1px solid @border-color-base;
+  border: 1px solid @border-color-base;
   box-shadow: 0px 0px 8px @border-color-base;
   z-index: 99999;
   .transition();
@@ -25,17 +26,17 @@
     color: @white;
     background: #94dde1;
     .border-left-radius(3px);
-    span{
+    span {
       .pull-left();
       display: inline-block;
-      .wh(30px,19px);
+      .wh(30px, 19px);
       line-height: 19px;
       .text-center();
       overflow: hidden;
     }
     .hoverimg {
       .pull-left();
-      .wh(13px,9px);
+      .wh(13px, 9px);
       margin: 10px 0px 10px 10px;
       display: inline-block;
       background-repeat: no-repeat;

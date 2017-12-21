@@ -23,7 +23,9 @@
             <span ng-if="favoriteList.Type=='Notice'" class="list2-5">公告</span>
             <span ng-if="favoriteList.Type=='Book'" class="list2-5">图书</span>
             <span ng-if="favoriteList.Type=='BookChapter'" class="list2-5">图书章节</span>
-            <span ng-if="favoriteList.Type!='Course'&&favoriteList.Type!='Article'&&favoriteList.Type!='Notice'&&favoriteList.Type!='Book'&&favoriteList.Type!='BookChapter'" class="list2-5">其他</span>
+            <span
+                ng-if="favoriteList.Type!='Course'&&favoriteList.Type!='Article'&&favoriteList.Type!='Notice'&&favoriteList.Type!='Book'&&favoriteList.Type!='BookChapter'"
+                class="list2-5">其他</span>
 
 
             <span ng-if="favoriteList.Type=='Course'" class="list2-5">
@@ -36,14 +38,19 @@
             </span>
             <span ng-if="favoriteList.Type=='Notice'" class="list2-5">
               <a ui-sref="noticeDetail({ID:favoriteList.MainId})" target="_blank">查看</a>
-              <a class="fav" href="javascript:;" ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a></span>
+              <a class="fav" href="javascript:;"
+                 ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a></span>
             <span ng-if="favoriteList.Type=='Book'" class="list2-5">
               <a ui-sref="bookdetail({Id:favoriteList.MainId})" target="_blank">查看</a>
-              <a class="fav" href="javascript:;" ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a></span>
+              <a class="fav" href="javascript:;"
+                 ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a></span>
             <span ng-if="favoriteList.Type=='BookChapter'" class="list2-5">
               <a ui-sref="bookchaptercontent({Id:favoriteList.MainId})" target="_blank">查看</a>
-              <a class="fav" href="javascript:;" ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a></span>
-            <span ng-if="favoriteList.Type!='Course'&&favoriteList.Type!='Article'&&favoriteList.Type!='Notice'&&favoriteList.Type!='Book'&&favoriteList.Type!='BookChapter'" class="list2-5">
+              <a class="fav" href="javascript:;"
+                 ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a></span>
+            <span
+                ng-if="favoriteList.Type!='Course'&&favoriteList.Type!='Article'&&favoriteList.Type!='Notice'&&favoriteList.Type!='Book'&&favoriteList.Type!='BookChapter'"
+                class="list2-5">
               <a ui-sref="courseDetails({Id:favoriteList.MainId})" target="_blank">查看</a>
               <a class="fav" href="javascript:;" ng-click="favoriteDelete({id:favoriteList.Id},token);">[取消收藏]</a>
             </span>

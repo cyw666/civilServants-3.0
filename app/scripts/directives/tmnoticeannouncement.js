@@ -11,9 +11,9 @@ angular.module('luZhouApp')
     return {
       templateUrl: 'components/tmNoticeAnnouncement.html',
       restrict: 'EA',
-      scope:{
-        noticeData:'=',
-        repeatFinish:'=',
+      scope: {
+        noticeData: '=',
+        repeatFinish: '=',
       },
       link: function postLink(scope, element, attrs) {
       }

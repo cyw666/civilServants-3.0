@@ -11,12 +11,12 @@ angular.module('luZhouApp')
     return {
       templateUrl: 'components/tmSpecialNews.html',
       restrict: 'EA',
-      scope:{
-        specialNewsData:'=',
-        categoryCode:'='
+      scope: {
+        specialNewsData: '=',
+        categoryCode: '='
       },
       link: function postLink(scope, element, attrs) {
-        scope.articleUrl = "article({categoryCode:'"+scope.categoryCode+"'})";
+        scope.articleUrl = "article({categoryCode:'" + scope.categoryCode + "'})";
       }
     };
   });

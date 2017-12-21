@@ -17,10 +17,11 @@
             <span class="list2-5">发布日期</span>
           </div>
           <div class="list" ng-repeat="List in noticeData.AllList">
-              <span class="list5 ellipsis"><a ui-sref="noticeDetail({ID:List.Id})" target="_blank">{{List.Name}}</a></span>
-              <span ng-if="!List.Read" class="list2-5 red">未读</span>
-              <span ng-if="List.Read" class="list2-5">已读</span>
-              <span class="list2-5">{{List.CreateDate | dateFilter | date:'yyyy-MM-dd'}}</span>
+            <span class="list5 ellipsis"><a ui-sref="noticeDetail({ID:List.Id})"
+                                            target="_blank">{{List.Name}}</a></span>
+            <span ng-if="!List.Read" class="list2-5 red">未读</span>
+            <span ng-if="List.Read" class="list2-5">已读</span>
+            <span class="list2-5">{{List.CreateDate | dateFilter | date:'yyyy-MM-dd'}}</span>
           </div>
           <div ng-transclude="pagation"></div>
         </div>

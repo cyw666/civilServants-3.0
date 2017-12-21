@@ -43,10 +43,10 @@
         <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
           <li ng-class="{active: vm.activeTab == 1}"><a href="javascript:;"
                                                         ng-click="vm.activeTab = 1;searchMyCenterCourse({'examType':'UnFinish','title':searchTitle})"><span
-            class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;笔记</a></li>
+              class="glyphicon glyphicon-edit"></span>&nbsp;&nbsp;笔记</a></li>
           <li ng-class="{active: vm.activeTab == 2}"><a href="javascript:;"
                                                         ng-click="vm.activeTab = 2;searchMyCenterCourse({'examType':'Finish','title':searchTitle})"><span
-            class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;评论</a></li>
+              class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;评论</a></li>
         </ul>
         <div class="tab-content">
           <div class="tab-panel perlist" ng-show="vm.activeTab == 1">

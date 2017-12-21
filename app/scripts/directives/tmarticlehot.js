@@ -16,23 +16,24 @@ angular.module('luZhouApp')
         $scope.hotArticle = function () {
           $loading.start('articleHot');
           var options = {
-            page:1,
-            rows:10,
-            sort:'ClickCount',
-            order:'desc',
-            categoryId:null,
-            titleNav:'热门文章',
-            wordLimt:35
+            page: 1,
+            rows: 10,
+            sort: 'ClickCount',
+            order: 'desc',
+            categoryId: null,
+            titleNav: '热门文章',
+            wordLimt: 35
           };
-          commonService.getData(ALL_PORT.ArticleList.url,'POST',
-            $.extend({}, ALL_PORT.ArticleList.data,options))
-            .then(function(response) {
+          commonService.getData(ALL_PORT.ArticleList.url, 'POST',
+            $.extend({}, ALL_PORT.ArticleList.data, options))
+            .then(function (response) {
               $loading.finish('articleHot');
               $scope.hotArticleData = response.Data;
             });
         };
         $scope.hotArticle();
       },
-      link: function postLink(scope, element, attrs) {}
+      link: function postLink(scope, element, attrs) {
+      }
     };
   });

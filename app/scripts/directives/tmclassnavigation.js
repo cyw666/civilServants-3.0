@@ -7,11 +7,11 @@
  * # tmClassNavigation
  */
 angular.module('luZhouApp')
-    .directive('tmClassNavigation', function() {
-        return {
-            templateUrl: 'components/tmClassNavigation.html',
-            restrict: 'EA',
-            link: function postLink(scope, element, attrs) {
-            }
-        };
-    });
+  .directive('tmClassNavigation', function () {
+    return {
+      templateUrl: 'components/tmClassNavigation.html',
+      restrict: 'EA',
+      link: function postLink(scope, element, attrs) {
+      }
+    };
+  });

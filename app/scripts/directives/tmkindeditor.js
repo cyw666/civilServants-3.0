@@ -33,7 +33,7 @@ angular.module('luZhouApp')
             }
           }
         }
-
+        
         if (!ctrl) {
           return;
         }

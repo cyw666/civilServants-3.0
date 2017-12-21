@@ -9,12 +9,12 @@
  */
 angular.module('luZhouApp')
   .controller('modifyPasswordCtrl', function ($scope, commonService, $loading) {
-
+    
     $scope.token = commonService.AntiForgeryToken();
     $scope.txtNewPwd = '';
     $scope.txtOldPwd = '';
     $scope.txtRepeatNewPwd = ''
-
+    
     $scope.modifyPwd = function () {
       var modifyPwd = function () {
         if ($scope.txtNewPwd !== $scope.txtRepeatNewPwd) {
@@ -32,7 +32,7 @@ angular.module('luZhouApp')
         }
       };
       commonService.limitSubmit(modifyPwd);
-
+      
     };
-
+    
   });

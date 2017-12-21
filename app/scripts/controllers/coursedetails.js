@@ -44,7 +44,7 @@ angular.module('luZhouApp')
           }
         });
     };
-
+    
     $scope.selectClass = function (checkValue) {
       var newWindow = window.open('about:blank', '_blank');
       var params = $.extend({}, ALL_PORT.AddStudyCourse.data, {checkValue: checkValue}, $scope.token)
@@ -54,12 +54,12 @@ angular.module('luZhouApp')
             //打开一个不被拦截的新窗口
             var url = $state.href('play', {Id: checkValue});
             newWindow.location.href = url;
-          }else {
+          } else {
             newWindow.close();
           }
         });
     };
-
+    
     //参加测试
     $scope.havTest = function (Id) {
       var newWindow = window.open('about:blank', '_blank');
@@ -78,15 +78,15 @@ angular.module('luZhouApp')
           }
         });
     };
-  
+    
     //获取评论信息
     $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: 10});
     $scope.getComment = function (options) {
-      var params = $.extend({}, ALL_PORT.CourseComment.data, {id: $scope.Id,page:1,rows:10},options)
-      commonService.getData(ALL_PORT.CourseComment.url, 'POST',params)
+      var params = $.extend({}, ALL_PORT.CourseComment.data, {id: $scope.Id, page: 1, rows: 10}, options)
+      commonService.getData(ALL_PORT.CourseComment.url, 'POST', params)
         .then(function (response) {
           $scope.resultComment = response.Data;
-          $scope.paginationConf.totalItems =  response.Data.Count;
+          $scope.paginationConf.totalItems = response.Data.Count;
         });
     }
     //分页
@@ -100,8 +100,8 @@ angular.module('luZhouApp')
     
     //相关课程
     $scope.getRelatedCourse = function () {
-      var params = $.extend({}, ALL_PORT.RelatedCourse.data, {Page: 1, Rows: 10 ,CourseId:$scope.Id})
-      commonService.getData(ALL_PORT.RelatedCourse.url, 'POST',params)
+      var params = $.extend({}, ALL_PORT.RelatedCourse.data, {Page: 1, Rows: 10, CourseId: $scope.Id})
+      commonService.getData(ALL_PORT.RelatedCourse.url, 'POST', params)
         .then(function (response) {
           $scope.relatedCourseData = response.Data;
         });

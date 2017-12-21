@@ -14,12 +14,12 @@
             <span class="list1-5">操作</span>
           </div>
           <div class="list" ng-repeat="list in shoppingCartData.ListData">
-              <span class="list3 ellipsis"><a ui-sref="courseDetails({Id:list.ProductId})" target="_blank">{{list.ProductName}}</a></span>
-              <span class="list1-5">{{list.ProductType=='Course'?'课程':'图书'}}</span>
-              <span class="list1-5"><input class="form-control" type="text" disabled ng-value="list.Count"></span>
-              <span class="list1">￥{{list.Price.toFixed(2)}}</span>
-              <span class="list1">￥{{list.TotalPrice.toFixed(2)}}</span>
-              <span class="list1-5"><a ng-click="delCourseFromCart(list.ProductId)" class="btn btn-default">删除</a></span>
+            <span class="list3 ellipsis"><a ui-sref="courseDetails({Id:list.ProductId})" target="_blank">{{list.ProductName}}</a></span>
+            <span class="list1-5">{{list.ProductType=='Course'?'课程':'图书'}}</span>
+            <span class="list1-5"><input class="form-control" type="text" disabled ng-value="list.Count"></span>
+            <span class="list1">￥{{list.Price.toFixed(2)}}</span>
+            <span class="list1">￥{{list.TotalPrice.toFixed(2)}}</span>
+            <span class="list1-5"><a ng-click="delCourseFromCart(list.ProductId)" class="btn btn-default">删除</a></span>
           </div>
         </div>
         <div class="shooingCartFooter clearfix">

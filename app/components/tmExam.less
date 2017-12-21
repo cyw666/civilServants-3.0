@@ -2,7 +2,12 @@
  * 考试
  */
 @import "../styles/mixins";
+
 .exam {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   min-height: 700px;
   background-color: @background-color-base;
   .exam_top {
@@ -13,19 +18,35 @@
   .editForm {
     padding: 20px;
   }
-  .table {
+  table {
+    width: 100%;
     tr {
-      td{
+      td {
         text-align: left;
         padding: 5px 15px;
+        label {
+          width: 80%;
+          cursor: pointer;
+          margin-bottom: 0;
+        }
         .xz {
-          li{
+          li {
             .pull-left();
             font-size: 15px;
             font-weight: bold;
             padding-left: 15px;
           }
         }
+      }
+    }
+  }
+  .question_item {
+    tr {
+      &:hover {
+        background-color: @item-active-bg;
+      }
+      td {
+        //padding: 5px 30px;
       }
     }
   }

@@ -338,7 +338,7 @@ angular.module('luZhouApp')
     this.countIf = function (arr) {
       var count = 0;
       for (var i = 0; i < arr.length; i++) {
-        if (arr[i].UserScore>0) {
+        if (arr[i].UserScore > 0) {
           count++;
         }
       }
@@ -415,7 +415,7 @@ angular.module('luZhouApp')
             window.location.reload();
           }
         }).error(function (error, status) {
-          console.log(error,status);
+          console.log(error, status);
           alert("和平台通讯出错！");
           /*clearTimeout(timer);
           document.body.innerHTML = "";
@@ -440,7 +440,14 @@ angular.module('luZhouApp')
     //获取数据
     this.getData = function (endpoint, method, params) {
       var defer = $q.defer();
-      var data = params ? $.param(params) : null
+      var data;
+      if ($.type(params) == 'string' && !$.isEmptyObject(params)) {
+        data = params;
+      } else if ($.type(params) == 'object' && !$.isEmptyObject(params)) {
+        data = $.param(params);
+      } else {
+        data = null;
+      }
       $http({
         url: endpoint,
         method: method,

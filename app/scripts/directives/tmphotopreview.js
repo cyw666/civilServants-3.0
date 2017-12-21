@@ -11,8 +11,8 @@ angular.module('luZhouApp')
     return {
       templateUrl: 'components/tmPhotoPreview.html',
       restrict: 'EA',
-      transclude:{
-          pagation:'tm-pagation'
+      transclude: {
+        pagation: 'tm-pagation'
       },
       link: function postLink(scope, element, attrs) {
       }

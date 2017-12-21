@@ -18,11 +18,11 @@
             <span class="list2">单位名称</span>
           </div>
           <div class="list" ng-repeat="userRankingDataList in userRankingData.ListData">
-              <span class="list2">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
-              <span class="list2">{{userRankingDataList.UserName}}</span>
-              <span class="list2">{{userRankingDataList.Credit}}</span>
-              <span class="list2">{{userRankingDataList.LearnTime}}</span>
-              <span class="list2 ellipsis">{{userRankingDataList.DepartmentName}}</span>
+            <span class="list2">{{(paginationConf.currentPage-1)*paginationConf.itemsPerPage+$index+1}}</span>
+            <span class="list2">{{userRankingDataList.UserName}}</span>
+            <span class="list2">{{userRankingDataList.Credit}}</span>
+            <span class="list2">{{userRankingDataList.LearnTime}}</span>
+            <span class="list2 ellipsis">{{userRankingDataList.DepartmentName}}</span>
           </div>
         </div>
       </div>

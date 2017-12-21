@@ -20,9 +20,9 @@
               <span class="list2">作者</span>
             </div>
             <div class="list" ng-repeat="list in Data.ListData">
-                <span class="list4"><a ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a></span>
-                <span class="list2">{{list.CreatedDate| dateFilter | date:"yyyy-MM-dd"}}</span>
-                <span class="list2">{{list.Author}}</span>
+              <span class="list4"><a ui-sref="classArticleDetail({Id:list.Id})" target="_blank">{{list.Name}}</a></span>
+              <span class="list2">{{list.CreatedDate| dateFilter | date:"yyyy-MM-dd"}}</span>
+              <span class="list2">{{list.Author}}</span>
             </div>
             <div ng-transclude="pagation"></div>
           </div>

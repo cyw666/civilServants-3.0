@@ -1,60 +1,93 @@
 <!--问卷调查-->
-<div class="poll" dw-loading="exam" style="-webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;">
+<div class="poll" dw-loading="exam">
   <div class="exam_top">
-    <img src="/images/poll_top.png" />
+    <img src="/images/poll_top.png"/>
   </div>
   <div><h2 class="text-center">{{examData.Exam.Name}}</h2></div>
   <form method="post" class="editForm" name="editForm">
-    <input type="hidden" value="{{examData.examid}}" id="hdnexamid" name="hdnexamid" />
-    <input type="hidden" value="{{examData.isfixed}}" id="hdnisfixed" name="hdnisfixed"/>
-    <table class="table" cellpadding="0" cellspacing="0" style="width:100%;">
+    <input type="hidden" value="{{examData.Id}}" id="hdnexamid" name="hdnexamid"/>
+    <!--<input type="hidden" value="{{examData.isfixed}}" id="hdnisfixed" name="hdnisfixed"/>-->
+    <table>
       <tbody>
-      <tr ng-show="checkingQuestions">
-        <!--<td class="biaoti">类型一</td>-->
-      </tr>
-      <tr ng-show="checkingQuestions" ng-repeat="checkques in checkingQuestions" ng-init="outerIndex0 = $index">
-        <td>
-          <input type="hidden" name="questionid{{checkques.Id}}" value="{{checkques.Id}}" />
-          <div class="tibg"><span type="0"> {{$index+1}} </span>、 {{checkques.Name}}</div>
-          <table>
-            <tr ng-repeat="checkList in checkques.QuestionsItems">
+      <tr ng-repeat="item in allQuestions" ng-init="outerIndex = $index" repeat-finish="focusInput()">
+        <!-- 单选意见题 -->
+        <td ng-if="item.Type == 'SingleText'">
+          <input type="hidden" name="questionid{{item.Id}}" value="{{item.Id}}"/>
+          <div class="tibg"><span type="0"> {{$index+1}} </span>、 {{item.Name}}</div>
+          <table class="question_item">
+            <tr ng-repeat="singleText in item.QuestionsItems" class="radio_question_item">
               <td>
-                <input type="radio" value="{{checkList.ItemFlag}}" id="{{checkList.ItemFlag}}-{{checkques.Id}}-{{outerIndex0}}" name="radio{{checkques.Id}}"/>
-                <label for="{{checkList.ItemFlag}}-{{checkques.Id}}-{{outerIndex0}}">{{checkList.ItemFlag}}.{{checkList.Name}}</label>
+                <input class="hideNode" type="radio" value="{{singleText.ItemFlag}}"
+                       id="{{singleText.ItemFlag}}-{{item.Id}}-{{outerIndex}}" name="radiotext{{item.Id}}"/>
+                <a href="javascript:;" class="jqRadio"></a>
+                <label for="{{singleText.ItemFlag}}-{{item.Id}}-{{outerIndex}}">
+                  {{singleText.ItemFlag}}.{{singleText.Name}}
+                  <input ng-if="singleText.TextFlag" class="advise" type="text" name="content{{item.Id}}">
+                </label>
               </td>
             </tr>
           </table>
         </td>
-      </tr>
-      <tr ng-show="singleQuestions">
-        <!--<td class="biaoti">类型二</td>-->
-      </tr>
-      <tr ng-show="singleQuestions" ng-repeat="singles in singleQuestions" ng-init="outerIndex1 = $index">
-        <td>
-          <input type="hidden" name="questionid{{singles.Id}}" value="{{singles.Id}}" />
-          <div class="tibg"><span type="1"> {{$index+1}} </span>、 {{singles.Name}}</div>
-          <table>
-            <tr ng-repeat="singleList in singles.QuestionsItems">
+        <!-- 单选题 判断题 -->
+        <td ng-if="item.Type == 'Single' || item.Type == 'Judge'">
+          <input type="hidden" name="questionid{{item.Id}}" value="{{item.Id}}"/>
+          <div class="tibg"><span type="0"> {{$index+1}} </span>、 {{item.Name}}</div>
+          <table class="question_item">
+            <tr ng-repeat="single in item.QuestionsItems" class="radio_question_item">
               <td>
-                <input type="radio" value="{{singleList.ItemFlag}}" id="{{singleList.ItemFlag}}-{{singleList.Id}}-{{outerIndex1}}" name="radio{{singles.Id}}" />
-                <label for="{{singleList.ItemFlag}}-{{singleList.Id}}-{{outerIndex1}}">{{singleList.ItemFlag}}.{{singleList.Name}}</label>
+                <input class="hideNode" type="radio" value="{{single.ItemFlag}}"
+                       id="{{single.ItemFlag}}-{{item.Id}}-{{outerIndex}}" name="radio{{item.Id}}"/>
+                <a href="javascript:;" class="jqRadio"></a>
+                <label for="{{single.ItemFlag}}-{{item.Id}}-{{outerIndex}}">
+                  {{single.ItemFlag}}.{{single.Name}}
+                </label>
               </td>
             </tr>
           </table>
         </td>
-      </tr>
-      <tr ng-show="multipleQuestions">
-        <!--<td class="biaoti">类型三</td>-->
-      </tr>
-      <tr ng-show="multipleQuestions" ng-repeat="multques in multipleQuestions"  ng-init="outerIndex2 = $index">
-        <td>
-          <input type="hidden" name="questionid{{multques.Id}}" value="{{multques.Id}}" />
-          <div class="tibg"><span type="2"> {{$index+1}} </span>、 {{multques.Name}}</div>
-          <table>
-            <tr ng-repeat="mulList in multques.QuestionsItems">
+        <!-- 多选 -->
+        <td ng-if="item.Type == 'More'">
+          <input type="hidden" name="questionid{{item.Id}}" value="{{item.Id}}"/>
+          <div class="tibg"><span type="1"> {{$index+1}} </span>、 {{item.Name}}</div>
+          <table class="question_item">
+            <tr ng-repeat="more in item.QuestionsItems" class="checkbox_question_item">
               <td>
-                <input type="checkbox" id="{{mulList.ItemFlag}}-{{mulList.Id}}-{{outerIndex2}}" value="{{mulList.ItemFlag}}" name="checkbox{{multques.Id}}" />
-                <label for="{{mulList.ItemFlag}}-{{mulList.Id}}-{{outerIndex2}}">{{mulList.ItemFlag}}.{{mulList.Name}}</label>
+                <input class="hideNode" type="checkbox" value="{{more.ItemFlag}}"
+                       id="{{more.ItemFlag}}-{{item.Id}}-{{outerIndex}}" name="checkbox{{item.Id}}"/>
+                <a href="javascript:;" class="jqCheckbox"></a>
+                <label for="{{more.ItemFlag}}-{{item.Id}}-{{outerIndex}}">
+                  {{more.ItemFlag}}.{{more.Name}}
+                </label>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <!-- 多选意见题 -->
+        <td ng-if="item.Type == 'MoreText'">
+          <input type="hidden" name="questionid{{item.Id}}" value="{{item.Id}}"/>
+          <div class="tibg"><span type="1"> {{$index+1}} </span>、 {{item.Name}}</div>
+          <table class="question_item">
+            <tr ng-repeat="moreText in item.QuestionsItems" class="checkbox_question_item">
+              <td>
+                <input class="hideNode" type="checkbox" value="{{moreText.ItemFlag}}"
+                       id="{{moreText.ItemFlag}}-{{item.Id}}-{{outerIndex}}" name="checkboxtext{{item.Id}}"/>
+                <a href="javascript:;" class="jqCheckbox"></a>
+                <label for="{{moreText.ItemFlag}}-{{item.Id}}-{{outerIndex}}">
+                  {{moreText.ItemFlag}}.{{moreText.Name}}
+                  <input ng-if="moreText.TextFlag" class="advise" type="text" name="content{{item.Id}}">
+                </label>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <!-- 意见题 -->
+        <td ng-if="item.Type == 'Text'">
+          <input type="hidden" name="questionid{{item.Id}}" value="{{item.Id}}"/>
+          <div class="tibg"><span type="2"> {{$index+1}} </span>、 {{item.Name}}</div>
+          <table class="question_item">
+            <tr ng-repeat="text in item.QuestionsItems" class="radio_question_item">
+              <td>
+                <textarea class="form-control textarea_text" rows="3" cols="40" name="textbox{{item.Id}}"></textarea>
               </td>
             </tr>
           </table>

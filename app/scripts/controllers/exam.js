@@ -51,7 +51,7 @@ angular.module('luZhouApp')
       var str2 = "多选题第";
       $("input:hidden[name^='questionid']").each(function (index) {
         if ($("input[name='radio" + this.value + "']").length > 0 && $("input[name='radio" + this.value + "']:checked").length === 0) {
-          $(this).parent('td').css({"backgroundColor": "red", "color": "white"});
+          // $(this).parent('td').css({"backgroundColor": "red", "color": "white"});
           if ($(this).siblings('.tibg').children('span').attr("type") == "0") {
             str0 += $(this).siblings('.tibg').children('span').html();
           }
@@ -60,7 +60,7 @@ angular.module('luZhouApp')
           }
         }
         if ($("input[name='checkbox" + this.value + "']").length > 0 && $("input[name='checkbox" + this.value + "']:checked").length === 0) {
-          $(this).parent('td').css({"backgroundColor": "red", "color": "white"});
+          // $(this).parent('td').css({"backgroundColor": "red", "color": "white"});
           if ($(this).siblings('.tibg').children('span').attr("type") == "2") {
             str2 += $(this).siblings('.tibg').children('span').html();
           }
@@ -80,26 +80,18 @@ angular.module('luZhouApp')
       }
       if (e == "1" || ((str0 + str1 + str2) === "" || ((str0 + str1 + str2) !== "" && confirm(str0 + str1 + str2 + "未答,是否提交?")))) {
         var params = $("#editForm").serialize();
-        $http({
-          method: 'POST',
-          url: ALL_PORT.PostExam.url,
-          data: params,
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-          }
-        }).success(function (response) {
-          if (response.Type == 1) {
-            commonService.alertMs(response.Message);
-            $state.go('examReview', {examId: Id, recordId: response.Value});
-            
-          } else {
-            commonService.alertMs(response.Message);
-          }
-        }).error(function (error, status) {
-          commonService.alertMs("提交失败！");
-          window.close();
-        });
-        
+        commonService.getData(ALL_PORT.PostExam.url, 'POST', params)
+          .then(function (response) {
+            if (response.Type == 1) {
+              commonService.alertMs(response.Message);
+              $state.go('examReview', {examId: Id, recordId: response.Value});
+            } else {
+              commonService.alertMs(response.Message);
+            }
+          }, function (error) {
+            commonService.alertMs("提交失败！");
+            window.close();
+          });
       }
     };
     

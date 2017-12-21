@@ -14,7 +14,7 @@ angular.module('luZhouApp')
       scope: {
         titleHeader: "=",
         showMore: "=",
-        linkUrl:"="
+        linkUrl: "="
       },
       link: function postLink(scope, element, attrs) {
         scope.titleHeader = scope.titleHeader || "标题";

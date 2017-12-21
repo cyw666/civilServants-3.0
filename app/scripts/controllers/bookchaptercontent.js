@@ -14,9 +14,9 @@ angular.module('luZhouApp')
     //获取图书章节
     $scope.getBookChapter = function (Id) {
       $loading.start('tmshowarticledetail');
-      var params = $.extend({}, ALL_PORT.BookChapterContent.data, {Id:Id});
-      commonService.getData(ALL_PORT.BookChapterContent.url,'POST',params)
-        .then(function(response) {
+      var params = $.extend({}, ALL_PORT.BookChapterContent.data, {Id: Id});
+      commonService.getData(ALL_PORT.BookChapterContent.url, 'POST', params)
+        .then(function (response) {
           $loading.finish('tmshowarticledetail');
           $scope.articleData = response.Data;
           $scope.content = response.Data.Content;
@@ -28,38 +28,38 @@ angular.module('luZhouApp')
               $scope.fontSize = parseInt(str[i].split(';')[0]);
             }
           }
-          if(!$scope.fontSize){
+          if (!$scope.fontSize) {
             $scope.fontSize = 14;
           }
         });
     }
     $scope.getBookChapter($scope.Id);
-
-    $scope.favoriteAdd = function(options, token) {
+    
+    $scope.favoriteAdd = function (options, token) {
       var params = $.extend({}, ALL_PORT.FavoriteAdd.data, options, token);
       commonService.getData(ALL_PORT.FavoriteAdd.url, 'POST', params)
-        .then(function(response) {
+        .then(function (response) {
           if (response.Type == 1) {
             commonService.alertMs(response.Message);
             $scope.getBookChapter($scope.Id);
-          }else {
+          } else {
             commonService.alertMs(response.Message);
           }
         });
     };
-    $scope.favoriteDelete = function(options, token) {
+    $scope.favoriteDelete = function (options, token) {
       var params = $.extend({}, ALL_PORT.FavoriteDelete.data, options, token)
       commonService.getData(ALL_PORT.FavoriteDelete.url, 'POST', params)
-        .then(function(response) {
+        .then(function (response) {
           if (response.Type == 1) {
             commonService.alertMs(response.Message);
             $scope.getBookChapter($scope.Id);
-          }else {
+          } else {
             commonService.alertMs(response.Message);
           }
         });
     };
-  
+    
     //缩小字体
     $scope.reduceFont = function () {
       $scope.fontSize--;
@@ -76,5 +76,5 @@ angular.module('luZhouApp')
       angular.element('#setFont').find("span").css("fontSize", $scope.fontSize + "pt");
       angular.element('#setFont').find("p").css("fontSize", $scope.fontSize + "px");
     };
-
+    
   });

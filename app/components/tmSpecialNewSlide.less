@@ -3,23 +3,23 @@
  */
 @import "../styles/mixins";
 
-.specialNewSlideOuter{
-  .slideList{
-    img{
-      .wh(100%,306px);
+.specialNewSlideOuter {
+  .slideList {
+    img {
+      .wh(100%, 306px);
     }
-    .titleName{
+    .titleName {
       position: absolute;
       bottom: 25px;
       margin-left: 10%;
       width: 80%;
-      a{
+      a {
         display: inline-block;
         color: @white;
         .text-center();
         width: 100%;
-        &:hover{
-          color: shade(@white,20%);
+        &:hover {
+          color: shade(@white, 20%);
         }
       }
     }
@@ -33,7 +33,7 @@
       &.bx-default-pager a {
         background: transparent;
         border: 1px solid @white;
-        &:hover,&.active{
+        &:hover, &.active {
           background: @primary-color;
           border: 1px solid @primary-color;
         }

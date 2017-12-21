@@ -22,11 +22,12 @@
             </div>
             <div class="list" ng-repeat="list in Data.ListData">
               <div class="list4 ellipsis">
-                <a ui-sref="courseDetails({Id:list.Id})" target="_blank"  title="{{list.Name}}">{{list.Name}}</a>
+                <a ui-sref="courseDetails({Id:list.Id})" target="_blank" title="{{list.Name}}">{{list.Name}}</a>
               </div>
               <div class="list3">
                 <div class="progress">
-                  <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{list.BrowseScore}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width':list.BrowseScore+'%'};">
+                  <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="{{list.BrowseScore}}"
+                       aria-valuemin="0" aria-valuemax="100" ng-style="{'width':list.BrowseScore+'%'};">
                     {{list.BrowseScore.toFixed(1)}}%
                   </div>
                 </div>

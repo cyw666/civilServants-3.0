@@ -12,7 +12,7 @@ angular.module('luZhouApp')
       templateUrl: 'components/tmCivilServiceTrainingLink.html',
       restrict: 'EA',
       link: function postLink(scope, element, attrs) {
-
+      
       }
     };
   });

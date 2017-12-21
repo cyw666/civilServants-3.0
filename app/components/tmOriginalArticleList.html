@@ -20,9 +20,11 @@
             <span class="list2-5">发布时间</span>
           </div>
           <div class="list" ng-repeat="originalArgicleList in originalArgicleListData.ListData">
-              <span class="list5" title="{{originalArgicleList.Name}}"><a ui-sref="articleDetail({ID:originalArgicleList.Id})" target="_blank">{{originalArgicleList.Name}}</a></span>
-              <span class="list1-5 ellipsis">{{originalArgicleList.Author?originalArgicleList.Author:'无'}}</span>
-              <span class="list2-5">{{originalArgicleList.CreateDate | dateFilter | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+            <span class="list5" title="{{originalArgicleList.Name}}"><a
+                ui-sref="articleDetail({ID:originalArgicleList.Id})"
+                target="_blank">{{originalArgicleList.Name}}</a></span>
+            <span class="list1-5 ellipsis">{{originalArgicleList.Author?originalArgicleList.Author:'无'}}</span>
+            <span class="list2-5">{{originalArgicleList.CreateDate | dateFilter | date:'yyyy-MM-dd HH:mm:ss'}}</span>
           </div>
           <div tm-pagation conf="paginationConf"></div>
         </div>

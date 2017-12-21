@@ -11,14 +11,14 @@ angular.module('luZhouApp')
   .controller('classTopicAddCtrl', function ($scope, $stateParams, commonService, $location, $state) {
     $scope.Id = $stateParams.Id;
     $scope.location = '发表话题';
-
+    
     var token = commonService.AntiForgeryToken();
-
+    
     commonService.getData(ALL_PORT.ClassTopicAdd.url, 'POST', $.extend({}, ALL_PORT.ClassTopicAdd.data, {Id: $scope.Id}))
       .then(function (response) {
         $scope.data = response.Data.ViewBag;
       });
-
+    
     //获取话题分类
     commonService.getData(ALL_PORT.GetTrainingArticleCategory.url, 'POST', $.extend({}, ALL_PORT.GetTrainingArticleCategory.data, {
       trainingId: $scope.Id,
@@ -27,10 +27,10 @@ angular.module('luZhouApp')
       .then(function (response) {
         $scope.topicCategoryData = response;
       });
-
+    
     $scope.config = ueditorConfig;
-
-
+    
+    
     //发布话题
     $scope.publishTopic = function () {
       var publishTopic = function () {
@@ -53,12 +53,12 @@ angular.module('luZhouApp')
               } else {
                 commonService.alertMs(response.Message);
               }
-
+              
             });
         }
       };
       commonService.limitSubmit(publishTopic);
-
+      
     };
-
+    
   });

@@ -8,7 +8,7 @@
  * Controller of the luZhouApp
  */
 angular.module('luZhouApp')
-  .controller('TestcenterCtrl', function ($scope, $timeout, $rootScope,$state, $cookieStore, commonService, $location, $loading) {
+  .controller('TestcenterCtrl', function ($scope, $timeout, $rootScope, $state, $cookieStore, commonService, $location, $loading) {
     $scope.token = commonService.AntiForgeryToken();
     //考试中心
     $scope.selectedName = {};
@@ -20,7 +20,7 @@ angular.module('luZhouApp')
       {name: '已完成', id: 'Finish'},
       {name: '未完成', id: 'UnFinish'}
     ];
-    $scope.vm = {activeTab:1};
+    $scope.vm = {activeTab: 1};
     
     var examParams = {
       page: 1,
@@ -31,12 +31,12 @@ angular.module('luZhouApp')
       order: 'desc',
       titleNav: "在线考试",
     }
-  
+    
     //考试列表请求
     $scope.searchMyCenterCourse = function (option, mark) {
       $loading.start('examList');
-        
-      $.extend(examParams,option);
+      
+      $.extend(examParams, option);
       if (examParams.examType == "Finish") {
         $scope.vm.activeTab = 3;
       } else {
@@ -55,7 +55,7 @@ angular.module('luZhouApp')
           }
         });
     }
-
+    
     //分页
     // 通过$watch currentPage 当他们一变化的时候，重新获取数据条目
     $scope.$watch('paginationConf.currentPage', function () {
@@ -65,7 +65,7 @@ angular.module('luZhouApp')
       };
       $scope.searchMyCenterCourse(pageOptions);
     });
-
+    
     //参加测试
     $scope.havTest = function (Id) {
       //打开一个不被拦截的新窗口
@@ -78,7 +78,7 @@ angular.module('luZhouApp')
             //Type存在，意味着不能考试
             commonService.alertMs(response.Message);
           } else {
-            var examUrl = $state.href('exam',{Id:Id});
+            var examUrl = $state.href('exam', {Id: Id});
             newWindow.location.href = examUrl;
           }
         });

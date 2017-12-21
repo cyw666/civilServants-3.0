@@ -11,9 +11,9 @@ angular.module('luZhouApp')
     return {
       templateUrl: 'components/tmSpecialNewSlide.html',
       restrict: 'EA',
-      scope:{
-        slideData:'=',
-        startSlide:'='
+      scope: {
+        slideData: '=',
+        startSlide: '='
       },
       link: function postLink(scope, element, attrs) {
       }

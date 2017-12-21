@@ -617,7 +617,55 @@ input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focu
 .rankThirdBg {
   background: @rank-third-bg center no-repeat;
 }
-
+/*radio checkbox （考试，问卷调查）*/
+.jqRadio {
+  background: transparent url(../images/radio.png) no-repeat;
+  vertical-align: middle;
+  height: 17px;
+  width: 18px;
+  display: inline-block;
+  position: relative;
+  top: -1px;
+}
+.jqCheckbox {
+  background: transparent url(../images/checkbox.png) no-repeat;
+  vertical-align: middle;
+  height: 17px;
+  width: 18px;
+  display: inline-block;
+  position: relative;
+  top: -2px;
+}
+.jqChecked {
+  //background-position: 0 -16px;
+}
+.hideNode{
+  display: none;
+}
+.hideNode:checked+.jqCheckbox,.hideNode:checked+.jqRadio{
+  background-position: 0 -17px;
+}
+.radio_question_item {
+  cursor: pointer;
+}
+.checkbox_question_item {
+  cursor: pointer;
+}
+.advise{
+  padding: 0 10px;
+  outline: none;
+  border:1px solid transparent;
+  border-bottom: 1px solid #ddd;
+  width: 300px;
+  background-color: @background-color-base;
+  &:focus{
+    border:1px solid tint(@primary-color, 20%);
+  }
+}
+.textarea_text{
+  resize: none;
+  background-color: @background-color-base;
+}
 /*margin*/
 .mar_top_5 {
   margin-top: 5px;

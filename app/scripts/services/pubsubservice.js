@@ -17,8 +17,8 @@ angular.module('luZhouApp')
      * @param: {string=}: msg, 要发布的消息关键字，默认为'_DATA_UPDATED_'指数据更新
      * @param: {object=}: data，随消息一起传送的数据，默认为空
      * @example:
-     * 		pubSubService.publish('config.itemAdded', {'id': getID()});
-     * 	    更一般的形式是：
+     *    pubSubService.publish('config.itemAdded', {'id': getID()});
+     *      更一般的形式是：
      *      pubSubService.publish();
      **/
     var publish = function (msg, data) {
@@ -33,12 +33,12 @@ angular.module('luZhouApp')
      * @param: {object=}: 控制器作用域，用以解绑定,默认为空
      * @param: {string=}: 消息关键字，默认为'_DATA_UPDATED_'指数据更新
      * @example:
-     * 		pubSubService.subscribe(function(event, data) {
+     *    pubSubService.subscribe(function(event, data) {
      *	    $scope.power = data.power;
      *		    $scope.mass = data.mass;
      *		},  $scope, 'data_change');
-     *		更一般的形式是：
-     *		pubSubService.subscribe(function(){});
+     *    更一般的形式是：
+     *    pubSubService.subscribe(function(){});
      */
     var subscribe = function (func, scope, msg) {
       if (!angular.isFunction(func)) {
@@ -52,10 +52,10 @@ angular.module('luZhouApp')
         scope.$on('$destroy', unbind);
       }
     };
-
+    
     // return the publicly accessible methods
     return {
-      publish:        publish,
-      subscribe:      subscribe
+      publish: publish,
+      subscribe: subscribe
     };
   });

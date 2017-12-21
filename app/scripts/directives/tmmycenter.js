@@ -12,10 +12,10 @@ angular.module('luZhouApp')
       templateUrl: 'components/tmMyCenter.html',
       restrict: 'EA',
       transclude: {
-        'pagation':'tm-pagation'
+        'pagation': 'tm-pagation'
       },
       link: function postLink(scope, element, attrs) {
-
+      
       }
     };
   });

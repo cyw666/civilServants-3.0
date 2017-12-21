@@ -66,7 +66,7 @@ angular.module('luZhouApp')
     //获取班级说说列表
     $scope.getTrainingSayList = function (options) {
       commonService.getData(ALL_PORT.TrainingSayList.url, 'POST',
-        $.extend({}, ALL_PORT.TrainingSayList.data, {rows: 5,mainId: $scope.Id},options))
+        $.extend({}, ALL_PORT.TrainingSayList.data, {rows: 5, mainId: $scope.Id}, options))
         .then(function (response) {
           $scope.trainingSayList = response.Data.List;
           $scope.paginationConf.totalItems = response.Data.TotalCount;
@@ -82,7 +82,7 @@ angular.module('luZhouApp')
     });
     
     //添加评论 回复
-    $scope.addTrainingReply = function (content,mainId,parentId) {
+    $scope.addTrainingReply = function (content, mainId, parentId) {
       // $scope.hidValueImage = $('#hidValueImage').val();
       var params = {
         content: content,
@@ -107,7 +107,7 @@ angular.module('luZhouApp')
     //删除评论 回复
     $scope.delTrainingSay = function (id) {
       commonService.getData(ALL_PORT.DelTrainingSay.url, 'POST',
-        $.extend({}, ALL_PORT.DelTrainingSay.data, {id:id}))
+        $.extend({}, ALL_PORT.DelTrainingSay.data, {id: id}))
         .then(function (response) {
           if (response.Type == 1) {
             alert(response.Message);

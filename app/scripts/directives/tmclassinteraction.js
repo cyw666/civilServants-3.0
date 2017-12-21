@@ -25,7 +25,7 @@ angular.module('luZhouApp')
         //展开折叠
         scope.foldUnfold = function (event) {
           $(event.target).html() == "点击查看" ? $(event.target).html("点击收起") : $(event.target).html("点击查看")
-          $(event.target).parents('.foldUnfold').prevAll('.commentList').slice(0,-2).slideToggle();
+          $(event.target).parents('.foldUnfold').prevAll('.commentList').slice(0, -2).slideToggle();
         }
       }
     };

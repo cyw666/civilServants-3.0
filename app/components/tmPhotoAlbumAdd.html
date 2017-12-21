@@ -24,16 +24,17 @@
           <div class="form-group clearfix">
             <span class="grid_8 text-right">相册说明：</span>
             <div>
-              <textarea class="form-control grid_10" ng-model="description" id="txtContent" name="Content" cols="50" rows="5" type="text"></textarea>
+              <textarea class="form-control grid_10" ng-model="description" id="txtContent" name="Content" cols="50"
+                        rows="5" type="text"></textarea>
             </div>
           </div>
           <div class="form-group clearfix">
             <span class="grid_8 text-right">相册封面：</span>
             <div class="clearfix grid_4">
               <input class="upLoadFile" type="file" name="ImageToUpload" id="ImageToUpload"
-                      multiple="multiple" onchange="fileSelected('ImageToUpload', 'ImageTraining', 1);">
+                     multiple="multiple" onchange="fileSelected('ImageToUpload', 'ImageTraining', 1);">
               <div id="ImageMessage" style="display:none;padding: 10px;height: 34px"></div>
-              <input type="hidden" id="hidValueImage" name="ImgUrl" ng-model="ImgUrl" />
+              <input type="hidden" id="hidValueImage" name="ImgUrl" ng-model="ImgUrl"/>
             </div>
           </div>
         </div>

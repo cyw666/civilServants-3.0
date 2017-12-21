@@ -2,25 +2,26 @@
  * 导航
  */
 @import "../styles/mixins";
+
 .navBg {
   text-align: center;
   background: @primary-color;
-  .nav{
+  .nav {
     height: 42px;
-    margin:0 auto;
+    margin: 0 auto;
     background: @primary-color;
   }
   .nav-tabs {
     border-bottom: none;
-    &>li{
-      &>a{
+    & > li {
+      & > a {
         color: @white;
         padding: 0;
         font-size: @font-size-lg;
         font-weight: 500;
         margin-right: 0;
         border: none;
-        .wh(floor(@bodyWidth/7),42px);
+        .wh(floor(@bodyWidth/7), 42px);
         line-height: 42px;
         &:focus {
           border-color: transparent;

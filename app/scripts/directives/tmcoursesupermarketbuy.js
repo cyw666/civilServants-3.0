@@ -14,17 +14,17 @@ angular.module('luZhouApp')
       transclude: {
         'pagation': 'tm-pagation'
       },
-      link: function(scope, element, attrs) {
+      link: function (scope, element, attrs) {
         //排序方式
-        $('.title_bar a').click(function(){
-          if ($(this).children('span').html()=='▼'){
+        $('.title_bar a').click(function () {
+          if ($(this).children('span').html() == '▼') {
             $(this).children('span').html('▲');
             $(this).parent('span').siblings('span').children().children('span').html('▼');
-          }else if ($(this).children('span').html()=='▲'){
+          } else if ($(this).children('span').html() == '▲') {
             $(this).children('span').html('▼');
           }
         });
-
+        
       }
     };
   });

@@ -16,7 +16,7 @@ angular.module('luZhouApp')
         classType: "="
       },
       link: function postLink(scope, element, attrs) {
-        scope.classUrl = "classlist({type:'"+scope.classType+"'})";
+        scope.classUrl = "classlist({type:'" + scope.classType + "'})";
       }
     };
   });

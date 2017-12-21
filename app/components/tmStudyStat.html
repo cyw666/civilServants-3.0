@@ -12,21 +12,26 @@
       <span>查询时间：</span>
       <div class="form-group">
         <div class="datePicker">
-          <input  class="form-control" type="text" ng-model="startTime" date-time-picker>
+          <input class="form-control" type="text" ng-model="startTime" date-time-picker>
           <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
         </div>
       </div>
       <span>至</span>
       <div class="form-group">
         <div class="datePicker">
-          <input  class="form-control" type="text" ng-model="endTime" date-time-picker>
+          <input class="form-control" type="text" ng-model="endTime" date-time-picker>
           <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary" ng-click="requestMyStudyStat({StartDate:startTime,EndDate:endTime})">查询</button>
+      <button type="submit" class="btn btn-primary"
+              ng-click="requestMyStudyStat({StartDate:startTime,EndDate:endTime})">查询
+      </button>
     </form>
     <p class="welcome">
-      尊敬的 <b class="highlight">{{studyStatData.Account}}</b>, 截止 <b class="highlight">{{studyStatData.StartDate}} 至 {{studyStatData.EndDate}} </b>, 您的学习状态：<b class="highlight">学习中</b> , 您已经累计获得课程学时 <b class="highlight">{{studyStatData.CreditSum}}</b> 学时 , 您已经选修 <b class="highlight">{{studyStatData.Count}}</b> 门课程, 已经完成 <b class="highlight">{{studyStatData.FinishCourse}}</b> 门课程, 您目前正在学习 <b class="highlight">{{studyStatData.UnFinishCourse}}</b> 门课程。
+      尊敬的 <b class="highlight">{{studyStatData.Account}}</b>, 截止 <b class="highlight">{{studyStatData.StartDate}} 至
+      {{studyStatData.EndDate}} </b>, 您的学习状态：<b class="highlight">学习中</b> , 您已经累计获得课程学时 <b class="highlight">{{studyStatData.CreditSum}}</b>
+      学时 , 您已经选修 <b class="highlight">{{studyStatData.Count}}</b> 门课程, 已经完成 <b class="highlight">{{studyStatData.FinishCourse}}</b>
+      门课程, 您目前正在学习 <b class="highlight">{{studyStatData.UnFinishCourse}}</b> 门课程。
     </p>
     <div class="myTab">
       <div class="tab-content" dw-loading="studyStat">
@@ -38,10 +43,10 @@
             <span class="list2">获得学时</span>
           </div>
           <div class="list" ng-repeat="studyList in studyStatData.ListData">
-              <span class="list2">{{studyStatData.Account}}</span>
-              <span class="list2">{{studyList.UserName}}</span>
-              <span class="list4 ellipsis">{{studyList.Name}}</span>
-              <span class="list2">{{studyList.Credit}}</span>
+            <span class="list2">{{studyStatData.Account}}</span>
+            <span class="list2">{{studyList.UserName}}</span>
+            <span class="list4 ellipsis">{{studyList.Name}}</span>
+            <span class="list2">{{studyList.Credit}}</span>
           </div>
           <div ng-transclude="pagation"></div>
         </div>

@@ -20,7 +20,7 @@ angular.module('luZhouApp')
           $loading.finish('studyPlan');
           $scope.paginationConf.totalItems = response.Data.Count;
           $scope.stydyPlanData = response.Data;
-
+          
         });
     };
     $scope.$watch('paginationConf.currentPage', function () {
@@ -28,7 +28,7 @@ angular.module('luZhouApp')
       options.page = $scope.paginationConf.currentPage;
       $scope.requestStudyPlan(options);
     });
-
+    
     //添加计划
     $scope.remindCycle = ['每天一次', '每周一次', '每月一次'];
     $scope.planAdd = function (id) {
@@ -39,10 +39,10 @@ angular.module('luZhouApp')
           $scope.PlanFinishDate = commonService.dateFilter(response.Data.PlanFinishDate, 'yyyy-MM-dd');
           $scope.RemindDate = commonService.dateFilter(response.Data.RemindDate, 'yyyy-MM-dd');
           $scope.selectCycle = response.Data.RemindCycle == '' ? "每天一次" : response.Data.RemindCycle;
-
+          
         });
     }
-
+    
     //提交编辑计划
     $scope.addPlanUpdate = function (options) {
       var addPlanUpdateParams = $.extend({}, ALL_PORT.EditStudyPlanUpdate.data, $scope.token, options);
@@ -54,7 +54,7 @@ angular.module('luZhouApp')
           $scope.requestStudyPlan();
         });
     }
-
+    
     //删除学习计划
     $scope.delStudyPlan = function (id) {
       commonService.getData(ALL_PORT.DelStudyPlan.url, 'POST',

@@ -23,13 +23,16 @@
           <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary" ng-click="requestMyStudyStat({StartDate:startTime,EndDate:endTime})">
+      <button type="submit" class="btn btn-primary"
+              ng-click="requestMyStudyStat({StartDate:startTime,EndDate:endTime})">
         查询
       </button>
     </form>
     <p class="welcome">
-      尊敬的 <b class="highlight">{{examStatData.Account}}</b>, 截止 <b class="highlight">{{examStatData.StartDate}} 至 {{examStatData.EndDate}} </b>, 您目前顺利通过 <b class="highlight">{{examStatData.FinishExam}}</b>
-      门考试 , 有 <b class="highlight">{{examStatData.UnFinishExam}}</b> 门考试未通过。总共获得 <b class="highlight">{{examStatData.ExamCreditSum}}</b> 学时
+      尊敬的 <b class="highlight">{{examStatData.Account}}</b>, 截止 <b class="highlight">{{examStatData.StartDate}} 至
+      {{examStatData.EndDate}} </b>, 您目前顺利通过 <b class="highlight">{{examStatData.FinishExam}}</b>
+      门考试 , 有 <b class="highlight">{{examStatData.UnFinishExam}}</b> 门考试未通过。总共获得 <b class="highlight">{{examStatData.ExamCreditSum}}</b>
+      学时
     </p>
     <div class="myTab mar_top_15" dw-loading="examStat">
       <div class="tab-content" dw-loading="myCenter">
@@ -42,11 +45,11 @@
             <span class="list2">获得学时</span>
           </div>
           <div class="list" ng-repeat="examList in examStatData.ListData">
-              <span class="list2">{{examStatData.Account}}</span>
-              <span class="list2">{{examList.UserName}}</span>
-              <span class="list2 ellipsis">{{examList.Name}}</span>
-              <span class="list2">{{examList.ExamScore}}</span>
-              <span class="list2">{{examList.Credit}}</span>
+            <span class="list2">{{examStatData.Account}}</span>
+            <span class="list2">{{examList.UserName}}</span>
+            <span class="list2 ellipsis">{{examList.Name}}</span>
+            <span class="list2">{{examList.ExamScore}}</span>
+            <span class="list2">{{examList.Credit}}</span>
           </div>
           <div ng-transclude="pagation"></div>
         </div>

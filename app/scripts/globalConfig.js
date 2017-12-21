@@ -2,6 +2,7 @@
 //请求后台数据入口
 // var API_URL = "/api";
 var API_URL = "http://test10.jy365.net/api";
+// var API_URL = "http://test12.jy365.net/api";
 // var API_URL = "http://122.225.101.117:9090/api";
 // var API_URL = "http://192.168.1.25:9090/api2";
 var API_URL_ADMIN = API_URL + "/admin";
@@ -59,37 +60,37 @@ var IMPORT = {
   }
   return "Other";
 })();*/
-Date.prototype.format = function(fmt) {
+Date.prototype.format = function (fmt) {
   var o = {
-    "M+" : this.getMonth()+1,                 //月份
-    "d+" : this.getDate(),                    //日
-    "h+" : this.getHours(),                   //小时
-    "m+" : this.getMinutes(),                 //分
-    "s+" : this.getSeconds(),                 //秒
-    "q+" : Math.floor((this.getMonth()+3)/3), //季度
-    "S"  : this.getMilliseconds()             //毫秒
+    "M+": this.getMonth() + 1,                 //月份
+    "d+": this.getDate(),                    //日
+    "h+": this.getHours(),                   //小时
+    "m+": this.getMinutes(),                 //分
+    "s+": this.getSeconds(),                 //秒
+    "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+    "S": this.getMilliseconds()             //毫秒
   };
-  if(/(y+)/.test(fmt)) {
-    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+  if (/(y+)/.test(fmt)) {
+    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
   }
-  for(var k in o) {
-    if(new RegExp("("+ k +")").test(fmt)){
-      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+  for (var k in o) {
+    if (new RegExp("(" + k + ")").test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     }
   }
   return fmt;
 }
-var changeTheme = function(themeFile) {
-  document.getElementById('global-css').setAttribute("href", "styles/"+themeFile+".css");
+var changeTheme = function (themeFile) {
+  document.getElementById('global-css').setAttribute("href", "styles/" + themeFile + ".css");
 }
 var ORIGIN = (function () {
   var origin = window.origin;
   var plate = "hunan";
-  if(origin === "http://localhost:9000"){
-    plate="hunan";
+  if (origin === "http://localhost:9000") {
+    plate = "hunan";
     // changeTheme(themeFile);
-  }else {
-    plate="changsha";
+  } else {
+    plate = "changsha";
   }
   return plate;
   // changeTheme(themeFile);
@@ -160,7 +161,7 @@ var ALL_PORT = {
   //判断能否访问页面接口
   Authorization: {
     url: API_URL + "/Page/Authorization",
-    data: {}
+    data: {controller: "Do", action: ''}
   },
   //保持在线
   KeepOnline: {
@@ -392,9 +393,19 @@ var ALL_PORT = {
     url: API_URL + "/Exam/Poll",
     data: {parameter1: ''}
   },
+  //参加问卷调查2
+  Poll2: {
+    url: API_URL + "/Exam/Poll2",
+    data: {pollId: ''}
+  },
   //问卷调查结果
   PollReview: {
     url: API_URL + "/Exam/PollReview",
+    data: {parameter1: '', parameter2: ''}
+  },
+  //问卷调查结果2
+  PollReview2: {
+    url: API_URL + "/Exam/PollReview2",
     data: {parameter1: '', parameter2: ''}
   },
   //培训班分类

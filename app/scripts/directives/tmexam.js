@@ -7,10 +7,11 @@
  * # tmExam
  */
 angular.module('luZhouApp')
-    .directive('tmExam', function() {
-        return {
-            templateUrl: 'components/tmExam.html',
-            restrict: 'A',
-            link: function postLink(scope, element, attrs) {}
-        };
-    });
+  .directive('tmExam', function () {
+    return {
+      templateUrl: 'components/tmExam.html',
+      restrict: 'A',
+      link: function postLink(scope, element, attrs) {
+      }
+    };
+  });

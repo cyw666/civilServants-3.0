@@ -110,7 +110,6 @@ angular.module('luZhouApp')
                 });
               
             }
-            
             setTimeout(_sendProcess, 30000); //送进度间隔时间 30秒传一次;
           };
           
@@ -131,10 +130,9 @@ angular.module('luZhouApp')
             var curProcess = _thePlayer.getPosition() - 3;
             if (_thePlayer.getState() == 'PLAYING') {
               if (curProcess > _timePool.totalTime) {
-                
                 _thePlayer.play(false);
                 commonService.alertMs("请不要在未播放区域拖动，否则可能丢失进度！");
-                _thePlayer.seek(_timePool.totalTime - 1); //TODO 放前面？
+                _thePlayer.seek(_timePool.totalTime - 1);
               }
             }
           }
@@ -474,6 +472,7 @@ angular.module('luZhouApp')
             window.close();
           }
           var MediaPlayer;
+          
           // var au = "47$67$111$117$114$115$101$80$114$111$99$101$115$115$47$83$105$110$103$108$101$80$114$111$99$101$115$115$".toCharString("$");
           function sendProcess() {
             var data = $.extend({}, {

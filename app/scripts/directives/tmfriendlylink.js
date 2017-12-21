@@ -7,12 +7,12 @@
  * # tmFriendlyLink
  */
 angular.module('luZhouApp')
-    .directive('tmFriendlyLink', function() {
-        return {
-            templateUrl: 'components/tmFriendlyLink.html',
-            restrict: 'EA',
-            link: function postLink(scope, element, attrs) {
-
-            }
-        };
-    });
+  .directive('tmFriendlyLink', function () {
+    return {
+      templateUrl: 'components/tmFriendlyLink.html',
+      restrict: 'EA',
+      link: function postLink(scope, element, attrs) {
+      
+      }
+    };
+  });

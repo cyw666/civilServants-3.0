@@ -29,7 +29,7 @@ angular.module('luZhouApp')
          }
          });*/
         // $(document).height();
-        $('.playPage').css({'height':$(document).height()-22});
+        $('.playPage').css({'height': $(document).height() - 22});
       }
     };
   });

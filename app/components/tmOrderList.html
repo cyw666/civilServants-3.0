@@ -27,7 +27,8 @@
             </thead>
             <tbody>
             <tr ng-repeat="list in orderList.OrderDetail">
-              <td class="item1"><a ui-sref="courseDetails({Id:list.ProductId})" target="_blank"  title="{{list.ProductName}}">{{list.ProductName}}</a></td>
+              <td class="item1"><a ui-sref="courseDetails({Id:list.ProductId})" target="_blank"
+                                   title="{{list.ProductName}}">{{list.ProductName}}</a></td>
               <td class="item2">￥{{list.Price.toFixed(2)}}</td>
               <td class="item2">{{list.Count}}</td>
               <td ng-if="$index==0" class="item2" rowspan="2">￥{{orderList.TotalPrice.toFixed(2)}}</td>
@@ -41,10 +42,12 @@
               </td>
               <td ng-if="$index==0" class="item3" rowspan="2">
                 <div>
-                  <p ng-if="orderList.Status=='NoPay'"><a ui-sref="orderdetaillist({orderId:orderList.Id})" class="btn btn-primary">立即付款</a></p>
+                  <p ng-if="orderList.Status=='NoPay'"><a ui-sref="orderdetaillist({orderId:orderList.Id})"
+                                                          class="btn btn-primary">立即付款</a></p>
                   <p ng-if="orderList.Status=='NoPay'"><a ng-click="cancelOrder(orderList.Id)">取消订单</a></p>
                   <p ng-if="orderList.Status=='HasPay'">交易成功</p>
-                  <p ng-if="orderList.Status=='Close'"><a ng-click="restoreOrder(orderList.Id)" class="btn btn-primary">再次购买</a></p>
+                  <p ng-if="orderList.Status=='Close'"><a ng-click="restoreOrder(orderList.Id)" class="btn btn-primary">再次购买</a>
+                  </p>
                 </div>
               </td>
             </tr>

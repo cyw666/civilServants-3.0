@@ -10,7 +10,7 @@
     <div class="myTab">
       <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
         <li ng-repeat="list in collegeInfoData.ListData" ng-class="{active: vm.activeTab == $index+1}"><a
-          ng-click="vm.activeTab = $index+1;">{{list.Name}}</a></li>
+            ng-click="vm.activeTab = $index+1;">{{list.Name}}</a></li>
       </ul>
       <div class="tab-content collegeContent" dw-loading="collegeInfo">
         <div ng-repeat="list2 in collegeInfoData.ListData" class="tab-panel perlist" ng-show="vm.activeTab == $index+1">

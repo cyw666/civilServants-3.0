@@ -13,13 +13,13 @@ angular.module('luZhouApp')
     $scope.location = "学院风采";
     $scope.isNews = true;
     var Id = $stateParams.Id;
-
+    
     //收藏
-    $scope.favoriteAdd = function(options, token) {
-
+    $scope.favoriteAdd = function (options, token) {
+      
       var params = $.extend({}, ALL_PORT.FavoriteAdd.data, options, token)
       var promise = commonService.getData(ALL_PORT.FavoriteAdd.url, 'POST', params);
-      promise.then(function(response) {
+      promise.then(function (response) {
         if (response.Type === 1) {
           $scope.articleData.FavoriteId = response.Value;
           commonService.alertMs(response.Message);
@@ -28,12 +28,12 @@ angular.module('luZhouApp')
         }
       });
     };
-
+    
     //取消收藏
-    $scope.favoriteDelete = function(options, token) {
+    $scope.favoriteDelete = function (options, token) {
       var params = $.extend({}, ALL_PORT.FavoriteDelete.data, options, token)
       var promise = commonService.getData(ALL_PORT.FavoriteDelete.url, 'POST', params);
-      promise.then(function(response) {
+      promise.then(function (response) {
         if (response.Type === 1) {
           $scope.articleData.FavoriteId = 0;
           commonService.alertMs(response.Message);
@@ -42,9 +42,9 @@ angular.module('luZhouApp')
         }
       });
     };
-
-    var promise = commonService.getData(ALL_PORT.ArticleContent.url, 'POST', $.extend({}, ALL_PORT.ArticleContent.data, { Id: Id }));
-    promise.then(function(response) {
+    
+    var promise = commonService.getData(ALL_PORT.ArticleContent.url, 'POST', $.extend({}, ALL_PORT.ArticleContent.data, {Id: Id}));
+    promise.then(function (response) {
       $loading.finish('tmshowarticledetail');
       $scope.articleData = response.Data;
       $scope.content = response.Data.Content;
@@ -56,13 +56,12 @@ angular.module('luZhouApp')
           $scope.fontSize = parseInt(str[i].split(';')[0]);
         }
       }
-      if(!$scope.fontSize){
+      if (!$scope.fontSize) {
         $scope.fontSize = 14;
       }
     });
-  
-  
-  
+    
+    
     //缩小字体
     $scope.reduceFont = function () {
       $scope.fontSize--;

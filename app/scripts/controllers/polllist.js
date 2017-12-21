@@ -8,31 +8,31 @@
  * Controller of the luZhouApp
  */
 angular.module('luZhouApp')
-  .controller('PolllistCtrl', function ($scope, $location, $rootScope,$state, $cookieStore, commonService, $timeout, $loading,$stateParams) {
+  .controller('PolllistCtrl', function ($scope, $location, $rootScope, $state, $cookieStore, commonService, $timeout, $loading, $stateParams) {
     //报名状态
     $scope.JudgeStatus = commonService.JudgeStatus;
     //问卷调查列表
-    $scope.getClassList = function(options) {
+    $scope.getClassList = function (options) {
       $loading.start('pollList');
       ;
-      commonService.getData( ALL_PORT.PollList.url, 'POST',
-        $.extend({},ALL_PORT.PollList.data, options))
-        .then(function(response) {
+      commonService.getData(ALL_PORT.PollList.url, 'POST',
+        $.extend({}, ALL_PORT.PollList.data, options))
+        .then(function (response) {
           $loading.finish('pollList');
           $scope.paginationConf.totalItems = response.Data.UnFinishCount;
           $scope.pollListData = response.Data;
         });
     };
-
+    
     //分页
-    $scope.paginationConf = $.extend({},paginationConf,{itemsPerPage: ALL_PORT.CourseClickList.data.rows});
-    $scope.$watch('paginationConf.currentPage', function() {
+    $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: ALL_PORT.CourseClickList.data.rows});
+    $scope.$watch('paginationConf.currentPage', function () {
       var pageOptions = {
         page: $scope.paginationConf.currentPage
       };
       $scope.getClassList(pageOptions);
     });
-  
+    
     //参加调查
     $scope.havTest = function (Id) {
       //打开一个不被拦截的新窗口
@@ -45,10 +45,10 @@ angular.module('luZhouApp')
             //Type存在，意味着不能考试
             commonService.alertMs(response.Message);
           } else {
-            var pollUrl = $state.href('poll',{Id:Id});
+            var pollUrl = $state.href('poll', {Id: Id});
             newWindow.location.href = pollUrl;
           }
-        
+          
         });
     };
   });

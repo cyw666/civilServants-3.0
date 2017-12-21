@@ -16,13 +16,13 @@ angular.module('luZhouApp')
         $loading.start('realTimeList');
         commonService.getData(ALL_PORT.LeftRealTimeData.url, 'POST',
           ALL_PORT.LeftRealTimeData.data)
-          .then(function(response) {
+          .then(function (response) {
             $loading.finish('realTimeList');
             $scope.realTimeData = response.Data;
           });
       },
       link: function postLink(scope, element, attrs) {
-
+      
       }
     };
   });

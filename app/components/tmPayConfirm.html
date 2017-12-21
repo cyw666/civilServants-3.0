@@ -12,7 +12,7 @@
           <span class="list1-5">总价</span>
         </div>
         <li class="content clearfix" ng-repeat="list in orderDetailListData.ListData">
-          <span class="list4"><a ui-sref="courseDetails({Id:list.Id})" target="_blank"  title="{{list.ProductName}}">{{list.ProductName}}</a></span>
+          <span class="list4"><a ui-sref="courseDetails({Id:list.Id})" target="_blank" title="{{list.ProductName}}">{{list.ProductName}}</a></span>
           <span class="list1-5">{{list.ProductType=='Course'?'课程':'图书'}}</span>
           <span class="list1-5">{{list.Count}}</span>
           <span class="list1-5">￥{{list.Price.toFixed(2)}}</span>
