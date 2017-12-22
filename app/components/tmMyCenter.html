@@ -23,13 +23,13 @@
     <div class="myTab">
       <ul class="nav nav-tabs" ng-init="vm.activeTab=1">
         <li ng-class="{active: vm.activeTab == 1}"><a
-            ng-click="vm.activeTab = 1;searchMyCenterCourse({'courseType':'Unfinish','title':searchTitle,page:1})">正在学习的课程
+            ng-click="vm.activeTab = 1;searchMyCenterCourse({courseType:'Unfinish',title:searchTitle,page:1})">正在学习的课程
           <span>({{TotalData.UnfinishCount}})</span></a></li>
         <li ng-class="{active: vm.activeTab == 2}"><a
-            ng-click="vm.activeTab = 2;searchMyCenterCourse({'courseType':'Appointed','title':searchTitle,page:1})">指定到您的课程<span>({{TotalData.AppointedCount}})</span></a>
+            ng-click="vm.activeTab = 2;searchMyCenterCourse({courseType:'Appointed',title:searchTitle,page:1})">指定到您的课程<span>({{TotalData.AppointedCount}})</span></a>
         </li>
         <li ng-class="{active: vm.activeTab == 3}"><a
-            ng-click="vm.activeTab = 3;searchMyCenterCourse({'courseType':'Finish','title':searchTitle,page:1})">已完成的课程
+            ng-click="vm.activeTab = 3;searchMyCenterCourse({courseType:'Finish',title:searchTitle,page:1})">已完成的课程
           <span>({{TotalData.FinishCount}})</span></a></li>
       </ul>
       <div class="tab-content" dw-loading="myCenter">

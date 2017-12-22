@@ -13,7 +13,7 @@
                my-placeholder
                placeholder="请输入要搜索的培训班">
       </div>
-      <button type="submit" class="btn btn-primary" ng-click="getClassList({'title':searchTitle})">搜索</button>
+      <button type="submit" class="btn btn-primary" ng-click="getClassList({title:searchTitle,page:1})">搜索</button>
     </form>
     <div class="myTab">
       <ul class="nav nav-tabs" ng-init="vm.activeTab=1">

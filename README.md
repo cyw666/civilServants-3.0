@@ -223,3 +223,6 @@ Running `grunt test` will run the unit tests with karma.
 1. layout.less （布局）
 2. main.less （页面通用的样式）
 3. drag.less （视频播放拖动滑块样式）
+
+## questions
+Cannot read property '$$animLeave' of undefined (文件名称要区分大小写)

@@ -66,7 +66,7 @@ angular.module('luZhouApp')
     $scope.getClassList = function (options) {
       $loading.start('trainingCenter');
       $.extend($scope.params, options);
-      if (options.page) {
+      if (options && options.page) {
         $scope.paginationConf.currentPage = $scope.params.page;
       }
       commonService.getData(ALL_PORT.GetClassList.url, 'POST', $scope.params)

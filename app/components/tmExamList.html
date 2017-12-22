@@ -15,16 +15,16 @@
         <input ng-model="searchTitle" type="text" class="form-control" my-placeholder placeholder="请输入要搜索的考试">
       </div>
       <button type="submit" class="btn btn-primary"
-              ng-click="searchMyCenterCourse({'examType':selectedName.id,'title':searchTitle,'page':'1'})">搜索
+              ng-click="searchMyCenterCourse({examType:selectedName.id,title:searchTitle,page:'1'})">搜索
       </button>
     </form>
     <div class="myTab">
       <ul class="nav nav-tabs">
         <li ng-class="{active: vm.activeTab == 1}"><a
-            ng-click="vm.activeTab = 1;searchMyCenterCourse({'examType':'UnFinish','title':searchTitle,'page':'1'})">未完成的考试</a>
+            ng-click="vm.activeTab = 1;searchMyCenterCourse({examType:'UnFinish',title:searchTitle,page:'1'})">未完成的考试</a>
         </li>
         <li ng-class="{active: vm.activeTab == 3}"><a
-            ng-click="vm.activeTab = 3;searchMyCenterCourse({'examType':'Finish','title':searchTitle,'page':'1'})">已完成的考试</a>
+            ng-click="vm.activeTab = 3;searchMyCenterCourse({examType:'Finish',title:searchTitle,page:'1'})">已完成的考试</a>
         </li>
       </ul>
       <div class="tab-content" dw-loading="examList">

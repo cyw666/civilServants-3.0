@@ -33,7 +33,7 @@ angular.module('luZhouApp')
     }
     
     //考试列表请求
-    $scope.searchMyCenterCourse = function (option, mark) {
+    $scope.searchMyCenterCourse = function (option) {
       $loading.start('examList');
       
       $.extend(examParams, option);

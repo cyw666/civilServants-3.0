@@ -36,7 +36,7 @@ angular.module('luZhouApp')
     $scope.searchMyCenterCourse = function (option) {
       $loading.start('myCenter');
       var params = $.extend(myCenterParams, option);
-      if (option.page) {
+      if (option && option.page) {
         $scope.paginationConf.currentPage = params.page;
       }
       commonService.getData(ALL_PORT.MyCenter.url, 'POST', params)
