@@ -48,16 +48,19 @@ angular.module('luZhouApp')
       };
     }
     //请求用户信息
-    commonService.getData(ALL_PORT.LoginShort.url, 'POST', ALL_PORT.LoginShort.data)
-      .then(function (response) {
-        $scope.userMessage = response.Data.Model;
-        $scope.userAllMessage = response.Data;
-        if ($scope.userMessage.Name) {
-          $scope.showLogin = false;
-        } else {
-          $scope.showLogin = true;
-        }
-      });
+    $scope.getInfoMessage = function () {
+      commonService.getData(ALL_PORT.LoginShort.url, 'POST', ALL_PORT.LoginShort.data)
+        .then(function (response) {
+          $scope.userMessage = response.Data.Model;
+          $scope.userAllMessage = response.Data;
+          if ($scope.userMessage.Name) {
+            $scope.showLogin = false;
+          } else {
+            $scope.showLogin = true;
+          }
+        });
+    }
+    $scope.getInfoMessage();
     //表单输入变化
     $scope.inputChange = function () {
     }
@@ -112,8 +115,7 @@ angular.module('luZhouApp')
               $scope.showError2 = false;
             } else if (data.Type == 1) {
               setUserCookie();
-              $scope.showLogin = false;
-              window.location.reload();
+              $scope.getInfoMessage();
             } else if (data.Type == 2) {
               setUserCookie();
               commonService.alertMs("首次登录，请设置密保！");
@@ -143,10 +145,11 @@ angular.module('luZhouApp')
             } else {
               commonService.alertMs(data.Message);
             }
-          }, function () {
-            commonService.alertMs("登陆异常！");
-            window.location.reload();
-          });
+          })
+          .catch(function (error) {
+            $loading.finish('userLogin');
+            alert("登陆异常");
+        });
       };
       commonService.limitSubmit(clickLogin);
     }
@@ -229,8 +232,6 @@ angular.module('luZhouApp')
             commonService.alertMs("请先登录！");
           }
         });
-      
-      
     };
     //课程中心
     //课程分类

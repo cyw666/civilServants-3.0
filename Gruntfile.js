@@ -27,8 +27,6 @@ module.exports = function (grunt) {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
   };
-  // Setup the proxy
-  // var proxyRequest = require('grunt-connect-proxy/lib/utils').proxyRequest;
   
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -74,6 +72,7 @@ module.exports = function (grunt) {
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
+          '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
@@ -92,7 +91,7 @@ module.exports = function (grunt) {
         options: {
           open: true,
           middleware: function (connect, options) {
-            return [
+            /*return [
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -103,33 +102,40 @@ module.exports = function (grunt) {
                 connect.static('./app/styles')
               ),
               connect.static(appConfig.app),
-            ];
-            /*// var middlewares = [];
-             var middlewares = [proxyRequest];
-             middlewares.push(modRewrite(['^[^\.]*$ /index.html [L]'])); //Matches everything that does not contain a '.' (period)
-             middlewares.push(connect.static('.tmp'))
-             middlewares.push(connect().use(
-             '/bower_components',
-             connect.static('./bower_components')))
-             middlewares.push(connect().use(
-             '/app/styles',
-             connect.static('./app/styles')))
-             middlewares.push(connect.static(appConfig.app))
-             options.base.forEach(function(base) {
-             middlewares.push(connect.static(base));
-             });
-             return middlewares;*/
+            ];*/
+            if (!Array.isArray(options.base)) {
+              options.base = [options.base];
+            }
+            // 设置代理
+            var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest];
+            middlewares.push(modRewrite(['^[^\.]*$ /index.html [L]'])); //Matches everything that does not contain a '.' (period)
+            middlewares.push(connect.static('.tmp'))
+            middlewares.push(connect().use('/bower_components', connect.static('./bower_components')))
+            middlewares.push(connect().use('/app/styles', connect.static('./app/styles')))
+            middlewares.push(connect.static(appConfig.app))
+            // 代理每个base目录中的静态文件
+            options.base.forEach(function (base) {
+              middlewares.push(connect.static(base));
+            });
+            // 让目录可被浏览（即：允许枚举文件）
+            var directory = options.directory || options.base[options.base.length - 1];
+            middlewares.push(connect.directory(directory));
+            return middlewares;
           }
         }
       },
       proxies: [
         {
           context: '/api',
-          host: 'http://122.225.101.117',
+          host: 'test10.jy365.net',
           port: 9090,
           https: false,
           changeOrigin: true,
-          rewrite: {'^/api': '/api'}
+          rewrite: {
+            '^/api': '/api',
+            '^/api2017': '/api2017',
+            '^/lessionnew': '/lessionnew'
+          }
         }
       ],
       test: {
@@ -496,6 +502,7 @@ module.exports = function (grunt) {
     }
   });
   
+  // grunt.loadNpmTasks('grunt-connect-proxy'); //RAG
   
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -508,6 +515,7 @@ module.exports = function (grunt) {
       'concurrent:server',
       'postcss:server',
       'less:server',
+      'configureProxies:server',
       'connect:livereload',
       'watch'
     ]);

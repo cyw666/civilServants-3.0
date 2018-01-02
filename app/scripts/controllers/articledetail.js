@@ -45,23 +45,26 @@ angular.module('luZhouApp')
       });
     };
     
-    var promise = commonService.getData(ALL_PORT.ArticleContent.url, 'POST', $.extend({}, ALL_PORT.ArticleContent.data, {Id: Id}));
-    promise.then(function (response) {
-      $loading.finish('tmshowarticledetail');
-      $scope.articleData = response.Data;
-      $scope.content = response.Data.Content;
-      $scope.articleData.Type = 'Article';
-      var str = $scope.content.split('font-size:');
-      var reg = /^(?=.*\d.*\b)/;
-      for (var i = 0; i < str.length; i++) {
-        if (reg.test(str[i].split(';')[0])) {
-          $scope.fontSize = parseInt(str[i].split(';')[0]);
+    commonService.getData(ALL_PORT.ArticleContent.url, 'POST', $.extend({}, ALL_PORT.ArticleContent.data, {Id: Id}))
+      .then(function (response) {
+        $loading.finish('tmshowarticledetail');
+        $scope.articleData = response.Data;
+        $scope.content = response.Data.Content;
+        $scope.articleData.Type = 'Article';
+        var str = $scope.content.split('font-size:');
+        var reg = /^(?=.*\d.*\b)/;
+        for (var i = 0; i < str.length; i++) {
+          if (reg.test(str[i].split(';')[0])) {
+            $scope.fontSize = parseInt(str[i].split(';')[0]);
+          }
         }
-      }
-      if (!$scope.fontSize) {
-        $scope.fontSize = 14;
-      }
-    });
+        if (!$scope.fontSize) {
+          $scope.fontSize = 14;
+        }
+      })
+      .catch(function () {
+        $loading.finish('tmshowarticledetail');
+      });
     
     
     //缩小字体

@@ -37,6 +37,9 @@ angular.module('luZhouApp')
             $scope.articleTitle = response.Data.TitleNav;
           }
           $scope.paginationConf.totalItems = response.Data.Count;
+        })
+        .catch(function () {
+          $loading.finish('articleList');
         });
     };
     $scope.$watch('paginationConf.currentPage', function () {

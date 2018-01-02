@@ -236,23 +236,6 @@ angular.module('luZhouApp')
         });
       }, 60000);
     }
-    //判断能否访问
-    this.isVisit = function () {
-      $http({
-        method: 'POST',
-        url: ALL_PORT.Authorization.url,
-        data: $.param($.extend({}, ALL_PORT.Authorization.data))
-      }).success(function (response) {
-        if (response.isauth == true) {
-        } else {
-          alert("请先登录！");
-          $state.go('main');
-          window.location.reload();
-        }
-      }).error(function (error, status) {
-        
-      });
-    }
     //退出
     this.loginOut = function (str) {
       $loading.start('loginOut');
@@ -265,8 +248,7 @@ angular.module('luZhouApp')
         }
       }).success(function (response) {
         $loading.finish('loginOut');
-        $state.go('main');
-        window.location.reload();
+        $state.go('userLogin');
       }).error(function (error, status) {
       });
     }
@@ -391,9 +373,8 @@ angular.module('luZhouApp')
             if (data.Type === 401) {
               clearTimeout(timer);
               document.body.innerHTML = "";//屏蔽页面
-              if (confirm("消息：用户已登出，是否回到首页？  点击取消将关闭页面")) {
-                $state.go('main');
-                window.location.reload();
+              if (confirm("消息：用户已登出，是否登陆？  点击取消将关闭页面")) {
+                $state.go('userLogin');
               }
               else {
                 window.close();
@@ -405,22 +386,15 @@ angular.module('luZhouApp')
               document.body.innerHTML = "";
               alert(data.Message);
               $state.go('main');
-              window.location.reload();
             }
           } else {
             clearTimeout(timer);
             document.body.innerHTML = "";
             alert("出现错误 将返回首页");
             $state.go('main');
-            window.location.reload();
           }
         }).error(function (error, status) {
-          console.log(error, status);
           alert("和平台通讯出错！");
-          /*clearTimeout(timer);
-          document.body.innerHTML = "";
-          $state.go('main');
-          window.location.reload();*/
         });
       }
       var timer = setInterval(fresh, 3000);
@@ -438,6 +412,7 @@ angular.module('luZhouApp')
     };
     
     //获取数据
+    var limitAlert = true;
     this.getData = function (endpoint, method, params) {
       var defer = $q.defer();
       var data;
@@ -459,6 +434,20 @@ angular.module('luZhouApp')
       }).success(function (data) {
         defer.resolve(data);
       }).error(function (data, status, headers, config) {
+        var statusStr = status.toString();
+        if(limitAlert){
+          limitAlert = false;
+          if (statusStr.indexOf('40') != -1) {
+            alert("网络请求错误");
+          } else if (statusStr.indexOf('50') != -1) {
+            alert("服务器错误");
+          }
+          var timer = setTimeout(function () {
+            limitAlert = true;
+          },1000);
+          clearTimeout(timer);
+        }
+        
         defer.reject(data);
       });
       return defer.promise;

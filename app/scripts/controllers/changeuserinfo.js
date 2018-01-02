@@ -75,7 +75,6 @@ angular.module('luZhouApp')
           var updateUserInfo = commonService.getData(ALL_PORT.UpdateUserInfo.url, 'POST', $.extend({}, ALL_PORT.UpdateUserInfo.data, options, token));
           updateUserInfo.then(function (response) {
             commonService.alertMs(response.Message);
-            // window.location.reload();
             if (response.Type == 1) {
               $state.go('main');
             }

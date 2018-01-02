@@ -11,6 +11,17 @@ angular.module('luZhouApp')
   .controller('PersonalearningarchivesCtrl', function ($scope, $timeout, $rootScope, $cookieStore, commonService, $location, $loading) {
     $scope.startDate = '';
     $scope.endDate = '';
+    $scope.yearHistory = [
+      {name: '2018', value: ''},
+      {name: '2017', value: '2017'},
+    ];
+    $scope.selectYearValue = '';
+    $scope.studyStatisticsUrl = '/api' + $scope.selectYearValue + '/Page/StudyStatistics';
+    $scope.yearChange = function () {
+      $scope.studyStatisticsUrl = '/api' + $scope.selectYearValue + '/Page/StudyStatistics';
+      $scope.getUserInfo({type: 'userinfo'});
+      $scope.timeSearch();
+    }
     //请求个人学习档案信息
     $scope.table_show_one = false;
     $scope.table_show_two = false;
@@ -25,13 +36,14 @@ angular.module('luZhouApp')
       }
     };
     
-    $scope.paginationConf = [{ //学习课程获得学时
-      currentPage: 1,
-      totalItems: 10,
-      itemsPerPage: 5, //每页显示的条数one
-      pagesLength: 6,
-      perPageOptions: [10, 20, 30, 40, 50]
-    },
+    $scope.paginationConf = [
+      { //学习课程获得学时
+        currentPage: 1,
+        totalItems: 10,
+        itemsPerPage: 5, //每页显示的条数one
+        pagesLength: 6,
+        perPageOptions: [10, 20, 30, 40, 50]
+      },
       { //参加测试获得学时
         currentPage: 1,
         totalItems: 10,
@@ -47,61 +59,63 @@ angular.module('luZhouApp')
         perPageOptions: [10, 20, 30, 40, 50]
       }
     ];
-    $scope.n = 0;
     $scope.getUserInfo = function (options) {
       $loading.start('personalArchive');
       var newParams = $.extend({}, ALL_PORT.StudyStatistics.data, options);
-      commonService.getData(ALL_PORT.StudyStatistics.url, "post",
-        newParams)
+      commonService.getData($scope.studyStatisticsUrl, "post", newParams)
         .then(function (response) {
           $loading.finish('personalArchive');
           $scope.userInfoData = response.Data;
-          if ($scope.n == 0) {
-            $scope.startDate = response.Data.ViewBag.StartDate;
-            $scope.endDate = response.Data.ViewBag.EndDate;
-            $scope.n = 1;
-          }
+          $scope.startDate = response.Data.ViewBag.StartDate;
+          $scope.endDate = response.Data.ViewBag.EndDate;
+          $scope.n = 1;
+        })
+        .catch(function () {
+          $loading.finish('personalArchive');
         });
     };
     $scope.getStudy = function (options) {
       $loading.start('personalArchive');
       var newParams = $.extend({}, ALL_PORT.StudyStatistics.data, options);
-      commonService.getData(ALL_PORT.StudyStatistics.url, "post",
-        newParams)
+      commonService.getData($scope.studyStatisticsUrl, "post", newParams)
         .then(function (response) {
           $loading.finish('personalArchive');
           $scope.studyData = response.Data;
           $scope.paginationConf[0].totalItems = response.Data.ViewBag.StudyCount;
+        })
+        .catch(function () {
+          $loading.finish('personalArchive');
         });
     };
     $scope.getExam = function (options) {
       $loading.start('personalArchive');
       var newParams = $.extend({}, ALL_PORT.StudyStatistics.data, options);
-      commonService.getData(ALL_PORT.StudyStatistics.url, "post",
-        newParams)
+      commonService.getData($scope.studyStatisticsUrl, "post", newParams)
         .then(function (response) {
           $loading.finish('personalArchive');
           $scope.examData = response.Data;
           $scope.paginationConf[1].totalItems = response.Data.ViewBag.ExamFinishCount;
           // $scope.paginationConf[2].totalItems = response.Data.ViewBag.TrainingCount;
+        })
+        .catch(function () {
+          $loading.finish('personalArchive');
         });
     };
     $scope.getTraining = function (options) {
       $loading.start('personalArchive');
       var newParams = $.extend({}, ALL_PORT.StudyStatistics.data, options);
-      commonService.getData(ALL_PORT.StudyStatistics.url, "post",
-        newParams)
+      commonService.getData($scope.studyStatisticsUrl, "post", newParams)
         .then(function (response) {
           $loading.finish('personalArchive');
           $scope.trainingData = response.Data;
           $scope.paginationConf[2].totalItems = response.Data.ViewBag.TrainingCount;
+        })
+        .catch(function () {
+          $loading.finish('personalArchive');
         });
     };
     
     $scope.getUserInfo({type: 'userinfo'});
-    /*$scope.getStudy({type:'study'});
-     $scope.getExam({type:'exam'});
-     $scope.getTraining({type:'training'});*/
     $scope.timeSearch = function (options) {
       $scope.getStudy($.extend({}, {type: 'study'}, options));
       $scope.getExam($.extend({}, {type: 'exam'}, options));

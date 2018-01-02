@@ -47,10 +47,10 @@ angular.module('luZhouApp')
           $loading.finish('photoPreview');
           $scope.Data = response.Data;
           $scope.paginationConf.totalItems = response.Data.Count;
+          $scope.paginationConf.currentPage = response.Data.Page;
           $scope.ImgSrc = response.Data.ImagePath;
         });
     };
-    
     
     //添加照片
     $scope.getPhotoUpFile = function () {
@@ -64,11 +64,11 @@ angular.module('luZhouApp')
           TrainingId: $scope.TrainingId,
           ParentId: $scope.AlbumId
         }))
-        
         .then(function (response) {
           commonService.alertMs(response.Message);
           if (response.Type >= 1) {
-            document.location.reload();
+            $scope.queryPhotoPreview({page:1});
+            $('.addphotomodal').modal('hide');
           }
         });
     };

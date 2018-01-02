@@ -155,7 +155,7 @@
                 </div>
               </div>
             </div>
-            <div class="list0-75">{{Finish.Credit}}</div>
+            <div class="list0-75">{{Finish.HistoryFlag?"历年":Finish.Credit}}</div>
             <div class="list0-75">{{Finish.Type}}</div>
             <div class="list0-75"><a ui-sref="play({Id:Finish.Id})" target="_blank">播放</a></div>
             <div class="list0-75" ng-if="Finish.NoteFlag"><a ng-click="seeNote(Finish.Id,Finish.Name)"

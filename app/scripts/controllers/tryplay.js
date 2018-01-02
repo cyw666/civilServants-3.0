@@ -115,106 +115,6 @@ angular.module('luZhouApp')
             height: "100%"
           });
           countDown(_courseId);
-          
-          /*var _sendProcess = function () {
-           if(_thePlayer.getPosition())  {
-           var data = $.extend({},{ "PortalId": _portalId, "userid": _userId, "courseid": _courseId, "positionen": _thePlayer.getPosition().toString().rsaEnscrypt()},$scope.token);
-           commonService.getData(ALL_PORT.SingleProcess.url, 'POST', data)
-           .then(function (data) {
-           $scope.loadPlayInfo();
-           //如果记录成功，更新播放页进度条
-           /!*if (data.BrowseScore >= 0 || data.Content == "试看记录！") {
-           $scope.loadPlayInfo();
-           } else {
-           alert("记录异常，将刷新!");
-           // window.location.reload();
-           }*!/
-           },function () {
-           alert("网路异常，将刷新!");
-           window.location.reload();
-           });
-
-           }
-
-           setTimeout(_sendProcess, 30000); //送进度间隔时间 30秒传一次;
-           };
-
-           //时间池流程：时间池为最后一次进度时间累加当前播放页停留时间，即允许用户随意拖动，不影响进度时间
-           var _TimePoolInstall = function () {
-           _timePool.startTime = parseFloat(_lastLocation) + 1;
-           setInterval(function () {
-           //只有在播放且当前播放位置接近时间池时，时间池才会向前走;
-           if (_thePlayer.getState() == 'PLAYING' && _thePlayer.getPosition() > (_timePool.totalTime - 5)) {
-           _timePool.increaseTime += 1
-           }
-           }, 1000);
-           setInterval(_processCheck, 1000);
-           }
-
-           var _processCheck = function () {
-           _timePool.totalTime = _timePool.startTime + _timePool.increaseTime;
-           var curProcess = _thePlayer.getPosition() - 0.2;
-           if (_thePlayer.getState() == 'PLAYING') {
-           if (curProcess > _timePool.totalTime) {
-
-           _thePlayer.play(false);
-           alert("请不要在未播放区域拖动，否则可能丢失进度！");
-           _thePlayer.seek(_timePool.totalTime - 1);
-           // thePlayer.play(true);
-           }
-           }
-           }
-
-           var _jwWarning = function () {
-           var theWidth = $('.jwrail').eq(0).width();
-           var _left_01 = _timePool.totalTime / _thePlayer.getDuration() * theWidth;
-           var _left_02 = parseInt($('.jwoverlay')[0].style.left, 10);
-           $('.jwwarning')[0].style.left = $('.jwoverlay')[0].style.left;
-           if (_left_01 < _left_02) {
-           $('.jwwarning').stop().fadeTo(50, 1);
-           } else {
-           $('.jwwarning').stop().hide();
-           }
-           };
-           //启动时间池样式捕捉时间池;
-           //多次触发开关
-           var k = 0;
-           var _func = function () {
-           if (k < 1) {
-           if ($('.jwrail').length >= 1) {
-           $('.jwrail').eq(0).append('<span class="jwwarning">禁止拖动至此</span>');
-           $('.jwrail').eq(0).children('.Buffer').after('<span class="jwwarningbuffer"></span>');
-           k++;
-           setInterval(function () {
-           var the_time = _timePool.totalTime;
-           var duration = _thePlayer.getDuration();
-           var the_width = $('.jwrail').eq(0).width();
-           $('.jwwarningbuffer')[0].style.left = the_time < duration ? (the_time / duration * the_width + "px") : (duration / duration * the_width + "px")
-           }, 100);
-           window.clearInterval(i);
-           $('.jwrail').mousemove(function () {
-           _jwWarning();
-           })
-           $('.jwrail').mouseout(function () {
-           $('.jwwarning').stop().fadeOut(250);
-           })
-           }
-           }
-           };
-           var i = setInterval(_func, 1000);
-
-           var initPlay = function () {
-           //启动时间池;
-           _TimePoolInstall();
-           //启动定期发送进度;
-           setTimeout(_sendProcess, 8000);
-           //从上次播放位置开始播放;
-           if (_lastPosition != null && _lastPosition != "无数据") {
-           _thePlayer.seek(_lastPosition);
-           };
-           }
-           initPlay();*/
-          
         }, function () {
           window.open("about:blank", "_top").close();
         });
@@ -236,8 +136,6 @@ angular.module('luZhouApp')
           $scope.Url = response.Data.Url;
           $scope.UserId = response.Data.UserId;
           
-          // $scope.jyIframeSrc =$sce.trustAsResourceUrl( $scope.Url+'?url=192.168.1.25/api/CourseProcess/JYProcess?batchId='+$scope.BatchId+'&portalId='+$scope.PortalId+'&UserId='+$scope.UserId+'&courseId='+$scope.CourseId);
-          // $scope.jyIframeSrc = $sce.trustAsResourceUrl($scope.Url+'?url='+$scope.PortalURL+'/api/CourseProcess/JYProcess?batchId='+$scope.BatchId+'&portalId='+$scope.PortalId+'&UserId='+$scope.UserId+'&courseId='+$scope.CourseId);
           $scope.jyIframeSrc = $sce.trustAsResourceUrl($scope.Url);
           countDown($scope.CourseId);
           if (!$scope.PortalId || !$scope.UserId || !$scope.CourseId) {
@@ -270,201 +168,6 @@ angular.module('luZhouApp')
             window.open("about:blank", "_top").close();
           }
           countDown(courseId);
-          
-          /*function LMSInitialize(value) {
-           var reCode = "";
-           return true;
-           }
-           var paraValue;
-           var paraName;
-           function LMSSetValue(name, value) {
-           var reCode = "";
-           switch (name) {
-           case "cmi.core.student_id":
-           paraName = "cmi.core.student_id";
-           break;
-           case "cmi.core.student_name":
-           paraName = "cmi.core.student_name";
-           break;
-           case "cmi.core.lesson_location":
-           paraName = "cmi.core.lesson_location";
-           $.ajax({
-           type: "post",
-           url: API_URL + "/CourseProcess/ScormProcess?m=" + paraName + "&v=" + value,
-           data: { "PortalId": portalId, "userid": userId, "courseid": courseId, "position": value },
-           success: function (result) {
-           if (result.Type == 1) {
-           // window.parent.changeCourseBrowseScore(result.BrowseScore);
-           $scope.loadPlayInfo();
-           }
-           }
-           });
-
-           break;
-           case "cmi.core.credit":
-           paraName = "cmi.core.credit";
-           break;
-           case "cmi.core.lesson_status":
-           paraName = "cmi.core.lesson_status";
-           break;
-           case "cmi.core.entry":
-           paraName = "cmi.core.entry";
-           break;
-           case "cmi.core.score":
-           paraName = "cmi.core.score";
-           break;
-           case "cmi.core.score.raw":
-           paraName = "cmi.core.score.raw";
-           break;
-           case "cmi.core.total_time":
-           paraName = "cmi.core.total_time";
-           break;
-           case "cmi.core.lesson_mode":
-           paraName = "cmi.core.lesson_mode";
-           break;
-           case "cmi.core.exit":
-           paraName = "";
-           break;
-           case "cmi.core.session_time":
-           paraName = "cmi.core.session_time";
-           $.ajax({
-           type: "post",
-           url: API_URL + "/CourseProcess/ScormProcess?m=" + paraName + "&v=" + value,
-           data: { "PortalId": portalId, "userid": userId, "courseid": courseId, "position": value },
-           success: function (result) {
-
-           }
-           });
-           break;
-           case "cmi.suspend_data":
-           paraName = "cmi.suspend_data";
-           break;
-           default:
-           break;
-           }
-           //if (paraName == "cmi.core.session_time") {
-           //    $.ajax({
-           //        type: "get",
-           //        url: API_URL + "/CourseProcess/ScormProcess?m=" + paraName + "&v=" + value,
-           //        data: { "PortalId": portalId, "userid": userId, "courseid": courseId, "position": value },
-           //        success: function (result) {
-           //            alert("In LMSSetValue -- result is :" + result)
-           //        }
-           //    });
-           //}
-           reCode = "true";
-
-           return reCode;
-
-           }
-
-           function LMSGetValue(name) {
-           var reCode = "";
-           switch (name) {
-           case "cmi.core.student_id":
-           reCode = "get.cmi.core.student_id";
-           break;
-           case "cmi.core.student_name":
-           reCode = "get.cmi.core.student_name";
-           break;
-           case "cmi.core.lesson_location":
-           reCode = "get.cmi.core.lesson_location";
-           return LastPostion2;
-           //$.ajax({
-           //    type: "post",
-           //    asnyc: false,
-           //    url: API_URL + "/CourseProcess/GetScormProcess?m=" + reCode,
-           //    data: { "PortalId": portalId, "userid": userId, "courseid": courseId, "position": "1" },
-           //    success: function (result) {
-           //        if (result.Type === 1) {
-           //            return result.Location;
-           //        }
-           //        else {
-           //            return "";
-           //        }
-           //    }
-           //});
-           break;
-           case "cmi.core.credit":
-           reCode = "get.cmi.core.credit";
-           break;
-           case "cmi.core.lesson_status":
-           reCode = "get.cmi.core.lesson_status";
-           return "true";
-           break;
-           case "cmi.core.entry":
-           reCode = "get.cmi.core.entry";
-           break;
-           case "cmi.core.score":
-           reCode = "get.cmi.core.score";
-           break;
-           case "cmi.core.score.raw":
-           reCode = "get.cmi.core.score.raw";
-           break;
-           case "cmi.core.total_time":
-           reCode = "get.cmi.core.total_time";
-           break;
-           case "cmi.core.lesson_mode":
-           reCode = "get.cmi.core.lesson_mode";
-           break;
-           case "cmi.core.exit":
-           reCode = "get.cmi.core.exit";
-           break;
-           case "cmi.core.session_time":
-           reCode = "get.cmi.core.session_time";
-
-           break;
-           case "cmi.suspend_data":
-           reCode = "get.cmi.suspend_data";
-           break;
-           default:
-           break;
-           }
-           //if (paraName == "cmi.core.session_time") {
-           //    $.ajax({
-           //        type: "get",
-           //        url: API_URL + "/CourseProcess/ScormProcess?m=" + paraName,
-           //        data: { "PortalId": portalId, "userid": userId, "courseid": courseId, "position": "1" },
-           //        success: function (result) {
-           //            alert("In LMSGetValue -- result is :" + result);
-           //        }
-           //    });
-           //}
-           reCode = "true";
-           return reCode;
-           }
-
-           function LMSCommit(value) {
-           var reCode = "";
-           return reCode;
-           }
-
-           function LMSFinish(value) {
-           var reCode = "";
-           reCode = LMSCommit(value);
-           return reCode;
-           }
-
-           function LMSGetLastError() {
-           var reCode = "0";
-           return reCode;
-           }
-
-           function LMSGetErrorString(value) {
-           var reCode = "";
-           return reCode;
-           }
-
-
-           function API() { }
-
-           API.LMSInitialize = LMSInitialize;
-           API.LMSSetValue = LMSSetValue;
-           API.LMSGetValue = LMSGetValue;
-           API.LMSCommit = LMSCommit;
-           API.LMSFinish = LMSFinish;
-           API.LMSGetLastError = LMSGetLastError;
-           API.LMSGetErrorString = LMSGetErrorString;*/
         });
     };
     //播放single视频
@@ -487,37 +190,10 @@ angular.module('luZhouApp')
             window.open("about:blank", "_top").close();
           }
           var MediaPlayer;
-          // var au = "47$67$111$117$114$115$101$80$114$111$99$101$115$115$47$83$105$110$103$108$101$80$114$111$99$101$115$115$".toCharString("$");
-          /*function sendProcess() {
-           var data = $.extend({},{ "PortalId": _portalId, "userid": _userId, "courseid": _courseId, "positionen": MediaPlayer.currentPosition},$scope.token);
-           commonService.getData(ALL_PORT.SingleProcess.url, 'POST', data)
-           .then(function (data) {
-           $scope.loadPlayInfo();
-           },function () {
-           alert("网路异常，将刷新!");
-           window.location.reload();
-           });
-
-           setTimeout(sendProcess, 30000); //送进度间隔时间 30秒传一次;
-           };*/
           MediaPlayer = document.MediaPlayer;
           MediaPlayer.Filename = url;
           MediaPlayer.currentPosition = 0;
           countDown(_courseId);
-          // MediaPlayer.stop();
-          // $interval.cancel(timePromise);
-          /*var timePromise = $interval(function(){
-           _timePool.increaseTime+=1;
-           _timePool.totalTime = _timePool.startTime+_timePool.increaseTime;
-           if (MediaPlayer.currentPosition>_timePool.totalTime){
-           alert('请不要在未播放区域拖动，否则可能丢失进度!');
-           MediaPlayer.currentPosition = _timePool.totalTime-3;
-           }
-           },1000);
-
-
-           setTimeout(sendProcess, 2000);//第一次送进度时间*/
-          
         }, function () {
           window.open("about:blank", "_top").close();
         });
@@ -621,7 +297,6 @@ angular.module('luZhouApp')
         commonService.getData(ALL_PORT.ProcessOffice.url, 'POST', params)
           .then(function (response) {
             //如果记录成功，更新播放页进度条
-            // console.info(response.Content);
             $scope.loadPlayInfo();
           })
       }

@@ -61,10 +61,10 @@ angular.module('luZhouApp')
           TrainingId: $scope.Id
         }))
         .then(function (response) {
-          commonService.alertMs(response.Message);
+          alert(response.Message);
           if (response.Type > 0) {
             $('.modal').modal('hide');
-            window.location.reload();
+            $scope.queryPhotoAlbumList({page:1});
           }
           
         });

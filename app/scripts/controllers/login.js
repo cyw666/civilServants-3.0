@@ -163,7 +163,6 @@ angular.module('luZhouApp')
             }
           }, function (data) {
             commonService.alertMs("登陆异常！");
-            window.location.reload();
           });
       }
       commonService.limitSubmit(clickLogin);

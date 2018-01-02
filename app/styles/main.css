@@ -5429,6 +5429,10 @@ input[type="checkbox"]:focus {
 .personalArchives .statisticsBox .search {
   margin-left: 22px;
 }
+.personalArchives .statisticsBox .search .yearSelect {
+  width: 100px;
+  display: inline-block;
+}
 .personalArchives .statisticsBox .searchBtn {
   margin-left: 20px;
   padding: 4px 10px;

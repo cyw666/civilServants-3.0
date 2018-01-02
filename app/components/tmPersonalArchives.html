@@ -37,6 +37,13 @@
           <legend><strong>基本信息</strong></legend>
           <br/>
           <div class="search">
+            <span>学年</span>
+            <select class="form-control yearSelect"
+                    ng-model="selectYearValue"
+                    ng-options="x.value as x.name for x in yearHistory"
+                    ng-change="yearChange()"
+            >
+            </select>
             <div class="datePicker">
               <input class="form-control" type="text" ng-model="startDate" date-time-picker>
               <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>

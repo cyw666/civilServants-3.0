@@ -219,7 +219,6 @@ function uploadCanceled(evt) {
       contentType: false,
       cache: false,
       success: function (data) {
-        debugger
         if ('json' == options.dataType) {
           var d = window.eval('(' + data + ')');
           options.onComplate(d);
