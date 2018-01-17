@@ -6,7 +6,7 @@
 
 ## 技术栈
 
-angular1 + grunt + less
+angular1 + bootstrap3 + angular-ui-router + grunt + less 
 
 # 说明
 
