@@ -438,9 +438,9 @@ angular.module('luZhouApp')
         if(limitAlert){
           limitAlert = false;
           if (statusStr.indexOf('40') != -1) {
-            alert("网络请求错误");
+            alert("网络请求异常");
           } else if (statusStr.indexOf('50') != -1) {
-            alert("服务器错误");
+            alert("服务器异常");
           }
           var timer = setTimeout(function () {
             limitAlert = true;

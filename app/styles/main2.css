@@ -7011,3 +7011,21 @@ input:hover {
   border-radius: 6px;
   padding: 2px 25px;
 }
+/**
+ * 漂浮窗口
+ */
+.floadAd {
+  border-radius: 4px;
+  position: absolute;
+  z-index: 20000;
+  overflow: hidden;
+}
+.floadAd .closeFloat {
+  position: absolute;
+  right: 2px;
+  top: 0px;
+  color: #666;
+}
+.floadAd .closeFloat:hover {
+  color: #333;
+}

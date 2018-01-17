@@ -115,7 +115,8 @@ angular.module('luZhouApp')
               $scope.showError2 = false;
             } else if (data.Type == 1) {
               setUserCookie();
-              $scope.getInfoMessage();
+              // $scope.getInfoMessage();
+              window.location.reload();
             } else if (data.Type == 2) {
               setUserCookie();
               commonService.alertMs("首次登录，请设置密保！");

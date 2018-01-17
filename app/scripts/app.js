@@ -358,7 +358,7 @@ angular
         controllerAs: 'userRankingList'
       })
       .state('userLogin', {
-        url: '/userLogin?name&params',
+        url: '/userLogin?name&params&page',
         data: {title: "登录"},
         templateUrl: 'views/Do/login.html',
         controller: 'LoginCtrl',

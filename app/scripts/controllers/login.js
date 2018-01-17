@@ -121,8 +121,10 @@ angular.module('luZhouApp')
               setUserCookie();
               if ($stateParams.name) {
                 $state.go($stateParams.name, JSON.parse($stateParams.params));
-              } else {
-                location.href = "/admin"
+              }else if($stateParams.page == "admin"){
+                window.location.href = "/admin"
+              }else {
+                $state.go('main');
               }
             } else if (data.Type == 2) {
               setUserCookie();

@@ -134,7 +134,8 @@ module.exports = function (grunt) {
           rewrite: {
             '^/api': '/api',
             '^/api2017': '/api2017',
-            '^/lessionnew': '/lessionnew'
+            '^/lessionnew': '/lessionnew',
+            '^/Content': '/Content'
           }
         }
       ],

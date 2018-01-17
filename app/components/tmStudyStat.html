@@ -9,6 +9,13 @@
       <li class="active">学习统计</li>
     </ol>
     <form class="form-inline formSearch">
+      <span>学年</span>
+      <select class="form-control yearSelect"
+              ng-model="selectYearValue"
+              ng-options="x.value as x.name for x in yearHistory"
+              ng-change="yearChange()"
+      >
+      </select>
       <span>查询时间：</span>
       <div class="form-group">
         <div class="datePicker">
@@ -24,7 +31,7 @@
         </div>
       </div>
       <button type="submit" class="btn btn-primary"
-              ng-click="requestMyStudyStat({StartDate:startTime,EndDate:endTime})">查询
+              ng-click="requestMyStudyStat({StartDate:startTime,EndDate:endTime,page: 1})">查询
       </button>
     </form>
     <p class="welcome">

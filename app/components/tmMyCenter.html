@@ -134,13 +134,13 @@
           <div class="title_bar">
             <div class="list3">课程名称</div>
             <div class="list1-5"><a ng-click="learningProgress('Finish')" class="getorder"><span>▼</span>学习进度</a></div>
-            <div class="list0-75">学时</div>
+            <div class="list1-5">学时</div>
             <div class="list0-75">类型</div>
             <div class="list0-75">播放</div>
             <div class="list0-75">笔记</div>
             <div class="list0-75">计划</div>
             <div class="list0-75">测试</div>
-            <div class="list0-75">删除</div>
+            <!--<div class="list0-75">删除</div>-->
           </div>
           <div class="list" ng-repeat="Finish in TotalData.ListData.FinishModel">
             <div class="list3 ellipsis" title="{{Finish.Name}}">
@@ -155,7 +155,7 @@
                 </div>
               </div>
             </div>
-            <div class="list0-75">{{Finish.HistoryFlag?"历年":Finish.Credit}}</div>
+            <div class="list1-5">{{Finish.HistoryFlag?"历年":Finish.Credit}}</div>
             <div class="list0-75">{{Finish.Type}}</div>
             <div class="list0-75"><a ui-sref="play({Id:Finish.Id})" target="_blank">播放</a></div>
             <div class="list0-75" ng-if="Finish.NoteFlag"><a ng-click="seeNote(Finish.Id,Finish.Name)"
@@ -172,8 +172,8 @@
             <div ng-if="Finish.ExamFlag&&Finish.BrowseScore==100" class="list0-75"><a
                 ng-click="courseExamList(Finish.Id)" data-toggle="modal" data-target=".seeTest">查看</a></div>
             <div ng-if="!Finish.ExamFlag" class="list0-75">无</div>
-            <div class="list0-75"><a class="del" ng-click="deleatUserCourse(Finish.Id)"><span
-                class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></div>
+            <!--<div class="list0-75"><a class="del" ng-click="deleatUserCourse(Finish.Id)"><span
+                class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></div>-->
           </div>
           <div ng-transclude="pagation"></div>
         </div>

@@ -17,10 +17,10 @@
           <table class="question_item">
             <tr ng-repeat="singleText in item.QuestionsItems" class="radio_question_item">
               <td>
-                <input class="hideNode" type="radio" value="{{singleText.ItemFlag}}"
-                       id="{{singleText.ItemFlag}}-{{item.Id}}-{{outerIndex}}" name="radiotext{{item.Id}}"/>
-                <a href="javascript:;" class="jqRadio"></a>
                 <label for="{{singleText.ItemFlag}}-{{item.Id}}-{{outerIndex}}">
+                  <input class="hideNode" type="radio" value="{{singleText.ItemFlag}}"
+                         id="{{singleText.ItemFlag}}-{{item.Id}}-{{outerIndex}}" name="radiotext{{item.Id}}"/>
+                  <span class="jqRadio"></span>
                   {{singleText.ItemFlag}}.{{singleText.Name}}
                   <input ng-if="singleText.TextFlag" class="advise" type="text" name="content{{item.Id}}">
                 </label>
@@ -35,10 +35,10 @@
           <table class="question_item">
             <tr ng-repeat="single in item.QuestionsItems" class="radio_question_item">
               <td>
-                <input class="hideNode" type="radio" value="{{single.ItemFlag}}"
-                       id="{{single.ItemFlag}}-{{item.Id}}-{{outerIndex}}" name="radio{{item.Id}}"/>
-                <a href="javascript:;" class="jqRadio"></a>
                 <label for="{{single.ItemFlag}}-{{item.Id}}-{{outerIndex}}">
+                  <input class="hideNode" type="radio" value="{{single.ItemFlag}}"
+                         id="{{single.ItemFlag}}-{{item.Id}}-{{outerIndex}}" name="radio{{item.Id}}"/>
+                  <span class="jqRadio"></span>
                   {{single.ItemFlag}}.{{single.Name}}
                 </label>
               </td>
@@ -52,10 +52,10 @@
           <table class="question_item">
             <tr ng-repeat="more in item.QuestionsItems" class="checkbox_question_item">
               <td>
-                <input class="hideNode" type="checkbox" value="{{more.ItemFlag}}"
-                       id="{{more.ItemFlag}}-{{item.Id}}-{{outerIndex}}" name="checkbox{{item.Id}}"/>
-                <a href="javascript:;" class="jqCheckbox"></a>
                 <label for="{{more.ItemFlag}}-{{item.Id}}-{{outerIndex}}">
+                  <input class="hideNode" type="checkbox" value="{{more.ItemFlag}}"
+                         id="{{more.ItemFlag}}-{{item.Id}}-{{outerIndex}}" name="checkbox{{item.Id}}"/>
+                  <span class="jqCheckbox"></span>
                   {{more.ItemFlag}}.{{more.Name}}
                 </label>
               </td>
@@ -69,10 +69,10 @@
           <table class="question_item">
             <tr ng-repeat="moreText in item.QuestionsItems" class="checkbox_question_item">
               <td>
-                <input class="hideNode" type="checkbox" value="{{moreText.ItemFlag}}"
-                       id="{{moreText.ItemFlag}}-{{item.Id}}-{{outerIndex}}" name="checkboxtext{{item.Id}}"/>
-                <a href="javascript:;" class="jqCheckbox"></a>
                 <label for="{{moreText.ItemFlag}}-{{item.Id}}-{{outerIndex}}">
+                  <input class="hideNode" type="checkbox" value="{{moreText.ItemFlag}}"
+                         id="{{moreText.ItemFlag}}-{{item.Id}}-{{outerIndex}}" name="checkboxtext{{item.Id}}"/>
+                  <span class="jqCheckbox"></span>
                   {{moreText.ItemFlag}}.{{moreText.Name}}
                   <input ng-if="moreText.TextFlag" class="advise" type="text" name="content{{item.Id}}">
                 </label>

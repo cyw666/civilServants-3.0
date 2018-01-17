@@ -10,25 +10,31 @@
 angular.module('luZhouApp')
   .controller('TeststatCtrl', function ($scope, $timeout, $rootScope, $cookieStore, commonService, $location, $loading) {
     //个人考试统计
-    $scope.startTime = '';
-    $scope.endTime = '';
+    $scope.yearHistory = [
+      {name: '2018', value: ''},
+      {name: '2017', value: '2017'},
+    ];
+    $scope.selectYearValue = '';
+    $scope.examStateUrl = '/api' + $scope.selectYearValue + '/Page/MyExamStat';
+    $scope.yearChange = function () {
+      $scope.examStateUrl = '/api' + $scope.selectYearValue + '/Page/MyExamStat';
+      $scope.requestMyStudyStat({page: 1});
+    }
+    
     $scope.paginationConf = $.extend({}, paginationConf, {itemsPerPage: ALL_PORT.MyExamStat.data.rows});
-    $scope.n = 0;
+    var params = $.extend({}, ALL_PORT.MyExamStat.data);
+  
     $scope.requestMyStudyStat = function (options) {
       $loading.start('examStat');
-      var params = $.extend({}, ALL_PORT.MyExamStat.data, options);
-      commonService.getData(ALL_PORT.MyExamStat.url, 'POST',
-        params)
+      $.extend(params, options);
+      commonService.getData($scope.examStateUrl, 'POST', params)
         .then(function (response) {
           $loading.finish('examStat');
+          $scope.paginationConf.currentPage = response.Data.Page;
           $scope.paginationConf.totalItems = response.Data.Count;
           $scope.examStatData = response.Data;
-          
-          if ($scope.n == 0) {
-            $scope.startTime = response.Data.StartDate;
-            $scope.endTime = response.Data.EndDate;
-            $scope.n = 1;
-          }
+          $scope.startTime = response.Data.StartDate;
+          $scope.endTime = response.Data.EndDate;
         });
     };
     $scope.$watch('paginationConf.currentPage', function () {

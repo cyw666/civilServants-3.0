@@ -68,7 +68,6 @@ angular.module('luZhouApp')
           $scope.userInfoData = response.Data;
           $scope.startDate = response.Data.ViewBag.StartDate;
           $scope.endDate = response.Data.ViewBag.EndDate;
-          $scope.n = 1;
         })
         .catch(function () {
           $loading.finish('personalArchive');

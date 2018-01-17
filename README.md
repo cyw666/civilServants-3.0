@@ -1,15 +1,30 @@
-# civilServants-3.0
+# 前言
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.16.0.
+> 干部教育网络学院基准 pc
 
-## Build & development
+干部网络教育培训既具有打破时空限制、方便快捷、互动性强的鲜明特点，又具有学习资源丰富、培训形式多样、投入较少、培训资源优化整合和培训对象广覆盖的独特优势。干部网络教育培训意义重大、影响深远。未来，省干部教育培训网络学院将进一步深入学习贯彻习近平总书记系列重要讲话精神，紧紧围绕“四个全面”战略布局，认真贯彻落实五大发展理念，在省委组织部的领导下，坚持服务科学发展、服务干部成长、服务学习型党组织建设，不断创新方式，强化管理，打造品牌，提高实效，推进干部网络培训工作再上新台阶，为建设富饶美丽幸福作出新的更大贡献。
 
-Run `grunt` for building and `grunt serve` for preview.
+## 技术栈
 
-## Testing
+angular1 + grunt + less
 
+# 说明
+
+脚手架构建 [yo angular generator](https://github.com/yeoman/generator-angular)version 0.16.0.
+angular 版本选择1.2.0
+## 项目运行
+```base
+# install dependencies
+npm install 
+bower install
+# server
+grunt serve
+# build
+grunt build
+# Testing
 Running `grunt test` will run the unit tests with karma.
+```
+
 ## 页面名称以及对应controller
 ### views &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;controller
 1. main.html(首页)      main.js

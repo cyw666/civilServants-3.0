@@ -52,10 +52,10 @@
           <table class="question_item">
             <tr ng-repeat="single in item.QuestionsItems">
               <td>
-                <input class="hideNode" type="radio" value="{{single.ItemFlag}}"
-                       id="{{single.ItemFlag}}-{{item.Id}}-{{outerIndex0}}" name="radio{{item.Id}}"/>
-                <a href="javascript:;" class="jqRadio"></a>
                 <label for="{{single.ItemFlag}}-{{item.Id}}-{{outerIndex0}}">
+                  <input class="hideNode" type="radio" value="{{single.ItemFlag}}"
+                         id="{{single.ItemFlag}}-{{item.Id}}-{{outerIndex0}}" name="radio{{item.Id}}"/>
+                  <span class="jqRadio"></span>
                   {{single.ItemFlag}}.{{single.Name}}
                 </label>
                 <!--<input type="radio" value="{{checkList.ItemFlag}}"
@@ -80,13 +80,12 @@
           <table class="question_item">
             <tr ng-repeat="single in item.QuestionsItems">
               <td>
-                <input class="hideNode" type="radio" value="{{single.ItemFlag}}"
-                       id="{{single.ItemFlag}}-{{item.Id}}-{{outerIndex1}}" name="radio{{item.Id}}"/>
-                <a href="javascript:;" class="jqRadio"></a>
                 <label for="{{single.ItemFlag}}-{{item.Id}}-{{outerIndex1}}">
+                  <input class="hideNode" type="radio" value="{{single.ItemFlag}}"
+                         id="{{single.ItemFlag}}-{{item.Id}}-{{outerIndex1}}" name="radio{{item.Id}}"/>
+                  <span class="jqRadio"></span>
                   {{single.ItemFlag}}.{{single.Name}}
                 </label>
-
 
                 <!--<input type="radio" value="{{singleList.ItemFlag}}"
                        id="{{singleList.ItemFlag}}-{{singleList.Id}}-{{outerIndex1}}" name="radio{{singles.Id}}"/>
@@ -112,10 +111,10 @@
           <table class="question_item">
             <tr ng-repeat="more in item.QuestionsItems">
               <td>
-                <input class="hideNode" type="checkbox" value="{{more.ItemFlag}}"
-                       id="{{more.ItemFlag}}-{{item.Id}}-{{outerIndex2}}" name="checkbox{{item.Id}}"/>
-                <a href="javascript:;" class="jqCheckbox"></a>
                 <label for="{{more.ItemFlag}}-{{item.Id}}-{{outerIndex2}}">
+                  <input class="hideNode" type="checkbox" value="{{more.ItemFlag}}"
+                         id="{{more.ItemFlag}}-{{item.Id}}-{{outerIndex2}}" name="checkbox{{item.Id}}"/>
+                  <span href="javascript:;" class="jqCheckbox"></span>
                   {{more.ItemFlag}}.{{more.Name}}
                 </label>
 
