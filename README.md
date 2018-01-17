@@ -11,7 +11,7 @@ angular1 + bootstrap3 + angular-ui-router + grunt + less
 # 说明
 
 脚手架构建 [yo angular generator](https://github.com/yeoman/generator-angular)version 0.16.0.
-angular 版本选择1.2.0
+angular 版本选择1.2.0 兼容ie8+
 ## 项目运行
 ```base
 # install dependencies
