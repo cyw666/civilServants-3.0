@@ -18,13 +18,6 @@ angular.module('luZhouApp')
       .then(function (response) {
         $loading.finish('examReview');
         $scope.allQuestions = response.TypeAllQuestions;
-        // $scope.singleQuestions = response.Data.Type1Questions;
-        // $scope.multipleQuestions = response.Data.Type2Questions;
-        // $scope.gapFilling = response.Data.Type3Questions;
-        
-        // $scope.examAllScore = commonService.examAllScore2;
-        // $scope.countIf = commonService.countIf;
-        // $scope.rightScore = commonService.rightScore;
       });
     
     $scope.getRatePoll = function (count, sort) {

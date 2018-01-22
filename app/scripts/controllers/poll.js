@@ -32,7 +32,7 @@ angular.module('luZhouApp')
       $scope.seconds -= 1000;
       if ($scope.seconds == 0) {
         commonService.alertMs('考试时间到,系统将自动提交！');
-        $scope.submitForm(1);
+        $scope.submitForm();
       }
     }, 1000);
     $scope.submitForm = function () {
@@ -56,8 +56,10 @@ angular.module('luZhouApp')
         commonService.getData(ALL_PORT.PostExam.url, 'POST', params)
           .then(function (response) {
             if (response.Type == 1) {
-              commonService.alertMs(response.Message);
-              $state.go('pollreview', {parameter1: Id, parameter2: response.Value});
+              // commonService.alertMs(response.Message);
+              alert(response.Message)
+              // $state.go('pollreview', {parameter1: Id, parameter2: response.Value});
+              window.close();
             } else {
               commonService.alertMs(response.Message);
             }

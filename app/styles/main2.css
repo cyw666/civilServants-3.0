@@ -5641,6 +5641,9 @@ input:hover {
 .pollReview .examReviewForm {
   padding: 20px;
 }
+.pollReview .examReviewForm table {
+  width: 100%;
+}
 .pollReview .examReviewForm tr td {
   text-align: left;
   padding: 5px 15px;
@@ -5658,6 +5661,7 @@ input:hover {
 }
 .pollReview .poll_percent table {
   width: 100%;
+  margin-top: 25px;
 }
 .pollReview .poll_percent .percent_title {
   width: 40%;

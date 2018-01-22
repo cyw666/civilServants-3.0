@@ -86,8 +86,9 @@ angular.module('luZhouApp')
           var _lastLocation = response.Data.Location;
           
           var _thePlayer = jwplayer('myplayer').setup({
-            flashplayer: "jwplayer/jwplayer.flash.swf",
+            flashplayer: "plugins/jwplayer/jwplayer.flash.swf",
             file: $scope.playMp4Data.Url,
+            // file: 'http://lessionnew.gdpedu.org/test222.m3u8',
             autostart: 'true',
             width: "100%",
             height: "100%"
@@ -182,7 +183,6 @@ angular.module('luZhouApp')
             setTimeout(_sendProcess, 8000);
             //从上次播放位置开始播放;
             if (_lastPosition != null && _lastPosition != "无数据") {
-              //TODO 20170106 IE8 9 不能从上次位置开始播放，估计是加载player时间过长
               _thePlayer.seek(_lastPosition);
             }
             ;
