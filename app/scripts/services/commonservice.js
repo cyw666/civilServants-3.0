@@ -426,7 +426,7 @@ angular.module('luZhouApp')
       $http({
         url: endpoint,
         method: method,
-        timeout: 5000,
+        timeout: 10000,
         headers: {
           "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
         },

@@ -146,8 +146,7 @@ angular.module('luZhouApp')
             } else {
               commonService.alertMs(data.Message);
             }
-          })
-          .catch(function (error) {
+          }).catch(function (error) {
             $loading.finish('userLogin');
             alert("登陆异常");
         });
