@@ -4442,6 +4442,20 @@ input[type="checkbox"]:focus {
 .exam .question_item tr:hover {
   background-color: #fceeee;
 }
+.exam .question_item textarea {
+  width: 600px;
+  height: 180px;
+  padding: 10px;
+}
+.exam .blankQuestion .form-control {
+  display: inline-block;
+  width: 100px;
+}
+.exam .biaoti {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px;
+}
 /**
  * 考试记录
  */
