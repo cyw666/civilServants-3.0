@@ -129,7 +129,9 @@
       <tr ng-show="adviseQuestions" ng-repeat="item in adviseQuestions" ng-init="outerIndex3 = $index">
         <td>
           <input type="hidden" name="questionid{{item.Id}}" value="{{item.Id}}"/>
-          <div class="tibg">第<span class="questionNum" type="3"> {{$index+1}} </span>题、 {{item.Name}} （分值：{{item.Score}}）</div>
+          <div class="tibg">第<span class="questionNum" type="3"> {{$index+1}} </span>题、 {{item.Name}}
+            （分值：{{item.Score}}）
+          </div>
           <table class="question_item">
             <tr>
               <td>
