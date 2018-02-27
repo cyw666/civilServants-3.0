@@ -14,7 +14,7 @@ angular.module('luZhouApp')
     var parameter2 = $stateParams.recordId;
     $loading.start('examReview');
     commonService.getData(ALL_PORT.ExamReview.url, 'POST',
-      $.extend({}, ALL_PORT.ExamReview.data, {parameter1: parameter1, parameter2: parameter2}))
+      $.extend({}, ALL_PORT.ExamReview.data, { parameter1: parameter1, parameter2: parameter2 }))
       .then(function (response) {
         $loading.finish('examReview');
         $scope.examReviewData = response.Data;
@@ -22,10 +22,20 @@ angular.module('luZhouApp')
         $scope.checkingQuestions = response.Data.Type0Questions;
         $scope.singleQuestions = response.Data.Type1Questions;
         $scope.multipleQuestions = response.Data.Type2Questions;
-        $scope.gapFilling = response.Data.Type3Questions;
+        $scope.adviseQuestions = response.Data.Type3Questions;
+        $scope.gapFillingQuestions = response.Data.Type4Questions;
         
         $scope.examAllScore = commonService.examAllScore2;
         $scope.countIf = commonService.countIf;
         $scope.rightScore = commonService.rightScore;
       });
+    
+    $scope.replaceInput = function (name) {
+      var newName = name.replace(/\[@*\]+/g, "______")
+      return newName;
+    }
+    $scope.replaceAnswer = function (name) {
+      var newName = name.replace(/♩+/g, ",")
+      return newName;
+    }
   });

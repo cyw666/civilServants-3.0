@@ -33,8 +33,8 @@
         </td>
       </tr>
       <tr ng-show="checkingQuestions">
-        <td class="biaoti">一、判断题(共 {{checkingQuestions.length}} 题,共 {{examAllScore(examReviewData.Type0Questions)}}
-          分),答对 {{countIf(examReviewData.Type0Questions)}} 题,共{{rightScore(examReviewData.Type0Questions)}}分
+        <td class="biaoti">判断题(共 {{checkingQuestions.length}} 题,共 {{examAllScore(examReviewData.Type0Questions)}}
+          分),答对 {{countIf(examReviewData.Type0Questions)}} 题,得分{{rightScore(examReviewData.Type0Questions)}}分
         </td>
       </tr>
       <tr ng-show="checkingQuestions" ng-repeat="checkques in checkingQuestions">
@@ -55,10 +55,8 @@
 
       <tr ng-show="singleQuestions">
         <td class="biaoti">
-          <span ng-show="checkingQuestions.length&&singleQuestions.length">二</span>
-          <span ng-show="!checkingQuestions.length&&singleQuestions.length">一</span>
-          、单选题(共 {{singleQuestions.length}} 题,共 {{examAllScore(examReviewData.Type1Questions)}} 分),答对
-          {{countIf(examReviewData.Type1Questions)}} 题,共{{rightScore(examReviewData.Type1Questions)}}分
+          单选题(共 {{singleQuestions.length}} 题,共 {{examAllScore(examReviewData.Type1Questions)}} 分),答对
+          {{countIf(examReviewData.Type1Questions)}} 题,得分{{rightScore(examReviewData.Type1Questions)}}分
         </td>
       </tr>
       <tr ng-show="singleQuestions" ng-repeat="singleques in singleQuestions">
@@ -79,12 +77,8 @@
 
       <tr ng-show="multipleQuestions">
         <td class="biaoti">
-          <span ng-show="checkingQuestions.length&&singleQuestions.length&&multipleQuestions.length">三</span>
-          <span
-              ng-show="(checkingQuestions.length&&!singleQuestions.length&&multipleQuestions.length)||(!checkingQuestions.length&&singleQuestions.length&&multipleQuestions.length)">二</span>
-          <span ng-show="!checkingQuestions.length&&!singleQuestions.length&&multipleQuestions.length">一</span>
-          、多选题(共 {{multipleQuestions.length}} 题,共 {{examAllScore(examReviewData.Type2Questions)}} 分),答对
-          {{countIf(examReviewData.Type2Questions)}} 题,共{{rightScore(examReviewData.Type2Questions)}}分
+          多选题(共 {{multipleQuestions.length}} 题,共 {{examAllScore(examReviewData.Type2Questions)}} 分),答对
+          {{countIf(examReviewData.Type2Questions)}} 题,得分{{rightScore(examReviewData.Type2Questions)}}分
         </td>
       </tr>
       <tr ng-show="multipleQuestions" ng-repeat="multipeques in multipleQuestions">
@@ -100,6 +94,57 @@
               </tr>
             </table>
           </div>
+        </td>
+      </tr>
+
+      <tr ng-show="adviseQuestions">
+        <td class="biaoti">
+          意见题(共 {{adviseQuestions.length}} 题,共{{examAllScore(adviseQuestions)}} 分),得分{{rightScore(adviseQuestions)}}分
+        </td>
+      </tr>
+      <tr ng-show="adviseQuestions" ng-repeat="item in adviseQuestions">
+        <td>
+          <div class="tibg">
+            第<span class="questionNum" type="3"> {{$index+1}} </span>题、
+            {{item.Question.Name}}（分值：{{item.Question.Score}}）
+            <span class="xxys">
+              您的得分 <span class="highlight">{{item.UserScore}}</span>
+              【参考答案：{{ item.Question.Answer }}】
+            </span>
+          </div>
+          <table>
+            <tr>
+              <td>
+                <textarea disabled>{{ item.UserAnswer }}</textarea>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr ng-show="gapFillingQuestions">
+        <td class="biaoti">
+          填空题(共 {{gapFillingQuestions.length}} 题,共{{examAllScore(gapFillingQuestions)}}
+          分),得分{{rightScore(gapFillingQuestions)}}分
+        </td>
+      </tr>
+      <tr ng-show="gapFillingQuestions" ng-repeat="item in gapFillingQuestions">
+        <td class="blankQuestion">
+          <div class="tibg">
+            第<span class="questionNum" type="3"> {{$index+1}} </span>题、
+            {{replaceInput(item.Question.Name)}}（分值：{{item.Question.Score}}）
+            <span class="xxys">
+              您的得分 <span class="highlight">{{item.UserScore}}</span>
+              【参考答案：{{ item.Question.Answer }}】
+            </span>
+          </div>
+          <table>
+            <tr>
+              <td>
+                您的答案：<span class="highlight">{{ replaceAnswer(item.UserAnswer) }}</span>
+              </td>
+            </tr>
+          </table>
         </td>
       </tr>
       </tbody>

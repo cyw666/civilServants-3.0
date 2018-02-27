@@ -4395,11 +4395,46 @@ input:hover {
   text-align: left;
   padding: 5px 15px;
 }
+.examReview .examReviewForm .xz {
+  zoom: 1;
+}
+.examReview .examReviewForm .xz:before,
+.examReview .examReviewForm .xz:after {
+  content: " ";
+  display: table;
+}
+.examReview .examReviewForm .xz:after {
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+}
+.examReview .examReviewForm .xz:before,
+.examReview .examReviewForm .xz:after {
+  content: " ";
+  display: table;
+}
+.examReview .examReviewForm .xz:after {
+  clear: both;
+  visibility: hidden;
+  font-size: 0;
+  height: 0;
+}
 .examReview .examReviewForm .xz li {
   float: left !important;
   font-size: 15px;
   font-weight: bold;
   padding-left: 15px;
+}
+.examReview .examReviewForm textarea {
+  width: 600px;
+  height: 180px;
+  padding: 10px;
+}
+.examReview .biaoti {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px;
 }
 /**
  * footer

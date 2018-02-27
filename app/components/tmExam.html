@@ -110,23 +110,17 @@
                   <span href="javascript:;" class="jqCheckbox"></span>
                   {{more.ItemFlag}}.{{more.Name}}
                 </label>
-
-                <!--<input type="checkbox" id="{{mulList.ItemFlag}}-{{mulList.Id}}-{{outerIndex2}}"
-                       value="{{mulList.ItemFlag}}" name="checkbox{{multques.Id}}"/>
-                <label
-                    for="{{mulList.ItemFlag}}-{{mulList.Id}}-{{outerIndex2}}">{{mulList.ItemFlag}}.{{mulList.Name}}</label>-->
               </td>
             </tr>
           </table>
         </td>
       </tr>
-
       <tr ng-show="adviseQuestions">
         <td class="biaoti">
           意见题(共 {{adviseQuestions.length}} 题,共{{examAllScore1(examData.Type3Questions)}} 分)
         </td>
       </tr>
-      <tr ng-show="adviseQuestions" ng-repeat="item in adviseQuestions" ng-init="outerIndex3 = $index">
+      <tr ng-show="adviseQuestions" ng-repeat="item in adviseQuestions">
         <td>
           <input type="hidden" name="questionid{{item.Id}}" value="{{item.Id}}"/>
           <div class="tibg">第<span class="questionNum" type="3"> {{$index+1}} </span>题、 {{item.Name}}
@@ -135,19 +129,18 @@
           <table class="question_item">
             <tr>
               <td>
-                <textarea name="textbox{{item.Id}}" my-placeholder placeholder="请输入答案..."/>
+                <textarea name="textbox{{item.Id}}" placeholder="请输入答案..."></textarea>
               </td>
             </tr>
           </table>
         </td>
       </tr>
-
       <tr ng-show="gapFillingQuestions">
         <td class="biaoti">
           填空题(共 {{gapFillingQuestions.length}} 题,共{{examAllScore1(examData.Type4Questions)}} 分)
         </td>
       </tr>
-      <tr ng-show="gapFillingQuestions" ng-repeat="item in gapFillingQuestions" ng-init="outerIndex4 = $index">
+      <tr ng-show="gapFillingQuestions" ng-repeat="item in gapFillingQuestions">
         <td class="blankQuestion">
           <input type="hidden" name="questionid{{item.Id}}" value="{{item.Id}}"/>
           <div class="tibg">第<span class="questionNum"> {{$index+1}} </span>题、 <span class="blankName"
@@ -156,7 +149,6 @@
           </div>
         </td>
       </tr>
-
       <tr>
         <td style="text-align: center">
           <button ng-click="submitForm()" type="submit" class="btn btn-primary">提交</button>
